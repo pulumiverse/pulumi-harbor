@@ -31,7 +31,7 @@ const (
 	// registries for nodejs and python:
 	mainPkg = "harbor"
 	// modules:
-	mainMod = "index" // the vultr module
+	mainMod = "index" // the harbor module
 )
 
 // preConfigureCallback is called before the providerConfigure function of the underlying provider.
@@ -79,7 +79,7 @@ func Provider() tfbridge.ProviderInfo {
 		Repository: "https://github.com/pulumiverse/pulumi-harbor",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
-		GitHubOrg: "vultr",
+		GitHubOrg: "goharbor",
 		Config:    map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
@@ -104,9 +104,9 @@ func Provider() tfbridge.ProviderInfo {
 			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
 			// 	},
 			// },
+			"harbor_config_auth":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ConfigAuth")},
 			"harbor_config_email":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ConfigEmail")},
 			"harbor_config_system":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ConfigSystem")},
-			"harbor_configuration":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Configuration")},
 			"harbor_garbage_collection":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GarbageCollection")},
 			"harbor_group":                  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Group")},
 			"harbor_immutable_tag_rule":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ImmutableTagRule")},
