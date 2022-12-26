@@ -1,0 +1,2098 @@
+{
+    "name": "harbor",
+    "displayName": "Harbor",
+    "description": "A Pulumi package for creating and managing Harbor resources.",
+    "keywords": [
+        "pulumi",
+        "harbor",
+        "category/utility"
+    ],
+    "homepage": "https://www.pulumi.com",
+    "license": "Apache-2.0",
+    "attribution": "This Pulumi package is based on the [`harbor` Terraform Provider](https://github.com/goharbor/terraform-provider-harbor).",
+    "repository": "https://github.com/pulumiverse/pulumi-harbor",
+    "pluginDownloadURL": "github://api.github.com/pulumiverse/pulumi-harbor",
+    "publisher": "Pulumiverse",
+    "meta": {
+        "moduleFormat": "(.*)(?:/[^/]*)"
+    },
+    "language": {
+        "csharp": {
+            "compatibility": "tfbridge20",
+            "namespaces": null,
+            "packageReferences": {
+                "Pulumi": "3.*"
+            },
+            "rootNamespace": "Pulumiverse"
+        },
+        "go": {
+            "generateExtraInputTypes": true,
+            "generateResourceContainerTypes": true,
+            "importBasePath": "github.com/pulumiverse/pulumi-harbor/sdk/go/harbor"
+        },
+        "java": {
+            "basePackage": "com.pulumiverse"
+        },
+        "nodejs": {
+            "compatibility": "tfbridge20",
+            "dependencies": {
+                "@pulumi/pulumi": "^3.0.0"
+            },
+            "devDependencies": {
+                "@types/mime": "^2.0.0",
+                "@types/node": "^10.0.0"
+            },
+            "disableUnionOutputTypes": true,
+            "packageDescription": "A Pulumi package for creating and managing Harbor resources.",
+            "packageName": "@pulumiverse/harbor",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/goharbor/terraform-provider-harbor)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-harbor` repo](https://github.com/pulumiverse/pulumi-harbor/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-harbor` repo](https://github.com/goharbor/terraform-provider-harbor/issues).",
+            "typescriptVersion": ""
+        },
+        "python": {
+            "compatibility": "tfbridge20",
+            "packageName": "pulumiverse_harbor",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/goharbor/terraform-provider-harbor)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-harbor` repo](https://github.com/pulumiverse/pulumi-harbor/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-harbor` repo](https://github.com/goharbor/terraform-provider-harbor/issues).",
+            "requires": {
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
+            }
+        }
+    },
+    "config": {
+        "variables": {
+            "apiVersion": {
+                "type": "integer"
+            },
+            "insecure": {
+                "type": "boolean"
+            },
+            "password": {
+                "type": "string"
+            },
+            "url": {
+                "type": "string"
+            },
+            "username": {
+                "type": "string"
+            }
+        },
+        "defaults": [
+            "url"
+        ]
+    },
+    "types": {
+        "harbor:index/ReplicationFilter:ReplicationFilter": {
+            "properties": {
+                "decoration": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "labels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resource": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tag": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "harbor:index/RetentionPolicyRule:RetentionPolicyRule": {
+            "properties": {
+                "alwaysRetain": {
+                    "type": "boolean",
+                    "description": "retain always.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Specify if the rule is disable or not. Defaults to `false`\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mostRecentlyPulled": {
+                    "type": "integer",
+                    "description": "retain the most recently pulled n artifacts.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mostRecentlyPushed": {
+                    "type": "integer",
+                    "description": "retain the most recently pushed n artifacts.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nDaysSinceLastPull": {
+                    "type": "integer",
+                    "description": "retains the artifacts pulled within the lasts n days.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "nDaysSinceLastPush": {
+                    "type": "integer",
+                    "description": "retains the artifacts pushed within the lasts n days.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repoExcluding": {
+                    "type": "string",
+                    "description": "For the repositories excuding.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "repoMatching": {
+                    "type": "string",
+                    "description": "For the repositories matching.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tagExcluding": {
+                    "type": "string",
+                    "description": "For the tag excuding.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tagMatching": {
+                    "type": "string",
+                    "description": "For the tag matching.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "untaggedArtifacts": {
+                    "type": "boolean",
+                    "description": "with untagged artifacts. Defaults to `true`\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "harbor:index/RobotAccountPermission:RobotAccountPermission": {
+            "properties": {
+                "accesses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harbor:index/RobotAccountPermissionAccess:RobotAccountPermissionAccess"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "kind": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "namespace": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "accesses",
+                "kind",
+                "namespace"
+            ]
+        },
+        "harbor:index/RobotAccountPermissionAccess:RobotAccountPermissionAccess": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "effect": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resource": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "action",
+                "resource"
+            ]
+        }
+    },
+    "provider": {
+        "description": "The provider type for the harbor package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "properties": {
+            "apiVersion": {
+                "type": "integer"
+            },
+            "insecure": {
+                "type": "boolean"
+            },
+            "password": {
+                "type": "string"
+            },
+            "url": {
+                "type": "string"
+            },
+            "username": {
+                "type": "string"
+            }
+        },
+        "required": [
+            "url"
+        ],
+        "inputProperties": {
+            "apiVersion": {
+                "type": "integer"
+            },
+            "insecure": {
+                "type": "boolean"
+            },
+            "password": {
+                "type": "string"
+            },
+            "url": {
+                "type": "string"
+            },
+            "username": {
+                "type": "string"
+            }
+        },
+        "requiredInputs": [
+            "url"
+        ]
+    },
+    "resources": {
+        "harbor:index/configAuth:ConfigAuth": {
+            "properties": {
+                "authMode": {
+                    "type": "string"
+                },
+                "ldapBaseDn": {
+                    "type": "string"
+                },
+                "ldapFilter": {
+                    "type": "string"
+                },
+                "ldapGroupAdminDn": {
+                    "type": "string"
+                },
+                "ldapGroupBaseDn": {
+                    "type": "string"
+                },
+                "ldapGroupFilter": {
+                    "type": "string"
+                },
+                "ldapGroupGid": {
+                    "type": "string"
+                },
+                "ldapGroupMembership": {
+                    "type": "string"
+                },
+                "ldapGroupScope": {
+                    "type": "string"
+                },
+                "ldapGroupUid": {
+                    "type": "string"
+                },
+                "ldapScope": {
+                    "type": "string"
+                },
+                "ldapSearchDn": {
+                    "type": "string"
+                },
+                "ldapSearchPassword": {
+                    "type": "string",
+                    "secret": true
+                },
+                "ldapUid": {
+                    "type": "string"
+                },
+                "ldapUrl": {
+                    "type": "string"
+                },
+                "ldapVerifyCert": {
+                    "type": "boolean"
+                },
+                "oidcAdminGroup": {
+                    "type": "string"
+                },
+                "oidcAutoOnboard": {
+                    "type": "boolean"
+                },
+                "oidcClientId": {
+                    "type": "string"
+                },
+                "oidcClientSecret": {
+                    "type": "string",
+                    "secret": true
+                },
+                "oidcEndpoint": {
+                    "type": "string"
+                },
+                "oidcGroupsClaim": {
+                    "type": "string"
+                },
+                "oidcName": {
+                    "type": "string"
+                },
+                "oidcScope": {
+                    "type": "string"
+                },
+                "oidcUserClaim": {
+                    "type": "string"
+                },
+                "oidcVerifyCert": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "authMode"
+            ],
+            "inputProperties": {
+                "authMode": {
+                    "type": "string"
+                },
+                "ldapBaseDn": {
+                    "type": "string"
+                },
+                "ldapFilter": {
+                    "type": "string"
+                },
+                "ldapGroupAdminDn": {
+                    "type": "string"
+                },
+                "ldapGroupBaseDn": {
+                    "type": "string"
+                },
+                "ldapGroupFilter": {
+                    "type": "string"
+                },
+                "ldapGroupGid": {
+                    "type": "string"
+                },
+                "ldapGroupMembership": {
+                    "type": "string"
+                },
+                "ldapGroupScope": {
+                    "type": "string"
+                },
+                "ldapGroupUid": {
+                    "type": "string"
+                },
+                "ldapScope": {
+                    "type": "string"
+                },
+                "ldapSearchDn": {
+                    "type": "string"
+                },
+                "ldapSearchPassword": {
+                    "type": "string",
+                    "secret": true
+                },
+                "ldapUid": {
+                    "type": "string"
+                },
+                "ldapUrl": {
+                    "type": "string"
+                },
+                "ldapVerifyCert": {
+                    "type": "boolean"
+                },
+                "oidcAdminGroup": {
+                    "type": "string"
+                },
+                "oidcAutoOnboard": {
+                    "type": "boolean"
+                },
+                "oidcClientId": {
+                    "type": "string"
+                },
+                "oidcClientSecret": {
+                    "type": "string",
+                    "secret": true
+                },
+                "oidcEndpoint": {
+                    "type": "string"
+                },
+                "oidcGroupsClaim": {
+                    "type": "string"
+                },
+                "oidcName": {
+                    "type": "string"
+                },
+                "oidcScope": {
+                    "type": "string"
+                },
+                "oidcUserClaim": {
+                    "type": "string"
+                },
+                "oidcVerifyCert": {
+                    "type": "boolean"
+                }
+            },
+            "requiredInputs": [
+                "authMode"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ConfigAuth resources.\n",
+                "properties": {
+                    "authMode": {
+                        "type": "string"
+                    },
+                    "ldapBaseDn": {
+                        "type": "string"
+                    },
+                    "ldapFilter": {
+                        "type": "string"
+                    },
+                    "ldapGroupAdminDn": {
+                        "type": "string"
+                    },
+                    "ldapGroupBaseDn": {
+                        "type": "string"
+                    },
+                    "ldapGroupFilter": {
+                        "type": "string"
+                    },
+                    "ldapGroupGid": {
+                        "type": "string"
+                    },
+                    "ldapGroupMembership": {
+                        "type": "string"
+                    },
+                    "ldapGroupScope": {
+                        "type": "string"
+                    },
+                    "ldapGroupUid": {
+                        "type": "string"
+                    },
+                    "ldapScope": {
+                        "type": "string"
+                    },
+                    "ldapSearchDn": {
+                        "type": "string"
+                    },
+                    "ldapSearchPassword": {
+                        "type": "string",
+                        "secret": true
+                    },
+                    "ldapUid": {
+                        "type": "string"
+                    },
+                    "ldapUrl": {
+                        "type": "string"
+                    },
+                    "ldapVerifyCert": {
+                        "type": "boolean"
+                    },
+                    "oidcAdminGroup": {
+                        "type": "string"
+                    },
+                    "oidcAutoOnboard": {
+                        "type": "boolean"
+                    },
+                    "oidcClientId": {
+                        "type": "string"
+                    },
+                    "oidcClientSecret": {
+                        "type": "string",
+                        "secret": true
+                    },
+                    "oidcEndpoint": {
+                        "type": "string"
+                    },
+                    "oidcGroupsClaim": {
+                        "type": "string"
+                    },
+                    "oidcName": {
+                        "type": "string"
+                    },
+                    "oidcScope": {
+                        "type": "string"
+                    },
+                    "oidcUserClaim": {
+                        "type": "string"
+                    },
+                    "oidcVerifyCert": {
+                        "type": "boolean"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harbor:index/configEmail:ConfigEmail": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst main = new harbor.ConfigEmail(\"main\", {\n    emailFrom: \"dont_reply@acme.com\",\n    emailHost: \"server.acme.com\",\n});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nmain = harbor.ConfigEmail(\"main\",\n    email_from=\"dont_reply@acme.com\",\n    email_host=\"server.acme.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = new Harbor.ConfigEmail(\"main\", new()\n    {\n        EmailFrom = \"dont_reply@acme.com\",\n        EmailHost = \"server.acme.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := harbor.NewConfigEmail(ctx, \"main\", \u0026harbor.ConfigEmailArgs{\n\t\t\tEmailFrom: pulumi.String(\"dont_reply@acme.com\"),\n\t\t\tEmailHost: pulumi.String(\"server.acme.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.ConfigEmail;\nimport com.pulumi.harbor.ConfigEmailArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var main = new ConfigEmail(\"main\", ConfigEmailArgs.builder()        \n            .emailFrom(\"dont_reply@acme.com\")\n            .emailHost(\"server.acme.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  main:\n    type: harbor:ConfigEmail\n    properties:\n      emailFrom: dont_reply@acme.com\n      emailHost: server.acme.com\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "emailFrom": {
+                    "type": "string"
+                },
+                "emailHost": {
+                    "type": "string"
+                },
+                "emailInsecure": {
+                    "type": "boolean"
+                },
+                "emailPassword": {
+                    "type": "string",
+                    "secret": true
+                },
+                "emailPort": {
+                    "type": "integer"
+                },
+                "emailSsl": {
+                    "type": "boolean"
+                },
+                "emailUsername": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "emailFrom",
+                "emailHost"
+            ],
+            "inputProperties": {
+                "emailFrom": {
+                    "type": "string"
+                },
+                "emailHost": {
+                    "type": "string"
+                },
+                "emailInsecure": {
+                    "type": "boolean"
+                },
+                "emailPassword": {
+                    "type": "string",
+                    "secret": true
+                },
+                "emailPort": {
+                    "type": "integer"
+                },
+                "emailSsl": {
+                    "type": "boolean"
+                },
+                "emailUsername": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "emailFrom",
+                "emailHost"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ConfigEmail resources.\n",
+                "properties": {
+                    "emailFrom": {
+                        "type": "string"
+                    },
+                    "emailHost": {
+                        "type": "string"
+                    },
+                    "emailInsecure": {
+                        "type": "boolean"
+                    },
+                    "emailPassword": {
+                        "type": "string",
+                        "secret": true
+                    },
+                    "emailPort": {
+                        "type": "integer"
+                    },
+                    "emailSsl": {
+                        "type": "boolean"
+                    },
+                    "emailUsername": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harbor:index/configSystem:ConfigSystem": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst main = new harbor.ConfigSystem(\"main\", {\n    projectCreationRestriction: \"adminonly\",\n    robotNamePrefix: \"harbor@\",\n    robotTokenExpiration: 30,\n});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nmain = harbor.ConfigSystem(\"main\",\n    project_creation_restriction=\"adminonly\",\n    robot_name_prefix=\"harbor@\",\n    robot_token_expiration=30)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = new Harbor.ConfigSystem(\"main\", new()\n    {\n        ProjectCreationRestriction = \"adminonly\",\n        RobotNamePrefix = \"harbor@\",\n        RobotTokenExpiration = 30,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := harbor.NewConfigSystem(ctx, \"main\", \u0026harbor.ConfigSystemArgs{\n\t\t\tProjectCreationRestriction: pulumi.String(\"adminonly\"),\n\t\t\tRobotNamePrefix:            pulumi.String(\"harbor@\"),\n\t\t\tRobotTokenExpiration:       pulumi.Int(30),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.ConfigSystem;\nimport com.pulumi.harbor.ConfigSystemArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var main = new ConfigSystem(\"main\", ConfigSystemArgs.builder()        \n            .projectCreationRestriction(\"adminonly\")\n            .robotNamePrefix(\"harbor@\")\n            .robotTokenExpiration(30)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  main:\n    type: harbor:ConfigSystem\n    properties:\n      projectCreationRestriction: adminonly\n      robotNamePrefix: harbor@\n      robotTokenExpiration: 30\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "projectCreationRestriction": {
+                    "type": "string"
+                },
+                "readOnly": {
+                    "type": "boolean"
+                },
+                "robotNamePrefix": {
+                    "type": "string"
+                },
+                "robotTokenExpiration": {
+                    "type": "integer"
+                }
+            },
+            "inputProperties": {
+                "projectCreationRestriction": {
+                    "type": "string"
+                },
+                "readOnly": {
+                    "type": "boolean"
+                },
+                "robotNamePrefix": {
+                    "type": "string"
+                },
+                "robotTokenExpiration": {
+                    "type": "integer"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ConfigSystem resources.\n",
+                "properties": {
+                    "projectCreationRestriction": {
+                        "type": "string"
+                    },
+                    "readOnly": {
+                        "type": "boolean"
+                    },
+                    "robotNamePrefix": {
+                        "type": "string"
+                    },
+                    "robotTokenExpiration": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harbor:index/garbageCollection:GarbageCollection": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst main = new harbor.GarbageCollection(\"main\", {\n    deleteUntagged: true,\n    schedule: \"Daily\",\n});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nmain = harbor.GarbageCollection(\"main\",\n    delete_untagged=True,\n    schedule=\"Daily\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = new Harbor.GarbageCollection(\"main\", new()\n    {\n        DeleteUntagged = true,\n        Schedule = \"Daily\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := harbor.NewGarbageCollection(ctx, \"main\", \u0026harbor.GarbageCollectionArgs{\n\t\t\tDeleteUntagged: pulumi.Bool(true),\n\t\t\tSchedule:       pulumi.String(\"Daily\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.GarbageCollection;\nimport com.pulumi.harbor.GarbageCollectionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var main = new GarbageCollection(\"main\", GarbageCollectionArgs.builder()        \n            .deleteUntagged(true)\n            .schedule(\"Daily\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  main:\n    type: harbor:GarbageCollection\n    properties:\n      deleteUntagged: true\n      schedule: Daily\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "deleteUntagged": {
+                    "type": "boolean"
+                },
+                "schedule": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "schedule"
+            ],
+            "inputProperties": {
+                "deleteUntagged": {
+                    "type": "boolean"
+                },
+                "schedule": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "schedule"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GarbageCollection resources.\n",
+                "properties": {
+                    "deleteUntagged": {
+                        "type": "boolean"
+                    },
+                    "schedule": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harbor:index/group:Group": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst storage_group = new harbor.Group(\"storage-group\", {\n    groupName: \"storage-group\",\n    groupType: 3,\n});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nstorage_group = harbor.Group(\"storage-group\",\n    group_name=\"storage-group\",\n    group_type=3)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var storage_group = new Harbor.Group(\"storage-group\", new()\n    {\n        GroupName = \"storage-group\",\n        GroupType = 3,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := harbor.NewGroup(ctx, \"storage-group\", \u0026harbor.GroupArgs{\n\t\t\tGroupName: pulumi.String(\"storage-group\"),\n\t\t\tGroupType: pulumi.Int(3),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.Group;\nimport com.pulumi.harbor.GroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var storage_group = new Group(\"storage-group\", GroupArgs.builder()        \n            .groupName(\"storage-group\")\n            .groupType(3)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  storage-group:\n    type: harbor:Group\n    properties:\n      groupName: storage-group\n      groupType: 3\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAn OIDC group can be imported using the `group id` eg, `\n\n```sh\n $ pulumi import harbor:index/group:Group storage-group /usergroups/19\n```\n\n ` ",
+            "properties": {
+                "groupName": {
+                    "type": "string"
+                },
+                "groupType": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "groupName",
+                "groupType"
+            ],
+            "inputProperties": {
+                "groupName": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "groupType": {
+                    "type": "integer"
+                }
+            },
+            "requiredInputs": [
+                "groupName",
+                "groupType"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Group resources.\n",
+                "properties": {
+                    "groupName": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "groupType": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harbor:index/immutableTagRule:ImmutableTagRule": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst mainProject = new harbor.Project(\"mainProject\", {});\nconst mainImmutableTagRule = new harbor.ImmutableTagRule(\"mainImmutableTagRule\", {\n    projectId: mainProject.id,\n    repoMatching: \"**\",\n    tagExcluding: \"latest\",\n});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nmain_project = harbor.Project(\"mainProject\")\nmain_immutable_tag_rule = harbor.ImmutableTagRule(\"mainImmutableTagRule\",\n    project_id=main_project.id,\n    repo_matching=\"**\",\n    tag_excluding=\"latest\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mainProject = new Harbor.Project(\"mainProject\");\n\n    var mainImmutableTagRule = new Harbor.ImmutableTagRule(\"mainImmutableTagRule\", new()\n    {\n        ProjectId = mainProject.Id,\n        RepoMatching = \"**\",\n        TagExcluding = \"latest\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmainProject, err := harbor.NewProject(ctx, \"mainProject\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = harbor.NewImmutableTagRule(ctx, \"mainImmutableTagRule\", \u0026harbor.ImmutableTagRuleArgs{\n\t\t\tProjectId:    mainProject.ID(),\n\t\t\tRepoMatching: pulumi.String(\"**\"),\n\t\t\tTagExcluding: pulumi.String(\"latest\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.Project;\nimport com.pulumi.harbor.ImmutableTagRule;\nimport com.pulumi.harbor.ImmutableTagRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mainProject = new Project(\"mainProject\");\n\n        var mainImmutableTagRule = new ImmutableTagRule(\"mainImmutableTagRule\", ImmutableTagRuleArgs.builder()        \n            .projectId(mainProject.id())\n            .repoMatching(\"**\")\n            .tagExcluding(\"latest\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mainProject:\n    type: harbor:Project\n  mainImmutableTagRule:\n    type: harbor:ImmutableTagRule\n    properties:\n      projectId: ${mainProject.id}\n      repoMatching: '**'\n      tagExcluding: latest\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nHarbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg, `\n\n```sh\n $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25\n```\n\n ` ",
+            "properties": {
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Specify if the rule is disable or not. Defaults to `false`\n"
+                },
+                "projectId": {
+                    "type": "string"
+                },
+                "repoExcluding": {
+                    "type": "string",
+                    "description": "For the repositories excuding.\n"
+                },
+                "repoMatching": {
+                    "type": "string",
+                    "description": "For the repositories matching.\n"
+                },
+                "tagExcluding": {
+                    "type": "string",
+                    "description": "For the tag excuding.\n"
+                },
+                "tagMatching": {
+                    "type": "string",
+                    "description": "For the tag matching.\n"
+                }
+            },
+            "required": [
+                "projectId"
+            ],
+            "inputProperties": {
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Specify if the rule is disable or not. Defaults to `false`\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "repoExcluding": {
+                    "type": "string",
+                    "description": "For the repositories excuding.\n"
+                },
+                "repoMatching": {
+                    "type": "string",
+                    "description": "For the repositories matching.\n"
+                },
+                "tagExcluding": {
+                    "type": "string",
+                    "description": "For the tag excuding.\n"
+                },
+                "tagMatching": {
+                    "type": "string",
+                    "description": "For the tag matching.\n"
+                }
+            },
+            "requiredInputs": [
+                "projectId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ImmutableTagRule resources.\n",
+                "properties": {
+                    "disabled": {
+                        "type": "boolean",
+                        "description": "Specify if the rule is disable or not. Defaults to `false`\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "repoExcluding": {
+                        "type": "string",
+                        "description": "For the repositories excuding.\n"
+                    },
+                    "repoMatching": {
+                        "type": "string",
+                        "description": "For the repositories matching.\n"
+                    },
+                    "tagExcluding": {
+                        "type": "string",
+                        "description": "For the tag excuding.\n"
+                    },
+                    "tagMatching": {
+                        "type": "string",
+                        "description": "For the tag matching.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harbor:index/interrogationServices:InterrogationServices": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst main = new harbor.InterrogationServices(\"main\", {vulnerabilityScanPolicy: \"daily\"});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nmain = harbor.InterrogationServices(\"main\", vulnerability_scan_policy=\"daily\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = new Harbor.InterrogationServices(\"main\", new()\n    {\n        VulnerabilityScanPolicy = \"daily\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := harbor.NewInterrogationServices(ctx, \"main\", \u0026harbor.InterrogationServicesArgs{\n\t\t\tVulnerabilityScanPolicy: pulumi.String(\"daily\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.InterrogationServices;\nimport com.pulumi.harbor.InterrogationServicesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var main = new InterrogationServices(\"main\", InterrogationServicesArgs.builder()        \n            .vulnerabilityScanPolicy(\"daily\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  main:\n    type: harbor:InterrogationServices\n    properties:\n      vulnerabilityScanPolicy: daily\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "defaultScanner": {
+                    "type": "string",
+                    "description": "Sets the default interrogation service **Clair**\n"
+                },
+                "vulnerabilityScanPolicy": {
+                    "type": "string",
+                    "description": "The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.\n"
+                }
+            },
+            "required": [
+                "vulnerabilityScanPolicy"
+            ],
+            "inputProperties": {
+                "defaultScanner": {
+                    "type": "string",
+                    "description": "Sets the default interrogation service **Clair**\n"
+                },
+                "vulnerabilityScanPolicy": {
+                    "type": "string",
+                    "description": "The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.\n"
+                }
+            },
+            "requiredInputs": [
+                "vulnerabilityScanPolicy"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering InterrogationServices resources.\n",
+                "properties": {
+                    "defaultScanner": {
+                        "type": "string",
+                        "description": "Sets the default interrogation service **Clair**\n"
+                    },
+                    "vulnerabilityScanPolicy": {
+                        "type": "string",
+                        "description": "The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harbor:index/label:Label": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n* Create a global label within harbor\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst main = new harbor.Label(\"main\", {\n    color: \"#FF0000\",\n    description: \"Description to for acceptance test\",\n});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nmain = harbor.Label(\"main\",\n    color=\"#FF0000\",\n    description=\"Description to for acceptance test\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = new Harbor.Label(\"main\", new()\n    {\n        Color = \"#FF0000\",\n        Description = \"Description to for acceptance test\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := harbor.NewLabel(ctx, \"main\", \u0026harbor.LabelArgs{\n\t\t\tColor:       pulumi.String(\"#FF0000\"),\n\t\t\tDescription: pulumi.String(\"Description to for acceptance test\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.Label;\nimport com.pulumi.harbor.LabelArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var main = new Label(\"main\", LabelArgs.builder()        \n            .color(\"#FF0000\")\n            .description(\"Description to for acceptance test\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  main:\n    type: harbor:Label\n    properties:\n      color: '#FF0000'\n      description: Description to for acceptance test\n```\n\n* Creates a label for project \n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst mainProject = new harbor.Project(\"mainProject\", {});\nconst mainLabel = new harbor.Label(\"mainLabel\", {\n    color: \"#FFFFFF\",\n    description: \"Description for acceptance test\",\n    projectId: mainProject.id,\n});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nmain_project = harbor.Project(\"mainProject\")\nmain_label = harbor.Label(\"mainLabel\",\n    color=\"#FFFFFF\",\n    description=\"Description for acceptance test\",\n    project_id=main_project.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mainProject = new Harbor.Project(\"mainProject\");\n\n    var mainLabel = new Harbor.Label(\"mainLabel\", new()\n    {\n        Color = \"#FFFFFF\",\n        Description = \"Description for acceptance test\",\n        ProjectId = mainProject.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmainProject, err := harbor.NewProject(ctx, \"mainProject\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = harbor.NewLabel(ctx, \"mainLabel\", \u0026harbor.LabelArgs{\n\t\t\tColor:       pulumi.String(\"#FFFFFF\"),\n\t\t\tDescription: pulumi.String(\"Description for acceptance test\"),\n\t\t\tProjectId:   mainProject.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.Project;\nimport com.pulumi.harbor.Label;\nimport com.pulumi.harbor.LabelArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mainProject = new Project(\"mainProject\");\n\n        var mainLabel = new Label(\"mainLabel\", LabelArgs.builder()        \n            .color(\"#FFFFFF\")\n            .description(\"Description for acceptance test\")\n            .projectId(mainProject.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mainProject:\n    type: harbor:Project\n  mainLabel:\n    type: harbor:Label\n    properties:\n      color: '#FFFFFF'\n      description: Description for acceptance test\n      projectId: ${mainProject.id}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nHarbor label can be imported using the `label id` eg, `\n\n```sh\n $ pulumi import harbor:index/label:Label main /labels/1\n```\n\n ` ",
+            "properties": {
+                "color": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "string"
+                },
+                "scope": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "scope"
+            ],
+            "inputProperties": {
+                "color": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "projectId": {
+                    "type": "string"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Label resources.\n",
+                "properties": {
+                    "color": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "projectId": {
+                        "type": "string"
+                    },
+                    "scope": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harbor:index/project:Project": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst main = new harbor.Project(\"main\", {\n    enableContentTrust: true,\n    \"public\": \"false\",\n    vulnerabilityScanning: true,\n});\n// (Optional) Default vale is true. Automatically scan images on push\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nmain = harbor.Project(\"main\",\n    enable_content_trust=True,\n    public=\"false\",\n    vulnerability_scanning=True)\n# (Optional) Default vale is true. Automatically scan images on push\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = new Harbor.Project(\"main\", new()\n    {\n        EnableContentTrust = true,\n        Public = \"false\",\n        VulnerabilityScanning = true,\n    });\n\n    // (Optional) Default vale is true. Automatically scan images on push \n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := harbor.NewProject(ctx, \"main\", \u0026harbor.ProjectArgs{\n\t\t\tEnableContentTrust:    pulumi.Bool(true),\n\t\t\tPublic:                pulumi.String(\"false\"),\n\t\t\tVulnerabilityScanning: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.Project;\nimport com.pulumi.harbor.ProjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var main = new Project(\"main\", ProjectArgs.builder()        \n            .enableContentTrust(true)\n            .public_(false)\n            .vulnerabilityScanning(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  main:\n    type: harbor:Project\n    properties:\n      enableContentTrust: true\n      public: false\n      # (Optional) Default value is false\n      vulnerabilityScanning: true\n```\n{{% /example %}}\n{{% /examples %}}\n## Harbor project example as proxy cache\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst docker = new harbor.Registry(\"docker\", {\n    providerName: \"docker-hub\",\n    endpointUrl: \"https://hub.docker.com\",\n});\nconst main = new harbor.Project(\"main\", {registryId: docker.registryId});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\ndocker = harbor.Registry(\"docker\",\n    provider_name=\"docker-hub\",\n    endpoint_url=\"https://hub.docker.com\")\nmain = harbor.Project(\"main\", registry_id=docker.registry_id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var docker = new Harbor.Registry(\"docker\", new()\n    {\n        ProviderName = \"docker-hub\",\n        EndpointUrl = \"https://hub.docker.com\",\n    });\n\n    var main = new Harbor.Project(\"main\", new()\n    {\n        RegistryId = docker.RegistryId,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdocker, err := harbor.NewRegistry(ctx, \"docker\", \u0026harbor.RegistryArgs{\n\t\t\tProviderName: pulumi.String(\"docker-hub\"),\n\t\t\tEndpointUrl:  pulumi.String(\"https://hub.docker.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = harbor.NewProject(ctx, \"main\", \u0026harbor.ProjectArgs{\n\t\t\tRegistryId: docker.RegistryId,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.Registry;\nimport com.pulumi.harbor.RegistryArgs;\nimport com.pulumi.harbor.Project;\nimport com.pulumi.harbor.ProjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var docker = new Registry(\"docker\", RegistryArgs.builder()        \n            .providerName(\"docker-hub\")\n            .endpointUrl(\"https://hub.docker.com\")\n            .build());\n\n        var main = new Project(\"main\", ProjectArgs.builder()        \n            .registryId(docker.registryId())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  main:\n    type: harbor:Project\n    properties:\n      registryId: ${docker.registryId}\n  docker:\n    type: harbor:Registry\n    properties:\n      providerName: docker-hub\n      endpointUrl: https://hub.docker.com\n```\n\n\n## Import\n\nHarbor project can be imported using the `project id` eg, `\n\n```sh\n $ pulumi import harbor:index/project:Project main /projects/1\n```\n\n ` ",
+            "properties": {
+                "cveAllowlists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "deploymentSecurity": {
+                    "type": "string",
+                    "description": "Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `\"\"` - empty)\n"
+                },
+                "enableContentTrust": {
+                    "type": "boolean",
+                    "description": "Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `\"true\"` or `\"false\"` (Default: false)\n"
+                },
+                "forceDestroy": {
+                    "type": "boolean",
+                    "description": "A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the project that will be created in harbor.\n"
+                },
+                "projectId": {
+                    "type": "integer",
+                    "description": "The id of the project with harbor.\n"
+                },
+                "public": {
+                    "type": "string",
+                    "description": "The project will be public accessibility. Can be set to `\"true\"` or `\"false\"` (Default: false)\n"
+                },
+                "registryId": {
+                    "type": "integer",
+                    "description": "To enabled project as Proxy Cache\n"
+                },
+                "storageQuota": {
+                    "type": "integer",
+                    "description": "The storage quota of the project in GB's\n"
+                },
+                "vulnerabilityScanning": {
+                    "type": "boolean",
+                    "description": "Images will be scanned for vulnerabilities when push to harbor. Can be set to `\"true\"` or `\"false\"` (Default: true)\n"
+                }
+            },
+            "required": [
+                "name",
+                "projectId",
+                "registryId"
+            ],
+            "inputProperties": {
+                "cveAllowlists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "deploymentSecurity": {
+                    "type": "string",
+                    "description": "Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `\"\"` - empty)\n"
+                },
+                "enableContentTrust": {
+                    "type": "boolean",
+                    "description": "Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `\"true\"` or `\"false\"` (Default: false)\n"
+                },
+                "forceDestroy": {
+                    "type": "boolean",
+                    "description": "A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the project that will be created in harbor.\n",
+                    "willReplaceOnChanges": true
+                },
+                "public": {
+                    "type": "string",
+                    "description": "The project will be public accessibility. Can be set to `\"true\"` or `\"false\"` (Default: false)\n"
+                },
+                "registryId": {
+                    "type": "integer",
+                    "description": "To enabled project as Proxy Cache\n",
+                    "willReplaceOnChanges": true
+                },
+                "storageQuota": {
+                    "type": "integer",
+                    "description": "The storage quota of the project in GB's\n"
+                },
+                "vulnerabilityScanning": {
+                    "type": "boolean",
+                    "description": "Images will be scanned for vulnerabilities when push to harbor. Can be set to `\"true\"` or `\"false\"` (Default: true)\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Project resources.\n",
+                "properties": {
+                    "cveAllowlists": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "deploymentSecurity": {
+                        "type": "string",
+                        "description": "Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `\"\"` - empty)\n"
+                    },
+                    "enableContentTrust": {
+                        "type": "boolean",
+                        "description": "Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `\"true\"` or `\"false\"` (Default: false)\n"
+                    },
+                    "forceDestroy": {
+                        "type": "boolean",
+                        "description": "A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the project that will be created in harbor.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "projectId": {
+                        "type": "integer",
+                        "description": "The id of the project with harbor.\n"
+                    },
+                    "public": {
+                        "type": "string",
+                        "description": "The project will be public accessibility. Can be set to `\"true\"` or `\"false\"` (Default: false)\n"
+                    },
+                    "registryId": {
+                        "type": "integer",
+                        "description": "To enabled project as Proxy Cache\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "storageQuota": {
+                        "type": "integer",
+                        "description": "The storage quota of the project in GB's\n"
+                    },
+                    "vulnerabilityScanning": {
+                        "type": "boolean",
+                        "description": "Images will be scanned for vulnerabilities when push to harbor. Can be set to `\"true\"` or `\"false\"` (Default: true)\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harbor:index/projectMemberGroup:ProjectMemberGroup": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst mainProject = new harbor.Project(\"mainProject\", {});\nconst mainProjectMemberGroup = new harbor.ProjectMemberGroup(\"mainProjectMemberGroup\", {\n    projectId: mainProject.id,\n    groupName: \"testing1\",\n    role: \"projectadmin\",\n    type: \"oidc\",\n});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nmain_project = harbor.Project(\"mainProject\")\nmain_project_member_group = harbor.ProjectMemberGroup(\"mainProjectMemberGroup\",\n    project_id=main_project.id,\n    group_name=\"testing1\",\n    role=\"projectadmin\",\n    type=\"oidc\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mainProject = new Harbor.Project(\"mainProject\");\n\n    var mainProjectMemberGroup = new Harbor.ProjectMemberGroup(\"mainProjectMemberGroup\", new()\n    {\n        ProjectId = mainProject.Id,\n        GroupName = \"testing1\",\n        Role = \"projectadmin\",\n        Type = \"oidc\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmainProject, err := harbor.NewProject(ctx, \"mainProject\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = harbor.NewProjectMemberGroup(ctx, \"mainProjectMemberGroup\", \u0026harbor.ProjectMemberGroupArgs{\n\t\t\tProjectId: mainProject.ID(),\n\t\t\tGroupName: pulumi.String(\"testing1\"),\n\t\t\tRole:      pulumi.String(\"projectadmin\"),\n\t\t\tType:      pulumi.String(\"oidc\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.Project;\nimport com.pulumi.harbor.ProjectMemberGroup;\nimport com.pulumi.harbor.ProjectMemberGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mainProject = new Project(\"mainProject\");\n\n        var mainProjectMemberGroup = new ProjectMemberGroup(\"mainProjectMemberGroup\", ProjectMemberGroupArgs.builder()        \n            .projectId(mainProject.id())\n            .groupName(\"testing1\")\n            .role(\"projectadmin\")\n            .type(\"oidc\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mainProject:\n    type: harbor:Project\n  mainProjectMemberGroup:\n    type: harbor:ProjectMemberGroup\n    properties:\n      projectId: ${mainProject.id}\n      groupName: testing1\n      role: projectadmin\n      type: oidc\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nHarbor project member group can be imported using the `project id` and `member id` eg, `\n\n```sh\n $ pulumi import harbor:index/projectMemberGroup:ProjectMemberGroup main /projects/10/members/200\n```\n\n ` ",
+            "properties": {
+                "groupId": {
+                    "type": "integer"
+                },
+                "groupName": {
+                    "type": "string"
+                },
+                "ldapGroupDn": {
+                    "type": "string"
+                },
+                "memberId": {
+                    "type": "integer"
+                },
+                "projectId": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "memberId",
+                "projectId",
+                "role",
+                "type"
+            ],
+            "inputProperties": {
+                "groupId": {
+                    "type": "integer",
+                    "willReplaceOnChanges": true
+                },
+                "groupName": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "ldapGroupDn": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "role": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "projectId",
+                "role",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ProjectMemberGroup resources.\n",
+                "properties": {
+                    "groupId": {
+                        "type": "integer",
+                        "willReplaceOnChanges": true
+                    },
+                    "groupName": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "ldapGroupDn": {
+                        "type": "string"
+                    },
+                    "memberId": {
+                        "type": "integer"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "role": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harbor:index/projectMemberUser:ProjectMemberUser": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst mainProject = new harbor.Project(\"mainProject\", {});\nconst mainProjectMemberUser = new harbor.ProjectMemberUser(\"mainProjectMemberUser\", {\n    projectId: mainProject.id,\n    userName: \"testing1\",\n    role: \"projectadmin\",\n});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nmain_project = harbor.Project(\"mainProject\")\nmain_project_member_user = harbor.ProjectMemberUser(\"mainProjectMemberUser\",\n    project_id=main_project.id,\n    user_name=\"testing1\",\n    role=\"projectadmin\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mainProject = new Harbor.Project(\"mainProject\");\n\n    var mainProjectMemberUser = new Harbor.ProjectMemberUser(\"mainProjectMemberUser\", new()\n    {\n        ProjectId = mainProject.Id,\n        UserName = \"testing1\",\n        Role = \"projectadmin\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmainProject, err := harbor.NewProject(ctx, \"mainProject\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = harbor.NewProjectMemberUser(ctx, \"mainProjectMemberUser\", \u0026harbor.ProjectMemberUserArgs{\n\t\t\tProjectId: mainProject.ID(),\n\t\t\tUserName:  pulumi.String(\"testing1\"),\n\t\t\tRole:      pulumi.String(\"projectadmin\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.Project;\nimport com.pulumi.harbor.ProjectMemberUser;\nimport com.pulumi.harbor.ProjectMemberUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mainProject = new Project(\"mainProject\");\n\n        var mainProjectMemberUser = new ProjectMemberUser(\"mainProjectMemberUser\", ProjectMemberUserArgs.builder()        \n            .projectId(mainProject.id())\n            .userName(\"testing1\")\n            .role(\"projectadmin\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mainProject:\n    type: harbor:Project\n  mainProjectMemberUser:\n    type: harbor:ProjectMemberUser\n    properties:\n      projectId: ${mainProject.id}\n      userName: testing1\n      role: projectadmin\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nHarbor project member user can be imported using the `project id` and `member id` eg, `\n\n```sh\n $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200\n```\n\n ` ",
+            "properties": {
+                "memberId": {
+                    "type": "integer"
+                },
+                "projectId": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "userName": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "memberId",
+                "projectId",
+                "role",
+                "userName"
+            ],
+            "inputProperties": {
+                "projectId": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "role": {
+                    "type": "string"
+                },
+                "userName": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "projectId",
+                "role",
+                "userName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ProjectMemberUser resources.\n",
+                "properties": {
+                    "memberId": {
+                        "type": "integer"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "role": {
+                        "type": "string"
+                    },
+                    "userName": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harbor:index/projectWebhook:ProjectWebhook": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst mainProject = new harbor.Project(\"mainProject\", {});\nconst mainProjectWebhook = new harbor.ProjectWebhook(\"mainProjectWebhook\", {\n    address: \"https://webhook.domain.com\",\n    projectId: mainProject.id,\n    notifyType: \"http\",\n    eventsTypes: [\n        \"DELETE_ARTIFACT\",\n        \"PULL_ARTIFACT\",\n        \"PUSH_ARTIFACT\",\n        \"DELETE_CHART\",\n        \"DOWNLOAD_CHART\",\n        \"UPLOAD_CHART\",\n        \"QUOTA_EXCEED\",\n        \"QUOTA_WARNING\",\n        \"REPLICATION\",\n        \"SCANNING_FAILED\",\n        \"SCANNING_COMPLETED\",\n        \"TAG_RETENTION\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nmain_project = harbor.Project(\"mainProject\")\nmain_project_webhook = harbor.ProjectWebhook(\"mainProjectWebhook\",\n    address=\"https://webhook.domain.com\",\n    project_id=main_project.id,\n    notify_type=\"http\",\n    events_types=[\n        \"DELETE_ARTIFACT\",\n        \"PULL_ARTIFACT\",\n        \"PUSH_ARTIFACT\",\n        \"DELETE_CHART\",\n        \"DOWNLOAD_CHART\",\n        \"UPLOAD_CHART\",\n        \"QUOTA_EXCEED\",\n        \"QUOTA_WARNING\",\n        \"REPLICATION\",\n        \"SCANNING_FAILED\",\n        \"SCANNING_COMPLETED\",\n        \"TAG_RETENTION\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mainProject = new Harbor.Project(\"mainProject\");\n\n    var mainProjectWebhook = new Harbor.ProjectWebhook(\"mainProjectWebhook\", new()\n    {\n        Address = \"https://webhook.domain.com\",\n        ProjectId = mainProject.Id,\n        NotifyType = \"http\",\n        EventsTypes = new[]\n        {\n            \"DELETE_ARTIFACT\",\n            \"PULL_ARTIFACT\",\n            \"PUSH_ARTIFACT\",\n            \"DELETE_CHART\",\n            \"DOWNLOAD_CHART\",\n            \"UPLOAD_CHART\",\n            \"QUOTA_EXCEED\",\n            \"QUOTA_WARNING\",\n            \"REPLICATION\",\n            \"SCANNING_FAILED\",\n            \"SCANNING_COMPLETED\",\n            \"TAG_RETENTION\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmainProject, err := harbor.NewProject(ctx, \"mainProject\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = harbor.NewProjectWebhook(ctx, \"mainProjectWebhook\", \u0026harbor.ProjectWebhookArgs{\n\t\t\tAddress:    pulumi.String(\"https://webhook.domain.com\"),\n\t\t\tProjectId:  mainProject.ID(),\n\t\t\tNotifyType: pulumi.String(\"http\"),\n\t\t\tEventsTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"DELETE_ARTIFACT\"),\n\t\t\t\tpulumi.String(\"PULL_ARTIFACT\"),\n\t\t\t\tpulumi.String(\"PUSH_ARTIFACT\"),\n\t\t\t\tpulumi.String(\"DELETE_CHART\"),\n\t\t\t\tpulumi.String(\"DOWNLOAD_CHART\"),\n\t\t\t\tpulumi.String(\"UPLOAD_CHART\"),\n\t\t\t\tpulumi.String(\"QUOTA_EXCEED\"),\n\t\t\t\tpulumi.String(\"QUOTA_WARNING\"),\n\t\t\t\tpulumi.String(\"REPLICATION\"),\n\t\t\t\tpulumi.String(\"SCANNING_FAILED\"),\n\t\t\t\tpulumi.String(\"SCANNING_COMPLETED\"),\n\t\t\t\tpulumi.String(\"TAG_RETENTION\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.Project;\nimport com.pulumi.harbor.ProjectWebhook;\nimport com.pulumi.harbor.ProjectWebhookArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mainProject = new Project(\"mainProject\");\n\n        var mainProjectWebhook = new ProjectWebhook(\"mainProjectWebhook\", ProjectWebhookArgs.builder()        \n            .address(\"https://webhook.domain.com\")\n            .projectId(mainProject.id())\n            .notifyType(\"http\")\n            .eventsTypes(            \n                \"DELETE_ARTIFACT\",\n                \"PULL_ARTIFACT\",\n                \"PUSH_ARTIFACT\",\n                \"DELETE_CHART\",\n                \"DOWNLOAD_CHART\",\n                \"UPLOAD_CHART\",\n                \"QUOTA_EXCEED\",\n                \"QUOTA_WARNING\",\n                \"REPLICATION\",\n                \"SCANNING_FAILED\",\n                \"SCANNING_COMPLETED\",\n                \"TAG_RETENTION\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mainProjectWebhook:\n    type: harbor:ProjectWebhook\n    properties:\n      address: https://webhook.domain.com\n      projectId: ${mainProject.id}\n      notifyType: http\n      eventsTypes:\n        - DELETE_ARTIFACT\n        - PULL_ARTIFACT\n        - PUSH_ARTIFACT\n        - DELETE_CHART\n        - DOWNLOAD_CHART\n        - UPLOAD_CHART\n        - QUOTA_EXCEED\n        - QUOTA_WARNING\n        - REPLICATION\n        - SCANNING_FAILED\n        - SCANNING_COMPLETED\n        - TAG_RETENTION\n  mainProject:\n    type: harbor:Project\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "The address of the webhook\n"
+                },
+                "authHeader": {
+                    "type": "string",
+                    "description": "authentication header for you the webhook\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "_ (Optional, string) A description of the webhook\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": ", To enable / disable the webhook. Default `true`\n"
+                },
+                "eventsTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": ") The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the webhook that will be created in harbor.\n"
+                },
+                "notifyType": {
+                    "type": "string",
+                    "description": "The notification type either `http` or `slack`\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "The project id of the harbor that webhook related to.\n"
+                },
+                "skipCertVerify": {
+                    "type": "boolean",
+                    "description": "checks the for validate SSL certificate.\n"
+                }
+            },
+            "required": [
+                "address",
+                "eventsTypes",
+                "name",
+                "notifyType",
+                "projectId"
+            ],
+            "inputProperties": {
+                "address": {
+                    "type": "string",
+                    "description": "The address of the webhook\n"
+                },
+                "authHeader": {
+                    "type": "string",
+                    "description": "authentication header for you the webhook\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "_ (Optional, string) A description of the webhook\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": ", To enable / disable the webhook. Default `true`\n"
+                },
+                "eventsTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": ") The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the webhook that will be created in harbor.\n",
+                    "willReplaceOnChanges": true
+                },
+                "notifyType": {
+                    "type": "string",
+                    "description": "The notification type either `http` or `slack`\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "The project id of the harbor that webhook related to.\n"
+                },
+                "skipCertVerify": {
+                    "type": "boolean",
+                    "description": "checks the for validate SSL certificate.\n"
+                }
+            },
+            "requiredInputs": [
+                "address",
+                "eventsTypes",
+                "notifyType",
+                "projectId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ProjectWebhook resources.\n",
+                "properties": {
+                    "address": {
+                        "type": "string",
+                        "description": "The address of the webhook\n"
+                    },
+                    "authHeader": {
+                        "type": "string",
+                        "description": "authentication header for you the webhook\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "_ (Optional, string) A description of the webhook\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": ", To enable / disable the webhook. Default `true`\n"
+                    },
+                    "eventsTypes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": ") The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the webhook that will be created in harbor.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "notifyType": {
+                        "type": "string",
+                        "description": "The notification type either `http` or `slack`\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "The project id of the harbor that webhook related to.\n"
+                    },
+                    "skipCertVerify": {
+                        "type": "boolean",
+                        "description": "checks the for validate SSL certificate.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harbor:index/registry:Registry": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst main = new harbor.Registry(\"main\", {\n    endpointUrl: \"https://hub.docker.com\",\n    providerName: \"docker-hub\",\n});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nmain = harbor.Registry(\"main\",\n    endpoint_url=\"https://hub.docker.com\",\n    provider_name=\"docker-hub\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = new Harbor.Registry(\"main\", new()\n    {\n        EndpointUrl = \"https://hub.docker.com\",\n        ProviderName = \"docker-hub\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := harbor.NewRegistry(ctx, \"main\", \u0026harbor.RegistryArgs{\n\t\t\tEndpointUrl:  pulumi.String(\"https://hub.docker.com\"),\n\t\t\tProviderName: pulumi.String(\"docker-hub\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.Registry;\nimport com.pulumi.harbor.RegistryArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var main = new Registry(\"main\", RegistryArgs.builder()        \n            .endpointUrl(\"https://hub.docker.com\")\n            .providerName(\"docker-hub\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  main:\n    type: harbor:Registry\n    properties:\n      endpointUrl: https://hub.docker.com\n      providerName: docker-hub\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nHarbor project can be imported using the `registry id` eg, `\n\n```sh\n $ pulumi import harbor:index/registry:Registry main /registries/7\n```\n\n ` ",
+            "properties": {
+                "accessId": {
+                    "type": "string"
+                },
+                "accessSecret": {
+                    "type": "string",
+                    "secret": true
+                },
+                "description": {
+                    "type": "string"
+                },
+                "endpointUrl": {
+                    "type": "string"
+                },
+                "insecure": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "providerName": {
+                    "type": "string"
+                },
+                "registryId": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "endpointUrl",
+                "name",
+                "providerName",
+                "registryId",
+                "status"
+            ],
+            "inputProperties": {
+                "accessId": {
+                    "type": "string"
+                },
+                "accessSecret": {
+                    "type": "string",
+                    "secret": true
+                },
+                "description": {
+                    "type": "string"
+                },
+                "endpointUrl": {
+                    "type": "string"
+                },
+                "insecure": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "providerName": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "endpointUrl",
+                "providerName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Registry resources.\n",
+                "properties": {
+                    "accessId": {
+                        "type": "string"
+                    },
+                    "accessSecret": {
+                        "type": "string",
+                        "secret": true
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "endpointUrl": {
+                        "type": "string"
+                    },
+                    "insecure": {
+                        "type": "boolean"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "providerName": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "registryId": {
+                        "type": "integer"
+                    },
+                    "status": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harbor:index/replication:Replication": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst main = new harbor.Registry(\"main\", {\n    providerName: \"docker-hub\",\n    endpointUrl: \"https://hub.docker.com\",\n});\nconst push = new harbor.Replication(\"push\", {\n    action: \"push\",\n    registryId: main.registryId,\n});\nconst alpineReplication = new harbor.Replication(\"alpineReplication\", {\n    action: \"pull\",\n    registryId: main.registryId,\n    schedule: \"* 0/15 * * * *\",\n    filters: [\n        {\n            name: \"library/alpine\",\n        },\n        {\n            tag: \"3.*.*\",\n        },\n        {\n            resource: \"artifact\",\n        },\n        {\n            labels: [\"qa\"],\n        },\n    ],\n});\nconst alpineIndex_replicationReplication = new harbor.Replication(\"alpineIndex/replicationReplication\", {\n    action: \"pull\",\n    registryId: main.registryId,\n    schedule: \"event_based\",\n    filters: [\n        {\n            name: \"library/alpine\",\n        },\n        {\n            tag: \"3.*.*\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nmain = harbor.Registry(\"main\",\n    provider_name=\"docker-hub\",\n    endpoint_url=\"https://hub.docker.com\")\npush = harbor.Replication(\"push\",\n    action=\"push\",\n    registry_id=main.registry_id)\nalpine_replication = harbor.Replication(\"alpineReplication\",\n    action=\"pull\",\n    registry_id=main.registry_id,\n    schedule=\"* 0/15 * * * *\",\n    filters=[\n        harbor.ReplicationFilterArgs(\n            name=\"library/alpine\",\n        ),\n        harbor.ReplicationFilterArgs(\n            tag=\"3.*.*\",\n        ),\n        harbor.ReplicationFilterArgs(\n            resource=\"artifact\",\n        ),\n        harbor.ReplicationFilterArgs(\n            labels=[\"qa\"],\n        ),\n    ])\nalpine_index_replication_replication = harbor.Replication(\"alpineIndex/replicationReplication\",\n    action=\"pull\",\n    registry_id=main.registry_id,\n    schedule=\"event_based\",\n    filters=[\n        harbor.ReplicationFilterArgs(\n            name=\"library/alpine\",\n        ),\n        harbor.ReplicationFilterArgs(\n            tag=\"3.*.*\",\n        ),\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = new Harbor.Registry(\"main\", new()\n    {\n        ProviderName = \"docker-hub\",\n        EndpointUrl = \"https://hub.docker.com\",\n    });\n\n    var push = new Harbor.Replication(\"push\", new()\n    {\n        Action = \"push\",\n        RegistryId = main.RegistryId,\n    });\n\n    var alpineReplication = new Harbor.Replication(\"alpineReplication\", new()\n    {\n        Action = \"pull\",\n        RegistryId = main.RegistryId,\n        Schedule = \"* 0/15 * * * *\",\n        Filters = new[]\n        {\n            new Harbor.Inputs.ReplicationFilterArgs\n            {\n                Name = \"library/alpine\",\n            },\n            new Harbor.Inputs.ReplicationFilterArgs\n            {\n                Tag = \"3.*.*\",\n            },\n            new Harbor.Inputs.ReplicationFilterArgs\n            {\n                Resource = \"artifact\",\n            },\n            new Harbor.Inputs.ReplicationFilterArgs\n            {\n                Labels = new[]\n                {\n                    \"qa\",\n                },\n            },\n        },\n    });\n\n    var alpineIndex_replicationReplication = new Harbor.Replication(\"alpineIndex/replicationReplication\", new()\n    {\n        Action = \"pull\",\n        RegistryId = main.RegistryId,\n        Schedule = \"event_based\",\n        Filters = new[]\n        {\n            new Harbor.Inputs.ReplicationFilterArgs\n            {\n                Name = \"library/alpine\",\n            },\n            new Harbor.Inputs.ReplicationFilterArgs\n            {\n                Tag = \"3.*.*\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmain, err := harbor.NewRegistry(ctx, \"main\", \u0026harbor.RegistryArgs{\n\t\t\tProviderName: pulumi.String(\"docker-hub\"),\n\t\t\tEndpointUrl:  pulumi.String(\"https://hub.docker.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = harbor.NewReplication(ctx, \"push\", \u0026harbor.ReplicationArgs{\n\t\t\tAction:     pulumi.String(\"push\"),\n\t\t\tRegistryId: main.RegistryId,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = harbor.NewReplication(ctx, \"alpineReplication\", \u0026harbor.ReplicationArgs{\n\t\t\tAction:     pulumi.String(\"pull\"),\n\t\t\tRegistryId: main.RegistryId,\n\t\t\tSchedule:   pulumi.String(\"* 0/15 * * * *\"),\n\t\t\tFilters: harbor.ReplicationFilterArray{\n\t\t\t\t\u0026harbor.ReplicationFilterArgs{\n\t\t\t\t\tName: pulumi.String(\"library/alpine\"),\n\t\t\t\t},\n\t\t\t\t\u0026harbor.ReplicationFilterArgs{\n\t\t\t\t\tTag: pulumi.String(\"3.*.*\"),\n\t\t\t\t},\n\t\t\t\t\u0026harbor.ReplicationFilterArgs{\n\t\t\t\t\tResource: pulumi.String(\"artifact\"),\n\t\t\t\t},\n\t\t\t\t\u0026harbor.ReplicationFilterArgs{\n\t\t\t\t\tLabels: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"qa\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = harbor.NewReplication(ctx, \"alpineIndex/replicationReplication\", \u0026harbor.ReplicationArgs{\n\t\t\tAction:     pulumi.String(\"pull\"),\n\t\t\tRegistryId: main.RegistryId,\n\t\t\tSchedule:   pulumi.String(\"event_based\"),\n\t\t\tFilters: harbor.ReplicationFilterArray{\n\t\t\t\t\u0026harbor.ReplicationFilterArgs{\n\t\t\t\t\tName: pulumi.String(\"library/alpine\"),\n\t\t\t\t},\n\t\t\t\t\u0026harbor.ReplicationFilterArgs{\n\t\t\t\t\tTag: pulumi.String(\"3.*.*\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.Registry;\nimport com.pulumi.harbor.RegistryArgs;\nimport com.pulumi.harbor.Replication;\nimport com.pulumi.harbor.ReplicationArgs;\nimport com.pulumi.harbor.inputs.ReplicationFilterArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var main = new Registry(\"main\", RegistryArgs.builder()        \n            .providerName(\"docker-hub\")\n            .endpointUrl(\"https://hub.docker.com\")\n            .build());\n\n        var push = new Replication(\"push\", ReplicationArgs.builder()        \n            .action(\"push\")\n            .registryId(main.registryId())\n            .build());\n\n        var alpineReplication = new Replication(\"alpineReplication\", ReplicationArgs.builder()        \n            .action(\"pull\")\n            .registryId(main.registryId())\n            .schedule(\"* 0/15 * * * *\")\n            .filters(            \n                ReplicationFilterArgs.builder()\n                    .name(\"library/alpine\")\n                    .build(),\n                ReplicationFilterArgs.builder()\n                    .tag(\"3.*.*\")\n                    .build(),\n                ReplicationFilterArgs.builder()\n                    .resource(\"artifact\")\n                    .build(),\n                ReplicationFilterArgs.builder()\n                    .labels(\"qa\")\n                    .build())\n            .build());\n\n        var alpineIndex_replicationReplication = new Replication(\"alpineIndex/replicationReplication\", ReplicationArgs.builder()        \n            .action(\"pull\")\n            .registryId(main.registryId())\n            .schedule(\"event_based\")\n            .filters(            \n                ReplicationFilterArgs.builder()\n                    .name(\"library/alpine\")\n                    .build(),\n                ReplicationFilterArgs.builder()\n                    .tag(\"3.*.*\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  main:\n    type: harbor:Registry\n    properties:\n      providerName: docker-hub\n      endpointUrl: https://hub.docker.com\n  push:\n    type: harbor:Replication\n    properties:\n      action: push\n      registryId: ${main.registryId}\n  alpineReplication:\n    type: harbor:Replication\n    properties:\n      action: pull\n      registryId: ${main.registryId}\n      schedule: '* 0/15 * * * *'\n      filters:\n        - name: library/alpine\n        - tag: 3.*.*\n        - resource: artifact\n        - labels:\n            - qa\n  alpineIndex/replicationReplication:\n    type: harbor:Replication\n    properties:\n      action: pull\n      registryId: ${main.registryId}\n      schedule: event_based\n      filters:\n        - name: library/alpine\n        - tag: 3.*.*\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nHarbor project can be imported using the `replication id` eg, `\n\n```sh\n $ pulumi import harbor:index/replication:Replication main /replication/policies/1\n```\n\n ` ",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "deletion": {
+                    "type": "boolean"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "destNamespace": {
+                    "type": "string"
+                },
+                "destNamespaceReplace": {
+                    "type": "integer"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "filters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harbor:index/ReplicationFilter:ReplicationFilter"
+                    }
+                },
+                "name": {
+                    "type": "string"
+                },
+                "override": {
+                    "type": "boolean"
+                },
+                "registryId": {
+                    "type": "integer"
+                },
+                "replicationPolicyId": {
+                    "type": "integer"
+                },
+                "schedule": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "action",
+                "name",
+                "registryId",
+                "replicationPolicyId"
+            ],
+            "inputProperties": {
+                "action": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "deletion": {
+                    "type": "boolean"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "destNamespace": {
+                    "type": "string"
+                },
+                "destNamespaceReplace": {
+                    "type": "integer"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "filters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harbor:index/ReplicationFilter:ReplicationFilter"
+                    }
+                },
+                "name": {
+                    "type": "string"
+                },
+                "override": {
+                    "type": "boolean"
+                },
+                "registryId": {
+                    "type": "integer"
+                },
+                "schedule": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "action",
+                "registryId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Replication resources.\n",
+                "properties": {
+                    "action": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "deletion": {
+                        "type": "boolean"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "destNamespace": {
+                        "type": "string"
+                    },
+                    "destNamespaceReplace": {
+                        "type": "integer"
+                    },
+                    "enabled": {
+                        "type": "boolean"
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harbor:index/ReplicationFilter:ReplicationFilter"
+                        }
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "override": {
+                        "type": "boolean"
+                    },
+                    "registryId": {
+                        "type": "integer"
+                    },
+                    "replicationPolicyId": {
+                        "type": "integer"
+                    },
+                    "schedule": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harbor:index/retentionPolicy:RetentionPolicy": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst mainProject = new harbor.Project(\"mainProject\", {});\nconst mainRetentionPolicy = new harbor.RetentionPolicy(\"mainRetentionPolicy\", {\n    scope: mainProject.id,\n    schedule: \"daily\",\n    rules: [\n        {\n            nDaysSinceLastPull: 5,\n            repoMatching: \"**\",\n            tagMatching: \"latest\",\n        },\n        {\n            nDaysSinceLastPush: 10,\n            repoMatching: \"**\",\n            tagMatching: \"latest\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nmain_project = harbor.Project(\"mainProject\")\nmain_retention_policy = harbor.RetentionPolicy(\"mainRetentionPolicy\",\n    scope=main_project.id,\n    schedule=\"daily\",\n    rules=[\n        harbor.RetentionPolicyRuleArgs(\n            n_days_since_last_pull=5,\n            repo_matching=\"**\",\n            tag_matching=\"latest\",\n        ),\n        harbor.RetentionPolicyRuleArgs(\n            n_days_since_last_push=10,\n            repo_matching=\"**\",\n            tag_matching=\"latest\",\n        ),\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mainProject = new Harbor.Project(\"mainProject\");\n\n    var mainRetentionPolicy = new Harbor.RetentionPolicy(\"mainRetentionPolicy\", new()\n    {\n        Scope = mainProject.Id,\n        Schedule = \"daily\",\n        Rules = new[]\n        {\n            new Harbor.Inputs.RetentionPolicyRuleArgs\n            {\n                NDaysSinceLastPull = 5,\n                RepoMatching = \"**\",\n                TagMatching = \"latest\",\n            },\n            new Harbor.Inputs.RetentionPolicyRuleArgs\n            {\n                NDaysSinceLastPush = 10,\n                RepoMatching = \"**\",\n                TagMatching = \"latest\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmainProject, err := harbor.NewProject(ctx, \"mainProject\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = harbor.NewRetentionPolicy(ctx, \"mainRetentionPolicy\", \u0026harbor.RetentionPolicyArgs{\n\t\t\tScope:    mainProject.ID(),\n\t\t\tSchedule: pulumi.String(\"daily\"),\n\t\t\tRules: harbor.RetentionPolicyRuleArray{\n\t\t\t\t\u0026harbor.RetentionPolicyRuleArgs{\n\t\t\t\t\tNDaysSinceLastPull: pulumi.Int(5),\n\t\t\t\t\tRepoMatching:       pulumi.String(\"**\"),\n\t\t\t\t\tTagMatching:        pulumi.String(\"latest\"),\n\t\t\t\t},\n\t\t\t\t\u0026harbor.RetentionPolicyRuleArgs{\n\t\t\t\t\tNDaysSinceLastPush: pulumi.Int(10),\n\t\t\t\t\tRepoMatching:       pulumi.String(\"**\"),\n\t\t\t\t\tTagMatching:        pulumi.String(\"latest\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.Project;\nimport com.pulumi.harbor.RetentionPolicy;\nimport com.pulumi.harbor.RetentionPolicyArgs;\nimport com.pulumi.harbor.inputs.RetentionPolicyRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mainProject = new Project(\"mainProject\");\n\n        var mainRetentionPolicy = new RetentionPolicy(\"mainRetentionPolicy\", RetentionPolicyArgs.builder()        \n            .scope(mainProject.id())\n            .schedule(\"daily\")\n            .rules(            \n                RetentionPolicyRuleArgs.builder()\n                    .nDaysSinceLastPull(5)\n                    .repoMatching(\"**\")\n                    .tagMatching(\"latest\")\n                    .build(),\n                RetentionPolicyRuleArgs.builder()\n                    .nDaysSinceLastPush(10)\n                    .repoMatching(\"**\")\n                    .tagMatching(\"latest\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mainProject:\n    type: harbor:Project\n  mainRetentionPolicy:\n    type: harbor:RetentionPolicy\n    properties:\n      scope: ${mainProject.id}\n      schedule: daily\n      rules:\n        - nDaysSinceLastPull: 5\n          repoMatching: '**'\n          tagMatching: latest\n        - nDaysSinceLastPush: 10\n          repoMatching: '**'\n          tagMatching: latest\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nHarbor retention policy can be imported using the `retention_policy id` eg, `\n\n```sh\n $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10\n```\n\n ` ",
+            "properties": {
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harbor:index/RetentionPolicyRule:RetentionPolicyRule"
+                    },
+                    "description": "Al collection of rule blocks as documented below.\n"
+                },
+                "schedule": {
+                    "type": "string",
+                    "description": "The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.\n"
+                },
+                "scope": {
+                    "type": "string",
+                    "description": "The project id of which you would like to apply this policy.\n"
+                }
+            },
+            "required": [
+                "rules",
+                "scope"
+            ],
+            "inputProperties": {
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harbor:index/RetentionPolicyRule:RetentionPolicyRule"
+                    },
+                    "description": "Al collection of rule blocks as documented below.\n"
+                },
+                "schedule": {
+                    "type": "string",
+                    "description": "The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.\n"
+                },
+                "scope": {
+                    "type": "string",
+                    "description": "The project id of which you would like to apply this policy.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "rules",
+                "scope"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RetentionPolicy resources.\n",
+                "properties": {
+                    "rules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harbor:index/RetentionPolicyRule:RetentionPolicyRule"
+                        },
+                        "description": "Al collection of rule blocks as documented below.\n"
+                    },
+                    "schedule": {
+                        "type": "string",
+                        "description": "The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.\n"
+                    },
+                    "scope": {
+                        "type": "string",
+                        "description": "The project id of which you would like to apply this policy.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harbor:index/robotAccount:RobotAccount": {
+            "description": "## # Resource: harbor.RobotAccount\n\nHarbor supports different levels of robot accounts. Currently `system` and `project` level robot accounts are supported.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### System Level\nIntroduced in harbor 2.2.0, system level robot accounts can have basically [all available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) in harbor and are not dependent on a single project.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\nimport * as random from \"@pulumi/random\";\n\nconst password = new random.RandomPassword(\"password\", {\n    length: 12,\n    special: false,\n});\nconst main = new harbor.Project(\"main\", {});\nconst system = new harbor.RobotAccount(\"system\", {\n    description: \"system level robot account\",\n    level: \"system\",\n    secret: resource.random_password.password.result,\n    permissions: [\n        {\n            accesses: [{\n                action: \"create\",\n                resource: \"labels\",\n            }],\n            kind: \"system\",\n            namespace: \"/\",\n        },\n        {\n            accesses: [\n                {\n                    action: \"push\",\n                    resource: \"repository\",\n                },\n                {\n                    action: \"read\",\n                    resource: \"helm-chart\",\n                },\n                {\n                    action: \"read\",\n                    resource: \"helm-chart-version\",\n                },\n            ],\n            kind: \"project\",\n            namespace: main.name,\n        },\n        {\n            accesses: [{\n                action: \"pull\",\n                resource: \"repository\",\n            }],\n            kind: \"project\",\n            namespace: \"*\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_random as random\nimport pulumiverse_harbor as harbor\n\npassword = random.RandomPassword(\"password\",\n    length=12,\n    special=False)\nmain = harbor.Project(\"main\")\nsystem = harbor.RobotAccount(\"system\",\n    description=\"system level robot account\",\n    level=\"system\",\n    secret=resource[\"random_password\"][\"password\"][\"result\"],\n    permissions=[\n        harbor.RobotAccountPermissionArgs(\n            accesses=[harbor.RobotAccountPermissionAccessArgs(\n                action=\"create\",\n                resource=\"labels\",\n            )],\n            kind=\"system\",\n            namespace=\"/\",\n        ),\n        harbor.RobotAccountPermissionArgs(\n            accesses=[\n                harbor.RobotAccountPermissionAccessArgs(\n                    action=\"push\",\n                    resource=\"repository\",\n                ),\n                harbor.RobotAccountPermissionAccessArgs(\n                    action=\"read\",\n                    resource=\"helm-chart\",\n                ),\n                harbor.RobotAccountPermissionAccessArgs(\n                    action=\"read\",\n                    resource=\"helm-chart-version\",\n                ),\n            ],\n            kind=\"project\",\n            namespace=main.name,\n        ),\n        harbor.RobotAccountPermissionArgs(\n            accesses=[harbor.RobotAccountPermissionAccessArgs(\n                action=\"pull\",\n                resource=\"repository\",\n            )],\n            kind=\"project\",\n            namespace=\"*\",\n        ),\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\nusing Random = Pulumi.Random;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var password = new Random.RandomPassword(\"password\", new()\n    {\n        Length = 12,\n        Special = false,\n    });\n\n    var main = new Harbor.Project(\"main\");\n\n    var system = new Harbor.RobotAccount(\"system\", new()\n    {\n        Description = \"system level robot account\",\n        Level = \"system\",\n        Secret = resource.Random_password.Password.Result,\n        Permissions = new[]\n        {\n            new Harbor.Inputs.RobotAccountPermissionArgs\n            {\n                Accesses = new[]\n                {\n                    new Harbor.Inputs.RobotAccountPermissionAccessArgs\n                    {\n                        Action = \"create\",\n                        Resource = \"labels\",\n                    },\n                },\n                Kind = \"system\",\n                Namespace = \"/\",\n            },\n            new Harbor.Inputs.RobotAccountPermissionArgs\n            {\n                Accesses = new[]\n                {\n                    new Harbor.Inputs.RobotAccountPermissionAccessArgs\n                    {\n                        Action = \"push\",\n                        Resource = \"repository\",\n                    },\n                    new Harbor.Inputs.RobotAccountPermissionAccessArgs\n                    {\n                        Action = \"read\",\n                        Resource = \"helm-chart\",\n                    },\n                    new Harbor.Inputs.RobotAccountPermissionAccessArgs\n                    {\n                        Action = \"read\",\n                        Resource = \"helm-chart-version\",\n                    },\n                },\n                Kind = \"project\",\n                Namespace = main.Name,\n            },\n            new Harbor.Inputs.RobotAccountPermissionArgs\n            {\n                Accesses = new[]\n                {\n                    new Harbor.Inputs.RobotAccountPermissionAccessArgs\n                    {\n                        Action = \"pull\",\n                        Resource = \"repository\",\n                    },\n                },\n                Kind = \"project\",\n                Namespace = \"*\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-random/sdk/v4/go/random\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := random.NewRandomPassword(ctx, \"password\", \u0026random.RandomPasswordArgs{\n\t\t\tLength:  pulumi.Int(12),\n\t\t\tSpecial: pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmain, err := harbor.NewProject(ctx, \"main\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = harbor.NewRobotAccount(ctx, \"system\", \u0026harbor.RobotAccountArgs{\n\t\t\tDescription: pulumi.String(\"system level robot account\"),\n\t\t\tLevel:       pulumi.String(\"system\"),\n\t\t\tSecret:      pulumi.Any(resource.Random_password.Password.Result),\n\t\t\tPermissions: harbor.RobotAccountPermissionArray{\n\t\t\t\t\u0026harbor.RobotAccountPermissionArgs{\n\t\t\t\t\tAccesses: harbor.RobotAccountPermissionAccessArray{\n\t\t\t\t\t\t\u0026harbor.RobotAccountPermissionAccessArgs{\n\t\t\t\t\t\t\tAction:   pulumi.String(\"create\"),\n\t\t\t\t\t\t\tResource: pulumi.String(\"labels\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tKind:      pulumi.String(\"system\"),\n\t\t\t\t\tNamespace: pulumi.String(\"/\"),\n\t\t\t\t},\n\t\t\t\t\u0026harbor.RobotAccountPermissionArgs{\n\t\t\t\t\tAccesses: harbor.RobotAccountPermissionAccessArray{\n\t\t\t\t\t\t\u0026harbor.RobotAccountPermissionAccessArgs{\n\t\t\t\t\t\t\tAction:   pulumi.String(\"push\"),\n\t\t\t\t\t\t\tResource: pulumi.String(\"repository\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026harbor.RobotAccountPermissionAccessArgs{\n\t\t\t\t\t\t\tAction:   pulumi.String(\"read\"),\n\t\t\t\t\t\t\tResource: pulumi.String(\"helm-chart\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026harbor.RobotAccountPermissionAccessArgs{\n\t\t\t\t\t\t\tAction:   pulumi.String(\"read\"),\n\t\t\t\t\t\t\tResource: pulumi.String(\"helm-chart-version\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tKind:      pulumi.String(\"project\"),\n\t\t\t\t\tNamespace: main.Name,\n\t\t\t\t},\n\t\t\t\t\u0026harbor.RobotAccountPermissionArgs{\n\t\t\t\t\tAccesses: harbor.RobotAccountPermissionAccessArray{\n\t\t\t\t\t\t\u0026harbor.RobotAccountPermissionAccessArgs{\n\t\t\t\t\t\t\tAction:   pulumi.String(\"pull\"),\n\t\t\t\t\t\t\tResource: pulumi.String(\"repository\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tKind:      pulumi.String(\"project\"),\n\t\t\t\t\tNamespace: pulumi.String(\"*\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.random.RandomPassword;\nimport com.pulumi.random.RandomPasswordArgs;\nimport com.pulumi.harbor.Project;\nimport com.pulumi.harbor.RobotAccount;\nimport com.pulumi.harbor.RobotAccountArgs;\nimport com.pulumi.harbor.inputs.RobotAccountPermissionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var password = new RandomPassword(\"password\", RandomPasswordArgs.builder()        \n            .length(12)\n            .special(false)\n            .build());\n\n        var main = new Project(\"main\");\n\n        var system = new RobotAccount(\"system\", RobotAccountArgs.builder()        \n            .description(\"system level robot account\")\n            .level(\"system\")\n            .secret(resource.random_password().password().result())\n            .permissions(            \n                RobotAccountPermissionArgs.builder()\n                    .accesses(RobotAccountPermissionAccessArgs.builder()\n                        .action(\"create\")\n                        .resource(\"labels\")\n                        .build())\n                    .kind(\"system\")\n                    .namespace(\"/\")\n                    .build(),\n                RobotAccountPermissionArgs.builder()\n                    .accesses(                    \n                        RobotAccountPermissionAccessArgs.builder()\n                            .action(\"push\")\n                            .resource(\"repository\")\n                            .build(),\n                        RobotAccountPermissionAccessArgs.builder()\n                            .action(\"read\")\n                            .resource(\"helm-chart\")\n                            .build(),\n                        RobotAccountPermissionAccessArgs.builder()\n                            .action(\"read\")\n                            .resource(\"helm-chart-version\")\n                            .build())\n                    .kind(\"project\")\n                    .namespace(main.name())\n                    .build(),\n                RobotAccountPermissionArgs.builder()\n                    .accesses(RobotAccountPermissionAccessArgs.builder()\n                        .action(\"pull\")\n                        .resource(\"repository\")\n                        .build())\n                    .kind(\"project\")\n                    .namespace(\"*\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  password:\n    type: random:RandomPassword\n    properties:\n      length: 12\n      special: false\n  main:\n    type: harbor:Project\n  system:\n    type: harbor:RobotAccount\n    properties:\n      description: system level robot account\n      level: system\n      secret: ${resource.random_password.password.result}\n      permissions:\n        - accesses:\n            - action: create\n              resource: labels\n          kind: system\n          namespace: /\n        - accesses:\n            - action: push\n              resource: repository\n            - action: read\n              resource: helm-chart\n            - action: read\n              resource: helm-chart-version\n          kind: project\n          namespace: ${main.name}\n        - accesses:\n            - action: pull\n              resource: repository\n          kind: project\n          namespace: '*'\n```\n\nThe above example, creates a system level robot account with permissions to\n- permission to create labels on system level\n- pull repository across all projects\n- push repository to project \"my-project-name\"\n- read helm-chart and helm-chart-version in project \"my-project-name\"\n{{% /example %}}\n{{% example %}}\n### Project Level\n\nOther than system level robot accounts, project level robot accounts can interact on project level only.\nThe [available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) are mostly the same as for system level robots.\n\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst main = new harbor.Project(\"main\", {});\nconst project = new harbor.RobotAccount(\"project\", {\n    description: \"project level robot account\",\n    level: \"project\",\n    permissions: [{\n        accesses: [\n            {\n                action: \"pull\",\n                resource: \"repository\",\n            },\n            {\n                action: \"push\",\n                resource: \"repository\",\n            },\n        ],\n        kind: \"project\",\n        namespace: main.name,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nmain = harbor.Project(\"main\")\nproject = harbor.RobotAccount(\"project\",\n    description=\"project level robot account\",\n    level=\"project\",\n    permissions=[harbor.RobotAccountPermissionArgs(\n        accesses=[\n            harbor.RobotAccountPermissionAccessArgs(\n                action=\"pull\",\n                resource=\"repository\",\n            ),\n            harbor.RobotAccountPermissionAccessArgs(\n                action=\"push\",\n                resource=\"repository\",\n            ),\n        ],\n        kind=\"project\",\n        namespace=main.name,\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = new Harbor.Project(\"main\");\n\n    var project = new Harbor.RobotAccount(\"project\", new()\n    {\n        Description = \"project level robot account\",\n        Level = \"project\",\n        Permissions = new[]\n        {\n            new Harbor.Inputs.RobotAccountPermissionArgs\n            {\n                Accesses = new[]\n                {\n                    new Harbor.Inputs.RobotAccountPermissionAccessArgs\n                    {\n                        Action = \"pull\",\n                        Resource = \"repository\",\n                    },\n                    new Harbor.Inputs.RobotAccountPermissionAccessArgs\n                    {\n                        Action = \"push\",\n                        Resource = \"repository\",\n                    },\n                },\n                Kind = \"project\",\n                Namespace = main.Name,\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmain, err := harbor.NewProject(ctx, \"main\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = harbor.NewRobotAccount(ctx, \"project\", \u0026harbor.RobotAccountArgs{\n\t\t\tDescription: pulumi.String(\"project level robot account\"),\n\t\t\tLevel:       pulumi.String(\"project\"),\n\t\t\tPermissions: harbor.RobotAccountPermissionArray{\n\t\t\t\t\u0026harbor.RobotAccountPermissionArgs{\n\t\t\t\t\tAccesses: harbor.RobotAccountPermissionAccessArray{\n\t\t\t\t\t\t\u0026harbor.RobotAccountPermissionAccessArgs{\n\t\t\t\t\t\t\tAction:   pulumi.String(\"pull\"),\n\t\t\t\t\t\t\tResource: pulumi.String(\"repository\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026harbor.RobotAccountPermissionAccessArgs{\n\t\t\t\t\t\t\tAction:   pulumi.String(\"push\"),\n\t\t\t\t\t\t\tResource: pulumi.String(\"repository\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tKind:      pulumi.String(\"project\"),\n\t\t\t\t\tNamespace: main.Name,\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.Project;\nimport com.pulumi.harbor.RobotAccount;\nimport com.pulumi.harbor.RobotAccountArgs;\nimport com.pulumi.harbor.inputs.RobotAccountPermissionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var main = new Project(\"main\");\n\n        var project = new RobotAccount(\"project\", RobotAccountArgs.builder()        \n            .description(\"project level robot account\")\n            .level(\"project\")\n            .permissions(RobotAccountPermissionArgs.builder()\n                .accesses(                \n                    RobotAccountPermissionAccessArgs.builder()\n                        .action(\"pull\")\n                        .resource(\"repository\")\n                        .build(),\n                    RobotAccountPermissionAccessArgs.builder()\n                        .action(\"push\")\n                        .resource(\"repository\")\n                        .build())\n                .kind(\"project\")\n                .namespace(main.name())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  main:\n    type: harbor:Project\n  project:\n    type: harbor:RobotAccount\n    properties:\n      description: project level robot account\n      level: project\n      permissions:\n        - accesses:\n            - action: pull\n              resource: repository\n            - action: push\n              resource: repository\n          kind: project\n          namespace: ${main.name}\n```\n\nThe above example creates a project level robot account with permissions to\n- pull repository on project \"main\"\n- push repository on project \"main\"\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "disable": {
+                    "type": "boolean"
+                },
+                "duration": {
+                    "type": "integer"
+                },
+                "fullName": {
+                    "type": "string"
+                },
+                "level": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harbor:index/RobotAccountPermission:RobotAccountPermission"
+                    }
+                },
+                "robotId": {
+                    "type": "string"
+                },
+                "secret": {
+                    "type": "string",
+                    "secret": true
+                }
+            },
+            "required": [
+                "fullName",
+                "level",
+                "name",
+                "permissions",
+                "robotId",
+                "secret"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string"
+                },
+                "disable": {
+                    "type": "boolean"
+                },
+                "duration": {
+                    "type": "integer"
+                },
+                "level": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/harbor:index/RobotAccountPermission:RobotAccountPermission"
+                    }
+                },
+                "secret": {
+                    "type": "string",
+                    "secret": true
+                }
+            },
+            "requiredInputs": [
+                "level",
+                "permissions"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RobotAccount resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string"
+                    },
+                    "disable": {
+                        "type": "boolean"
+                    },
+                    "duration": {
+                        "type": "integer"
+                    },
+                    "fullName": {
+                        "type": "string"
+                    },
+                    "level": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harbor:index/RobotAccountPermission:RobotAccountPermission"
+                        }
+                    },
+                    "robotId": {
+                        "type": "string"
+                    },
+                    "secret": {
+                        "type": "string",
+                        "secret": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harbor:index/tasks:Tasks": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst main = new harbor.Tasks(\"main\", {vulnerabilityScanPolicy: \"daily\"});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nmain = harbor.Tasks(\"main\", vulnerability_scan_policy=\"daily\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = new Harbor.Tasks(\"main\", new()\n    {\n        VulnerabilityScanPolicy = \"daily\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := harbor.NewTasks(ctx, \"main\", \u0026harbor.TasksArgs{\n\t\t\tVulnerabilityScanPolicy: pulumi.String(\"daily\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.Tasks;\nimport com.pulumi.harbor.TasksArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var main = new Tasks(\"main\", TasksArgs.builder()        \n            .vulnerabilityScanPolicy(\"daily\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  main:\n    type: harbor:Tasks\n    properties:\n      vulnerabilityScanPolicy: daily\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "vulnerabilityScanPolicy": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "vulnerabilityScanPolicy"
+            ],
+            "inputProperties": {
+                "vulnerabilityScanPolicy": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "vulnerabilityScanPolicy"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Tasks resources.\n",
+                "properties": {
+                    "vulnerabilityScanPolicy": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harbor:index/user:User": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst main = new harbor.User(\"main\", {\n    email: \"john@smith.com\",\n    fullName: \"John Smith\",\n    password: \"Password12345!\",\n    username: \"john\",\n});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nmain = harbor.User(\"main\",\n    email=\"john@smith.com\",\n    full_name=\"John Smith\",\n    password=\"Password12345!\",\n    username=\"john\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = new Harbor.User(\"main\", new()\n    {\n        Email = \"john@smith.com\",\n        FullName = \"John Smith\",\n        Password = \"Password12345!\",\n        Username = \"john\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := harbor.NewUser(ctx, \"main\", \u0026harbor.UserArgs{\n\t\t\tEmail:    pulumi.String(\"john@smith.com\"),\n\t\t\tFullName: pulumi.String(\"John Smith\"),\n\t\t\tPassword: pulumi.String(\"Password12345!\"),\n\t\t\tUsername: pulumi.String(\"john\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.User;\nimport com.pulumi.harbor.UserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var main = new User(\"main\", UserArgs.builder()        \n            .email(\"john@smith.com\")\n            .fullName(\"John Smith\")\n            .password(\"Password12345!\")\n            .username(\"john\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  main:\n    type: harbor:User\n    properties:\n      email: john@smith.com\n      fullName: John Smith\n      password: Password12345!\n      username: john\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAn internal user harbor user can be imported using the `user id` eg, `\n\n```sh\n $ pulumi import harbor:index/user:User main /users/19\n```\n\n ` ",
+            "properties": {
+                "admin": {
+                    "type": "boolean"
+                },
+                "comment": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "fullName": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string",
+                    "secret": true
+                },
+                "username": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "email",
+                "fullName",
+                "password",
+                "username"
+            ],
+            "inputProperties": {
+                "admin": {
+                    "type": "boolean"
+                },
+                "comment": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "fullName": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string",
+                    "secret": true
+                },
+                "username": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "email",
+                "fullName",
+                "password",
+                "username"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering User resources.\n",
+                "properties": {
+                    "admin": {
+                        "type": "boolean"
+                    },
+                    "comment": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "fullName": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string",
+                        "secret": true
+                    },
+                    "username": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "functions": {
+        "harbor:index/getProject:getProject": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumi/harbor\";\n\nconst main = harbor.getProject({\n    name: \"library\",\n});\nexport const projectId = main.then(main =\u003e main.id);\n```\n```python\nimport pulumi\nimport pulumi_harbor as harbor\n\nmain = harbor.get_project(name=\"library\")\npulumi.export(\"projectId\", main.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Harbor = Pulumi.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = Harbor.GetProject.Invoke(new()\n    {\n        Name = \"library\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"projectId\"] = main.Apply(getProjectResult =\u003e getProjectResult.Id),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmain, err := harbor.LookupProject(ctx, \u0026harbor.LookupProjectArgs{\n\t\t\tName: \"library\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"projectId\", main.Id)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.HarborFunctions;\nimport com.pulumi.harbor.inputs.GetProjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var main = HarborFunctions.getProject(GetProjectArgs.builder()\n            .name(\"library\")\n            .build());\n\n        ctx.export(\"projectId\", main.applyValue(getProjectResult -\u003e getProjectResult.id()));\n    }\n}\n```\n```yaml\nvariables:\n  main:\n    fn::invoke:\n      Function: harbor:getProject\n      Arguments:\n        name: library\noutputs:\n  projectId: ${main.id}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getProject.\n",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getProject.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "type": "integer"
+                    },
+                    "public": {
+                        "type": "boolean"
+                    },
+                    "vulnerabilityScanning": {
+                        "type": "boolean"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "projectId",
+                    "public",
+                    "vulnerabilityScanning",
+                    "id"
+                ]
+            }
+        },
+        "harbor:index/getRegistry:getRegistry": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumi/harbor\";\n\nconst main = harbor.getRegistry({\n    name: \"test_docker_harbor\",\n});\nexport const harborRegistryId = main.then(main =\u003e main.id);\n```\n```python\nimport pulumi\nimport pulumi_harbor as harbor\n\nmain = harbor.get_registry(name=\"test_docker_harbor\")\npulumi.export(\"harborRegistryId\", main.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Harbor = Pulumi.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = Harbor.GetRegistry.Invoke(new()\n    {\n        Name = \"test_docker_harbor\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"harborRegistryId\"] = main.Apply(getRegistryResult =\u003e getRegistryResult.Id),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmain, err := harbor.LookupRegistry(ctx, \u0026harbor.LookupRegistryArgs{\n\t\t\tName: \"test_docker_harbor\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"harborRegistryId\", main.Id)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.HarborFunctions;\nimport com.pulumi.harbor.inputs.GetRegistryArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var main = HarborFunctions.getRegistry(GetRegistryArgs.builder()\n            .name(\"test_docker_harbor\")\n            .build());\n\n        ctx.export(\"harborRegistryId\", main.applyValue(getRegistryResult -\u003e getRegistryResult.id()));\n    }\n}\n```\n```yaml\nvariables:\n  main:\n    fn::invoke:\n      Function: harbor:getRegistry\n      Arguments:\n        name: test_docker_harbor\noutputs:\n  harborRegistryId: ${main.id}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRegistry.\n",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRegistry.\n",
+                "properties": {
+                    "description": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "insecure": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "registryId": {
+                        "type": "integer"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "description",
+                    "insecure",
+                    "name",
+                    "registryId",
+                    "status",
+                    "type",
+                    "url",
+                    "id"
+                ]
+            }
+        }
+    }
+}

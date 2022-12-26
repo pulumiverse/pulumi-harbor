@@ -1,0 +1,5 @@
+{
+  "resource": true,
+  "name": "harbor",
+  "server": "github://api.github.com/pulumiverse/pulumi-harbor"
+}
