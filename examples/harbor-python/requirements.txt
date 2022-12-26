@@ -1,2 +1,2 @@
 pulumi>=3.0.0,<4.0.0
-pulumiverse-harbor>=3.0.0
+pulumiverse-harbor==3.8.0

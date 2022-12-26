@@ -3,6 +3,6 @@
   "main": "index.js",
   "dependencies": {
     "@pulumi/pulumi": "3.50.2",
-    "@pulumiverse/harbor": "3.7.9"
+    "@pulumiverse/harbor": "3.8.0"
   }
 }

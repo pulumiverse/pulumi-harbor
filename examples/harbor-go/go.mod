@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/pulumi/pulumi/sdk/v3 v3.50.2
-	github.com/pulumiverse/pulumi-harbor/v3 v3.7.9
+	github.com/pulumiverse/pulumi-harbor/v3 v3.8.0
 )
 
 replace github.com/pulumiverse/pulumi-harbor/v3 => ../../sdk
