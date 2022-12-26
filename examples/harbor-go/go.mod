@@ -3,11 +3,11 @@ module harbor-go
 go 1.19
 
 require (
-	github.com/pulumiverse/pulumi-harbor/v3 v3.0.0-00010101000000-000000000000
 	github.com/pulumi/pulumi/sdk/v3 v3.50.2
+	github.com/pulumiverse/pulumi-harbor/v3 v3.7.9
 )
 
-replace github.com/pulumiverse/pulumi-harbor/v3  => ../../sdk
+replace github.com/pulumiverse/pulumi-harbor/v3 => ../../sdk
 
 require (
 	github.com/Microsoft/go-winio v0.5.2 // indirect
@@ -32,7 +32,6 @@ require (
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99 // indirect
 	github.com/kevinburke/ssh_config v0.0.0-20201106050909-4977a11b4351 // indirect
-	github.com/mattn/go-isatty v0.0.16 // indirect
 	github.com/mattn/go-runewidth v0.0.8 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/mitchellh/go-ps v1.0.0 // indirect

@@ -7,9 +7,24 @@ import (
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
-		harbor.NewProject(ctx, "project", &harbor.ProjectArgs{
-			Name: pulumi.String("pulumi-harbor"),
+
+		registry, err := harbor.NewRegistry(ctx, "registry", &harbor.RegistryArgs{
+			ProviderName: pulumi.String("docker-hub"),
+			EndpointUrl:  pulumi.String("https://hub.docker.com"),
+			Name:         pulumi.String("pulumi-harbor"),
 		})
+		if err != nil {
+			return err
+		}
+
+		_, err = harbor.NewProject(ctx, "project", &harbor.ProjectArgs{
+			Name:       pulumi.String("pulumi-harbor"),
+			Public:     pulumi.String("true"),
+			RegistryId: registry.RegistryId,
+		})
+		if err != nil {
+			return err
+		}
 		return nil
 	})
 }
