@@ -1,0 +1,11 @@
+{
+  "name": "harbor-ts",
+  "main": "index.ts",
+  "devDependencies": {
+    "@types/node": "^18"
+  },
+  "dependencies": {
+    "@pulumi/pulumi": "3.50.2",
+    "@pulumiverse/harbor": "3.7.9"
+  }
+}
