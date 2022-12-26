@@ -18,7 +18,7 @@ builds:
       - linux
     ldflags:
       # The line below MUST align with the module in current provider/go.mod
-      - -X github.com/pulumiverse/pulumi-harbor/provider/v2/pkg/version.Version={{.Tag }}
+      - -X github.com/pulumiverse/pulumi-harbor/provider/v3/pkg/version.Version={{.Tag }}
     main: ./cmd/pulumi-resource-harbor/
 
 changelog:
