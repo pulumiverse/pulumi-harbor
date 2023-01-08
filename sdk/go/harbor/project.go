@@ -84,6 +84,7 @@ import (
 type Project struct {
 	pulumi.CustomResourceState
 
+	// Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
 	CveAllowlists pulumi.StringArrayOutput `pulumi:"cveAllowlists"`
 	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
 	DeploymentSecurity pulumi.StringPtrOutput `pulumi:"deploymentSecurity"`
@@ -135,6 +136,7 @@ func GetProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Project resources.
 type projectState struct {
+	// Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
 	CveAllowlists []string `pulumi:"cveAllowlists"`
 	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
 	DeploymentSecurity *string `pulumi:"deploymentSecurity"`
@@ -157,6 +159,7 @@ type projectState struct {
 }
 
 type ProjectState struct {
+	// Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
 	CveAllowlists pulumi.StringArrayInput
 	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
 	DeploymentSecurity pulumi.StringPtrInput
@@ -183,6 +186,7 @@ func (ProjectState) ElementType() reflect.Type {
 }
 
 type projectArgs struct {
+	// Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
 	CveAllowlists []string `pulumi:"cveAllowlists"`
 	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
 	DeploymentSecurity *string `pulumi:"deploymentSecurity"`
@@ -204,6 +208,7 @@ type projectArgs struct {
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
+	// Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
 	CveAllowlists pulumi.StringArrayInput
 	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
 	DeploymentSecurity pulumi.StringPtrInput
@@ -310,6 +315,7 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 	return o
 }
 
+// Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
 func (o ProjectOutput) CveAllowlists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringArrayOutput { return v.CveAllowlists }).(pulumi.StringArrayOutput)
 }

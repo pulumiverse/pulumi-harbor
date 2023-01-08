@@ -99,9 +99,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="harbor:index/project:Project")
 public class Project extends com.pulumi.resources.CustomResource {
+    /**
+     * Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `[&#34;CVE-123&#34;, &#34;CVE-145&#34;]` or `[&#34;CVE-123&#34;]`
+     * 
+     */
     @Export(name="cveAllowlists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> cveAllowlists;
 
+    /**
+     * @return Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `[&#34;CVE-123&#34;, &#34;CVE-145&#34;]` or `[&#34;CVE-123&#34;]`
+     * 
+     */
     public Output<Optional<List<String>>> cveAllowlists() {
         return Codegen.optional(this.cveAllowlists);
     }

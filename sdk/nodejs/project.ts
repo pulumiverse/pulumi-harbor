@@ -69,6 +69,9 @@ export class Project extends pulumi.CustomResource {
         return obj['__pulumiType'] === Project.__pulumiType;
     }
 
+    /**
+     * Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
+     */
     public readonly cveAllowlists!: pulumi.Output<string[] | undefined>;
     /**
      * Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
@@ -152,6 +155,9 @@ export class Project extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Project resources.
  */
 export interface ProjectState {
+    /**
+     * Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
+     */
     cveAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
@@ -195,6 +201,9 @@ export interface ProjectState {
  * The set of arguments for constructing a Project resource.
  */
 export interface ProjectArgs {
+    /**
+     * Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
+     */
     cveAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
