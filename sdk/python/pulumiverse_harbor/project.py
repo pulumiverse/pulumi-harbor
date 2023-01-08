@@ -25,6 +25,7 @@ class ProjectArgs:
                  vulnerability_scanning: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Project resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cve_allowlists: Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
         :param pulumi.Input[str] deployment_security: Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
         :param pulumi.Input[bool] enable_content_trust: Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
@@ -56,6 +57,9 @@ class ProjectArgs:
     @property
     @pulumi.getter(name="cveAllowlists")
     def cve_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
+        """
         return pulumi.get(self, "cve_allowlists")
 
     @cve_allowlists.setter
@@ -174,6 +178,7 @@ class _ProjectState:
                  vulnerability_scanning: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Project resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cve_allowlists: Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
         :param pulumi.Input[str] deployment_security: Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
         :param pulumi.Input[bool] enable_content_trust: Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
@@ -208,6 +213,9 @@ class _ProjectState:
     @property
     @pulumi.getter(name="cveAllowlists")
     def cve_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
+        """
         return pulumi.get(self, "cve_allowlists")
 
     @cve_allowlists.setter
@@ -375,6 +383,7 @@ class Project(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cve_allowlists: Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
         :param pulumi.Input[str] deployment_security: Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
         :param pulumi.Input[bool] enable_content_trust: Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
@@ -495,6 +504,7 @@ class Project(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cve_allowlists: Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
         :param pulumi.Input[str] deployment_security: Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
         :param pulumi.Input[bool] enable_content_trust: Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
@@ -524,6 +534,9 @@ class Project(pulumi.CustomResource):
     @property
     @pulumi.getter(name="cveAllowlists")
     def cve_allowlists(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
+        """
         return pulumi.get(self, "cve_allowlists")
 
     @property

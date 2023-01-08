@@ -27,7 +27,7 @@ namespace Pulumiverse.Harbor
     ///         VulnerabilityScanning = true,
     ///     });
     /// 
-    ///     // (Optional) Default vale is true. Automatically scan images on push 
+    ///     // (Optional) Default vale is true. Automatically scan images on push
     /// });
     /// ```
     /// ## Harbor project example as proxy cache
@@ -66,6 +66,9 @@ namespace Pulumiverse.Harbor
     [HarborResourceType("harbor:index/project:Project")]
     public partial class Project : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
+        /// </summary>
         [Output("cveAllowlists")]
         public Output<ImmutableArray<string>> CveAllowlists { get; private set; } = null!;
 
@@ -172,6 +175,10 @@ namespace Pulumiverse.Harbor
     {
         [Input("cveAllowlists")]
         private InputList<string>? _cveAllowlists;
+
+        /// <summary>
+        /// Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
+        /// </summary>
         public InputList<string> CveAllowlists
         {
             get => _cveAllowlists ?? (_cveAllowlists = new InputList<string>());
@@ -236,6 +243,10 @@ namespace Pulumiverse.Harbor
     {
         [Input("cveAllowlists")]
         private InputList<string>? _cveAllowlists;
+
+        /// <summary>
+        /// Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
+        /// </summary>
         public InputList<string> CveAllowlists
         {
             get => _cveAllowlists ?? (_cveAllowlists = new InputList<string>());

@@ -18,9 +18,17 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ProjectArgs Empty = new ProjectArgs();
 
+    /**
+     * Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `[&#34;CVE-123&#34;, &#34;CVE-145&#34;]` or `[&#34;CVE-123&#34;]`
+     * 
+     */
     @Import(name="cveAllowlists")
     private @Nullable Output<List<String>> cveAllowlists;
 
+    /**
+     * @return Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `[&#34;CVE-123&#34;, &#34;CVE-145&#34;]` or `[&#34;CVE-123&#34;]`
+     * 
+     */
     public Optional<Output<List<String>>> cveAllowlists() {
         return Optional.ofNullable(this.cveAllowlists);
     }
@@ -177,15 +185,33 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ProjectArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cveAllowlists Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `[&#34;CVE-123&#34;, &#34;CVE-145&#34;]` or `[&#34;CVE-123&#34;]`
+         * 
+         * @return builder
+         * 
+         */
         public Builder cveAllowlists(@Nullable Output<List<String>> cveAllowlists) {
             $.cveAllowlists = cveAllowlists;
             return this;
         }
 
+        /**
+         * @param cveAllowlists Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `[&#34;CVE-123&#34;, &#34;CVE-145&#34;]` or `[&#34;CVE-123&#34;]`
+         * 
+         * @return builder
+         * 
+         */
         public Builder cveAllowlists(List<String> cveAllowlists) {
             return cveAllowlists(Output.of(cveAllowlists));
         }
 
+        /**
+         * @param cveAllowlists Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `[&#34;CVE-123&#34;, &#34;CVE-145&#34;]` or `[&#34;CVE-123&#34;]`
+         * 
+         * @return builder
+         * 
+         */
         public Builder cveAllowlists(String... cveAllowlists) {
             return cveAllowlists(List.of(cveAllowlists));
         }
