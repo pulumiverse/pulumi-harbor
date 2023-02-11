@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -111,6 +111,7 @@ type Replication struct {
 	RegistryId           pulumi.IntOutput             `pulumi:"registryId"`
 	ReplicationPolicyId  pulumi.IntOutput             `pulumi:"replicationPolicyId"`
 	Schedule             pulumi.StringPtrOutput       `pulumi:"schedule"`
+	Speed                pulumi.IntPtrOutput          `pulumi:"speed"`
 }
 
 // NewReplication registers a new resource with the given unique name, arguments, and options.
@@ -161,6 +162,7 @@ type replicationState struct {
 	RegistryId           *int                `pulumi:"registryId"`
 	ReplicationPolicyId  *int                `pulumi:"replicationPolicyId"`
 	Schedule             *string             `pulumi:"schedule"`
+	Speed                *int                `pulumi:"speed"`
 }
 
 type ReplicationState struct {
@@ -176,6 +178,7 @@ type ReplicationState struct {
 	RegistryId           pulumi.IntPtrInput
 	ReplicationPolicyId  pulumi.IntPtrInput
 	Schedule             pulumi.StringPtrInput
+	Speed                pulumi.IntPtrInput
 }
 
 func (ReplicationState) ElementType() reflect.Type {
@@ -194,6 +197,7 @@ type replicationArgs struct {
 	Override             *bool               `pulumi:"override"`
 	RegistryId           int                 `pulumi:"registryId"`
 	Schedule             *string             `pulumi:"schedule"`
+	Speed                *int                `pulumi:"speed"`
 }
 
 // The set of arguments for constructing a Replication resource.
@@ -209,6 +213,7 @@ type ReplicationArgs struct {
 	Override             pulumi.BoolPtrInput
 	RegistryId           pulumi.IntInput
 	Schedule             pulumi.StringPtrInput
+	Speed                pulumi.IntPtrInput
 }
 
 func (ReplicationArgs) ElementType() reflect.Type {
@@ -344,6 +349,10 @@ func (o ReplicationOutput) ReplicationPolicyId() pulumi.IntOutput {
 
 func (o ReplicationOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Replication) pulumi.StringPtrOutput { return v.Schedule }).(pulumi.StringPtrOutput)
+}
+
+func (o ReplicationOutput) Speed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Replication) pulumi.IntPtrOutput { return v.Speed }).(pulumi.IntPtrOutput)
 }
 
 type ReplicationArrayOutput struct{ *pulumi.OutputState }

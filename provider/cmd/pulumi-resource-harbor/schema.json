@@ -1601,6 +1601,9 @@
                 },
                 "schedule": {
                     "type": "string"
+                },
+                "speed": {
+                    "type": "integer"
                 }
             },
             "required": [
@@ -1646,6 +1649,9 @@
                 },
                 "schedule": {
                     "type": "string"
+                },
+                "speed": {
+                    "type": "integer"
                 }
             },
             "requiredInputs": [
@@ -1694,6 +1700,9 @@
                     },
                     "schedule": {
                         "type": "string"
+                    },
+                    "speed": {
+                        "type": "integer"
                     }
                 },
                 "type": "object"
