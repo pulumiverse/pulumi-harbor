@@ -26,7 +26,8 @@ class ReplicationArgs:
                  filters: Optional[pulumi.Input[Sequence[pulumi.Input['ReplicationFilterArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  override: Optional[pulumi.Input[bool]] = None,
-                 schedule: Optional[pulumi.Input[str]] = None):
+                 schedule: Optional[pulumi.Input[str]] = None,
+                 speed: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Replication resource.
         """
@@ -50,6 +51,8 @@ class ReplicationArgs:
             pulumi.set(__self__, "override", override)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
+        if speed is not None:
+            pulumi.set(__self__, "speed", speed)
 
     @property
     @pulumi.getter
@@ -150,6 +153,15 @@ class ReplicationArgs:
     def schedule(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "schedule", value)
 
+    @property
+    @pulumi.getter
+    def speed(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "speed")
+
+    @speed.setter
+    def speed(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "speed", value)
+
 
 @pulumi.input_type
 class _ReplicationState:
@@ -165,7 +177,8 @@ class _ReplicationState:
                  override: Optional[pulumi.Input[bool]] = None,
                  registry_id: Optional[pulumi.Input[int]] = None,
                  replication_policy_id: Optional[pulumi.Input[int]] = None,
-                 schedule: Optional[pulumi.Input[str]] = None):
+                 schedule: Optional[pulumi.Input[str]] = None,
+                 speed: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Replication resources.
         """
@@ -193,6 +206,8 @@ class _ReplicationState:
             pulumi.set(__self__, "replication_policy_id", replication_policy_id)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
+        if speed is not None:
+            pulumi.set(__self__, "speed", speed)
 
     @property
     @pulumi.getter
@@ -302,6 +317,15 @@ class _ReplicationState:
     def schedule(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "schedule", value)
 
+    @property
+    @pulumi.getter
+    def speed(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "speed")
+
+    @speed.setter
+    def speed(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "speed", value)
+
 
 class Replication(pulumi.CustomResource):
     @overload
@@ -319,6 +343,7 @@ class Replication(pulumi.CustomResource):
                  override: Optional[pulumi.Input[bool]] = None,
                  registry_id: Optional[pulumi.Input[int]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
+                 speed: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -465,6 +490,7 @@ class Replication(pulumi.CustomResource):
                  override: Optional[pulumi.Input[bool]] = None,
                  registry_id: Optional[pulumi.Input[int]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
+                 speed: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -489,6 +515,7 @@ class Replication(pulumi.CustomResource):
                 raise TypeError("Missing required property 'registry_id'")
             __props__.__dict__["registry_id"] = registry_id
             __props__.__dict__["schedule"] = schedule
+            __props__.__dict__["speed"] = speed
             __props__.__dict__["replication_policy_id"] = None
         super(Replication, __self__).__init__(
             'harbor:index/replication:Replication',
@@ -511,7 +538,8 @@ class Replication(pulumi.CustomResource):
             override: Optional[pulumi.Input[bool]] = None,
             registry_id: Optional[pulumi.Input[int]] = None,
             replication_policy_id: Optional[pulumi.Input[int]] = None,
-            schedule: Optional[pulumi.Input[str]] = None) -> 'Replication':
+            schedule: Optional[pulumi.Input[str]] = None,
+            speed: Optional[pulumi.Input[int]] = None) -> 'Replication':
         """
         Get an existing Replication resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -536,6 +564,7 @@ class Replication(pulumi.CustomResource):
         __props__.__dict__["registry_id"] = registry_id
         __props__.__dict__["replication_policy_id"] = replication_policy_id
         __props__.__dict__["schedule"] = schedule
+        __props__.__dict__["speed"] = speed
         return Replication(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -597,4 +626,9 @@ class Replication(pulumi.CustomResource):
     @pulumi.getter
     def schedule(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "schedule")
+
+    @property
+    @pulumi.getter
+    def speed(self) -> pulumi.Output[Optional[int]]:
+        return pulumi.get(self, "speed")
 

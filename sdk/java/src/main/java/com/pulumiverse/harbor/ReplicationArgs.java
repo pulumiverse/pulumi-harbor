@@ -96,6 +96,13 @@ public final class ReplicationArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.schedule);
     }
 
+    @Import(name="speed")
+    private @Nullable Output<Integer> speed;
+
+    public Optional<Output<Integer>> speed() {
+        return Optional.ofNullable(this.speed);
+    }
+
     private ReplicationArgs() {}
 
     private ReplicationArgs(ReplicationArgs $) {
@@ -110,6 +117,7 @@ public final class ReplicationArgs extends com.pulumi.resources.ResourceArgs {
         this.override = $.override;
         this.registryId = $.registryId;
         this.schedule = $.schedule;
+        this.speed = $.speed;
     }
 
     public static Builder builder() {
@@ -231,6 +239,15 @@ public final class ReplicationArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder schedule(String schedule) {
             return schedule(Output.of(schedule));
+        }
+
+        public Builder speed(@Nullable Output<Integer> speed) {
+            $.speed = speed;
+            return this;
+        }
+
+        public Builder speed(Integer speed) {
+            return speed(Output.of(speed));
         }
 
         public ReplicationArgs build() {

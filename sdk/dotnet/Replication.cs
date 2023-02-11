@@ -131,6 +131,9 @@ namespace Pulumiverse.Harbor
         [Output("schedule")]
         public Output<string?> Schedule { get; private set; } = null!;
 
+        [Output("speed")]
+        public Output<int?> Speed { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Replication resource with the given unique name, arguments, and options.
@@ -216,6 +219,9 @@ namespace Pulumiverse.Harbor
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
 
+        [Input("speed")]
+        public Input<int>? Speed { get; set; }
+
         public ReplicationArgs()
         {
         }
@@ -264,6 +270,9 @@ namespace Pulumiverse.Harbor
 
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
+
+        [Input("speed")]
+        public Input<int>? Speed { get; set; }
 
         public ReplicationState()
         {

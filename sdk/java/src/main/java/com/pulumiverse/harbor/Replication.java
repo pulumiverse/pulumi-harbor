@@ -175,6 +175,12 @@ public class Replication extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> schedule() {
         return Codegen.optional(this.schedule);
     }
+    @Export(name="speed", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> speed;
+
+    public Output<Optional<Integer>> speed() {
+        return Codegen.optional(this.speed);
+    }
 
     /**
      *

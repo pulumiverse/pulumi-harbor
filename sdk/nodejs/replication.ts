@@ -105,6 +105,7 @@ export class Replication extends pulumi.CustomResource {
     public readonly registryId!: pulumi.Output<number>;
     public /*out*/ readonly replicationPolicyId!: pulumi.Output<number>;
     public readonly schedule!: pulumi.Output<string | undefined>;
+    public readonly speed!: pulumi.Output<number | undefined>;
 
     /**
      * Create a Replication resource with the given unique name, arguments, and options.
@@ -131,6 +132,7 @@ export class Replication extends pulumi.CustomResource {
             resourceInputs["registryId"] = state ? state.registryId : undefined;
             resourceInputs["replicationPolicyId"] = state ? state.replicationPolicyId : undefined;
             resourceInputs["schedule"] = state ? state.schedule : undefined;
+            resourceInputs["speed"] = state ? state.speed : undefined;
         } else {
             const args = argsOrState as ReplicationArgs | undefined;
             if ((!args || args.action === undefined) && !opts.urn) {
@@ -150,6 +152,7 @@ export class Replication extends pulumi.CustomResource {
             resourceInputs["override"] = args ? args.override : undefined;
             resourceInputs["registryId"] = args ? args.registryId : undefined;
             resourceInputs["schedule"] = args ? args.schedule : undefined;
+            resourceInputs["speed"] = args ? args.speed : undefined;
             resourceInputs["replicationPolicyId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -173,6 +176,7 @@ export interface ReplicationState {
     registryId?: pulumi.Input<number>;
     replicationPolicyId?: pulumi.Input<number>;
     schedule?: pulumi.Input<string>;
+    speed?: pulumi.Input<number>;
 }
 
 /**
@@ -190,4 +194,5 @@ export interface ReplicationArgs {
     override?: pulumi.Input<boolean>;
     registryId: pulumi.Input<number>;
     schedule?: pulumi.Input<string>;
+    speed?: pulumi.Input<number>;
 }
