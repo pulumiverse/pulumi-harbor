@@ -16,6 +16,7 @@ namespace Pulumiverse.Harbor
     /// * Create a global label within harbor
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Harbor = Pulumiverse.Harbor;
     /// 
@@ -33,6 +34,7 @@ namespace Pulumiverse.Harbor
     /// * Creates a label for project
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Harbor = Pulumiverse.Harbor;
     /// 

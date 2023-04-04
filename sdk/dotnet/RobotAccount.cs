@@ -21,6 +21,7 @@ namespace Pulumiverse.Harbor
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Harbor = Pulumiverse.Harbor;
     /// using Random = Pulumi.Random;
@@ -109,6 +110,7 @@ namespace Pulumiverse.Harbor
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Harbor = Pulumiverse.Harbor;
     /// 
