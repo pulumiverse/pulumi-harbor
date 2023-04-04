@@ -6,7 +6,7 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 
 require (
 	github.com/goharbor/terraform-provider-harbor v1.4.1-0.20230223125052-4245b814209b
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.42.1
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.43.0
 	github.com/pulumi/pulumi/sdk/v3 v3.60.1
 
 )
@@ -176,7 +176,7 @@ require (
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/pulumi/pulumi-java/pkg v0.8.0 // indirect
 	github.com/pulumi/pulumi-yaml v1.0.4 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.56.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.59.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
@@ -190,7 +190,7 @@ require (
 	github.com/sergi/go-diff v1.2.0 // indirect
 	github.com/shopspring/decimal v1.3.1 // indirect
 	github.com/skeema/knownhosts v1.1.0 // indirect
-	github.com/spf13/afero v1.6.0 // indirect
+	github.com/spf13/afero v1.9.5 // indirect
 	github.com/spf13/cast v1.5.0 // indirect
 	github.com/spf13/cobra v1.6.1 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
