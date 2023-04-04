@@ -38,6 +38,7 @@ def readme():
 
 
 setup(name='pulumiverse_harbor',
+      python_requires='>=3.7',
       version=VERSION,
       description="A Pulumi package for creating and managing Harbor resources.",
       long_description=readme(),
