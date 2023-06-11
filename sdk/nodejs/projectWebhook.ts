@@ -20,9 +20,6 @@ import * as utilities from "./utilities";
  *         "DELETE_ARTIFACT",
  *         "PULL_ARTIFACT",
  *         "PUSH_ARTIFACT",
- *         "DELETE_CHART",
- *         "DOWNLOAD_CHART",
- *         "UPLOAD_CHART",
  *         "QUOTA_EXCEED",
  *         "QUOTA_WARNING",
  *         "REPLICATION",
@@ -78,7 +75,7 @@ export class ProjectWebhook extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+     * ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
      */
     public readonly eventsTypes!: pulumi.Output<string[]>;
     /**
@@ -170,7 +167,7 @@ export interface ProjectWebhookState {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+     * ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
      */
     eventsTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -212,7 +209,7 @@ export interface ProjectWebhookArgs {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+     * ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
      */
     eventsTypes: pulumi.Input<pulumi.Input<string>[]>;
     /**

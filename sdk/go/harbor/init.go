@@ -24,6 +24,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConfigAuth{}
 	case "harbor:index/configEmail:ConfigEmail":
 		r = &ConfigEmail{}
+	case "harbor:index/configSecurity:ConfigSecurity":
+		r = &ConfigSecurity{}
 	case "harbor:index/configSystem:ConfigSystem":
 		r = &ConfigSystem{}
 	case "harbor:index/garbageCollection:GarbageCollection":
@@ -92,6 +94,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harbor",
 		"index/configEmail",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harbor",
+		"index/configSecurity",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

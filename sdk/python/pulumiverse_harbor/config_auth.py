@@ -35,11 +35,13 @@ class ConfigAuthArgs:
                  oidc_client_id: Optional[pulumi.Input[str]] = None,
                  oidc_client_secret: Optional[pulumi.Input[str]] = None,
                  oidc_endpoint: Optional[pulumi.Input[str]] = None,
+                 oidc_group_filter: Optional[pulumi.Input[str]] = None,
                  oidc_groups_claim: Optional[pulumi.Input[str]] = None,
                  oidc_name: Optional[pulumi.Input[str]] = None,
                  oidc_scope: Optional[pulumi.Input[str]] = None,
                  oidc_user_claim: Optional[pulumi.Input[str]] = None,
-                 oidc_verify_cert: Optional[pulumi.Input[bool]] = None):
+                 oidc_verify_cert: Optional[pulumi.Input[bool]] = None,
+                 primary_auth_mode: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a ConfigAuth resource.
         """
@@ -84,6 +86,8 @@ class ConfigAuthArgs:
             pulumi.set(__self__, "oidc_client_secret", oidc_client_secret)
         if oidc_endpoint is not None:
             pulumi.set(__self__, "oidc_endpoint", oidc_endpoint)
+        if oidc_group_filter is not None:
+            pulumi.set(__self__, "oidc_group_filter", oidc_group_filter)
         if oidc_groups_claim is not None:
             pulumi.set(__self__, "oidc_groups_claim", oidc_groups_claim)
         if oidc_name is not None:
@@ -94,6 +98,8 @@ class ConfigAuthArgs:
             pulumi.set(__self__, "oidc_user_claim", oidc_user_claim)
         if oidc_verify_cert is not None:
             pulumi.set(__self__, "oidc_verify_cert", oidc_verify_cert)
+        if primary_auth_mode is not None:
+            pulumi.set(__self__, "primary_auth_mode", primary_auth_mode)
 
     @property
     @pulumi.getter(name="authMode")
@@ -285,6 +291,15 @@ class ConfigAuthArgs:
         pulumi.set(self, "oidc_endpoint", value)
 
     @property
+    @pulumi.getter(name="oidcGroupFilter")
+    def oidc_group_filter(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "oidc_group_filter")
+
+    @oidc_group_filter.setter
+    def oidc_group_filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oidc_group_filter", value)
+
+    @property
     @pulumi.getter(name="oidcGroupsClaim")
     def oidc_groups_claim(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "oidc_groups_claim")
@@ -329,6 +344,15 @@ class ConfigAuthArgs:
     def oidc_verify_cert(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "oidc_verify_cert", value)
 
+    @property
+    @pulumi.getter(name="primaryAuthMode")
+    def primary_auth_mode(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "primary_auth_mode")
+
+    @primary_auth_mode.setter
+    def primary_auth_mode(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "primary_auth_mode", value)
+
 
 @pulumi.input_type
 class _ConfigAuthState:
@@ -354,11 +378,13 @@ class _ConfigAuthState:
                  oidc_client_id: Optional[pulumi.Input[str]] = None,
                  oidc_client_secret: Optional[pulumi.Input[str]] = None,
                  oidc_endpoint: Optional[pulumi.Input[str]] = None,
+                 oidc_group_filter: Optional[pulumi.Input[str]] = None,
                  oidc_groups_claim: Optional[pulumi.Input[str]] = None,
                  oidc_name: Optional[pulumi.Input[str]] = None,
                  oidc_scope: Optional[pulumi.Input[str]] = None,
                  oidc_user_claim: Optional[pulumi.Input[str]] = None,
-                 oidc_verify_cert: Optional[pulumi.Input[bool]] = None):
+                 oidc_verify_cert: Optional[pulumi.Input[bool]] = None,
+                 primary_auth_mode: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering ConfigAuth resources.
         """
@@ -404,6 +430,8 @@ class _ConfigAuthState:
             pulumi.set(__self__, "oidc_client_secret", oidc_client_secret)
         if oidc_endpoint is not None:
             pulumi.set(__self__, "oidc_endpoint", oidc_endpoint)
+        if oidc_group_filter is not None:
+            pulumi.set(__self__, "oidc_group_filter", oidc_group_filter)
         if oidc_groups_claim is not None:
             pulumi.set(__self__, "oidc_groups_claim", oidc_groups_claim)
         if oidc_name is not None:
@@ -414,6 +442,8 @@ class _ConfigAuthState:
             pulumi.set(__self__, "oidc_user_claim", oidc_user_claim)
         if oidc_verify_cert is not None:
             pulumi.set(__self__, "oidc_verify_cert", oidc_verify_cert)
+        if primary_auth_mode is not None:
+            pulumi.set(__self__, "primary_auth_mode", primary_auth_mode)
 
     @property
     @pulumi.getter(name="authMode")
@@ -605,6 +635,15 @@ class _ConfigAuthState:
         pulumi.set(self, "oidc_endpoint", value)
 
     @property
+    @pulumi.getter(name="oidcGroupFilter")
+    def oidc_group_filter(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "oidc_group_filter")
+
+    @oidc_group_filter.setter
+    def oidc_group_filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oidc_group_filter", value)
+
+    @property
     @pulumi.getter(name="oidcGroupsClaim")
     def oidc_groups_claim(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "oidc_groups_claim")
@@ -649,6 +688,15 @@ class _ConfigAuthState:
     def oidc_verify_cert(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "oidc_verify_cert", value)
 
+    @property
+    @pulumi.getter(name="primaryAuthMode")
+    def primary_auth_mode(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "primary_auth_mode")
+
+    @primary_auth_mode.setter
+    def primary_auth_mode(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "primary_auth_mode", value)
+
 
 class ConfigAuth(pulumi.CustomResource):
     @overload
@@ -676,11 +724,13 @@ class ConfigAuth(pulumi.CustomResource):
                  oidc_client_id: Optional[pulumi.Input[str]] = None,
                  oidc_client_secret: Optional[pulumi.Input[str]] = None,
                  oidc_endpoint: Optional[pulumi.Input[str]] = None,
+                 oidc_group_filter: Optional[pulumi.Input[str]] = None,
                  oidc_groups_claim: Optional[pulumi.Input[str]] = None,
                  oidc_name: Optional[pulumi.Input[str]] = None,
                  oidc_scope: Optional[pulumi.Input[str]] = None,
                  oidc_user_claim: Optional[pulumi.Input[str]] = None,
                  oidc_verify_cert: Optional[pulumi.Input[bool]] = None,
+                 primary_auth_mode: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Create a ConfigAuth resource with the given unique name, props, and options.
@@ -731,11 +781,13 @@ class ConfigAuth(pulumi.CustomResource):
                  oidc_client_id: Optional[pulumi.Input[str]] = None,
                  oidc_client_secret: Optional[pulumi.Input[str]] = None,
                  oidc_endpoint: Optional[pulumi.Input[str]] = None,
+                 oidc_group_filter: Optional[pulumi.Input[str]] = None,
                  oidc_groups_claim: Optional[pulumi.Input[str]] = None,
                  oidc_name: Optional[pulumi.Input[str]] = None,
                  oidc_scope: Optional[pulumi.Input[str]] = None,
                  oidc_user_claim: Optional[pulumi.Input[str]] = None,
                  oidc_verify_cert: Optional[pulumi.Input[bool]] = None,
+                 primary_auth_mode: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -768,11 +820,13 @@ class ConfigAuth(pulumi.CustomResource):
             __props__.__dict__["oidc_client_id"] = oidc_client_id
             __props__.__dict__["oidc_client_secret"] = None if oidc_client_secret is None else pulumi.Output.secret(oidc_client_secret)
             __props__.__dict__["oidc_endpoint"] = oidc_endpoint
+            __props__.__dict__["oidc_group_filter"] = oidc_group_filter
             __props__.__dict__["oidc_groups_claim"] = oidc_groups_claim
             __props__.__dict__["oidc_name"] = oidc_name
             __props__.__dict__["oidc_scope"] = oidc_scope
             __props__.__dict__["oidc_user_claim"] = oidc_user_claim
             __props__.__dict__["oidc_verify_cert"] = oidc_verify_cert
+            __props__.__dict__["primary_auth_mode"] = primary_auth_mode
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["ldapSearchPassword", "oidcClientSecret"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ConfigAuth, __self__).__init__(
@@ -806,11 +860,13 @@ class ConfigAuth(pulumi.CustomResource):
             oidc_client_id: Optional[pulumi.Input[str]] = None,
             oidc_client_secret: Optional[pulumi.Input[str]] = None,
             oidc_endpoint: Optional[pulumi.Input[str]] = None,
+            oidc_group_filter: Optional[pulumi.Input[str]] = None,
             oidc_groups_claim: Optional[pulumi.Input[str]] = None,
             oidc_name: Optional[pulumi.Input[str]] = None,
             oidc_scope: Optional[pulumi.Input[str]] = None,
             oidc_user_claim: Optional[pulumi.Input[str]] = None,
-            oidc_verify_cert: Optional[pulumi.Input[bool]] = None) -> 'ConfigAuth':
+            oidc_verify_cert: Optional[pulumi.Input[bool]] = None,
+            primary_auth_mode: Optional[pulumi.Input[bool]] = None) -> 'ConfigAuth':
         """
         Get an existing ConfigAuth resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -844,11 +900,13 @@ class ConfigAuth(pulumi.CustomResource):
         __props__.__dict__["oidc_client_id"] = oidc_client_id
         __props__.__dict__["oidc_client_secret"] = oidc_client_secret
         __props__.__dict__["oidc_endpoint"] = oidc_endpoint
+        __props__.__dict__["oidc_group_filter"] = oidc_group_filter
         __props__.__dict__["oidc_groups_claim"] = oidc_groups_claim
         __props__.__dict__["oidc_name"] = oidc_name
         __props__.__dict__["oidc_scope"] = oidc_scope
         __props__.__dict__["oidc_user_claim"] = oidc_user_claim
         __props__.__dict__["oidc_verify_cert"] = oidc_verify_cert
+        __props__.__dict__["primary_auth_mode"] = primary_auth_mode
         return ConfigAuth(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -957,6 +1015,11 @@ class ConfigAuth(pulumi.CustomResource):
         return pulumi.get(self, "oidc_endpoint")
 
     @property
+    @pulumi.getter(name="oidcGroupFilter")
+    def oidc_group_filter(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "oidc_group_filter")
+
+    @property
     @pulumi.getter(name="oidcGroupsClaim")
     def oidc_groups_claim(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "oidc_groups_claim")
@@ -980,4 +1043,9 @@ class ConfigAuth(pulumi.CustomResource):
     @pulumi.getter(name="oidcVerifyCert")
     def oidc_verify_cert(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "oidc_verify_cert")
+
+    @property
+    @pulumi.getter(name="primaryAuthMode")
+    def primary_auth_mode(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "primary_auth_mode")
 

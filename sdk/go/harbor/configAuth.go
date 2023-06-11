@@ -35,11 +35,13 @@ type ConfigAuth struct {
 	OidcClientId        pulumi.StringPtrOutput `pulumi:"oidcClientId"`
 	OidcClientSecret    pulumi.StringPtrOutput `pulumi:"oidcClientSecret"`
 	OidcEndpoint        pulumi.StringPtrOutput `pulumi:"oidcEndpoint"`
+	OidcGroupFilter     pulumi.StringPtrOutput `pulumi:"oidcGroupFilter"`
 	OidcGroupsClaim     pulumi.StringPtrOutput `pulumi:"oidcGroupsClaim"`
 	OidcName            pulumi.StringPtrOutput `pulumi:"oidcName"`
 	OidcScope           pulumi.StringPtrOutput `pulumi:"oidcScope"`
 	OidcUserClaim       pulumi.StringPtrOutput `pulumi:"oidcUserClaim"`
 	OidcVerifyCert      pulumi.BoolPtrOutput   `pulumi:"oidcVerifyCert"`
+	PrimaryAuthMode     pulumi.BoolPtrOutput   `pulumi:"primaryAuthMode"`
 }
 
 // NewConfigAuth registers a new resource with the given unique name, arguments, and options.
@@ -107,11 +109,13 @@ type configAuthState struct {
 	OidcClientId        *string `pulumi:"oidcClientId"`
 	OidcClientSecret    *string `pulumi:"oidcClientSecret"`
 	OidcEndpoint        *string `pulumi:"oidcEndpoint"`
+	OidcGroupFilter     *string `pulumi:"oidcGroupFilter"`
 	OidcGroupsClaim     *string `pulumi:"oidcGroupsClaim"`
 	OidcName            *string `pulumi:"oidcName"`
 	OidcScope           *string `pulumi:"oidcScope"`
 	OidcUserClaim       *string `pulumi:"oidcUserClaim"`
 	OidcVerifyCert      *bool   `pulumi:"oidcVerifyCert"`
+	PrimaryAuthMode     *bool   `pulumi:"primaryAuthMode"`
 }
 
 type ConfigAuthState struct {
@@ -136,11 +140,13 @@ type ConfigAuthState struct {
 	OidcClientId        pulumi.StringPtrInput
 	OidcClientSecret    pulumi.StringPtrInput
 	OidcEndpoint        pulumi.StringPtrInput
+	OidcGroupFilter     pulumi.StringPtrInput
 	OidcGroupsClaim     pulumi.StringPtrInput
 	OidcName            pulumi.StringPtrInput
 	OidcScope           pulumi.StringPtrInput
 	OidcUserClaim       pulumi.StringPtrInput
 	OidcVerifyCert      pulumi.BoolPtrInput
+	PrimaryAuthMode     pulumi.BoolPtrInput
 }
 
 func (ConfigAuthState) ElementType() reflect.Type {
@@ -169,11 +175,13 @@ type configAuthArgs struct {
 	OidcClientId        *string `pulumi:"oidcClientId"`
 	OidcClientSecret    *string `pulumi:"oidcClientSecret"`
 	OidcEndpoint        *string `pulumi:"oidcEndpoint"`
+	OidcGroupFilter     *string `pulumi:"oidcGroupFilter"`
 	OidcGroupsClaim     *string `pulumi:"oidcGroupsClaim"`
 	OidcName            *string `pulumi:"oidcName"`
 	OidcScope           *string `pulumi:"oidcScope"`
 	OidcUserClaim       *string `pulumi:"oidcUserClaim"`
 	OidcVerifyCert      *bool   `pulumi:"oidcVerifyCert"`
+	PrimaryAuthMode     *bool   `pulumi:"primaryAuthMode"`
 }
 
 // The set of arguments for constructing a ConfigAuth resource.
@@ -199,11 +207,13 @@ type ConfigAuthArgs struct {
 	OidcClientId        pulumi.StringPtrInput
 	OidcClientSecret    pulumi.StringPtrInput
 	OidcEndpoint        pulumi.StringPtrInput
+	OidcGroupFilter     pulumi.StringPtrInput
 	OidcGroupsClaim     pulumi.StringPtrInput
 	OidcName            pulumi.StringPtrInput
 	OidcScope           pulumi.StringPtrInput
 	OidcUserClaim       pulumi.StringPtrInput
 	OidcVerifyCert      pulumi.BoolPtrInput
+	PrimaryAuthMode     pulumi.BoolPtrInput
 }
 
 func (ConfigAuthArgs) ElementType() reflect.Type {
@@ -377,6 +387,10 @@ func (o ConfigAuthOutput) OidcEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigAuth) pulumi.StringPtrOutput { return v.OidcEndpoint }).(pulumi.StringPtrOutput)
 }
 
+func (o ConfigAuthOutput) OidcGroupFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigAuth) pulumi.StringPtrOutput { return v.OidcGroupFilter }).(pulumi.StringPtrOutput)
+}
+
 func (o ConfigAuthOutput) OidcGroupsClaim() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigAuth) pulumi.StringPtrOutput { return v.OidcGroupsClaim }).(pulumi.StringPtrOutput)
 }
@@ -395,6 +409,10 @@ func (o ConfigAuthOutput) OidcUserClaim() pulumi.StringPtrOutput {
 
 func (o ConfigAuthOutput) OidcVerifyCert() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConfigAuth) pulumi.BoolPtrOutput { return v.OidcVerifyCert }).(pulumi.BoolPtrOutput)
+}
+
+func (o ConfigAuthOutput) PrimaryAuthMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConfigAuth) pulumi.BoolPtrOutput { return v.PrimaryAuthMode }).(pulumi.BoolPtrOutput)
 }
 
 type ConfigAuthArrayOutput struct{ *pulumi.OutputState }

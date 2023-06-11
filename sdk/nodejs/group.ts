@@ -57,6 +57,7 @@ export class Group extends pulumi.CustomResource {
 
     public readonly groupName!: pulumi.Output<string>;
     public readonly groupType!: pulumi.Output<number>;
+    public readonly ldapGroupDn!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -73,6 +74,7 @@ export class Group extends pulumi.CustomResource {
             const state = argsOrState as GroupState | undefined;
             resourceInputs["groupName"] = state ? state.groupName : undefined;
             resourceInputs["groupType"] = state ? state.groupType : undefined;
+            resourceInputs["ldapGroupDn"] = state ? state.ldapGroupDn : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
             if ((!args || args.groupName === undefined) && !opts.urn) {
@@ -83,6 +85,7 @@ export class Group extends pulumi.CustomResource {
             }
             resourceInputs["groupName"] = args ? args.groupName : undefined;
             resourceInputs["groupType"] = args ? args.groupType : undefined;
+            resourceInputs["ldapGroupDn"] = args ? args.ldapGroupDn : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Group.__pulumiType, name, resourceInputs, opts);
@@ -95,6 +98,7 @@ export class Group extends pulumi.CustomResource {
 export interface GroupState {
     groupName?: pulumi.Input<string>;
     groupType?: pulumi.Input<number>;
+    ldapGroupDn?: pulumi.Input<string>;
 }
 
 /**
@@ -103,4 +107,5 @@ export interface GroupState {
 export interface GroupArgs {
     groupName: pulumi.Input<string>;
     groupType: pulumi.Input<number>;
+    ldapGroupDn?: pulumi.Input<string>;
 }

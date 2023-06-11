@@ -7,6 +7,7 @@ import typing
 # Export this package's modules as members:
 from .config_auth import *
 from .config_email import *
+from .config_security import *
 from .config_system import *
 from .garbage_collection import *
 from .get_project import *
@@ -53,6 +54,14 @@ _utilities.register(
   "fqn": "pulumiverse_harbor",
   "classes": {
    "harbor:index/configEmail:ConfigEmail": "ConfigEmail"
+  }
+ },
+ {
+  "pkg": "harbor",
+  "mod": "index/configSecurity",
+  "fqn": "pulumiverse_harbor",
+  "classes": {
+   "harbor:index/configSecurity:ConfigSecurity": "ConfigSecurity"
   }
  },
  {

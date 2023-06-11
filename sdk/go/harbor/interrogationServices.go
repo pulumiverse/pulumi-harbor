@@ -26,7 +26,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := harbor.NewInterrogationServices(ctx, "main", &harbor.InterrogationServicesArgs{
-//				VulnerabilityScanPolicy: pulumi.String("daily"),
+//				VulnerabilityScanPolicy: pulumi.String("Daily"),
 //			})
 //			if err != nil {
 //				return err
@@ -41,7 +41,7 @@ type InterrogationServices struct {
 
 	// Sets the default interrogation service **Clair**
 	DefaultScanner pulumi.StringPtrOutput `pulumi:"defaultScanner"`
-	// The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.
+	// The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
 	VulnerabilityScanPolicy pulumi.StringOutput `pulumi:"vulnerabilityScanPolicy"`
 }
 
@@ -80,14 +80,14 @@ func GetInterrogationServices(ctx *pulumi.Context,
 type interrogationServicesState struct {
 	// Sets the default interrogation service **Clair**
 	DefaultScanner *string `pulumi:"defaultScanner"`
-	// The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.
+	// The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
 	VulnerabilityScanPolicy *string `pulumi:"vulnerabilityScanPolicy"`
 }
 
 type InterrogationServicesState struct {
 	// Sets the default interrogation service **Clair**
 	DefaultScanner pulumi.StringPtrInput
-	// The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.
+	// The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
 	VulnerabilityScanPolicy pulumi.StringPtrInput
 }
 
@@ -98,7 +98,7 @@ func (InterrogationServicesState) ElementType() reflect.Type {
 type interrogationServicesArgs struct {
 	// Sets the default interrogation service **Clair**
 	DefaultScanner *string `pulumi:"defaultScanner"`
-	// The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.
+	// The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
 	VulnerabilityScanPolicy string `pulumi:"vulnerabilityScanPolicy"`
 }
 
@@ -106,7 +106,7 @@ type interrogationServicesArgs struct {
 type InterrogationServicesArgs struct {
 	// Sets the default interrogation service **Clair**
 	DefaultScanner pulumi.StringPtrInput
-	// The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.
+	// The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
 	VulnerabilityScanPolicy pulumi.StringInput
 }
 
@@ -202,7 +202,7 @@ func (o InterrogationServicesOutput) DefaultScanner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InterrogationServices) pulumi.StringPtrOutput { return v.DefaultScanner }).(pulumi.StringPtrOutput)
 }
 
-// The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.
+// The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
 func (o InterrogationServicesOutput) VulnerabilityScanPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterrogationServices) pulumi.StringOutput { return v.VulnerabilityScanPolicy }).(pulumi.StringOutput)
 }

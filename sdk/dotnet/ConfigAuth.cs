@@ -76,6 +76,9 @@ namespace Pulumiverse.Harbor
         [Output("oidcEndpoint")]
         public Output<string?> OidcEndpoint { get; private set; } = null!;
 
+        [Output("oidcGroupFilter")]
+        public Output<string?> OidcGroupFilter { get; private set; } = null!;
+
         [Output("oidcGroupsClaim")]
         public Output<string?> OidcGroupsClaim { get; private set; } = null!;
 
@@ -90,6 +93,9 @@ namespace Pulumiverse.Harbor
 
         [Output("oidcVerifyCert")]
         public Output<bool?> OidcVerifyCert { get; private set; } = null!;
+
+        [Output("primaryAuthMode")]
+        public Output<bool?> PrimaryAuthMode { get; private set; } = null!;
 
 
         /// <summary>
@@ -224,6 +230,9 @@ namespace Pulumiverse.Harbor
         [Input("oidcEndpoint")]
         public Input<string>? OidcEndpoint { get; set; }
 
+        [Input("oidcGroupFilter")]
+        public Input<string>? OidcGroupFilter { get; set; }
+
         [Input("oidcGroupsClaim")]
         public Input<string>? OidcGroupsClaim { get; set; }
 
@@ -238,6 +247,9 @@ namespace Pulumiverse.Harbor
 
         [Input("oidcVerifyCert")]
         public Input<bool>? OidcVerifyCert { get; set; }
+
+        [Input("primaryAuthMode")]
+        public Input<bool>? PrimaryAuthMode { get; set; }
 
         public ConfigAuthArgs()
         {
@@ -328,6 +340,9 @@ namespace Pulumiverse.Harbor
         [Input("oidcEndpoint")]
         public Input<string>? OidcEndpoint { get; set; }
 
+        [Input("oidcGroupFilter")]
+        public Input<string>? OidcGroupFilter { get; set; }
+
         [Input("oidcGroupsClaim")]
         public Input<string>? OidcGroupsClaim { get; set; }
 
@@ -342,6 +357,9 @@ namespace Pulumiverse.Harbor
 
         [Input("oidcVerifyCert")]
         public Input<bool>? OidcVerifyCert { get; set; }
+
+        [Input("primaryAuthMode")]
+        public Input<bool>? PrimaryAuthMode { get; set; }
 
         public ConfigAuthState()
         {

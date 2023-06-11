@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * const mainProject = new harbor.Project("mainProject", {});
  * const mainRetentionPolicy = new harbor.RetentionPolicy("mainRetentionPolicy", {
  *     scope: mainProject.id,
- *     schedule: "daily",
+ *     schedule: "Daily",
  *     rules: [
  *         {
  *             nDaysSinceLastPull: 5,
@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  *         {
  *             nDaysSinceLastPush: 10,
  *             repoMatching: "**",
- *             tagMatching: "latest",
+ *             tagMatching: "{latest,snapshot}",
  *         },
  *     ],
  * });
@@ -75,7 +75,7 @@ export class RetentionPolicy extends pulumi.CustomResource {
      */
     public readonly rules!: pulumi.Output<outputs.RetentionPolicyRule[]>;
     /**
-     * The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+     * The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
      */
     public readonly schedule!: pulumi.Output<string | undefined>;
     /**
@@ -125,7 +125,7 @@ export interface RetentionPolicyState {
      */
     rules?: pulumi.Input<pulumi.Input<inputs.RetentionPolicyRule>[]>;
     /**
-     * The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+     * The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
      */
     schedule?: pulumi.Input<string>;
     /**
@@ -143,7 +143,7 @@ export interface RetentionPolicyArgs {
      */
     rules: pulumi.Input<pulumi.Input<inputs.RetentionPolicyRule>[]>;
     /**
-     * The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+     * The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
      */
     schedule?: pulumi.Input<string>;
     /**

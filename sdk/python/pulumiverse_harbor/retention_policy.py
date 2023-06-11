@@ -23,7 +23,7 @@ class RetentionPolicyArgs:
         The set of arguments for constructing a RetentionPolicy resource.
         :param pulumi.Input[Sequence[pulumi.Input['RetentionPolicyRuleArgs']]] rules: Al collection of rule blocks as documented below.
         :param pulumi.Input[str] scope: The project id of which you would like to apply this policy.
-        :param pulumi.Input[str] schedule: The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+        :param pulumi.Input[str] schedule: The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
         """
         pulumi.set(__self__, "rules", rules)
         pulumi.set(__self__, "scope", scope)
@@ -58,7 +58,7 @@ class RetentionPolicyArgs:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
-        The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+        The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
         """
         return pulumi.get(self, "schedule")
 
@@ -76,7 +76,7 @@ class _RetentionPolicyState:
         """
         Input properties used for looking up and filtering RetentionPolicy resources.
         :param pulumi.Input[Sequence[pulumi.Input['RetentionPolicyRuleArgs']]] rules: Al collection of rule blocks as documented below.
-        :param pulumi.Input[str] schedule: The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+        :param pulumi.Input[str] schedule: The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
         :param pulumi.Input[str] scope: The project id of which you would like to apply this policy.
         """
         if rules is not None:
@@ -102,7 +102,7 @@ class _RetentionPolicyState:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
-        The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+        The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
         """
         return pulumi.get(self, "schedule")
 
@@ -142,7 +142,7 @@ class RetentionPolicy(pulumi.CustomResource):
         main_project = harbor.Project("mainProject")
         main_retention_policy = harbor.RetentionPolicy("mainRetentionPolicy",
             scope=main_project.id,
-            schedule="daily",
+            schedule="Daily",
             rules=[
                 harbor.RetentionPolicyRuleArgs(
                     n_days_since_last_pull=5,
@@ -152,7 +152,7 @@ class RetentionPolicy(pulumi.CustomResource):
                 harbor.RetentionPolicyRuleArgs(
                     n_days_since_last_push=10,
                     repo_matching="**",
-                    tag_matching="latest",
+                    tag_matching="{latest,snapshot}",
                 ),
             ])
         ```
@@ -170,7 +170,7 @@ class RetentionPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RetentionPolicyRuleArgs']]]] rules: Al collection of rule blocks as documented below.
-        :param pulumi.Input[str] schedule: The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+        :param pulumi.Input[str] schedule: The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
         :param pulumi.Input[str] scope: The project id of which you would like to apply this policy.
         """
         ...
@@ -189,7 +189,7 @@ class RetentionPolicy(pulumi.CustomResource):
         main_project = harbor.Project("mainProject")
         main_retention_policy = harbor.RetentionPolicy("mainRetentionPolicy",
             scope=main_project.id,
-            schedule="daily",
+            schedule="Daily",
             rules=[
                 harbor.RetentionPolicyRuleArgs(
                     n_days_since_last_pull=5,
@@ -199,7 +199,7 @@ class RetentionPolicy(pulumi.CustomResource):
                 harbor.RetentionPolicyRuleArgs(
                     n_days_since_last_push=10,
                     repo_matching="**",
-                    tag_matching="latest",
+                    tag_matching="{latest,snapshot}",
                 ),
             ])
         ```
@@ -269,7 +269,7 @@ class RetentionPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RetentionPolicyRuleArgs']]]] rules: Al collection of rule blocks as documented below.
-        :param pulumi.Input[str] schedule: The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+        :param pulumi.Input[str] schedule: The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
         :param pulumi.Input[str] scope: The project id of which you would like to apply this policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -293,7 +293,7 @@ class RetentionPolicy(pulumi.CustomResource):
     @pulumi.getter
     def schedule(self) -> pulumi.Output[Optional[str]]:
         """
-        The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+        The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
         """
         return pulumi.get(self, "schedule")
 

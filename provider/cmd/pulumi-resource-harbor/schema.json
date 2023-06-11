@@ -149,7 +149,7 @@
                 },
                 "untaggedArtifacts": {
                     "type": "boolean",
-                    "description": "with untagged artifacts. Defaults to `true`\n"
+                    "description": "with untagged artifacts. Defaults to `true`\n\n\u003e Multiple tags or repositories must be provided as a comma-separated list wrapped into curly brackets `{ }`. Otherwise, the value is interpreted as a single value.\n"
                 }
             },
             "type": "object"
@@ -306,6 +306,9 @@
                 "oidcEndpoint": {
                     "type": "string"
                 },
+                "oidcGroupFilter": {
+                    "type": "string"
+                },
                 "oidcGroupsClaim": {
                     "type": "string"
                 },
@@ -319,6 +322,9 @@
                     "type": "string"
                 },
                 "oidcVerifyCert": {
+                    "type": "boolean"
+                },
+                "primaryAuthMode": {
                     "type": "boolean"
                 }
             },
@@ -391,6 +397,9 @@
                 "oidcEndpoint": {
                     "type": "string"
                 },
+                "oidcGroupFilter": {
+                    "type": "string"
+                },
                 "oidcGroupsClaim": {
                     "type": "string"
                 },
@@ -404,6 +413,9 @@
                     "type": "string"
                 },
                 "oidcVerifyCert": {
+                    "type": "boolean"
+                },
+                "primaryAuthMode": {
                     "type": "boolean"
                 }
             },
@@ -478,6 +490,9 @@
                     "oidcEndpoint": {
                         "type": "string"
                     },
+                    "oidcGroupFilter": {
+                        "type": "string"
+                    },
                     "oidcGroupsClaim": {
                         "type": "string"
                     },
@@ -491,6 +506,9 @@
                         "type": "string"
                     },
                     "oidcVerifyCert": {
+                        "type": "boolean"
+                    },
+                    "primaryAuthMode": {
                         "type": "boolean"
                     }
                 },
@@ -584,6 +602,76 @@
                 "type": "object"
             }
         },
+        "harbor:index/configSecurity:ConfigSecurity": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst main = new harbor.ConfigSecurity(\"main\", {\n    cveAllowlists: [\n        \"CVE-456\",\n        \"CVE-123\",\n    ],\n    expiresAt: 1701167767,\n});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nmain = harbor.ConfigSecurity(\"main\",\n    cve_allowlists=[\n        \"CVE-456\",\n        \"CVE-123\",\n    ],\n    expires_at=1701167767)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = new Harbor.ConfigSecurity(\"main\", new()\n    {\n        CveAllowlists = new[]\n        {\n            \"CVE-456\",\n            \"CVE-123\",\n        },\n        ExpiresAt = 1701167767,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := harbor.NewConfigSecurity(ctx, \"main\", \u0026harbor.ConfigSecurityArgs{\n\t\t\tCveAllowlists: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"CVE-456\"),\n\t\t\t\tpulumi.String(\"CVE-123\"),\n\t\t\t},\n\t\t\tExpiresAt: pulumi.Int(1701167767),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.ConfigSecurity;\nimport com.pulumi.harbor.ConfigSecurityArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var main = new ConfigSecurity(\"main\", ConfigSecurityArgs.builder()        \n            .cveAllowlists(            \n                \"CVE-456\",\n                \"CVE-123\")\n            .expiresAt(\"1701167767\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  main:\n    type: harbor:ConfigSecurity\n    properties:\n      cveAllowlists:\n        - CVE-456\n        - CVE-123\n      expiresAt: '1701167767'\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nThe list can be imported using the `id` eg, `\n\n```sh\n $ pulumi import harbor:index/configSecurity:ConfigSecurity main \"7\"\n```\n\n ` \u003e Note that at this point of time Harbor doesn't has any api endpoint for deleting this list. Only updating the records. ",
+            "properties": {
+                "creationTime": {
+                    "type": "string",
+                    "description": "Time of creation of the list.\n"
+                },
+                "cveAllowlists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "System allowlist. Vulnerabilities in this list will be ignored when pushing and pulling images. Should be in the format or `[\"CVE-123\", \"CVE-145\"]` or `[\"CVE-123\"]`\n"
+                },
+                "expiresAt": {
+                    "type": "integer",
+                    "description": "The time for expiration of the allowlist, in the form of seconds since epoch. This is an optional attribute, if it's not set the CVE allowlist does not expire.\n"
+                },
+                "updateTime": {
+                    "type": "string",
+                    "description": "Time of update of the list.\n"
+                }
+            },
+            "required": [
+                "creationTime",
+                "cveAllowlists",
+                "updateTime"
+            ],
+            "inputProperties": {
+                "cveAllowlists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "System allowlist. Vulnerabilities in this list will be ignored when pushing and pulling images. Should be in the format or `[\"CVE-123\", \"CVE-145\"]` or `[\"CVE-123\"]`\n"
+                },
+                "expiresAt": {
+                    "type": "integer",
+                    "description": "The time for expiration of the allowlist, in the form of seconds since epoch. This is an optional attribute, if it's not set the CVE allowlist does not expire.\n"
+                }
+            },
+            "requiredInputs": [
+                "cveAllowlists"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ConfigSecurity resources.\n",
+                "properties": {
+                    "creationTime": {
+                        "type": "string",
+                        "description": "Time of creation of the list.\n"
+                    },
+                    "cveAllowlists": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "System allowlist. Vulnerabilities in this list will be ignored when pushing and pulling images. Should be in the format or `[\"CVE-123\", \"CVE-145\"]` or `[\"CVE-123\"]`\n"
+                    },
+                    "expiresAt": {
+                        "type": "integer",
+                        "description": "The time for expiration of the allowlist, in the form of seconds since epoch. This is an optional attribute, if it's not set the CVE allowlist does not expire.\n"
+                    },
+                    "updateTime": {
+                        "type": "string",
+                        "description": "Time of update of the list.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "harbor:index/configSystem:ConfigSystem": {
             "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst main = new harbor.ConfigSystem(\"main\", {\n    projectCreationRestriction: \"adminonly\",\n    robotNamePrefix: \"harbor@\",\n    robotTokenExpiration: 30,\n});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nmain = harbor.ConfigSystem(\"main\",\n    project_creation_restriction=\"adminonly\",\n    robot_name_prefix=\"harbor@\",\n    robot_token_expiration=30)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = new Harbor.ConfigSystem(\"main\", new()\n    {\n        ProjectCreationRestriction = \"adminonly\",\n        RobotNamePrefix = \"harbor@\",\n        RobotTokenExpiration = 30,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := harbor.NewConfigSystem(ctx, \"main\", \u0026harbor.ConfigSystemArgs{\n\t\t\tProjectCreationRestriction: pulumi.String(\"adminonly\"),\n\t\t\tRobotNamePrefix:            pulumi.String(\"harbor@\"),\n\t\t\tRobotTokenExpiration:       pulumi.Int(30),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.ConfigSystem;\nimport com.pulumi.harbor.ConfigSystemArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var main = new ConfigSystem(\"main\", ConfigSystemArgs.builder()        \n            .projectCreationRestriction(\"adminonly\")\n            .robotNamePrefix(\"harbor@\")\n            .robotTokenExpiration(30)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  main:\n    type: harbor:ConfigSystem\n    properties:\n      projectCreationRestriction: adminonly\n      robotNamePrefix: harbor@\n      robotTokenExpiration: 30\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
@@ -598,6 +686,9 @@
                 },
                 "robotTokenExpiration": {
                     "type": "integer"
+                },
+                "scannerSkipUpdatePulltime": {
+                    "type": "boolean"
                 }
             },
             "inputProperties": {
@@ -612,6 +703,9 @@
                 },
                 "robotTokenExpiration": {
                     "type": "integer"
+                },
+                "scannerSkipUpdatePulltime": {
+                    "type": "boolean"
                 }
             },
             "stateInputs": {
@@ -628,6 +722,9 @@
                     },
                     "robotTokenExpiration": {
                         "type": "integer"
+                    },
+                    "scannerSkipUpdatePulltime": {
+                        "type": "boolean"
                     }
                 },
                 "type": "object"
@@ -678,6 +775,9 @@
                 },
                 "groupType": {
                     "type": "integer"
+                },
+                "ldapGroupDn": {
+                    "type": "string"
                 }
             },
             "required": [
@@ -691,6 +791,9 @@
                 },
                 "groupType": {
                     "type": "integer"
+                },
+                "ldapGroupDn": {
+                    "type": "string"
                 }
             },
             "requiredInputs": [
@@ -706,6 +809,9 @@
                     },
                     "groupType": {
                         "type": "integer"
+                    },
+                    "ldapGroupDn": {
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -802,7 +908,7 @@
             }
         },
         "harbor:index/interrogationServices:InterrogationServices": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst main = new harbor.InterrogationServices(\"main\", {vulnerabilityScanPolicy: \"daily\"});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nmain = harbor.InterrogationServices(\"main\", vulnerability_scan_policy=\"daily\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = new Harbor.InterrogationServices(\"main\", new()\n    {\n        VulnerabilityScanPolicy = \"daily\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := harbor.NewInterrogationServices(ctx, \"main\", \u0026harbor.InterrogationServicesArgs{\n\t\t\tVulnerabilityScanPolicy: pulumi.String(\"daily\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.InterrogationServices;\nimport com.pulumi.harbor.InterrogationServicesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var main = new InterrogationServices(\"main\", InterrogationServicesArgs.builder()        \n            .vulnerabilityScanPolicy(\"daily\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  main:\n    type: harbor:InterrogationServices\n    properties:\n      vulnerabilityScanPolicy: daily\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst main = new harbor.InterrogationServices(\"main\", {vulnerabilityScanPolicy: \"Daily\"});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nmain = harbor.InterrogationServices(\"main\", vulnerability_scan_policy=\"Daily\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = new Harbor.InterrogationServices(\"main\", new()\n    {\n        VulnerabilityScanPolicy = \"Daily\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := harbor.NewInterrogationServices(ctx, \"main\", \u0026harbor.InterrogationServicesArgs{\n\t\t\tVulnerabilityScanPolicy: pulumi.String(\"Daily\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.InterrogationServices;\nimport com.pulumi.harbor.InterrogationServicesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var main = new InterrogationServices(\"main\", InterrogationServicesArgs.builder()        \n            .vulnerabilityScanPolicy(\"Daily\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  main:\n    type: harbor:InterrogationServices\n    properties:\n      vulnerabilityScanPolicy: Daily\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "defaultScanner": {
                     "type": "string",
@@ -810,7 +916,7 @@
                 },
                 "vulnerabilityScanPolicy": {
                     "type": "string",
-                    "description": "The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.\n"
+                    "description": "The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.\n"
                 }
             },
             "required": [
@@ -823,7 +929,7 @@
                 },
                 "vulnerabilityScanPolicy": {
                     "type": "string",
-                    "description": "The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.\n"
+                    "description": "The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.\n"
                 }
             },
             "requiredInputs": [
@@ -838,7 +944,7 @@
                     },
                     "vulnerabilityScanPolicy": {
                         "type": "string",
-                        "description": "The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.\n"
+                        "description": "The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.\n"
                     }
                 },
                 "type": "object"
@@ -1204,7 +1310,7 @@
             }
         },
         "harbor:index/projectWebhook:ProjectWebhook": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst mainProject = new harbor.Project(\"mainProject\", {});\nconst mainProjectWebhook = new harbor.ProjectWebhook(\"mainProjectWebhook\", {\n    address: \"https://webhook.domain.com\",\n    projectId: mainProject.id,\n    notifyType: \"http\",\n    eventsTypes: [\n        \"DELETE_ARTIFACT\",\n        \"PULL_ARTIFACT\",\n        \"PUSH_ARTIFACT\",\n        \"DELETE_CHART\",\n        \"DOWNLOAD_CHART\",\n        \"UPLOAD_CHART\",\n        \"QUOTA_EXCEED\",\n        \"QUOTA_WARNING\",\n        \"REPLICATION\",\n        \"SCANNING_FAILED\",\n        \"SCANNING_COMPLETED\",\n        \"TAG_RETENTION\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nmain_project = harbor.Project(\"mainProject\")\nmain_project_webhook = harbor.ProjectWebhook(\"mainProjectWebhook\",\n    address=\"https://webhook.domain.com\",\n    project_id=main_project.id,\n    notify_type=\"http\",\n    events_types=[\n        \"DELETE_ARTIFACT\",\n        \"PULL_ARTIFACT\",\n        \"PUSH_ARTIFACT\",\n        \"DELETE_CHART\",\n        \"DOWNLOAD_CHART\",\n        \"UPLOAD_CHART\",\n        \"QUOTA_EXCEED\",\n        \"QUOTA_WARNING\",\n        \"REPLICATION\",\n        \"SCANNING_FAILED\",\n        \"SCANNING_COMPLETED\",\n        \"TAG_RETENTION\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mainProject = new Harbor.Project(\"mainProject\");\n\n    var mainProjectWebhook = new Harbor.ProjectWebhook(\"mainProjectWebhook\", new()\n    {\n        Address = \"https://webhook.domain.com\",\n        ProjectId = mainProject.Id,\n        NotifyType = \"http\",\n        EventsTypes = new[]\n        {\n            \"DELETE_ARTIFACT\",\n            \"PULL_ARTIFACT\",\n            \"PUSH_ARTIFACT\",\n            \"DELETE_CHART\",\n            \"DOWNLOAD_CHART\",\n            \"UPLOAD_CHART\",\n            \"QUOTA_EXCEED\",\n            \"QUOTA_WARNING\",\n            \"REPLICATION\",\n            \"SCANNING_FAILED\",\n            \"SCANNING_COMPLETED\",\n            \"TAG_RETENTION\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmainProject, err := harbor.NewProject(ctx, \"mainProject\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = harbor.NewProjectWebhook(ctx, \"mainProjectWebhook\", \u0026harbor.ProjectWebhookArgs{\n\t\t\tAddress:    pulumi.String(\"https://webhook.domain.com\"),\n\t\t\tProjectId:  mainProject.ID(),\n\t\t\tNotifyType: pulumi.String(\"http\"),\n\t\t\tEventsTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"DELETE_ARTIFACT\"),\n\t\t\t\tpulumi.String(\"PULL_ARTIFACT\"),\n\t\t\t\tpulumi.String(\"PUSH_ARTIFACT\"),\n\t\t\t\tpulumi.String(\"DELETE_CHART\"),\n\t\t\t\tpulumi.String(\"DOWNLOAD_CHART\"),\n\t\t\t\tpulumi.String(\"UPLOAD_CHART\"),\n\t\t\t\tpulumi.String(\"QUOTA_EXCEED\"),\n\t\t\t\tpulumi.String(\"QUOTA_WARNING\"),\n\t\t\t\tpulumi.String(\"REPLICATION\"),\n\t\t\t\tpulumi.String(\"SCANNING_FAILED\"),\n\t\t\t\tpulumi.String(\"SCANNING_COMPLETED\"),\n\t\t\t\tpulumi.String(\"TAG_RETENTION\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.Project;\nimport com.pulumi.harbor.ProjectWebhook;\nimport com.pulumi.harbor.ProjectWebhookArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mainProject = new Project(\"mainProject\");\n\n        var mainProjectWebhook = new ProjectWebhook(\"mainProjectWebhook\", ProjectWebhookArgs.builder()        \n            .address(\"https://webhook.domain.com\")\n            .projectId(mainProject.id())\n            .notifyType(\"http\")\n            .eventsTypes(            \n                \"DELETE_ARTIFACT\",\n                \"PULL_ARTIFACT\",\n                \"PUSH_ARTIFACT\",\n                \"DELETE_CHART\",\n                \"DOWNLOAD_CHART\",\n                \"UPLOAD_CHART\",\n                \"QUOTA_EXCEED\",\n                \"QUOTA_WARNING\",\n                \"REPLICATION\",\n                \"SCANNING_FAILED\",\n                \"SCANNING_COMPLETED\",\n                \"TAG_RETENTION\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mainProjectWebhook:\n    type: harbor:ProjectWebhook\n    properties:\n      address: https://webhook.domain.com\n      projectId: ${mainProject.id}\n      notifyType: http\n      eventsTypes:\n        - DELETE_ARTIFACT\n        - PULL_ARTIFACT\n        - PUSH_ARTIFACT\n        - DELETE_CHART\n        - DOWNLOAD_CHART\n        - UPLOAD_CHART\n        - QUOTA_EXCEED\n        - QUOTA_WARNING\n        - REPLICATION\n        - SCANNING_FAILED\n        - SCANNING_COMPLETED\n        - TAG_RETENTION\n  mainProject:\n    type: harbor:Project\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst mainProject = new harbor.Project(\"mainProject\", {});\nconst mainProjectWebhook = new harbor.ProjectWebhook(\"mainProjectWebhook\", {\n    address: \"https://webhook.domain.com\",\n    projectId: mainProject.id,\n    notifyType: \"http\",\n    eventsTypes: [\n        \"DELETE_ARTIFACT\",\n        \"PULL_ARTIFACT\",\n        \"PUSH_ARTIFACT\",\n        \"QUOTA_EXCEED\",\n        \"QUOTA_WARNING\",\n        \"REPLICATION\",\n        \"SCANNING_FAILED\",\n        \"SCANNING_COMPLETED\",\n        \"TAG_RETENTION\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nmain_project = harbor.Project(\"mainProject\")\nmain_project_webhook = harbor.ProjectWebhook(\"mainProjectWebhook\",\n    address=\"https://webhook.domain.com\",\n    project_id=main_project.id,\n    notify_type=\"http\",\n    events_types=[\n        \"DELETE_ARTIFACT\",\n        \"PULL_ARTIFACT\",\n        \"PUSH_ARTIFACT\",\n        \"QUOTA_EXCEED\",\n        \"QUOTA_WARNING\",\n        \"REPLICATION\",\n        \"SCANNING_FAILED\",\n        \"SCANNING_COMPLETED\",\n        \"TAG_RETENTION\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mainProject = new Harbor.Project(\"mainProject\");\n\n    var mainProjectWebhook = new Harbor.ProjectWebhook(\"mainProjectWebhook\", new()\n    {\n        Address = \"https://webhook.domain.com\",\n        ProjectId = mainProject.Id,\n        NotifyType = \"http\",\n        EventsTypes = new[]\n        {\n            \"DELETE_ARTIFACT\",\n            \"PULL_ARTIFACT\",\n            \"PUSH_ARTIFACT\",\n            \"QUOTA_EXCEED\",\n            \"QUOTA_WARNING\",\n            \"REPLICATION\",\n            \"SCANNING_FAILED\",\n            \"SCANNING_COMPLETED\",\n            \"TAG_RETENTION\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmainProject, err := harbor.NewProject(ctx, \"mainProject\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = harbor.NewProjectWebhook(ctx, \"mainProjectWebhook\", \u0026harbor.ProjectWebhookArgs{\n\t\t\tAddress:    pulumi.String(\"https://webhook.domain.com\"),\n\t\t\tProjectId:  mainProject.ID(),\n\t\t\tNotifyType: pulumi.String(\"http\"),\n\t\t\tEventsTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"DELETE_ARTIFACT\"),\n\t\t\t\tpulumi.String(\"PULL_ARTIFACT\"),\n\t\t\t\tpulumi.String(\"PUSH_ARTIFACT\"),\n\t\t\t\tpulumi.String(\"QUOTA_EXCEED\"),\n\t\t\t\tpulumi.String(\"QUOTA_WARNING\"),\n\t\t\t\tpulumi.String(\"REPLICATION\"),\n\t\t\t\tpulumi.String(\"SCANNING_FAILED\"),\n\t\t\t\tpulumi.String(\"SCANNING_COMPLETED\"),\n\t\t\t\tpulumi.String(\"TAG_RETENTION\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.Project;\nimport com.pulumi.harbor.ProjectWebhook;\nimport com.pulumi.harbor.ProjectWebhookArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mainProject = new Project(\"mainProject\");\n\n        var mainProjectWebhook = new ProjectWebhook(\"mainProjectWebhook\", ProjectWebhookArgs.builder()        \n            .address(\"https://webhook.domain.com\")\n            .projectId(mainProject.id())\n            .notifyType(\"http\")\n            .eventsTypes(            \n                \"DELETE_ARTIFACT\",\n                \"PULL_ARTIFACT\",\n                \"PUSH_ARTIFACT\",\n                \"QUOTA_EXCEED\",\n                \"QUOTA_WARNING\",\n                \"REPLICATION\",\n                \"SCANNING_FAILED\",\n                \"SCANNING_COMPLETED\",\n                \"TAG_RETENTION\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mainProjectWebhook:\n    type: harbor:ProjectWebhook\n    properties:\n      address: https://webhook.domain.com\n      projectId: ${mainProject.id}\n      notifyType: http\n      eventsTypes:\n        - DELETE_ARTIFACT\n        - PULL_ARTIFACT\n        - PUSH_ARTIFACT\n        - QUOTA_EXCEED\n        - QUOTA_WARNING\n        - REPLICATION\n        - SCANNING_FAILED\n        - SCANNING_COMPLETED\n        - TAG_RETENTION\n  mainProject:\n    type: harbor:Project\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "address": {
                     "type": "string",
@@ -1227,7 +1333,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": ") The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`\n"
+                    "description": ") The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`\n"
                 },
                 "name": {
                     "type": "string",
@@ -1275,7 +1381,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": ") The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`\n"
+                    "description": ") The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`\n"
                 },
                 "name": {
                     "type": "string",
@@ -1325,7 +1431,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": ") The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`\n"
+                        "description": ") The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`\n"
                     },
                     "name": {
                         "type": "string",
@@ -1601,7 +1707,7 @@
             }
         },
         "harbor:index/retentionPolicy:RetentionPolicy": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst mainProject = new harbor.Project(\"mainProject\", {});\nconst mainRetentionPolicy = new harbor.RetentionPolicy(\"mainRetentionPolicy\", {\n    scope: mainProject.id,\n    schedule: \"daily\",\n    rules: [\n        {\n            nDaysSinceLastPull: 5,\n            repoMatching: \"**\",\n            tagMatching: \"latest\",\n        },\n        {\n            nDaysSinceLastPush: 10,\n            repoMatching: \"**\",\n            tagMatching: \"latest\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nmain_project = harbor.Project(\"mainProject\")\nmain_retention_policy = harbor.RetentionPolicy(\"mainRetentionPolicy\",\n    scope=main_project.id,\n    schedule=\"daily\",\n    rules=[\n        harbor.RetentionPolicyRuleArgs(\n            n_days_since_last_pull=5,\n            repo_matching=\"**\",\n            tag_matching=\"latest\",\n        ),\n        harbor.RetentionPolicyRuleArgs(\n            n_days_since_last_push=10,\n            repo_matching=\"**\",\n            tag_matching=\"latest\",\n        ),\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mainProject = new Harbor.Project(\"mainProject\");\n\n    var mainRetentionPolicy = new Harbor.RetentionPolicy(\"mainRetentionPolicy\", new()\n    {\n        Scope = mainProject.Id,\n        Schedule = \"daily\",\n        Rules = new[]\n        {\n            new Harbor.Inputs.RetentionPolicyRuleArgs\n            {\n                NDaysSinceLastPull = 5,\n                RepoMatching = \"**\",\n                TagMatching = \"latest\",\n            },\n            new Harbor.Inputs.RetentionPolicyRuleArgs\n            {\n                NDaysSinceLastPush = 10,\n                RepoMatching = \"**\",\n                TagMatching = \"latest\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmainProject, err := harbor.NewProject(ctx, \"mainProject\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = harbor.NewRetentionPolicy(ctx, \"mainRetentionPolicy\", \u0026harbor.RetentionPolicyArgs{\n\t\t\tScope:    mainProject.ID(),\n\t\t\tSchedule: pulumi.String(\"daily\"),\n\t\t\tRules: harbor.RetentionPolicyRuleArray{\n\t\t\t\t\u0026harbor.RetentionPolicyRuleArgs{\n\t\t\t\t\tNDaysSinceLastPull: pulumi.Int(5),\n\t\t\t\t\tRepoMatching:       pulumi.String(\"**\"),\n\t\t\t\t\tTagMatching:        pulumi.String(\"latest\"),\n\t\t\t\t},\n\t\t\t\t\u0026harbor.RetentionPolicyRuleArgs{\n\t\t\t\t\tNDaysSinceLastPush: pulumi.Int(10),\n\t\t\t\t\tRepoMatching:       pulumi.String(\"**\"),\n\t\t\t\t\tTagMatching:        pulumi.String(\"latest\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.Project;\nimport com.pulumi.harbor.RetentionPolicy;\nimport com.pulumi.harbor.RetentionPolicyArgs;\nimport com.pulumi.harbor.inputs.RetentionPolicyRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mainProject = new Project(\"mainProject\");\n\n        var mainRetentionPolicy = new RetentionPolicy(\"mainRetentionPolicy\", RetentionPolicyArgs.builder()        \n            .scope(mainProject.id())\n            .schedule(\"daily\")\n            .rules(            \n                RetentionPolicyRuleArgs.builder()\n                    .nDaysSinceLastPull(5)\n                    .repoMatching(\"**\")\n                    .tagMatching(\"latest\")\n                    .build(),\n                RetentionPolicyRuleArgs.builder()\n                    .nDaysSinceLastPush(10)\n                    .repoMatching(\"**\")\n                    .tagMatching(\"latest\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mainProject:\n    type: harbor:Project\n  mainRetentionPolicy:\n    type: harbor:RetentionPolicy\n    properties:\n      scope: ${mainProject.id}\n      schedule: daily\n      rules:\n        - nDaysSinceLastPull: 5\n          repoMatching: '**'\n          tagMatching: latest\n        - nDaysSinceLastPush: 10\n          repoMatching: '**'\n          tagMatching: latest\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nHarbor retention policy can be imported using the `retention_policy id` eg, `\n\n```sh\n $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10\n```\n\n ` ",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as harbor from \"@pulumiverse/harbor\";\n\nconst mainProject = new harbor.Project(\"mainProject\", {});\nconst mainRetentionPolicy = new harbor.RetentionPolicy(\"mainRetentionPolicy\", {\n    scope: mainProject.id,\n    schedule: \"Daily\",\n    rules: [\n        {\n            nDaysSinceLastPull: 5,\n            repoMatching: \"**\",\n            tagMatching: \"latest\",\n        },\n        {\n            nDaysSinceLastPush: 10,\n            repoMatching: \"**\",\n            tagMatching: \"{latest,snapshot}\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumiverse_harbor as harbor\n\nmain_project = harbor.Project(\"mainProject\")\nmain_retention_policy = harbor.RetentionPolicy(\"mainRetentionPolicy\",\n    scope=main_project.id,\n    schedule=\"Daily\",\n    rules=[\n        harbor.RetentionPolicyRuleArgs(\n            n_days_since_last_pull=5,\n            repo_matching=\"**\",\n            tag_matching=\"latest\",\n        ),\n        harbor.RetentionPolicyRuleArgs(\n            n_days_since_last_push=10,\n            repo_matching=\"**\",\n            tag_matching=\"{latest,snapshot}\",\n        ),\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Harbor = Pulumiverse.Harbor;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mainProject = new Harbor.Project(\"mainProject\");\n\n    var mainRetentionPolicy = new Harbor.RetentionPolicy(\"mainRetentionPolicy\", new()\n    {\n        Scope = mainProject.Id,\n        Schedule = \"Daily\",\n        Rules = new[]\n        {\n            new Harbor.Inputs.RetentionPolicyRuleArgs\n            {\n                NDaysSinceLastPull = 5,\n                RepoMatching = \"**\",\n                TagMatching = \"latest\",\n            },\n            new Harbor.Inputs.RetentionPolicyRuleArgs\n            {\n                NDaysSinceLastPush = 10,\n                RepoMatching = \"**\",\n                TagMatching = \"{latest,snapshot}\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmainProject, err := harbor.NewProject(ctx, \"mainProject\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = harbor.NewRetentionPolicy(ctx, \"mainRetentionPolicy\", \u0026harbor.RetentionPolicyArgs{\n\t\t\tScope:    mainProject.ID(),\n\t\t\tSchedule: pulumi.String(\"Daily\"),\n\t\t\tRules: harbor.RetentionPolicyRuleArray{\n\t\t\t\t\u0026harbor.RetentionPolicyRuleArgs{\n\t\t\t\t\tNDaysSinceLastPull: pulumi.Int(5),\n\t\t\t\t\tRepoMatching:       pulumi.String(\"**\"),\n\t\t\t\t\tTagMatching:        pulumi.String(\"latest\"),\n\t\t\t\t},\n\t\t\t\t\u0026harbor.RetentionPolicyRuleArgs{\n\t\t\t\t\tNDaysSinceLastPush: pulumi.Int(10),\n\t\t\t\t\tRepoMatching:       pulumi.String(\"**\"),\n\t\t\t\t\tTagMatching:        pulumi.String(\"{latest,snapshot}\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.harbor.Project;\nimport com.pulumi.harbor.RetentionPolicy;\nimport com.pulumi.harbor.RetentionPolicyArgs;\nimport com.pulumi.harbor.inputs.RetentionPolicyRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mainProject = new Project(\"mainProject\");\n\n        var mainRetentionPolicy = new RetentionPolicy(\"mainRetentionPolicy\", RetentionPolicyArgs.builder()        \n            .scope(mainProject.id())\n            .schedule(\"Daily\")\n            .rules(            \n                RetentionPolicyRuleArgs.builder()\n                    .nDaysSinceLastPull(5)\n                    .repoMatching(\"**\")\n                    .tagMatching(\"latest\")\n                    .build(),\n                RetentionPolicyRuleArgs.builder()\n                    .nDaysSinceLastPush(10)\n                    .repoMatching(\"**\")\n                    .tagMatching(\"{latest,snapshot}\")\n                    .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mainProject:\n    type: harbor:Project\n  mainRetentionPolicy:\n    type: harbor:RetentionPolicy\n    properties:\n      scope: ${mainProject.id}\n      schedule: Daily\n      rules:\n        - nDaysSinceLastPull: 5\n          repoMatching: '**'\n          tagMatching: latest\n        - nDaysSinceLastPush: 10\n          repoMatching: '**'\n          tagMatching: '{latest,snapshot}'\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nHarbor retention policy can be imported using the `retention_policy id` eg, `\n\n```sh\n $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10\n```\n\n ` ",
             "properties": {
                 "rules": {
                     "type": "array",
@@ -1612,7 +1718,7 @@
                 },
                 "schedule": {
                     "type": "string",
-                    "description": "The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.\n"
+                    "description": "The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.\n"
                 },
                 "scope": {
                     "type": "string",
@@ -1633,7 +1739,7 @@
                 },
                 "schedule": {
                     "type": "string",
-                    "description": "The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.\n"
+                    "description": "The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.\n"
                 },
                 "scope": {
                     "type": "string",
@@ -1657,7 +1763,7 @@
                     },
                     "schedule": {
                         "type": "string",
-                        "description": "The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.\n"
+                        "description": "The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.\n"
                     },
                     "scope": {
                         "type": "string",

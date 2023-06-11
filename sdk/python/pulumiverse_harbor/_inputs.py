@@ -107,6 +107,8 @@ class RetentionPolicyRuleArgs:
         :param pulumi.Input[str] tag_excluding: For the tag excuding.
         :param pulumi.Input[str] tag_matching: For the tag matching.
         :param pulumi.Input[bool] untagged_artifacts: with untagged artifacts. Defaults to `true`
+               
+               > Multiple tags or repositories must be provided as a comma-separated list wrapped into curly brackets `{ }`. Otherwise, the value is interpreted as a single value.
         """
         if always_retain is not None:
             pulumi.set(__self__, "always_retain", always_retain)
@@ -256,6 +258,8 @@ class RetentionPolicyRuleArgs:
     def untagged_artifacts(self) -> Optional[pulumi.Input[bool]]:
         """
         with untagged artifacts. Defaults to `true`
+
+        > Multiple tags or repositories must be provided as a comma-separated list wrapped into curly brackets `{ }`. Otherwise, the value is interpreted as a single value.
         """
         return pulumi.get(self, "untagged_artifacts")
 

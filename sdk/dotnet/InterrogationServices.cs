@@ -23,7 +23,7 @@ namespace Pulumiverse.Harbor
     /// {
     ///     var main = new Harbor.InterrogationServices("main", new()
     ///     {
-    ///         VulnerabilityScanPolicy = "daily",
+    ///         VulnerabilityScanPolicy = "Daily",
     ///     });
     /// 
     /// });
@@ -39,7 +39,7 @@ namespace Pulumiverse.Harbor
         public Output<string?> DefaultScanner { get; private set; } = null!;
 
         /// <summary>
-        /// The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.
+        /// The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
         /// </summary>
         [Output("vulnerabilityScanPolicy")]
         public Output<string> VulnerabilityScanPolicy { get; private set; } = null!;
@@ -98,7 +98,7 @@ namespace Pulumiverse.Harbor
         public Input<string>? DefaultScanner { get; set; }
 
         /// <summary>
-        /// The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.
+        /// The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
         /// </summary>
         [Input("vulnerabilityScanPolicy", required: true)]
         public Input<string> VulnerabilityScanPolicy { get; set; } = null!;
@@ -118,7 +118,7 @@ namespace Pulumiverse.Harbor
         public Input<string>? DefaultScanner { get; set; }
 
         /// <summary>
-        /// The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.
+        /// The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
         /// </summary>
         [Input("vulnerabilityScanPolicy")]
         public Input<string>? VulnerabilityScanPolicy { get; set; }

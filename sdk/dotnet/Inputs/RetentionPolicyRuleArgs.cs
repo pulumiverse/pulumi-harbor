@@ -75,6 +75,8 @@ namespace Pulumiverse.Harbor.Inputs
 
         /// <summary>
         /// with untagged artifacts. Defaults to `true`
+        /// 
+        /// &gt; Multiple tags or repositories must be provided as a comma-separated list wrapped into curly brackets `{ }`. Otherwise, the value is interpreted as a single value.
         /// </summary>
         [Input("untaggedArtifacts")]
         public Input<bool>? UntaggedArtifacts { get; set; }
