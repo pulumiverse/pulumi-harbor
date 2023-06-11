@@ -33,9 +33,6 @@ namespace Pulumiverse.Harbor
     ///             "DELETE_ARTIFACT",
     ///             "PULL_ARTIFACT",
     ///             "PUSH_ARTIFACT",
-    ///             "DELETE_CHART",
-    ///             "DOWNLOAD_CHART",
-    ///             "UPLOAD_CHART",
     ///             "QUOTA_EXCEED",
     ///             "QUOTA_WARNING",
     ///             "REPLICATION",
@@ -76,7 +73,7 @@ namespace Pulumiverse.Harbor
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+        /// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
         /// </summary>
         [Output("eventsTypes")]
         public Output<ImmutableArray<string>> EventsTypes { get; private set; } = null!;
@@ -180,7 +177,7 @@ namespace Pulumiverse.Harbor
         private InputList<string>? _eventsTypes;
 
         /// <summary>
-        /// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+        /// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
         /// </summary>
         public InputList<string> EventsTypes
         {
@@ -248,7 +245,7 @@ namespace Pulumiverse.Harbor
         private InputList<string>? _eventsTypes;
 
         /// <summary>
-        /// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+        /// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
         /// </summary>
         public InputList<string> EventsTypes
         {

@@ -150,6 +150,8 @@ type RetentionPolicyRule struct {
 	// For the tag matching.
 	TagMatching *string `pulumi:"tagMatching"`
 	// with untagged artifacts. Defaults to `true`
+	//
+	// > Multiple tags or repositories must be provided as a comma-separated list wrapped into curly brackets `{ }`. Otherwise, the value is interpreted as a single value.
 	UntaggedArtifacts *bool `pulumi:"untaggedArtifacts"`
 }
 
@@ -186,6 +188,8 @@ type RetentionPolicyRuleArgs struct {
 	// For the tag matching.
 	TagMatching pulumi.StringPtrInput `pulumi:"tagMatching"`
 	// with untagged artifacts. Defaults to `true`
+	//
+	// > Multiple tags or repositories must be provided as a comma-separated list wrapped into curly brackets `{ }`. Otherwise, the value is interpreted as a single value.
 	UntaggedArtifacts pulumi.BoolPtrInput `pulumi:"untaggedArtifacts"`
 }
 
@@ -291,6 +295,8 @@ func (o RetentionPolicyRuleOutput) TagMatching() pulumi.StringPtrOutput {
 }
 
 // with untagged artifacts. Defaults to `true`
+//
+// > Multiple tags or repositories must be provided as a comma-separated list wrapped into curly brackets `{ }`. Otherwise, the value is interpreted as a single value.
 func (o RetentionPolicyRuleOutput) UntaggedArtifacts() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RetentionPolicyRule) *bool { return v.UntaggedArtifacts }).(pulumi.BoolPtrOutput)
 }

@@ -56,6 +56,8 @@ export interface RetentionPolicyRule {
     tagMatching?: string;
     /**
      * with untagged artifacts. Defaults to `true`
+     *
+     * > Multiple tags or repositories must be provided as a comma-separated list wrapped into curly brackets `{ }`. Otherwise, the value is interpreted as a single value.
      */
     untaggedArtifacts?: boolean;
 }

@@ -26,7 +26,7 @@ namespace Pulumiverse.Harbor
     ///     var mainRetentionPolicy = new Harbor.RetentionPolicy("mainRetentionPolicy", new()
     ///     {
     ///         Scope = mainProject.Id,
-    ///         Schedule = "daily",
+    ///         Schedule = "Daily",
     ///         Rules = new[]
     ///         {
     ///             new Harbor.Inputs.RetentionPolicyRuleArgs
@@ -39,7 +39,7 @@ namespace Pulumiverse.Harbor
     ///             {
     ///                 NDaysSinceLastPush = 10,
     ///                 RepoMatching = "**",
-    ///                 TagMatching = "latest",
+    ///                 TagMatching = "{latest,snapshot}",
     ///             },
     ///         },
     ///     });
@@ -67,7 +67,7 @@ namespace Pulumiverse.Harbor
         public Output<ImmutableArray<Outputs.RetentionPolicyRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+        /// The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
         /// </summary>
         [Output("schedule")]
         public Output<string?> Schedule { get; private set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumiverse.Harbor
         }
 
         /// <summary>
-        /// The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+        /// The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
@@ -170,7 +170,7 @@ namespace Pulumiverse.Harbor
         }
 
         /// <summary>
-        /// The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+        /// The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }

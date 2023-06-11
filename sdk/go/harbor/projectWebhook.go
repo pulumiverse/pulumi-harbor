@@ -37,9 +37,6 @@ import (
 //					pulumi.String("DELETE_ARTIFACT"),
 //					pulumi.String("PULL_ARTIFACT"),
 //					pulumi.String("PUSH_ARTIFACT"),
-//					pulumi.String("DELETE_CHART"),
-//					pulumi.String("DOWNLOAD_CHART"),
-//					pulumi.String("UPLOAD_CHART"),
 //					pulumi.String("QUOTA_EXCEED"),
 //					pulumi.String("QUOTA_WARNING"),
 //					pulumi.String("REPLICATION"),
@@ -67,7 +64,7 @@ type ProjectWebhook struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// , To enable / disable the webhook. Default `true`
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+	// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
 	EventsTypes pulumi.StringArrayOutput `pulumi:"eventsTypes"`
 	// The name of the webhook that will be created in harbor.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -129,7 +126,7 @@ type projectWebhookState struct {
 	Description *string `pulumi:"description"`
 	// , To enable / disable the webhook. Default `true`
 	Enabled *bool `pulumi:"enabled"`
-	// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+	// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
 	EventsTypes []string `pulumi:"eventsTypes"`
 	// The name of the webhook that will be created in harbor.
 	Name *string `pulumi:"name"`
@@ -150,7 +147,7 @@ type ProjectWebhookState struct {
 	Description pulumi.StringPtrInput
 	// , To enable / disable the webhook. Default `true`
 	Enabled pulumi.BoolPtrInput
-	// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+	// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
 	EventsTypes pulumi.StringArrayInput
 	// The name of the webhook that will be created in harbor.
 	Name pulumi.StringPtrInput
@@ -175,7 +172,7 @@ type projectWebhookArgs struct {
 	Description *string `pulumi:"description"`
 	// , To enable / disable the webhook. Default `true`
 	Enabled *bool `pulumi:"enabled"`
-	// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+	// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
 	EventsTypes []string `pulumi:"eventsTypes"`
 	// The name of the webhook that will be created in harbor.
 	Name *string `pulumi:"name"`
@@ -197,7 +194,7 @@ type ProjectWebhookArgs struct {
 	Description pulumi.StringPtrInput
 	// , To enable / disable the webhook. Default `true`
 	Enabled pulumi.BoolPtrInput
-	// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+	// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
 	EventsTypes pulumi.StringArrayInput
 	// The name of the webhook that will be created in harbor.
 	Name pulumi.StringPtrInput
@@ -316,7 +313,7 @@ func (o ProjectWebhookOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectWebhook) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
 func (o ProjectWebhookOutput) EventsTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ProjectWebhook) pulumi.StringArrayOutput { return v.EventsTypes }).(pulumi.StringArrayOutput)
 }

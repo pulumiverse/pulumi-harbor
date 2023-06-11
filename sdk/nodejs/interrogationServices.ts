@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as harbor from "@pulumiverse/harbor";
  *
- * const main = new harbor.InterrogationServices("main", {vulnerabilityScanPolicy: "daily"});
+ * const main = new harbor.InterrogationServices("main", {vulnerabilityScanPolicy: "Daily"});
  * ```
  */
 export class InterrogationServices extends pulumi.CustomResource {
@@ -47,7 +47,7 @@ export class InterrogationServices extends pulumi.CustomResource {
      */
     public readonly defaultScanner!: pulumi.Output<string | undefined>;
     /**
-     * The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.
+     * The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
      */
     public readonly vulnerabilityScanPolicy!: pulumi.Output<string>;
 
@@ -88,7 +88,7 @@ export interface InterrogationServicesState {
      */
     defaultScanner?: pulumi.Input<string>;
     /**
-     * The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.
+     * The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
      */
     vulnerabilityScanPolicy?: pulumi.Input<string>;
 }
@@ -102,7 +102,7 @@ export interface InterrogationServicesArgs {
      */
     defaultScanner?: pulumi.Input<string>;
     /**
-     * The frequency of the vulnerability scanning is done. This can be `daily`, `weekly`, `monthly` or can be a custom cron string.
+     * The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
      */
     vulnerabilityScanPolicy: pulumi.Input<string>;
 }

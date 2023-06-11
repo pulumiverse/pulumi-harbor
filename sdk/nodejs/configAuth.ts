@@ -53,11 +53,13 @@ export class ConfigAuth extends pulumi.CustomResource {
     public readonly oidcClientId!: pulumi.Output<string | undefined>;
     public readonly oidcClientSecret!: pulumi.Output<string | undefined>;
     public readonly oidcEndpoint!: pulumi.Output<string | undefined>;
+    public readonly oidcGroupFilter!: pulumi.Output<string | undefined>;
     public readonly oidcGroupsClaim!: pulumi.Output<string | undefined>;
     public readonly oidcName!: pulumi.Output<string | undefined>;
     public readonly oidcScope!: pulumi.Output<string | undefined>;
     public readonly oidcUserClaim!: pulumi.Output<string | undefined>;
     public readonly oidcVerifyCert!: pulumi.Output<boolean | undefined>;
+    public readonly primaryAuthMode!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a ConfigAuth resource with the given unique name, arguments, and options.
@@ -93,11 +95,13 @@ export class ConfigAuth extends pulumi.CustomResource {
             resourceInputs["oidcClientId"] = state ? state.oidcClientId : undefined;
             resourceInputs["oidcClientSecret"] = state ? state.oidcClientSecret : undefined;
             resourceInputs["oidcEndpoint"] = state ? state.oidcEndpoint : undefined;
+            resourceInputs["oidcGroupFilter"] = state ? state.oidcGroupFilter : undefined;
             resourceInputs["oidcGroupsClaim"] = state ? state.oidcGroupsClaim : undefined;
             resourceInputs["oidcName"] = state ? state.oidcName : undefined;
             resourceInputs["oidcScope"] = state ? state.oidcScope : undefined;
             resourceInputs["oidcUserClaim"] = state ? state.oidcUserClaim : undefined;
             resourceInputs["oidcVerifyCert"] = state ? state.oidcVerifyCert : undefined;
+            resourceInputs["primaryAuthMode"] = state ? state.primaryAuthMode : undefined;
         } else {
             const args = argsOrState as ConfigAuthArgs | undefined;
             if ((!args || args.authMode === undefined) && !opts.urn) {
@@ -124,11 +128,13 @@ export class ConfigAuth extends pulumi.CustomResource {
             resourceInputs["oidcClientId"] = args ? args.oidcClientId : undefined;
             resourceInputs["oidcClientSecret"] = args?.oidcClientSecret ? pulumi.secret(args.oidcClientSecret) : undefined;
             resourceInputs["oidcEndpoint"] = args ? args.oidcEndpoint : undefined;
+            resourceInputs["oidcGroupFilter"] = args ? args.oidcGroupFilter : undefined;
             resourceInputs["oidcGroupsClaim"] = args ? args.oidcGroupsClaim : undefined;
             resourceInputs["oidcName"] = args ? args.oidcName : undefined;
             resourceInputs["oidcScope"] = args ? args.oidcScope : undefined;
             resourceInputs["oidcUserClaim"] = args ? args.oidcUserClaim : undefined;
             resourceInputs["oidcVerifyCert"] = args ? args.oidcVerifyCert : undefined;
+            resourceInputs["primaryAuthMode"] = args ? args.primaryAuthMode : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["ldapSearchPassword", "oidcClientSecret"] };
@@ -162,11 +168,13 @@ export interface ConfigAuthState {
     oidcClientId?: pulumi.Input<string>;
     oidcClientSecret?: pulumi.Input<string>;
     oidcEndpoint?: pulumi.Input<string>;
+    oidcGroupFilter?: pulumi.Input<string>;
     oidcGroupsClaim?: pulumi.Input<string>;
     oidcName?: pulumi.Input<string>;
     oidcScope?: pulumi.Input<string>;
     oidcUserClaim?: pulumi.Input<string>;
     oidcVerifyCert?: pulumi.Input<boolean>;
+    primaryAuthMode?: pulumi.Input<boolean>;
 }
 
 /**
@@ -194,9 +202,11 @@ export interface ConfigAuthArgs {
     oidcClientId?: pulumi.Input<string>;
     oidcClientSecret?: pulumi.Input<string>;
     oidcEndpoint?: pulumi.Input<string>;
+    oidcGroupFilter?: pulumi.Input<string>;
     oidcGroupsClaim?: pulumi.Input<string>;
     oidcName?: pulumi.Input<string>;
     oidcScope?: pulumi.Input<string>;
     oidcUserClaim?: pulumi.Input<string>;
     oidcVerifyCert?: pulumi.Input<boolean>;
+    primaryAuthMode?: pulumi.Input<boolean>;
 }

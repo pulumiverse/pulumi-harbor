@@ -17,6 +17,7 @@
         "config/vars.ts",
         "configAuth.ts",
         "configEmail.ts",
+        "configSecurity.ts",
         "configSystem.ts",
         "garbageCollection.ts",
         "getProject.ts",

@@ -15,12 +15,15 @@ __all__ = ['GroupArgs', 'Group']
 class GroupArgs:
     def __init__(__self__, *,
                  group_name: pulumi.Input[str],
-                 group_type: pulumi.Input[int]):
+                 group_type: pulumi.Input[int],
+                 ldap_group_dn: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Group resource.
         """
         pulumi.set(__self__, "group_name", group_name)
         pulumi.set(__self__, "group_type", group_type)
+        if ldap_group_dn is not None:
+            pulumi.set(__self__, "ldap_group_dn", ldap_group_dn)
 
     @property
     @pulumi.getter(name="groupName")
@@ -40,12 +43,22 @@ class GroupArgs:
     def group_type(self, value: pulumi.Input[int]):
         pulumi.set(self, "group_type", value)
 
+    @property
+    @pulumi.getter(name="ldapGroupDn")
+    def ldap_group_dn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ldap_group_dn")
+
+    @ldap_group_dn.setter
+    def ldap_group_dn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ldap_group_dn", value)
+
 
 @pulumi.input_type
 class _GroupState:
     def __init__(__self__, *,
                  group_name: Optional[pulumi.Input[str]] = None,
-                 group_type: Optional[pulumi.Input[int]] = None):
+                 group_type: Optional[pulumi.Input[int]] = None,
+                 ldap_group_dn: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
         """
@@ -53,6 +66,8 @@ class _GroupState:
             pulumi.set(__self__, "group_name", group_name)
         if group_type is not None:
             pulumi.set(__self__, "group_type", group_type)
+        if ldap_group_dn is not None:
+            pulumi.set(__self__, "ldap_group_dn", ldap_group_dn)
 
     @property
     @pulumi.getter(name="groupName")
@@ -72,6 +87,15 @@ class _GroupState:
     def group_type(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "group_type", value)
 
+    @property
+    @pulumi.getter(name="ldapGroupDn")
+    def ldap_group_dn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ldap_group_dn")
+
+    @ldap_group_dn.setter
+    def ldap_group_dn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ldap_group_dn", value)
+
 
 class Group(pulumi.CustomResource):
     @overload
@@ -80,6 +104,7 @@ class Group(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_name: Optional[pulumi.Input[str]] = None,
                  group_type: Optional[pulumi.Input[int]] = None,
+                 ldap_group_dn: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -151,6 +176,7 @@ class Group(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_name: Optional[pulumi.Input[str]] = None,
                  group_type: Optional[pulumi.Input[int]] = None,
+                 ldap_group_dn: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -166,6 +192,7 @@ class Group(pulumi.CustomResource):
             if group_type is None and not opts.urn:
                 raise TypeError("Missing required property 'group_type'")
             __props__.__dict__["group_type"] = group_type
+            __props__.__dict__["ldap_group_dn"] = ldap_group_dn
         super(Group, __self__).__init__(
             'harbor:index/group:Group',
             resource_name,
@@ -177,7 +204,8 @@ class Group(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             group_name: Optional[pulumi.Input[str]] = None,
-            group_type: Optional[pulumi.Input[int]] = None) -> 'Group':
+            group_type: Optional[pulumi.Input[int]] = None,
+            ldap_group_dn: Optional[pulumi.Input[str]] = None) -> 'Group':
         """
         Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -192,6 +220,7 @@ class Group(pulumi.CustomResource):
 
         __props__.__dict__["group_name"] = group_name
         __props__.__dict__["group_type"] = group_type
+        __props__.__dict__["ldap_group_dn"] = ldap_group_dn
         return Group(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -203,4 +232,9 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="groupType")
     def group_type(self) -> pulumi.Output[int]:
         return pulumi.get(self, "group_type")
+
+    @property
+    @pulumi.getter(name="ldapGroupDn")
+    def ldap_group_dn(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "ldap_group_dn")
 

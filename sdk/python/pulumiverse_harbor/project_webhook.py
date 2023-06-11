@@ -26,7 +26,7 @@ class ProjectWebhookArgs:
         """
         The set of arguments for constructing a ProjectWebhook resource.
         :param pulumi.Input[str] address: The address of the webhook
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] events_types: ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] events_types: ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
         :param pulumi.Input[str] notify_type: The notification type either `http` or `slack`
         :param pulumi.Input[str] project_id: The project id of the harbor that webhook related to.
         :param pulumi.Input[str] auth_header: authentication header for you the webhook
@@ -66,7 +66,7 @@ class ProjectWebhookArgs:
     @pulumi.getter(name="eventsTypes")
     def events_types(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+        ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
         """
         return pulumi.get(self, "events_types")
 
@@ -177,7 +177,7 @@ class _ProjectWebhookState:
         :param pulumi.Input[str] auth_header: authentication header for you the webhook
         :param pulumi.Input[str] description: _ (Optional, string) A description of the webhook
         :param pulumi.Input[bool] enabled: , To enable / disable the webhook. Default `true`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] events_types: ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] events_types: ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
         :param pulumi.Input[str] name: The name of the webhook that will be created in harbor.
         :param pulumi.Input[str] notify_type: The notification type either `http` or `slack`
         :param pulumi.Input[str] project_id: The project id of the harbor that webhook related to.
@@ -254,7 +254,7 @@ class _ProjectWebhookState:
     @pulumi.getter(name="eventsTypes")
     def events_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+        ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
         """
         return pulumi.get(self, "events_types")
 
@@ -342,9 +342,6 @@ class ProjectWebhook(pulumi.CustomResource):
                 "DELETE_ARTIFACT",
                 "PULL_ARTIFACT",
                 "PUSH_ARTIFACT",
-                "DELETE_CHART",
-                "DOWNLOAD_CHART",
-                "UPLOAD_CHART",
                 "QUOTA_EXCEED",
                 "QUOTA_WARNING",
                 "REPLICATION",
@@ -360,7 +357,7 @@ class ProjectWebhook(pulumi.CustomResource):
         :param pulumi.Input[str] auth_header: authentication header for you the webhook
         :param pulumi.Input[str] description: _ (Optional, string) A description of the webhook
         :param pulumi.Input[bool] enabled: , To enable / disable the webhook. Default `true`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] events_types: ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] events_types: ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
         :param pulumi.Input[str] name: The name of the webhook that will be created in harbor.
         :param pulumi.Input[str] notify_type: The notification type either `http` or `slack`
         :param pulumi.Input[str] project_id: The project id of the harbor that webhook related to.
@@ -388,9 +385,6 @@ class ProjectWebhook(pulumi.CustomResource):
                 "DELETE_ARTIFACT",
                 "PULL_ARTIFACT",
                 "PUSH_ARTIFACT",
-                "DELETE_CHART",
-                "DOWNLOAD_CHART",
-                "UPLOAD_CHART",
                 "QUOTA_EXCEED",
                 "QUOTA_WARNING",
                 "REPLICATION",
@@ -480,7 +474,7 @@ class ProjectWebhook(pulumi.CustomResource):
         :param pulumi.Input[str] auth_header: authentication header for you the webhook
         :param pulumi.Input[str] description: _ (Optional, string) A description of the webhook
         :param pulumi.Input[bool] enabled: , To enable / disable the webhook. Default `true`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] events_types: ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] events_types: ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
         :param pulumi.Input[str] name: The name of the webhook that will be created in harbor.
         :param pulumi.Input[str] notify_type: The notification type either `http` or `slack`
         :param pulumi.Input[str] project_id: The project id of the harbor that webhook related to.
@@ -537,7 +531,7 @@ class ProjectWebhook(pulumi.CustomResource):
     @pulumi.getter(name="eventsTypes")
     def events_types(self) -> pulumi.Output[Sequence[str]]:
         """
-        ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `DELETE_CHART`, `DOWNLOAD_CHART`, `UPLOAD_CHART`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+        ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
         """
         return pulumi.get(self, "events_types")
 

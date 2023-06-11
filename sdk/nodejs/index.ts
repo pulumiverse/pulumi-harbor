@@ -15,6 +15,11 @@ export type ConfigEmail = import("./configEmail").ConfigEmail;
 export const ConfigEmail: typeof import("./configEmail").ConfigEmail = null as any;
 utilities.lazyLoad(exports, ["ConfigEmail"], () => require("./configEmail"));
 
+export { ConfigSecurityArgs, ConfigSecurityState } from "./configSecurity";
+export type ConfigSecurity = import("./configSecurity").ConfigSecurity;
+export const ConfigSecurity: typeof import("./configSecurity").ConfigSecurity = null as any;
+utilities.lazyLoad(exports, ["ConfigSecurity"], () => require("./configSecurity"));
+
 export { ConfigSystemArgs, ConfigSystemState } from "./configSystem";
 export type ConfigSystem = import("./configSystem").ConfigSystem;
 export const ConfigSystem: typeof import("./configSystem").ConfigSystem = null as any;
@@ -128,6 +133,8 @@ const _module = {
                 return new ConfigAuth(name, <any>undefined, { urn })
             case "harbor:index/configEmail:ConfigEmail":
                 return new ConfigEmail(name, <any>undefined, { urn })
+            case "harbor:index/configSecurity:ConfigSecurity":
+                return new ConfigSecurity(name, <any>undefined, { urn })
             case "harbor:index/configSystem:ConfigSystem":
                 return new ConfigSystem(name, <any>undefined, { urn })
             case "harbor:index/garbageCollection:GarbageCollection":
@@ -167,6 +174,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("harbor", "index/configAuth", _module)
 pulumi.runtime.registerResourceModule("harbor", "index/configEmail", _module)
+pulumi.runtime.registerResourceModule("harbor", "index/configSecurity", _module)
 pulumi.runtime.registerResourceModule("harbor", "index/configSystem", _module)
 pulumi.runtime.registerResourceModule("harbor", "index/garbageCollection", _module)
 pulumi.runtime.registerResourceModule("harbor", "index/group", _module)

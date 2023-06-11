@@ -49,6 +49,9 @@ namespace Pulumiverse.Harbor
         [Output("groupType")]
         public Output<int> GroupType { get; private set; } = null!;
 
+        [Output("ldapGroupDn")]
+        public Output<string?> LdapGroupDn { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Group resource with the given unique name, arguments, and options.
@@ -102,6 +105,9 @@ namespace Pulumiverse.Harbor
         [Input("groupType", required: true)]
         public Input<int> GroupType { get; set; } = null!;
 
+        [Input("ldapGroupDn")]
+        public Input<string>? LdapGroupDn { get; set; }
+
         public GroupArgs()
         {
         }
@@ -115,6 +121,9 @@ namespace Pulumiverse.Harbor
 
         [Input("groupType")]
         public Input<int>? GroupType { get; set; }
+
+        [Input("ldapGroupDn")]
+        public Input<string>? LdapGroupDn { get; set; }
 
         public GroupState()
         {

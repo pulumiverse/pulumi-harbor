@@ -31,7 +31,7 @@ import (
 //			}
 //			_, err = harbor.NewRetentionPolicy(ctx, "mainRetentionPolicy", &harbor.RetentionPolicyArgs{
 //				Scope:    mainProject.ID(),
-//				Schedule: pulumi.String("daily"),
+//				Schedule: pulumi.String("Daily"),
 //				Rules: harbor.RetentionPolicyRuleArray{
 //					&harbor.RetentionPolicyRuleArgs{
 //						NDaysSinceLastPull: pulumi.Int(5),
@@ -41,7 +41,7 @@ import (
 //					&harbor.RetentionPolicyRuleArgs{
 //						NDaysSinceLastPush: pulumi.Int(10),
 //						RepoMatching:       pulumi.String("**"),
-//						TagMatching:        pulumi.String("latest"),
+//						TagMatching:        pulumi.String("{latest,snapshot}"),
 //					},
 //				},
 //			})
@@ -70,7 +70,7 @@ type RetentionPolicy struct {
 
 	// Al collection of rule blocks as documented below.
 	Rules RetentionPolicyRuleArrayOutput `pulumi:"rules"`
-	// The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+	// The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
 	Schedule pulumi.StringPtrOutput `pulumi:"schedule"`
 	// The project id of which you would like to apply this policy.
 	Scope pulumi.StringOutput `pulumi:"scope"`
@@ -114,7 +114,7 @@ func GetRetentionPolicy(ctx *pulumi.Context,
 type retentionPolicyState struct {
 	// Al collection of rule blocks as documented below.
 	Rules []RetentionPolicyRule `pulumi:"rules"`
-	// The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+	// The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
 	Schedule *string `pulumi:"schedule"`
 	// The project id of which you would like to apply this policy.
 	Scope *string `pulumi:"scope"`
@@ -123,7 +123,7 @@ type retentionPolicyState struct {
 type RetentionPolicyState struct {
 	// Al collection of rule blocks as documented below.
 	Rules RetentionPolicyRuleArrayInput
-	// The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+	// The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
 	Schedule pulumi.StringPtrInput
 	// The project id of which you would like to apply this policy.
 	Scope pulumi.StringPtrInput
@@ -136,7 +136,7 @@ func (RetentionPolicyState) ElementType() reflect.Type {
 type retentionPolicyArgs struct {
 	// Al collection of rule blocks as documented below.
 	Rules []RetentionPolicyRule `pulumi:"rules"`
-	// The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+	// The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
 	Schedule *string `pulumi:"schedule"`
 	// The project id of which you would like to apply this policy.
 	Scope string `pulumi:"scope"`
@@ -146,7 +146,7 @@ type retentionPolicyArgs struct {
 type RetentionPolicyArgs struct {
 	// Al collection of rule blocks as documented below.
 	Rules RetentionPolicyRuleArrayInput
-	// The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+	// The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
 	Schedule pulumi.StringPtrInput
 	// The project id of which you would like to apply this policy.
 	Scope pulumi.StringInput
@@ -244,7 +244,7 @@ func (o RetentionPolicyOutput) Rules() RetentionPolicyRuleArrayOutput {
 	return o.ApplyT(func(v *RetentionPolicy) RetentionPolicyRuleArrayOutput { return v.Rules }).(RetentionPolicyRuleArrayOutput)
 }
 
-// The schedule of when you would like the policy to run. This can be `hourly`, `daily`, `weekly` or can be a custom cron string.
+// The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
 func (o RetentionPolicyOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RetentionPolicy) pulumi.StringPtrOutput { return v.Schedule }).(pulumi.StringPtrOutput)
 }

@@ -46,6 +46,9 @@ namespace Pulumiverse.Harbor
         [Output("robotTokenExpiration")]
         public Output<int?> RobotTokenExpiration { get; private set; } = null!;
 
+        [Output("scannerSkipUpdatePulltime")]
+        public Output<bool?> ScannerSkipUpdatePulltime { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a ConfigSystem resource with the given unique name, arguments, and options.
@@ -105,6 +108,9 @@ namespace Pulumiverse.Harbor
         [Input("robotTokenExpiration")]
         public Input<int>? RobotTokenExpiration { get; set; }
 
+        [Input("scannerSkipUpdatePulltime")]
+        public Input<bool>? ScannerSkipUpdatePulltime { get; set; }
+
         public ConfigSystemArgs()
         {
         }
@@ -124,6 +130,9 @@ namespace Pulumiverse.Harbor
 
         [Input("robotTokenExpiration")]
         public Input<int>? RobotTokenExpiration { get; set; }
+
+        [Input("scannerSkipUpdatePulltime")]
+        public Input<bool>? ScannerSkipUpdatePulltime { get; set; }
 
         public ConfigSystemState()
         {

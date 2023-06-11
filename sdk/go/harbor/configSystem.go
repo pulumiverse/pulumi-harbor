@@ -44,6 +44,7 @@ type ConfigSystem struct {
 	ReadOnly                   pulumi.BoolPtrOutput   `pulumi:"readOnly"`
 	RobotNamePrefix            pulumi.StringPtrOutput `pulumi:"robotNamePrefix"`
 	RobotTokenExpiration       pulumi.IntPtrOutput    `pulumi:"robotTokenExpiration"`
+	ScannerSkipUpdatePulltime  pulumi.BoolPtrOutput   `pulumi:"scannerSkipUpdatePulltime"`
 }
 
 // NewConfigSystem registers a new resource with the given unique name, arguments, and options.
@@ -80,6 +81,7 @@ type configSystemState struct {
 	ReadOnly                   *bool   `pulumi:"readOnly"`
 	RobotNamePrefix            *string `pulumi:"robotNamePrefix"`
 	RobotTokenExpiration       *int    `pulumi:"robotTokenExpiration"`
+	ScannerSkipUpdatePulltime  *bool   `pulumi:"scannerSkipUpdatePulltime"`
 }
 
 type ConfigSystemState struct {
@@ -87,6 +89,7 @@ type ConfigSystemState struct {
 	ReadOnly                   pulumi.BoolPtrInput
 	RobotNamePrefix            pulumi.StringPtrInput
 	RobotTokenExpiration       pulumi.IntPtrInput
+	ScannerSkipUpdatePulltime  pulumi.BoolPtrInput
 }
 
 func (ConfigSystemState) ElementType() reflect.Type {
@@ -98,6 +101,7 @@ type configSystemArgs struct {
 	ReadOnly                   *bool   `pulumi:"readOnly"`
 	RobotNamePrefix            *string `pulumi:"robotNamePrefix"`
 	RobotTokenExpiration       *int    `pulumi:"robotTokenExpiration"`
+	ScannerSkipUpdatePulltime  *bool   `pulumi:"scannerSkipUpdatePulltime"`
 }
 
 // The set of arguments for constructing a ConfigSystem resource.
@@ -106,6 +110,7 @@ type ConfigSystemArgs struct {
 	ReadOnly                   pulumi.BoolPtrInput
 	RobotNamePrefix            pulumi.StringPtrInput
 	RobotTokenExpiration       pulumi.IntPtrInput
+	ScannerSkipUpdatePulltime  pulumi.BoolPtrInput
 }
 
 func (ConfigSystemArgs) ElementType() reflect.Type {
@@ -209,6 +214,10 @@ func (o ConfigSystemOutput) RobotNamePrefix() pulumi.StringPtrOutput {
 
 func (o ConfigSystemOutput) RobotTokenExpiration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConfigSystem) pulumi.IntPtrOutput { return v.RobotTokenExpiration }).(pulumi.IntPtrOutput)
+}
+
+func (o ConfigSystemOutput) ScannerSkipUpdatePulltime() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConfigSystem) pulumi.BoolPtrOutput { return v.ScannerSkipUpdatePulltime }).(pulumi.BoolPtrOutput)
 }
 
 type ConfigSystemArrayOutput struct{ *pulumi.OutputState }

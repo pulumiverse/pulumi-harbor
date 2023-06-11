@@ -52,8 +52,9 @@ import (
 type Group struct {
 	pulumi.CustomResourceState
 
-	GroupName pulumi.StringOutput `pulumi:"groupName"`
-	GroupType pulumi.IntOutput    `pulumi:"groupType"`
+	GroupName   pulumi.StringOutput    `pulumi:"groupName"`
+	GroupType   pulumi.IntOutput       `pulumi:"groupType"`
+	LdapGroupDn pulumi.StringPtrOutput `pulumi:"ldapGroupDn"`
 }
 
 // NewGroup registers a new resource with the given unique name, arguments, and options.
@@ -92,13 +93,15 @@ func GetGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
-	GroupName *string `pulumi:"groupName"`
-	GroupType *int    `pulumi:"groupType"`
+	GroupName   *string `pulumi:"groupName"`
+	GroupType   *int    `pulumi:"groupType"`
+	LdapGroupDn *string `pulumi:"ldapGroupDn"`
 }
 
 type GroupState struct {
-	GroupName pulumi.StringPtrInput
-	GroupType pulumi.IntPtrInput
+	GroupName   pulumi.StringPtrInput
+	GroupType   pulumi.IntPtrInput
+	LdapGroupDn pulumi.StringPtrInput
 }
 
 func (GroupState) ElementType() reflect.Type {
@@ -106,14 +109,16 @@ func (GroupState) ElementType() reflect.Type {
 }
 
 type groupArgs struct {
-	GroupName string `pulumi:"groupName"`
-	GroupType int    `pulumi:"groupType"`
+	GroupName   string  `pulumi:"groupName"`
+	GroupType   int     `pulumi:"groupType"`
+	LdapGroupDn *string `pulumi:"ldapGroupDn"`
 }
 
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
-	GroupName pulumi.StringInput
-	GroupType pulumi.IntInput
+	GroupName   pulumi.StringInput
+	GroupType   pulumi.IntInput
+	LdapGroupDn pulumi.StringPtrInput
 }
 
 func (GroupArgs) ElementType() reflect.Type {
@@ -209,6 +214,10 @@ func (o GroupOutput) GroupName() pulumi.StringOutput {
 
 func (o GroupOutput) GroupType() pulumi.IntOutput {
 	return o.ApplyT(func(v *Group) pulumi.IntOutput { return v.GroupType }).(pulumi.IntOutput)
+}
+
+func (o GroupOutput) LdapGroupDn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.LdapGroupDn }).(pulumi.StringPtrOutput)
 }
 
 type GroupArrayOutput struct{ *pulumi.OutputState }

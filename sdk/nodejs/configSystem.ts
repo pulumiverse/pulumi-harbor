@@ -50,6 +50,7 @@ export class ConfigSystem extends pulumi.CustomResource {
     public readonly readOnly!: pulumi.Output<boolean | undefined>;
     public readonly robotNamePrefix!: pulumi.Output<string | undefined>;
     public readonly robotTokenExpiration!: pulumi.Output<number | undefined>;
+    public readonly scannerSkipUpdatePulltime!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a ConfigSystem resource with the given unique name, arguments, and options.
@@ -68,12 +69,14 @@ export class ConfigSystem extends pulumi.CustomResource {
             resourceInputs["readOnly"] = state ? state.readOnly : undefined;
             resourceInputs["robotNamePrefix"] = state ? state.robotNamePrefix : undefined;
             resourceInputs["robotTokenExpiration"] = state ? state.robotTokenExpiration : undefined;
+            resourceInputs["scannerSkipUpdatePulltime"] = state ? state.scannerSkipUpdatePulltime : undefined;
         } else {
             const args = argsOrState as ConfigSystemArgs | undefined;
             resourceInputs["projectCreationRestriction"] = args ? args.projectCreationRestriction : undefined;
             resourceInputs["readOnly"] = args ? args.readOnly : undefined;
             resourceInputs["robotNamePrefix"] = args ? args.robotNamePrefix : undefined;
             resourceInputs["robotTokenExpiration"] = args ? args.robotTokenExpiration : undefined;
+            resourceInputs["scannerSkipUpdatePulltime"] = args ? args.scannerSkipUpdatePulltime : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConfigSystem.__pulumiType, name, resourceInputs, opts);
@@ -88,6 +91,7 @@ export interface ConfigSystemState {
     readOnly?: pulumi.Input<boolean>;
     robotNamePrefix?: pulumi.Input<string>;
     robotTokenExpiration?: pulumi.Input<number>;
+    scannerSkipUpdatePulltime?: pulumi.Input<boolean>;
 }
 
 /**
@@ -98,4 +102,5 @@ export interface ConfigSystemArgs {
     readOnly?: pulumi.Input<boolean>;
     robotNamePrefix?: pulumi.Input<string>;
     robotTokenExpiration?: pulumi.Input<number>;
+    scannerSkipUpdatePulltime?: pulumi.Input<boolean>;
 }
