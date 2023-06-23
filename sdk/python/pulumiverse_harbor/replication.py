@@ -361,7 +361,7 @@ class Replication(pulumi.CustomResource):
         alpine_replication = harbor.Replication("alpineReplication",
             action="pull",
             registry_id=main.registry_id,
-            schedule="* 0/15 * * * *",
+            schedule="0 0/15 * * * *",
             filters=[
                 harbor.ReplicationFilterArgs(
                     name="library/alpine",
@@ -425,7 +425,7 @@ class Replication(pulumi.CustomResource):
         alpine_replication = harbor.Replication("alpineReplication",
             action="pull",
             registry_id=main.registry_id,
-            schedule="* 0/15 * * * *",
+            schedule="0 0/15 * * * *",
             filters=[
                 harbor.ReplicationFilterArgs(
                     name="library/alpine",
