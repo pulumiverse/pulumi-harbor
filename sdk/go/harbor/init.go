@@ -46,6 +46,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectMemberUser{}
 	case "harbor:index/projectWebhook:ProjectWebhook":
 		r = &ProjectWebhook{}
+	case "harbor:index/purgeAuditLog:PurgeAuditLog":
+		r = &PurgeAuditLog{}
 	case "harbor:index/registry:Registry":
 		r = &Registry{}
 	case "harbor:index/replication:Replication":
@@ -149,6 +151,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harbor",
 		"index/projectWebhook",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harbor",
+		"index/purgeAuditLog",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

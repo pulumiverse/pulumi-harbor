@@ -37,7 +37,7 @@ namespace Pulumiverse.Harbor
     ///     {
     ///         Action = "pull",
     ///         RegistryId = main.RegistryId,
-    ///         Schedule = "* 0/15 * * * *",
+    ///         Schedule = "0 0/15 * * * *",
     ///         Filters = new[]
     ///         {
     ///             new Harbor.Inputs.ReplicationFilterArgs

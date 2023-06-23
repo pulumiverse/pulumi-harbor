@@ -42,7 +42,7 @@ import (
 //			_, err = harbor.NewReplication(ctx, "alpineReplication", &harbor.ReplicationArgs{
 //				Action:     pulumi.String("pull"),
 //				RegistryId: main.RegistryId,
-//				Schedule:   pulumi.String("* 0/15 * * * *"),
+//				Schedule:   pulumi.String("0 0/15 * * * *"),
 //				Filters: harbor.ReplicationFilterArray{
 //					&harbor.ReplicationFilterArgs{
 //						Name: pulumi.String("library/alpine"),

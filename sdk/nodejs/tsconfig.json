@@ -32,6 +32,7 @@
         "projectMemberUser.ts",
         "projectWebhook.ts",
         "provider.ts",
+        "purgeAuditLog.ts",
         "registry.ts",
         "replication.ts",
         "retentionPolicy.ts",

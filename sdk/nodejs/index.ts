@@ -85,6 +85,11 @@ export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
 utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
+export { PurgeAuditLogArgs, PurgeAuditLogState } from "./purgeAuditLog";
+export type PurgeAuditLog = import("./purgeAuditLog").PurgeAuditLog;
+export const PurgeAuditLog: typeof import("./purgeAuditLog").PurgeAuditLog = null as any;
+utilities.lazyLoad(exports, ["PurgeAuditLog"], () => require("./purgeAuditLog"));
+
 export { RegistryArgs, RegistryState } from "./registry";
 export type Registry = import("./registry").Registry;
 export const Registry: typeof import("./registry").Registry = null as any;
@@ -155,6 +160,8 @@ const _module = {
                 return new ProjectMemberUser(name, <any>undefined, { urn })
             case "harbor:index/projectWebhook:ProjectWebhook":
                 return new ProjectWebhook(name, <any>undefined, { urn })
+            case "harbor:index/purgeAuditLog:PurgeAuditLog":
+                return new PurgeAuditLog(name, <any>undefined, { urn })
             case "harbor:index/registry:Registry":
                 return new Registry(name, <any>undefined, { urn })
             case "harbor:index/replication:Replication":
@@ -185,6 +192,7 @@ pulumi.runtime.registerResourceModule("harbor", "index/project", _module)
 pulumi.runtime.registerResourceModule("harbor", "index/projectMemberGroup", _module)
 pulumi.runtime.registerResourceModule("harbor", "index/projectMemberUser", _module)
 pulumi.runtime.registerResourceModule("harbor", "index/projectWebhook", _module)
+pulumi.runtime.registerResourceModule("harbor", "index/purgeAuditLog", _module)
 pulumi.runtime.registerResourceModule("harbor", "index/registry", _module)
 pulumi.runtime.registerResourceModule("harbor", "index/replication", _module)
 pulumi.runtime.registerResourceModule("harbor", "index/retentionPolicy", _module)

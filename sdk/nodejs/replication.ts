@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * const alpineReplication = new harbor.Replication("alpineReplication", {
  *     action: "pull",
  *     registryId: main.registryId,
- *     schedule: "* 0/15 * * * *",
+ *     schedule: "0 0/15 * * * *",
  *     filters: [
  *         {
  *             name: "library/alpine",

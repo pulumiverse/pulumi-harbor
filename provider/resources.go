@@ -123,6 +123,7 @@ func Provider() tfbridge.ProviderInfo {
 			"harbor_tasks":                  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Tasks")},
 			"harbor_user":                   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "User")},
 			"harbor_config_security":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ConfigSecurity")},
+			"harbor_purge_audit_log":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "PurgeAuditLog")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example

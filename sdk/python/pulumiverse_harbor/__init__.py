@@ -21,6 +21,7 @@ from .project_member_group import *
 from .project_member_user import *
 from .project_webhook import *
 from .provider import *
+from .purge_audit_log import *
 from .registry import *
 from .replication import *
 from .retention_policy import *
@@ -142,6 +143,14 @@ _utilities.register(
   "fqn": "pulumiverse_harbor",
   "classes": {
    "harbor:index/projectWebhook:ProjectWebhook": "ProjectWebhook"
+  }
+ },
+ {
+  "pkg": "harbor",
+  "mod": "index/purgeAuditLog",
+  "fqn": "pulumiverse_harbor",
+  "classes": {
+   "harbor:index/purgeAuditLog:PurgeAuditLog": "PurgeAuditLog"
   }
  },
  {
