@@ -39,7 +39,7 @@ jobs:
         run: |
           wget https://github.com/pulumi/pulumictl/releases/download/v0.0.42/pulumictl-v0.0.42-linux-amd64.tar.gz -O /tmp/pulumictl-v0.0.42-linux-amd64.tar.gz
           tar -xvf /tmp/pulumictl-v0.0.42-linux-amd64.tar.gz -C /tmp
-          mv /tmp/pulumictl/pulumictl /usr/local/bin
+          mv /tmp/pulumictl /usr/local/bin
       # - name: Install pulumictl
       #   uses: jaxxstorm/action-install-gh-release@c5ead9a448b4660cf1e7866ee22e4dc56538031a # tag=v1.10.0
       #   env:
