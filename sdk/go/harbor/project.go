@@ -12,75 +12,11 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := harbor.NewProject(ctx, "main", &harbor.ProjectArgs{
-//				EnableContentTrust:    pulumi.Bool(true),
-//				Public:                pulumi.String("false"),
-//				VulnerabilityScanning: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ## Harbor project example as proxy cache
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			docker, err := harbor.NewRegistry(ctx, "docker", &harbor.RegistryArgs{
-//				ProviderName: pulumi.String("docker-hub"),
-//				EndpointUrl:  pulumi.String("https://hub.docker.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = harbor.NewProject(ctx, "main", &harbor.ProjectArgs{
-//				RegistryId: docker.RegistryId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
-// Harbor project can be imported using the `project id` eg, `
-//
-// ```sh
-//
-//	$ pulumi import harbor:index/project:Project main /projects/1
-//
-// ```
-//
-//	`
+// Harbor project can be imported using the `project id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/project:Project main /projects/1 <break>```<break><break>`
 type Project struct {
 	pulumi.CustomResourceState
 

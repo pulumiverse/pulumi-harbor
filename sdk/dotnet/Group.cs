@@ -13,32 +13,9 @@ namespace Pulumiverse.Harbor
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harbor = Pulumiverse.Harbor;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var storage_group = new Harbor.Group("storage-group", new()
-    ///     {
-    ///         GroupName = "storage-group",
-    ///         GroupType = 3,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// An OIDC group can be imported using the `group id` eg, `
-    /// 
-    /// ```sh
-    ///  $ pulumi import harbor:index/group:Group storage-group /usergroups/19
-    /// ```
-    /// 
-    ///  `
+    /// An OIDC group can be imported using the `group id` eg, `&lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import harbor:index/group:Group storage-group /usergroups/19 &lt;break&gt;```&lt;break&gt;&lt;break&gt;`
     /// </summary>
     [HarborResourceType("harbor:index/group:Group")]
     public partial class Group : global::Pulumi.CustomResource

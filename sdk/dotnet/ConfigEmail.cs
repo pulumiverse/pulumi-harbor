@@ -12,23 +12,6 @@ namespace Pulumiverse.Harbor
 {
     /// <summary>
     /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harbor = Pulumiverse.Harbor;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var main = new Harbor.ConfigEmail("main", new()
-    ///     {
-    ///         EmailFrom = "dont_reply@acme.com",
-    ///         EmailHost = "server.acme.com",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [HarborResourceType("harbor:index/configEmail:ConfigEmail")]
     public partial class ConfigEmail : global::Pulumi.CustomResource

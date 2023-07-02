@@ -13,85 +13,9 @@ namespace Pulumiverse.Harbor
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harbor = Pulumiverse.Harbor;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var main = new Harbor.Registry("main", new()
-    ///     {
-    ///         ProviderName = "docker-hub",
-    ///         EndpointUrl = "https://hub.docker.com",
-    ///     });
-    /// 
-    ///     var push = new Harbor.Replication("push", new()
-    ///     {
-    ///         Action = "push",
-    ///         RegistryId = main.RegistryId,
-    ///     });
-    /// 
-    ///     var alpineReplication = new Harbor.Replication("alpineReplication", new()
-    ///     {
-    ///         Action = "pull",
-    ///         RegistryId = main.RegistryId,
-    ///         Schedule = "0 0/15 * * * *",
-    ///         Filters = new[]
-    ///         {
-    ///             new Harbor.Inputs.ReplicationFilterArgs
-    ///             {
-    ///                 Name = "library/alpine",
-    ///             },
-    ///             new Harbor.Inputs.ReplicationFilterArgs
-    ///             {
-    ///                 Tag = "3.*.*",
-    ///             },
-    ///             new Harbor.Inputs.ReplicationFilterArgs
-    ///             {
-    ///                 Resource = "artifact",
-    ///             },
-    ///             new Harbor.Inputs.ReplicationFilterArgs
-    ///             {
-    ///                 Labels = new[]
-    ///                 {
-    ///                     "qa",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var alpineIndex_replicationReplication = new Harbor.Replication("alpineIndex/replicationReplication", new()
-    ///     {
-    ///         Action = "pull",
-    ///         RegistryId = main.RegistryId,
-    ///         Schedule = "event_based",
-    ///         Filters = new[]
-    ///         {
-    ///             new Harbor.Inputs.ReplicationFilterArgs
-    ///             {
-    ///                 Name = "library/alpine",
-    ///             },
-    ///             new Harbor.Inputs.ReplicationFilterArgs
-    ///             {
-    ///                 Tag = "3.*.*",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// Harbor project can be imported using the `replication id` eg, `
-    /// 
-    /// ```sh
-    ///  $ pulumi import harbor:index/replication:Replication main /replication/policies/1
-    /// ```
-    /// 
-    ///  `
+    /// Harbor project can be imported using the `replication id` eg, `&lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import harbor:index/replication:Replication main /replication/policies/1 &lt;break&gt;```&lt;break&gt;&lt;break&gt;`
     /// </summary>
     [HarborResourceType("harbor:index/replication:Replication")]
     public partial class Replication : global::Pulumi.CustomResource

@@ -111,14 +111,6 @@ def get_registry(name: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegistryResult:
     """
     ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_harbor as harbor
-
-    main = harbor.get_registry(name="test_docker_harbor")
-    pulumi.export("harborRegistryId", main.id)
-    ```
     """
     __args__ = dict()
     __args__['name'] = name
@@ -126,14 +118,14 @@ def get_registry(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harbor:index/getRegistry:getRegistry', __args__, opts=opts, typ=GetRegistryResult).value
 
     return AwaitableGetRegistryResult(
-        description=__ret__.description,
-        id=__ret__.id,
-        insecure=__ret__.insecure,
-        name=__ret__.name,
-        registry_id=__ret__.registry_id,
-        status=__ret__.status,
-        type=__ret__.type,
-        url=__ret__.url)
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        insecure=pulumi.get(__ret__, 'insecure'),
+        name=pulumi.get(__ret__, 'name'),
+        registry_id=pulumi.get(__ret__, 'registry_id'),
+        status=pulumi.get(__ret__, 'status'),
+        type=pulumi.get(__ret__, 'type'),
+        url=pulumi.get(__ret__, 'url'))
 
 
 @_utilities.lift_output_func(get_registry)
@@ -141,13 +133,5 @@ def get_registry_output(name: Optional[pulumi.Input[str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegistryResult]:
     """
     ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_harbor as harbor
-
-    main = harbor.get_registry(name="test_docker_harbor")
-    pulumi.export("harborRegistryId", main.id)
-    ```
     """
     ...

@@ -12,31 +12,6 @@ import (
 )
 
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := harbor.NewGarbageCollection(ctx, "main", &harbor.GarbageCollectionArgs{
-//				DeleteUntagged: pulumi.Bool(true),
-//				Schedule:       pulumi.String("Daily"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type GarbageCollection struct {
 	pulumi.CustomResourceState
 

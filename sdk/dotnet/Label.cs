@@ -14,53 +14,12 @@ namespace Pulumiverse.Harbor
     /// ## Example Usage
     /// 
     /// * Create a global label within harbor
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harbor = Pulumiverse.Harbor;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var main = new Harbor.Label("main", new()
-    ///     {
-    ///         Color = "#FF0000",
-    ///         Description = "Description to for acceptance test",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// * Creates a label for project
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harbor = Pulumiverse.Harbor;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var mainProject = new Harbor.Project("mainProject");
-    /// 
-    ///     var mainLabel = new Harbor.Label("mainLabel", new()
-    ///     {
-    ///         Color = "#FFFFFF",
-    ///         Description = "Description for acceptance test",
-    ///         ProjectId = mainProject.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 
-    /// Harbor label can be imported using the `label id` eg, `
-    /// 
-    /// ```sh
-    ///  $ pulumi import harbor:index/label:Label main /labels/1
-    /// ```
-    /// 
-    ///  `
+    /// Harbor label can be imported using the `label id` eg, `&lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import harbor:index/label:Label main /labels/1 &lt;break&gt;```&lt;break&gt;&lt;break&gt;`
     /// </summary>
     [HarborResourceType("harbor:index/label:Label")]
     public partial class Label : global::Pulumi.CustomResource

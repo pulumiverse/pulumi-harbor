@@ -13,45 +13,9 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := harbor.NewConfigSecurity(ctx, "main", &harbor.ConfigSecurityArgs{
-//				CveAllowlists: pulumi.StringArray{
-//					pulumi.String("CVE-456"),
-//					pulumi.String("CVE-123"),
-//				},
-//				ExpiresAt: pulumi.Int(1701167767),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
-// The list can be imported using the `id` eg, `
-//
-// ```sh
-//
-//	$ pulumi import harbor:index/configSecurity:ConfigSecurity main "7"
-//
-// ```
-//
-//	` > Note that at this point of time Harbor doesn't has any api endpoint for deleting this list. Only updating the records.
+// The list can be imported using the `id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/configSecurity:ConfigSecurity main "7" <break>```<break><break>` > Note that at this point of time Harbor doesn't has any api endpoint for deleting this list. Only updating the records.
 type ConfigSecurity struct {
 	pulumi.CustomResourceState
 

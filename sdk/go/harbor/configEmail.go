@@ -12,31 +12,6 @@ import (
 )
 
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := harbor.NewConfigEmail(ctx, "main", &harbor.ConfigEmailArgs{
-//				EmailFrom: pulumi.String("dont_reply@acme.com"),
-//				EmailHost: pulumi.String("server.acme.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type ConfigEmail struct {
 	pulumi.CustomResourceState
 

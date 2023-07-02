@@ -9,61 +9,9 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harbor from "@pulumiverse/harbor";
- *
- * const main = new harbor.Registry("main", {
- *     providerName: "docker-hub",
- *     endpointUrl: "https://hub.docker.com",
- * });
- * const push = new harbor.Replication("push", {
- *     action: "push",
- *     registryId: main.registryId,
- * });
- * const alpineReplication = new harbor.Replication("alpineReplication", {
- *     action: "pull",
- *     registryId: main.registryId,
- *     schedule: "0 0/15 * * * *",
- *     filters: [
- *         {
- *             name: "library/alpine",
- *         },
- *         {
- *             tag: "3.*.*",
- *         },
- *         {
- *             resource: "artifact",
- *         },
- *         {
- *             labels: ["qa"],
- *         },
- *     ],
- * });
- * const alpineIndex_replicationReplication = new harbor.Replication("alpineIndex/replicationReplication", {
- *     action: "pull",
- *     registryId: main.registryId,
- *     schedule: "event_based",
- *     filters: [
- *         {
- *             name: "library/alpine",
- *         },
- *         {
- *             tag: "3.*.*",
- *         },
- *     ],
- * });
- * ```
- *
  * ## Import
  *
- * Harbor project can be imported using the `replication id` eg, `
- *
- * ```sh
- *  $ pulumi import harbor:index/replication:Replication main /replication/policies/1
- * ```
- *
- *  `
+ * Harbor project can be imported using the `replication id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/replication:Replication main /replication/policies/1 <break>```<break><break>`
  */
 export class Replication extends pulumi.CustomResource {
     /**

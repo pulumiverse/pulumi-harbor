@@ -11,31 +11,6 @@ import (
 )
 
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			main, err := harbor.LookupProject(ctx, &harbor.LookupProjectArgs{
-//				Name: "library",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("projectId", main.Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupProjectResult

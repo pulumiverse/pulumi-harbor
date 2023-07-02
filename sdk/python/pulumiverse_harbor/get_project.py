@@ -84,14 +84,6 @@ def get_project(name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
     ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_harbor as harbor
-
-    main = harbor.get_project(name="library")
-    pulumi.export("projectId", main.id)
-    ```
     """
     __args__ = dict()
     __args__['name'] = name
@@ -99,11 +91,11 @@ def get_project(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('harbor:index/getProject:getProject', __args__, opts=opts, typ=GetProjectResult).value
 
     return AwaitableGetProjectResult(
-        id=__ret__.id,
-        name=__ret__.name,
-        project_id=__ret__.project_id,
-        public=__ret__.public,
-        vulnerability_scanning=__ret__.vulnerability_scanning)
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        public=pulumi.get(__ret__, 'public'),
+        vulnerability_scanning=pulumi.get(__ret__, 'vulnerability_scanning'))
 
 
 @_utilities.lift_output_func(get_project)
@@ -111,13 +103,5 @@ def get_project_output(name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
     """
     ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_harbor as harbor
-
-    main = harbor.get_project(name="library")
-    pulumi.export("projectId", main.id)
-    ```
     """
     ...

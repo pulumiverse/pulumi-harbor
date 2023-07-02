@@ -133,27 +133,9 @@ class ConfigSecurity(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main = harbor.ConfigSecurity("main",
-            cve_allowlists=[
-                "CVE-456",
-                "CVE-123",
-            ],
-            expires_at=1701167767)
-        ```
-
         ## Import
 
-        The list can be imported using the `id` eg, `
-
-        ```sh
-         $ pulumi import harbor:index/configSecurity:ConfigSecurity main "7"
-        ```
-
-         ` > Note that at this point of time Harbor doesn't has any api endpoint for deleting this list. Only updating the records.
+        The list can be imported using the `id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/configSecurity:ConfigSecurity main "7" <break>```<break><break>` > Note that at this point of time Harbor doesn't has any api endpoint for deleting this list. Only updating the records.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -169,27 +151,9 @@ class ConfigSecurity(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main = harbor.ConfigSecurity("main",
-            cve_allowlists=[
-                "CVE-456",
-                "CVE-123",
-            ],
-            expires_at=1701167767)
-        ```
-
         ## Import
 
-        The list can be imported using the `id` eg, `
-
-        ```sh
-         $ pulumi import harbor:index/configSecurity:ConfigSecurity main "7"
-        ```
-
-         ` > Note that at this point of time Harbor doesn't has any api endpoint for deleting this list. Only updating the records.
+        The list can be imported using the `id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/configSecurity:ConfigSecurity main "7" <break>```<break><break>` > Note that at this point of time Harbor doesn't has any api endpoint for deleting this list. Only updating the records.
 
         :param str resource_name: The name of the resource.
         :param ConfigSecurityArgs args: The arguments to use to populate this resource's properties.

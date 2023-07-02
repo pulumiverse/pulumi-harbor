@@ -135,37 +135,9 @@ class RetentionPolicy(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main_project = harbor.Project("mainProject")
-        main_retention_policy = harbor.RetentionPolicy("mainRetentionPolicy",
-            scope=main_project.id,
-            schedule="Daily",
-            rules=[
-                harbor.RetentionPolicyRuleArgs(
-                    n_days_since_last_pull=5,
-                    repo_matching="**",
-                    tag_matching="latest",
-                ),
-                harbor.RetentionPolicyRuleArgs(
-                    n_days_since_last_push=10,
-                    repo_matching="**",
-                    tag_matching="{latest,snapshot}",
-                ),
-            ])
-        ```
-
         ## Import
 
-        Harbor retention policy can be imported using the `retention_policy id` eg, `
-
-        ```sh
-         $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10
-        ```
-
-         `
+        Harbor retention policy can be imported using the `retention_policy id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10 <break>```<break><break>`
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -182,37 +154,9 @@ class RetentionPolicy(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main_project = harbor.Project("mainProject")
-        main_retention_policy = harbor.RetentionPolicy("mainRetentionPolicy",
-            scope=main_project.id,
-            schedule="Daily",
-            rules=[
-                harbor.RetentionPolicyRuleArgs(
-                    n_days_since_last_pull=5,
-                    repo_matching="**",
-                    tag_matching="latest",
-                ),
-                harbor.RetentionPolicyRuleArgs(
-                    n_days_since_last_push=10,
-                    repo_matching="**",
-                    tag_matching="{latest,snapshot}",
-                ),
-            ])
-        ```
-
         ## Import
 
-        Harbor retention policy can be imported using the `retention_policy id` eg, `
-
-        ```sh
-         $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10
-        ```
-
-         `
+        Harbor retention policy can be imported using the `retention_policy id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10 <break>```<break><break>`
 
         :param str resource_name: The name of the resource.
         :param RetentionPolicyArgs args: The arguments to use to populate this resource's properties.

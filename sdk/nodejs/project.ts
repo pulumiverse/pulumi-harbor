@@ -7,39 +7,11 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harbor from "@pulumiverse/harbor";
- *
- * const main = new harbor.Project("main", {
- *     enableContentTrust: true,
- *     "public": "false",
- *     vulnerabilityScanning: true,
- * });
- * // (Optional) Default vale is true. Automatically scan images on push
- * ```
  * ## Harbor project example as proxy cache
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harbor from "@pulumiverse/harbor";
- *
- * const docker = new harbor.Registry("docker", {
- *     providerName: "docker-hub",
- *     endpointUrl: "https://hub.docker.com",
- * });
- * const main = new harbor.Project("main", {registryId: docker.registryId});
- * ```
  *
  * ## Import
  *
- * Harbor project can be imported using the `project id` eg, `
- *
- * ```sh
- *  $ pulumi import harbor:index/project:Project main /projects/1
- * ```
- *
- *  `
+ * Harbor project can be imported using the `project id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/project:Project main /projects/1 <break>```<break><break>`
  */
 export class Project extends pulumi.CustomResource {
     /**

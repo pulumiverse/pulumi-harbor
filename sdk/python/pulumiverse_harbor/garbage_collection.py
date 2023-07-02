@@ -85,15 +85,6 @@ class GarbageCollection(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main = harbor.GarbageCollection("main",
-            delete_untagged=True,
-            schedule="Daily")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -105,15 +96,6 @@ class GarbageCollection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main = harbor.GarbageCollection("main",
-            delete_untagged=True,
-            schedule="Daily")
-        ```
 
         :param str resource_name: The name of the resource.
         :param GarbageCollectionArgs args: The arguments to use to populate this resource's properties.

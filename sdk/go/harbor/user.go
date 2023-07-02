@@ -13,44 +13,9 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := harbor.NewUser(ctx, "main", &harbor.UserArgs{
-//				Email:    pulumi.String("john@smith.com"),
-//				FullName: pulumi.String("John Smith"),
-//				Password: pulumi.String("Password12345!"),
-//				Username: pulumi.String("john"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
-// An internal user harbor user can be imported using the `user id` eg, `
-//
-// ```sh
-//
-//	$ pulumi import harbor:index/user:User main /users/19
-//
-// ```
-//
-//	`
+// An internal user harbor user can be imported using the `user id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/user:User main /users/19 <break>```<break><break>`
 type User struct {
 	pulumi.CustomResourceState
 

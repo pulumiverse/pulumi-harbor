@@ -6,16 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harbor from "@pulumi/harbor";
- *
- * const main = harbor.getRegistry({
- *     name: "test_docker_harbor",
- * });
- * export const harborRegistryId = main.then(main => main.id);
- * ```
  */
 export function getRegistry(args: GetRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryResult> {
 
@@ -50,16 +40,6 @@ export interface GetRegistryResult {
 }
 /**
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harbor from "@pulumi/harbor";
- *
- * const main = harbor.getRegistry({
- *     name: "test_docker_harbor",
- * });
- * export const harborRegistryId = main.then(main => main.id);
- * ```
  */
 export function getRegistryOutput(args: GetRegistryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryResult> {
     return pulumi.output(args).apply((a: any) => getRegistry(a, opts))

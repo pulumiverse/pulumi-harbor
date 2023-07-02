@@ -13,35 +13,9 @@ namespace Pulumiverse.Harbor
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harbor = Pulumiverse.Harbor;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var mainProject = new Harbor.Project("mainProject");
-    /// 
-    ///     var mainImmutableTagRule = new Harbor.ImmutableTagRule("mainImmutableTagRule", new()
-    ///     {
-    ///         ProjectId = mainProject.Id,
-    ///         RepoMatching = "**",
-    ///         TagExcluding = "latest",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// Harbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg, `
-    /// 
-    /// ```sh
-    ///  $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25
-    /// ```
-    /// 
-    ///  `
+    /// Harbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg, `&lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25 &lt;break&gt;```&lt;break&gt;&lt;break&gt;`
     /// </summary>
     [HarborResourceType("harbor:index/immutableTagRule:ImmutableTagRule")]
     public partial class ImmutableTagRule : global::Pulumi.CustomResource

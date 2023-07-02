@@ -7,27 +7,9 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harbor from "@pulumiverse/harbor";
- *
- * const mainProject = new harbor.Project("mainProject", {});
- * const mainImmutableTagRule = new harbor.ImmutableTagRule("mainImmutableTagRule", {
- *     projectId: mainProject.id,
- *     repoMatching: "**",
- *     tagExcluding: "latest",
- * });
- * ```
- *
  * ## Import
  *
- * Harbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg, `
- *
- * ```sh
- *  $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25
- * ```
- *
- *  `
+ * Harbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg, `<break><break>```sh<break> $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25 <break>```<break><break>`
  */
 export class ImmutableTagRule extends pulumi.CustomResource {
     /**

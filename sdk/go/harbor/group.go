@@ -13,42 +13,9 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := harbor.NewGroup(ctx, "storage-group", &harbor.GroupArgs{
-//				GroupName: pulumi.String("storage-group"),
-//				GroupType: pulumi.Int(3),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
-// An OIDC group can be imported using the `group id` eg, `
-//
-// ```sh
-//
-//	$ pulumi import harbor:index/group:Group storage-group /usergroups/19
-//
-// ```
-//
-//	`
+// An OIDC group can be imported using the `group id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/group:Group storage-group /usergroups/19 <break>```<break><break>`
 type Group struct {
 	pulumi.CustomResourceState
 

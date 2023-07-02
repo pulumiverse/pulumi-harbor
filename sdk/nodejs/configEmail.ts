@@ -6,16 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harbor from "@pulumiverse/harbor";
- *
- * const main = new harbor.ConfigEmail("main", {
- *     emailFrom: "dont_reply@acme.com",
- *     emailHost: "server.acme.com",
- * });
- * ```
  */
 export class ConfigEmail extends pulumi.CustomResource {
     /**

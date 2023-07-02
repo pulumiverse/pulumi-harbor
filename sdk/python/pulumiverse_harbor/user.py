@@ -182,26 +182,9 @@ class User(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main = harbor.User("main",
-            email="john@smith.com",
-            full_name="John Smith",
-            password="Password12345!",
-            username="john")
-        ```
-
         ## Import
 
-        An internal user harbor user can be imported using the `user id` eg, `
-
-        ```sh
-         $ pulumi import harbor:index/user:User main /users/19
-        ```
-
-         `
+        An internal user harbor user can be imported using the `user id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/user:User main /users/19 <break>```<break><break>`
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -215,26 +198,9 @@ class User(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main = harbor.User("main",
-            email="john@smith.com",
-            full_name="John Smith",
-            password="Password12345!",
-            username="john")
-        ```
-
         ## Import
 
-        An internal user harbor user can be imported using the `user id` eg, `
-
-        ```sh
-         $ pulumi import harbor:index/user:User main /users/19
-        ```
-
-         `
+        An internal user harbor user can be imported using the `user id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/user:User main /users/19 <break>```<break><break>`
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

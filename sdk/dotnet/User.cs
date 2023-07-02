@@ -13,34 +13,9 @@ namespace Pulumiverse.Harbor
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harbor = Pulumiverse.Harbor;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var main = new Harbor.User("main", new()
-    ///     {
-    ///         Email = "john@smith.com",
-    ///         FullName = "John Smith",
-    ///         Password = "Password12345!",
-    ///         Username = "john",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// An internal user harbor user can be imported using the `user id` eg, `
-    /// 
-    /// ```sh
-    ///  $ pulumi import harbor:index/user:User main /users/19
-    /// ```
-    /// 
-    ///  `
+    /// An internal user harbor user can be imported using the `user id` eg, `&lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import harbor:index/user:User main /users/19 &lt;break&gt;```&lt;break&gt;&lt;break&gt;`
     /// </summary>
     [HarborResourceType("harbor:index/user:User")]
     public partial class User : global::Pulumi.CustomResource

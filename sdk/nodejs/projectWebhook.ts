@@ -6,29 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harbor from "@pulumiverse/harbor";
- *
- * const mainProject = new harbor.Project("mainProject", {});
- * const mainProjectWebhook = new harbor.ProjectWebhook("mainProjectWebhook", {
- *     address: "https://webhook.domain.com",
- *     projectId: mainProject.id,
- *     notifyType: "http",
- *     eventsTypes: [
- *         "DELETE_ARTIFACT",
- *         "PULL_ARTIFACT",
- *         "PUSH_ARTIFACT",
- *         "QUOTA_EXCEED",
- *         "QUOTA_WARNING",
- *         "REPLICATION",
- *         "SCANNING_FAILED",
- *         "SCANNING_COMPLETED",
- *         "TAG_RETENTION",
- *     ],
- * });
- * ```
  */
 export class ProjectWebhook extends pulumi.CustomResource {
     /**

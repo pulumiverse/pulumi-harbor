@@ -12,22 +12,6 @@ namespace Pulumiverse.Harbor
 {
     /// <summary>
     /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harbor = Pulumiverse.Harbor;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var main = new Harbor.InterrogationServices("main", new()
-    ///     {
-    ///         VulnerabilityScanPolicy = "Daily",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [HarborResourceType("harbor:index/interrogationServices:InterrogationServices")]
     public partial class InterrogationServices : global::Pulumi.CustomResource

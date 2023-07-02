@@ -7,25 +7,9 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harbor from "@pulumiverse/harbor";
- *
- * const main = new harbor.Registry("main", {
- *     endpointUrl: "https://hub.docker.com",
- *     providerName: "docker-hub",
- * });
- * ```
- *
  * ## Import
  *
- * Harbor project can be imported using the `registry id` eg, `
- *
- * ```sh
- *  $ pulumi import harbor:index/registry:Registry main /registries/7
- * ```
- *
- *  `
+ * Harbor project can be imported using the `registry id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/registry:Registry main /registries/7 <break>```<break><break>`
  */
 export class Registry extends pulumi.CustomResource {
     /**

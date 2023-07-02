@@ -7,25 +7,9 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harbor from "@pulumiverse/harbor";
- *
- * const storage_group = new harbor.Group("storage-group", {
- *     groupName: "storage-group",
- *     groupType: 3,
- * });
- * ```
- *
  * ## Import
  *
- * An OIDC group can be imported using the `group id` eg, `
- *
- * ```sh
- *  $ pulumi import harbor:index/group:Group storage-group /usergroups/19
- * ```
- *
- *  `
+ * An OIDC group can be imported using the `group id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/group:Group storage-group /usergroups/19 <break>```<break><break>`
  */
 export class Group extends pulumi.CustomResource {
     /**

@@ -13,57 +13,11 @@ namespace Pulumiverse.Harbor
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harbor = Pulumiverse.Harbor;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var main = new Harbor.Project("main", new()
-    ///     {
-    ///         EnableContentTrust = true,
-    ///         Public = "false",
-    ///         VulnerabilityScanning = true,
-    ///     });
-    /// 
-    ///     // (Optional) Default vale is true. Automatically scan images on push
-    /// });
-    /// ```
     /// ## Harbor project example as proxy cache
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harbor = Pulumiverse.Harbor;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var docker = new Harbor.Registry("docker", new()
-    ///     {
-    ///         ProviderName = "docker-hub",
-    ///         EndpointUrl = "https://hub.docker.com",
-    ///     });
-    /// 
-    ///     var main = new Harbor.Project("main", new()
-    ///     {
-    ///         RegistryId = docker.RegistryId,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 
-    /// Harbor project can be imported using the `project id` eg, `
-    /// 
-    /// ```sh
-    ///  $ pulumi import harbor:index/project:Project main /projects/1
-    /// ```
-    /// 
-    ///  `
+    /// Harbor project can be imported using the `project id` eg, `&lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import harbor:index/project:Project main /projects/1 &lt;break&gt;```&lt;break&gt;&lt;break&gt;`
     /// </summary>
     [HarborResourceType("harbor:index/project:Project")]
     public partial class Project : global::Pulumi.CustomResource

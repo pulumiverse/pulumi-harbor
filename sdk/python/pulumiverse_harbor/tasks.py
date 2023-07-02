@@ -60,13 +60,6 @@ class Tasks(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main = harbor.Tasks("main", vulnerability_scan_policy="daily")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -78,13 +71,6 @@ class Tasks(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main = harbor.Tasks("main", vulnerability_scan_policy="daily")
-        ```
 
         :param str resource_name: The name of the resource.
         :param TasksArgs args: The arguments to use to populate this resource's properties.

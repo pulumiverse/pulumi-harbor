@@ -13,49 +13,9 @@ namespace Pulumiverse.Harbor
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harbor = Pulumiverse.Harbor;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var mainProject = new Harbor.Project("mainProject");
-    /// 
-    ///     var mainRetentionPolicy = new Harbor.RetentionPolicy("mainRetentionPolicy", new()
-    ///     {
-    ///         Scope = mainProject.Id,
-    ///         Schedule = "Daily",
-    ///         Rules = new[]
-    ///         {
-    ///             new Harbor.Inputs.RetentionPolicyRuleArgs
-    ///             {
-    ///                 NDaysSinceLastPull = 5,
-    ///                 RepoMatching = "**",
-    ///                 TagMatching = "latest",
-    ///             },
-    ///             new Harbor.Inputs.RetentionPolicyRuleArgs
-    ///             {
-    ///                 NDaysSinceLastPush = 10,
-    ///                 RepoMatching = "**",
-    ///                 TagMatching = "{latest,snapshot}",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// Harbor retention policy can be imported using the `retention_policy id` eg, `
-    /// 
-    /// ```sh
-    ///  $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10
-    /// ```
-    /// 
-    ///  `
+    /// Harbor retention policy can be imported using the `retention_policy id` eg, `&lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10 &lt;break&gt;```&lt;break&gt;&lt;break&gt;`
     /// </summary>
     [HarborResourceType("harbor:index/retentionPolicy:RetentionPolicy")]
     public partial class RetentionPolicy : global::Pulumi.CustomResource

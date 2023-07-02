@@ -7,27 +7,9 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harbor from "@pulumiverse/harbor";
- *
- * const main = new harbor.User("main", {
- *     email: "john@smith.com",
- *     fullName: "John Smith",
- *     password: "Password12345!",
- *     username: "john",
- * });
- * ```
- *
  * ## Import
  *
- * An internal user harbor user can be imported using the `user id` eg, `
- *
- * ```sh
- *  $ pulumi import harbor:index/user:User main /users/19
- * ```
- *
- *  `
+ * An internal user harbor user can be imported using the `user id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/user:User main /users/19 <break>```<break><break>`
  */
 export class User extends pulumi.CustomResource {
     /**

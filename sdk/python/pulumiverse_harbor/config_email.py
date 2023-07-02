@@ -209,15 +209,6 @@ class ConfigEmail(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main = harbor.ConfigEmail("main",
-            email_from="dont_reply@acme.com",
-            email_host="server.acme.com")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -229,15 +220,6 @@ class ConfigEmail(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main = harbor.ConfigEmail("main",
-            email_from="dont_reply@acme.com",
-            email_host="server.acme.com")
-        ```
 
         :param str resource_name: The name of the resource.
         :param ConfigEmailArgs args: The arguments to use to populate this resource's properties.

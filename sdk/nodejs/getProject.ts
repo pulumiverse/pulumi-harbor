@@ -6,16 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harbor from "@pulumi/harbor";
- *
- * const main = harbor.getProject({
- *     name: "library",
- * });
- * export const projectId = main.then(main => main.id);
- * ```
  */
 export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
 
@@ -47,16 +37,6 @@ export interface GetProjectResult {
 }
 /**
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harbor from "@pulumi/harbor";
- *
- * const main = harbor.getProject({
- *     name: "library",
- * });
- * export const projectId = main.then(main => main.id);
- * ```
  */
 export function getProjectOutput(args: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
     return pulumi.output(args).apply((a: any) => getProject(a, opts))

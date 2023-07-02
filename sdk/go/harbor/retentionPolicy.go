@@ -13,58 +13,9 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			mainProject, err := harbor.NewProject(ctx, "mainProject", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = harbor.NewRetentionPolicy(ctx, "mainRetentionPolicy", &harbor.RetentionPolicyArgs{
-//				Scope:    mainProject.ID(),
-//				Schedule: pulumi.String("Daily"),
-//				Rules: harbor.RetentionPolicyRuleArray{
-//					&harbor.RetentionPolicyRuleArgs{
-//						NDaysSinceLastPull: pulumi.Int(5),
-//						RepoMatching:       pulumi.String("**"),
-//						TagMatching:        pulumi.String("latest"),
-//					},
-//					&harbor.RetentionPolicyRuleArgs{
-//						NDaysSinceLastPush: pulumi.Int(10),
-//						RepoMatching:       pulumi.String("**"),
-//						TagMatching:        pulumi.String("{latest,snapshot}"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
-// Harbor retention policy can be imported using the `retention_policy id` eg, `
-//
-// ```sh
-//
-//	$ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10
-//
-// ```
-//
-//	`
+// Harbor retention policy can be imported using the `retention_policy id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10 <break>```<break><break>`
 type RetentionPolicy struct {
 	pulumi.CustomResourceState
 

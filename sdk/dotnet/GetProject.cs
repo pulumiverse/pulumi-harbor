@@ -13,61 +13,33 @@ namespace Pulumiverse.Harbor
     public static class GetProject
     {
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harbor = Pulumi.Harbor;
+        /// ```hcl
+        /// data "harbor_project" "main" {
+        ///     name    = "library" 
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var main = Harbor.GetProject.Invoke(new()
-        ///     {
-        ///         Name = "library",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["projectId"] = main.Apply(getProjectResult =&gt; getProjectResult.Id),
-        ///     };
-        /// });
+        /// output "project_id" {
+        ///     value = data.harbor_project.main.id
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectResult> InvokeAsync(GetProjectArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("harbor:index/getProject:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
 
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harbor = Pulumi.Harbor;
+        /// ```hcl
+        /// data "harbor_project" "main" {
+        ///     name    = "library" 
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var main = Harbor.GetProject.Invoke(new()
-        ///     {
-        ///         Name = "library",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["projectId"] = main.Apply(getProjectResult =&gt; getProjectResult.Id),
-        ///     };
-        /// });
+        /// output "project_id" {
+        ///     value = data.harbor_project.main.id
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("harbor:index/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());

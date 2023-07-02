@@ -13,47 +13,9 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			mainProject, err := harbor.NewProject(ctx, "mainProject", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = harbor.NewImmutableTagRule(ctx, "mainImmutableTagRule", &harbor.ImmutableTagRuleArgs{
-//				ProjectId:    mainProject.ID(),
-//				RepoMatching: pulumi.String("**"),
-//				TagExcluding: pulumi.String("latest"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
-// Harbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg, `
-//
-// ```sh
-//
-//	$ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25
-//
-// ```
-//
-//	`
+// Harbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg, `<break><break>```sh<break> $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25 <break>```<break><break>`
 type ImmutableTagRule struct {
 	pulumi.CustomResourceState
 
