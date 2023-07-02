@@ -101,13 +101,6 @@ class InterrogationServices(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main = harbor.InterrogationServices("main", vulnerability_scan_policy="Daily")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] default_scanner: Sets the default interrogation service **Clair**
@@ -121,13 +114,6 @@ class InterrogationServices(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main = harbor.InterrogationServices("main", vulnerability_scan_policy="Daily")
-        ```
 
         :param str resource_name: The name of the resource.
         :param InterrogationServicesArgs args: The arguments to use to populate this resource's properties.

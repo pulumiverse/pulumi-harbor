@@ -225,26 +225,9 @@ class ImmutableTagRule(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main_project = harbor.Project("mainProject")
-        main_immutable_tag_rule = harbor.ImmutableTagRule("mainImmutableTagRule",
-            project_id=main_project.id,
-            repo_matching="**",
-            tag_excluding="latest")
-        ```
-
         ## Import
 
-        Harbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg, `
-
-        ```sh
-         $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25
-        ```
-
-         `
+        Harbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg, `<break><break>```sh<break> $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25 <break>```<break><break>`
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -263,26 +246,9 @@ class ImmutableTagRule(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main_project = harbor.Project("mainProject")
-        main_immutable_tag_rule = harbor.ImmutableTagRule("mainImmutableTagRule",
-            project_id=main_project.id,
-            repo_matching="**",
-            tag_excluding="latest")
-        ```
-
         ## Import
 
-        Harbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg, `
-
-        ```sh
-         $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25
-        ```
-
-         `
+        Harbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg, `<break><break>```sh<break> $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25 <break>```<break><break>`
 
         :param str resource_name: The name of the resource.
         :param ImmutableTagRuleArgs args: The arguments to use to populate this resource's properties.

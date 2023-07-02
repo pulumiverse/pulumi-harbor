@@ -233,24 +233,9 @@ class Registry(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main = harbor.Registry("main",
-            endpoint_url="https://hub.docker.com",
-            provider_name="docker-hub")
-        ```
-
         ## Import
 
-        Harbor project can be imported using the `registry id` eg, `
-
-        ```sh
-         $ pulumi import harbor:index/registry:Registry main /registries/7
-        ```
-
-         `
+        Harbor project can be imported using the `registry id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/registry:Registry main /registries/7 <break>```<break><break>`
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -264,24 +249,9 @@ class Registry(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main = harbor.Registry("main",
-            endpoint_url="https://hub.docker.com",
-            provider_name="docker-hub")
-        ```
-
         ## Import
 
-        Harbor project can be imported using the `registry id` eg, `
-
-        ```sh
-         $ pulumi import harbor:index/registry:Registry main /registries/7
-        ```
-
-         `
+        Harbor project can be imported using the `registry id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/registry:Registry main /registries/7 <break>```<break><break>`
 
         :param str resource_name: The name of the resource.
         :param RegistryArgs args: The arguments to use to populate this resource's properties.

@@ -13,48 +13,9 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			mainProject, err := harbor.NewProject(ctx, "mainProject", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = harbor.NewProjectMemberGroup(ctx, "mainProjectMemberGroup", &harbor.ProjectMemberGroupArgs{
-//				ProjectId: mainProject.ID(),
-//				GroupName: pulumi.String("testing1"),
-//				Role:      pulumi.String("projectadmin"),
-//				Type:      pulumi.String("oidc"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
-// Harbor project member group can be imported using the `project id` and `member id` eg, `
-//
-// ```sh
-//
-//	$ pulumi import harbor:index/projectMemberGroup:ProjectMemberGroup main /projects/10/members/200
-//
-// ```
-//
-//	`
+// Harbor project member group can be imported using the `project id` and `member id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/projectMemberGroup:ProjectMemberGroup main /projects/10/members/200 <break>```<break><break>`
 type ProjectMemberGroup struct {
 	pulumi.CustomResourceState
 

@@ -16,141 +16,20 @@ import (
 // Harbor supports different levels of robot accounts. Currently `system` and `project` level robot accounts are supported.
 //
 // ## Example Usage
+//
 // ### System Level
 // Introduced in harbor 2.2.0, system level robot accounts can have basically [all available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) in harbor and are not dependent on a single project.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewRandomPassword(ctx, "password", &random.RandomPasswordArgs{
-//				Length:  pulumi.Int(12),
-//				Special: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			main, err := harbor.NewProject(ctx, "main", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = harbor.NewRobotAccount(ctx, "system", &harbor.RobotAccountArgs{
-//				Description: pulumi.String("system level robot account"),
-//				Level:       pulumi.String("system"),
-//				Secret:      pulumi.Any(resource.Random_password.Password.Result),
-//				Permissions: harbor.RobotAccountPermissionArray{
-//					&harbor.RobotAccountPermissionArgs{
-//						Accesses: harbor.RobotAccountPermissionAccessArray{
-//							&harbor.RobotAccountPermissionAccessArgs{
-//								Action:   pulumi.String("create"),
-//								Resource: pulumi.String("labels"),
-//							},
-//						},
-//						Kind:      pulumi.String("system"),
-//						Namespace: pulumi.String("/"),
-//					},
-//					&harbor.RobotAccountPermissionArgs{
-//						Accesses: harbor.RobotAccountPermissionAccessArray{
-//							&harbor.RobotAccountPermissionAccessArgs{
-//								Action:   pulumi.String("push"),
-//								Resource: pulumi.String("repository"),
-//							},
-//							&harbor.RobotAccountPermissionAccessArgs{
-//								Action:   pulumi.String("read"),
-//								Resource: pulumi.String("helm-chart"),
-//							},
-//							&harbor.RobotAccountPermissionAccessArgs{
-//								Action:   pulumi.String("read"),
-//								Resource: pulumi.String("helm-chart-version"),
-//							},
-//						},
-//						Kind:      pulumi.String("project"),
-//						Namespace: main.Name,
-//					},
-//					&harbor.RobotAccountPermissionArgs{
-//						Accesses: harbor.RobotAccountPermissionAccessArray{
-//							&harbor.RobotAccountPermissionAccessArgs{
-//								Action:   pulumi.String("pull"),
-//								Resource: pulumi.String("repository"),
-//							},
-//						},
-//						Kind:      pulumi.String("project"),
-//						Namespace: pulumi.String("*"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // The above example, creates a system level robot account with permissions to
 // - permission to create labels on system level
 // - pull repository across all projects
 // - push repository to project "my-project-name"
 // - read helm-chart and helm-chart-version in project "my-project-name"
+//
 // ### Project Level
 //
 // Other than system level robot accounts, project level robot accounts can interact on project level only.
 // The [available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) are mostly the same as for system level robots.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			main, err := harbor.NewProject(ctx, "main", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = harbor.NewRobotAccount(ctx, "project", &harbor.RobotAccountArgs{
-//				Description: pulumi.String("project level robot account"),
-//				Level:       pulumi.String("project"),
-//				Permissions: harbor.RobotAccountPermissionArray{
-//					&harbor.RobotAccountPermissionArgs{
-//						Accesses: harbor.RobotAccountPermissionAccessArray{
-//							&harbor.RobotAccountPermissionAccessArgs{
-//								Action:   pulumi.String("pull"),
-//								Resource: pulumi.String("repository"),
-//							},
-//							&harbor.RobotAccountPermissionAccessArgs{
-//								Action:   pulumi.String("push"),
-//								Resource: pulumi.String("repository"),
-//							},
-//						},
-//						Kind:      pulumi.String("project"),
-//						Namespace: main.Name,
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // The above example creates a project level robot account with permissions to
 // - pull repository on project "main"

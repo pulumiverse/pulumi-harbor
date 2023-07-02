@@ -12,24 +12,6 @@ namespace Pulumiverse.Harbor
 {
     /// <summary>
     /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harbor = Pulumiverse.Harbor;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var main = new Harbor.ConfigSystem("main", new()
-    ///     {
-    ///         ProjectCreationRestriction = "adminonly",
-    ///         RobotNamePrefix = "harbor@",
-    ///         RobotTokenExpiration = 30,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [HarborResourceType("harbor:index/configSystem:ConfigSystem")]
     public partial class ConfigSystem : global::Pulumi.CustomResource

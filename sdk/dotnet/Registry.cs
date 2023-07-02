@@ -13,32 +13,9 @@ namespace Pulumiverse.Harbor
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harbor = Pulumiverse.Harbor;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var main = new Harbor.Registry("main", new()
-    ///     {
-    ///         EndpointUrl = "https://hub.docker.com",
-    ///         ProviderName = "docker-hub",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// Harbor project can be imported using the `registry id` eg, `
-    /// 
-    /// ```sh
-    ///  $ pulumi import harbor:index/registry:Registry main /registries/7
-    /// ```
-    /// 
-    ///  `
+    /// Harbor project can be imported using the `registry id` eg, `&lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import harbor:index/registry:Registry main /registries/7 &lt;break&gt;```&lt;break&gt;&lt;break&gt;`
     /// </summary>
     [HarborResourceType("harbor:index/registry:Registry")]
     public partial class Registry : global::Pulumi.CustomResource

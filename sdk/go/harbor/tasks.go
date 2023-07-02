@@ -12,30 +12,6 @@ import (
 )
 
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := harbor.NewTasks(ctx, "main", &harbor.TasksArgs{
-//				VulnerabilityScanPolicy: pulumi.String("daily"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type Tasks struct {
 	pulumi.CustomResourceState
 

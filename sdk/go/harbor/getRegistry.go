@@ -11,31 +11,6 @@ import (
 )
 
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			main, err := harbor.LookupRegistry(ctx, &harbor.LookupRegistryArgs{
-//				Name: "test_docker_harbor",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("harborRegistryId", main.Id)
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupRegistry(ctx *pulumi.Context, args *LookupRegistryArgs, opts ...pulumi.InvokeOption) (*LookupRegistryResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupRegistryResult

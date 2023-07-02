@@ -120,26 +120,9 @@ class ProjectMemberUser(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main_project = harbor.Project("mainProject")
-        main_project_member_user = harbor.ProjectMemberUser("mainProjectMemberUser",
-            project_id=main_project.id,
-            user_name="testing1",
-            role="projectadmin")
-        ```
-
         ## Import
 
-        Harbor project member user can be imported using the `project id` and `member id` eg, `
-
-        ```sh
-         $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200
-        ```
-
-         `
+        Harbor project member user can be imported using the `project id` and `member id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200 <break>```<break><break>`
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -153,26 +136,9 @@ class ProjectMemberUser(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main_project = harbor.Project("mainProject")
-        main_project_member_user = harbor.ProjectMemberUser("mainProjectMemberUser",
-            project_id=main_project.id,
-            user_name="testing1",
-            role="projectadmin")
-        ```
-
         ## Import
 
-        Harbor project member user can be imported using the `project id` and `member id` eg, `
-
-        ```sh
-         $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200
-        ```
-
-         `
+        Harbor project member user can be imported using the `project id` and `member id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200 <break>```<break><break>`
 
         :param str resource_name: The name of the resource.
         :param ProjectMemberUserArgs args: The arguments to use to populate this resource's properties.

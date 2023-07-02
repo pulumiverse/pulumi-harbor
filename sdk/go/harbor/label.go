@@ -13,73 +13,12 @@ import (
 // ## Example Usage
 //
 // * Create a global label within harbor
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := harbor.NewLabel(ctx, "main", &harbor.LabelArgs{
-//				Color:       pulumi.String("#FF0000"),
-//				Description: pulumi.String("Description to for acceptance test"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // * Creates a label for project
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			mainProject, err := harbor.NewProject(ctx, "mainProject", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = harbor.NewLabel(ctx, "mainLabel", &harbor.LabelArgs{
-//				Color:       pulumi.String("#FFFFFF"),
-//				Description: pulumi.String("Description for acceptance test"),
-//				ProjectId:   mainProject.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //
-// Harbor label can be imported using the `label id` eg, `
-//
-// ```sh
-//
-//	$ pulumi import harbor:index/label:Label main /labels/1
-//
-// ```
-//
-//	`
+// Harbor label can be imported using the `label id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/label:Label main /labels/1 <break>```<break><break>`
 type Label struct {
 	pulumi.CustomResourceState
 

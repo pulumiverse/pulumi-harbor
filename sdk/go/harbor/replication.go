@@ -13,89 +13,9 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			main, err := harbor.NewRegistry(ctx, "main", &harbor.RegistryArgs{
-//				ProviderName: pulumi.String("docker-hub"),
-//				EndpointUrl:  pulumi.String("https://hub.docker.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = harbor.NewReplication(ctx, "push", &harbor.ReplicationArgs{
-//				Action:     pulumi.String("push"),
-//				RegistryId: main.RegistryId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = harbor.NewReplication(ctx, "alpineReplication", &harbor.ReplicationArgs{
-//				Action:     pulumi.String("pull"),
-//				RegistryId: main.RegistryId,
-//				Schedule:   pulumi.String("0 0/15 * * * *"),
-//				Filters: harbor.ReplicationFilterArray{
-//					&harbor.ReplicationFilterArgs{
-//						Name: pulumi.String("library/alpine"),
-//					},
-//					&harbor.ReplicationFilterArgs{
-//						Tag: pulumi.String("3.*.*"),
-//					},
-//					&harbor.ReplicationFilterArgs{
-//						Resource: pulumi.String("artifact"),
-//					},
-//					&harbor.ReplicationFilterArgs{
-//						Labels: pulumi.StringArray{
-//							pulumi.String("qa"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = harbor.NewReplication(ctx, "alpineIndex/replicationReplication", &harbor.ReplicationArgs{
-//				Action:     pulumi.String("pull"),
-//				RegistryId: main.RegistryId,
-//				Schedule:   pulumi.String("event_based"),
-//				Filters: harbor.ReplicationFilterArray{
-//					&harbor.ReplicationFilterArgs{
-//						Name: pulumi.String("library/alpine"),
-//					},
-//					&harbor.ReplicationFilterArgs{
-//						Tag: pulumi.String("3.*.*"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
-// Harbor project can be imported using the `replication id` eg, `
-//
-// ```sh
-//
-//	$ pulumi import harbor:index/replication:Replication main /replication/policies/1
-//
-// ```
-//
-//	`
+// Harbor project can be imported using the `replication id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/replication:Replication main /replication/policies/1 <break>```<break><break>`
 type Replication struct {
 	pulumi.CustomResourceState
 

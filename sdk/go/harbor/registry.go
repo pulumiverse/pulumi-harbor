@@ -13,42 +13,9 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := harbor.NewRegistry(ctx, "main", &harbor.RegistryArgs{
-//				EndpointUrl:  pulumi.String("https://hub.docker.com"),
-//				ProviderName: pulumi.String("docker-hub"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
-// Harbor project can be imported using the `registry id` eg, `
-//
-// ```sh
-//
-//	$ pulumi import harbor:index/registry:Registry main /registries/7
-//
-// ```
-//
-//	`
+// Harbor project can be imported using the `registry id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/registry:Registry main /registries/7 <break>```<break><break>`
 type Registry struct {
 	pulumi.CustomResourceState
 

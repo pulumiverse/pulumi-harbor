@@ -195,27 +195,9 @@ class ProjectMemberGroup(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main_project = harbor.Project("mainProject")
-        main_project_member_group = harbor.ProjectMemberGroup("mainProjectMemberGroup",
-            project_id=main_project.id,
-            group_name="testing1",
-            role="projectadmin",
-            type="oidc")
-        ```
-
         ## Import
 
-        Harbor project member group can be imported using the `project id` and `member id` eg, `
-
-        ```sh
-         $ pulumi import harbor:index/projectMemberGroup:ProjectMemberGroup main /projects/10/members/200
-        ```
-
-         `
+        Harbor project member group can be imported using the `project id` and `member id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/projectMemberGroup:ProjectMemberGroup main /projects/10/members/200 <break>```<break><break>`
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -229,27 +211,9 @@ class ProjectMemberGroup(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main_project = harbor.Project("mainProject")
-        main_project_member_group = harbor.ProjectMemberGroup("mainProjectMemberGroup",
-            project_id=main_project.id,
-            group_name="testing1",
-            role="projectadmin",
-            type="oidc")
-        ```
-
         ## Import
 
-        Harbor project member group can be imported using the `project id` and `member id` eg, `
-
-        ```sh
-         $ pulumi import harbor:index/projectMemberGroup:ProjectMemberGroup main /projects/10/members/200
-        ```
-
-         `
+        Harbor project member group can be imported using the `project id` and `member id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/projectMemberGroup:ProjectMemberGroup main /projects/10/members/200 <break>```<break><break>`
 
         :param str resource_name: The name of the resource.
         :param ProjectMemberGroupArgs args: The arguments to use to populate this resource's properties.

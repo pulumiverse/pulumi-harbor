@@ -109,24 +109,9 @@ class Group(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        storage_group = harbor.Group("storage-group",
-            group_name="storage-group",
-            group_type=3)
-        ```
-
         ## Import
 
-        An OIDC group can be imported using the `group id` eg, `
-
-        ```sh
-         $ pulumi import harbor:index/group:Group storage-group /usergroups/19
-        ```
-
-         `
+        An OIDC group can be imported using the `group id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/group:Group storage-group /usergroups/19 <break>```<break><break>`
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -140,24 +125,9 @@ class Group(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        storage_group = harbor.Group("storage-group",
-            group_name="storage-group",
-            group_type=3)
-        ```
-
         ## Import
 
-        An OIDC group can be imported using the `group id` eg, `
-
-        ```sh
-         $ pulumi import harbor:index/group:Group storage-group /usergroups/19
-        ```
-
-         `
+        An OIDC group can be imported using the `group id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/group:Group storage-group /usergroups/19 <break>```<break><break>`
 
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.

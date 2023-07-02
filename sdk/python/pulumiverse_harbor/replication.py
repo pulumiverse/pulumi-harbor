@@ -348,57 +348,9 @@ class Replication(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main = harbor.Registry("main",
-            provider_name="docker-hub",
-            endpoint_url="https://hub.docker.com")
-        push = harbor.Replication("push",
-            action="push",
-            registry_id=main.registry_id)
-        alpine_replication = harbor.Replication("alpineReplication",
-            action="pull",
-            registry_id=main.registry_id,
-            schedule="0 0/15 * * * *",
-            filters=[
-                harbor.ReplicationFilterArgs(
-                    name="library/alpine",
-                ),
-                harbor.ReplicationFilterArgs(
-                    tag="3.*.*",
-                ),
-                harbor.ReplicationFilterArgs(
-                    resource="artifact",
-                ),
-                harbor.ReplicationFilterArgs(
-                    labels=["qa"],
-                ),
-            ])
-        alpine_index_replication_replication = harbor.Replication("alpineIndex/replicationReplication",
-            action="pull",
-            registry_id=main.registry_id,
-            schedule="event_based",
-            filters=[
-                harbor.ReplicationFilterArgs(
-                    name="library/alpine",
-                ),
-                harbor.ReplicationFilterArgs(
-                    tag="3.*.*",
-                ),
-            ])
-        ```
-
         ## Import
 
-        Harbor project can be imported using the `replication id` eg, `
-
-        ```sh
-         $ pulumi import harbor:index/replication:Replication main /replication/policies/1
-        ```
-
-         `
+        Harbor project can be imported using the `replication id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/replication:Replication main /replication/policies/1 <break>```<break><break>`
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -412,57 +364,9 @@ class Replication(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main = harbor.Registry("main",
-            provider_name="docker-hub",
-            endpoint_url="https://hub.docker.com")
-        push = harbor.Replication("push",
-            action="push",
-            registry_id=main.registry_id)
-        alpine_replication = harbor.Replication("alpineReplication",
-            action="pull",
-            registry_id=main.registry_id,
-            schedule="0 0/15 * * * *",
-            filters=[
-                harbor.ReplicationFilterArgs(
-                    name="library/alpine",
-                ),
-                harbor.ReplicationFilterArgs(
-                    tag="3.*.*",
-                ),
-                harbor.ReplicationFilterArgs(
-                    resource="artifact",
-                ),
-                harbor.ReplicationFilterArgs(
-                    labels=["qa"],
-                ),
-            ])
-        alpine_index_replication_replication = harbor.Replication("alpineIndex/replicationReplication",
-            action="pull",
-            registry_id=main.registry_id,
-            schedule="event_based",
-            filters=[
-                harbor.ReplicationFilterArgs(
-                    name="library/alpine",
-                ),
-                harbor.ReplicationFilterArgs(
-                    tag="3.*.*",
-                ),
-            ])
-        ```
-
         ## Import
 
-        Harbor project can be imported using the `replication id` eg, `
-
-        ```sh
-         $ pulumi import harbor:index/replication:Replication main /replication/policies/1
-        ```
-
-         `
+        Harbor project can be imported using the `replication id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/replication:Replication main /replication/policies/1 <break>```<break><break>`
 
         :param str resource_name: The name of the resource.
         :param ReplicationArgs args: The arguments to use to populate this resource's properties.

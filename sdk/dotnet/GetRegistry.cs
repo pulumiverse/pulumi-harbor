@@ -13,61 +13,33 @@ namespace Pulumiverse.Harbor
     public static class GetRegistry
     {
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harbor = Pulumi.Harbor;
+        /// ```hcl
+        /// data "harbor_registry" "main" {
+        ///   name          = "test_docker_harbor"
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var main = Harbor.GetRegistry.Invoke(new()
-        ///     {
-        ///         Name = "test_docker_harbor",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["harborRegistryId"] = main.Apply(getRegistryResult =&gt; getRegistryResult.Id),
-        ///     };
-        /// });
+        /// output "harbor_registry_id" {
+        ///   value   = data.harbor_registry.main.id
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegistryResult> InvokeAsync(GetRegistryArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegistryResult>("harbor:index/getRegistry:getRegistry", args ?? new GetRegistryArgs(), options.WithDefaults());
 
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Harbor = Pulumi.Harbor;
+        /// ```hcl
+        /// data "harbor_registry" "main" {
+        ///   name          = "test_docker_harbor"
+        /// }
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var main = Harbor.GetRegistry.Invoke(new()
-        ///     {
-        ///         Name = "test_docker_harbor",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["harborRegistryId"] = main.Apply(getRegistryResult =&gt; getRegistryResult.Id),
-        ///     };
-        /// });
+        /// output "harbor_registry_id" {
+        ///   value   = data.harbor_registry.main.id
+        /// }
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRegistryResult> Invoke(GetRegistryInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegistryResult>("harbor:index/getRegistry:getRegistry", args ?? new GetRegistryInvokeArgs(), options.WithDefaults());

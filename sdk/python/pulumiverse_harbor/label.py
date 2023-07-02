@@ -149,36 +149,12 @@ class Label(pulumi.CustomResource):
         ## Example Usage
 
         * Create a global label within harbor
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main = harbor.Label("main",
-            color="#FF0000",
-            description="Description to for acceptance test")
-        ```
 
         * Creates a label for project
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main_project = harbor.Project("mainProject")
-        main_label = harbor.Label("mainLabel",
-            color="#FFFFFF",
-            description="Description for acceptance test",
-            project_id=main_project.id)
-        ```
 
         ## Import
 
-        Harbor label can be imported using the `label id` eg, `
-
-        ```sh
-         $ pulumi import harbor:index/label:Label main /labels/1
-        ```
-
-         `
+        Harbor label can be imported using the `label id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/label:Label main /labels/1 <break>```<break><break>`
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -193,36 +169,12 @@ class Label(pulumi.CustomResource):
         ## Example Usage
 
         * Create a global label within harbor
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main = harbor.Label("main",
-            color="#FF0000",
-            description="Description to for acceptance test")
-        ```
 
         * Creates a label for project
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main_project = harbor.Project("mainProject")
-        main_label = harbor.Label("mainLabel",
-            color="#FFFFFF",
-            description="Description for acceptance test",
-            project_id=main_project.id)
-        ```
 
         ## Import
 
-        Harbor label can be imported using the `label id` eg, `
-
-        ```sh
-         $ pulumi import harbor:index/label:Label main /labels/1
-        ```
-
-         `
+        Harbor label can be imported using the `label id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/label:Label main /labels/1 <break>```<break><break>`
 
         :param str resource_name: The name of the resource.
         :param LabelArgs args: The arguments to use to populate this resource's properties.

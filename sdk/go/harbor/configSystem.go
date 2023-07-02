@@ -11,32 +11,6 @@ import (
 )
 
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := harbor.NewConfigSystem(ctx, "main", &harbor.ConfigSystemArgs{
-//				ProjectCreationRestriction: pulumi.String("adminonly"),
-//				RobotNamePrefix:            pulumi.String("harbor@"),
-//				RobotTokenExpiration:       pulumi.Int(30),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type ConfigSystem struct {
 	pulumi.CustomResourceState
 

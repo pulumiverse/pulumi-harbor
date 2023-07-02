@@ -8,38 +8,12 @@ import * as utilities from "./utilities";
  * ## Example Usage
  *
  * * Create a global label within harbor
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harbor from "@pulumiverse/harbor";
- *
- * const main = new harbor.Label("main", {
- *     color: "#FF0000",
- *     description: "Description to for acceptance test",
- * });
- * ```
  *
  * * Creates a label for project
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harbor from "@pulumiverse/harbor";
- *
- * const mainProject = new harbor.Project("mainProject", {});
- * const mainLabel = new harbor.Label("mainLabel", {
- *     color: "#FFFFFF",
- *     description: "Description for acceptance test",
- *     projectId: mainProject.id,
- * });
- * ```
  *
  * ## Import
  *
- * Harbor label can be imported using the `label id` eg, `
- *
- * ```sh
- *  $ pulumi import harbor:index/label:Label main /labels/1
- * ```
- *
- *  `
+ * Harbor label can be imported using the `label id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/label:Label main /labels/1 <break>```<break><break>`
  */
 export class Label extends pulumi.CustomResource {
     /**

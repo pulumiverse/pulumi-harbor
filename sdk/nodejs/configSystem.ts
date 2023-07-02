@@ -6,17 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harbor from "@pulumiverse/harbor";
- *
- * const main = new harbor.ConfigSystem("main", {
- *     projectCreationRestriction: "adminonly",
- *     robotNamePrefix: "harbor@",
- *     robotTokenExpiration: 30,
- * });
- * ```
  */
 export class ConfigSystem extends pulumi.CustomResource {
     /**

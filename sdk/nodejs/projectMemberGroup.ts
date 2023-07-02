@@ -7,28 +7,9 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harbor from "@pulumiverse/harbor";
- *
- * const mainProject = new harbor.Project("mainProject", {});
- * const mainProjectMemberGroup = new harbor.ProjectMemberGroup("mainProjectMemberGroup", {
- *     projectId: mainProject.id,
- *     groupName: "testing1",
- *     role: "projectadmin",
- *     type: "oidc",
- * });
- * ```
- *
  * ## Import
  *
- * Harbor project member group can be imported using the `project id` and `member id` eg, `
- *
- * ```sh
- *  $ pulumi import harbor:index/projectMemberGroup:ProjectMemberGroup main /projects/10/members/200
- * ```
- *
- *  `
+ * Harbor project member group can be imported using the `project id` and `member id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/projectMemberGroup:ProjectMemberGroup main /projects/10/members/200 <break>```<break><break>`
  */
 export class ProjectMemberGroup extends pulumi.CustomResource {
     /**

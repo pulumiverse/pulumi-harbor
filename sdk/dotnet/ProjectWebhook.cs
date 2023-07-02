@@ -12,38 +12,6 @@ namespace Pulumiverse.Harbor
 {
     /// <summary>
     /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harbor = Pulumiverse.Harbor;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var mainProject = new Harbor.Project("mainProject");
-    /// 
-    ///     var mainProjectWebhook = new Harbor.ProjectWebhook("mainProjectWebhook", new()
-    ///     {
-    ///         Address = "https://webhook.domain.com",
-    ///         ProjectId = mainProject.Id,
-    ///         NotifyType = "http",
-    ///         EventsTypes = new[]
-    ///         {
-    ///             "DELETE_ARTIFACT",
-    ///             "PULL_ARTIFACT",
-    ///             "PUSH_ARTIFACT",
-    ///             "QUOTA_EXCEED",
-    ///             "QUOTA_WARNING",
-    ///             "REPLICATION",
-    ///             "SCANNING_FAILED",
-    ///             "SCANNING_COMPLETED",
-    ///             "TAG_RETENTION",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [HarborResourceType("harbor:index/projectWebhook:ProjectWebhook")]
     public partial class ProjectWebhook : global::Pulumi.CustomResource

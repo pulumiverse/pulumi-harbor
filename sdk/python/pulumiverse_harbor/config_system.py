@@ -161,16 +161,6 @@ class ConfigSystem(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main = harbor.ConfigSystem("main",
-            project_creation_restriction="adminonly",
-            robot_name_prefix="harbor@",
-            robot_token_expiration=30)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -182,16 +172,6 @@ class ConfigSystem(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main = harbor.ConfigSystem("main",
-            project_creation_restriction="adminonly",
-            robot_name_prefix="harbor@",
-            robot_token_expiration=30)
-        ```
 
         :param str resource_name: The name of the resource.
         :param ConfigSystemArgs args: The arguments to use to populate this resource's properties.

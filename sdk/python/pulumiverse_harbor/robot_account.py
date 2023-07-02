@@ -238,93 +238,20 @@ class RobotAccount(pulumi.CustomResource):
         Harbor supports different levels of robot accounts. Currently `system` and `project` level robot accounts are supported.
 
         ## Example Usage
+
         ### System Level
         Introduced in harbor 2.2.0, system level robot accounts can have basically [all available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) in harbor and are not dependent on a single project.
-
-        ```python
-        import pulumi
-        import pulumi_random as random
-        import pulumiverse_harbor as harbor
-
-        password = random.RandomPassword("password",
-            length=12,
-            special=False)
-        main = harbor.Project("main")
-        system = harbor.RobotAccount("system",
-            description="system level robot account",
-            level="system",
-            secret=resource["random_password"]["password"]["result"],
-            permissions=[
-                harbor.RobotAccountPermissionArgs(
-                    accesses=[harbor.RobotAccountPermissionAccessArgs(
-                        action="create",
-                        resource="labels",
-                    )],
-                    kind="system",
-                    namespace="/",
-                ),
-                harbor.RobotAccountPermissionArgs(
-                    accesses=[
-                        harbor.RobotAccountPermissionAccessArgs(
-                            action="push",
-                            resource="repository",
-                        ),
-                        harbor.RobotAccountPermissionAccessArgs(
-                            action="read",
-                            resource="helm-chart",
-                        ),
-                        harbor.RobotAccountPermissionAccessArgs(
-                            action="read",
-                            resource="helm-chart-version",
-                        ),
-                    ],
-                    kind="project",
-                    namespace=main.name,
-                ),
-                harbor.RobotAccountPermissionArgs(
-                    accesses=[harbor.RobotAccountPermissionAccessArgs(
-                        action="pull",
-                        resource="repository",
-                    )],
-                    kind="project",
-                    namespace="*",
-                ),
-            ])
-        ```
 
         The above example, creates a system level robot account with permissions to
         - permission to create labels on system level
         - pull repository across all projects
         - push repository to project "my-project-name"
         - read helm-chart and helm-chart-version in project "my-project-name"
+
         ### Project Level
 
         Other than system level robot accounts, project level robot accounts can interact on project level only.
         The [available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) are mostly the same as for system level robots.
-
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main = harbor.Project("main")
-        project = harbor.RobotAccount("project",
-            description="project level robot account",
-            level="project",
-            permissions=[harbor.RobotAccountPermissionArgs(
-                accesses=[
-                    harbor.RobotAccountPermissionAccessArgs(
-                        action="pull",
-                        resource="repository",
-                    ),
-                    harbor.RobotAccountPermissionAccessArgs(
-                        action="push",
-                        resource="repository",
-                    ),
-                ],
-                kind="project",
-                namespace=main.name,
-            )])
-        ```
 
         The above example creates a project level robot account with permissions to
         - pull repository on project "main"
@@ -345,93 +272,20 @@ class RobotAccount(pulumi.CustomResource):
         Harbor supports different levels of robot accounts. Currently `system` and `project` level robot accounts are supported.
 
         ## Example Usage
+
         ### System Level
         Introduced in harbor 2.2.0, system level robot accounts can have basically [all available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) in harbor and are not dependent on a single project.
-
-        ```python
-        import pulumi
-        import pulumi_random as random
-        import pulumiverse_harbor as harbor
-
-        password = random.RandomPassword("password",
-            length=12,
-            special=False)
-        main = harbor.Project("main")
-        system = harbor.RobotAccount("system",
-            description="system level robot account",
-            level="system",
-            secret=resource["random_password"]["password"]["result"],
-            permissions=[
-                harbor.RobotAccountPermissionArgs(
-                    accesses=[harbor.RobotAccountPermissionAccessArgs(
-                        action="create",
-                        resource="labels",
-                    )],
-                    kind="system",
-                    namespace="/",
-                ),
-                harbor.RobotAccountPermissionArgs(
-                    accesses=[
-                        harbor.RobotAccountPermissionAccessArgs(
-                            action="push",
-                            resource="repository",
-                        ),
-                        harbor.RobotAccountPermissionAccessArgs(
-                            action="read",
-                            resource="helm-chart",
-                        ),
-                        harbor.RobotAccountPermissionAccessArgs(
-                            action="read",
-                            resource="helm-chart-version",
-                        ),
-                    ],
-                    kind="project",
-                    namespace=main.name,
-                ),
-                harbor.RobotAccountPermissionArgs(
-                    accesses=[harbor.RobotAccountPermissionAccessArgs(
-                        action="pull",
-                        resource="repository",
-                    )],
-                    kind="project",
-                    namespace="*",
-                ),
-            ])
-        ```
 
         The above example, creates a system level robot account with permissions to
         - permission to create labels on system level
         - pull repository across all projects
         - push repository to project "my-project-name"
         - read helm-chart and helm-chart-version in project "my-project-name"
+
         ### Project Level
 
         Other than system level robot accounts, project level robot accounts can interact on project level only.
         The [available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) are mostly the same as for system level robots.
-
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main = harbor.Project("main")
-        project = harbor.RobotAccount("project",
-            description="project level robot account",
-            level="project",
-            permissions=[harbor.RobotAccountPermissionArgs(
-                accesses=[
-                    harbor.RobotAccountPermissionAccessArgs(
-                        action="pull",
-                        resource="repository",
-                    ),
-                    harbor.RobotAccountPermissionAccessArgs(
-                        action="push",
-                        resource="repository",
-                    ),
-                ],
-                kind="project",
-                namespace=main.name,
-            )])
-        ```
 
         The above example creates a project level robot account with permissions to
         - pull repository on project "main"

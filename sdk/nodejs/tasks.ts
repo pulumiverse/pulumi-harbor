@@ -6,13 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harbor from "@pulumiverse/harbor";
- *
- * const main = new harbor.Tasks("main", {vulnerabilityScanPolicy: "daily"});
- * ```
  */
 export class Tasks extends pulumi.CustomResource {
     /**

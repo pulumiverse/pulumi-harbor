@@ -329,28 +329,6 @@ class ProjectWebhook(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main_project = harbor.Project("mainProject")
-        main_project_webhook = harbor.ProjectWebhook("mainProjectWebhook",
-            address="https://webhook.domain.com",
-            project_id=main_project.id,
-            notify_type="http",
-            events_types=[
-                "DELETE_ARTIFACT",
-                "PULL_ARTIFACT",
-                "PUSH_ARTIFACT",
-                "QUOTA_EXCEED",
-                "QUOTA_WARNING",
-                "REPLICATION",
-                "SCANNING_FAILED",
-                "SCANNING_COMPLETED",
-                "TAG_RETENTION",
-            ])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address: The address of the webhook
@@ -371,28 +349,6 @@ class ProjectWebhook(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main_project = harbor.Project("mainProject")
-        main_project_webhook = harbor.ProjectWebhook("mainProjectWebhook",
-            address="https://webhook.domain.com",
-            project_id=main_project.id,
-            notify_type="http",
-            events_types=[
-                "DELETE_ARTIFACT",
-                "PULL_ARTIFACT",
-                "PUSH_ARTIFACT",
-                "QUOTA_EXCEED",
-                "QUOTA_WARNING",
-                "REPLICATION",
-                "SCANNING_FAILED",
-                "SCANNING_COMPLETED",
-                "TAG_RETENTION",
-            ])
-        ```
 
         :param str resource_name: The name of the resource.
         :param ProjectWebhookArgs args: The arguments to use to populate this resource's properties.

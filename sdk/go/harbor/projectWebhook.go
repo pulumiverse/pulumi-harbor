@@ -12,47 +12,6 @@ import (
 )
 
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			mainProject, err := harbor.NewProject(ctx, "mainProject", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = harbor.NewProjectWebhook(ctx, "mainProjectWebhook", &harbor.ProjectWebhookArgs{
-//				Address:    pulumi.String("https://webhook.domain.com"),
-//				ProjectId:  mainProject.ID(),
-//				NotifyType: pulumi.String("http"),
-//				EventsTypes: pulumi.StringArray{
-//					pulumi.String("DELETE_ARTIFACT"),
-//					pulumi.String("PULL_ARTIFACT"),
-//					pulumi.String("PUSH_ARTIFACT"),
-//					pulumi.String("QUOTA_EXCEED"),
-//					pulumi.String("QUOTA_WARNING"),
-//					pulumi.String("REPLICATION"),
-//					pulumi.String("SCANNING_FAILED"),
-//					pulumi.String("SCANNING_COMPLETED"),
-//					pulumi.String("TAG_RETENTION"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type ProjectWebhook struct {
 	pulumi.CustomResourceState
 

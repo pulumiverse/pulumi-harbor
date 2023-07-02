@@ -13,35 +13,9 @@ namespace Pulumiverse.Harbor
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harbor = Pulumiverse.Harbor;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var mainProject = new Harbor.Project("mainProject");
-    /// 
-    ///     var mainProjectMemberUser = new Harbor.ProjectMemberUser("mainProjectMemberUser", new()
-    ///     {
-    ///         ProjectId = mainProject.Id,
-    ///         UserName = "testing1",
-    ///         Role = "projectadmin",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// Harbor project member user can be imported using the `project id` and `member id` eg, `
-    /// 
-    /// ```sh
-    ///  $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200
-    /// ```
-    /// 
-    ///  `
+    /// Harbor project member user can be imported using the `project id` and `member id` eg, `&lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200 &lt;break&gt;```&lt;break&gt;&lt;break&gt;`
     /// </summary>
     [HarborResourceType("harbor:index/projectMemberUser:ProjectMemberUser")]
     public partial class ProjectMemberUser : global::Pulumi.CustomResource

@@ -9,38 +9,9 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harbor from "@pulumiverse/harbor";
- *
- * const mainProject = new harbor.Project("mainProject", {});
- * const mainRetentionPolicy = new harbor.RetentionPolicy("mainRetentionPolicy", {
- *     scope: mainProject.id,
- *     schedule: "Daily",
- *     rules: [
- *         {
- *             nDaysSinceLastPull: 5,
- *             repoMatching: "**",
- *             tagMatching: "latest",
- *         },
- *         {
- *             nDaysSinceLastPush: 10,
- *             repoMatching: "**",
- *             tagMatching: "{latest,snapshot}",
- *         },
- *     ],
- * });
- * ```
- *
  * ## Import
  *
- * Harbor retention policy can be imported using the `retention_policy id` eg, `
- *
- * ```sh
- *  $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10
- * ```
- *
- *  `
+ * Harbor retention policy can be imported using the `retention_policy id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10 <break>```<break><break>`
  */
 export class RetentionPolicy extends pulumi.CustomResource {
     /**

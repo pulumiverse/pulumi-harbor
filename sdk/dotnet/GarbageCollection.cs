@@ -12,23 +12,6 @@ namespace Pulumiverse.Harbor
 {
     /// <summary>
     /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harbor = Pulumiverse.Harbor;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var main = new Harbor.GarbageCollection("main", new()
-    ///     {
-    ///         DeleteUntagged = true,
-    ///         Schedule = "Daily",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [HarborResourceType("harbor:index/garbageCollection:GarbageCollection")]
     public partial class GarbageCollection : global::Pulumi.CustomResource

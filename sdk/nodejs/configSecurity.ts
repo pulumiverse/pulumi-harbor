@@ -7,28 +7,9 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as harbor from "@pulumiverse/harbor";
- *
- * const main = new harbor.ConfigSecurity("main", {
- *     cveAllowlists: [
- *         "CVE-456",
- *         "CVE-123",
- *     ],
- *     expiresAt: 1701167767,
- * });
- * ```
- *
  * ## Import
  *
- * The list can be imported using the `id` eg, `
- *
- * ```sh
- *  $ pulumi import harbor:index/configSecurity:ConfigSecurity main "7"
- * ```
- *
- *  ` > Note that at this point of time Harbor doesn't has any api endpoint for deleting this list. Only updating the records.
+ * The list can be imported using the `id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/configSecurity:ConfigSecurity main "7" <break>```<break><break>` > Note that at this point of time Harbor doesn't has any api endpoint for deleting this list. Only updating the records.
  */
 export class ConfigSecurity extends pulumi.CustomResource {
     /**

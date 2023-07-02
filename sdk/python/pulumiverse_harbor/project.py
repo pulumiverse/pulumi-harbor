@@ -349,37 +349,11 @@ class Project(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main = harbor.Project("main",
-            enable_content_trust=True,
-            public="false",
-            vulnerability_scanning=True)
-        # (Optional) Default vale is true. Automatically scan images on push
-        ```
         ## Harbor project example as proxy cache
-
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        docker = harbor.Registry("docker",
-            provider_name="docker-hub",
-            endpoint_url="https://hub.docker.com")
-        main = harbor.Project("main", registry_id=docker.registry_id)
-        ```
 
         ## Import
 
-        Harbor project can be imported using the `project id` eg, `
-
-        ```sh
-         $ pulumi import harbor:index/project:Project main /projects/1
-        ```
-
-         `
+        Harbor project can be imported using the `project id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/project:Project main /projects/1 <break>```<break><break>`
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -402,37 +376,11 @@ class Project(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        main = harbor.Project("main",
-            enable_content_trust=True,
-            public="false",
-            vulnerability_scanning=True)
-        # (Optional) Default vale is true. Automatically scan images on push
-        ```
         ## Harbor project example as proxy cache
-
-        ```python
-        import pulumi
-        import pulumiverse_harbor as harbor
-
-        docker = harbor.Registry("docker",
-            provider_name="docker-hub",
-            endpoint_url="https://hub.docker.com")
-        main = harbor.Project("main", registry_id=docker.registry_id)
-        ```
 
         ## Import
 
-        Harbor project can be imported using the `project id` eg, `
-
-        ```sh
-         $ pulumi import harbor:index/project:Project main /projects/1
-        ```
-
-         `
+        Harbor project can be imported using the `project id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/project:Project main /projects/1 <break>```<break><break>`
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.

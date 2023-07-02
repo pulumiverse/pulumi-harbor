@@ -16,137 +16,20 @@ namespace Pulumiverse.Harbor
     /// Harbor supports different levels of robot accounts. Currently `system` and `project` level robot accounts are supported.
     /// 
     /// ## Example Usage
+    /// 
     /// ### System Level
     /// Introduced in harbor 2.2.0, system level robot accounts can have basically [all available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) in harbor and are not dependent on a single project.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harbor = Pulumiverse.Harbor;
-    /// using Random = Pulumi.Random;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var password = new Random.RandomPassword("password", new()
-    ///     {
-    ///         Length = 12,
-    ///         Special = false,
-    ///     });
-    /// 
-    ///     var main = new Harbor.Project("main");
-    /// 
-    ///     var system = new Harbor.RobotAccount("system", new()
-    ///     {
-    ///         Description = "system level robot account",
-    ///         Level = "system",
-    ///         Secret = resource.Random_password.Password.Result,
-    ///         Permissions = new[]
-    ///         {
-    ///             new Harbor.Inputs.RobotAccountPermissionArgs
-    ///             {
-    ///                 Accesses = new[]
-    ///                 {
-    ///                     new Harbor.Inputs.RobotAccountPermissionAccessArgs
-    ///                     {
-    ///                         Action = "create",
-    ///                         Resource = "labels",
-    ///                     },
-    ///                 },
-    ///                 Kind = "system",
-    ///                 Namespace = "/",
-    ///             },
-    ///             new Harbor.Inputs.RobotAccountPermissionArgs
-    ///             {
-    ///                 Accesses = new[]
-    ///                 {
-    ///                     new Harbor.Inputs.RobotAccountPermissionAccessArgs
-    ///                     {
-    ///                         Action = "push",
-    ///                         Resource = "repository",
-    ///                     },
-    ///                     new Harbor.Inputs.RobotAccountPermissionAccessArgs
-    ///                     {
-    ///                         Action = "read",
-    ///                         Resource = "helm-chart",
-    ///                     },
-    ///                     new Harbor.Inputs.RobotAccountPermissionAccessArgs
-    ///                     {
-    ///                         Action = "read",
-    ///                         Resource = "helm-chart-version",
-    ///                     },
-    ///                 },
-    ///                 Kind = "project",
-    ///                 Namespace = main.Name,
-    ///             },
-    ///             new Harbor.Inputs.RobotAccountPermissionArgs
-    ///             {
-    ///                 Accesses = new[]
-    ///                 {
-    ///                     new Harbor.Inputs.RobotAccountPermissionAccessArgs
-    ///                     {
-    ///                         Action = "pull",
-    ///                         Resource = "repository",
-    ///                     },
-    ///                 },
-    ///                 Kind = "project",
-    ///                 Namespace = "*",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// The above example, creates a system level robot account with permissions to
     /// - permission to create labels on system level
     /// - pull repository across all projects
     /// - push repository to project "my-project-name"
     /// - read helm-chart and helm-chart-version in project "my-project-name"
+    /// 
     /// ### Project Level
     /// 
     /// Other than system level robot accounts, project level robot accounts can interact on project level only.
     /// The [available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) are mostly the same as for system level robots.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Harbor = Pulumiverse.Harbor;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var main = new Harbor.Project("main");
-    /// 
-    ///     var project = new Harbor.RobotAccount("project", new()
-    ///     {
-    ///         Description = "project level robot account",
-    ///         Level = "project",
-    ///         Permissions = new[]
-    ///         {
-    ///             new Harbor.Inputs.RobotAccountPermissionArgs
-    ///             {
-    ///                 Accesses = new[]
-    ///                 {
-    ///                     new Harbor.Inputs.RobotAccountPermissionAccessArgs
-    ///                     {
-    ///                         Action = "pull",
-    ///                         Resource = "repository",
-    ///                     },
-    ///                     new Harbor.Inputs.RobotAccountPermissionAccessArgs
-    ///                     {
-    ///                         Action = "push",
-    ///                         Resource = "repository",
-    ///                     },
-    ///                 },
-    ///                 Kind = "project",
-    ///                 Namespace = main.Name,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// The above example creates a project level robot account with permissions to
     /// - pull repository on project "main"
