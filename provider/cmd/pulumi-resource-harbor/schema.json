@@ -1347,7 +1347,7 @@
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "The project id of the harbor that webhook related to.\n"
+                    "description": "The project id (**/projects/ID**) of the harbor that webhook related to.\n"
                 },
                 "skipCertVerify": {
                     "type": "boolean",
@@ -1396,7 +1396,7 @@
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "The project id of the harbor that webhook related to.\n"
+                    "description": "The project id (**/projects/ID**) of the harbor that webhook related to.\n"
                 },
                 "skipCertVerify": {
                     "type": "boolean",
@@ -1446,7 +1446,7 @@
                     },
                     "projectId": {
                         "type": "string",
-                        "description": "The project id of the harbor that webhook related to.\n"
+                        "description": "The project id (**/projects/ID**) of the harbor that webhook related to.\n"
                     },
                     "skipCertVerify": {
                         "type": "boolean",
