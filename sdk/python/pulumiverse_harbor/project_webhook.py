@@ -28,7 +28,7 @@ class ProjectWebhookArgs:
         :param pulumi.Input[str] address: The address of the webhook
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events_types: ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
         :param pulumi.Input[str] notify_type: The notification type either `http` or `slack`
-        :param pulumi.Input[str] project_id: The project id of the harbor that webhook related to.
+        :param pulumi.Input[str] project_id: The project id (**/projects/ID**) of the harbor that webhook related to.
         :param pulumi.Input[str] auth_header: authentication header for you the webhook
         :param pulumi.Input[str] description: _ (Optional, string) A description of the webhook
         :param pulumi.Input[bool] enabled: , To enable / disable the webhook. Default `true`
@@ -90,7 +90,7 @@ class ProjectWebhookArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[str]:
         """
-        The project id of the harbor that webhook related to.
+        The project id (**/projects/ID**) of the harbor that webhook related to.
         """
         return pulumi.get(self, "project_id")
 
@@ -180,7 +180,7 @@ class _ProjectWebhookState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events_types: ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
         :param pulumi.Input[str] name: The name of the webhook that will be created in harbor.
         :param pulumi.Input[str] notify_type: The notification type either `http` or `slack`
-        :param pulumi.Input[str] project_id: The project id of the harbor that webhook related to.
+        :param pulumi.Input[str] project_id: The project id (**/projects/ID**) of the harbor that webhook related to.
         :param pulumi.Input[bool] skip_cert_verify: checks the for validate SSL certificate.
         """
         if address is not None:
@@ -290,7 +290,7 @@ class _ProjectWebhookState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The project id of the harbor that webhook related to.
+        The project id (**/projects/ID**) of the harbor that webhook related to.
         """
         return pulumi.get(self, "project_id")
 
@@ -338,7 +338,7 @@ class ProjectWebhook(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events_types: ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
         :param pulumi.Input[str] name: The name of the webhook that will be created in harbor.
         :param pulumi.Input[str] notify_type: The notification type either `http` or `slack`
-        :param pulumi.Input[str] project_id: The project id of the harbor that webhook related to.
+        :param pulumi.Input[str] project_id: The project id (**/projects/ID**) of the harbor that webhook related to.
         :param pulumi.Input[bool] skip_cert_verify: checks the for validate SSL certificate.
         """
         ...
@@ -433,7 +433,7 @@ class ProjectWebhook(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events_types: ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
         :param pulumi.Input[str] name: The name of the webhook that will be created in harbor.
         :param pulumi.Input[str] notify_type: The notification type either `http` or `slack`
-        :param pulumi.Input[str] project_id: The project id of the harbor that webhook related to.
+        :param pulumi.Input[str] project_id: The project id (**/projects/ID**) of the harbor that webhook related to.
         :param pulumi.Input[bool] skip_cert_verify: checks the for validate SSL certificate.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -511,7 +511,7 @@ class ProjectWebhook(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
         """
-        The project id of the harbor that webhook related to.
+        The project id (**/projects/ID**) of the harbor that webhook related to.
         """
         return pulumi.get(self, "project_id")
 

@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
 // ## Example Usage
@@ -50,7 +51,7 @@ func NewRegistry(ctx *pulumi.Context,
 		"accessSecret",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Registry
 	err := ctx.RegisterResource("harbor:index/registry:Registry", name, args, &resource, opts...)
 	if err != nil {

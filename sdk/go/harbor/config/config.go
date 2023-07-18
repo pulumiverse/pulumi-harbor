@@ -6,7 +6,10 @@ package config
 import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
+
+var _ = internal.GetEnvOrDefault
 
 func GetApiVersion(ctx *pulumi.Context) int {
 	return config.GetInt(ctx, "harbor:apiVersion")

@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
 type ConfigAuth struct {
@@ -65,7 +66,7 @@ func NewConfigAuth(ctx *pulumi.Context,
 		"oidcClientSecret",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ConfigAuth
 	err := ctx.RegisterResource("harbor:index/configAuth:ConfigAuth", name, args, &resource, opts...)
 	if err != nil {

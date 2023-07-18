@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
 // ## # Resource: RobotAccount
@@ -68,7 +69,7 @@ func NewRobotAccount(ctx *pulumi.Context,
 		"secret",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RobotAccount
 	err := ctx.RegisterResource("harbor:index/robotAccount:RobotAccount", name, args, &resource, opts...)
 	if err != nil {

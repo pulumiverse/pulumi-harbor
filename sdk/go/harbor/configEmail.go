@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
 // ## Example Usage
@@ -44,7 +45,7 @@ func NewConfigEmail(ctx *pulumi.Context,
 		"emailPassword",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ConfigEmail
 	err := ctx.RegisterResource("harbor:index/configEmail:ConfigEmail", name, args, &resource, opts...)
 	if err != nil {
