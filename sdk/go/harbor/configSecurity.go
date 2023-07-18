@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
 // ## Example Usage
@@ -39,7 +40,7 @@ func NewConfigSecurity(ctx *pulumi.Context,
 	if args.CveAllowlists == nil {
 		return nil, errors.New("invalid value for required argument 'CveAllowlists'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ConfigSecurity
 	err := ctx.RegisterResource("harbor:index/configSecurity:ConfigSecurity", name, args, &resource, opts...)
 	if err != nil {

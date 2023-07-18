@@ -59,7 +59,7 @@ namespace Pulumiverse.Harbor
         public Output<string> NotifyType { get; private set; } = null!;
 
         /// <summary>
-        /// The project id of the harbor that webhook related to.
+        /// The project id (**/projects/ID**) of the harbor that webhook related to.
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumiverse.Harbor
         public Input<string> NotifyType { get; set; } = null!;
 
         /// <summary>
-        /// The project id of the harbor that webhook related to.
+        /// The project id (**/projects/ID**) of the harbor that webhook related to.
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
@@ -234,7 +234,7 @@ namespace Pulumiverse.Harbor
         public Input<string>? NotifyType { get; set; }
 
         /// <summary>
-        /// The project id of the harbor that webhook related to.
+        /// The project id (**/projects/ID**) of the harbor that webhook related to.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }

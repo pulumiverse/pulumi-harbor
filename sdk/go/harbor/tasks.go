@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
 // ## Example Usage
@@ -28,7 +29,7 @@ func NewTasks(ctx *pulumi.Context,
 	if args.VulnerabilityScanPolicy == nil {
 		return nil, errors.New("invalid value for required argument 'VulnerabilityScanPolicy'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Tasks
 	err := ctx.RegisterResource("harbor:index/tasks:Tasks", name, args, &resource, opts...)
 	if err != nil {

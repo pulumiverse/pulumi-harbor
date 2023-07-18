@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
 // The provider type for the harbor package. By default, resources use package-wide configuration
@@ -33,7 +34,7 @@ func NewProvider(ctx *pulumi.Context,
 	if args.Url == nil {
 		return nil, errors.New("invalid value for required argument 'Url'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:harbor", name, args, &resource, opts...)
 	if err != nil {

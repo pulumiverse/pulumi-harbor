@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
 // ## Example Usage
@@ -44,7 +45,7 @@ func NewProjectMemberGroup(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProjectMemberGroup
 	err := ctx.RegisterResource("harbor:index/projectMemberGroup:ProjectMemberGroup", name, args, &resource, opts...)
 	if err != nil {

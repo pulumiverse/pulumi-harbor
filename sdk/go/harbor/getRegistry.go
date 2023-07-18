@@ -8,11 +8,12 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
 // ## Example Usage
 func LookupRegistry(ctx *pulumi.Context, args *LookupRegistryArgs, opts ...pulumi.InvokeOption) (*LookupRegistryResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegistryResult
 	err := ctx.Invoke("harbor:index/getRegistry:getRegistry", args, &rv, opts...)
 	if err != nil {

@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
 // ## Example Usage
@@ -47,7 +48,7 @@ func NewReplication(ctx *pulumi.Context,
 	if args.RegistryId == nil {
 		return nil, errors.New("invalid value for required argument 'RegistryId'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Replication
 	err := ctx.RegisterResource("harbor:index/replication:Replication", name, args, &resource, opts...)
 	if err != nil {

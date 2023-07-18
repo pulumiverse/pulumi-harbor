@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
 // ## Example Usage
@@ -37,7 +38,7 @@ func NewGroup(ctx *pulumi.Context,
 	if args.GroupType == nil {
 		return nil, errors.New("invalid value for required argument 'GroupType'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Group
 	err := ctx.RegisterResource("harbor:index/group:Group", name, args, &resource, opts...)
 	if err != nil {

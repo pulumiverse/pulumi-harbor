@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
 // ## Example Usage
@@ -29,7 +30,7 @@ type ProjectWebhook struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The notification type either `http` or `slack`
 	NotifyType pulumi.StringOutput `pulumi:"notifyType"`
-	// The project id of the harbor that webhook related to.
+	// The project id (**/projects/ID**) of the harbor that webhook related to.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// checks the for validate SSL certificate.
 	SkipCertVerify pulumi.BoolPtrOutput `pulumi:"skipCertVerify"`
@@ -54,7 +55,7 @@ func NewProjectWebhook(ctx *pulumi.Context,
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProjectWebhook
 	err := ctx.RegisterResource("harbor:index/projectWebhook:ProjectWebhook", name, args, &resource, opts...)
 	if err != nil {
@@ -91,7 +92,7 @@ type projectWebhookState struct {
 	Name *string `pulumi:"name"`
 	// The notification type either `http` or `slack`
 	NotifyType *string `pulumi:"notifyType"`
-	// The project id of the harbor that webhook related to.
+	// The project id (**/projects/ID**) of the harbor that webhook related to.
 	ProjectId *string `pulumi:"projectId"`
 	// checks the for validate SSL certificate.
 	SkipCertVerify *bool `pulumi:"skipCertVerify"`
@@ -112,7 +113,7 @@ type ProjectWebhookState struct {
 	Name pulumi.StringPtrInput
 	// The notification type either `http` or `slack`
 	NotifyType pulumi.StringPtrInput
-	// The project id of the harbor that webhook related to.
+	// The project id (**/projects/ID**) of the harbor that webhook related to.
 	ProjectId pulumi.StringPtrInput
 	// checks the for validate SSL certificate.
 	SkipCertVerify pulumi.BoolPtrInput
@@ -137,7 +138,7 @@ type projectWebhookArgs struct {
 	Name *string `pulumi:"name"`
 	// The notification type either `http` or `slack`
 	NotifyType string `pulumi:"notifyType"`
-	// The project id of the harbor that webhook related to.
+	// The project id (**/projects/ID**) of the harbor that webhook related to.
 	ProjectId string `pulumi:"projectId"`
 	// checks the for validate SSL certificate.
 	SkipCertVerify *bool `pulumi:"skipCertVerify"`
@@ -159,7 +160,7 @@ type ProjectWebhookArgs struct {
 	Name pulumi.StringPtrInput
 	// The notification type either `http` or `slack`
 	NotifyType pulumi.StringInput
-	// The project id of the harbor that webhook related to.
+	// The project id (**/projects/ID**) of the harbor that webhook related to.
 	ProjectId pulumi.StringInput
 	// checks the for validate SSL certificate.
 	SkipCertVerify pulumi.BoolPtrInput
@@ -287,7 +288,7 @@ func (o ProjectWebhookOutput) NotifyType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectWebhook) pulumi.StringOutput { return v.NotifyType }).(pulumi.StringOutput)
 }
 
-// The project id of the harbor that webhook related to.
+// The project id (**/projects/ID**) of the harbor that webhook related to.
 func (o ProjectWebhookOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectWebhook) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }

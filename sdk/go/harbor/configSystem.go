@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
 // ## Example Usage
@@ -28,7 +29,7 @@ func NewConfigSystem(ctx *pulumi.Context,
 		args = &ConfigSystemArgs{}
 	}
 
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ConfigSystem
 	err := ctx.RegisterResource("harbor:index/configSystem:ConfigSystem", name, args, &resource, opts...)
 	if err != nil {

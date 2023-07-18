@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
 // ## Example Usage
@@ -36,7 +37,7 @@ func NewLabel(ctx *pulumi.Context,
 		args = &LabelArgs{}
 	}
 
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Label
 	err := ctx.RegisterResource("harbor:index/label:Label", name, args, &resource, opts...)
 	if err != nil {

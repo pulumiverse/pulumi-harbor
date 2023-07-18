@@ -64,7 +64,7 @@ export class ProjectWebhook extends pulumi.CustomResource {
      */
     public readonly notifyType!: pulumi.Output<string>;
     /**
-     * The project id of the harbor that webhook related to.
+     * The project id (**&#47;projects/ID**) of the harbor that webhook related to.
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
@@ -156,7 +156,7 @@ export interface ProjectWebhookState {
      */
     notifyType?: pulumi.Input<string>;
     /**
-     * The project id of the harbor that webhook related to.
+     * The project id (**&#47;projects/ID**) of the harbor that webhook related to.
      */
     projectId?: pulumi.Input<string>;
     /**
@@ -198,7 +198,7 @@ export interface ProjectWebhookArgs {
      */
     notifyType: pulumi.Input<string>;
     /**
-     * The project id of the harbor that webhook related to.
+     * The project id (**&#47;projects/ID**) of the harbor that webhook related to.
      */
     projectId: pulumi.Input<string>;
     /**
