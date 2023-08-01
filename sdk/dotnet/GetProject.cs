@@ -79,6 +79,7 @@ namespace Pulumiverse.Harbor
         public readonly string Name;
         public readonly int ProjectId;
         public readonly bool Public;
+        public readonly string Type;
         public readonly bool VulnerabilityScanning;
 
         [OutputConstructor]
@@ -91,12 +92,15 @@ namespace Pulumiverse.Harbor
 
             bool @public,
 
+            string type,
+
             bool vulnerabilityScanning)
         {
             Id = id;
             Name = name;
             ProjectId = projectId;
             Public = @public;
+            Type = type;
             VulnerabilityScanning = vulnerabilityScanning;
         }
     }

@@ -18,25 +18,27 @@
     },
     "language": {
         "csharp": {
-            "compatibility": "tfbridge20",
-            "namespaces": null,
             "packageReferences": {
                 "Pulumi": "3.*"
             },
+            "compatibility": "tfbridge20",
             "rootNamespace": "Pulumiverse"
         },
         "go": {
-            "generateExtraInputTypes": true,
+            "importBasePath": "github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor",
             "generateResourceContainerTypes": true,
-            "importBasePath": "github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor"
+            "generateExtraInputTypes": true
         },
         "java": {
             "basePackage": "com.pulumiverse",
             "buildFiles": "",
-            "gradleNexusPublishPluginVersion": ""
+            "gradleNexusPublishPluginVersion": "",
+            "gradleTest": ""
         },
         "nodejs": {
-            "compatibility": "tfbridge20",
+            "packageName": "@pulumiverse/harbor",
+            "packageDescription": "A Pulumi package for creating and managing Harbor resources.",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/goharbor/terraform-provider-harbor)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-harbor` repo](https://github.com/pulumiverse/pulumi-harbor/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-harbor` repo](https://github.com/goharbor/terraform-provider-harbor/issues).",
             "dependencies": {
                 "@pulumi/pulumi": "^3.0.0"
             },
@@ -44,21 +46,17 @@
                 "@types/mime": "^2.0.0",
                 "@types/node": "^10.0.0"
             },
-            "disableUnionOutputTypes": true,
-            "packageDescription": "A Pulumi package for creating and managing Harbor resources.",
-            "packageName": "@pulumiverse/harbor",
-            "pluginName": "",
-            "pluginVersion": "",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/goharbor/terraform-provider-harbor)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-harbor` repo](https://github.com/pulumiverse/pulumi-harbor/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-harbor` repo](https://github.com/goharbor/terraform-provider-harbor/issues).",
-            "typescriptVersion": ""
+            "compatibility": "tfbridge20",
+            "disableUnionOutputTypes": true
         },
         "python": {
-            "compatibility": "tfbridge20",
             "packageName": "pulumiverse_harbor",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/goharbor/terraform-provider-harbor)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-harbor` repo](https://github.com/pulumiverse/pulumi-harbor/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-harbor` repo](https://github.com/goharbor/terraform-provider-harbor/issues).",
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
-            }
+            },
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/goharbor/terraform-provider-harbor)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-harbor` repo](https://github.com/pulumiverse/pulumi-harbor/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-harbor` repo](https://github.com/goharbor/terraform-provider-harbor/issues).",
+            "compatibility": "tfbridge20",
+            "pyproject": {}
         }
     },
     "config": {
@@ -195,6 +193,38 @@
                 "action",
                 "resource"
             ]
+        },
+        "harbor:index/getProjectsProject:getProjectsProject": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "integer"
+                },
+                "public": {
+                    "type": "boolean"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "vulnerabilityScanning": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "projectId",
+                "public",
+                "type",
+                "vulnerabilityScanning"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         }
     },
     "provider": {
@@ -2085,6 +2115,9 @@
                     "public": {
                         "type": "boolean"
                     },
+                    "type": {
+                        "type": "string"
+                    },
                     "vulnerabilityScanning": {
                         "type": "boolean"
                     }
@@ -2094,7 +2127,61 @@
                     "name",
                     "projectId",
                     "public",
+                    "type",
                     "vulnerabilityScanning",
+                    "id"
+                ]
+            }
+        },
+        "harbor:index/getProjects:getProjects": {
+            "description": "## Example Usage\n\n```hcl\ndata \"harbor_projects\" \"proxycache\" {\n    type = \"ProxyCache\"\n}\n\noutput \"proxy_cache_projects\" {\n    value = data.harbor_projects.proxycache\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getProjects.\n",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "public": {
+                        "type": "boolean"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "vulnerabilityScanning": {
+                        "type": "boolean"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getProjects.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "projects": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harbor:index/getProjectsProject:getProjectsProject"
+                        }
+                    },
+                    "public": {
+                        "type": "boolean"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "vulnerabilityScanning": {
+                        "type": "boolean"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "projects",
                     "id"
                 ]
             }

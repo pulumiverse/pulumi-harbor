@@ -33,6 +33,7 @@ export interface GetProjectResult {
     readonly name: string;
     readonly projectId: number;
     readonly public: boolean;
+    readonly type: string;
     readonly vulnerabilityScanning: boolean;
 }
 /**

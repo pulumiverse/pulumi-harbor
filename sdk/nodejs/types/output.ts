@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface GetProjectsProject {
+    name: string;
+    projectId: number;
+    public: boolean;
+    type: string;
+    vulnerabilityScanning: boolean;
+}
+
 export interface ReplicationFilter {
     decoration?: string;
     labels?: string[];

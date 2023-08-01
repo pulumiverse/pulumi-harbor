@@ -5,7 +5,7 @@ go 1.20
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20230710100801-03a71d0fca3d
 
 require (
-	github.com/goharbor/terraform-provider-harbor v1.4.1-0.20230713153442-10a7b0dd31c5
+	github.com/goharbor/terraform-provider-harbor v1.4.1-0.20230728074826-7453ba31f217
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.55.0
 	github.com/pulumi/pulumi/sdk/v3 v3.76.1
 )
@@ -130,7 +130,7 @@ require (
 	github.com/hashicorp/terraform-plugin-go v0.16.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk v1.8.0 // indirect
-	github.com/hashicorp/terraform-plugin-sdk/v2 v2.26.1 // indirect
+	github.com/hashicorp/terraform-plugin-sdk/v2 v2.27.0 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
 	github.com/hashicorp/vault/api v1.8.2 // indirect
 	github.com/hashicorp/vault/sdk v0.6.1 // indirect

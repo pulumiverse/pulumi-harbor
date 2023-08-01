@@ -1336,8 +1336,8 @@ github.com/gogo/protobuf v1.3.0/go.mod h1:SlYgWuQ5SjCEi6WLHjHCa1yvBfUnHcTbrrZtXP
 github.com/gogo/protobuf v1.3.1/go.mod h1:SlYgWuQ5SjCEi6WLHjHCa1yvBfUnHcTbrrZtXPKa29o=
 github.com/gogo/protobuf v1.3.2 h1:Ov1cvc58UF3b5XjBnZv7+opcTcQFZebYjWzi34vdm4Q=
 github.com/gogo/protobuf v1.3.2/go.mod h1:P1XiOD3dCwIKUDQYPy72D8LYyHL2YPYrpS2s69NZV8Q=
-github.com/goharbor/terraform-provider-harbor v1.4.1-0.20230713153442-10a7b0dd31c5 h1:Ih0ete1L0oZJFWG3TT49tiCbPCX9ElzIpKd4/vpRScU=
-github.com/goharbor/terraform-provider-harbor v1.4.1-0.20230713153442-10a7b0dd31c5/go.mod h1:DqmsTdERXNJ3yOe7+6SXeQfQ+PX6R0wvj9VxQIn3D98=
+github.com/goharbor/terraform-provider-harbor v1.4.1-0.20230728074826-7453ba31f217 h1:/wLr2/TliKeI3rROXd/blQ0IF5Djvgr3plJmDawVSXw=
+github.com/goharbor/terraform-provider-harbor v1.4.1-0.20230728074826-7453ba31f217/go.mod h1:plTUtywc6TaFYOQqf1GB4R8M/t7fZS69jq8VS6lsPSQ=
 github.com/golang-jwt/jwt v3.2.1+incompatible h1:73Z+4BJcrTC+KczS6WvTPvRGOp1WmfEP4Q1lOd9Z/+c=
 github.com/golang-jwt/jwt v3.2.1+incompatible/go.mod h1:8pz2t5EyA70fFQQSrl6XZXzqecmYZeUEB8OUGHkxJ+I=
 github.com/golang-jwt/jwt/v4 v4.0.0/go.mod h1:/xlHOz8bRuivTWchD4jCa+NbatV+wEUSzwAxVc6locg=

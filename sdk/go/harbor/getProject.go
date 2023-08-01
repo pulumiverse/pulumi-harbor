@@ -34,6 +34,7 @@ type LookupProjectResult struct {
 	Name                  string `pulumi:"name"`
 	ProjectId             int    `pulumi:"projectId"`
 	Public                bool   `pulumi:"public"`
+	Type                  string `pulumi:"type"`
 	VulnerabilityScanning bool   `pulumi:"vulnerabilityScanning"`
 }
 
@@ -89,6 +90,10 @@ func (o LookupProjectResultOutput) ProjectId() pulumi.IntOutput {
 
 func (o LookupProjectResultOutput) Public() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.Public }).(pulumi.BoolOutput)
+}
+
+func (o LookupProjectResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func (o LookupProjectResultOutput) VulnerabilityScanning() pulumi.BoolOutput {

@@ -536,6 +536,124 @@ func (o RobotAccountPermissionAccessArrayOutput) Index(i pulumi.IntInput) RobotA
 	}).(RobotAccountPermissionAccessOutput)
 }
 
+type GetProjectsProject struct {
+	Name                  string `pulumi:"name"`
+	ProjectId             int    `pulumi:"projectId"`
+	Public                bool   `pulumi:"public"`
+	Type                  string `pulumi:"type"`
+	VulnerabilityScanning bool   `pulumi:"vulnerabilityScanning"`
+}
+
+// GetProjectsProjectInput is an input type that accepts GetProjectsProjectArgs and GetProjectsProjectOutput values.
+// You can construct a concrete instance of `GetProjectsProjectInput` via:
+//
+//	GetProjectsProjectArgs{...}
+type GetProjectsProjectInput interface {
+	pulumi.Input
+
+	ToGetProjectsProjectOutput() GetProjectsProjectOutput
+	ToGetProjectsProjectOutputWithContext(context.Context) GetProjectsProjectOutput
+}
+
+type GetProjectsProjectArgs struct {
+	Name                  pulumi.StringInput `pulumi:"name"`
+	ProjectId             pulumi.IntInput    `pulumi:"projectId"`
+	Public                pulumi.BoolInput   `pulumi:"public"`
+	Type                  pulumi.StringInput `pulumi:"type"`
+	VulnerabilityScanning pulumi.BoolInput   `pulumi:"vulnerabilityScanning"`
+}
+
+func (GetProjectsProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectsProject)(nil)).Elem()
+}
+
+func (i GetProjectsProjectArgs) ToGetProjectsProjectOutput() GetProjectsProjectOutput {
+	return i.ToGetProjectsProjectOutputWithContext(context.Background())
+}
+
+func (i GetProjectsProjectArgs) ToGetProjectsProjectOutputWithContext(ctx context.Context) GetProjectsProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsProjectOutput)
+}
+
+// GetProjectsProjectArrayInput is an input type that accepts GetProjectsProjectArray and GetProjectsProjectArrayOutput values.
+// You can construct a concrete instance of `GetProjectsProjectArrayInput` via:
+//
+//	GetProjectsProjectArray{ GetProjectsProjectArgs{...} }
+type GetProjectsProjectArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectsProjectArrayOutput() GetProjectsProjectArrayOutput
+	ToGetProjectsProjectArrayOutputWithContext(context.Context) GetProjectsProjectArrayOutput
+}
+
+type GetProjectsProjectArray []GetProjectsProjectInput
+
+func (GetProjectsProjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectsProject)(nil)).Elem()
+}
+
+func (i GetProjectsProjectArray) ToGetProjectsProjectArrayOutput() GetProjectsProjectArrayOutput {
+	return i.ToGetProjectsProjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectsProjectArray) ToGetProjectsProjectArrayOutputWithContext(ctx context.Context) GetProjectsProjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsProjectArrayOutput)
+}
+
+type GetProjectsProjectOutput struct{ *pulumi.OutputState }
+
+func (GetProjectsProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectsProject)(nil)).Elem()
+}
+
+func (o GetProjectsProjectOutput) ToGetProjectsProjectOutput() GetProjectsProjectOutput {
+	return o
+}
+
+func (o GetProjectsProjectOutput) ToGetProjectsProjectOutputWithContext(ctx context.Context) GetProjectsProjectOutput {
+	return o
+}
+
+func (o GetProjectsProjectOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetProjectsProjectOutput) ProjectId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectsProject) int { return v.ProjectId }).(pulumi.IntOutput)
+}
+
+func (o GetProjectsProjectOutput) Public() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectsProject) bool { return v.Public }).(pulumi.BoolOutput)
+}
+
+func (o GetProjectsProjectOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetProjectsProjectOutput) VulnerabilityScanning() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectsProject) bool { return v.VulnerabilityScanning }).(pulumi.BoolOutput)
+}
+
+type GetProjectsProjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectsProjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectsProject)(nil)).Elem()
+}
+
+func (o GetProjectsProjectArrayOutput) ToGetProjectsProjectArrayOutput() GetProjectsProjectArrayOutput {
+	return o
+}
+
+func (o GetProjectsProjectArrayOutput) ToGetProjectsProjectArrayOutputWithContext(ctx context.Context) GetProjectsProjectArrayOutput {
+	return o
+}
+
+func (o GetProjectsProjectArrayOutput) Index(i pulumi.IntInput) GetProjectsProjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectsProject {
+		return vs[0].([]GetProjectsProject)[vs[1].(int)]
+	}).(GetProjectsProjectOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplicationFilterInput)(nil)).Elem(), ReplicationFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplicationFilterArrayInput)(nil)).Elem(), ReplicationFilterArray{})
@@ -545,6 +663,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RobotAccountPermissionArrayInput)(nil)).Elem(), RobotAccountPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RobotAccountPermissionAccessInput)(nil)).Elem(), RobotAccountPermissionAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RobotAccountPermissionAccessArrayInput)(nil)).Elem(), RobotAccountPermissionAccessArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectInput)(nil)).Elem(), GetProjectsProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectArrayInput)(nil)).Elem(), GetProjectsProjectArray{})
 	pulumi.RegisterOutputType(ReplicationFilterOutput{})
 	pulumi.RegisterOutputType(ReplicationFilterArrayOutput{})
 	pulumi.RegisterOutputType(RetentionPolicyRuleOutput{})
@@ -553,4 +673,6 @@ func init() {
 	pulumi.RegisterOutputType(RobotAccountPermissionArrayOutput{})
 	pulumi.RegisterOutputType(RobotAccountPermissionAccessOutput{})
 	pulumi.RegisterOutputType(RobotAccountPermissionAccessArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectsProjectOutput{})
+	pulumi.RegisterOutputType(GetProjectsProjectArrayOutput{})
 }
