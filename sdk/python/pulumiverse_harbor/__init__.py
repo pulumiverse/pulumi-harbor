@@ -11,6 +11,7 @@ from .config_security import *
 from .config_system import *
 from .garbage_collection import *
 from .get_project import *
+from .get_projects import *
 from .get_registry import *
 from .group import *
 from .immutable_tag_rule import *

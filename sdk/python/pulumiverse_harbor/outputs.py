@@ -15,6 +15,7 @@ __all__ = [
     'RetentionPolicyRule',
     'RobotAccountPermission',
     'RobotAccountPermissionAccess',
+    'GetProjectsProjectResult',
 ]
 
 @pulumi.output_type
@@ -291,5 +292,45 @@ class RobotAccountPermissionAccess(dict):
     @pulumi.getter
     def effect(self) -> Optional[str]:
         return pulumi.get(self, "effect")
+
+
+@pulumi.output_type
+class GetProjectsProjectResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 project_id: int,
+                 public: bool,
+                 type: str,
+                 vulnerability_scanning: bool):
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "public", public)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "vulnerability_scanning", vulnerability_scanning)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> int:
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def public(self) -> bool:
+        return pulumi.get(self, "public")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="vulnerabilityScanning")
+    def vulnerability_scanning(self) -> bool:
+        return pulumi.get(self, "vulnerability_scanning")
 
 

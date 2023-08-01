@@ -21,6 +21,7 @@
         "configSystem.ts",
         "garbageCollection.ts",
         "getProject.ts",
+        "getProjects.ts",
         "getRegistry.ts",
         "group.ts",
         "immutableTagRule.ts",
