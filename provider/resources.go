@@ -131,6 +131,7 @@ func Provider() tfbridge.ProviderInfo {
 			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAmi")},
 			"harbor_project":  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getProject")},
 			"harbor_registry": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRegistry")},
+			"harbor_projects":  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getProjects")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			PackageName: "@pulumiverse/harbor",
