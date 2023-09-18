@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
@@ -127,6 +128,12 @@ func (i *RetentionPolicy) ToRetentionPolicyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(RetentionPolicyOutput)
 }
 
+func (i *RetentionPolicy) ToOutput(ctx context.Context) pulumix.Output[*RetentionPolicy] {
+	return pulumix.Output[*RetentionPolicy]{
+		OutputState: i.ToRetentionPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // RetentionPolicyArrayInput is an input type that accepts RetentionPolicyArray and RetentionPolicyArrayOutput values.
 // You can construct a concrete instance of `RetentionPolicyArrayInput` via:
 //
@@ -150,6 +157,12 @@ func (i RetentionPolicyArray) ToRetentionPolicyArrayOutput() RetentionPolicyArra
 
 func (i RetentionPolicyArray) ToRetentionPolicyArrayOutputWithContext(ctx context.Context) RetentionPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RetentionPolicyArrayOutput)
+}
+
+func (i RetentionPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*RetentionPolicy] {
+	return pulumix.Output[[]*RetentionPolicy]{
+		OutputState: i.ToRetentionPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // RetentionPolicyMapInput is an input type that accepts RetentionPolicyMap and RetentionPolicyMapOutput values.
@@ -177,6 +190,12 @@ func (i RetentionPolicyMap) ToRetentionPolicyMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(RetentionPolicyMapOutput)
 }
 
+func (i RetentionPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RetentionPolicy] {
+	return pulumix.Output[map[string]*RetentionPolicy]{
+		OutputState: i.ToRetentionPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type RetentionPolicyOutput struct{ *pulumi.OutputState }
 
 func (RetentionPolicyOutput) ElementType() reflect.Type {
@@ -189,6 +208,12 @@ func (o RetentionPolicyOutput) ToRetentionPolicyOutput() RetentionPolicyOutput {
 
 func (o RetentionPolicyOutput) ToRetentionPolicyOutputWithContext(ctx context.Context) RetentionPolicyOutput {
 	return o
+}
+
+func (o RetentionPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*RetentionPolicy] {
+	return pulumix.Output[*RetentionPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Al collection of rule blocks as documented below.
@@ -220,6 +245,12 @@ func (o RetentionPolicyArrayOutput) ToRetentionPolicyArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o RetentionPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RetentionPolicy] {
+	return pulumix.Output[[]*RetentionPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o RetentionPolicyArrayOutput) Index(i pulumi.IntInput) RetentionPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RetentionPolicy {
 		return vs[0].([]*RetentionPolicy)[vs[1].(int)]
@@ -238,6 +269,12 @@ func (o RetentionPolicyMapOutput) ToRetentionPolicyMapOutput() RetentionPolicyMa
 
 func (o RetentionPolicyMapOutput) ToRetentionPolicyMapOutputWithContext(ctx context.Context) RetentionPolicyMapOutput {
 	return o
+}
+
+func (o RetentionPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RetentionPolicy] {
+	return pulumix.Output[map[string]*RetentionPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o RetentionPolicyMapOutput) MapIndex(k pulumi.StringInput) RetentionPolicyOutput {

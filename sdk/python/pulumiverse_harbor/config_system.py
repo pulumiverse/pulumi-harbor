@@ -18,7 +18,8 @@ class ConfigSystemArgs:
                  read_only: Optional[pulumi.Input[bool]] = None,
                  robot_name_prefix: Optional[pulumi.Input[str]] = None,
                  robot_token_expiration: Optional[pulumi.Input[int]] = None,
-                 scanner_skip_update_pulltime: Optional[pulumi.Input[bool]] = None):
+                 scanner_skip_update_pulltime: Optional[pulumi.Input[bool]] = None,
+                 storage_per_project: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a ConfigSystem resource.
         """
@@ -32,6 +33,8 @@ class ConfigSystemArgs:
             pulumi.set(__self__, "robot_token_expiration", robot_token_expiration)
         if scanner_skip_update_pulltime is not None:
             pulumi.set(__self__, "scanner_skip_update_pulltime", scanner_skip_update_pulltime)
+        if storage_per_project is not None:
+            pulumi.set(__self__, "storage_per_project", storage_per_project)
 
     @property
     @pulumi.getter(name="projectCreationRestriction")
@@ -78,6 +81,15 @@ class ConfigSystemArgs:
     def scanner_skip_update_pulltime(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "scanner_skip_update_pulltime", value)
 
+    @property
+    @pulumi.getter(name="storagePerProject")
+    def storage_per_project(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "storage_per_project")
+
+    @storage_per_project.setter
+    def storage_per_project(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "storage_per_project", value)
+
 
 @pulumi.input_type
 class _ConfigSystemState:
@@ -86,7 +98,8 @@ class _ConfigSystemState:
                  read_only: Optional[pulumi.Input[bool]] = None,
                  robot_name_prefix: Optional[pulumi.Input[str]] = None,
                  robot_token_expiration: Optional[pulumi.Input[int]] = None,
-                 scanner_skip_update_pulltime: Optional[pulumi.Input[bool]] = None):
+                 scanner_skip_update_pulltime: Optional[pulumi.Input[bool]] = None,
+                 storage_per_project: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering ConfigSystem resources.
         """
@@ -100,6 +113,8 @@ class _ConfigSystemState:
             pulumi.set(__self__, "robot_token_expiration", robot_token_expiration)
         if scanner_skip_update_pulltime is not None:
             pulumi.set(__self__, "scanner_skip_update_pulltime", scanner_skip_update_pulltime)
+        if storage_per_project is not None:
+            pulumi.set(__self__, "storage_per_project", storage_per_project)
 
     @property
     @pulumi.getter(name="projectCreationRestriction")
@@ -146,6 +161,15 @@ class _ConfigSystemState:
     def scanner_skip_update_pulltime(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "scanner_skip_update_pulltime", value)
 
+    @property
+    @pulumi.getter(name="storagePerProject")
+    def storage_per_project(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "storage_per_project")
+
+    @storage_per_project.setter
+    def storage_per_project(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "storage_per_project", value)
+
 
 class ConfigSystem(pulumi.CustomResource):
     @overload
@@ -157,6 +181,7 @@ class ConfigSystem(pulumi.CustomResource):
                  robot_name_prefix: Optional[pulumi.Input[str]] = None,
                  robot_token_expiration: Optional[pulumi.Input[int]] = None,
                  scanner_skip_update_pulltime: Optional[pulumi.Input[bool]] = None,
+                 storage_per_project: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -193,6 +218,7 @@ class ConfigSystem(pulumi.CustomResource):
                  robot_name_prefix: Optional[pulumi.Input[str]] = None,
                  robot_token_expiration: Optional[pulumi.Input[int]] = None,
                  scanner_skip_update_pulltime: Optional[pulumi.Input[bool]] = None,
+                 storage_per_project: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -207,6 +233,7 @@ class ConfigSystem(pulumi.CustomResource):
             __props__.__dict__["robot_name_prefix"] = robot_name_prefix
             __props__.__dict__["robot_token_expiration"] = robot_token_expiration
             __props__.__dict__["scanner_skip_update_pulltime"] = scanner_skip_update_pulltime
+            __props__.__dict__["storage_per_project"] = storage_per_project
         super(ConfigSystem, __self__).__init__(
             'harbor:index/configSystem:ConfigSystem',
             resource_name,
@@ -221,7 +248,8 @@ class ConfigSystem(pulumi.CustomResource):
             read_only: Optional[pulumi.Input[bool]] = None,
             robot_name_prefix: Optional[pulumi.Input[str]] = None,
             robot_token_expiration: Optional[pulumi.Input[int]] = None,
-            scanner_skip_update_pulltime: Optional[pulumi.Input[bool]] = None) -> 'ConfigSystem':
+            scanner_skip_update_pulltime: Optional[pulumi.Input[bool]] = None,
+            storage_per_project: Optional[pulumi.Input[int]] = None) -> 'ConfigSystem':
         """
         Get an existing ConfigSystem resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -239,6 +267,7 @@ class ConfigSystem(pulumi.CustomResource):
         __props__.__dict__["robot_name_prefix"] = robot_name_prefix
         __props__.__dict__["robot_token_expiration"] = robot_token_expiration
         __props__.__dict__["scanner_skip_update_pulltime"] = scanner_skip_update_pulltime
+        __props__.__dict__["storage_per_project"] = storage_per_project
         return ConfigSystem(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -265,4 +294,9 @@ class ConfigSystem(pulumi.CustomResource):
     @pulumi.getter(name="scannerSkipUpdatePulltime")
     def scanner_skip_update_pulltime(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "scanner_skip_update_pulltime")
+
+    @property
+    @pulumi.getter(name="storagePerProject")
+    def storage_per_project(self) -> pulumi.Output[Optional[int]]:
+        return pulumi.get(self, "storage_per_project")
 

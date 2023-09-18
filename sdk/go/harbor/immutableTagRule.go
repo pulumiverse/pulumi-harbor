@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
@@ -149,6 +150,12 @@ func (i *ImmutableTagRule) ToImmutableTagRuleOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ImmutableTagRuleOutput)
 }
 
+func (i *ImmutableTagRule) ToOutput(ctx context.Context) pulumix.Output[*ImmutableTagRule] {
+	return pulumix.Output[*ImmutableTagRule]{
+		OutputState: i.ToImmutableTagRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ImmutableTagRuleArrayInput is an input type that accepts ImmutableTagRuleArray and ImmutableTagRuleArrayOutput values.
 // You can construct a concrete instance of `ImmutableTagRuleArrayInput` via:
 //
@@ -172,6 +179,12 @@ func (i ImmutableTagRuleArray) ToImmutableTagRuleArrayOutput() ImmutableTagRuleA
 
 func (i ImmutableTagRuleArray) ToImmutableTagRuleArrayOutputWithContext(ctx context.Context) ImmutableTagRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImmutableTagRuleArrayOutput)
+}
+
+func (i ImmutableTagRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*ImmutableTagRule] {
+	return pulumix.Output[[]*ImmutableTagRule]{
+		OutputState: i.ToImmutableTagRuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ImmutableTagRuleMapInput is an input type that accepts ImmutableTagRuleMap and ImmutableTagRuleMapOutput values.
@@ -199,6 +212,12 @@ func (i ImmutableTagRuleMap) ToImmutableTagRuleMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ImmutableTagRuleMapOutput)
 }
 
+func (i ImmutableTagRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ImmutableTagRule] {
+	return pulumix.Output[map[string]*ImmutableTagRule]{
+		OutputState: i.ToImmutableTagRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ImmutableTagRuleOutput struct{ *pulumi.OutputState }
 
 func (ImmutableTagRuleOutput) ElementType() reflect.Type {
@@ -211,6 +230,12 @@ func (o ImmutableTagRuleOutput) ToImmutableTagRuleOutput() ImmutableTagRuleOutpu
 
 func (o ImmutableTagRuleOutput) ToImmutableTagRuleOutputWithContext(ctx context.Context) ImmutableTagRuleOutput {
 	return o
+}
+
+func (o ImmutableTagRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*ImmutableTagRule] {
+	return pulumix.Output[*ImmutableTagRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Specify if the rule is disable or not. Defaults to `false`
@@ -256,6 +281,12 @@ func (o ImmutableTagRuleArrayOutput) ToImmutableTagRuleArrayOutputWithContext(ct
 	return o
 }
 
+func (o ImmutableTagRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ImmutableTagRule] {
+	return pulumix.Output[[]*ImmutableTagRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ImmutableTagRuleArrayOutput) Index(i pulumi.IntInput) ImmutableTagRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ImmutableTagRule {
 		return vs[0].([]*ImmutableTagRule)[vs[1].(int)]
@@ -274,6 +305,12 @@ func (o ImmutableTagRuleMapOutput) ToImmutableTagRuleMapOutput() ImmutableTagRul
 
 func (o ImmutableTagRuleMapOutput) ToImmutableTagRuleMapOutputWithContext(ctx context.Context) ImmutableTagRuleMapOutput {
 	return o
+}
+
+func (o ImmutableTagRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ImmutableTagRule] {
+	return pulumix.Output[map[string]*ImmutableTagRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ImmutableTagRuleMapOutput) MapIndex(k pulumi.StringInput) ImmutableTagRuleOutput {

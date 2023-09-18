@@ -34,6 +34,10 @@ namespace Pulumiverse.Harbor
     /// The above example creates a project level robot account with permissions to
     /// - pull repository on project "main"
     /// - push repository on project "main"
+    /// 
+    /// ## Import
+    /// 
+    /// Harbor robot account can be imported using the `robot account id` eg, `&lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123 &lt;break&gt;```&lt;break&gt;&lt;break&gt;`
     /// </summary>
     [HarborResourceType("harbor:index/robotAccount:RobotAccount")]
     public partial class RobotAccount : global::Pulumi.CustomResource

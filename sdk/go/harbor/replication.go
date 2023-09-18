@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
@@ -160,6 +161,12 @@ func (i *Replication) ToReplicationOutputWithContext(ctx context.Context) Replic
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationOutput)
 }
 
+func (i *Replication) ToOutput(ctx context.Context) pulumix.Output[*Replication] {
+	return pulumix.Output[*Replication]{
+		OutputState: i.ToReplicationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ReplicationArrayInput is an input type that accepts ReplicationArray and ReplicationArrayOutput values.
 // You can construct a concrete instance of `ReplicationArrayInput` via:
 //
@@ -183,6 +190,12 @@ func (i ReplicationArray) ToReplicationArrayOutput() ReplicationArrayOutput {
 
 func (i ReplicationArray) ToReplicationArrayOutputWithContext(ctx context.Context) ReplicationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationArrayOutput)
+}
+
+func (i ReplicationArray) ToOutput(ctx context.Context) pulumix.Output[[]*Replication] {
+	return pulumix.Output[[]*Replication]{
+		OutputState: i.ToReplicationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ReplicationMapInput is an input type that accepts ReplicationMap and ReplicationMapOutput values.
@@ -210,6 +223,12 @@ func (i ReplicationMap) ToReplicationMapOutputWithContext(ctx context.Context) R
 	return pulumi.ToOutputWithContext(ctx, i).(ReplicationMapOutput)
 }
 
+func (i ReplicationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Replication] {
+	return pulumix.Output[map[string]*Replication]{
+		OutputState: i.ToReplicationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ReplicationOutput struct{ *pulumi.OutputState }
 
 func (ReplicationOutput) ElementType() reflect.Type {
@@ -222,6 +241,12 @@ func (o ReplicationOutput) ToReplicationOutput() ReplicationOutput {
 
 func (o ReplicationOutput) ToReplicationOutputWithContext(ctx context.Context) ReplicationOutput {
 	return o
+}
+
+func (o ReplicationOutput) ToOutput(ctx context.Context) pulumix.Output[*Replication] {
+	return pulumix.Output[*Replication]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReplicationOutput) Action() pulumi.StringOutput {
@@ -290,6 +315,12 @@ func (o ReplicationArrayOutput) ToReplicationArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o ReplicationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Replication] {
+	return pulumix.Output[[]*Replication]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ReplicationArrayOutput) Index(i pulumi.IntInput) ReplicationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Replication {
 		return vs[0].([]*Replication)[vs[1].(int)]
@@ -308,6 +339,12 @@ func (o ReplicationMapOutput) ToReplicationMapOutput() ReplicationMapOutput {
 
 func (o ReplicationMapOutput) ToReplicationMapOutputWithContext(ctx context.Context) ReplicationMapOutput {
 	return o
+}
+
+func (o ReplicationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Replication] {
+	return pulumix.Output[map[string]*Replication]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ReplicationMapOutput) MapIndex(k pulumi.StringInput) ReplicationOutput {

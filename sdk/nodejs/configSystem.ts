@@ -40,6 +40,7 @@ export class ConfigSystem extends pulumi.CustomResource {
     public readonly robotNamePrefix!: pulumi.Output<string | undefined>;
     public readonly robotTokenExpiration!: pulumi.Output<number | undefined>;
     public readonly scannerSkipUpdatePulltime!: pulumi.Output<boolean | undefined>;
+    public readonly storagePerProject!: pulumi.Output<number | undefined>;
 
     /**
      * Create a ConfigSystem resource with the given unique name, arguments, and options.
@@ -59,6 +60,7 @@ export class ConfigSystem extends pulumi.CustomResource {
             resourceInputs["robotNamePrefix"] = state ? state.robotNamePrefix : undefined;
             resourceInputs["robotTokenExpiration"] = state ? state.robotTokenExpiration : undefined;
             resourceInputs["scannerSkipUpdatePulltime"] = state ? state.scannerSkipUpdatePulltime : undefined;
+            resourceInputs["storagePerProject"] = state ? state.storagePerProject : undefined;
         } else {
             const args = argsOrState as ConfigSystemArgs | undefined;
             resourceInputs["projectCreationRestriction"] = args ? args.projectCreationRestriction : undefined;
@@ -66,6 +68,7 @@ export class ConfigSystem extends pulumi.CustomResource {
             resourceInputs["robotNamePrefix"] = args ? args.robotNamePrefix : undefined;
             resourceInputs["robotTokenExpiration"] = args ? args.robotTokenExpiration : undefined;
             resourceInputs["scannerSkipUpdatePulltime"] = args ? args.scannerSkipUpdatePulltime : undefined;
+            resourceInputs["storagePerProject"] = args ? args.storagePerProject : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ConfigSystem.__pulumiType, name, resourceInputs, opts);
@@ -81,6 +84,7 @@ export interface ConfigSystemState {
     robotNamePrefix?: pulumi.Input<string>;
     robotTokenExpiration?: pulumi.Input<number>;
     scannerSkipUpdatePulltime?: pulumi.Input<boolean>;
+    storagePerProject?: pulumi.Input<number>;
 }
 
 /**
@@ -92,4 +96,5 @@ export interface ConfigSystemArgs {
     robotNamePrefix?: pulumi.Input<string>;
     robotTokenExpiration?: pulumi.Input<number>;
     scannerSkipUpdatePulltime?: pulumi.Input<boolean>;
+    storagePerProject?: pulumi.Input<number>;
 }
