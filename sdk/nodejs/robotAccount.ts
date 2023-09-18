@@ -30,6 +30,10 @@ import * as utilities from "./utilities";
  * The above example creates a project level robot account with permissions to
  * - pull repository on project "main"
  * - push repository on project "main"
+ *
+ * ## Import
+ *
+ * Harbor robot account can be imported using the `robot account id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123 <break>```<break><break>`
  */
 export class RobotAccount extends pulumi.CustomResource {
     /**

@@ -257,6 +257,10 @@ class RobotAccount(pulumi.CustomResource):
         - pull repository on project "main"
         - push repository on project "main"
 
+        ## Import
+
+        Harbor robot account can be imported using the `robot account id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123 <break>```<break><break>`
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -290,6 +294,10 @@ class RobotAccount(pulumi.CustomResource):
         The above example creates a project level robot account with permissions to
         - pull repository on project "main"
         - push repository on project "main"
+
+        ## Import
+
+        Harbor robot account can be imported using the `robot account id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123 <break>```<break><break>`
 
         :param str resource_name: The name of the resource.
         :param RobotAccountArgs args: The arguments to use to populate this resource's properties.

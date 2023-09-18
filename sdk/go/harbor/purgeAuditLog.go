@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
@@ -110,6 +111,12 @@ func (i *PurgeAuditLog) ToPurgeAuditLogOutputWithContext(ctx context.Context) Pu
 	return pulumi.ToOutputWithContext(ctx, i).(PurgeAuditLogOutput)
 }
 
+func (i *PurgeAuditLog) ToOutput(ctx context.Context) pulumix.Output[*PurgeAuditLog] {
+	return pulumix.Output[*PurgeAuditLog]{
+		OutputState: i.ToPurgeAuditLogOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PurgeAuditLogArrayInput is an input type that accepts PurgeAuditLogArray and PurgeAuditLogArrayOutput values.
 // You can construct a concrete instance of `PurgeAuditLogArrayInput` via:
 //
@@ -133,6 +140,12 @@ func (i PurgeAuditLogArray) ToPurgeAuditLogArrayOutput() PurgeAuditLogArrayOutpu
 
 func (i PurgeAuditLogArray) ToPurgeAuditLogArrayOutputWithContext(ctx context.Context) PurgeAuditLogArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PurgeAuditLogArrayOutput)
+}
+
+func (i PurgeAuditLogArray) ToOutput(ctx context.Context) pulumix.Output[[]*PurgeAuditLog] {
+	return pulumix.Output[[]*PurgeAuditLog]{
+		OutputState: i.ToPurgeAuditLogArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PurgeAuditLogMapInput is an input type that accepts PurgeAuditLogMap and PurgeAuditLogMapOutput values.
@@ -160,6 +173,12 @@ func (i PurgeAuditLogMap) ToPurgeAuditLogMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(PurgeAuditLogMapOutput)
 }
 
+func (i PurgeAuditLogMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PurgeAuditLog] {
+	return pulumix.Output[map[string]*PurgeAuditLog]{
+		OutputState: i.ToPurgeAuditLogMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PurgeAuditLogOutput struct{ *pulumi.OutputState }
 
 func (PurgeAuditLogOutput) ElementType() reflect.Type {
@@ -172,6 +191,12 @@ func (o PurgeAuditLogOutput) ToPurgeAuditLogOutput() PurgeAuditLogOutput {
 
 func (o PurgeAuditLogOutput) ToPurgeAuditLogOutputWithContext(ctx context.Context) PurgeAuditLogOutput {
 	return o
+}
+
+func (o PurgeAuditLogOutput) ToOutput(ctx context.Context) pulumix.Output[*PurgeAuditLog] {
+	return pulumix.Output[*PurgeAuditLog]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PurgeAuditLogOutput) AuditRetentionHour() pulumi.IntOutput {
@@ -200,6 +225,12 @@ func (o PurgeAuditLogArrayOutput) ToPurgeAuditLogArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o PurgeAuditLogArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PurgeAuditLog] {
+	return pulumix.Output[[]*PurgeAuditLog]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PurgeAuditLogArrayOutput) Index(i pulumi.IntInput) PurgeAuditLogOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PurgeAuditLog {
 		return vs[0].([]*PurgeAuditLog)[vs[1].(int)]
@@ -218,6 +249,12 @@ func (o PurgeAuditLogMapOutput) ToPurgeAuditLogMapOutput() PurgeAuditLogMapOutpu
 
 func (o PurgeAuditLogMapOutput) ToPurgeAuditLogMapOutputWithContext(ctx context.Context) PurgeAuditLogMapOutput {
 	return o
+}
+
+func (o PurgeAuditLogMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PurgeAuditLog] {
+	return pulumix.Output[map[string]*PurgeAuditLog]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PurgeAuditLogMapOutput) MapIndex(k pulumi.StringInput) PurgeAuditLogOutput {

@@ -31,6 +31,9 @@ namespace Pulumiverse.Harbor
         [Output("scannerSkipUpdatePulltime")]
         public Output<bool?> ScannerSkipUpdatePulltime { get; private set; } = null!;
 
+        [Output("storagePerProject")]
+        public Output<int?> StoragePerProject { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a ConfigSystem resource with the given unique name, arguments, and options.
@@ -93,6 +96,9 @@ namespace Pulumiverse.Harbor
         [Input("scannerSkipUpdatePulltime")]
         public Input<bool>? ScannerSkipUpdatePulltime { get; set; }
 
+        [Input("storagePerProject")]
+        public Input<int>? StoragePerProject { get; set; }
+
         public ConfigSystemArgs()
         {
         }
@@ -115,6 +121,9 @@ namespace Pulumiverse.Harbor
 
         [Input("scannerSkipUpdatePulltime")]
         public Input<bool>? ScannerSkipUpdatePulltime { get; set; }
+
+        [Input("storagePerProject")]
+        public Input<int>? StoragePerProject { get; set; }
 
         public ConfigSystemState()
         {

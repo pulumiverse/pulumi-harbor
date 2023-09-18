@@ -9,6 +9,7 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
@@ -133,6 +134,12 @@ func (i *ProjectMemberGroup) ToProjectMemberGroupOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMemberGroupOutput)
 }
 
+func (i *ProjectMemberGroup) ToOutput(ctx context.Context) pulumix.Output[*ProjectMemberGroup] {
+	return pulumix.Output[*ProjectMemberGroup]{
+		OutputState: i.ToProjectMemberGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ProjectMemberGroupArrayInput is an input type that accepts ProjectMemberGroupArray and ProjectMemberGroupArrayOutput values.
 // You can construct a concrete instance of `ProjectMemberGroupArrayInput` via:
 //
@@ -156,6 +163,12 @@ func (i ProjectMemberGroupArray) ToProjectMemberGroupArrayOutput() ProjectMember
 
 func (i ProjectMemberGroupArray) ToProjectMemberGroupArrayOutputWithContext(ctx context.Context) ProjectMemberGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMemberGroupArrayOutput)
+}
+
+func (i ProjectMemberGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectMemberGroup] {
+	return pulumix.Output[[]*ProjectMemberGroup]{
+		OutputState: i.ToProjectMemberGroupArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ProjectMemberGroupMapInput is an input type that accepts ProjectMemberGroupMap and ProjectMemberGroupMapOutput values.
@@ -183,6 +196,12 @@ func (i ProjectMemberGroupMap) ToProjectMemberGroupMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMemberGroupMapOutput)
 }
 
+func (i ProjectMemberGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectMemberGroup] {
+	return pulumix.Output[map[string]*ProjectMemberGroup]{
+		OutputState: i.ToProjectMemberGroupMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ProjectMemberGroupOutput struct{ *pulumi.OutputState }
 
 func (ProjectMemberGroupOutput) ElementType() reflect.Type {
@@ -195,6 +214,12 @@ func (o ProjectMemberGroupOutput) ToProjectMemberGroupOutput() ProjectMemberGrou
 
 func (o ProjectMemberGroupOutput) ToProjectMemberGroupOutputWithContext(ctx context.Context) ProjectMemberGroupOutput {
 	return o
+}
+
+func (o ProjectMemberGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectMemberGroup] {
+	return pulumix.Output[*ProjectMemberGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectMemberGroupOutput) GroupId() pulumi.IntPtrOutput {
@@ -239,6 +264,12 @@ func (o ProjectMemberGroupArrayOutput) ToProjectMemberGroupArrayOutputWithContex
 	return o
 }
 
+func (o ProjectMemberGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectMemberGroup] {
+	return pulumix.Output[[]*ProjectMemberGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ProjectMemberGroupArrayOutput) Index(i pulumi.IntInput) ProjectMemberGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectMemberGroup {
 		return vs[0].([]*ProjectMemberGroup)[vs[1].(int)]
@@ -257,6 +288,12 @@ func (o ProjectMemberGroupMapOutput) ToProjectMemberGroupMapOutput() ProjectMemb
 
 func (o ProjectMemberGroupMapOutput) ToProjectMemberGroupMapOutputWithContext(ctx context.Context) ProjectMemberGroupMapOutput {
 	return o
+}
+
+func (o ProjectMemberGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectMemberGroup] {
+	return pulumix.Output[map[string]*ProjectMemberGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ProjectMemberGroupMapOutput) MapIndex(k pulumi.StringInput) ProjectMemberGroupOutput {
