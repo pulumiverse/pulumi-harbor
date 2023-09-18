@@ -705,7 +705,7 @@
             }
         },
         "harbor:index/configSystem:ConfigSystem": {
-            "description": "## Example Usage\n\n```hcl\nresource \"harbor_config_system\" \"main\" {\n  project_creation_restriction = \"adminonly\"\n  robot_token_expiration       = 30\n  robot_name_prefix            = \"harbor@\"\n}\n```\n",
+            "description": "## Example Usage\n\n```hcl\nresource \"harbor_config_system\" \"main\" {\n  project_creation_restriction = \"adminonly\"\n  robot_token_expiration       = 30\n  robot_name_prefix            = \"harbor@\"\n  storage_per_project          = 100\n}\n```\n",
             "properties": {
                 "projectCreationRestriction": {
                     "type": "string"
@@ -721,6 +721,9 @@
                 },
                 "scannerSkipUpdatePulltime": {
                     "type": "boolean"
+                },
+                "storagePerProject": {
+                    "type": "integer"
                 }
             },
             "inputProperties": {
@@ -738,6 +741,9 @@
                 },
                 "scannerSkipUpdatePulltime": {
                     "type": "boolean"
+                },
+                "storagePerProject": {
+                    "type": "integer"
                 }
             },
             "stateInputs": {
@@ -757,6 +763,9 @@
                     },
                     "scannerSkipUpdatePulltime": {
                         "type": "boolean"
+                    },
+                    "storagePerProject": {
+                        "type": "integer"
                     }
                 },
                 "type": "object"
@@ -1856,7 +1865,7 @@
             }
         },
         "harbor:index/robotAccount:RobotAccount": {
-            "description": "## # Resource: harbor.RobotAccount\n\nHarbor supports different levels of robot accounts. Currently `system` and `project` level robot accounts are supported.\n\n## Example Usage\n\n### System Level\nIntroduced in harbor 2.2.0, system level robot accounts can have basically [all available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) in harbor and are not dependent on a single project.\n\n```hcl\nresource \"random_password\" \"password\" {\n  length  = 12\n  special = false\n}\n\nresource \"harbor_project\" \"main\" {\n    name = \"main\"\n}\n\nresource \"harbor_robot_account\" \"system\" {\n  name        = \"example-system\"\n  description = \"system level robot account\"\n  level       = \"system\"\n  secret      = resource.random_password.password.result\n  permissions {\n    access {\n      action   = \"create\"\n      resource = \"labels\"\n    }\n    kind      = \"system\"\n    namespace = \"/\"\n  }\n  permissions {\n    access {\n      action   = \"push\"\n      resource = \"repository\"\n    }\n    access {\n      action   = \"read\"\n      resource = \"helm-chart\"\n    }\n    access {\n      action   = \"read\"\n      resource = \"helm-chart-version\"\n    }\n    kind      = \"project\"\n    namespace = harbor_project.main.name\n  }\n  permissions {\n    access {\n      action   = \"pull\"\n      resource = \"repository\"\n    }\n    kind      = \"project\"\n    namespace = \"*\"\n  }\n}\n```\n\nThe above example, creates a system level robot account with permissions to\n- permission to create labels on system level\n- pull repository across all projects\n- push repository to project \"my-project-name\"\n- read helm-chart and helm-chart-version in project \"my-project-name\"\n\n### Project Level\n\nOther than system level robot accounts, project level robot accounts can interact on project level only.\nThe [available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) are mostly the same as for system level robots.\n\n\n```hcl\nresource \"harbor_project\" \"main\" {\n    name = \"main\"\n}\n\nresource \"harbor_robot_account\" \"project\" {\n  name        = \"example-project\"\n  description = \"project level robot account\"\n  level       = \"project\"\n  permissions {\n    access {\n      action   = \"pull\"\n      resource = \"repository\"\n    }\n    access {\n      action   = \"push\"\n      resource = \"repository\"\n    }\n    kind      = \"project\"\n    namespace = harbor_project.main.name\n  }\n}\n```\n\nThe above example creates a project level robot account with permissions to\n- pull repository on project \"main\"\n- push repository on project \"main\"\n",
+            "description": "## # Resource: harbor.RobotAccount\n\nHarbor supports different levels of robot accounts. Currently `system` and `project` level robot accounts are supported.\n\n## Example Usage\n\n### System Level\nIntroduced in harbor 2.2.0, system level robot accounts can have basically [all available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) in harbor and are not dependent on a single project.\n\n```hcl\nresource \"random_password\" \"password\" {\n  length  = 12\n  special = false\n}\n\nresource \"harbor_project\" \"main\" {\n    name = \"main\"\n}\n\nresource \"harbor_robot_account\" \"system\" {\n  name        = \"example-system\"\n  description = \"system level robot account\"\n  level       = \"system\"\n  secret      = resource.random_password.password.result\n  permissions {\n    access {\n      action   = \"create\"\n      resource = \"labels\"\n    }\n    kind      = \"system\"\n    namespace = \"/\"\n  }\n  permissions {\n    access {\n      action   = \"push\"\n      resource = \"repository\"\n    }\n    access {\n      action   = \"read\"\n      resource = \"helm-chart\"\n    }\n    access {\n      action   = \"read\"\n      resource = \"helm-chart-version\"\n    }\n    kind      = \"project\"\n    namespace = harbor_project.main.name\n  }\n  permissions {\n    access {\n      action   = \"pull\"\n      resource = \"repository\"\n    }\n    kind      = \"project\"\n    namespace = \"*\"\n  }\n}\n```\n\nThe above example, creates a system level robot account with permissions to\n- permission to create labels on system level\n- pull repository across all projects\n- push repository to project \"my-project-name\"\n- read helm-chart and helm-chart-version in project \"my-project-name\"\n\n### Project Level\n\nOther than system level robot accounts, project level robot accounts can interact on project level only.\nThe [available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) are mostly the same as for system level robots.\n\n\n```hcl\nresource \"harbor_project\" \"main\" {\n    name = \"main\"\n}\n\nresource \"harbor_robot_account\" \"project\" {\n  name        = \"example-project\"\n  description = \"project level robot account\"\n  level       = \"project\"\n  permissions {\n    access {\n      action   = \"pull\"\n      resource = \"repository\"\n    }\n    access {\n      action   = \"push\"\n      resource = \"repository\"\n    }\n    kind      = \"project\"\n    namespace = harbor_project.main.name\n  }\n}\n```\n\nThe above example creates a project level robot account with permissions to\n- pull repository on project \"main\"\n- push repository on project \"main\"\n\n## Import\n\nHarbor robot account can be imported using the `robot account id` eg, ` \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123 \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\n",
             "properties": {
                 "description": {
                     "type": "string"
