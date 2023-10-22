@@ -194,6 +194,38 @@
                 "resource"
             ]
         },
+        "harbor:index/getGroupsGroup:getGroupsGroup": {
+            "properties": {
+                "groupName": {
+                    "type": "string",
+                    "description": "The name of the group to filter by.\n"
+                },
+                "groupType": {
+                    "type": "integer",
+                    "description": "The type of the group.\n"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of the group.\n"
+                },
+                "ldapGroupDn": {
+                    "type": "string",
+                    "description": "The LDAP group DN to filter by.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "groupName",
+                "groupType",
+                "id",
+                "ldapGroupDn"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "harbor:index/getProjectsProject:getProjectsProject": {
             "properties": {
                 "name": {
@@ -1053,7 +1085,7 @@
             }
         },
         "harbor:index/project:Project": {
-            "description": "## Example Usage\n\n```hcl\nresource \"harbor_project\" \"main\" {\n    name                    = \"main\"\n    public                  = false               # (Optional) Default value is false\n    vulnerability_scanning  = true                # (Optional) Default vale is true. Automatically scan images on push\n    enable_content_trust    = true                # (Optional) Default vale is false. Deny unsigned images from being pulled\n}\n```\n\n## Harbor project example as proxy cache\n\n```hcl\nresource \"harbor_project\" \"main\" {\n  name        = \"acctest\"\n  registry_id = harbor_registry.docker.registry_id\n}\n\nresource \"harbor_registry\" \"docker\" {\n  provider_name = \"docker-hub\"\n  name          = \"test\"\n  endpoint_url  = \"https://hub.docker.com\"\n}\n```\n\n## Import\n\nHarbor project can be imported using the `project id` eg, ` \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import harbor:index/project:Project main /projects/1 \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\n",
+            "description": "## Example Usage\n\n```hcl\nresource \"harbor_project\" \"main\" {\n    name                        = \"main\"\n    public                      = false               # (Optional) Default value is false\n    vulnerability_scanning      = true                # (Optional) Default value is true. Automatically scan images on push\n    enable_content_trust        = true                # (Optional) Default value is false. Deny unsigned images from being pulled (notary)\n    enable_content_trust_cosign = false               # (Optional) Default value is false. Deny unsigned images from being pulled (cosign)\n}\n```\n\n## Harbor project example as proxy cache\n\n```hcl\nresource \"harbor_project\" \"main\" {\n  name        = \"acctest\"\n  registry_id = harbor_registry.docker.registry_id\n}\n\nresource \"harbor_registry\" \"docker\" {\n  provider_name = \"docker-hub\"\n  name          = \"test\"\n  endpoint_url  = \"https://hub.docker.com\"\n}\n```\n\n## Import\n\nHarbor project can be imported using the `project id` eg, ` \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import harbor:index/project:Project main /projects/1 \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\n",
             "properties": {
                 "cveAllowlists": {
                     "type": "array",
@@ -1069,6 +1101,10 @@
                 "enableContentTrust": {
                     "type": "boolean",
                     "description": "Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `\"true\"` or `\"false\"` (Default: false)\n"
+                },
+                "enableContentTrustCosign": {
+                    "type": "boolean",
+                    "description": "Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `\"true\"` or `\"false\"` (Default: false)\n"
                 },
                 "forceDestroy": {
                     "type": "boolean",
@@ -1120,6 +1156,10 @@
                     "type": "boolean",
                     "description": "Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `\"true\"` or `\"false\"` (Default: false)\n"
                 },
+                "enableContentTrustCosign": {
+                    "type": "boolean",
+                    "description": "Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `\"true\"` or `\"false\"` (Default: false)\n"
+                },
                 "forceDestroy": {
                     "type": "boolean",
                     "description": "A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.\n"
@@ -1164,6 +1204,10 @@
                     "enableContentTrust": {
                         "type": "boolean",
                         "description": "Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `\"true\"` or `\"false\"` (Default: false)\n"
+                    },
+                    "enableContentTrustCosign": {
+                        "type": "boolean",
+                        "description": "Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `\"true\"` or `\"false\"` (Default: false)\n"
                     },
                     "forceDestroy": {
                         "type": "boolean",
@@ -2094,6 +2138,52 @@
         }
     },
     "functions": {
+        "harbor:index/getGroups:getGroups": {
+            "description": "## Example Usage\n\n```hcl\ndata \"harbor_groups\" \"example\" {\n  group_name = \"example-group\"\n}\n\noutput \"group_ids\" {\n  value = [data.harbor_groups.example.*.id]\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGroups.\n",
+                "properties": {
+                    "groupName": {
+                        "type": "string",
+                        "description": "The name of the group to filter by.\n"
+                    },
+                    "ldapGroupDn": {
+                        "type": "string",
+                        "description": "The LDAP group DN to filter by.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGroups.\n",
+                "properties": {
+                    "groupName": {
+                        "type": "string",
+                        "description": "The name of the group.\n"
+                    },
+                    "groups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harbor:index/getGroupsGroup:getGroupsGroup"
+                        },
+                        "description": "(Computed) A list of groups matching the previous arguments. Each `group` object provides the attributes documented below.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ldapGroupDn": {
+                        "type": "string",
+                        "description": "The LDAP group DN of the group.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "groups",
+                    "id"
+                ]
+            }
+        },
         "harbor:index/getProject:getProject": {
             "description": "## Example Usage\n\n```hcl\ndata \"harbor_project\" \"main\" {\n    name    = \"library\" \n}\n\noutput \"project_id\" {\n    value = data.harbor_project.main.id\n}\n```\n",
             "inputs": {
