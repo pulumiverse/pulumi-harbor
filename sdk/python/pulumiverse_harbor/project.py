@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProjectArgs', 'Project']
@@ -17,6 +17,7 @@ class ProjectArgs:
                  cve_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deployment_security: Optional[pulumi.Input[str]] = None,
                  enable_content_trust: Optional[pulumi.Input[bool]] = None,
+                 enable_content_trust_cosign: Optional[pulumi.Input[bool]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  public: Optional[pulumi.Input[str]] = None,
@@ -28,6 +29,7 @@ class ProjectArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cve_allowlists: Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
         :param pulumi.Input[str] deployment_security: Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
         :param pulumi.Input[bool] enable_content_trust: Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
+        :param pulumi.Input[bool] enable_content_trust_cosign: Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
         :param pulumi.Input[str] name: The name of the project that will be created in harbor.
         :param pulumi.Input[str] public: The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
@@ -35,24 +37,71 @@ class ProjectArgs:
         :param pulumi.Input[int] storage_quota: The storage quota of the project in GB's
         :param pulumi.Input[bool] vulnerability_scanning: Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
         """
+        ProjectArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cve_allowlists=cve_allowlists,
+            deployment_security=deployment_security,
+            enable_content_trust=enable_content_trust,
+            enable_content_trust_cosign=enable_content_trust_cosign,
+            force_destroy=force_destroy,
+            name=name,
+            public=public,
+            registry_id=registry_id,
+            storage_quota=storage_quota,
+            vulnerability_scanning=vulnerability_scanning,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cve_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             deployment_security: Optional[pulumi.Input[str]] = None,
+             enable_content_trust: Optional[pulumi.Input[bool]] = None,
+             enable_content_trust_cosign: Optional[pulumi.Input[bool]] = None,
+             force_destroy: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             public: Optional[pulumi.Input[str]] = None,
+             registry_id: Optional[pulumi.Input[int]] = None,
+             storage_quota: Optional[pulumi.Input[int]] = None,
+             vulnerability_scanning: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cveAllowlists' in kwargs:
+            cve_allowlists = kwargs['cveAllowlists']
+        if 'deploymentSecurity' in kwargs:
+            deployment_security = kwargs['deploymentSecurity']
+        if 'enableContentTrust' in kwargs:
+            enable_content_trust = kwargs['enableContentTrust']
+        if 'enableContentTrustCosign' in kwargs:
+            enable_content_trust_cosign = kwargs['enableContentTrustCosign']
+        if 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if 'registryId' in kwargs:
+            registry_id = kwargs['registryId']
+        if 'storageQuota' in kwargs:
+            storage_quota = kwargs['storageQuota']
+        if 'vulnerabilityScanning' in kwargs:
+            vulnerability_scanning = kwargs['vulnerabilityScanning']
+
         if cve_allowlists is not None:
-            pulumi.set(__self__, "cve_allowlists", cve_allowlists)
+            _setter("cve_allowlists", cve_allowlists)
         if deployment_security is not None:
-            pulumi.set(__self__, "deployment_security", deployment_security)
+            _setter("deployment_security", deployment_security)
         if enable_content_trust is not None:
-            pulumi.set(__self__, "enable_content_trust", enable_content_trust)
+            _setter("enable_content_trust", enable_content_trust)
+        if enable_content_trust_cosign is not None:
+            _setter("enable_content_trust_cosign", enable_content_trust_cosign)
         if force_destroy is not None:
-            pulumi.set(__self__, "force_destroy", force_destroy)
+            _setter("force_destroy", force_destroy)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if public is not None:
-            pulumi.set(__self__, "public", public)
+            _setter("public", public)
         if registry_id is not None:
-            pulumi.set(__self__, "registry_id", registry_id)
+            _setter("registry_id", registry_id)
         if storage_quota is not None:
-            pulumi.set(__self__, "storage_quota", storage_quota)
+            _setter("storage_quota", storage_quota)
         if vulnerability_scanning is not None:
-            pulumi.set(__self__, "vulnerability_scanning", vulnerability_scanning)
+            _setter("vulnerability_scanning", vulnerability_scanning)
 
     @property
     @pulumi.getter(name="cveAllowlists")
@@ -89,6 +138,18 @@ class ProjectArgs:
     @enable_content_trust.setter
     def enable_content_trust(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_content_trust", value)
+
+    @property
+    @pulumi.getter(name="enableContentTrustCosign")
+    def enable_content_trust_cosign(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+        """
+        return pulumi.get(self, "enable_content_trust_cosign")
+
+    @enable_content_trust_cosign.setter
+    def enable_content_trust_cosign(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_content_trust_cosign", value)
 
     @property
     @pulumi.getter(name="forceDestroy")
@@ -169,6 +230,7 @@ class _ProjectState:
                  cve_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deployment_security: Optional[pulumi.Input[str]] = None,
                  enable_content_trust: Optional[pulumi.Input[bool]] = None,
+                 enable_content_trust_cosign: Optional[pulumi.Input[bool]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[int]] = None,
@@ -181,6 +243,7 @@ class _ProjectState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cve_allowlists: Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
         :param pulumi.Input[str] deployment_security: Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
         :param pulumi.Input[bool] enable_content_trust: Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
+        :param pulumi.Input[bool] enable_content_trust_cosign: Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
         :param pulumi.Input[str] name: The name of the project that will be created in harbor.
         :param pulumi.Input[int] project_id: The id of the project with harbor.
@@ -189,26 +252,77 @@ class _ProjectState:
         :param pulumi.Input[int] storage_quota: The storage quota of the project in GB's
         :param pulumi.Input[bool] vulnerability_scanning: Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
         """
+        _ProjectState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cve_allowlists=cve_allowlists,
+            deployment_security=deployment_security,
+            enable_content_trust=enable_content_trust,
+            enable_content_trust_cosign=enable_content_trust_cosign,
+            force_destroy=force_destroy,
+            name=name,
+            project_id=project_id,
+            public=public,
+            registry_id=registry_id,
+            storage_quota=storage_quota,
+            vulnerability_scanning=vulnerability_scanning,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cve_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             deployment_security: Optional[pulumi.Input[str]] = None,
+             enable_content_trust: Optional[pulumi.Input[bool]] = None,
+             enable_content_trust_cosign: Optional[pulumi.Input[bool]] = None,
+             force_destroy: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[int]] = None,
+             public: Optional[pulumi.Input[str]] = None,
+             registry_id: Optional[pulumi.Input[int]] = None,
+             storage_quota: Optional[pulumi.Input[int]] = None,
+             vulnerability_scanning: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cveAllowlists' in kwargs:
+            cve_allowlists = kwargs['cveAllowlists']
+        if 'deploymentSecurity' in kwargs:
+            deployment_security = kwargs['deploymentSecurity']
+        if 'enableContentTrust' in kwargs:
+            enable_content_trust = kwargs['enableContentTrust']
+        if 'enableContentTrustCosign' in kwargs:
+            enable_content_trust_cosign = kwargs['enableContentTrustCosign']
+        if 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'registryId' in kwargs:
+            registry_id = kwargs['registryId']
+        if 'storageQuota' in kwargs:
+            storage_quota = kwargs['storageQuota']
+        if 'vulnerabilityScanning' in kwargs:
+            vulnerability_scanning = kwargs['vulnerabilityScanning']
+
         if cve_allowlists is not None:
-            pulumi.set(__self__, "cve_allowlists", cve_allowlists)
+            _setter("cve_allowlists", cve_allowlists)
         if deployment_security is not None:
-            pulumi.set(__self__, "deployment_security", deployment_security)
+            _setter("deployment_security", deployment_security)
         if enable_content_trust is not None:
-            pulumi.set(__self__, "enable_content_trust", enable_content_trust)
+            _setter("enable_content_trust", enable_content_trust)
+        if enable_content_trust_cosign is not None:
+            _setter("enable_content_trust_cosign", enable_content_trust_cosign)
         if force_destroy is not None:
-            pulumi.set(__self__, "force_destroy", force_destroy)
+            _setter("force_destroy", force_destroy)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if public is not None:
-            pulumi.set(__self__, "public", public)
+            _setter("public", public)
         if registry_id is not None:
-            pulumi.set(__self__, "registry_id", registry_id)
+            _setter("registry_id", registry_id)
         if storage_quota is not None:
-            pulumi.set(__self__, "storage_quota", storage_quota)
+            _setter("storage_quota", storage_quota)
         if vulnerability_scanning is not None:
-            pulumi.set(__self__, "vulnerability_scanning", vulnerability_scanning)
+            _setter("vulnerability_scanning", vulnerability_scanning)
 
     @property
     @pulumi.getter(name="cveAllowlists")
@@ -245,6 +359,18 @@ class _ProjectState:
     @enable_content_trust.setter
     def enable_content_trust(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_content_trust", value)
+
+    @property
+    @pulumi.getter(name="enableContentTrustCosign")
+    def enable_content_trust_cosign(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+        """
+        return pulumi.get(self, "enable_content_trust_cosign")
+
+    @enable_content_trust_cosign.setter
+    def enable_content_trust_cosign(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_content_trust_cosign", value)
 
     @property
     @pulumi.getter(name="forceDestroy")
@@ -339,6 +465,7 @@ class Project(pulumi.CustomResource):
                  cve_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deployment_security: Optional[pulumi.Input[str]] = None,
                  enable_content_trust: Optional[pulumi.Input[bool]] = None,
+                 enable_content_trust_cosign: Optional[pulumi.Input[bool]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  public: Optional[pulumi.Input[str]] = None,
@@ -360,6 +487,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cve_allowlists: Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
         :param pulumi.Input[str] deployment_security: Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
         :param pulumi.Input[bool] enable_content_trust: Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
+        :param pulumi.Input[bool] enable_content_trust_cosign: Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
         :param pulumi.Input[str] name: The name of the project that will be created in harbor.
         :param pulumi.Input[str] public: The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
@@ -392,6 +520,10 @@ class Project(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProjectArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -400,6 +532,7 @@ class Project(pulumi.CustomResource):
                  cve_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deployment_security: Optional[pulumi.Input[str]] = None,
                  enable_content_trust: Optional[pulumi.Input[bool]] = None,
+                 enable_content_trust_cosign: Optional[pulumi.Input[bool]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  public: Optional[pulumi.Input[str]] = None,
@@ -418,6 +551,7 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["cve_allowlists"] = cve_allowlists
             __props__.__dict__["deployment_security"] = deployment_security
             __props__.__dict__["enable_content_trust"] = enable_content_trust
+            __props__.__dict__["enable_content_trust_cosign"] = enable_content_trust_cosign
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["name"] = name
             __props__.__dict__["public"] = public
@@ -438,6 +572,7 @@ class Project(pulumi.CustomResource):
             cve_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             deployment_security: Optional[pulumi.Input[str]] = None,
             enable_content_trust: Optional[pulumi.Input[bool]] = None,
+            enable_content_trust_cosign: Optional[pulumi.Input[bool]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[int]] = None,
@@ -455,6 +590,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cve_allowlists: Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
         :param pulumi.Input[str] deployment_security: Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
         :param pulumi.Input[bool] enable_content_trust: Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
+        :param pulumi.Input[bool] enable_content_trust_cosign: Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
         :param pulumi.Input[str] name: The name of the project that will be created in harbor.
         :param pulumi.Input[int] project_id: The id of the project with harbor.
@@ -470,6 +606,7 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["cve_allowlists"] = cve_allowlists
         __props__.__dict__["deployment_security"] = deployment_security
         __props__.__dict__["enable_content_trust"] = enable_content_trust
+        __props__.__dict__["enable_content_trust_cosign"] = enable_content_trust_cosign
         __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["name"] = name
         __props__.__dict__["project_id"] = project_id
@@ -502,6 +639,14 @@ class Project(pulumi.CustomResource):
         Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
         """
         return pulumi.get(self, "enable_content_trust")
+
+    @property
+    @pulumi.getter(name="enableContentTrustCosign")
+    def enable_content_trust_cosign(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+        """
+        return pulumi.get(self, "enable_content_trust_cosign")
 
     @property
     @pulumi.getter(name="forceDestroy")

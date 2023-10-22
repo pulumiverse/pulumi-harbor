@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,28 +31,67 @@ class ReplicationArgs:
         """
         The set of arguments for constructing a Replication resource.
         """
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "registry_id", registry_id)
+        ReplicationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            registry_id=registry_id,
+            deletion=deletion,
+            description=description,
+            dest_namespace=dest_namespace,
+            dest_namespace_replace=dest_namespace_replace,
+            enabled=enabled,
+            filters=filters,
+            name=name,
+            override=override,
+            schedule=schedule,
+            speed=speed,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: pulumi.Input[str],
+             registry_id: pulumi.Input[int],
+             deletion: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dest_namespace: Optional[pulumi.Input[str]] = None,
+             dest_namespace_replace: Optional[pulumi.Input[int]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             filters: Optional[pulumi.Input[Sequence[pulumi.Input['ReplicationFilterArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             override: Optional[pulumi.Input[bool]] = None,
+             schedule: Optional[pulumi.Input[str]] = None,
+             speed: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'registryId' in kwargs:
+            registry_id = kwargs['registryId']
+        if 'destNamespace' in kwargs:
+            dest_namespace = kwargs['destNamespace']
+        if 'destNamespaceReplace' in kwargs:
+            dest_namespace_replace = kwargs['destNamespaceReplace']
+
+        _setter("action", action)
+        _setter("registry_id", registry_id)
         if deletion is not None:
-            pulumi.set(__self__, "deletion", deletion)
+            _setter("deletion", deletion)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dest_namespace is not None:
-            pulumi.set(__self__, "dest_namespace", dest_namespace)
+            _setter("dest_namespace", dest_namespace)
         if dest_namespace_replace is not None:
-            pulumi.set(__self__, "dest_namespace_replace", dest_namespace_replace)
+            _setter("dest_namespace_replace", dest_namespace_replace)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if filters is not None:
-            pulumi.set(__self__, "filters", filters)
+            _setter("filters", filters)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if override is not None:
-            pulumi.set(__self__, "override", override)
+            _setter("override", override)
         if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
+            _setter("schedule", schedule)
         if speed is not None:
-            pulumi.set(__self__, "speed", speed)
+            _setter("speed", speed)
 
     @property
     @pulumi.getter
@@ -182,32 +221,75 @@ class _ReplicationState:
         """
         Input properties used for looking up and filtering Replication resources.
         """
+        _ReplicationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            deletion=deletion,
+            description=description,
+            dest_namespace=dest_namespace,
+            dest_namespace_replace=dest_namespace_replace,
+            enabled=enabled,
+            filters=filters,
+            name=name,
+            override=override,
+            registry_id=registry_id,
+            replication_policy_id=replication_policy_id,
+            schedule=schedule,
+            speed=speed,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[pulumi.Input[str]] = None,
+             deletion: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dest_namespace: Optional[pulumi.Input[str]] = None,
+             dest_namespace_replace: Optional[pulumi.Input[int]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             filters: Optional[pulumi.Input[Sequence[pulumi.Input['ReplicationFilterArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             override: Optional[pulumi.Input[bool]] = None,
+             registry_id: Optional[pulumi.Input[int]] = None,
+             replication_policy_id: Optional[pulumi.Input[int]] = None,
+             schedule: Optional[pulumi.Input[str]] = None,
+             speed: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destNamespace' in kwargs:
+            dest_namespace = kwargs['destNamespace']
+        if 'destNamespaceReplace' in kwargs:
+            dest_namespace_replace = kwargs['destNamespaceReplace']
+        if 'registryId' in kwargs:
+            registry_id = kwargs['registryId']
+        if 'replicationPolicyId' in kwargs:
+            replication_policy_id = kwargs['replicationPolicyId']
+
         if action is not None:
-            pulumi.set(__self__, "action", action)
+            _setter("action", action)
         if deletion is not None:
-            pulumi.set(__self__, "deletion", deletion)
+            _setter("deletion", deletion)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dest_namespace is not None:
-            pulumi.set(__self__, "dest_namespace", dest_namespace)
+            _setter("dest_namespace", dest_namespace)
         if dest_namespace_replace is not None:
-            pulumi.set(__self__, "dest_namespace_replace", dest_namespace_replace)
+            _setter("dest_namespace_replace", dest_namespace_replace)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if filters is not None:
-            pulumi.set(__self__, "filters", filters)
+            _setter("filters", filters)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if override is not None:
-            pulumi.set(__self__, "override", override)
+            _setter("override", override)
         if registry_id is not None:
-            pulumi.set(__self__, "registry_id", registry_id)
+            _setter("registry_id", registry_id)
         if replication_policy_id is not None:
-            pulumi.set(__self__, "replication_policy_id", replication_policy_id)
+            _setter("replication_policy_id", replication_policy_id)
         if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
+            _setter("schedule", schedule)
         if speed is not None:
-            pulumi.set(__self__, "speed", speed)
+            _setter("speed", speed)
 
     @property
     @pulumi.getter
@@ -378,6 +460,10 @@ class Replication(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ReplicationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

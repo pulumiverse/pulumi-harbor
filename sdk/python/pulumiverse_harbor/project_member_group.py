@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProjectMemberGroupArgs', 'ProjectMemberGroup']
@@ -23,15 +23,44 @@ class ProjectMemberGroupArgs:
         """
         The set of arguments for constructing a ProjectMemberGroup resource.
         """
-        pulumi.set(__self__, "project_id", project_id)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "type", type)
+        ProjectMemberGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project_id=project_id,
+            role=role,
+            type=type,
+            group_id=group_id,
+            group_name=group_name,
+            ldap_group_dn=ldap_group_dn,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project_id: pulumi.Input[str],
+             role: pulumi.Input[str],
+             type: pulumi.Input[str],
+             group_id: Optional[pulumi.Input[int]] = None,
+             group_name: Optional[pulumi.Input[str]] = None,
+             ldap_group_dn: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'ldapGroupDn' in kwargs:
+            ldap_group_dn = kwargs['ldapGroupDn']
+
+        _setter("project_id", project_id)
+        _setter("role", role)
+        _setter("type", type)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if group_name is not None:
-            pulumi.set(__self__, "group_name", group_name)
+            _setter("group_name", group_name)
         if ldap_group_dn is not None:
-            pulumi.set(__self__, "ldap_group_dn", ldap_group_dn)
+            _setter("ldap_group_dn", ldap_group_dn)
 
     @property
     @pulumi.getter(name="projectId")
@@ -101,20 +130,53 @@ class _ProjectMemberGroupState:
         """
         Input properties used for looking up and filtering ProjectMemberGroup resources.
         """
+        _ProjectMemberGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            group_name=group_name,
+            ldap_group_dn=ldap_group_dn,
+            member_id=member_id,
+            project_id=project_id,
+            role=role,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: Optional[pulumi.Input[int]] = None,
+             group_name: Optional[pulumi.Input[str]] = None,
+             ldap_group_dn: Optional[pulumi.Input[str]] = None,
+             member_id: Optional[pulumi.Input[int]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'ldapGroupDn' in kwargs:
+            ldap_group_dn = kwargs['ldapGroupDn']
+        if 'memberId' in kwargs:
+            member_id = kwargs['memberId']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if group_name is not None:
-            pulumi.set(__self__, "group_name", group_name)
+            _setter("group_name", group_name)
         if ldap_group_dn is not None:
-            pulumi.set(__self__, "ldap_group_dn", ldap_group_dn)
+            _setter("ldap_group_dn", ldap_group_dn)
         if member_id is not None:
-            pulumi.set(__self__, "member_id", member_id)
+            _setter("member_id", member_id)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="groupId")
@@ -225,6 +287,10 @@ class ProjectMemberGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProjectMemberGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
