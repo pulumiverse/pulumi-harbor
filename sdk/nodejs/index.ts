@@ -30,6 +30,11 @@ export type GarbageCollection = import("./garbageCollection").GarbageCollection;
 export const GarbageCollection: typeof import("./garbageCollection").GarbageCollection = null as any;
 utilities.lazyLoad(exports, ["GarbageCollection"], () => require("./garbageCollection"));
 
+export { GetGroupsArgs, GetGroupsResult, GetGroupsOutputArgs } from "./getGroups";
+export const getGroups: typeof import("./getGroups").getGroups = null as any;
+export const getGroupsOutput: typeof import("./getGroups").getGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getGroups","getGroupsOutput"], () => require("./getGroups"));
+
 export { GetProjectArgs, GetProjectResult, GetProjectOutputArgs } from "./getProject";
 export const getProject: typeof import("./getProject").getProject = null as any;
 export const getProjectOutput: typeof import("./getProject").getProjectOutput = null as any;

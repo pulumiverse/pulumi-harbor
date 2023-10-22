@@ -41,6 +41,12 @@ namespace Pulumiverse.Harbor
         public Output<bool?> EnableContentTrust { get; private set; } = null!;
 
         /// <summary>
+        /// Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+        /// </summary>
+        [Output("enableContentTrustCosign")]
+        public Output<bool?> EnableContentTrustCosign { get; private set; } = null!;
+
+        /// <summary>
         /// A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
         /// </summary>
         [Output("forceDestroy")]
@@ -154,6 +160,12 @@ namespace Pulumiverse.Harbor
         public Input<bool>? EnableContentTrust { get; set; }
 
         /// <summary>
+        /// Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+        /// </summary>
+        [Input("enableContentTrustCosign")]
+        public Input<bool>? EnableContentTrustCosign { get; set; }
+
+        /// <summary>
         /// A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
         /// </summary>
         [Input("forceDestroy")]
@@ -220,6 +232,12 @@ namespace Pulumiverse.Harbor
         /// </summary>
         [Input("enableContentTrust")]
         public Input<bool>? EnableContentTrust { get; set; }
+
+        /// <summary>
+        /// Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+        /// </summary>
+        [Input("enableContentTrustCosign")]
+        public Input<bool>? EnableContentTrustCosign { get; set; }
 
         /// <summary>
         /// A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.

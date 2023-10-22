@@ -10,6 +10,7 @@ from .config_email import *
 from .config_security import *
 from .config_system import *
 from .garbage_collection import *
+from .get_groups import *
 from .get_project import *
 from .get_projects import *
 from .get_registry import *

@@ -5,6 +5,25 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface GetGroupsGroup {
+    /**
+     * The name of the group to filter by.
+     */
+    groupName: string;
+    /**
+     * The type of the group.
+     */
+    groupType: number;
+    /**
+     * The ID of the group.
+     */
+    id: number;
+    /**
+     * The LDAP group DN to filter by.
+     */
+    ldapGroupDn: string;
+}
+
 export interface GetProjectsProject {
     name: string;
     projectId: number;

@@ -20,6 +20,7 @@
         "configSecurity.ts",
         "configSystem.ts",
         "garbageCollection.ts",
+        "getGroups.ts",
         "getProject.ts",
         "getProjects.ts",
         "getRegistry.ts",

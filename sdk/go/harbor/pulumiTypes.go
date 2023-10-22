@@ -633,6 +633,154 @@ func (o RobotAccountPermissionAccessArrayOutput) Index(i pulumi.IntInput) RobotA
 	}).(RobotAccountPermissionAccessOutput)
 }
 
+type GetGroupsGroup struct {
+	// The name of the group to filter by.
+	GroupName string `pulumi:"groupName"`
+	// The type of the group.
+	GroupType int `pulumi:"groupType"`
+	// The ID of the group.
+	Id int `pulumi:"id"`
+	// The LDAP group DN to filter by.
+	LdapGroupDn string `pulumi:"ldapGroupDn"`
+}
+
+// GetGroupsGroupInput is an input type that accepts GetGroupsGroupArgs and GetGroupsGroupOutput values.
+// You can construct a concrete instance of `GetGroupsGroupInput` via:
+//
+//	GetGroupsGroupArgs{...}
+type GetGroupsGroupInput interface {
+	pulumi.Input
+
+	ToGetGroupsGroupOutput() GetGroupsGroupOutput
+	ToGetGroupsGroupOutputWithContext(context.Context) GetGroupsGroupOutput
+}
+
+type GetGroupsGroupArgs struct {
+	// The name of the group to filter by.
+	GroupName pulumi.StringInput `pulumi:"groupName"`
+	// The type of the group.
+	GroupType pulumi.IntInput `pulumi:"groupType"`
+	// The ID of the group.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The LDAP group DN to filter by.
+	LdapGroupDn pulumi.StringInput `pulumi:"ldapGroupDn"`
+}
+
+func (GetGroupsGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupsGroup)(nil)).Elem()
+}
+
+func (i GetGroupsGroupArgs) ToGetGroupsGroupOutput() GetGroupsGroupOutput {
+	return i.ToGetGroupsGroupOutputWithContext(context.Background())
+}
+
+func (i GetGroupsGroupArgs) ToGetGroupsGroupOutputWithContext(ctx context.Context) GetGroupsGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupOutput)
+}
+
+func (i GetGroupsGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetGroupsGroup] {
+	return pulumix.Output[GetGroupsGroup]{
+		OutputState: i.ToGetGroupsGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetGroupsGroupArrayInput is an input type that accepts GetGroupsGroupArray and GetGroupsGroupArrayOutput values.
+// You can construct a concrete instance of `GetGroupsGroupArrayInput` via:
+//
+//	GetGroupsGroupArray{ GetGroupsGroupArgs{...} }
+type GetGroupsGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetGroupsGroupArrayOutput() GetGroupsGroupArrayOutput
+	ToGetGroupsGroupArrayOutputWithContext(context.Context) GetGroupsGroupArrayOutput
+}
+
+type GetGroupsGroupArray []GetGroupsGroupInput
+
+func (GetGroupsGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupsGroup)(nil)).Elem()
+}
+
+func (i GetGroupsGroupArray) ToGetGroupsGroupArrayOutput() GetGroupsGroupArrayOutput {
+	return i.ToGetGroupsGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetGroupsGroupArray) ToGetGroupsGroupArrayOutputWithContext(ctx context.Context) GetGroupsGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupsGroupArrayOutput)
+}
+
+func (i GetGroupsGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupsGroup] {
+	return pulumix.Output[[]GetGroupsGroup]{
+		OutputState: i.ToGetGroupsGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetGroupsGroupOutput struct{ *pulumi.OutputState }
+
+func (GetGroupsGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupsGroup)(nil)).Elem()
+}
+
+func (o GetGroupsGroupOutput) ToGetGroupsGroupOutput() GetGroupsGroupOutput {
+	return o
+}
+
+func (o GetGroupsGroupOutput) ToGetGroupsGroupOutputWithContext(ctx context.Context) GetGroupsGroupOutput {
+	return o
+}
+
+func (o GetGroupsGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupsGroup] {
+	return pulumix.Output[GetGroupsGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The name of the group to filter by.
+func (o GetGroupsGroupOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// The type of the group.
+func (o GetGroupsGroupOutput) GroupType() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGroupsGroup) int { return v.GroupType }).(pulumi.IntOutput)
+}
+
+// The ID of the group.
+func (o GetGroupsGroupOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGroupsGroup) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The LDAP group DN to filter by.
+func (o GetGroupsGroupOutput) LdapGroupDn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsGroup) string { return v.LdapGroupDn }).(pulumi.StringOutput)
+}
+
+type GetGroupsGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGroupsGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupsGroup)(nil)).Elem()
+}
+
+func (o GetGroupsGroupArrayOutput) ToGetGroupsGroupArrayOutput() GetGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetGroupsGroupArrayOutput) ToGetGroupsGroupArrayOutputWithContext(ctx context.Context) GetGroupsGroupArrayOutput {
+	return o
+}
+
+func (o GetGroupsGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetGroupsGroup] {
+	return pulumix.Output[[]GetGroupsGroup]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupsGroup {
+		return vs[0].([]GetGroupsGroup)[vs[1].(int)]
+	}).(GetGroupsGroupOutput)
+}
+
 type GetProjectsProject struct {
 	Name                  string `pulumi:"name"`
 	ProjectId             int    `pulumi:"projectId"`
@@ -784,6 +932,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RobotAccountPermissionArrayInput)(nil)).Elem(), RobotAccountPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RobotAccountPermissionAccessInput)(nil)).Elem(), RobotAccountPermissionAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RobotAccountPermissionAccessArrayInput)(nil)).Elem(), RobotAccountPermissionAccessArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupInput)(nil)).Elem(), GetGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupArrayInput)(nil)).Elem(), GetGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectInput)(nil)).Elem(), GetProjectsProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectArrayInput)(nil)).Elem(), GetProjectsProjectArray{})
 	pulumi.RegisterOutputType(ReplicationFilterOutput{})
@@ -794,6 +944,8 @@ func init() {
 	pulumi.RegisterOutputType(RobotAccountPermissionArrayOutput{})
 	pulumi.RegisterOutputType(RobotAccountPermissionAccessOutput{})
 	pulumi.RegisterOutputType(RobotAccountPermissionAccessArrayOutput{})
+	pulumi.RegisterOutputType(GetGroupsGroupOutput{})
+	pulumi.RegisterOutputType(GetGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectsProjectOutput{})
 	pulumi.RegisterOutputType(GetProjectsProjectArrayOutput{})
 }

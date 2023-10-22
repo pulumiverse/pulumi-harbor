@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ConfigSecurityArgs', 'ConfigSecurity']
@@ -21,9 +21,26 @@ class ConfigSecurityArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cve_allowlists: System allowlist. Vulnerabilities in this list will be ignored when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
         :param pulumi.Input[int] expires_at: The time for expiration of the allowlist, in the form of seconds since epoch. This is an optional attribute, if it's not set the CVE allowlist does not expire.
         """
-        pulumi.set(__self__, "cve_allowlists", cve_allowlists)
+        ConfigSecurityArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cve_allowlists=cve_allowlists,
+            expires_at=expires_at,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cve_allowlists: pulumi.Input[Sequence[pulumi.Input[str]]],
+             expires_at: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cveAllowlists' in kwargs:
+            cve_allowlists = kwargs['cveAllowlists']
+        if 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+
+        _setter("cve_allowlists", cve_allowlists)
         if expires_at is not None:
-            pulumi.set(__self__, "expires_at", expires_at)
+            _setter("expires_at", expires_at)
 
     @property
     @pulumi.getter(name="cveAllowlists")
@@ -64,14 +81,39 @@ class _ConfigSecurityState:
         :param pulumi.Input[int] expires_at: The time for expiration of the allowlist, in the form of seconds since epoch. This is an optional attribute, if it's not set the CVE allowlist does not expire.
         :param pulumi.Input[str] update_time: Time of update of the list.
         """
+        _ConfigSecurityState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            creation_time=creation_time,
+            cve_allowlists=cve_allowlists,
+            expires_at=expires_at,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             creation_time: Optional[pulumi.Input[str]] = None,
+             cve_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             expires_at: Optional[pulumi.Input[int]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'cveAllowlists' in kwargs:
+            cve_allowlists = kwargs['cveAllowlists']
+        if 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+        if 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if creation_time is not None:
-            pulumi.set(__self__, "creation_time", creation_time)
+            _setter("creation_time", creation_time)
         if cve_allowlists is not None:
-            pulumi.set(__self__, "cve_allowlists", cve_allowlists)
+            _setter("cve_allowlists", cve_allowlists)
         if expires_at is not None:
-            pulumi.set(__self__, "expires_at", expires_at)
+            _setter("expires_at", expires_at)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="creationTime")
@@ -165,6 +207,10 @@ class ConfigSecurity(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConfigSecurityArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

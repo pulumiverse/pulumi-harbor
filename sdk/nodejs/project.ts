@@ -54,6 +54,10 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly enableContentTrust!: pulumi.Output<boolean | undefined>;
     /**
+     * Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+     */
+    public readonly enableContentTrustCosign!: pulumi.Output<boolean | undefined>;
+    /**
      * A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
      */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
@@ -98,6 +102,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["cveAllowlists"] = state ? state.cveAllowlists : undefined;
             resourceInputs["deploymentSecurity"] = state ? state.deploymentSecurity : undefined;
             resourceInputs["enableContentTrust"] = state ? state.enableContentTrust : undefined;
+            resourceInputs["enableContentTrustCosign"] = state ? state.enableContentTrustCosign : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
@@ -110,6 +115,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["cveAllowlists"] = args ? args.cveAllowlists : undefined;
             resourceInputs["deploymentSecurity"] = args ? args.deploymentSecurity : undefined;
             resourceInputs["enableContentTrust"] = args ? args.enableContentTrust : undefined;
+            resourceInputs["enableContentTrustCosign"] = args ? args.enableContentTrustCosign : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["public"] = args ? args.public : undefined;
@@ -139,6 +145,10 @@ export interface ProjectState {
      * Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
      */
     enableContentTrust?: pulumi.Input<boolean>;
+    /**
+     * Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+     */
+    enableContentTrustCosign?: pulumi.Input<boolean>;
     /**
      * A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
      */
@@ -185,6 +195,10 @@ export interface ProjectArgs {
      * Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
      */
     enableContentTrust?: pulumi.Input<boolean>;
+    /**
+     * Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+     */
+    enableContentTrustCosign?: pulumi.Input<boolean>;
     /**
      * A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
      */

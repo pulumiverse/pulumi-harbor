@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 
@@ -15,6 +15,7 @@ __all__ = [
     'RetentionPolicyRule',
     'RobotAccountPermission',
     'RobotAccountPermissionAccess',
+    'GetGroupsGroupResult',
     'GetProjectsProjectResult',
 ]
 
@@ -26,16 +27,35 @@ class ReplicationFilter(dict):
                  name: Optional[str] = None,
                  resource: Optional[str] = None,
                  tag: Optional[str] = None):
+        ReplicationFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            decoration=decoration,
+            labels=labels,
+            name=name,
+            resource=resource,
+            tag=tag,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             decoration: Optional[str] = None,
+             labels: Optional[Sequence[str]] = None,
+             name: Optional[str] = None,
+             resource: Optional[str] = None,
+             tag: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if decoration is not None:
-            pulumi.set(__self__, "decoration", decoration)
+            _setter("decoration", decoration)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if resource is not None:
-            pulumi.set(__self__, "resource", resource)
+            _setter("resource", resource)
         if tag is not None:
-            pulumi.set(__self__, "tag", tag)
+            _setter("tag", tag)
 
     @property
     @pulumi.getter
@@ -127,28 +147,79 @@ class RetentionPolicyRule(dict):
                
                > Multiple tags or repositories must be provided as a comma-separated list wrapped into curly brackets `{ }`. Otherwise, the value is interpreted as a single value.
         """
+        RetentionPolicyRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            always_retain=always_retain,
+            disabled=disabled,
+            most_recently_pulled=most_recently_pulled,
+            most_recently_pushed=most_recently_pushed,
+            n_days_since_last_pull=n_days_since_last_pull,
+            n_days_since_last_push=n_days_since_last_push,
+            repo_excluding=repo_excluding,
+            repo_matching=repo_matching,
+            tag_excluding=tag_excluding,
+            tag_matching=tag_matching,
+            untagged_artifacts=untagged_artifacts,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             always_retain: Optional[bool] = None,
+             disabled: Optional[bool] = None,
+             most_recently_pulled: Optional[int] = None,
+             most_recently_pushed: Optional[int] = None,
+             n_days_since_last_pull: Optional[int] = None,
+             n_days_since_last_push: Optional[int] = None,
+             repo_excluding: Optional[str] = None,
+             repo_matching: Optional[str] = None,
+             tag_excluding: Optional[str] = None,
+             tag_matching: Optional[str] = None,
+             untagged_artifacts: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alwaysRetain' in kwargs:
+            always_retain = kwargs['alwaysRetain']
+        if 'mostRecentlyPulled' in kwargs:
+            most_recently_pulled = kwargs['mostRecentlyPulled']
+        if 'mostRecentlyPushed' in kwargs:
+            most_recently_pushed = kwargs['mostRecentlyPushed']
+        if 'nDaysSinceLastPull' in kwargs:
+            n_days_since_last_pull = kwargs['nDaysSinceLastPull']
+        if 'nDaysSinceLastPush' in kwargs:
+            n_days_since_last_push = kwargs['nDaysSinceLastPush']
+        if 'repoExcluding' in kwargs:
+            repo_excluding = kwargs['repoExcluding']
+        if 'repoMatching' in kwargs:
+            repo_matching = kwargs['repoMatching']
+        if 'tagExcluding' in kwargs:
+            tag_excluding = kwargs['tagExcluding']
+        if 'tagMatching' in kwargs:
+            tag_matching = kwargs['tagMatching']
+        if 'untaggedArtifacts' in kwargs:
+            untagged_artifacts = kwargs['untaggedArtifacts']
+
         if always_retain is not None:
-            pulumi.set(__self__, "always_retain", always_retain)
+            _setter("always_retain", always_retain)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if most_recently_pulled is not None:
-            pulumi.set(__self__, "most_recently_pulled", most_recently_pulled)
+            _setter("most_recently_pulled", most_recently_pulled)
         if most_recently_pushed is not None:
-            pulumi.set(__self__, "most_recently_pushed", most_recently_pushed)
+            _setter("most_recently_pushed", most_recently_pushed)
         if n_days_since_last_pull is not None:
-            pulumi.set(__self__, "n_days_since_last_pull", n_days_since_last_pull)
+            _setter("n_days_since_last_pull", n_days_since_last_pull)
         if n_days_since_last_push is not None:
-            pulumi.set(__self__, "n_days_since_last_push", n_days_since_last_push)
+            _setter("n_days_since_last_push", n_days_since_last_push)
         if repo_excluding is not None:
-            pulumi.set(__self__, "repo_excluding", repo_excluding)
+            _setter("repo_excluding", repo_excluding)
         if repo_matching is not None:
-            pulumi.set(__self__, "repo_matching", repo_matching)
+            _setter("repo_matching", repo_matching)
         if tag_excluding is not None:
-            pulumi.set(__self__, "tag_excluding", tag_excluding)
+            _setter("tag_excluding", tag_excluding)
         if tag_matching is not None:
-            pulumi.set(__self__, "tag_matching", tag_matching)
+            _setter("tag_matching", tag_matching)
         if untagged_artifacts is not None:
-            pulumi.set(__self__, "untagged_artifacts", untagged_artifacts)
+            _setter("untagged_artifacts", untagged_artifacts)
 
     @property
     @pulumi.getter(name="alwaysRetain")
@@ -247,9 +318,24 @@ class RobotAccountPermission(dict):
                  accesses: Sequence['outputs.RobotAccountPermissionAccess'],
                  kind: str,
                  namespace: str):
-        pulumi.set(__self__, "accesses", accesses)
-        pulumi.set(__self__, "kind", kind)
-        pulumi.set(__self__, "namespace", namespace)
+        RobotAccountPermission._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accesses=accesses,
+            kind=kind,
+            namespace=namespace,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accesses: Sequence['outputs.RobotAccountPermissionAccess'],
+             kind: str,
+             namespace: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
+        _setter("accesses", accesses)
+        _setter("kind", kind)
+        _setter("namespace", namespace)
 
     @property
     @pulumi.getter
@@ -273,10 +359,25 @@ class RobotAccountPermissionAccess(dict):
                  action: str,
                  resource: str,
                  effect: Optional[str] = None):
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "resource", resource)
+        RobotAccountPermissionAccess._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            resource=resource,
+            effect=effect,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: str,
+             resource: str,
+             effect: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
+        _setter("action", action)
+        _setter("resource", resource)
         if effect is not None:
-            pulumi.set(__self__, "effect", effect)
+            _setter("effect", effect)
 
     @property
     @pulumi.getter
@@ -295,6 +396,80 @@ class RobotAccountPermissionAccess(dict):
 
 
 @pulumi.output_type
+class GetGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 group_name: str,
+                 group_type: int,
+                 id: int,
+                 ldap_group_dn: str):
+        """
+        :param str group_name: The name of the group to filter by.
+        :param int group_type: The type of the group.
+        :param int id: The ID of the group.
+        :param str ldap_group_dn: The LDAP group DN to filter by.
+        """
+        GetGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_name=group_name,
+            group_type=group_type,
+            id=id,
+            ldap_group_dn=ldap_group_dn,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_name: str,
+             group_type: int,
+             id: int,
+             ldap_group_dn: str,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'groupType' in kwargs:
+            group_type = kwargs['groupType']
+        if 'ldapGroupDn' in kwargs:
+            ldap_group_dn = kwargs['ldapGroupDn']
+
+        _setter("group_name", group_name)
+        _setter("group_type", group_type)
+        _setter("id", id)
+        _setter("ldap_group_dn", ldap_group_dn)
+
+    @property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> str:
+        """
+        The name of the group to filter by.
+        """
+        return pulumi.get(self, "group_name")
+
+    @property
+    @pulumi.getter(name="groupType")
+    def group_type(self) -> int:
+        """
+        The type of the group.
+        """
+        return pulumi.get(self, "group_type")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of the group.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ldapGroupDn")
+    def ldap_group_dn(self) -> str:
+        """
+        The LDAP group DN to filter by.
+        """
+        return pulumi.get(self, "ldap_group_dn")
+
+
+@pulumi.output_type
 class GetProjectsProjectResult(dict):
     def __init__(__self__, *,
                  name: str,
@@ -302,11 +477,34 @@ class GetProjectsProjectResult(dict):
                  public: bool,
                  type: str,
                  vulnerability_scanning: bool):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "project_id", project_id)
-        pulumi.set(__self__, "public", public)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "vulnerability_scanning", vulnerability_scanning)
+        GetProjectsProjectResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            project_id=project_id,
+            public=public,
+            type=type,
+            vulnerability_scanning=vulnerability_scanning,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             project_id: int,
+             public: bool,
+             type: str,
+             vulnerability_scanning: bool,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'vulnerabilityScanning' in kwargs:
+            vulnerability_scanning = kwargs['vulnerabilityScanning']
+
+        _setter("name", name)
+        _setter("project_id", project_id)
+        _setter("public", public)
+        _setter("type", type)
+        _setter("vulnerability_scanning", vulnerability_scanning)
 
     @property
     @pulumi.getter

@@ -28,6 +28,8 @@ type Project struct {
 	DeploymentSecurity pulumi.StringPtrOutput `pulumi:"deploymentSecurity"`
 	// Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
 	EnableContentTrust pulumi.BoolPtrOutput `pulumi:"enableContentTrust"`
+	// Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+	EnableContentTrustCosign pulumi.BoolPtrOutput `pulumi:"enableContentTrustCosign"`
 	// A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// The name of the project that will be created in harbor.
@@ -80,6 +82,8 @@ type projectState struct {
 	DeploymentSecurity *string `pulumi:"deploymentSecurity"`
 	// Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
 	EnableContentTrust *bool `pulumi:"enableContentTrust"`
+	// Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+	EnableContentTrustCosign *bool `pulumi:"enableContentTrustCosign"`
 	// A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The name of the project that will be created in harbor.
@@ -103,6 +107,8 @@ type ProjectState struct {
 	DeploymentSecurity pulumi.StringPtrInput
 	// Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
 	EnableContentTrust pulumi.BoolPtrInput
+	// Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+	EnableContentTrustCosign pulumi.BoolPtrInput
 	// A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
 	ForceDestroy pulumi.BoolPtrInput
 	// The name of the project that will be created in harbor.
@@ -130,6 +136,8 @@ type projectArgs struct {
 	DeploymentSecurity *string `pulumi:"deploymentSecurity"`
 	// Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
 	EnableContentTrust *bool `pulumi:"enableContentTrust"`
+	// Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+	EnableContentTrustCosign *bool `pulumi:"enableContentTrustCosign"`
 	// A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The name of the project that will be created in harbor.
@@ -152,6 +160,8 @@ type ProjectArgs struct {
 	DeploymentSecurity pulumi.StringPtrInput
 	// Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
 	EnableContentTrust pulumi.BoolPtrInput
+	// Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+	EnableContentTrustCosign pulumi.BoolPtrInput
 	// A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
 	ForceDestroy pulumi.BoolPtrInput
 	// The name of the project that will be created in harbor.
@@ -290,6 +300,11 @@ func (o ProjectOutput) DeploymentSecurity() pulumi.StringPtrOutput {
 // Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
 func (o ProjectOutput) EnableContentTrust() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.EnableContentTrust }).(pulumi.BoolPtrOutput)
+}
+
+// Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+func (o ProjectOutput) EnableContentTrustCosign() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.EnableContentTrustCosign }).(pulumi.BoolPtrOutput)
 }
 
 // A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.

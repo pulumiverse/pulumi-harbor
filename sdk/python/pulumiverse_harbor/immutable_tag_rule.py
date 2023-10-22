@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ImmutableTagRuleArgs', 'ImmutableTagRule']
@@ -28,17 +28,48 @@ class ImmutableTagRuleArgs:
         :param pulumi.Input[str] tag_excluding: For the tag excuding.
         :param pulumi.Input[str] tag_matching: For the tag matching.
         """
-        pulumi.set(__self__, "project_id", project_id)
+        ImmutableTagRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project_id=project_id,
+            disabled=disabled,
+            repo_excluding=repo_excluding,
+            repo_matching=repo_matching,
+            tag_excluding=tag_excluding,
+            tag_matching=tag_matching,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project_id: pulumi.Input[str],
+             disabled: Optional[pulumi.Input[bool]] = None,
+             repo_excluding: Optional[pulumi.Input[str]] = None,
+             repo_matching: Optional[pulumi.Input[str]] = None,
+             tag_excluding: Optional[pulumi.Input[str]] = None,
+             tag_matching: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'repoExcluding' in kwargs:
+            repo_excluding = kwargs['repoExcluding']
+        if 'repoMatching' in kwargs:
+            repo_matching = kwargs['repoMatching']
+        if 'tagExcluding' in kwargs:
+            tag_excluding = kwargs['tagExcluding']
+        if 'tagMatching' in kwargs:
+            tag_matching = kwargs['tagMatching']
+
+        _setter("project_id", project_id)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if repo_excluding is not None:
-            pulumi.set(__self__, "repo_excluding", repo_excluding)
+            _setter("repo_excluding", repo_excluding)
         if repo_matching is not None:
-            pulumi.set(__self__, "repo_matching", repo_matching)
+            _setter("repo_matching", repo_matching)
         if tag_excluding is not None:
-            pulumi.set(__self__, "tag_excluding", tag_excluding)
+            _setter("tag_excluding", tag_excluding)
         if tag_matching is not None:
-            pulumi.set(__self__, "tag_matching", tag_matching)
+            _setter("tag_matching", tag_matching)
 
     @property
     @pulumi.getter(name="projectId")
@@ -127,18 +158,49 @@ class _ImmutableTagRuleState:
         :param pulumi.Input[str] tag_excluding: For the tag excuding.
         :param pulumi.Input[str] tag_matching: For the tag matching.
         """
+        _ImmutableTagRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disabled=disabled,
+            project_id=project_id,
+            repo_excluding=repo_excluding,
+            repo_matching=repo_matching,
+            tag_excluding=tag_excluding,
+            tag_matching=tag_matching,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disabled: Optional[pulumi.Input[bool]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             repo_excluding: Optional[pulumi.Input[str]] = None,
+             repo_matching: Optional[pulumi.Input[str]] = None,
+             tag_excluding: Optional[pulumi.Input[str]] = None,
+             tag_matching: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'repoExcluding' in kwargs:
+            repo_excluding = kwargs['repoExcluding']
+        if 'repoMatching' in kwargs:
+            repo_matching = kwargs['repoMatching']
+        if 'tagExcluding' in kwargs:
+            tag_excluding = kwargs['tagExcluding']
+        if 'tagMatching' in kwargs:
+            tag_matching = kwargs['tagMatching']
+
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if repo_excluding is not None:
-            pulumi.set(__self__, "repo_excluding", repo_excluding)
+            _setter("repo_excluding", repo_excluding)
         if repo_matching is not None:
-            pulumi.set(__self__, "repo_matching", repo_matching)
+            _setter("repo_matching", repo_matching)
         if tag_excluding is not None:
-            pulumi.set(__self__, "tag_excluding", tag_excluding)
+            _setter("tag_excluding", tag_excluding)
         if tag_matching is not None:
-            pulumi.set(__self__, "tag_matching", tag_matching)
+            _setter("tag_matching", tag_matching)
 
     @property
     @pulumi.getter
@@ -260,6 +322,10 @@ class ImmutableTagRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ImmutableTagRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -22,15 +22,36 @@ class ProviderArgs:
         """
         The set of arguments for constructing a Provider resource.
         """
-        pulumi.set(__self__, "url", url)
+        ProviderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            url=url,
+            api_version=api_version,
+            insecure=insecure,
+            password=password,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             url: pulumi.Input[str],
+             api_version: Optional[pulumi.Input[int]] = None,
+             insecure: Optional[pulumi.Input[bool]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiVersion' in kwargs:
+            api_version = kwargs['apiVersion']
+
+        _setter("url", url)
         if api_version is not None:
-            pulumi.set(__self__, "api_version", api_version)
+            _setter("api_version", api_version)
         if insecure is not None:
-            pulumi.set(__self__, "insecure", insecure)
+            _setter("insecure", insecure)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
 
     @property
     @pulumi.getter
@@ -120,6 +141,10 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

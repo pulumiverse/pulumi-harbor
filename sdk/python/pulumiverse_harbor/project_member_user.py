@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProjectMemberUserArgs', 'ProjectMemberUser']
@@ -20,9 +20,28 @@ class ProjectMemberUserArgs:
         """
         The set of arguments for constructing a ProjectMemberUser resource.
         """
-        pulumi.set(__self__, "project_id", project_id)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "user_name", user_name)
+        ProjectMemberUserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project_id=project_id,
+            role=role,
+            user_name=user_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project_id: pulumi.Input[str],
+             role: pulumi.Input[str],
+             user_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
+        _setter("project_id", project_id)
+        _setter("role", role)
+        _setter("user_name", user_name)
 
     @property
     @pulumi.getter(name="projectId")
@@ -62,14 +81,37 @@ class _ProjectMemberUserState:
         """
         Input properties used for looking up and filtering ProjectMemberUser resources.
         """
+        _ProjectMemberUserState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            member_id=member_id,
+            project_id=project_id,
+            role=role,
+            user_name=user_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             member_id: Optional[pulumi.Input[int]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             user_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'memberId' in kwargs:
+            member_id = kwargs['memberId']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         if member_id is not None:
-            pulumi.set(__self__, "member_id", member_id)
+            _setter("member_id", member_id)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if user_name is not None:
-            pulumi.set(__self__, "user_name", user_name)
+            _setter("user_name", user_name)
 
     @property
     @pulumi.getter(name="memberId")
@@ -150,6 +192,10 @@ class ProjectMemberUser(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProjectMemberUserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

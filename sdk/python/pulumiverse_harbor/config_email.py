@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ConfigEmailArgs', 'ConfigEmail']
@@ -24,18 +24,55 @@ class ConfigEmailArgs:
         """
         The set of arguments for constructing a ConfigEmail resource.
         """
-        pulumi.set(__self__, "email_from", email_from)
-        pulumi.set(__self__, "email_host", email_host)
+        ConfigEmailArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            email_from=email_from,
+            email_host=email_host,
+            email_insecure=email_insecure,
+            email_password=email_password,
+            email_port=email_port,
+            email_ssl=email_ssl,
+            email_username=email_username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             email_from: pulumi.Input[str],
+             email_host: pulumi.Input[str],
+             email_insecure: Optional[pulumi.Input[bool]] = None,
+             email_password: Optional[pulumi.Input[str]] = None,
+             email_port: Optional[pulumi.Input[int]] = None,
+             email_ssl: Optional[pulumi.Input[bool]] = None,
+             email_username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'emailFrom' in kwargs:
+            email_from = kwargs['emailFrom']
+        if 'emailHost' in kwargs:
+            email_host = kwargs['emailHost']
+        if 'emailInsecure' in kwargs:
+            email_insecure = kwargs['emailInsecure']
+        if 'emailPassword' in kwargs:
+            email_password = kwargs['emailPassword']
+        if 'emailPort' in kwargs:
+            email_port = kwargs['emailPort']
+        if 'emailSsl' in kwargs:
+            email_ssl = kwargs['emailSsl']
+        if 'emailUsername' in kwargs:
+            email_username = kwargs['emailUsername']
+
+        _setter("email_from", email_from)
+        _setter("email_host", email_host)
         if email_insecure is not None:
-            pulumi.set(__self__, "email_insecure", email_insecure)
+            _setter("email_insecure", email_insecure)
         if email_password is not None:
-            pulumi.set(__self__, "email_password", email_password)
+            _setter("email_password", email_password)
         if email_port is not None:
-            pulumi.set(__self__, "email_port", email_port)
+            _setter("email_port", email_port)
         if email_ssl is not None:
-            pulumi.set(__self__, "email_ssl", email_ssl)
+            _setter("email_ssl", email_ssl)
         if email_username is not None:
-            pulumi.set(__self__, "email_username", email_username)
+            _setter("email_username", email_username)
 
     @property
     @pulumi.getter(name="emailFrom")
@@ -114,20 +151,57 @@ class _ConfigEmailState:
         """
         Input properties used for looking up and filtering ConfigEmail resources.
         """
+        _ConfigEmailState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            email_from=email_from,
+            email_host=email_host,
+            email_insecure=email_insecure,
+            email_password=email_password,
+            email_port=email_port,
+            email_ssl=email_ssl,
+            email_username=email_username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             email_from: Optional[pulumi.Input[str]] = None,
+             email_host: Optional[pulumi.Input[str]] = None,
+             email_insecure: Optional[pulumi.Input[bool]] = None,
+             email_password: Optional[pulumi.Input[str]] = None,
+             email_port: Optional[pulumi.Input[int]] = None,
+             email_ssl: Optional[pulumi.Input[bool]] = None,
+             email_username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'emailFrom' in kwargs:
+            email_from = kwargs['emailFrom']
+        if 'emailHost' in kwargs:
+            email_host = kwargs['emailHost']
+        if 'emailInsecure' in kwargs:
+            email_insecure = kwargs['emailInsecure']
+        if 'emailPassword' in kwargs:
+            email_password = kwargs['emailPassword']
+        if 'emailPort' in kwargs:
+            email_port = kwargs['emailPort']
+        if 'emailSsl' in kwargs:
+            email_ssl = kwargs['emailSsl']
+        if 'emailUsername' in kwargs:
+            email_username = kwargs['emailUsername']
+
         if email_from is not None:
-            pulumi.set(__self__, "email_from", email_from)
+            _setter("email_from", email_from)
         if email_host is not None:
-            pulumi.set(__self__, "email_host", email_host)
+            _setter("email_host", email_host)
         if email_insecure is not None:
-            pulumi.set(__self__, "email_insecure", email_insecure)
+            _setter("email_insecure", email_insecure)
         if email_password is not None:
-            pulumi.set(__self__, "email_password", email_password)
+            _setter("email_password", email_password)
         if email_port is not None:
-            pulumi.set(__self__, "email_port", email_port)
+            _setter("email_port", email_port)
         if email_ssl is not None:
-            pulumi.set(__self__, "email_ssl", email_ssl)
+            _setter("email_ssl", email_ssl)
         if email_username is not None:
-            pulumi.set(__self__, "email_username", email_username)
+            _setter("email_username", email_username)
 
     @property
     @pulumi.getter(name="emailFrom")
@@ -231,6 +305,10 @@ class ConfigEmail(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConfigEmailArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['InterrogationServicesArgs', 'InterrogationServices']
@@ -21,9 +21,26 @@ class InterrogationServicesArgs:
         :param pulumi.Input[str] vulnerability_scan_policy: The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
         :param pulumi.Input[str] default_scanner: Sets the default interrogation service **Clair**
         """
-        pulumi.set(__self__, "vulnerability_scan_policy", vulnerability_scan_policy)
+        InterrogationServicesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            vulnerability_scan_policy=vulnerability_scan_policy,
+            default_scanner=default_scanner,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             vulnerability_scan_policy: pulumi.Input[str],
+             default_scanner: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vulnerabilityScanPolicy' in kwargs:
+            vulnerability_scan_policy = kwargs['vulnerabilityScanPolicy']
+        if 'defaultScanner' in kwargs:
+            default_scanner = kwargs['defaultScanner']
+
+        _setter("vulnerability_scan_policy", vulnerability_scan_policy)
         if default_scanner is not None:
-            pulumi.set(__self__, "default_scanner", default_scanner)
+            _setter("default_scanner", default_scanner)
 
     @property
     @pulumi.getter(name="vulnerabilityScanPolicy")
@@ -60,10 +77,27 @@ class _InterrogationServicesState:
         :param pulumi.Input[str] default_scanner: Sets the default interrogation service **Clair**
         :param pulumi.Input[str] vulnerability_scan_policy: The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
         """
+        _InterrogationServicesState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_scanner=default_scanner,
+            vulnerability_scan_policy=vulnerability_scan_policy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_scanner: Optional[pulumi.Input[str]] = None,
+             vulnerability_scan_policy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultScanner' in kwargs:
+            default_scanner = kwargs['defaultScanner']
+        if 'vulnerabilityScanPolicy' in kwargs:
+            vulnerability_scan_policy = kwargs['vulnerabilityScanPolicy']
+
         if default_scanner is not None:
-            pulumi.set(__self__, "default_scanner", default_scanner)
+            _setter("default_scanner", default_scanner)
         if vulnerability_scan_policy is not None:
-            pulumi.set(__self__, "vulnerability_scan_policy", vulnerability_scan_policy)
+            _setter("vulnerability_scan_policy", vulnerability_scan_policy)
 
     @property
     @pulumi.getter(name="defaultScanner")
@@ -125,6 +159,10 @@ class InterrogationServices(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InterrogationServicesArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
