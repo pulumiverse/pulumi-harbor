@@ -3,11 +3,12 @@ module github.com/pulumiverse/pulumi-harbor/provider/v3
 go 1.20
 
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20230912190043-e6d96b3b8f7e
+replace github.com/pulumi/pulumi/pkg/v3 => github.com/pulumi/pulumi/pkg/v3 v3.97.0
 
 require (
 	github.com/goharbor/terraform-provider-harbor v1.4.1-0.20231211161417-32335770abce
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.68.0
-	github.com/pulumi/pulumi/sdk/v3 v3.96.2
+	github.com/pulumi/pulumi/sdk/v3 v3.97.0
 )
 
 require (
