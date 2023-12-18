@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 import types
@@ -16,22 +16,22 @@ __config__ = pulumi.Config('harbor')
 
 class _ExportableConfig(types.ModuleType):
     @property
-    def api_version(self) -> Optional[int]:
-        return __config__.get_int('apiVersion')
+    def api_version(self) -> int:
+        return __config__.get_int('apiVersion') or 2
 
     @property
-    def insecure(self) -> Optional[bool]:
-        return __config__.get_bool('insecure')
+    def insecure(self) -> bool:
+        return __config__.get_bool('insecure') or (_utilities.get_env_bool('HARBOR_IGNORE_CERT') or True)
 
     @property
     def password(self) -> Optional[str]:
-        return __config__.get('password')
+        return __config__.get('password') or _utilities.get_env('HARBOR_PASSWORD')
 
     @property
     def url(self) -> Optional[str]:
-        return __config__.get('url')
+        return __config__.get('url') or _utilities.get_env('HARBOR_URL')
 
     @property
     def username(self) -> Optional[str]:
-        return __config__.get('username')
+        return __config__.get('username') or _utilities.get_env('HARBOR_USERNAME')
 

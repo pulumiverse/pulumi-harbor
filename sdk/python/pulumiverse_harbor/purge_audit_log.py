@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['PurgeAuditLogArgs', 'PurgeAuditLog']
@@ -20,28 +20,9 @@ class PurgeAuditLogArgs:
         """
         The set of arguments for constructing a PurgeAuditLog resource.
         """
-        PurgeAuditLogArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            audit_retention_hour=audit_retention_hour,
-            include_operations=include_operations,
-            schedule=schedule,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             audit_retention_hour: pulumi.Input[int],
-             include_operations: pulumi.Input[str],
-             schedule: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'auditRetentionHour' in kwargs:
-            audit_retention_hour = kwargs['auditRetentionHour']
-        if 'includeOperations' in kwargs:
-            include_operations = kwargs['includeOperations']
-
-        _setter("audit_retention_hour", audit_retention_hour)
-        _setter("include_operations", include_operations)
-        _setter("schedule", schedule)
+        pulumi.set(__self__, "audit_retention_hour", audit_retention_hour)
+        pulumi.set(__self__, "include_operations", include_operations)
+        pulumi.set(__self__, "schedule", schedule)
 
     @property
     @pulumi.getter(name="auditRetentionHour")
@@ -80,31 +61,12 @@ class _PurgeAuditLogState:
         """
         Input properties used for looking up and filtering PurgeAuditLog resources.
         """
-        _PurgeAuditLogState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            audit_retention_hour=audit_retention_hour,
-            include_operations=include_operations,
-            schedule=schedule,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             audit_retention_hour: Optional[pulumi.Input[int]] = None,
-             include_operations: Optional[pulumi.Input[str]] = None,
-             schedule: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'auditRetentionHour' in kwargs:
-            audit_retention_hour = kwargs['auditRetentionHour']
-        if 'includeOperations' in kwargs:
-            include_operations = kwargs['includeOperations']
-
         if audit_retention_hour is not None:
-            _setter("audit_retention_hour", audit_retention_hour)
+            pulumi.set(__self__, "audit_retention_hour", audit_retention_hour)
         if include_operations is not None:
-            _setter("include_operations", include_operations)
+            pulumi.set(__self__, "include_operations", include_operations)
         if schedule is not None:
-            _setter("schedule", schedule)
+            pulumi.set(__self__, "schedule", schedule)
 
     @property
     @pulumi.getter(name="auditRetentionHour")
@@ -166,10 +128,6 @@ class PurgeAuditLog(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PurgeAuditLogArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

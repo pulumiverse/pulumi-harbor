@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -14,53 +14,34 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 url: pulumi.Input[str],
                  api_version: Optional[pulumi.Input[int]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
         """
-        ProviderArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            url=url,
-            api_version=api_version,
-            insecure=insecure,
-            password=password,
-            username=username,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             url: pulumi.Input[str],
-             api_version: Optional[pulumi.Input[int]] = None,
-             insecure: Optional[pulumi.Input[bool]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'apiVersion' in kwargs:
-            api_version = kwargs['apiVersion']
-
-        _setter("url", url)
+        if api_version is None:
+            api_version = 2
         if api_version is not None:
-            _setter("api_version", api_version)
+            pulumi.set(__self__, "api_version", api_version)
+        if insecure is None:
+            insecure = (_utilities.get_env_bool('HARBOR_IGNORE_CERT') or True)
         if insecure is not None:
-            _setter("insecure", insecure)
+            pulumi.set(__self__, "insecure", insecure)
+        if password is None:
+            password = _utilities.get_env('HARBOR_PASSWORD')
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
+        if url is None:
+            url = _utilities.get_env('HARBOR_URL')
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if username is None:
+            username = _utilities.get_env('HARBOR_USERNAME')
         if username is not None:
-            _setter("username", username)
-
-    @property
-    @pulumi.getter
-    def url(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "url")
-
-    @url.setter
-    def url(self, value: pulumi.Input[str]):
-        pulumi.set(self, "url", value)
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="apiVersion")
@@ -88,6 +69,15 @@ class ProviderArgs:
     @password.setter
     def password(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
 
     @property
     @pulumi.getter
@@ -123,7 +113,7 @@ class Provider(pulumi.ProviderResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProviderArgs,
+                 args: Optional[ProviderArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The provider type for the harbor package. By default, resources use package-wide configuration
@@ -141,10 +131,6 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -164,13 +150,23 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
+            if api_version is None:
+                api_version = 2
             __props__.__dict__["api_version"] = pulumi.Output.from_input(api_version).apply(pulumi.runtime.to_json) if api_version is not None else None
+            if insecure is None:
+                insecure = (_utilities.get_env_bool('HARBOR_IGNORE_CERT') or True)
             __props__.__dict__["insecure"] = pulumi.Output.from_input(insecure).apply(pulumi.runtime.to_json) if insecure is not None else None
-            __props__.__dict__["password"] = password
-            if url is None and not opts.urn:
-                raise TypeError("Missing required property 'url'")
+            if password is None:
+                password = _utilities.get_env('HARBOR_PASSWORD')
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
+            if url is None:
+                url = _utilities.get_env('HARBOR_URL')
             __props__.__dict__["url"] = url
+            if username is None:
+                username = _utilities.get_env('HARBOR_USERNAME')
             __props__.__dict__["username"] = username
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'harbor',
             resource_name,
@@ -184,7 +180,7 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter
-    def url(self) -> pulumi.Output[str]:
+    def url(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "url")
 
     @property

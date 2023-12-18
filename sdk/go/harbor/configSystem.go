@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
@@ -117,12 +116,6 @@ func (i *ConfigSystem) ToConfigSystemOutputWithContext(ctx context.Context) Conf
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigSystemOutput)
 }
 
-func (i *ConfigSystem) ToOutput(ctx context.Context) pulumix.Output[*ConfigSystem] {
-	return pulumix.Output[*ConfigSystem]{
-		OutputState: i.ToConfigSystemOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConfigSystemArrayInput is an input type that accepts ConfigSystemArray and ConfigSystemArrayOutput values.
 // You can construct a concrete instance of `ConfigSystemArrayInput` via:
 //
@@ -146,12 +139,6 @@ func (i ConfigSystemArray) ToConfigSystemArrayOutput() ConfigSystemArrayOutput {
 
 func (i ConfigSystemArray) ToConfigSystemArrayOutputWithContext(ctx context.Context) ConfigSystemArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigSystemArrayOutput)
-}
-
-func (i ConfigSystemArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigSystem] {
-	return pulumix.Output[[]*ConfigSystem]{
-		OutputState: i.ToConfigSystemArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConfigSystemMapInput is an input type that accepts ConfigSystemMap and ConfigSystemMapOutput values.
@@ -179,12 +166,6 @@ func (i ConfigSystemMap) ToConfigSystemMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigSystemMapOutput)
 }
 
-func (i ConfigSystemMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigSystem] {
-	return pulumix.Output[map[string]*ConfigSystem]{
-		OutputState: i.ToConfigSystemMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigSystemOutput struct{ *pulumi.OutputState }
 
 func (ConfigSystemOutput) ElementType() reflect.Type {
@@ -197,12 +178,6 @@ func (o ConfigSystemOutput) ToConfigSystemOutput() ConfigSystemOutput {
 
 func (o ConfigSystemOutput) ToConfigSystemOutputWithContext(ctx context.Context) ConfigSystemOutput {
 	return o
-}
-
-func (o ConfigSystemOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigSystem] {
-	return pulumix.Output[*ConfigSystem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigSystemOutput) ProjectCreationRestriction() pulumi.StringPtrOutput {
@@ -243,12 +218,6 @@ func (o ConfigSystemArrayOutput) ToConfigSystemArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o ConfigSystemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigSystem] {
-	return pulumix.Output[[]*ConfigSystem]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConfigSystemArrayOutput) Index(i pulumi.IntInput) ConfigSystemOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConfigSystem {
 		return vs[0].([]*ConfigSystem)[vs[1].(int)]
@@ -267,12 +236,6 @@ func (o ConfigSystemMapOutput) ToConfigSystemMapOutput() ConfigSystemMapOutput {
 
 func (o ConfigSystemMapOutput) ToConfigSystemMapOutputWithContext(ctx context.Context) ConfigSystemMapOutput {
 	return o
-}
-
-func (o ConfigSystemMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigSystem] {
-	return pulumix.Output[map[string]*ConfigSystem]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigSystemMapOutput) MapIndex(k pulumi.StringInput) ConfigSystemOutput {

@@ -9,7 +9,6 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
@@ -241,12 +240,6 @@ func (i *ConfigAuth) ToConfigAuthOutputWithContext(ctx context.Context) ConfigAu
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigAuthOutput)
 }
 
-func (i *ConfigAuth) ToOutput(ctx context.Context) pulumix.Output[*ConfigAuth] {
-	return pulumix.Output[*ConfigAuth]{
-		OutputState: i.ToConfigAuthOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConfigAuthArrayInput is an input type that accepts ConfigAuthArray and ConfigAuthArrayOutput values.
 // You can construct a concrete instance of `ConfigAuthArrayInput` via:
 //
@@ -270,12 +263,6 @@ func (i ConfigAuthArray) ToConfigAuthArrayOutput() ConfigAuthArrayOutput {
 
 func (i ConfigAuthArray) ToConfigAuthArrayOutputWithContext(ctx context.Context) ConfigAuthArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigAuthArrayOutput)
-}
-
-func (i ConfigAuthArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigAuth] {
-	return pulumix.Output[[]*ConfigAuth]{
-		OutputState: i.ToConfigAuthArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConfigAuthMapInput is an input type that accepts ConfigAuthMap and ConfigAuthMapOutput values.
@@ -303,12 +290,6 @@ func (i ConfigAuthMap) ToConfigAuthMapOutputWithContext(ctx context.Context) Con
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigAuthMapOutput)
 }
 
-func (i ConfigAuthMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigAuth] {
-	return pulumix.Output[map[string]*ConfigAuth]{
-		OutputState: i.ToConfigAuthMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigAuthOutput struct{ *pulumi.OutputState }
 
 func (ConfigAuthOutput) ElementType() reflect.Type {
@@ -321,12 +302,6 @@ func (o ConfigAuthOutput) ToConfigAuthOutput() ConfigAuthOutput {
 
 func (o ConfigAuthOutput) ToConfigAuthOutputWithContext(ctx context.Context) ConfigAuthOutput {
 	return o
-}
-
-func (o ConfigAuthOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigAuth] {
-	return pulumix.Output[*ConfigAuth]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigAuthOutput) AuthMode() pulumi.StringOutput {
@@ -455,12 +430,6 @@ func (o ConfigAuthArrayOutput) ToConfigAuthArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o ConfigAuthArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigAuth] {
-	return pulumix.Output[[]*ConfigAuth]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConfigAuthArrayOutput) Index(i pulumi.IntInput) ConfigAuthOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConfigAuth {
 		return vs[0].([]*ConfigAuth)[vs[1].(int)]
@@ -479,12 +448,6 @@ func (o ConfigAuthMapOutput) ToConfigAuthMapOutput() ConfigAuthMapOutput {
 
 func (o ConfigAuthMapOutput) ToConfigAuthMapOutputWithContext(ctx context.Context) ConfigAuthMapOutput {
 	return o
-}
-
-func (o ConfigAuthMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigAuth] {
-	return pulumix.Output[map[string]*ConfigAuth]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigAuthMapOutput) MapIndex(k pulumi.StringInput) ConfigAuthOutput {

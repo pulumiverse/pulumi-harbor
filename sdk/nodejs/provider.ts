@@ -26,7 +26,7 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     public readonly password!: pulumi.Output<string | undefined>;
-    public readonly url!: pulumi.Output<string>;
+    public readonly url!: pulumi.Output<string | undefined>;
     public readonly username!: pulumi.Output<string | undefined>;
 
     /**
@@ -36,20 +36,19 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            if ((!args || args.url === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'url'");
-            }
-            resourceInputs["apiVersion"] = pulumi.output(args ? args.apiVersion : undefined).apply(JSON.stringify);
-            resourceInputs["insecure"] = pulumi.output(args ? args.insecure : undefined).apply(JSON.stringify);
-            resourceInputs["password"] = args ? args.password : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["apiVersion"] = pulumi.output((args ? args.apiVersion : undefined) ?? 2).apply(JSON.stringify);
+            resourceInputs["insecure"] = pulumi.output((args ? args.insecure : undefined) ?? (utilities.getEnvBoolean("HARBOR_IGNORE_CERT") || true)).apply(JSON.stringify);
+            resourceInputs["password"] = (args?.password ? pulumi.secret(args.password) : undefined) ?? utilities.getEnv("HARBOR_PASSWORD");
+            resourceInputs["url"] = (args ? args.url : undefined) ?? utilities.getEnv("HARBOR_URL");
+            resourceInputs["username"] = (args ? args.username : undefined) ?? utilities.getEnv("HARBOR_USERNAME");
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -61,6 +60,6 @@ export interface ProviderArgs {
     apiVersion?: pulumi.Input<number>;
     insecure?: pulumi.Input<boolean>;
     password?: pulumi.Input<string>;
-    url: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
     username?: pulumi.Input<string>;
 }

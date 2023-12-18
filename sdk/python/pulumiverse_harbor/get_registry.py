@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
@@ -28,8 +28,8 @@ class GetRegistryResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if insecure and not isinstance(insecure, str):
-            raise TypeError("Expected argument 'insecure' to be a str")
+        if insecure and not isinstance(insecure, bool):
+            raise TypeError("Expected argument 'insecure' to be a bool")
         pulumi.set(__self__, "insecure", insecure)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
@@ -62,7 +62,7 @@ class GetRegistryResult:
 
     @property
     @pulumi.getter
-    def insecure(self) -> str:
+    def insecure(self) -> bool:
         return pulumi.get(self, "insecure")
 
     @property

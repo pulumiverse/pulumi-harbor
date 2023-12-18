@@ -9,7 +9,6 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
@@ -136,12 +135,6 @@ func (i *ConfigEmail) ToConfigEmailOutputWithContext(ctx context.Context) Config
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigEmailOutput)
 }
 
-func (i *ConfigEmail) ToOutput(ctx context.Context) pulumix.Output[*ConfigEmail] {
-	return pulumix.Output[*ConfigEmail]{
-		OutputState: i.ToConfigEmailOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConfigEmailArrayInput is an input type that accepts ConfigEmailArray and ConfigEmailArrayOutput values.
 // You can construct a concrete instance of `ConfigEmailArrayInput` via:
 //
@@ -165,12 +158,6 @@ func (i ConfigEmailArray) ToConfigEmailArrayOutput() ConfigEmailArrayOutput {
 
 func (i ConfigEmailArray) ToConfigEmailArrayOutputWithContext(ctx context.Context) ConfigEmailArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigEmailArrayOutput)
-}
-
-func (i ConfigEmailArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigEmail] {
-	return pulumix.Output[[]*ConfigEmail]{
-		OutputState: i.ToConfigEmailArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConfigEmailMapInput is an input type that accepts ConfigEmailMap and ConfigEmailMapOutput values.
@@ -198,12 +185,6 @@ func (i ConfigEmailMap) ToConfigEmailMapOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigEmailMapOutput)
 }
 
-func (i ConfigEmailMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigEmail] {
-	return pulumix.Output[map[string]*ConfigEmail]{
-		OutputState: i.ToConfigEmailMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigEmailOutput struct{ *pulumi.OutputState }
 
 func (ConfigEmailOutput) ElementType() reflect.Type {
@@ -216,12 +197,6 @@ func (o ConfigEmailOutput) ToConfigEmailOutput() ConfigEmailOutput {
 
 func (o ConfigEmailOutput) ToConfigEmailOutputWithContext(ctx context.Context) ConfigEmailOutput {
 	return o
-}
-
-func (o ConfigEmailOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigEmail] {
-	return pulumix.Output[*ConfigEmail]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigEmailOutput) EmailFrom() pulumi.StringOutput {
@@ -266,12 +241,6 @@ func (o ConfigEmailArrayOutput) ToConfigEmailArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o ConfigEmailArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigEmail] {
-	return pulumix.Output[[]*ConfigEmail]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConfigEmailArrayOutput) Index(i pulumi.IntInput) ConfigEmailOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConfigEmail {
 		return vs[0].([]*ConfigEmail)[vs[1].(int)]
@@ -290,12 +259,6 @@ func (o ConfigEmailMapOutput) ToConfigEmailMapOutput() ConfigEmailMapOutput {
 
 func (o ConfigEmailMapOutput) ToConfigEmailMapOutputWithContext(ctx context.Context) ConfigEmailMapOutput {
 	return o
-}
-
-func (o ConfigEmailMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigEmail] {
-	return pulumix.Output[map[string]*ConfigEmail]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigEmailMapOutput) MapIndex(k pulumi.StringInput) ConfigEmailOutput {

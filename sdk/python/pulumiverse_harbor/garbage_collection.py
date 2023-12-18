@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GarbageCollectionArgs', 'GarbageCollection']
@@ -19,24 +19,9 @@ class GarbageCollectionArgs:
         """
         The set of arguments for constructing a GarbageCollection resource.
         """
-        GarbageCollectionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            schedule=schedule,
-            delete_untagged=delete_untagged,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             schedule: pulumi.Input[str],
-             delete_untagged: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'deleteUntagged' in kwargs:
-            delete_untagged = kwargs['deleteUntagged']
-
-        _setter("schedule", schedule)
+        pulumi.set(__self__, "schedule", schedule)
         if delete_untagged is not None:
-            _setter("delete_untagged", delete_untagged)
+            pulumi.set(__self__, "delete_untagged", delete_untagged)
 
     @property
     @pulumi.getter
@@ -65,25 +50,10 @@ class _GarbageCollectionState:
         """
         Input properties used for looking up and filtering GarbageCollection resources.
         """
-        _GarbageCollectionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            delete_untagged=delete_untagged,
-            schedule=schedule,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             delete_untagged: Optional[pulumi.Input[bool]] = None,
-             schedule: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'deleteUntagged' in kwargs:
-            delete_untagged = kwargs['deleteUntagged']
-
         if delete_untagged is not None:
-            _setter("delete_untagged", delete_untagged)
+            pulumi.set(__self__, "delete_untagged", delete_untagged)
         if schedule is not None:
-            _setter("schedule", schedule)
+            pulumi.set(__self__, "schedule", schedule)
 
     @property
     @pulumi.getter(name="deleteUntagged")
@@ -137,10 +107,6 @@ class GarbageCollection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GarbageCollectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

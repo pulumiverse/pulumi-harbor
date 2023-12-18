@@ -23,7 +23,7 @@ namespace Pulumiverse.Harbor
         public Output<string?> Password { get; private set; } = null!;
 
         [Output("url")]
-        public Output<string> Url { get; private set; } = null!;
+        public Output<string?> Url { get; private set; } = null!;
 
         [Output("username")]
         public Output<string?> Username { get; private set; } = null!;
@@ -36,7 +36,7 @@ namespace Pulumiverse.Harbor
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
             : base("harbor", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -47,6 +47,10 @@ namespace Pulumiverse.Harbor
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/pulumiverse/pulumi-harbor",
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -64,16 +68,30 @@ namespace Pulumiverse.Harbor
         public Input<bool>? Insecure { get; set; }
 
         [Input("password")]
-        public Input<string>? Password { get; set; }
+        private Input<string>? _password;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
-        [Input("url", required: true)]
-        public Input<string> Url { get; set; } = null!;
+        [Input("url")]
+        public Input<string>? Url { get; set; }
 
         [Input("username")]
         public Input<string>? Username { get; set; }
 
         public ProviderArgs()
         {
+            ApiVersion = 2;
+            Insecure = Utilities.GetEnvBoolean("HARBOR_IGNORE_CERT") ?? true;
+            Password = Utilities.GetEnv("HARBOR_PASSWORD");
+            Url = Utilities.GetEnv("HARBOR_URL");
+            Username = Utilities.GetEnv("HARBOR_USERNAME");
         }
         public static new ProviderArgs Empty => new ProviderArgs();
     }

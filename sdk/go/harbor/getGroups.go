@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
@@ -81,12 +80,6 @@ func (o GetGroupsResultOutput) ToGetGroupsResultOutput() GetGroupsResultOutput {
 
 func (o GetGroupsResultOutput) ToGetGroupsResultOutputWithContext(ctx context.Context) GetGroupsResultOutput {
 	return o
-}
-
-func (o GetGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetGroupsResult] {
-	return pulumix.Output[GetGroupsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the group.

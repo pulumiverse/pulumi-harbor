@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
@@ -33,7 +32,7 @@ type LookupRegistryResult struct {
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string `pulumi:"id"`
-	Insecure   string `pulumi:"insecure"`
+	Insecure   bool   `pulumi:"insecure"`
 	Name       string `pulumi:"name"`
 	RegistryId int    `pulumi:"registryId"`
 	Status     string `pulumi:"status"`
@@ -78,12 +77,6 @@ func (o LookupRegistryResultOutput) ToLookupRegistryResultOutputWithContext(ctx 
 	return o
 }
 
-func (o LookupRegistryResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRegistryResult] {
-	return pulumix.Output[LookupRegistryResult]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LookupRegistryResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistryResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -93,8 +86,8 @@ func (o LookupRegistryResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistryResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o LookupRegistryResultOutput) Insecure() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRegistryResult) string { return v.Insecure }).(pulumi.StringOutput)
+func (o LookupRegistryResultOutput) Insecure() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRegistryResult) bool { return v.Insecure }).(pulumi.BoolOutput)
 }
 
 func (o LookupRegistryResultOutput) Name() pulumi.StringOutput {

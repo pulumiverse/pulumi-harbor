@@ -9,7 +9,6 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
@@ -168,12 +167,6 @@ func (i *RobotAccount) ToRobotAccountOutputWithContext(ctx context.Context) Robo
 	return pulumi.ToOutputWithContext(ctx, i).(RobotAccountOutput)
 }
 
-func (i *RobotAccount) ToOutput(ctx context.Context) pulumix.Output[*RobotAccount] {
-	return pulumix.Output[*RobotAccount]{
-		OutputState: i.ToRobotAccountOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RobotAccountArrayInput is an input type that accepts RobotAccountArray and RobotAccountArrayOutput values.
 // You can construct a concrete instance of `RobotAccountArrayInput` via:
 //
@@ -197,12 +190,6 @@ func (i RobotAccountArray) ToRobotAccountArrayOutput() RobotAccountArrayOutput {
 
 func (i RobotAccountArray) ToRobotAccountArrayOutputWithContext(ctx context.Context) RobotAccountArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RobotAccountArrayOutput)
-}
-
-func (i RobotAccountArray) ToOutput(ctx context.Context) pulumix.Output[[]*RobotAccount] {
-	return pulumix.Output[[]*RobotAccount]{
-		OutputState: i.ToRobotAccountArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RobotAccountMapInput is an input type that accepts RobotAccountMap and RobotAccountMapOutput values.
@@ -230,12 +217,6 @@ func (i RobotAccountMap) ToRobotAccountMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(RobotAccountMapOutput)
 }
 
-func (i RobotAccountMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RobotAccount] {
-	return pulumix.Output[map[string]*RobotAccount]{
-		OutputState: i.ToRobotAccountMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RobotAccountOutput struct{ *pulumi.OutputState }
 
 func (RobotAccountOutput) ElementType() reflect.Type {
@@ -248,12 +229,6 @@ func (o RobotAccountOutput) ToRobotAccountOutput() RobotAccountOutput {
 
 func (o RobotAccountOutput) ToRobotAccountOutputWithContext(ctx context.Context) RobotAccountOutput {
 	return o
-}
-
-func (o RobotAccountOutput) ToOutput(ctx context.Context) pulumix.Output[*RobotAccount] {
-	return pulumix.Output[*RobotAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RobotAccountOutput) Description() pulumi.StringPtrOutput {
@@ -306,12 +281,6 @@ func (o RobotAccountArrayOutput) ToRobotAccountArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o RobotAccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RobotAccount] {
-	return pulumix.Output[[]*RobotAccount]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RobotAccountArrayOutput) Index(i pulumi.IntInput) RobotAccountOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RobotAccount {
 		return vs[0].([]*RobotAccount)[vs[1].(int)]
@@ -330,12 +299,6 @@ func (o RobotAccountMapOutput) ToRobotAccountMapOutput() RobotAccountMapOutput {
 
 func (o RobotAccountMapOutput) ToRobotAccountMapOutputWithContext(ctx context.Context) RobotAccountMapOutput {
 	return o
-}
-
-func (o RobotAccountMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RobotAccount] {
-	return pulumix.Output[map[string]*RobotAccount]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RobotAccountMapOutput) MapIndex(k pulumi.StringInput) RobotAccountOutput {

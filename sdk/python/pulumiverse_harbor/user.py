@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['UserArgs', 'User']
@@ -23,37 +23,14 @@ class UserArgs:
         """
         The set of arguments for constructing a User resource.
         """
-        UserArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            email=email,
-            full_name=full_name,
-            password=password,
-            username=username,
-            admin=admin,
-            comment=comment,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             email: pulumi.Input[str],
-             full_name: pulumi.Input[str],
-             password: pulumi.Input[str],
-             username: pulumi.Input[str],
-             admin: Optional[pulumi.Input[bool]] = None,
-             comment: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'fullName' in kwargs:
-            full_name = kwargs['fullName']
-
-        _setter("email", email)
-        _setter("full_name", full_name)
-        _setter("password", password)
-        _setter("username", username)
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "full_name", full_name)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "username", username)
         if admin is not None:
-            _setter("admin", admin)
+            pulumi.set(__self__, "admin", admin)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
 
     @property
     @pulumi.getter
@@ -122,41 +99,18 @@ class _UserState:
         """
         Input properties used for looking up and filtering User resources.
         """
-        _UserState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            admin=admin,
-            comment=comment,
-            email=email,
-            full_name=full_name,
-            password=password,
-            username=username,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             admin: Optional[pulumi.Input[bool]] = None,
-             comment: Optional[pulumi.Input[str]] = None,
-             email: Optional[pulumi.Input[str]] = None,
-             full_name: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'fullName' in kwargs:
-            full_name = kwargs['fullName']
-
         if admin is not None:
-            _setter("admin", admin)
+            pulumi.set(__self__, "admin", admin)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if email is not None:
-            _setter("email", email)
+            pulumi.set(__self__, "email", email)
         if full_name is not None:
-            _setter("full_name", full_name)
+            pulumi.set(__self__, "full_name", full_name)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if username is not None:
-            _setter("username", username)
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter
@@ -258,10 +212,6 @@ class User(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            UserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

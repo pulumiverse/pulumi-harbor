@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProjectWebhookArgs', 'ProjectWebhook']
@@ -35,57 +35,20 @@ class ProjectWebhookArgs:
         :param pulumi.Input[str] name: The name of the webhook that will be created in harbor.
         :param pulumi.Input[bool] skip_cert_verify: checks the for validate SSL certificate.
         """
-        ProjectWebhookArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            events_types=events_types,
-            notify_type=notify_type,
-            project_id=project_id,
-            auth_header=auth_header,
-            description=description,
-            enabled=enabled,
-            name=name,
-            skip_cert_verify=skip_cert_verify,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: pulumi.Input[str],
-             events_types: pulumi.Input[Sequence[pulumi.Input[str]]],
-             notify_type: pulumi.Input[str],
-             project_id: pulumi.Input[str],
-             auth_header: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             skip_cert_verify: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'eventsTypes' in kwargs:
-            events_types = kwargs['eventsTypes']
-        if 'notifyType' in kwargs:
-            notify_type = kwargs['notifyType']
-        if 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if 'authHeader' in kwargs:
-            auth_header = kwargs['authHeader']
-        if 'skipCertVerify' in kwargs:
-            skip_cert_verify = kwargs['skipCertVerify']
-
-        _setter("address", address)
-        _setter("events_types", events_types)
-        _setter("notify_type", notify_type)
-        _setter("project_id", project_id)
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "events_types", events_types)
+        pulumi.set(__self__, "notify_type", notify_type)
+        pulumi.set(__self__, "project_id", project_id)
         if auth_header is not None:
-            _setter("auth_header", auth_header)
+            pulumi.set(__self__, "auth_header", auth_header)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if skip_cert_verify is not None:
-            _setter("skip_cert_verify", skip_cert_verify)
+            pulumi.set(__self__, "skip_cert_verify", skip_cert_verify)
 
     @property
     @pulumi.getter
@@ -220,61 +183,24 @@ class _ProjectWebhookState:
         :param pulumi.Input[str] project_id: The project id (**/projects/ID**) of the harbor that webhook related to.
         :param pulumi.Input[bool] skip_cert_verify: checks the for validate SSL certificate.
         """
-        _ProjectWebhookState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            address=address,
-            auth_header=auth_header,
-            description=description,
-            enabled=enabled,
-            events_types=events_types,
-            name=name,
-            notify_type=notify_type,
-            project_id=project_id,
-            skip_cert_verify=skip_cert_verify,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             address: Optional[pulumi.Input[str]] = None,
-             auth_header: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             events_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             notify_type: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[str]] = None,
-             skip_cert_verify: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'authHeader' in kwargs:
-            auth_header = kwargs['authHeader']
-        if 'eventsTypes' in kwargs:
-            events_types = kwargs['eventsTypes']
-        if 'notifyType' in kwargs:
-            notify_type = kwargs['notifyType']
-        if 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if 'skipCertVerify' in kwargs:
-            skip_cert_verify = kwargs['skipCertVerify']
-
         if address is not None:
-            _setter("address", address)
+            pulumi.set(__self__, "address", address)
         if auth_header is not None:
-            _setter("auth_header", auth_header)
+            pulumi.set(__self__, "auth_header", auth_header)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if events_types is not None:
-            _setter("events_types", events_types)
+            pulumi.set(__self__, "events_types", events_types)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if notify_type is not None:
-            _setter("notify_type", notify_type)
+            pulumi.set(__self__, "notify_type", notify_type)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if skip_cert_verify is not None:
-            _setter("skip_cert_verify", skip_cert_verify)
+            pulumi.set(__self__, "skip_cert_verify", skip_cert_verify)
 
     @property
     @pulumi.getter
@@ -434,10 +360,6 @@ class ProjectWebhook(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProjectWebhookArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

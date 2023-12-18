@@ -77,7 +77,7 @@ namespace Pulumiverse.Harbor
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly string Insecure;
+        public readonly bool Insecure;
         public readonly string Name;
         public readonly int RegistryId;
         public readonly string Status;
@@ -90,7 +90,7 @@ namespace Pulumiverse.Harbor
 
             string id,
 
-            string insecure,
+            bool insecure,
 
             string name,
 

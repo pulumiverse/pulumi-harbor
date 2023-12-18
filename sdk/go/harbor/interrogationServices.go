@@ -9,7 +9,6 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
@@ -111,12 +110,6 @@ func (i *InterrogationServices) ToInterrogationServicesOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(InterrogationServicesOutput)
 }
 
-func (i *InterrogationServices) ToOutput(ctx context.Context) pulumix.Output[*InterrogationServices] {
-	return pulumix.Output[*InterrogationServices]{
-		OutputState: i.ToInterrogationServicesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // InterrogationServicesArrayInput is an input type that accepts InterrogationServicesArray and InterrogationServicesArrayOutput values.
 // You can construct a concrete instance of `InterrogationServicesArrayInput` via:
 //
@@ -140,12 +133,6 @@ func (i InterrogationServicesArray) ToInterrogationServicesArrayOutput() Interro
 
 func (i InterrogationServicesArray) ToInterrogationServicesArrayOutputWithContext(ctx context.Context) InterrogationServicesArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InterrogationServicesArrayOutput)
-}
-
-func (i InterrogationServicesArray) ToOutput(ctx context.Context) pulumix.Output[[]*InterrogationServices] {
-	return pulumix.Output[[]*InterrogationServices]{
-		OutputState: i.ToInterrogationServicesArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // InterrogationServicesMapInput is an input type that accepts InterrogationServicesMap and InterrogationServicesMapOutput values.
@@ -173,12 +160,6 @@ func (i InterrogationServicesMap) ToInterrogationServicesMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(InterrogationServicesMapOutput)
 }
 
-func (i InterrogationServicesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*InterrogationServices] {
-	return pulumix.Output[map[string]*InterrogationServices]{
-		OutputState: i.ToInterrogationServicesMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type InterrogationServicesOutput struct{ *pulumi.OutputState }
 
 func (InterrogationServicesOutput) ElementType() reflect.Type {
@@ -191,12 +172,6 @@ func (o InterrogationServicesOutput) ToInterrogationServicesOutput() Interrogati
 
 func (o InterrogationServicesOutput) ToInterrogationServicesOutputWithContext(ctx context.Context) InterrogationServicesOutput {
 	return o
-}
-
-func (o InterrogationServicesOutput) ToOutput(ctx context.Context) pulumix.Output[*InterrogationServices] {
-	return pulumix.Output[*InterrogationServices]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Sets the default interrogation service **Clair**
@@ -223,12 +198,6 @@ func (o InterrogationServicesArrayOutput) ToInterrogationServicesArrayOutputWith
 	return o
 }
 
-func (o InterrogationServicesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*InterrogationServices] {
-	return pulumix.Output[[]*InterrogationServices]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o InterrogationServicesArrayOutput) Index(i pulumi.IntInput) InterrogationServicesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InterrogationServices {
 		return vs[0].([]*InterrogationServices)[vs[1].(int)]
@@ -247,12 +216,6 @@ func (o InterrogationServicesMapOutput) ToInterrogationServicesMapOutput() Inter
 
 func (o InterrogationServicesMapOutput) ToInterrogationServicesMapOutputWithContext(ctx context.Context) InterrogationServicesMapOutput {
 	return o
-}
-
-func (o InterrogationServicesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*InterrogationServices] {
-	return pulumix.Output[map[string]*InterrogationServices]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o InterrogationServicesMapOutput) MapIndex(k pulumi.StringInput) InterrogationServicesOutput {

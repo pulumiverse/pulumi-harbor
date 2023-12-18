@@ -9,7 +9,6 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
@@ -119,12 +118,6 @@ func (i *ProjectMemberUser) ToProjectMemberUserOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMemberUserOutput)
 }
 
-func (i *ProjectMemberUser) ToOutput(ctx context.Context) pulumix.Output[*ProjectMemberUser] {
-	return pulumix.Output[*ProjectMemberUser]{
-		OutputState: i.ToProjectMemberUserOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectMemberUserArrayInput is an input type that accepts ProjectMemberUserArray and ProjectMemberUserArrayOutput values.
 // You can construct a concrete instance of `ProjectMemberUserArrayInput` via:
 //
@@ -148,12 +141,6 @@ func (i ProjectMemberUserArray) ToProjectMemberUserArrayOutput() ProjectMemberUs
 
 func (i ProjectMemberUserArray) ToProjectMemberUserArrayOutputWithContext(ctx context.Context) ProjectMemberUserArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMemberUserArrayOutput)
-}
-
-func (i ProjectMemberUserArray) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectMemberUser] {
-	return pulumix.Output[[]*ProjectMemberUser]{
-		OutputState: i.ToProjectMemberUserArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProjectMemberUserMapInput is an input type that accepts ProjectMemberUserMap and ProjectMemberUserMapOutput values.
@@ -181,12 +168,6 @@ func (i ProjectMemberUserMap) ToProjectMemberUserMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMemberUserMapOutput)
 }
 
-func (i ProjectMemberUserMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectMemberUser] {
-	return pulumix.Output[map[string]*ProjectMemberUser]{
-		OutputState: i.ToProjectMemberUserMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectMemberUserOutput struct{ *pulumi.OutputState }
 
 func (ProjectMemberUserOutput) ElementType() reflect.Type {
@@ -199,12 +180,6 @@ func (o ProjectMemberUserOutput) ToProjectMemberUserOutput() ProjectMemberUserOu
 
 func (o ProjectMemberUserOutput) ToProjectMemberUserOutputWithContext(ctx context.Context) ProjectMemberUserOutput {
 	return o
-}
-
-func (o ProjectMemberUserOutput) ToOutput(ctx context.Context) pulumix.Output[*ProjectMemberUser] {
-	return pulumix.Output[*ProjectMemberUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectMemberUserOutput) MemberId() pulumi.IntOutput {
@@ -237,12 +212,6 @@ func (o ProjectMemberUserArrayOutput) ToProjectMemberUserArrayOutputWithContext(
 	return o
 }
 
-func (o ProjectMemberUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ProjectMemberUser] {
-	return pulumix.Output[[]*ProjectMemberUser]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProjectMemberUserArrayOutput) Index(i pulumi.IntInput) ProjectMemberUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ProjectMemberUser {
 		return vs[0].([]*ProjectMemberUser)[vs[1].(int)]
@@ -261,12 +230,6 @@ func (o ProjectMemberUserMapOutput) ToProjectMemberUserMapOutput() ProjectMember
 
 func (o ProjectMemberUserMapOutput) ToProjectMemberUserMapOutputWithContext(ctx context.Context) ProjectMemberUserMapOutput {
 	return o
-}
-
-func (o ProjectMemberUserMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ProjectMemberUser] {
-	return pulumix.Output[map[string]*ProjectMemberUser]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectMemberUserMapOutput) MapIndex(k pulumi.StringInput) ProjectMemberUserOutput {

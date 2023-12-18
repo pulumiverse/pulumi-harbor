@@ -12,17 +12,55 @@ import (
 var _ = internal.GetEnvOrDefault
 
 func GetApiVersion(ctx *pulumi.Context) int {
-	return config.GetInt(ctx, "harbor:apiVersion")
+	v, err := config.TryInt(ctx, "harbor:apiVersion")
+	if err == nil {
+		return v
+	}
+	var value int
+	value = 2
+	return value
 }
 func GetInsecure(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "harbor:insecure")
+	v, err := config.TryBool(ctx, "harbor:insecure")
+	if err == nil {
+		return v
+	}
+	var value bool
+	if d := internal.GetEnvOrDefault(true, internal.ParseEnvBool, "HARBOR_IGNORE_CERT"); d != nil {
+		value = d.(bool)
+	}
+	return value
 }
 func GetPassword(ctx *pulumi.Context) string {
-	return config.Get(ctx, "harbor:password")
+	v, err := config.Try(ctx, "harbor:password")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "HARBOR_PASSWORD"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 func GetUrl(ctx *pulumi.Context) string {
-	return config.Get(ctx, "harbor:url")
+	v, err := config.Try(ctx, "harbor:url")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "HARBOR_URL"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 func GetUsername(ctx *pulumi.Context) string {
-	return config.Get(ctx, "harbor:username")
+	v, err := config.Try(ctx, "harbor:username")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "HARBOR_USERNAME"); d != nil {
+		value = d.(string)
+	}
+	return value
 }

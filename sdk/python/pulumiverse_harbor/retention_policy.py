@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,25 +25,10 @@ class RetentionPolicyArgs:
         :param pulumi.Input[str] scope: The project id of which you would like to apply this policy.
         :param pulumi.Input[str] schedule: The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
         """
-        RetentionPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            rules=rules,
-            scope=scope,
-            schedule=schedule,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             rules: pulumi.Input[Sequence[pulumi.Input['RetentionPolicyRuleArgs']]],
-             scope: pulumi.Input[str],
-             schedule: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
-        _setter("rules", rules)
-        _setter("scope", scope)
+        pulumi.set(__self__, "rules", rules)
+        pulumi.set(__self__, "scope", scope)
         if schedule is not None:
-            _setter("schedule", schedule)
+            pulumi.set(__self__, "schedule", schedule)
 
     @property
     @pulumi.getter
@@ -94,27 +79,12 @@ class _RetentionPolicyState:
         :param pulumi.Input[str] schedule: The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
         :param pulumi.Input[str] scope: The project id of which you would like to apply this policy.
         """
-        _RetentionPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            rules=rules,
-            schedule=schedule,
-            scope=scope,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             rules: Optional[pulumi.Input[Sequence[pulumi.Input['RetentionPolicyRuleArgs']]]] = None,
-             schedule: Optional[pulumi.Input[str]] = None,
-             scope: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if rules is not None:
-            _setter("rules", rules)
+            pulumi.set(__self__, "rules", rules)
         if schedule is not None:
-            _setter("schedule", schedule)
+            pulumi.set(__self__, "schedule", schedule)
         if scope is not None:
-            _setter("scope", scope)
+            pulumi.set(__self__, "scope", scope)
 
     @property
     @pulumi.getter
@@ -198,10 +168,6 @@ class RetentionPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RetentionPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
