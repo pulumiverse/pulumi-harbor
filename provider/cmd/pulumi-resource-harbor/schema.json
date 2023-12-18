@@ -62,19 +62,42 @@
     "config": {
         "variables": {
             "apiVersion": {
-                "type": "integer"
+                "type": "integer",
+                "default": 2
             },
             "insecure": {
-                "type": "boolean"
+                "type": "boolean",
+                "default": true,
+                "defaultInfo": {
+                    "environment": [
+                        "HARBOR_IGNORE_CERT"
+                    ]
+                }
             },
             "password": {
-                "type": "string"
+                "type": "string",
+                "defaultInfo": {
+                    "environment": [
+                        "HARBOR_PASSWORD"
+                    ]
+                },
+                "secret": true
             },
             "url": {
-                "type": "string"
+                "type": "string",
+                "defaultInfo": {
+                    "environment": [
+                        "HARBOR_URL"
+                    ]
+                }
             },
             "username": {
-                "type": "string"
+                "type": "string",
+                "defaultInfo": {
+                    "environment": [
+                        "HARBOR_USERNAME"
+                    ]
+                }
             }
         },
         "defaults": [
@@ -269,7 +292,8 @@
                 "type": "boolean"
             },
             "password": {
-                "type": "string"
+                "type": "string",
+                "secret": true
             },
             "url": {
                 "type": "string"
@@ -278,29 +302,46 @@
                 "type": "string"
             }
         },
-        "required": [
-            "url"
-        ],
         "inputProperties": {
             "apiVersion": {
-                "type": "integer"
+                "type": "integer",
+                "default": 2
             },
             "insecure": {
-                "type": "boolean"
+                "type": "boolean",
+                "default": true,
+                "defaultInfo": {
+                    "environment": [
+                        "HARBOR_IGNORE_CERT"
+                    ]
+                }
             },
             "password": {
-                "type": "string"
+                "type": "string",
+                "defaultInfo": {
+                    "environment": [
+                        "HARBOR_PASSWORD"
+                    ]
+                },
+                "secret": true
             },
             "url": {
-                "type": "string"
+                "type": "string",
+                "defaultInfo": {
+                    "environment": [
+                        "HARBOR_URL"
+                    ]
+                }
             },
             "username": {
-                "type": "string"
+                "type": "string",
+                "defaultInfo": {
+                    "environment": [
+                        "HARBOR_USERNAME"
+                    ]
+                }
             }
-        },
-        "requiredInputs": [
-            "url"
-        ]
+        }
     },
     "resources": {
         "harbor:index/configAuth:ConfigAuth": {
@@ -1124,7 +1165,7 @@
                 },
                 "registryId": {
                     "type": "integer",
-                    "description": "To enabled project as Proxy Cache\n"
+                    "description": "To enable project as Proxy Cache\n"
                 },
                 "storageQuota": {
                     "type": "integer",
@@ -1175,7 +1216,7 @@
                 },
                 "registryId": {
                     "type": "integer",
-                    "description": "To enabled project as Proxy Cache\n",
+                    "description": "To enable project as Proxy Cache\n",
                     "willReplaceOnChanges": true
                 },
                 "storageQuota": {
@@ -1228,7 +1269,7 @@
                     },
                     "registryId": {
                         "type": "integer",
-                        "description": "To enabled project as Proxy Cache\n",
+                        "description": "To enable project as Proxy Cache\n",
                         "willReplaceOnChanges": true
                     },
                     "storageQuota": {
@@ -1713,6 +1754,9 @@
                 "enabled": {
                     "type": "boolean"
                 },
+                "executeOnChanged": {
+                    "type": "boolean"
+                },
                 "filters": {
                     "type": "array",
                     "items": {
@@ -1764,6 +1808,9 @@
                 "enabled": {
                     "type": "boolean"
                 },
+                "executeOnChanged": {
+                    "type": "boolean"
+                },
                 "filters": {
                     "type": "array",
                     "items": {
@@ -1810,6 +1857,9 @@
                         "type": "integer"
                     },
                     "enabled": {
+                        "type": "boolean"
+                    },
+                    "executeOnChanged": {
                         "type": "boolean"
                     },
                     "filters": {
@@ -2310,7 +2360,7 @@
                         "description": "The provider-assigned unique ID for this managed resource.\n"
                     },
                     "insecure": {
-                        "type": "string"
+                        "type": "boolean"
                     },
                     "name": {
                         "type": "string"
