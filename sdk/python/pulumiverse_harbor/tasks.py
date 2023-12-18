@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['TasksArgs', 'Tasks']
@@ -18,20 +18,7 @@ class TasksArgs:
         """
         The set of arguments for constructing a Tasks resource.
         """
-        TasksArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            vulnerability_scan_policy=vulnerability_scan_policy,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             vulnerability_scan_policy: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'vulnerabilityScanPolicy' in kwargs:
-            vulnerability_scan_policy = kwargs['vulnerabilityScanPolicy']
-
-        _setter("vulnerability_scan_policy", vulnerability_scan_policy)
+        pulumi.set(__self__, "vulnerability_scan_policy", vulnerability_scan_policy)
 
     @property
     @pulumi.getter(name="vulnerabilityScanPolicy")
@@ -50,21 +37,8 @@ class _TasksState:
         """
         Input properties used for looking up and filtering Tasks resources.
         """
-        _TasksState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            vulnerability_scan_policy=vulnerability_scan_policy,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             vulnerability_scan_policy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'vulnerabilityScanPolicy' in kwargs:
-            vulnerability_scan_policy = kwargs['vulnerabilityScanPolicy']
-
         if vulnerability_scan_policy is not None:
-            _setter("vulnerability_scan_policy", vulnerability_scan_policy)
+            pulumi.set(__self__, "vulnerability_scan_policy", vulnerability_scan_policy)
 
     @property
     @pulumi.getter(name="vulnerabilityScanPolicy")
@@ -108,10 +82,6 @@ class Tasks(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TasksArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

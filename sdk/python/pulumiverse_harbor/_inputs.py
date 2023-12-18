@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
@@ -24,35 +24,16 @@ class ReplicationFilterArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[str]] = None,
                  tag: Optional[pulumi.Input[str]] = None):
-        ReplicationFilterArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            decoration=decoration,
-            labels=labels,
-            name=name,
-            resource=resource,
-            tag=tag,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             decoration: Optional[pulumi.Input[str]] = None,
-             labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             resource: Optional[pulumi.Input[str]] = None,
-             tag: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
         if decoration is not None:
-            _setter("decoration", decoration)
+            pulumi.set(__self__, "decoration", decoration)
         if labels is not None:
-            _setter("labels", labels)
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if resource is not None:
-            _setter("resource", resource)
+            pulumi.set(__self__, "resource", resource)
         if tag is not None:
-            _setter("tag", tag)
+            pulumi.set(__self__, "tag", tag)
 
     @property
     @pulumi.getter
@@ -129,79 +110,28 @@ class RetentionPolicyRuleArgs:
                
                > Multiple tags or repositories must be provided as a comma-separated list wrapped into curly brackets `{ }`. Otherwise, the value is interpreted as a single value.
         """
-        RetentionPolicyRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            always_retain=always_retain,
-            disabled=disabled,
-            most_recently_pulled=most_recently_pulled,
-            most_recently_pushed=most_recently_pushed,
-            n_days_since_last_pull=n_days_since_last_pull,
-            n_days_since_last_push=n_days_since_last_push,
-            repo_excluding=repo_excluding,
-            repo_matching=repo_matching,
-            tag_excluding=tag_excluding,
-            tag_matching=tag_matching,
-            untagged_artifacts=untagged_artifacts,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             always_retain: Optional[pulumi.Input[bool]] = None,
-             disabled: Optional[pulumi.Input[bool]] = None,
-             most_recently_pulled: Optional[pulumi.Input[int]] = None,
-             most_recently_pushed: Optional[pulumi.Input[int]] = None,
-             n_days_since_last_pull: Optional[pulumi.Input[int]] = None,
-             n_days_since_last_push: Optional[pulumi.Input[int]] = None,
-             repo_excluding: Optional[pulumi.Input[str]] = None,
-             repo_matching: Optional[pulumi.Input[str]] = None,
-             tag_excluding: Optional[pulumi.Input[str]] = None,
-             tag_matching: Optional[pulumi.Input[str]] = None,
-             untagged_artifacts: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'alwaysRetain' in kwargs:
-            always_retain = kwargs['alwaysRetain']
-        if 'mostRecentlyPulled' in kwargs:
-            most_recently_pulled = kwargs['mostRecentlyPulled']
-        if 'mostRecentlyPushed' in kwargs:
-            most_recently_pushed = kwargs['mostRecentlyPushed']
-        if 'nDaysSinceLastPull' in kwargs:
-            n_days_since_last_pull = kwargs['nDaysSinceLastPull']
-        if 'nDaysSinceLastPush' in kwargs:
-            n_days_since_last_push = kwargs['nDaysSinceLastPush']
-        if 'repoExcluding' in kwargs:
-            repo_excluding = kwargs['repoExcluding']
-        if 'repoMatching' in kwargs:
-            repo_matching = kwargs['repoMatching']
-        if 'tagExcluding' in kwargs:
-            tag_excluding = kwargs['tagExcluding']
-        if 'tagMatching' in kwargs:
-            tag_matching = kwargs['tagMatching']
-        if 'untaggedArtifacts' in kwargs:
-            untagged_artifacts = kwargs['untaggedArtifacts']
-
         if always_retain is not None:
-            _setter("always_retain", always_retain)
+            pulumi.set(__self__, "always_retain", always_retain)
         if disabled is not None:
-            _setter("disabled", disabled)
+            pulumi.set(__self__, "disabled", disabled)
         if most_recently_pulled is not None:
-            _setter("most_recently_pulled", most_recently_pulled)
+            pulumi.set(__self__, "most_recently_pulled", most_recently_pulled)
         if most_recently_pushed is not None:
-            _setter("most_recently_pushed", most_recently_pushed)
+            pulumi.set(__self__, "most_recently_pushed", most_recently_pushed)
         if n_days_since_last_pull is not None:
-            _setter("n_days_since_last_pull", n_days_since_last_pull)
+            pulumi.set(__self__, "n_days_since_last_pull", n_days_since_last_pull)
         if n_days_since_last_push is not None:
-            _setter("n_days_since_last_push", n_days_since_last_push)
+            pulumi.set(__self__, "n_days_since_last_push", n_days_since_last_push)
         if repo_excluding is not None:
-            _setter("repo_excluding", repo_excluding)
+            pulumi.set(__self__, "repo_excluding", repo_excluding)
         if repo_matching is not None:
-            _setter("repo_matching", repo_matching)
+            pulumi.set(__self__, "repo_matching", repo_matching)
         if tag_excluding is not None:
-            _setter("tag_excluding", tag_excluding)
+            pulumi.set(__self__, "tag_excluding", tag_excluding)
         if tag_matching is not None:
-            _setter("tag_matching", tag_matching)
+            pulumi.set(__self__, "tag_matching", tag_matching)
         if untagged_artifacts is not None:
-            _setter("untagged_artifacts", untagged_artifacts)
+            pulumi.set(__self__, "untagged_artifacts", untagged_artifacts)
 
     @property
     @pulumi.getter(name="alwaysRetain")
@@ -344,24 +274,9 @@ class RobotAccountPermissionArgs:
                  accesses: pulumi.Input[Sequence[pulumi.Input['RobotAccountPermissionAccessArgs']]],
                  kind: pulumi.Input[str],
                  namespace: pulumi.Input[str]):
-        RobotAccountPermissionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            accesses=accesses,
-            kind=kind,
-            namespace=namespace,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             accesses: pulumi.Input[Sequence[pulumi.Input['RobotAccountPermissionAccessArgs']]],
-             kind: pulumi.Input[str],
-             namespace: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
-        _setter("accesses", accesses)
-        _setter("kind", kind)
-        _setter("namespace", namespace)
+        pulumi.set(__self__, "accesses", accesses)
+        pulumi.set(__self__, "kind", kind)
+        pulumi.set(__self__, "namespace", namespace)
 
     @property
     @pulumi.getter
@@ -397,25 +312,10 @@ class RobotAccountPermissionAccessArgs:
                  action: pulumi.Input[str],
                  resource: pulumi.Input[str],
                  effect: Optional[pulumi.Input[str]] = None):
-        RobotAccountPermissionAccessArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action=action,
-            resource=resource,
-            effect=effect,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action: pulumi.Input[str],
-             resource: pulumi.Input[str],
-             effect: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
-        _setter("action", action)
-        _setter("resource", resource)
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "resource", resource)
         if effect is not None:
-            _setter("effect", effect)
+            pulumi.set(__self__, "effect", effect)
 
     @property
     @pulumi.getter

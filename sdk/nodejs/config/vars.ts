@@ -7,18 +7,18 @@ import * as utilities from "../utilities";
 declare var exports: any;
 const __config = new pulumi.Config("harbor");
 
-export declare const apiVersion: number | undefined;
+export declare const apiVersion: number;
 Object.defineProperty(exports, "apiVersion", {
     get() {
-        return __config.getObject<number>("apiVersion");
+        return __config.getObject<number>("apiVersion") ?? 2;
     },
     enumerable: true,
 });
 
-export declare const insecure: boolean | undefined;
+export declare const insecure: boolean;
 Object.defineProperty(exports, "insecure", {
     get() {
-        return __config.getObject<boolean>("insecure");
+        return __config.getObject<boolean>("insecure") ?? (utilities.getEnvBoolean("HARBOR_IGNORE_CERT") || true);
     },
     enumerable: true,
 });
@@ -26,7 +26,7 @@ Object.defineProperty(exports, "insecure", {
 export declare const password: string | undefined;
 Object.defineProperty(exports, "password", {
     get() {
-        return __config.get("password");
+        return __config.get("password") ?? utilities.getEnv("HARBOR_PASSWORD");
     },
     enumerable: true,
 });
@@ -34,7 +34,7 @@ Object.defineProperty(exports, "password", {
 export declare const url: string | undefined;
 Object.defineProperty(exports, "url", {
     get() {
-        return __config.get("url");
+        return __config.get("url") ?? utilities.getEnv("HARBOR_URL");
     },
     enumerable: true,
 });
@@ -42,7 +42,7 @@ Object.defineProperty(exports, "url", {
 export declare const username: string | undefined;
 Object.defineProperty(exports, "username", {
     get() {
-        return __config.get("username");
+        return __config.get("username") ?? utilities.getEnv("HARBOR_USERNAME");
     },
     enumerable: true,
 });

@@ -38,6 +38,9 @@ namespace Pulumiverse.Harbor
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
+        [Output("executeOnChanged")]
+        public Output<bool?> ExecuteOnChanged { get; private set; } = null!;
+
         [Output("filters")]
         public Output<ImmutableArray<Outputs.ReplicationFilter>> Filters { get; private set; } = null!;
 
@@ -124,6 +127,9 @@ namespace Pulumiverse.Harbor
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        [Input("executeOnChanged")]
+        public Input<bool>? ExecuteOnChanged { get; set; }
+
         [Input("filters")]
         private InputList<Inputs.ReplicationFilterArgs>? _filters;
         public InputList<Inputs.ReplicationFilterArgs> Filters
@@ -172,6 +178,9 @@ namespace Pulumiverse.Harbor
 
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        [Input("executeOnChanged")]
+        public Input<bool>? ExecuteOnChanged { get; set; }
 
         [Input("filters")]
         private InputList<Inputs.ReplicationFilterGetArgs>? _filters;

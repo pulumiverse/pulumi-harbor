@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ConfigSystemArgs', 'ConfigSystem']
@@ -23,51 +23,18 @@ class ConfigSystemArgs:
         """
         The set of arguments for constructing a ConfigSystem resource.
         """
-        ConfigSystemArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project_creation_restriction=project_creation_restriction,
-            read_only=read_only,
-            robot_name_prefix=robot_name_prefix,
-            robot_token_expiration=robot_token_expiration,
-            scanner_skip_update_pulltime=scanner_skip_update_pulltime,
-            storage_per_project=storage_per_project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project_creation_restriction: Optional[pulumi.Input[str]] = None,
-             read_only: Optional[pulumi.Input[bool]] = None,
-             robot_name_prefix: Optional[pulumi.Input[str]] = None,
-             robot_token_expiration: Optional[pulumi.Input[int]] = None,
-             scanner_skip_update_pulltime: Optional[pulumi.Input[bool]] = None,
-             storage_per_project: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'projectCreationRestriction' in kwargs:
-            project_creation_restriction = kwargs['projectCreationRestriction']
-        if 'readOnly' in kwargs:
-            read_only = kwargs['readOnly']
-        if 'robotNamePrefix' in kwargs:
-            robot_name_prefix = kwargs['robotNamePrefix']
-        if 'robotTokenExpiration' in kwargs:
-            robot_token_expiration = kwargs['robotTokenExpiration']
-        if 'scannerSkipUpdatePulltime' in kwargs:
-            scanner_skip_update_pulltime = kwargs['scannerSkipUpdatePulltime']
-        if 'storagePerProject' in kwargs:
-            storage_per_project = kwargs['storagePerProject']
-
         if project_creation_restriction is not None:
-            _setter("project_creation_restriction", project_creation_restriction)
+            pulumi.set(__self__, "project_creation_restriction", project_creation_restriction)
         if read_only is not None:
-            _setter("read_only", read_only)
+            pulumi.set(__self__, "read_only", read_only)
         if robot_name_prefix is not None:
-            _setter("robot_name_prefix", robot_name_prefix)
+            pulumi.set(__self__, "robot_name_prefix", robot_name_prefix)
         if robot_token_expiration is not None:
-            _setter("robot_token_expiration", robot_token_expiration)
+            pulumi.set(__self__, "robot_token_expiration", robot_token_expiration)
         if scanner_skip_update_pulltime is not None:
-            _setter("scanner_skip_update_pulltime", scanner_skip_update_pulltime)
+            pulumi.set(__self__, "scanner_skip_update_pulltime", scanner_skip_update_pulltime)
         if storage_per_project is not None:
-            _setter("storage_per_project", storage_per_project)
+            pulumi.set(__self__, "storage_per_project", storage_per_project)
 
     @property
     @pulumi.getter(name="projectCreationRestriction")
@@ -136,51 +103,18 @@ class _ConfigSystemState:
         """
         Input properties used for looking up and filtering ConfigSystem resources.
         """
-        _ConfigSystemState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            project_creation_restriction=project_creation_restriction,
-            read_only=read_only,
-            robot_name_prefix=robot_name_prefix,
-            robot_token_expiration=robot_token_expiration,
-            scanner_skip_update_pulltime=scanner_skip_update_pulltime,
-            storage_per_project=storage_per_project,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             project_creation_restriction: Optional[pulumi.Input[str]] = None,
-             read_only: Optional[pulumi.Input[bool]] = None,
-             robot_name_prefix: Optional[pulumi.Input[str]] = None,
-             robot_token_expiration: Optional[pulumi.Input[int]] = None,
-             scanner_skip_update_pulltime: Optional[pulumi.Input[bool]] = None,
-             storage_per_project: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'projectCreationRestriction' in kwargs:
-            project_creation_restriction = kwargs['projectCreationRestriction']
-        if 'readOnly' in kwargs:
-            read_only = kwargs['readOnly']
-        if 'robotNamePrefix' in kwargs:
-            robot_name_prefix = kwargs['robotNamePrefix']
-        if 'robotTokenExpiration' in kwargs:
-            robot_token_expiration = kwargs['robotTokenExpiration']
-        if 'scannerSkipUpdatePulltime' in kwargs:
-            scanner_skip_update_pulltime = kwargs['scannerSkipUpdatePulltime']
-        if 'storagePerProject' in kwargs:
-            storage_per_project = kwargs['storagePerProject']
-
         if project_creation_restriction is not None:
-            _setter("project_creation_restriction", project_creation_restriction)
+            pulumi.set(__self__, "project_creation_restriction", project_creation_restriction)
         if read_only is not None:
-            _setter("read_only", read_only)
+            pulumi.set(__self__, "read_only", read_only)
         if robot_name_prefix is not None:
-            _setter("robot_name_prefix", robot_name_prefix)
+            pulumi.set(__self__, "robot_name_prefix", robot_name_prefix)
         if robot_token_expiration is not None:
-            _setter("robot_token_expiration", robot_token_expiration)
+            pulumi.set(__self__, "robot_token_expiration", robot_token_expiration)
         if scanner_skip_update_pulltime is not None:
-            _setter("scanner_skip_update_pulltime", scanner_skip_update_pulltime)
+            pulumi.set(__self__, "scanner_skip_update_pulltime", scanner_skip_update_pulltime)
         if storage_per_project is not None:
-            _setter("storage_per_project", storage_per_project)
+            pulumi.set(__self__, "storage_per_project", storage_per_project)
 
     @property
     @pulumi.getter(name="projectCreationRestriction")
@@ -274,10 +208,6 @@ class ConfigSystem(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ConfigSystemArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

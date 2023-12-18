@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
@@ -38,7 +37,7 @@ type Project struct {
 	ProjectId pulumi.IntOutput `pulumi:"projectId"`
 	// The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
 	Public pulumi.StringPtrOutput `pulumi:"public"`
-	// To enabled project as Proxy Cache
+	// To enable project as Proxy Cache
 	RegistryId pulumi.IntOutput `pulumi:"registryId"`
 	// The storage quota of the project in GB's
 	StorageQuota pulumi.IntPtrOutput `pulumi:"storageQuota"`
@@ -92,7 +91,7 @@ type projectState struct {
 	ProjectId *int `pulumi:"projectId"`
 	// The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
 	Public *string `pulumi:"public"`
-	// To enabled project as Proxy Cache
+	// To enable project as Proxy Cache
 	RegistryId *int `pulumi:"registryId"`
 	// The storage quota of the project in GB's
 	StorageQuota *int `pulumi:"storageQuota"`
@@ -117,7 +116,7 @@ type ProjectState struct {
 	ProjectId pulumi.IntPtrInput
 	// The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
 	Public pulumi.StringPtrInput
-	// To enabled project as Proxy Cache
+	// To enable project as Proxy Cache
 	RegistryId pulumi.IntPtrInput
 	// The storage quota of the project in GB's
 	StorageQuota pulumi.IntPtrInput
@@ -144,7 +143,7 @@ type projectArgs struct {
 	Name *string `pulumi:"name"`
 	// The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
 	Public *string `pulumi:"public"`
-	// To enabled project as Proxy Cache
+	// To enable project as Proxy Cache
 	RegistryId *int `pulumi:"registryId"`
 	// The storage quota of the project in GB's
 	StorageQuota *int `pulumi:"storageQuota"`
@@ -168,7 +167,7 @@ type ProjectArgs struct {
 	Name pulumi.StringPtrInput
 	// The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
 	Public pulumi.StringPtrInput
-	// To enabled project as Proxy Cache
+	// To enable project as Proxy Cache
 	RegistryId pulumi.IntPtrInput
 	// The storage quota of the project in GB's
 	StorageQuota pulumi.IntPtrInput
@@ -199,12 +198,6 @@ func (i *Project) ToProjectOutputWithContext(ctx context.Context) ProjectOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectOutput)
 }
 
-func (i *Project) ToOutput(ctx context.Context) pulumix.Output[*Project] {
-	return pulumix.Output[*Project]{
-		OutputState: i.ToProjectOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ProjectArrayInput is an input type that accepts ProjectArray and ProjectArrayOutput values.
 // You can construct a concrete instance of `ProjectArrayInput` via:
 //
@@ -228,12 +221,6 @@ func (i ProjectArray) ToProjectArrayOutput() ProjectArrayOutput {
 
 func (i ProjectArray) ToProjectArrayOutputWithContext(ctx context.Context) ProjectArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectArrayOutput)
-}
-
-func (i ProjectArray) ToOutput(ctx context.Context) pulumix.Output[[]*Project] {
-	return pulumix.Output[[]*Project]{
-		OutputState: i.ToProjectArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ProjectMapInput is an input type that accepts ProjectMap and ProjectMapOutput values.
@@ -261,12 +248,6 @@ func (i ProjectMap) ToProjectMapOutputWithContext(ctx context.Context) ProjectMa
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMapOutput)
 }
 
-func (i ProjectMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Project] {
-	return pulumix.Output[map[string]*Project]{
-		OutputState: i.ToProjectMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProjectOutput struct{ *pulumi.OutputState }
 
 func (ProjectOutput) ElementType() reflect.Type {
@@ -279,12 +260,6 @@ func (o ProjectOutput) ToProjectOutput() ProjectOutput {
 
 func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOutput {
 	return o
-}
-
-func (o ProjectOutput) ToOutput(ctx context.Context) pulumix.Output[*Project] {
-	return pulumix.Output[*Project]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
@@ -327,7 +302,7 @@ func (o ProjectOutput) Public() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Public }).(pulumi.StringPtrOutput)
 }
 
-// To enabled project as Proxy Cache
+// To enable project as Proxy Cache
 func (o ProjectOutput) RegistryId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Project) pulumi.IntOutput { return v.RegistryId }).(pulumi.IntOutput)
 }
@@ -356,12 +331,6 @@ func (o ProjectArrayOutput) ToProjectArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ProjectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Project] {
-	return pulumix.Output[[]*Project]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProjectArrayOutput) Index(i pulumi.IntInput) ProjectOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Project {
 		return vs[0].([]*Project)[vs[1].(int)]
@@ -380,12 +349,6 @@ func (o ProjectMapOutput) ToProjectMapOutput() ProjectMapOutput {
 
 func (o ProjectMapOutput) ToProjectMapOutputWithContext(ctx context.Context) ProjectMapOutput {
 	return o
-}
-
-func (o ProjectMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Project] {
-	return pulumix.Output[map[string]*Project]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ProjectMapOutput) MapIndex(k pulumi.StringInput) ProjectOutput {

@@ -31,7 +31,7 @@ export interface GetRegistryResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly insecure: string;
+    readonly insecure: boolean;
     readonly name: string;
     readonly registryId: number;
     readonly status: string;

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['RegistryArgs', 'Registry']
@@ -24,49 +24,18 @@ class RegistryArgs:
         """
         The set of arguments for constructing a Registry resource.
         """
-        RegistryArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            endpoint_url=endpoint_url,
-            provider_name=provider_name,
-            access_id=access_id,
-            access_secret=access_secret,
-            description=description,
-            insecure=insecure,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             endpoint_url: pulumi.Input[str],
-             provider_name: pulumi.Input[str],
-             access_id: Optional[pulumi.Input[str]] = None,
-             access_secret: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             insecure: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'endpointUrl' in kwargs:
-            endpoint_url = kwargs['endpointUrl']
-        if 'providerName' in kwargs:
-            provider_name = kwargs['providerName']
-        if 'accessId' in kwargs:
-            access_id = kwargs['accessId']
-        if 'accessSecret' in kwargs:
-            access_secret = kwargs['accessSecret']
-
-        _setter("endpoint_url", endpoint_url)
-        _setter("provider_name", provider_name)
+        pulumi.set(__self__, "endpoint_url", endpoint_url)
+        pulumi.set(__self__, "provider_name", provider_name)
         if access_id is not None:
-            _setter("access_id", access_id)
+            pulumi.set(__self__, "access_id", access_id)
         if access_secret is not None:
-            _setter("access_secret", access_secret)
+            pulumi.set(__self__, "access_secret", access_secret)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if insecure is not None:
-            _setter("insecure", insecure)
+            pulumi.set(__self__, "insecure", insecure)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="endpointUrl")
@@ -147,61 +116,24 @@ class _RegistryState:
         """
         Input properties used for looking up and filtering Registry resources.
         """
-        _RegistryState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            access_id=access_id,
-            access_secret=access_secret,
-            description=description,
-            endpoint_url=endpoint_url,
-            insecure=insecure,
-            name=name,
-            provider_name=provider_name,
-            registry_id=registry_id,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             access_id: Optional[pulumi.Input[str]] = None,
-             access_secret: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             endpoint_url: Optional[pulumi.Input[str]] = None,
-             insecure: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             provider_name: Optional[pulumi.Input[str]] = None,
-             registry_id: Optional[pulumi.Input[int]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'accessId' in kwargs:
-            access_id = kwargs['accessId']
-        if 'accessSecret' in kwargs:
-            access_secret = kwargs['accessSecret']
-        if 'endpointUrl' in kwargs:
-            endpoint_url = kwargs['endpointUrl']
-        if 'providerName' in kwargs:
-            provider_name = kwargs['providerName']
-        if 'registryId' in kwargs:
-            registry_id = kwargs['registryId']
-
         if access_id is not None:
-            _setter("access_id", access_id)
+            pulumi.set(__self__, "access_id", access_id)
         if access_secret is not None:
-            _setter("access_secret", access_secret)
+            pulumi.set(__self__, "access_secret", access_secret)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if endpoint_url is not None:
-            _setter("endpoint_url", endpoint_url)
+            pulumi.set(__self__, "endpoint_url", endpoint_url)
         if insecure is not None:
-            _setter("insecure", insecure)
+            pulumi.set(__self__, "insecure", insecure)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if provider_name is not None:
-            _setter("provider_name", provider_name)
+            pulumi.set(__self__, "provider_name", provider_name)
         if registry_id is not None:
-            _setter("registry_id", registry_id)
+            pulumi.set(__self__, "registry_id", registry_id)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="accessId")
@@ -331,10 +263,6 @@ class Registry(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RegistryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

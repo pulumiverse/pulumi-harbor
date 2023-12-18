@@ -9,7 +9,6 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
@@ -127,12 +126,6 @@ func (i *ConfigSecurity) ToConfigSecurityOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigSecurityOutput)
 }
 
-func (i *ConfigSecurity) ToOutput(ctx context.Context) pulumix.Output[*ConfigSecurity] {
-	return pulumix.Output[*ConfigSecurity]{
-		OutputState: i.ToConfigSecurityOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ConfigSecurityArrayInput is an input type that accepts ConfigSecurityArray and ConfigSecurityArrayOutput values.
 // You can construct a concrete instance of `ConfigSecurityArrayInput` via:
 //
@@ -156,12 +149,6 @@ func (i ConfigSecurityArray) ToConfigSecurityArrayOutput() ConfigSecurityArrayOu
 
 func (i ConfigSecurityArray) ToConfigSecurityArrayOutputWithContext(ctx context.Context) ConfigSecurityArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigSecurityArrayOutput)
-}
-
-func (i ConfigSecurityArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigSecurity] {
-	return pulumix.Output[[]*ConfigSecurity]{
-		OutputState: i.ToConfigSecurityArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ConfigSecurityMapInput is an input type that accepts ConfigSecurityMap and ConfigSecurityMapOutput values.
@@ -189,12 +176,6 @@ func (i ConfigSecurityMap) ToConfigSecurityMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigSecurityMapOutput)
 }
 
-func (i ConfigSecurityMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigSecurity] {
-	return pulumix.Output[map[string]*ConfigSecurity]{
-		OutputState: i.ToConfigSecurityMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ConfigSecurityOutput struct{ *pulumi.OutputState }
 
 func (ConfigSecurityOutput) ElementType() reflect.Type {
@@ -207,12 +188,6 @@ func (o ConfigSecurityOutput) ToConfigSecurityOutput() ConfigSecurityOutput {
 
 func (o ConfigSecurityOutput) ToConfigSecurityOutputWithContext(ctx context.Context) ConfigSecurityOutput {
 	return o
-}
-
-func (o ConfigSecurityOutput) ToOutput(ctx context.Context) pulumix.Output[*ConfigSecurity] {
-	return pulumix.Output[*ConfigSecurity]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Time of creation of the list.
@@ -249,12 +224,6 @@ func (o ConfigSecurityArrayOutput) ToConfigSecurityArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o ConfigSecurityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConfigSecurity] {
-	return pulumix.Output[[]*ConfigSecurity]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ConfigSecurityArrayOutput) Index(i pulumi.IntInput) ConfigSecurityOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConfigSecurity {
 		return vs[0].([]*ConfigSecurity)[vs[1].(int)]
@@ -273,12 +242,6 @@ func (o ConfigSecurityMapOutput) ToConfigSecurityMapOutput() ConfigSecurityMapOu
 
 func (o ConfigSecurityMapOutput) ToConfigSecurityMapOutputWithContext(ctx context.Context) ConfigSecurityMapOutput {
 	return o
-}
-
-func (o ConfigSecurityMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConfigSecurity] {
-	return pulumix.Output[map[string]*ConfigSecurity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ConfigSecurityMapOutput) MapIndex(k pulumi.StringInput) ConfigSecurityOutput {

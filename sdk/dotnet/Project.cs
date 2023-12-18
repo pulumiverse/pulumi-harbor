@@ -71,7 +71,7 @@ namespace Pulumiverse.Harbor
         public Output<string?> Public { get; private set; } = null!;
 
         /// <summary>
-        /// To enabled project as Proxy Cache
+        /// To enable project as Proxy Cache
         /// </summary>
         [Output("registryId")]
         public Output<int> RegistryId { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumiverse.Harbor
         public Input<string>? Public { get; set; }
 
         /// <summary>
-        /// To enabled project as Proxy Cache
+        /// To enable project as Proxy Cache
         /// </summary>
         [Input("registryId")]
         public Input<int>? RegistryId { get; set; }
@@ -264,7 +264,7 @@ namespace Pulumiverse.Harbor
         public Input<string>? Public { get; set; }
 
         /// <summary>
-        /// To enabled project as Proxy Cache
+        /// To enable project as Proxy Cache
         /// </summary>
         [Input("registryId")]
         public Input<int>? RegistryId { get; set; }

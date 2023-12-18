@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
@@ -118,12 +117,6 @@ func (i *Label) ToLabelOutputWithContext(ctx context.Context) LabelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LabelOutput)
 }
 
-func (i *Label) ToOutput(ctx context.Context) pulumix.Output[*Label] {
-	return pulumix.Output[*Label]{
-		OutputState: i.ToLabelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LabelArrayInput is an input type that accepts LabelArray and LabelArrayOutput values.
 // You can construct a concrete instance of `LabelArrayInput` via:
 //
@@ -147,12 +140,6 @@ func (i LabelArray) ToLabelArrayOutput() LabelArrayOutput {
 
 func (i LabelArray) ToLabelArrayOutputWithContext(ctx context.Context) LabelArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LabelArrayOutput)
-}
-
-func (i LabelArray) ToOutput(ctx context.Context) pulumix.Output[[]*Label] {
-	return pulumix.Output[[]*Label]{
-		OutputState: i.ToLabelArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // LabelMapInput is an input type that accepts LabelMap and LabelMapOutput values.
@@ -180,12 +167,6 @@ func (i LabelMap) ToLabelMapOutputWithContext(ctx context.Context) LabelMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(LabelMapOutput)
 }
 
-func (i LabelMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Label] {
-	return pulumix.Output[map[string]*Label]{
-		OutputState: i.ToLabelMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LabelOutput struct{ *pulumi.OutputState }
 
 func (LabelOutput) ElementType() reflect.Type {
@@ -198,12 +179,6 @@ func (o LabelOutput) ToLabelOutput() LabelOutput {
 
 func (o LabelOutput) ToLabelOutputWithContext(ctx context.Context) LabelOutput {
 	return o
-}
-
-func (o LabelOutput) ToOutput(ctx context.Context) pulumix.Output[*Label] {
-	return pulumix.Output[*Label]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LabelOutput) Color() pulumi.StringPtrOutput {
@@ -240,12 +215,6 @@ func (o LabelArrayOutput) ToLabelArrayOutputWithContext(ctx context.Context) Lab
 	return o
 }
 
-func (o LabelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Label] {
-	return pulumix.Output[[]*Label]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LabelArrayOutput) Index(i pulumi.IntInput) LabelOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Label {
 		return vs[0].([]*Label)[vs[1].(int)]
@@ -264,12 +233,6 @@ func (o LabelMapOutput) ToLabelMapOutput() LabelMapOutput {
 
 func (o LabelMapOutput) ToLabelMapOutputWithContext(ctx context.Context) LabelMapOutput {
 	return o
-}
-
-func (o LabelMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Label] {
-	return pulumix.Output[map[string]*Label]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LabelMapOutput) MapIndex(k pulumi.StringInput) LabelOutput {

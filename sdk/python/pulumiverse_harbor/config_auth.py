@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ConfigAuthArgs', 'ConfigAuth']
@@ -45,182 +45,61 @@ class ConfigAuthArgs:
         """
         The set of arguments for constructing a ConfigAuth resource.
         """
-        ConfigAuthArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auth_mode=auth_mode,
-            ldap_base_dn=ldap_base_dn,
-            ldap_filter=ldap_filter,
-            ldap_group_admin_dn=ldap_group_admin_dn,
-            ldap_group_base_dn=ldap_group_base_dn,
-            ldap_group_filter=ldap_group_filter,
-            ldap_group_gid=ldap_group_gid,
-            ldap_group_membership=ldap_group_membership,
-            ldap_group_scope=ldap_group_scope,
-            ldap_group_uid=ldap_group_uid,
-            ldap_scope=ldap_scope,
-            ldap_search_dn=ldap_search_dn,
-            ldap_search_password=ldap_search_password,
-            ldap_uid=ldap_uid,
-            ldap_url=ldap_url,
-            ldap_verify_cert=ldap_verify_cert,
-            oidc_admin_group=oidc_admin_group,
-            oidc_auto_onboard=oidc_auto_onboard,
-            oidc_client_id=oidc_client_id,
-            oidc_client_secret=oidc_client_secret,
-            oidc_endpoint=oidc_endpoint,
-            oidc_group_filter=oidc_group_filter,
-            oidc_groups_claim=oidc_groups_claim,
-            oidc_name=oidc_name,
-            oidc_scope=oidc_scope,
-            oidc_user_claim=oidc_user_claim,
-            oidc_verify_cert=oidc_verify_cert,
-            primary_auth_mode=primary_auth_mode,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auth_mode: pulumi.Input[str],
-             ldap_base_dn: Optional[pulumi.Input[str]] = None,
-             ldap_filter: Optional[pulumi.Input[str]] = None,
-             ldap_group_admin_dn: Optional[pulumi.Input[str]] = None,
-             ldap_group_base_dn: Optional[pulumi.Input[str]] = None,
-             ldap_group_filter: Optional[pulumi.Input[str]] = None,
-             ldap_group_gid: Optional[pulumi.Input[str]] = None,
-             ldap_group_membership: Optional[pulumi.Input[str]] = None,
-             ldap_group_scope: Optional[pulumi.Input[str]] = None,
-             ldap_group_uid: Optional[pulumi.Input[str]] = None,
-             ldap_scope: Optional[pulumi.Input[str]] = None,
-             ldap_search_dn: Optional[pulumi.Input[str]] = None,
-             ldap_search_password: Optional[pulumi.Input[str]] = None,
-             ldap_uid: Optional[pulumi.Input[str]] = None,
-             ldap_url: Optional[pulumi.Input[str]] = None,
-             ldap_verify_cert: Optional[pulumi.Input[bool]] = None,
-             oidc_admin_group: Optional[pulumi.Input[str]] = None,
-             oidc_auto_onboard: Optional[pulumi.Input[bool]] = None,
-             oidc_client_id: Optional[pulumi.Input[str]] = None,
-             oidc_client_secret: Optional[pulumi.Input[str]] = None,
-             oidc_endpoint: Optional[pulumi.Input[str]] = None,
-             oidc_group_filter: Optional[pulumi.Input[str]] = None,
-             oidc_groups_claim: Optional[pulumi.Input[str]] = None,
-             oidc_name: Optional[pulumi.Input[str]] = None,
-             oidc_scope: Optional[pulumi.Input[str]] = None,
-             oidc_user_claim: Optional[pulumi.Input[str]] = None,
-             oidc_verify_cert: Optional[pulumi.Input[bool]] = None,
-             primary_auth_mode: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'authMode' in kwargs:
-            auth_mode = kwargs['authMode']
-        if 'ldapBaseDn' in kwargs:
-            ldap_base_dn = kwargs['ldapBaseDn']
-        if 'ldapFilter' in kwargs:
-            ldap_filter = kwargs['ldapFilter']
-        if 'ldapGroupAdminDn' in kwargs:
-            ldap_group_admin_dn = kwargs['ldapGroupAdminDn']
-        if 'ldapGroupBaseDn' in kwargs:
-            ldap_group_base_dn = kwargs['ldapGroupBaseDn']
-        if 'ldapGroupFilter' in kwargs:
-            ldap_group_filter = kwargs['ldapGroupFilter']
-        if 'ldapGroupGid' in kwargs:
-            ldap_group_gid = kwargs['ldapGroupGid']
-        if 'ldapGroupMembership' in kwargs:
-            ldap_group_membership = kwargs['ldapGroupMembership']
-        if 'ldapGroupScope' in kwargs:
-            ldap_group_scope = kwargs['ldapGroupScope']
-        if 'ldapGroupUid' in kwargs:
-            ldap_group_uid = kwargs['ldapGroupUid']
-        if 'ldapScope' in kwargs:
-            ldap_scope = kwargs['ldapScope']
-        if 'ldapSearchDn' in kwargs:
-            ldap_search_dn = kwargs['ldapSearchDn']
-        if 'ldapSearchPassword' in kwargs:
-            ldap_search_password = kwargs['ldapSearchPassword']
-        if 'ldapUid' in kwargs:
-            ldap_uid = kwargs['ldapUid']
-        if 'ldapUrl' in kwargs:
-            ldap_url = kwargs['ldapUrl']
-        if 'ldapVerifyCert' in kwargs:
-            ldap_verify_cert = kwargs['ldapVerifyCert']
-        if 'oidcAdminGroup' in kwargs:
-            oidc_admin_group = kwargs['oidcAdminGroup']
-        if 'oidcAutoOnboard' in kwargs:
-            oidc_auto_onboard = kwargs['oidcAutoOnboard']
-        if 'oidcClientId' in kwargs:
-            oidc_client_id = kwargs['oidcClientId']
-        if 'oidcClientSecret' in kwargs:
-            oidc_client_secret = kwargs['oidcClientSecret']
-        if 'oidcEndpoint' in kwargs:
-            oidc_endpoint = kwargs['oidcEndpoint']
-        if 'oidcGroupFilter' in kwargs:
-            oidc_group_filter = kwargs['oidcGroupFilter']
-        if 'oidcGroupsClaim' in kwargs:
-            oidc_groups_claim = kwargs['oidcGroupsClaim']
-        if 'oidcName' in kwargs:
-            oidc_name = kwargs['oidcName']
-        if 'oidcScope' in kwargs:
-            oidc_scope = kwargs['oidcScope']
-        if 'oidcUserClaim' in kwargs:
-            oidc_user_claim = kwargs['oidcUserClaim']
-        if 'oidcVerifyCert' in kwargs:
-            oidc_verify_cert = kwargs['oidcVerifyCert']
-        if 'primaryAuthMode' in kwargs:
-            primary_auth_mode = kwargs['primaryAuthMode']
-
-        _setter("auth_mode", auth_mode)
+        pulumi.set(__self__, "auth_mode", auth_mode)
         if ldap_base_dn is not None:
-            _setter("ldap_base_dn", ldap_base_dn)
+            pulumi.set(__self__, "ldap_base_dn", ldap_base_dn)
         if ldap_filter is not None:
-            _setter("ldap_filter", ldap_filter)
+            pulumi.set(__self__, "ldap_filter", ldap_filter)
         if ldap_group_admin_dn is not None:
-            _setter("ldap_group_admin_dn", ldap_group_admin_dn)
+            pulumi.set(__self__, "ldap_group_admin_dn", ldap_group_admin_dn)
         if ldap_group_base_dn is not None:
-            _setter("ldap_group_base_dn", ldap_group_base_dn)
+            pulumi.set(__self__, "ldap_group_base_dn", ldap_group_base_dn)
         if ldap_group_filter is not None:
-            _setter("ldap_group_filter", ldap_group_filter)
+            pulumi.set(__self__, "ldap_group_filter", ldap_group_filter)
         if ldap_group_gid is not None:
-            _setter("ldap_group_gid", ldap_group_gid)
+            pulumi.set(__self__, "ldap_group_gid", ldap_group_gid)
         if ldap_group_membership is not None:
-            _setter("ldap_group_membership", ldap_group_membership)
+            pulumi.set(__self__, "ldap_group_membership", ldap_group_membership)
         if ldap_group_scope is not None:
-            _setter("ldap_group_scope", ldap_group_scope)
+            pulumi.set(__self__, "ldap_group_scope", ldap_group_scope)
         if ldap_group_uid is not None:
-            _setter("ldap_group_uid", ldap_group_uid)
+            pulumi.set(__self__, "ldap_group_uid", ldap_group_uid)
         if ldap_scope is not None:
-            _setter("ldap_scope", ldap_scope)
+            pulumi.set(__self__, "ldap_scope", ldap_scope)
         if ldap_search_dn is not None:
-            _setter("ldap_search_dn", ldap_search_dn)
+            pulumi.set(__self__, "ldap_search_dn", ldap_search_dn)
         if ldap_search_password is not None:
-            _setter("ldap_search_password", ldap_search_password)
+            pulumi.set(__self__, "ldap_search_password", ldap_search_password)
         if ldap_uid is not None:
-            _setter("ldap_uid", ldap_uid)
+            pulumi.set(__self__, "ldap_uid", ldap_uid)
         if ldap_url is not None:
-            _setter("ldap_url", ldap_url)
+            pulumi.set(__self__, "ldap_url", ldap_url)
         if ldap_verify_cert is not None:
-            _setter("ldap_verify_cert", ldap_verify_cert)
+            pulumi.set(__self__, "ldap_verify_cert", ldap_verify_cert)
         if oidc_admin_group is not None:
-            _setter("oidc_admin_group", oidc_admin_group)
+            pulumi.set(__self__, "oidc_admin_group", oidc_admin_group)
         if oidc_auto_onboard is not None:
-            _setter("oidc_auto_onboard", oidc_auto_onboard)
+            pulumi.set(__self__, "oidc_auto_onboard", oidc_auto_onboard)
         if oidc_client_id is not None:
-            _setter("oidc_client_id", oidc_client_id)
+            pulumi.set(__self__, "oidc_client_id", oidc_client_id)
         if oidc_client_secret is not None:
-            _setter("oidc_client_secret", oidc_client_secret)
+            pulumi.set(__self__, "oidc_client_secret", oidc_client_secret)
         if oidc_endpoint is not None:
-            _setter("oidc_endpoint", oidc_endpoint)
+            pulumi.set(__self__, "oidc_endpoint", oidc_endpoint)
         if oidc_group_filter is not None:
-            _setter("oidc_group_filter", oidc_group_filter)
+            pulumi.set(__self__, "oidc_group_filter", oidc_group_filter)
         if oidc_groups_claim is not None:
-            _setter("oidc_groups_claim", oidc_groups_claim)
+            pulumi.set(__self__, "oidc_groups_claim", oidc_groups_claim)
         if oidc_name is not None:
-            _setter("oidc_name", oidc_name)
+            pulumi.set(__self__, "oidc_name", oidc_name)
         if oidc_scope is not None:
-            _setter("oidc_scope", oidc_scope)
+            pulumi.set(__self__, "oidc_scope", oidc_scope)
         if oidc_user_claim is not None:
-            _setter("oidc_user_claim", oidc_user_claim)
+            pulumi.set(__self__, "oidc_user_claim", oidc_user_claim)
         if oidc_verify_cert is not None:
-            _setter("oidc_verify_cert", oidc_verify_cert)
+            pulumi.set(__self__, "oidc_verify_cert", oidc_verify_cert)
         if primary_auth_mode is not None:
-            _setter("primary_auth_mode", primary_auth_mode)
+            pulumi.set(__self__, "primary_auth_mode", primary_auth_mode)
 
     @property
     @pulumi.getter(name="authMode")
@@ -509,183 +388,62 @@ class _ConfigAuthState:
         """
         Input properties used for looking up and filtering ConfigAuth resources.
         """
-        _ConfigAuthState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auth_mode=auth_mode,
-            ldap_base_dn=ldap_base_dn,
-            ldap_filter=ldap_filter,
-            ldap_group_admin_dn=ldap_group_admin_dn,
-            ldap_group_base_dn=ldap_group_base_dn,
-            ldap_group_filter=ldap_group_filter,
-            ldap_group_gid=ldap_group_gid,
-            ldap_group_membership=ldap_group_membership,
-            ldap_group_scope=ldap_group_scope,
-            ldap_group_uid=ldap_group_uid,
-            ldap_scope=ldap_scope,
-            ldap_search_dn=ldap_search_dn,
-            ldap_search_password=ldap_search_password,
-            ldap_uid=ldap_uid,
-            ldap_url=ldap_url,
-            ldap_verify_cert=ldap_verify_cert,
-            oidc_admin_group=oidc_admin_group,
-            oidc_auto_onboard=oidc_auto_onboard,
-            oidc_client_id=oidc_client_id,
-            oidc_client_secret=oidc_client_secret,
-            oidc_endpoint=oidc_endpoint,
-            oidc_group_filter=oidc_group_filter,
-            oidc_groups_claim=oidc_groups_claim,
-            oidc_name=oidc_name,
-            oidc_scope=oidc_scope,
-            oidc_user_claim=oidc_user_claim,
-            oidc_verify_cert=oidc_verify_cert,
-            primary_auth_mode=primary_auth_mode,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auth_mode: Optional[pulumi.Input[str]] = None,
-             ldap_base_dn: Optional[pulumi.Input[str]] = None,
-             ldap_filter: Optional[pulumi.Input[str]] = None,
-             ldap_group_admin_dn: Optional[pulumi.Input[str]] = None,
-             ldap_group_base_dn: Optional[pulumi.Input[str]] = None,
-             ldap_group_filter: Optional[pulumi.Input[str]] = None,
-             ldap_group_gid: Optional[pulumi.Input[str]] = None,
-             ldap_group_membership: Optional[pulumi.Input[str]] = None,
-             ldap_group_scope: Optional[pulumi.Input[str]] = None,
-             ldap_group_uid: Optional[pulumi.Input[str]] = None,
-             ldap_scope: Optional[pulumi.Input[str]] = None,
-             ldap_search_dn: Optional[pulumi.Input[str]] = None,
-             ldap_search_password: Optional[pulumi.Input[str]] = None,
-             ldap_uid: Optional[pulumi.Input[str]] = None,
-             ldap_url: Optional[pulumi.Input[str]] = None,
-             ldap_verify_cert: Optional[pulumi.Input[bool]] = None,
-             oidc_admin_group: Optional[pulumi.Input[str]] = None,
-             oidc_auto_onboard: Optional[pulumi.Input[bool]] = None,
-             oidc_client_id: Optional[pulumi.Input[str]] = None,
-             oidc_client_secret: Optional[pulumi.Input[str]] = None,
-             oidc_endpoint: Optional[pulumi.Input[str]] = None,
-             oidc_group_filter: Optional[pulumi.Input[str]] = None,
-             oidc_groups_claim: Optional[pulumi.Input[str]] = None,
-             oidc_name: Optional[pulumi.Input[str]] = None,
-             oidc_scope: Optional[pulumi.Input[str]] = None,
-             oidc_user_claim: Optional[pulumi.Input[str]] = None,
-             oidc_verify_cert: Optional[pulumi.Input[bool]] = None,
-             primary_auth_mode: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'authMode' in kwargs:
-            auth_mode = kwargs['authMode']
-        if 'ldapBaseDn' in kwargs:
-            ldap_base_dn = kwargs['ldapBaseDn']
-        if 'ldapFilter' in kwargs:
-            ldap_filter = kwargs['ldapFilter']
-        if 'ldapGroupAdminDn' in kwargs:
-            ldap_group_admin_dn = kwargs['ldapGroupAdminDn']
-        if 'ldapGroupBaseDn' in kwargs:
-            ldap_group_base_dn = kwargs['ldapGroupBaseDn']
-        if 'ldapGroupFilter' in kwargs:
-            ldap_group_filter = kwargs['ldapGroupFilter']
-        if 'ldapGroupGid' in kwargs:
-            ldap_group_gid = kwargs['ldapGroupGid']
-        if 'ldapGroupMembership' in kwargs:
-            ldap_group_membership = kwargs['ldapGroupMembership']
-        if 'ldapGroupScope' in kwargs:
-            ldap_group_scope = kwargs['ldapGroupScope']
-        if 'ldapGroupUid' in kwargs:
-            ldap_group_uid = kwargs['ldapGroupUid']
-        if 'ldapScope' in kwargs:
-            ldap_scope = kwargs['ldapScope']
-        if 'ldapSearchDn' in kwargs:
-            ldap_search_dn = kwargs['ldapSearchDn']
-        if 'ldapSearchPassword' in kwargs:
-            ldap_search_password = kwargs['ldapSearchPassword']
-        if 'ldapUid' in kwargs:
-            ldap_uid = kwargs['ldapUid']
-        if 'ldapUrl' in kwargs:
-            ldap_url = kwargs['ldapUrl']
-        if 'ldapVerifyCert' in kwargs:
-            ldap_verify_cert = kwargs['ldapVerifyCert']
-        if 'oidcAdminGroup' in kwargs:
-            oidc_admin_group = kwargs['oidcAdminGroup']
-        if 'oidcAutoOnboard' in kwargs:
-            oidc_auto_onboard = kwargs['oidcAutoOnboard']
-        if 'oidcClientId' in kwargs:
-            oidc_client_id = kwargs['oidcClientId']
-        if 'oidcClientSecret' in kwargs:
-            oidc_client_secret = kwargs['oidcClientSecret']
-        if 'oidcEndpoint' in kwargs:
-            oidc_endpoint = kwargs['oidcEndpoint']
-        if 'oidcGroupFilter' in kwargs:
-            oidc_group_filter = kwargs['oidcGroupFilter']
-        if 'oidcGroupsClaim' in kwargs:
-            oidc_groups_claim = kwargs['oidcGroupsClaim']
-        if 'oidcName' in kwargs:
-            oidc_name = kwargs['oidcName']
-        if 'oidcScope' in kwargs:
-            oidc_scope = kwargs['oidcScope']
-        if 'oidcUserClaim' in kwargs:
-            oidc_user_claim = kwargs['oidcUserClaim']
-        if 'oidcVerifyCert' in kwargs:
-            oidc_verify_cert = kwargs['oidcVerifyCert']
-        if 'primaryAuthMode' in kwargs:
-            primary_auth_mode = kwargs['primaryAuthMode']
-
         if auth_mode is not None:
-            _setter("auth_mode", auth_mode)
+            pulumi.set(__self__, "auth_mode", auth_mode)
         if ldap_base_dn is not None:
-            _setter("ldap_base_dn", ldap_base_dn)
+            pulumi.set(__self__, "ldap_base_dn", ldap_base_dn)
         if ldap_filter is not None:
-            _setter("ldap_filter", ldap_filter)
+            pulumi.set(__self__, "ldap_filter", ldap_filter)
         if ldap_group_admin_dn is not None:
-            _setter("ldap_group_admin_dn", ldap_group_admin_dn)
+            pulumi.set(__self__, "ldap_group_admin_dn", ldap_group_admin_dn)
         if ldap_group_base_dn is not None:
-            _setter("ldap_group_base_dn", ldap_group_base_dn)
+            pulumi.set(__self__, "ldap_group_base_dn", ldap_group_base_dn)
         if ldap_group_filter is not None:
-            _setter("ldap_group_filter", ldap_group_filter)
+            pulumi.set(__self__, "ldap_group_filter", ldap_group_filter)
         if ldap_group_gid is not None:
-            _setter("ldap_group_gid", ldap_group_gid)
+            pulumi.set(__self__, "ldap_group_gid", ldap_group_gid)
         if ldap_group_membership is not None:
-            _setter("ldap_group_membership", ldap_group_membership)
+            pulumi.set(__self__, "ldap_group_membership", ldap_group_membership)
         if ldap_group_scope is not None:
-            _setter("ldap_group_scope", ldap_group_scope)
+            pulumi.set(__self__, "ldap_group_scope", ldap_group_scope)
         if ldap_group_uid is not None:
-            _setter("ldap_group_uid", ldap_group_uid)
+            pulumi.set(__self__, "ldap_group_uid", ldap_group_uid)
         if ldap_scope is not None:
-            _setter("ldap_scope", ldap_scope)
+            pulumi.set(__self__, "ldap_scope", ldap_scope)
         if ldap_search_dn is not None:
-            _setter("ldap_search_dn", ldap_search_dn)
+            pulumi.set(__self__, "ldap_search_dn", ldap_search_dn)
         if ldap_search_password is not None:
-            _setter("ldap_search_password", ldap_search_password)
+            pulumi.set(__self__, "ldap_search_password", ldap_search_password)
         if ldap_uid is not None:
-            _setter("ldap_uid", ldap_uid)
+            pulumi.set(__self__, "ldap_uid", ldap_uid)
         if ldap_url is not None:
-            _setter("ldap_url", ldap_url)
+            pulumi.set(__self__, "ldap_url", ldap_url)
         if ldap_verify_cert is not None:
-            _setter("ldap_verify_cert", ldap_verify_cert)
+            pulumi.set(__self__, "ldap_verify_cert", ldap_verify_cert)
         if oidc_admin_group is not None:
-            _setter("oidc_admin_group", oidc_admin_group)
+            pulumi.set(__self__, "oidc_admin_group", oidc_admin_group)
         if oidc_auto_onboard is not None:
-            _setter("oidc_auto_onboard", oidc_auto_onboard)
+            pulumi.set(__self__, "oidc_auto_onboard", oidc_auto_onboard)
         if oidc_client_id is not None:
-            _setter("oidc_client_id", oidc_client_id)
+            pulumi.set(__self__, "oidc_client_id", oidc_client_id)
         if oidc_client_secret is not None:
-            _setter("oidc_client_secret", oidc_client_secret)
+            pulumi.set(__self__, "oidc_client_secret", oidc_client_secret)
         if oidc_endpoint is not None:
-            _setter("oidc_endpoint", oidc_endpoint)
+            pulumi.set(__self__, "oidc_endpoint", oidc_endpoint)
         if oidc_group_filter is not None:
-            _setter("oidc_group_filter", oidc_group_filter)
+            pulumi.set(__self__, "oidc_group_filter", oidc_group_filter)
         if oidc_groups_claim is not None:
-            _setter("oidc_groups_claim", oidc_groups_claim)
+            pulumi.set(__self__, "oidc_groups_claim", oidc_groups_claim)
         if oidc_name is not None:
-            _setter("oidc_name", oidc_name)
+            pulumi.set(__self__, "oidc_name", oidc_name)
         if oidc_scope is not None:
-            _setter("oidc_scope", oidc_scope)
+            pulumi.set(__self__, "oidc_scope", oidc_scope)
         if oidc_user_claim is not None:
-            _setter("oidc_user_claim", oidc_user_claim)
+            pulumi.set(__self__, "oidc_user_claim", oidc_user_claim)
         if oidc_verify_cert is not None:
-            _setter("oidc_verify_cert", oidc_verify_cert)
+            pulumi.set(__self__, "oidc_verify_cert", oidc_verify_cert)
         if primary_auth_mode is not None:
-            _setter("primary_auth_mode", primary_auth_mode)
+            pulumi.set(__self__, "primary_auth_mode", primary_auth_mode)
 
     @property
     @pulumi.getter(name="authMode")
@@ -997,10 +755,6 @@ class ConfigAuth(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ConfigAuthArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

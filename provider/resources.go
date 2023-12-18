@@ -16,13 +16,14 @@ package harbor
 
 import (
 	"fmt"
+	"path/filepath"
+
 	harbor "github.com/goharbor/terraform-provider-harbor/provider"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumiverse/pulumi-harbor/provider/v3/pkg/version"
-	"path/filepath"
 )
 
 // all of the token components used below.
@@ -80,7 +81,7 @@ func Provider() tfbridge.ProviderInfo {
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
 		GitHubOrg: "goharbor",
-		Config:    map[string]*tfbridge.SchemaInfo{
+		Config: map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
 			// "region": {
@@ -89,6 +90,33 @@ func Provider() tfbridge.ProviderInfo {
 			// 		EnvVars: []string{"AWS_REGION", "AWS_DEFAULT_REGION"},
 			// 	},
 			// },
+			"url": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"HARBOR_URL"},
+				},
+			},
+			"username": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"HARBOR_USERNAME"},
+				},
+			},
+			"password": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"HARBOR_PASSWORD"},
+				},
+				Secret: tfbridge.BoolRef(true),
+			},
+			"insecure": {
+				Default: &tfbridge.DefaultInfo{
+					Value:   true,
+					EnvVars: []string{"HARBOR_IGNORE_CERT"},
+				},
+			},
+			"api_version": {
+				Default: &tfbridge.DefaultInfo{
+					Value: 2,
+				},
+			},
 		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
@@ -131,8 +159,8 @@ func Provider() tfbridge.ProviderInfo {
 			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAmi")},
 			"harbor_project":  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getProject")},
 			"harbor_registry": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRegistry")},
-			"harbor_projects":  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getProjects")},
-			"harbor_groups": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroups")},
+			"harbor_projects": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getProjects")},
+			"harbor_groups":   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroups")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			PackageName: "@pulumiverse/harbor",

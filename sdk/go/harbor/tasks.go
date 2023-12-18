@@ -9,7 +9,6 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
@@ -96,12 +95,6 @@ func (i *Tasks) ToTasksOutputWithContext(ctx context.Context) TasksOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TasksOutput)
 }
 
-func (i *Tasks) ToOutput(ctx context.Context) pulumix.Output[*Tasks] {
-	return pulumix.Output[*Tasks]{
-		OutputState: i.ToTasksOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TasksArrayInput is an input type that accepts TasksArray and TasksArrayOutput values.
 // You can construct a concrete instance of `TasksArrayInput` via:
 //
@@ -125,12 +118,6 @@ func (i TasksArray) ToTasksArrayOutput() TasksArrayOutput {
 
 func (i TasksArray) ToTasksArrayOutputWithContext(ctx context.Context) TasksArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TasksArrayOutput)
-}
-
-func (i TasksArray) ToOutput(ctx context.Context) pulumix.Output[[]*Tasks] {
-	return pulumix.Output[[]*Tasks]{
-		OutputState: i.ToTasksArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TasksMapInput is an input type that accepts TasksMap and TasksMapOutput values.
@@ -158,12 +145,6 @@ func (i TasksMap) ToTasksMapOutputWithContext(ctx context.Context) TasksMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(TasksMapOutput)
 }
 
-func (i TasksMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Tasks] {
-	return pulumix.Output[map[string]*Tasks]{
-		OutputState: i.ToTasksMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TasksOutput struct{ *pulumi.OutputState }
 
 func (TasksOutput) ElementType() reflect.Type {
@@ -176,12 +157,6 @@ func (o TasksOutput) ToTasksOutput() TasksOutput {
 
 func (o TasksOutput) ToTasksOutputWithContext(ctx context.Context) TasksOutput {
 	return o
-}
-
-func (o TasksOutput) ToOutput(ctx context.Context) pulumix.Output[*Tasks] {
-	return pulumix.Output[*Tasks]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TasksOutput) VulnerabilityScanPolicy() pulumi.StringOutput {
@@ -202,12 +177,6 @@ func (o TasksArrayOutput) ToTasksArrayOutputWithContext(ctx context.Context) Tas
 	return o
 }
 
-func (o TasksArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Tasks] {
-	return pulumix.Output[[]*Tasks]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TasksArrayOutput) Index(i pulumi.IntInput) TasksOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Tasks {
 		return vs[0].([]*Tasks)[vs[1].(int)]
@@ -226,12 +195,6 @@ func (o TasksMapOutput) ToTasksMapOutput() TasksMapOutput {
 
 func (o TasksMapOutput) ToTasksMapOutputWithContext(ctx context.Context) TasksMapOutput {
 	return o
-}
-
-func (o TasksMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Tasks] {
-	return pulumix.Output[map[string]*Tasks]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TasksMapOutput) MapIndex(k pulumi.StringInput) TasksOutput {

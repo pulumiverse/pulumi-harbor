@@ -7,9 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
@@ -21,7 +19,7 @@ type Provider struct {
 	pulumi.ProviderResourceState
 
 	Password pulumi.StringPtrOutput `pulumi:"password"`
-	Url      pulumi.StringOutput    `pulumi:"url"`
+	Url      pulumi.StringPtrOutput `pulumi:"url"`
 	Username pulumi.StringPtrOutput `pulumi:"username"`
 }
 
@@ -29,12 +27,39 @@ type Provider struct {
 func NewProvider(ctx *pulumi.Context,
 	name string, args *ProviderArgs, opts ...pulumi.ResourceOption) (*Provider, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProviderArgs{}
 	}
 
-	if args.Url == nil {
-		return nil, errors.New("invalid value for required argument 'Url'")
+	if args.ApiVersion == nil {
+		args.ApiVersion = pulumi.IntPtr(2)
 	}
+	if args.Insecure == nil {
+		if d := internal.GetEnvOrDefault(true, internal.ParseEnvBool, "HARBOR_IGNORE_CERT"); d != nil {
+			args.Insecure = pulumi.BoolPtr(d.(bool))
+		}
+	}
+	if args.Password == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "HARBOR_PASSWORD"); d != nil {
+			args.Password = pulumi.StringPtr(d.(string))
+		}
+	}
+	if args.Url == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "HARBOR_URL"); d != nil {
+			args.Url = pulumi.StringPtr(d.(string))
+		}
+	}
+	if args.Username == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "HARBOR_USERNAME"); d != nil {
+			args.Username = pulumi.StringPtr(d.(string))
+		}
+	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:harbor", name, args, &resource, opts...)
@@ -48,7 +73,7 @@ type providerArgs struct {
 	ApiVersion *int    `pulumi:"apiVersion"`
 	Insecure   *bool   `pulumi:"insecure"`
 	Password   *string `pulumi:"password"`
-	Url        string  `pulumi:"url"`
+	Url        *string `pulumi:"url"`
 	Username   *string `pulumi:"username"`
 }
 
@@ -57,7 +82,7 @@ type ProviderArgs struct {
 	ApiVersion pulumi.IntPtrInput
 	Insecure   pulumi.BoolPtrInput
 	Password   pulumi.StringPtrInput
-	Url        pulumi.StringInput
+	Url        pulumi.StringPtrInput
 	Username   pulumi.StringPtrInput
 }
 
@@ -84,12 +109,6 @@ func (i *Provider) ToProviderOutputWithContext(ctx context.Context) ProviderOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderOutput)
 }
 
-func (i *Provider) ToOutput(ctx context.Context) pulumix.Output[*Provider] {
-	return pulumix.Output[*Provider]{
-		OutputState: i.ToProviderOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProviderOutput struct{ *pulumi.OutputState }
 
 func (ProviderOutput) ElementType() reflect.Type {
@@ -104,18 +123,12 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
-func (o ProviderOutput) ToOutput(ctx context.Context) pulumix.Output[*Provider] {
-	return pulumix.Output[*Provider]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ProviderOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-func (o ProviderOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+func (o ProviderOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Url }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) Username() pulumi.StringPtrOutput {

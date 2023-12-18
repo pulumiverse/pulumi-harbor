@@ -9,7 +9,6 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
@@ -101,12 +100,6 @@ func (i *GarbageCollection) ToGarbageCollectionOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(GarbageCollectionOutput)
 }
 
-func (i *GarbageCollection) ToOutput(ctx context.Context) pulumix.Output[*GarbageCollection] {
-	return pulumix.Output[*GarbageCollection]{
-		OutputState: i.ToGarbageCollectionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GarbageCollectionArrayInput is an input type that accepts GarbageCollectionArray and GarbageCollectionArrayOutput values.
 // You can construct a concrete instance of `GarbageCollectionArrayInput` via:
 //
@@ -130,12 +123,6 @@ func (i GarbageCollectionArray) ToGarbageCollectionArrayOutput() GarbageCollecti
 
 func (i GarbageCollectionArray) ToGarbageCollectionArrayOutputWithContext(ctx context.Context) GarbageCollectionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GarbageCollectionArrayOutput)
-}
-
-func (i GarbageCollectionArray) ToOutput(ctx context.Context) pulumix.Output[[]*GarbageCollection] {
-	return pulumix.Output[[]*GarbageCollection]{
-		OutputState: i.ToGarbageCollectionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GarbageCollectionMapInput is an input type that accepts GarbageCollectionMap and GarbageCollectionMapOutput values.
@@ -163,12 +150,6 @@ func (i GarbageCollectionMap) ToGarbageCollectionMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GarbageCollectionMapOutput)
 }
 
-func (i GarbageCollectionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GarbageCollection] {
-	return pulumix.Output[map[string]*GarbageCollection]{
-		OutputState: i.ToGarbageCollectionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GarbageCollectionOutput struct{ *pulumi.OutputState }
 
 func (GarbageCollectionOutput) ElementType() reflect.Type {
@@ -181,12 +162,6 @@ func (o GarbageCollectionOutput) ToGarbageCollectionOutput() GarbageCollectionOu
 
 func (o GarbageCollectionOutput) ToGarbageCollectionOutputWithContext(ctx context.Context) GarbageCollectionOutput {
 	return o
-}
-
-func (o GarbageCollectionOutput) ToOutput(ctx context.Context) pulumix.Output[*GarbageCollection] {
-	return pulumix.Output[*GarbageCollection]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GarbageCollectionOutput) DeleteUntagged() pulumi.BoolPtrOutput {
@@ -211,12 +186,6 @@ func (o GarbageCollectionArrayOutput) ToGarbageCollectionArrayOutputWithContext(
 	return o
 }
 
-func (o GarbageCollectionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GarbageCollection] {
-	return pulumix.Output[[]*GarbageCollection]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GarbageCollectionArrayOutput) Index(i pulumi.IntInput) GarbageCollectionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GarbageCollection {
 		return vs[0].([]*GarbageCollection)[vs[1].(int)]
@@ -235,12 +204,6 @@ func (o GarbageCollectionMapOutput) ToGarbageCollectionMapOutput() GarbageCollec
 
 func (o GarbageCollectionMapOutput) ToGarbageCollectionMapOutputWithContext(ctx context.Context) GarbageCollectionMapOutput {
 	return o
-}
-
-func (o GarbageCollectionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GarbageCollection] {
-	return pulumix.Output[map[string]*GarbageCollection]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GarbageCollectionMapOutput) MapIndex(k pulumi.StringInput) GarbageCollectionOutput {

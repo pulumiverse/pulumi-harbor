@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -26,41 +26,18 @@ class RobotAccountArgs:
         """
         The set of arguments for constructing a RobotAccount resource.
         """
-        RobotAccountArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            level=level,
-            permissions=permissions,
-            description=description,
-            disable=disable,
-            duration=duration,
-            name=name,
-            secret=secret,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             level: pulumi.Input[str],
-             permissions: pulumi.Input[Sequence[pulumi.Input['RobotAccountPermissionArgs']]],
-             description: Optional[pulumi.Input[str]] = None,
-             disable: Optional[pulumi.Input[bool]] = None,
-             duration: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             secret: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-
-        _setter("level", level)
-        _setter("permissions", permissions)
+        pulumi.set(__self__, "level", level)
+        pulumi.set(__self__, "permissions", permissions)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disable is not None:
-            _setter("disable", disable)
+            pulumi.set(__self__, "disable", disable)
         if duration is not None:
-            _setter("duration", duration)
+            pulumi.set(__self__, "duration", duration)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if secret is not None:
-            _setter("secret", secret)
+            pulumi.set(__self__, "secret", secret)
 
     @property
     @pulumi.getter
@@ -141,55 +118,24 @@ class _RobotAccountState:
         """
         Input properties used for looking up and filtering RobotAccount resources.
         """
-        _RobotAccountState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            disable=disable,
-            duration=duration,
-            full_name=full_name,
-            level=level,
-            name=name,
-            permissions=permissions,
-            robot_id=robot_id,
-            secret=secret,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             disable: Optional[pulumi.Input[bool]] = None,
-             duration: Optional[pulumi.Input[int]] = None,
-             full_name: Optional[pulumi.Input[str]] = None,
-             level: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             permissions: Optional[pulumi.Input[Sequence[pulumi.Input['RobotAccountPermissionArgs']]]] = None,
-             robot_id: Optional[pulumi.Input[str]] = None,
-             secret: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'fullName' in kwargs:
-            full_name = kwargs['fullName']
-        if 'robotId' in kwargs:
-            robot_id = kwargs['robotId']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disable is not None:
-            _setter("disable", disable)
+            pulumi.set(__self__, "disable", disable)
         if duration is not None:
-            _setter("duration", duration)
+            pulumi.set(__self__, "duration", duration)
         if full_name is not None:
-            _setter("full_name", full_name)
+            pulumi.set(__self__, "full_name", full_name)
         if level is not None:
-            _setter("level", level)
+            pulumi.set(__self__, "level", level)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if permissions is not None:
-            _setter("permissions", permissions)
+            pulumi.set(__self__, "permissions", permissions)
         if robot_id is not None:
-            _setter("robot_id", robot_id)
+            pulumi.set(__self__, "robot_id", robot_id)
         if secret is not None:
-            _setter("secret", secret)
+            pulumi.set(__self__, "secret", secret)
 
     @property
     @pulumi.getter
@@ -363,10 +309,6 @@ class RobotAccount(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RobotAccountArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

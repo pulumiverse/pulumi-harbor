@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProjectArgs', 'Project']
@@ -33,75 +33,30 @@ class ProjectArgs:
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
         :param pulumi.Input[str] name: The name of the project that will be created in harbor.
         :param pulumi.Input[str] public: The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
-        :param pulumi.Input[int] registry_id: To enabled project as Proxy Cache
+        :param pulumi.Input[int] registry_id: To enable project as Proxy Cache
         :param pulumi.Input[int] storage_quota: The storage quota of the project in GB's
         :param pulumi.Input[bool] vulnerability_scanning: Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
         """
-        ProjectArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cve_allowlists=cve_allowlists,
-            deployment_security=deployment_security,
-            enable_content_trust=enable_content_trust,
-            enable_content_trust_cosign=enable_content_trust_cosign,
-            force_destroy=force_destroy,
-            name=name,
-            public=public,
-            registry_id=registry_id,
-            storage_quota=storage_quota,
-            vulnerability_scanning=vulnerability_scanning,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cve_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             deployment_security: Optional[pulumi.Input[str]] = None,
-             enable_content_trust: Optional[pulumi.Input[bool]] = None,
-             enable_content_trust_cosign: Optional[pulumi.Input[bool]] = None,
-             force_destroy: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             public: Optional[pulumi.Input[str]] = None,
-             registry_id: Optional[pulumi.Input[int]] = None,
-             storage_quota: Optional[pulumi.Input[int]] = None,
-             vulnerability_scanning: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'cveAllowlists' in kwargs:
-            cve_allowlists = kwargs['cveAllowlists']
-        if 'deploymentSecurity' in kwargs:
-            deployment_security = kwargs['deploymentSecurity']
-        if 'enableContentTrust' in kwargs:
-            enable_content_trust = kwargs['enableContentTrust']
-        if 'enableContentTrustCosign' in kwargs:
-            enable_content_trust_cosign = kwargs['enableContentTrustCosign']
-        if 'forceDestroy' in kwargs:
-            force_destroy = kwargs['forceDestroy']
-        if 'registryId' in kwargs:
-            registry_id = kwargs['registryId']
-        if 'storageQuota' in kwargs:
-            storage_quota = kwargs['storageQuota']
-        if 'vulnerabilityScanning' in kwargs:
-            vulnerability_scanning = kwargs['vulnerabilityScanning']
-
         if cve_allowlists is not None:
-            _setter("cve_allowlists", cve_allowlists)
+            pulumi.set(__self__, "cve_allowlists", cve_allowlists)
         if deployment_security is not None:
-            _setter("deployment_security", deployment_security)
+            pulumi.set(__self__, "deployment_security", deployment_security)
         if enable_content_trust is not None:
-            _setter("enable_content_trust", enable_content_trust)
+            pulumi.set(__self__, "enable_content_trust", enable_content_trust)
         if enable_content_trust_cosign is not None:
-            _setter("enable_content_trust_cosign", enable_content_trust_cosign)
+            pulumi.set(__self__, "enable_content_trust_cosign", enable_content_trust_cosign)
         if force_destroy is not None:
-            _setter("force_destroy", force_destroy)
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if public is not None:
-            _setter("public", public)
+            pulumi.set(__self__, "public", public)
         if registry_id is not None:
-            _setter("registry_id", registry_id)
+            pulumi.set(__self__, "registry_id", registry_id)
         if storage_quota is not None:
-            _setter("storage_quota", storage_quota)
+            pulumi.set(__self__, "storage_quota", storage_quota)
         if vulnerability_scanning is not None:
-            _setter("vulnerability_scanning", vulnerability_scanning)
+            pulumi.set(__self__, "vulnerability_scanning", vulnerability_scanning)
 
     @property
     @pulumi.getter(name="cveAllowlists")
@@ -191,7 +146,7 @@ class ProjectArgs:
     @pulumi.getter(name="registryId")
     def registry_id(self) -> Optional[pulumi.Input[int]]:
         """
-        To enabled project as Proxy Cache
+        To enable project as Proxy Cache
         """
         return pulumi.get(self, "registry_id")
 
@@ -248,81 +203,32 @@ class _ProjectState:
         :param pulumi.Input[str] name: The name of the project that will be created in harbor.
         :param pulumi.Input[int] project_id: The id of the project with harbor.
         :param pulumi.Input[str] public: The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
-        :param pulumi.Input[int] registry_id: To enabled project as Proxy Cache
+        :param pulumi.Input[int] registry_id: To enable project as Proxy Cache
         :param pulumi.Input[int] storage_quota: The storage quota of the project in GB's
         :param pulumi.Input[bool] vulnerability_scanning: Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
         """
-        _ProjectState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cve_allowlists=cve_allowlists,
-            deployment_security=deployment_security,
-            enable_content_trust=enable_content_trust,
-            enable_content_trust_cosign=enable_content_trust_cosign,
-            force_destroy=force_destroy,
-            name=name,
-            project_id=project_id,
-            public=public,
-            registry_id=registry_id,
-            storage_quota=storage_quota,
-            vulnerability_scanning=vulnerability_scanning,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cve_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             deployment_security: Optional[pulumi.Input[str]] = None,
-             enable_content_trust: Optional[pulumi.Input[bool]] = None,
-             enable_content_trust_cosign: Optional[pulumi.Input[bool]] = None,
-             force_destroy: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             project_id: Optional[pulumi.Input[int]] = None,
-             public: Optional[pulumi.Input[str]] = None,
-             registry_id: Optional[pulumi.Input[int]] = None,
-             storage_quota: Optional[pulumi.Input[int]] = None,
-             vulnerability_scanning: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'cveAllowlists' in kwargs:
-            cve_allowlists = kwargs['cveAllowlists']
-        if 'deploymentSecurity' in kwargs:
-            deployment_security = kwargs['deploymentSecurity']
-        if 'enableContentTrust' in kwargs:
-            enable_content_trust = kwargs['enableContentTrust']
-        if 'enableContentTrustCosign' in kwargs:
-            enable_content_trust_cosign = kwargs['enableContentTrustCosign']
-        if 'forceDestroy' in kwargs:
-            force_destroy = kwargs['forceDestroy']
-        if 'projectId' in kwargs:
-            project_id = kwargs['projectId']
-        if 'registryId' in kwargs:
-            registry_id = kwargs['registryId']
-        if 'storageQuota' in kwargs:
-            storage_quota = kwargs['storageQuota']
-        if 'vulnerabilityScanning' in kwargs:
-            vulnerability_scanning = kwargs['vulnerabilityScanning']
-
         if cve_allowlists is not None:
-            _setter("cve_allowlists", cve_allowlists)
+            pulumi.set(__self__, "cve_allowlists", cve_allowlists)
         if deployment_security is not None:
-            _setter("deployment_security", deployment_security)
+            pulumi.set(__self__, "deployment_security", deployment_security)
         if enable_content_trust is not None:
-            _setter("enable_content_trust", enable_content_trust)
+            pulumi.set(__self__, "enable_content_trust", enable_content_trust)
         if enable_content_trust_cosign is not None:
-            _setter("enable_content_trust_cosign", enable_content_trust_cosign)
+            pulumi.set(__self__, "enable_content_trust_cosign", enable_content_trust_cosign)
         if force_destroy is not None:
-            _setter("force_destroy", force_destroy)
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if project_id is not None:
-            _setter("project_id", project_id)
+            pulumi.set(__self__, "project_id", project_id)
         if public is not None:
-            _setter("public", public)
+            pulumi.set(__self__, "public", public)
         if registry_id is not None:
-            _setter("registry_id", registry_id)
+            pulumi.set(__self__, "registry_id", registry_id)
         if storage_quota is not None:
-            _setter("storage_quota", storage_quota)
+            pulumi.set(__self__, "storage_quota", storage_quota)
         if vulnerability_scanning is not None:
-            _setter("vulnerability_scanning", vulnerability_scanning)
+            pulumi.set(__self__, "vulnerability_scanning", vulnerability_scanning)
 
     @property
     @pulumi.getter(name="cveAllowlists")
@@ -424,7 +330,7 @@ class _ProjectState:
     @pulumi.getter(name="registryId")
     def registry_id(self) -> Optional[pulumi.Input[int]]:
         """
-        To enabled project as Proxy Cache
+        To enable project as Proxy Cache
         """
         return pulumi.get(self, "registry_id")
 
@@ -491,7 +397,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
         :param pulumi.Input[str] name: The name of the project that will be created in harbor.
         :param pulumi.Input[str] public: The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
-        :param pulumi.Input[int] registry_id: To enabled project as Proxy Cache
+        :param pulumi.Input[int] registry_id: To enable project as Proxy Cache
         :param pulumi.Input[int] storage_quota: The storage quota of the project in GB's
         :param pulumi.Input[bool] vulnerability_scanning: Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
         """
@@ -520,10 +426,6 @@ class Project(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProjectArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -595,7 +497,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the project that will be created in harbor.
         :param pulumi.Input[int] project_id: The id of the project with harbor.
         :param pulumi.Input[str] public: The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
-        :param pulumi.Input[int] registry_id: To enabled project as Proxy Cache
+        :param pulumi.Input[int] registry_id: To enable project as Proxy Cache
         :param pulumi.Input[int] storage_quota: The storage quota of the project in GB's
         :param pulumi.Input[bool] vulnerability_scanning: Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
         """
@@ -684,7 +586,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="registryId")
     def registry_id(self) -> pulumi.Output[int]:
         """
-        To enabled project as Proxy Cache
+        To enable project as Proxy Cache
         """
         return pulumi.get(self, "registry_id")
 

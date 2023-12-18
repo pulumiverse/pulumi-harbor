@@ -47,6 +47,7 @@ export class Replication extends pulumi.CustomResource {
     public readonly destNamespace!: pulumi.Output<string | undefined>;
     public readonly destNamespaceReplace!: pulumi.Output<number | undefined>;
     public readonly enabled!: pulumi.Output<boolean | undefined>;
+    public readonly executeOnChanged!: pulumi.Output<boolean | undefined>;
     public readonly filters!: pulumi.Output<outputs.ReplicationFilter[] | undefined>;
     public readonly name!: pulumi.Output<string>;
     public readonly override!: pulumi.Output<boolean | undefined>;
@@ -74,6 +75,7 @@ export class Replication extends pulumi.CustomResource {
             resourceInputs["destNamespace"] = state ? state.destNamespace : undefined;
             resourceInputs["destNamespaceReplace"] = state ? state.destNamespaceReplace : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["executeOnChanged"] = state ? state.executeOnChanged : undefined;
             resourceInputs["filters"] = state ? state.filters : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["override"] = state ? state.override : undefined;
@@ -95,6 +97,7 @@ export class Replication extends pulumi.CustomResource {
             resourceInputs["destNamespace"] = args ? args.destNamespace : undefined;
             resourceInputs["destNamespaceReplace"] = args ? args.destNamespaceReplace : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["executeOnChanged"] = args ? args.executeOnChanged : undefined;
             resourceInputs["filters"] = args ? args.filters : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["override"] = args ? args.override : undefined;
@@ -118,6 +121,7 @@ export interface ReplicationState {
     destNamespace?: pulumi.Input<string>;
     destNamespaceReplace?: pulumi.Input<number>;
     enabled?: pulumi.Input<boolean>;
+    executeOnChanged?: pulumi.Input<boolean>;
     filters?: pulumi.Input<pulumi.Input<inputs.ReplicationFilter>[]>;
     name?: pulumi.Input<string>;
     override?: pulumi.Input<boolean>;
@@ -137,6 +141,7 @@ export interface ReplicationArgs {
     destNamespace?: pulumi.Input<string>;
     destNamespaceReplace?: pulumi.Input<number>;
     enabled?: pulumi.Input<boolean>;
+    executeOnChanged?: pulumi.Input<boolean>;
     filters?: pulumi.Input<pulumi.Input<inputs.ReplicationFilter>[]>;
     name?: pulumi.Input<string>;
     override?: pulumi.Input<boolean>;

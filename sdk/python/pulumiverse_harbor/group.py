@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GroupArgs', 'Group']
@@ -20,31 +20,10 @@ class GroupArgs:
         """
         The set of arguments for constructing a Group resource.
         """
-        GroupArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            group_name=group_name,
-            group_type=group_type,
-            ldap_group_dn=ldap_group_dn,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             group_name: pulumi.Input[str],
-             group_type: pulumi.Input[int],
-             ldap_group_dn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'groupName' in kwargs:
-            group_name = kwargs['groupName']
-        if 'groupType' in kwargs:
-            group_type = kwargs['groupType']
-        if 'ldapGroupDn' in kwargs:
-            ldap_group_dn = kwargs['ldapGroupDn']
-
-        _setter("group_name", group_name)
-        _setter("group_type", group_type)
+        pulumi.set(__self__, "group_name", group_name)
+        pulumi.set(__self__, "group_type", group_type)
         if ldap_group_dn is not None:
-            _setter("ldap_group_dn", ldap_group_dn)
+            pulumi.set(__self__, "ldap_group_dn", ldap_group_dn)
 
     @property
     @pulumi.getter(name="groupName")
@@ -83,33 +62,12 @@ class _GroupState:
         """
         Input properties used for looking up and filtering Group resources.
         """
-        _GroupState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            group_name=group_name,
-            group_type=group_type,
-            ldap_group_dn=ldap_group_dn,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             group_name: Optional[pulumi.Input[str]] = None,
-             group_type: Optional[pulumi.Input[int]] = None,
-             ldap_group_dn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
-             **kwargs):
-        if 'groupName' in kwargs:
-            group_name = kwargs['groupName']
-        if 'groupType' in kwargs:
-            group_type = kwargs['groupType']
-        if 'ldapGroupDn' in kwargs:
-            ldap_group_dn = kwargs['ldapGroupDn']
-
         if group_name is not None:
-            _setter("group_name", group_name)
+            pulumi.set(__self__, "group_name", group_name)
         if group_type is not None:
-            _setter("group_type", group_type)
+            pulumi.set(__self__, "group_type", group_type)
         if ldap_group_dn is not None:
-            _setter("ldap_group_dn", ldap_group_dn)
+            pulumi.set(__self__, "ldap_group_dn", ldap_group_dn)
 
     @property
     @pulumi.getter(name="groupName")
@@ -181,10 +139,6 @@ class Group(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

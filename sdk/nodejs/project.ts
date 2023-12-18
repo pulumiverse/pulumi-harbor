@@ -74,7 +74,7 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly public!: pulumi.Output<string | undefined>;
     /**
-     * To enabled project as Proxy Cache
+     * To enable project as Proxy Cache
      */
     public readonly registryId!: pulumi.Output<number>;
     /**
@@ -166,7 +166,7 @@ export interface ProjectState {
      */
     public?: pulumi.Input<string>;
     /**
-     * To enabled project as Proxy Cache
+     * To enable project as Proxy Cache
      */
     registryId?: pulumi.Input<number>;
     /**
@@ -212,7 +212,7 @@ export interface ProjectArgs {
      */
     public?: pulumi.Input<string>;
     /**
-     * To enabled project as Proxy Cache
+     * To enable project as Proxy Cache
      */
     registryId?: pulumi.Input<number>;
     /**
