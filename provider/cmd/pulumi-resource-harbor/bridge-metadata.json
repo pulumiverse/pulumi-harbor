@@ -1,0 +1,347 @@
+{
+    "auto-aliasing": {
+        "resources": {
+            "harbor_config_auth": {
+                "current": "harbor:index/configAuth:ConfigAuth"
+            },
+            "harbor_config_email": {
+                "current": "harbor:index/configEmail:ConfigEmail"
+            },
+            "harbor_config_security": {
+                "current": "harbor:index/configSecurity:ConfigSecurity",
+                "fields": {
+                    "cve_allowlist": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harbor_config_system": {
+                "current": "harbor:index/configSystem:ConfigSystem"
+            },
+            "harbor_garbage_collection": {
+                "current": "harbor:index/garbageCollection:GarbageCollection"
+            },
+            "harbor_group": {
+                "current": "harbor:index/group:Group"
+            },
+            "harbor_immutable_tag_rule": {
+                "current": "harbor:index/immutableTagRule:ImmutableTagRule"
+            },
+            "harbor_interrogation_services": {
+                "current": "harbor:index/interrogationServices:InterrogationServices"
+            },
+            "harbor_label": {
+                "current": "harbor:index/label:Label"
+            },
+            "harbor_project": {
+                "current": "harbor:index/project:Project",
+                "fields": {
+                    "cve_allowlist": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harbor_project_member_group": {
+                "current": "harbor:index/projectMemberGroup:ProjectMemberGroup"
+            },
+            "harbor_project_member_user": {
+                "current": "harbor:index/projectMemberUser:ProjectMemberUser"
+            },
+            "harbor_project_webhook": {
+                "current": "harbor:index/projectWebhook:ProjectWebhook",
+                "fields": {
+                    "events_types": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harbor_purge_audit_log": {
+                "current": "harbor:index/purgeAuditLog:PurgeAuditLog"
+            },
+            "harbor_registry": {
+                "current": "harbor:index/registry:Registry"
+            },
+            "harbor_replication": {
+                "current": "harbor:index/replication:Replication",
+                "fields": {
+                    "filters": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "labels": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "harbor_retention_policy": {
+                "current": "harbor:index/retentionPolicy:RetentionPolicy",
+                "fields": {
+                    "rule": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harbor_robot_account": {
+                "current": "harbor:index/robotAccount:RobotAccount",
+                "fields": {
+                    "permissions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "access": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "harbor_tasks": {
+                "current": "harbor:index/tasks:Tasks"
+            },
+            "harbor_user": {
+                "current": "harbor:index/user:User"
+            }
+        },
+        "datasources": {
+            "harbor_groups": {
+                "current": "harbor:index/getGroups:getGroups",
+                "fields": {
+                    "groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harbor_project": {
+                "current": "harbor:index/getProject:getProject"
+            },
+            "harbor_projects": {
+                "current": "harbor:index/getProjects:getProjects",
+                "fields": {
+                    "projects": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harbor_registry": {
+                "current": "harbor:index/getRegistry:getRegistry"
+            }
+        }
+    },
+    "auto-settings": {},
+    "renames": {
+        "resources": {
+            "harbor:index/configAuth:ConfigAuth": "harbor_config_auth",
+            "harbor:index/configEmail:ConfigEmail": "harbor_config_email",
+            "harbor:index/configSecurity:ConfigSecurity": "harbor_config_security",
+            "harbor:index/configSystem:ConfigSystem": "harbor_config_system",
+            "harbor:index/garbageCollection:GarbageCollection": "harbor_garbage_collection",
+            "harbor:index/group:Group": "harbor_group",
+            "harbor:index/immutableTagRule:ImmutableTagRule": "harbor_immutable_tag_rule",
+            "harbor:index/interrogationServices:InterrogationServices": "harbor_interrogation_services",
+            "harbor:index/label:Label": "harbor_label",
+            "harbor:index/project:Project": "harbor_project",
+            "harbor:index/projectMemberGroup:ProjectMemberGroup": "harbor_project_member_group",
+            "harbor:index/projectMemberUser:ProjectMemberUser": "harbor_project_member_user",
+            "harbor:index/projectWebhook:ProjectWebhook": "harbor_project_webhook",
+            "harbor:index/purgeAuditLog:PurgeAuditLog": "harbor_purge_audit_log",
+            "harbor:index/registry:Registry": "harbor_registry",
+            "harbor:index/replication:Replication": "harbor_replication",
+            "harbor:index/retentionPolicy:RetentionPolicy": "harbor_retention_policy",
+            "harbor:index/robotAccount:RobotAccount": "harbor_robot_account",
+            "harbor:index/tasks:Tasks": "harbor_tasks",
+            "harbor:index/user:User": "harbor_user"
+        },
+        "functions": {
+            "harbor:index/getGroups:getGroups": "harbor_groups",
+            "harbor:index/getProject:getProject": "harbor_project",
+            "harbor:index/getProjects:getProjects": "harbor_projects",
+            "harbor:index/getRegistry:getRegistry": "harbor_registry"
+        },
+        "renamedProperties": {
+            "harbor:index/RetentionPolicyRule:RetentionPolicyRule": {
+                "alwaysRetain": "always_retain",
+                "mostRecentlyPulled": "most_recently_pulled",
+                "mostRecentlyPushed": "most_recently_pushed",
+                "nDaysSinceLastPull": "n_days_since_last_pull",
+                "nDaysSinceLastPush": "n_days_since_last_push",
+                "repoExcluding": "repo_excluding",
+                "repoMatching": "repo_matching",
+                "tagExcluding": "tag_excluding",
+                "tagMatching": "tag_matching",
+                "untaggedArtifacts": "untagged_artifacts"
+            },
+            "harbor:index/RobotAccountPermission:RobotAccountPermission": {
+                "accesses": "access"
+            },
+            "harbor:index/configAuth:ConfigAuth": {
+                "authMode": "auth_mode",
+                "ldapBaseDn": "ldap_base_dn",
+                "ldapFilter": "ldap_filter",
+                "ldapGroupAdminDn": "ldap_group_admin_dn",
+                "ldapGroupBaseDn": "ldap_group_base_dn",
+                "ldapGroupFilter": "ldap_group_filter",
+                "ldapGroupGid": "ldap_group_gid",
+                "ldapGroupMembership": "ldap_group_membership",
+                "ldapGroupScope": "ldap_group_scope",
+                "ldapGroupUid": "ldap_group_uid",
+                "ldapScope": "ldap_scope",
+                "ldapSearchDn": "ldap_search_dn",
+                "ldapSearchPassword": "ldap_search_password",
+                "ldapUid": "ldap_uid",
+                "ldapUrl": "ldap_url",
+                "ldapVerifyCert": "ldap_verify_cert",
+                "oidcAdminGroup": "oidc_admin_group",
+                "oidcAutoOnboard": "oidc_auto_onboard",
+                "oidcClientId": "oidc_client_id",
+                "oidcClientSecret": "oidc_client_secret",
+                "oidcEndpoint": "oidc_endpoint",
+                "oidcGroupFilter": "oidc_group_filter",
+                "oidcGroupsClaim": "oidc_groups_claim",
+                "oidcName": "oidc_name",
+                "oidcScope": "oidc_scope",
+                "oidcUserClaim": "oidc_user_claim",
+                "oidcVerifyCert": "oidc_verify_cert",
+                "primaryAuthMode": "primary_auth_mode"
+            },
+            "harbor:index/configEmail:ConfigEmail": {
+                "emailFrom": "email_from",
+                "emailHost": "email_host",
+                "emailInsecure": "email_insecure",
+                "emailPassword": "email_password",
+                "emailPort": "email_port",
+                "emailSsl": "email_ssl",
+                "emailUsername": "email_username"
+            },
+            "harbor:index/configSecurity:ConfigSecurity": {
+                "creationTime": "creation_time",
+                "cveAllowlists": "cve_allowlist",
+                "expiresAt": "expires_at",
+                "updateTime": "update_time"
+            },
+            "harbor:index/configSystem:ConfigSystem": {
+                "projectCreationRestriction": "project_creation_restriction",
+                "readOnly": "read_only",
+                "robotNamePrefix": "robot_name_prefix",
+                "robotTokenExpiration": "robot_token_expiration",
+                "scannerSkipUpdatePulltime": "scanner_skip_update_pulltime",
+                "storagePerProject": "storage_per_project"
+            },
+            "harbor:index/garbageCollection:GarbageCollection": {
+                "deleteUntagged": "delete_untagged"
+            },
+            "harbor:index/getGroups:getGroups": {
+                "groupName": "group_name",
+                "ldapGroupDn": "ldap_group_dn"
+            },
+            "harbor:index/getGroupsGroup:getGroupsGroup": {
+                "groupName": "group_name",
+                "groupType": "group_type",
+                "ldapGroupDn": "ldap_group_dn"
+            },
+            "harbor:index/getProject:getProject": {
+                "projectId": "project_id",
+                "vulnerabilityScanning": "vulnerability_scanning"
+            },
+            "harbor:index/getProjects:getProjects": {
+                "vulnerabilityScanning": "vulnerability_scanning"
+            },
+            "harbor:index/getProjectsProject:getProjectsProject": {
+                "projectId": "project_id",
+                "vulnerabilityScanning": "vulnerability_scanning"
+            },
+            "harbor:index/getRegistry:getRegistry": {
+                "registryId": "registry_id"
+            },
+            "harbor:index/group:Group": {
+                "groupName": "group_name",
+                "groupType": "group_type",
+                "ldapGroupDn": "ldap_group_dn"
+            },
+            "harbor:index/immutableTagRule:ImmutableTagRule": {
+                "projectId": "project_id",
+                "repoExcluding": "repo_excluding",
+                "repoMatching": "repo_matching",
+                "tagExcluding": "tag_excluding",
+                "tagMatching": "tag_matching"
+            },
+            "harbor:index/interrogationServices:InterrogationServices": {
+                "defaultScanner": "default_scanner",
+                "vulnerabilityScanPolicy": "vulnerability_scan_policy"
+            },
+            "harbor:index/label:Label": {
+                "projectId": "project_id"
+            },
+            "harbor:index/project:Project": {
+                "cveAllowlists": "cve_allowlist",
+                "deploymentSecurity": "deployment_security",
+                "enableContentTrust": "enable_content_trust",
+                "enableContentTrustCosign": "enable_content_trust_cosign",
+                "forceDestroy": "force_destroy",
+                "projectId": "project_id",
+                "registryId": "registry_id",
+                "storageQuota": "storage_quota",
+                "vulnerabilityScanning": "vulnerability_scanning"
+            },
+            "harbor:index/projectMemberGroup:ProjectMemberGroup": {
+                "groupId": "group_id",
+                "groupName": "group_name",
+                "ldapGroupDn": "ldap_group_dn",
+                "memberId": "member_id",
+                "projectId": "project_id"
+            },
+            "harbor:index/projectMemberUser:ProjectMemberUser": {
+                "memberId": "member_id",
+                "projectId": "project_id",
+                "userName": "user_name"
+            },
+            "harbor:index/projectWebhook:ProjectWebhook": {
+                "authHeader": "auth_header",
+                "eventsTypes": "events_types",
+                "notifyType": "notify_type",
+                "projectId": "project_id",
+                "skipCertVerify": "skip_cert_verify"
+            },
+            "harbor:index/purgeAuditLog:PurgeAuditLog": {
+                "auditRetentionHour": "audit_retention_hour",
+                "includeOperations": "include_operations"
+            },
+            "harbor:index/registry:Registry": {
+                "accessId": "access_id",
+                "accessSecret": "access_secret",
+                "endpointUrl": "endpoint_url",
+                "providerName": "provider_name",
+                "registryId": "registry_id"
+            },
+            "harbor:index/replication:Replication": {
+                "destNamespace": "dest_namespace",
+                "destNamespaceReplace": "dest_namespace_replace",
+                "executeOnChanged": "execute_on_changed",
+                "registryId": "registry_id",
+                "replicationPolicyId": "replication_policy_id"
+            },
+            "harbor:index/retentionPolicy:RetentionPolicy": {
+                "rules": "rule"
+            },
+            "harbor:index/robotAccount:RobotAccount": {
+                "fullName": "full_name",
+                "robotId": "robot_id"
+            },
+            "harbor:index/tasks:Tasks": {
+                "vulnerabilityScanPolicy": "vulnerability_scan_policy"
+            },
+            "harbor:index/user:User": {
+                "fullName": "full_name"
+            },
+            "harbor:index:Provider": {
+                "apiVersion": "api_version"
+            }
+        },
+        "renamedConfigProperties": {
+            "apiVersion": "api_version"
+        }
+    }
+}
