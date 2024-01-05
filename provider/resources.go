@@ -18,12 +18,15 @@ import (
 	"fmt"
 	"path/filepath"
 
+	_ "embed"
+
 	harbor "github.com/goharbor/terraform-provider-harbor/provider"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumiverse/pulumi-harbor/provider/v3/pkg/version"
+	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 )
 
 // all of the token components used below.
@@ -42,6 +45,9 @@ const (
 func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) error {
 	return nil
 }
+
+//go:embed cmd/pulumi-resource-harbor/bridge-metadata.json
+var metadata []byte
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
@@ -81,6 +87,7 @@ func Provider() tfbridge.ProviderInfo {
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
 		GitHubOrg: "goharbor",
+		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
 		Config: map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
@@ -203,6 +210,11 @@ func Provider() tfbridge.ProviderInfo {
 			BasePackage: "com.pulumiverse",
 		},
 	}
+
+	prov.MustComputeTokens(tfbridgetokens.SingleModule("harbor_", mainMod,
+		tfbridgetokens.MakeStandard(mainPkg)))
+
+	prov.MustApplyAutoAliases()
 
 	prov.SetAutonaming(255, "-")
 
