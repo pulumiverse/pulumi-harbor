@@ -9,7 +9,7 @@ replace github.com/pulumi/pulumi/pkg/v3 => github.com/pulumi/pulumi/pkg/v3 v3.97
 require (
 	github.com/goharbor/terraform-provider-harbor v1.4.1-0.20240103112506-9f2dc61e26be
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.70.0
-	github.com/pulumi/pulumi/sdk/v3 v3.102.0
+	github.com/pulumi/pulumi/sdk/v3 v3.103.1
 )
 
 require (
