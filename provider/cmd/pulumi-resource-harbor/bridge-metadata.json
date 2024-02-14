@@ -337,11 +337,13 @@
                 "fullName": "full_name"
             },
             "harbor:index:Provider": {
-                "apiVersion": "api_version"
+                "apiVersion": "api_version",
+                "bearerToken": "bearer_token"
             }
         },
         "renamedConfigProperties": {
-            "apiVersion": "api_version"
+            "apiVersion": "api_version",
+            "bearerToken": "bearer_token"
         }
     }
 }

@@ -65,6 +65,9 @@
                 "type": "integer",
                 "default": 2
             },
+            "bearerToken": {
+                "type": "string"
+            },
             "insecure": {
                 "type": "boolean",
                 "default": true,
@@ -288,6 +291,9 @@
             "apiVersion": {
                 "type": "integer"
             },
+            "bearerToken": {
+                "type": "string"
+            },
             "insecure": {
                 "type": "boolean"
             },
@@ -306,6 +312,9 @@
             "apiVersion": {
                 "type": "integer",
                 "default": 2
+            },
+            "bearerToken": {
+                "type": "string"
             },
             "insecure": {
                 "type": "boolean",
@@ -708,7 +717,7 @@
             }
         },
         "harbor:index/configSecurity:ConfigSecurity": {
-            "description": "## Example Usage\n\n```hcl\nresource \"harbor_config_security\" \"main\" {\n  cve_allowlist = [\"CVE-456\", \"CVE-123\"]\n  expires_at = \"1701167767\"\n}\n```\n\n## Import\n\nThe list can be imported using the `id` eg, ` \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import harbor:index/configSecurity:ConfigSecurity main \"7\" \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e ` \u003e Note that at this point of time Harbor doesn't has any api endpoint for deleting this list. Only updating the records.\n",
+            "description": "## Example Usage\n\n```hcl\nresource \"harbor_config_security\" \"main\" {\n  cve_allowlist = [\"CVE-456\", \"CVE-123\"]\n  expires_at = \"1701167767\"\n}\n```\n\n## Import\n\nThe list can be imported using the `id` eg,\u003cbreak\u003e\u003cbreak\u003e `\u003cbreak\u003e\u003cbreak\u003e ```sh\u003cbreak\u003e $ pulumi import harbor:index/configSecurity:ConfigSecurity main \"7\" \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\u003cbreak\u003e\u003cbreak\u003e \u003e Note that at this point of time Harbor doesn't has any api endpoint for deleting this list. Only updating the records.\u003cbreak\u003e\u003cbreak\u003e\n",
             "properties": {
                 "creationTime": {
                     "type": "string",
@@ -882,7 +891,7 @@
             }
         },
         "harbor:index/group:Group": {
-            "description": "## Example Usage\n\n```hcl\n\nresource \"harbor_group\" \"storage-group\" {\n  group_name = \"storage-group\"\n  group_type = 3\n}\n```\n\n## Import\n\nAn OIDC group can be imported using the `group id` eg, ` \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import harbor:index/group:Group storage-group /usergroups/19 \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\n",
+            "description": "## Example Usage\n\n```hcl\n\nresource \"harbor_group\" \"storage-group\" {\n  group_name = \"storage-group\"\n  group_type = 3\n}\n```\n\n## Import\n\nAn OIDC group can be imported using the `group id` eg,\u003cbreak\u003e\u003cbreak\u003e `\u003cbreak\u003e\u003cbreak\u003e ```sh\u003cbreak\u003e $ pulumi import harbor:index/group:Group storage-group /usergroups/19 \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\u003cbreak\u003e\u003cbreak\u003e\n",
             "properties": {
                 "groupName": {
                     "type": "string"
@@ -932,7 +941,7 @@
             }
         },
         "harbor:index/immutableTagRule:ImmutableTagRule": {
-            "description": "## Example Usage\n\n```hcl\nresource \"harbor_project\" \"main\" {\n\tname = \"acctest\"\n}\n\nresource \"harbor_immutable_tag_rule\" \"main\" {\n\tproject_id = harbor_project.main.id\n\trepo_matching = \"**\"\n\ttag_excluding = \"latest\"\n}\n```\n\n## Import\n\nHarbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg, ` \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25 \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\n",
+            "description": "## Example Usage\n\n```hcl\nresource \"harbor_project\" \"main\" {\n\tname = \"acctest\"\n}\n\nresource \"harbor_immutable_tag_rule\" \"main\" {\n\tproject_id = harbor_project.main.id\n\trepo_matching = \"**\"\n\ttag_excluding = \"latest\"\n}\n```\n\n## Import\n\nHarbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg,\u003cbreak\u003e\u003cbreak\u003e `\u003cbreak\u003e\u003cbreak\u003e ```sh\u003cbreak\u003e $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25 \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\u003cbreak\u003e\u003cbreak\u003e\n",
             "properties": {
                 "disabled": {
                     "type": "boolean",
@@ -1065,7 +1074,7 @@
             }
         },
         "harbor:index/label:Label": {
-            "description": "## Example Usage\n\n* Create a global label within harbor\n```hcl\n\tresource \"harbor_label\" \"main\" {\n\t\tname  \t\t= \"accTest\"\n\t\tcolor \t\t= \"#FF0000\"\n\t\tdescription \t= \"Description to for acceptance test\"\n\t}\n```\n\n* Creates a label for project \n```hcl\n\tresource \"harbor_project\" \"main\" {\n\t\tname = \"acctest\"\n\t}\n\n\tresource \"harbor_label\" \"main\" {\n\t\tname  \t\t= \"accTest\"\n\t\tcolor \t\t= \"#FFFFFF\"\n\t\tdescription = \"Description for acceptance test\"\n\t\tproject_id\t= harbor_project.main.id\n\t}\n```\n\n## Import\n\nHarbor label can be imported using the `label id` eg, ` \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import harbor:index/label:Label main /labels/1 \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\n",
+            "description": "## Example Usage\n\n* Create a global label within harbor\n```hcl\n\tresource \"harbor_label\" \"main\" {\n\t\tname  \t\t= \"accTest\"\n\t\tcolor \t\t= \"#FF0000\"\n\t\tdescription \t= \"Description to for acceptance test\"\n\t}\n```\n\n* Creates a label for project \n```hcl\n\tresource \"harbor_project\" \"main\" {\n\t\tname = \"acctest\"\n\t}\n\n\tresource \"harbor_label\" \"main\" {\n\t\tname  \t\t= \"accTest\"\n\t\tcolor \t\t= \"#FFFFFF\"\n\t\tdescription = \"Description for acceptance test\"\n\t\tproject_id\t= harbor_project.main.id\n\t}\n```\n\n## Import\n\nHarbor label can be imported using the `label id` eg,\u003cbreak\u003e\u003cbreak\u003e `\u003cbreak\u003e\u003cbreak\u003e ```sh\u003cbreak\u003e $ pulumi import harbor:index/label:Label main /labels/1 \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\u003cbreak\u003e\u003cbreak\u003e\n",
             "properties": {
                 "color": {
                     "type": "string"
@@ -1126,7 +1135,7 @@
             }
         },
         "harbor:index/project:Project": {
-            "description": "## Example Usage\n\n```hcl\nresource \"harbor_project\" \"main\" {\n    name                        = \"main\"\n    public                      = false               # (Optional) Default value is false\n    vulnerability_scanning      = true                # (Optional) Default value is true. Automatically scan images on push\n    enable_content_trust        = true                # (Optional) Default value is false. Deny unsigned images from being pulled (notary)\n    enable_content_trust_cosign = false               # (Optional) Default value is false. Deny unsigned images from being pulled (cosign)\n}\n```\n\n## Harbor project example as proxy cache\n\n```hcl\nresource \"harbor_project\" \"main\" {\n  name        = \"acctest\"\n  registry_id = harbor_registry.docker.registry_id\n}\n\nresource \"harbor_registry\" \"docker\" {\n  provider_name = \"docker-hub\"\n  name          = \"test\"\n  endpoint_url  = \"https://hub.docker.com\"\n}\n```\n\n## Import\n\nHarbor project can be imported using the `project id` eg, ` \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import harbor:index/project:Project main /projects/1 \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\n",
+            "description": "## Example Usage\n\n```hcl\nresource \"harbor_project\" \"main\" {\n    name                        = \"main\"\n    public                      = false               # (Optional) Default value is false\n    vulnerability_scanning      = true                # (Optional) Default value is true. Automatically scan images on push\n    enable_content_trust        = true                # (Optional) Default value is false. Deny unsigned images from being pulled (notary)\n    enable_content_trust_cosign = false               # (Optional) Default value is false. Deny unsigned images from being pulled (cosign)\n}\n```\n\n## Harbor project example as proxy cache\n\n```hcl\nresource \"harbor_project\" \"main\" {\n  name        = \"acctest\"\n  registry_id = harbor_registry.docker.registry_id\n}\n\nresource \"harbor_registry\" \"docker\" {\n  provider_name = \"docker-hub\"\n  name          = \"test\"\n  endpoint_url  = \"https://hub.docker.com\"\n}\n```\n\n## Import\n\nHarbor project can be imported using the `project id` eg,\u003cbreak\u003e\u003cbreak\u003e `\u003cbreak\u003e\u003cbreak\u003e ```sh\u003cbreak\u003e $ pulumi import harbor:index/project:Project main /projects/1 \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\u003cbreak\u003e\u003cbreak\u003e\n",
             "properties": {
                 "cveAllowlists": {
                     "type": "array",
@@ -1160,7 +1169,7 @@
                     "description": "The id of the project with harbor.\n"
                 },
                 "public": {
-                    "type": "string",
+                    "type": "boolean",
                     "description": "The project will be public accessibility. Can be set to `\"true\"` or `\"false\"` (Default: false)\n"
                 },
                 "registryId": {
@@ -1211,7 +1220,7 @@
                     "willReplaceOnChanges": true
                 },
                 "public": {
-                    "type": "string",
+                    "type": "boolean",
                     "description": "The project will be public accessibility. Can be set to `\"true\"` or `\"false\"` (Default: false)\n"
                 },
                 "registryId": {
@@ -1264,7 +1273,7 @@
                         "description": "The id of the project with harbor.\n"
                     },
                     "public": {
-                        "type": "string",
+                        "type": "boolean",
                         "description": "The project will be public accessibility. Can be set to `\"true\"` or `\"false\"` (Default: false)\n"
                     },
                     "registryId": {
@@ -1285,7 +1294,7 @@
             }
         },
         "harbor:index/projectMemberGroup:ProjectMemberGroup": {
-            "description": "## Example Usage\n\n```hcl\nresource \"harbor_project\" \"main\" {\n    name = \"main\"\n}\n\nresource \"harbor_project_member_group\" \"main\" {\n  project_id    = harbor_project.main.id\n  group_name    = \"testing1\"\n  role          = \"projectadmin\"\n  type          = \"oidc\"\n}\n\n```\n\n## Import\n\nHarbor project member group can be imported using the `project id` and `member id` eg, ` \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import harbor:index/projectMemberGroup:ProjectMemberGroup main /projects/10/members/200 \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\n",
+            "description": "## Example Usage\n\n```hcl\nresource \"harbor_project\" \"main\" {\n    name = \"main\"\n}\n\nresource \"harbor_project_member_group\" \"main\" {\n  project_id    = harbor_project.main.id\n  group_name    = \"testing1\"\n  role          = \"projectadmin\"\n  type          = \"oidc\"\n}\n\n```\n\n## Import\n\nHarbor project member group can be imported using the `project id` and `member id` eg,\u003cbreak\u003e\u003cbreak\u003e `\u003cbreak\u003e\u003cbreak\u003e ```sh\u003cbreak\u003e $ pulumi import harbor:index/projectMemberGroup:ProjectMemberGroup main /projects/10/members/200 \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\u003cbreak\u003e\u003cbreak\u003e\n",
             "properties": {
                 "groupId": {
                     "type": "integer"
@@ -1375,7 +1384,7 @@
             }
         },
         "harbor:index/projectMemberUser:ProjectMemberUser": {
-            "description": "## Example Usage\n\n```hcl\nresource \"harbor_project\" \"main\" {\n    name = \"main\"\n}\n\nresource \"harbor_project_member_user\" \"main\" {\n  project_id    = harbor_project.main.id\n  user_name     = \"testing1\"\n  role          = \"projectadmin\"\n}\n\n```\n\n## Import\n\nHarbor project member user can be imported using the `project id` and `member id` eg, ` \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200 \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\n",
+            "description": "## Example Usage\n\n```hcl\nresource \"harbor_project\" \"main\" {\n    name = \"main\"\n}\n\nresource \"harbor_project_member_user\" \"main\" {\n  project_id    = harbor_project.main.id\n  user_name     = \"testing1\"\n  role          = \"projectadmin\"\n}\n\n```\n\n## Import\n\nHarbor project member user can be imported using the `project id` and `member id` eg,\u003cbreak\u003e\u003cbreak\u003e `\u003cbreak\u003e\u003cbreak\u003e ```sh\u003cbreak\u003e $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200 \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\u003cbreak\u003e\u003cbreak\u003e\n",
             "properties": {
                 "memberId": {
                     "type": "integer"
@@ -1630,7 +1639,7 @@
             }
         },
         "harbor:index/registry:Registry": {
-            "description": "## Example Usage\n\n```hcl\nresource \"harbor_registry\" \"main\" {\n  provider_name = \"docker-hub\"\n  name          = \"test_docker_harbor\"\n  endpoint_url  = \"https://hub.docker.com\"\n}\n```\n\n## Import\n\nHarbor project can be imported using the `registry id` eg, ` \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import harbor:index/registry:Registry main /registries/7 \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\n",
+            "description": "## Example Usage\n\n```hcl\nresource \"harbor_registry\" \"main\" {\n  provider_name = \"docker-hub\"\n  name          = \"test_docker_harbor\"\n  endpoint_url  = \"https://hub.docker.com\"\n}\n```\n\n## Import\n\nHarbor project can be imported using the `registry id` eg,\u003cbreak\u003e\u003cbreak\u003e `\u003cbreak\u003e\u003cbreak\u003e ```sh\u003cbreak\u003e $ pulumi import harbor:index/registry:Registry main /registries/7 \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\u003cbreak\u003e\u003cbreak\u003e\n",
             "properties": {
                 "accessId": {
                     "type": "string"
@@ -1734,7 +1743,7 @@
             }
         },
         "harbor:index/replication:Replication": {
-            "description": "## Example Usage\n\n```hcl\nresource \"harbor_registry\" \"main\" {\n  provider_name = \"docker-hub\"\n  name          = \"test_docker_harbor\"\n  endpoint_url  = \"https://hub.docker.com\"\n\n}\n\n\nresource \"harbor_replication\" \"push\" {\n  name        = \"test_push\"\n  action      = \"push\"\n  registry_id = harbor_registry.main.registry_id\n}\n\nresource \"harbor_replication\" \"alpine\" {\n  name        = \"alpine\"\n  action      = \"pull\"\n  registry_id = harbor_registry.main.registry_id\n  schedule = \"0 0/15 * * * *\"\n  filters {\n    name = \"library/alpine\"\n  }\n  filters {\n    tag = \"3.*.*\"\n  }\n  filters {\n    resource = \"artifact\"\n  }\n  filters {\n    labels = [\"qa\"]\n  }\n}\n\nresource \"harbor_replication\" \"alpine\" {\n  name        = \"alpine\"\n  action      = \"pull\"\n  registry_id = harbor_registry.main.registry_id\n  schedule = \"event_based\"\n  filters {\n    name = \"library/alpine\"\n  }\n  filters {\n    tag = \"3.*.*\"\n  }\n}\n\n```\n\n## Import\n\nHarbor project can be imported using the `replication id` eg, ` \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import harbor:index/replication:Replication main /replication/policies/1 \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\n",
+            "description": "## Example Usage\n\n```hcl\nresource \"harbor_registry\" \"main\" {\n  provider_name = \"docker-hub\"\n  name          = \"test_docker_harbor\"\n  endpoint_url  = \"https://hub.docker.com\"\n\n}\n\n\nresource \"harbor_replication\" \"push\" {\n  name        = \"test_push\"\n  action      = \"push\"\n  registry_id = harbor_registry.main.registry_id\n}\n\nresource \"harbor_replication\" \"alpine\" {\n  name        = \"alpine\"\n  action      = \"pull\"\n  registry_id = harbor_registry.main.registry_id\n  schedule = \"0 0/15 * * * *\"\n  filters {\n    name = \"library/alpine\"\n  }\n  filters {\n    tag = \"3.*.*\"\n  }\n  filters {\n    resource = \"artifact\"\n  }\n  filters {\n    labels = [\"qa\"]\n  }\n}\n\nresource \"harbor_replication\" \"alpine\" {\n  name        = \"alpine\"\n  action      = \"pull\"\n  registry_id = harbor_registry.main.registry_id\n  schedule = \"event_based\"\n  filters {\n    name = \"library/alpine\"\n  }\n  filters {\n    tag = \"3.*.*\"\n  }\n}\n\n```\n\n## Import\n\nHarbor project can be imported using the `replication id` eg,\u003cbreak\u003e\u003cbreak\u003e `\u003cbreak\u003e\u003cbreak\u003e ```sh\u003cbreak\u003e $ pulumi import harbor:index/replication:Replication main /replication/policies/1 \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\u003cbreak\u003e\u003cbreak\u003e\n",
             "properties": {
                 "action": {
                     "type": "string"
@@ -1891,7 +1900,7 @@
             }
         },
         "harbor:index/retentionPolicy:RetentionPolicy": {
-            "description": "## Example Usage\n\n```hcl\nresource \"harbor_project\" \"main\" {\n  name                = \"acctest\"\n}\n\nresource \"harbor_retention_policy\" \"main\" {\n\tscope = harbor_project.main.id\n\tschedule = \"Daily\"\n\trule {\n\t\tn_days_since_last_pull = 5\n\t\trepo_matching = \"**\"\n\t\ttag_matching = \"latest\"\n\t}\n\trule {\n\t\tn_days_since_last_push = 10\n\t\trepo_matching = \"**\"\n\t\ttag_matching = \"{latest,snapshot}\"\n\t}\n\n}\n```\n\n## Import\n\nHarbor retention policy can be imported using the `retention_policy id` eg, ` \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10 \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\n",
+            "description": "## Example Usage\n\n```hcl\nresource \"harbor_project\" \"main\" {\n  name                = \"acctest\"\n}\n\nresource \"harbor_retention_policy\" \"main\" {\n\tscope = harbor_project.main.id\n\tschedule = \"Daily\"\n\trule {\n\t\tn_days_since_last_pull = 5\n\t\trepo_matching = \"**\"\n\t\ttag_matching = \"latest\"\n\t}\n\trule {\n\t\tn_days_since_last_push = 10\n\t\trepo_matching = \"**\"\n\t\ttag_matching = \"{latest,snapshot}\"\n\t}\n\n}\n```\n\n## Import\n\nHarbor retention policy can be imported using the `retention_policy id` eg,\u003cbreak\u003e\u003cbreak\u003e `\u003cbreak\u003e\u003cbreak\u003e ```sh\u003cbreak\u003e $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10 \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\u003cbreak\u003e\u003cbreak\u003e\n",
             "properties": {
                 "rules": {
                     "type": "array",
@@ -1959,7 +1968,7 @@
             }
         },
         "harbor:index/robotAccount:RobotAccount": {
-            "description": "## # Resource: harbor.RobotAccount\n\nHarbor supports different levels of robot accounts. Currently `system` and `project` level robot accounts are supported.\n\n## Example Usage\n\n### System Level\nIntroduced in harbor 2.2.0, system level robot accounts can have basically [all available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) in harbor and are not dependent on a single project.\n\n```hcl\nresource \"random_password\" \"password\" {\n  length  = 12\n  special = false\n}\n\nresource \"harbor_project\" \"main\" {\n    name = \"main\"\n}\n\nresource \"harbor_robot_account\" \"system\" {\n  name        = \"example-system\"\n  description = \"system level robot account\"\n  level       = \"system\"\n  secret      = resource.random_password.password.result\n  permissions {\n    access {\n      action   = \"create\"\n      resource = \"labels\"\n    }\n    kind      = \"system\"\n    namespace = \"/\"\n  }\n  permissions {\n    access {\n      action   = \"push\"\n      resource = \"repository\"\n    }\n    access {\n      action   = \"read\"\n      resource = \"helm-chart\"\n    }\n    access {\n      action   = \"read\"\n      resource = \"helm-chart-version\"\n    }\n    kind      = \"project\"\n    namespace = harbor_project.main.name\n  }\n  permissions {\n    access {\n      action   = \"pull\"\n      resource = \"repository\"\n    }\n    kind      = \"project\"\n    namespace = \"*\"\n  }\n}\n```\n\nThe above example, creates a system level robot account with permissions to\n- permission to create labels on system level\n- pull repository across all projects\n- push repository to project \"my-project-name\"\n- read helm-chart and helm-chart-version in project \"my-project-name\"\n\n### Project Level\n\nOther than system level robot accounts, project level robot accounts can interact on project level only.\nThe [available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) are mostly the same as for system level robots.\n\n\n```hcl\nresource \"harbor_project\" \"main\" {\n    name = \"main\"\n}\n\nresource \"harbor_robot_account\" \"project\" {\n  name        = \"example-project\"\n  description = \"project level robot account\"\n  level       = \"project\"\n  permissions {\n    access {\n      action   = \"pull\"\n      resource = \"repository\"\n    }\n    access {\n      action   = \"push\"\n      resource = \"repository\"\n    }\n    kind      = \"project\"\n    namespace = harbor_project.main.name\n  }\n}\n```\n\nThe above example creates a project level robot account with permissions to\n- pull repository on project \"main\"\n- push repository on project \"main\"\n\n## Import\n\nHarbor robot account can be imported using the `robot account id` eg, ` \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123 \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\n",
+            "description": "## # Resource: harbor.RobotAccount\n\nHarbor supports different levels of robot accounts. Currently `system` and `project` level robot accounts are supported.\n\n## Example Usage\n\n### System Level\nIntroduced in harbor 2.2.0, system level robot accounts can have basically [all available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) in harbor and are not dependent on a single project.\n\n```hcl\nresource \"random_password\" \"password\" {\n  length  = 12\n  special = false\n}\n\nresource \"harbor_project\" \"main\" {\n    name = \"main\"\n}\n\nresource \"harbor_robot_account\" \"system\" {\n  name        = \"example-system\"\n  description = \"system level robot account\"\n  level       = \"system\"\n  secret      = resource.random_password.password.result\n  permissions {\n    access {\n      action   = \"create\"\n      resource = \"labels\"\n    }\n    kind      = \"system\"\n    namespace = \"/\"\n  }\n  permissions {\n    access {\n      action   = \"push\"\n      resource = \"repository\"\n    }\n    kind      = \"project\"\n    namespace = harbor_project.main.name\n  }\n  permissions {\n    access {\n      action   = \"pull\"\n      resource = \"repository\"\n    }\n    kind      = \"project\"\n    namespace = \"*\"\n  }\n}\n```\n\nThe above example, creates a system level robot account with permissions to\n- permission to create labels on system level\n- pull repository across all projects\n- push repository to project \"my-project-name\"\n\n### Project Level\n\nOther than system level robot accounts, project level robot accounts can interact on project level only.\nThe [available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) are mostly the same as for system level robots.\n\n\n```hcl\nresource \"harbor_project\" \"main\" {\n    name = \"main\"\n}\n\nresource \"harbor_robot_account\" \"project\" {\n  name        = \"example-project\"\n  description = \"project level robot account\"\n  level       = \"project\"\n  permissions {\n    access {\n      action   = \"pull\"\n      resource = \"repository\"\n    }\n    access {\n      action   = \"push\"\n      resource = \"repository\"\n    }\n    kind      = \"project\"\n    namespace = harbor_project.main.name\n  }\n}\n```\n\nThe above example creates a project level robot account with permissions to\n- pull repository on project \"main\"\n- push repository on project \"main\"\n\n## Import\n\nHarbor robot account can be imported using the `robot account id` eg,\u003cbreak\u003e\u003cbreak\u003e `\u003cbreak\u003e\u003cbreak\u003e ```sh\u003cbreak\u003e $ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123 \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\u003cbreak\u003e\u003cbreak\u003e\n",
             "properties": {
                 "description": {
                     "type": "string"
@@ -2103,7 +2112,7 @@
             }
         },
         "harbor:index/user:User": {
-            "description": "## Example Usage\n\n```hcl\n\nresource \"harbor_user\" \"main\" {\n  username = \"john\"\n  password = \"Password12345!\"\n  full_name = \"John Smith\"\n  email = \"john@smith.com\"\n}\n```\n\n## Import\n\nAn internal user harbor user can be imported using the `user id` eg, ` \u003cbreak\u003e\u003cbreak\u003e```sh\u003cbreak\u003e $ pulumi import harbor:index/user:User main /users/19 \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\n",
+            "description": "## Example Usage\n\n```hcl\n\nresource \"harbor_user\" \"main\" {\n  username = \"john\"\n  password = \"Password12345!\"\n  full_name = \"John Smith\"\n  email = \"john@smith.com\"\n}\n```\n\n## Import\n\nAn internal user harbor user can be imported using the `user id` eg,\u003cbreak\u003e\u003cbreak\u003e `\u003cbreak\u003e\u003cbreak\u003e ```sh\u003cbreak\u003e $ pulumi import harbor:index/user:User main /users/19 \u003cbreak\u003e```\u003cbreak\u003e\u003cbreak\u003e `\u003cbreak\u003e\u003cbreak\u003e\n",
             "properties": {
                 "admin": {
                     "type": "boolean"
