@@ -4,8 +4,6 @@ go 1.20
 
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20230912190043-e6d96b3b8f7e
 
-replace github.com/pulumi/pulumi/pkg/v3 => github.com/pulumi/pulumi/pkg/v3 v3.97.0
-
 require (
 	github.com/goharbor/terraform-provider-harbor v1.4.1-0.20240103112506-9f2dc61e26be
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.72.0
