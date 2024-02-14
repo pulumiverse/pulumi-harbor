@@ -15,7 +15,7 @@ namespace Pulumiverse.Harbor
     /// 
     /// ## Import
     /// 
-    /// Harbor project member user can be imported using the `project id` and `member id` eg, `&lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200 &lt;break&gt;```&lt;break&gt;&lt;break&gt;`
+    /// Harbor project member user can be imported using the `project id` and `member id` eg,&lt;break&gt;&lt;break&gt; ` &lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200 &lt;break&gt;```&lt;break&gt;&lt;break&gt;  `&lt;break&gt;&lt;break&gt;
     /// </summary>
     [HarborResourceType("harbor:index/projectMemberUser:ProjectMemberUser")]
     public partial class ProjectMemberUser : global::Pulumi.CustomResource

@@ -15,7 +15,7 @@ namespace Pulumiverse.Harbor
     /// 
     /// ## Import
     /// 
-    /// Harbor project can be imported using the `replication id` eg, `&lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import harbor:index/replication:Replication main /replication/policies/1 &lt;break&gt;```&lt;break&gt;&lt;break&gt;`
+    /// Harbor project can be imported using the `replication id` eg,&lt;break&gt;&lt;break&gt; ` &lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import harbor:index/replication:Replication main /replication/policies/1 &lt;break&gt;```&lt;break&gt;&lt;break&gt;  `&lt;break&gt;&lt;break&gt;
     /// </summary>
     [HarborResourceType("harbor:index/replication:Replication")]
     public partial class Replication : global::Pulumi.CustomResource

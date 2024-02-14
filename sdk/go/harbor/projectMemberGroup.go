@@ -16,7 +16,7 @@ import (
 //
 // ## Import
 //
-// Harbor project member group can be imported using the `project id` and `member id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/projectMemberGroup:ProjectMemberGroup main /projects/10/members/200 <break>```<break><break>`
+// Harbor project member group can be imported using the `project id` and `member id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/projectMemberGroup:ProjectMemberGroup main /projects/10/members/200 <break>```<break><break>  `<break><break>
 type ProjectMemberGroup struct {
 	pulumi.CustomResourceState
 

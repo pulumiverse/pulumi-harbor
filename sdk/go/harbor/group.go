@@ -16,7 +16,7 @@ import (
 //
 // ## Import
 //
-// An OIDC group can be imported using the `group id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/group:Group storage-group /usergroups/19 <break>```<break><break>`
+// An OIDC group can be imported using the `group id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/group:Group storage-group /usergroups/19 <break>```<break><break>  `<break><break>
 type Group struct {
 	pulumi.CustomResourceState
 

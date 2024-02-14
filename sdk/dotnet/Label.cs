@@ -19,7 +19,7 @@ namespace Pulumiverse.Harbor
     /// 
     /// ## Import
     /// 
-    /// Harbor label can be imported using the `label id` eg, `&lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import harbor:index/label:Label main /labels/1 &lt;break&gt;```&lt;break&gt;&lt;break&gt;`
+    /// Harbor label can be imported using the `label id` eg,&lt;break&gt;&lt;break&gt; ` &lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import harbor:index/label:Label main /labels/1 &lt;break&gt;```&lt;break&gt;&lt;break&gt;  `&lt;break&gt;&lt;break&gt;
     /// </summary>
     [HarborResourceType("harbor:index/label:Label")]
     public partial class Label : global::Pulumi.CustomResource

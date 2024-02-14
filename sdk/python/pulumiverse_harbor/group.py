@@ -111,7 +111,7 @@ class Group(pulumi.CustomResource):
 
         ## Import
 
-        An OIDC group can be imported using the `group id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/group:Group storage-group /usergroups/19 <break>```<break><break>`
+        An OIDC group can be imported using the `group id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/group:Group storage-group /usergroups/19 <break>```<break><break>  `<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -127,7 +127,7 @@ class Group(pulumi.CustomResource):
 
         ## Import
 
-        An OIDC group can be imported using the `group id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/group:Group storage-group /usergroups/19 <break>```<break><break>`
+        An OIDC group can be imported using the `group id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/group:Group storage-group /usergroups/19 <break>```<break><break>  `<break><break>
 
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.

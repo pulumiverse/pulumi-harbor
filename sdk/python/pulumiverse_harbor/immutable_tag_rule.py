@@ -227,7 +227,7 @@ class ImmutableTagRule(pulumi.CustomResource):
 
         ## Import
 
-        Harbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg, `<break><break>```sh<break> $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25 <break>```<break><break>`
+        Harbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25 <break>```<break><break>  `<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -248,7 +248,7 @@ class ImmutableTagRule(pulumi.CustomResource):
 
         ## Import
 
-        Harbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg, `<break><break>```sh<break> $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25 <break>```<break><break>`
+        Harbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25 <break>```<break><break>  `<break><break>
 
         :param str resource_name: The name of the resource.
         :param ImmutableTagRuleArgs args: The arguments to use to populate this resource's properties.

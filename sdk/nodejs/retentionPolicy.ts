@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Harbor retention policy can be imported using the `retention_policy id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10 <break>```<break><break>`
+ * Harbor retention policy can be imported using the `retention_policy id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10 <break>```<break><break>  `<break><break>
  */
 export class RetentionPolicy extends pulumi.CustomResource {
     /**

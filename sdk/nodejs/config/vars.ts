@@ -15,6 +15,14 @@ Object.defineProperty(exports, "apiVersion", {
     enumerable: true,
 });
 
+export declare const bearerToken: string | undefined;
+Object.defineProperty(exports, "bearerToken", {
+    get() {
+        return __config.get("bearerToken");
+    },
+    enumerable: true,
+});
+
 export declare const insecure: boolean;
 Object.defineProperty(exports, "insecure", {
     get() {

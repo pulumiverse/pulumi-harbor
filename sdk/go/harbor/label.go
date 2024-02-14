@@ -19,7 +19,7 @@ import (
 //
 // ## Import
 //
-// Harbor label can be imported using the `label id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/label:Label main /labels/1 <break>```<break><break>`
+// Harbor label can be imported using the `label id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/label:Label main /labels/1 <break>```<break><break>  `<break><break>
 type Label struct {
 	pulumi.CustomResourceState
 

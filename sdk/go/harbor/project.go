@@ -17,7 +17,7 @@ import (
 //
 // ## Import
 //
-// Harbor project can be imported using the `project id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/project:Project main /projects/1 <break>```<break><break>`
+// Harbor project can be imported using the `project id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/project:Project main /projects/1 <break>```<break><break>  `<break><break>
 type Project struct {
 	pulumi.CustomResourceState
 
@@ -36,7 +36,7 @@ type Project struct {
 	// The id of the project with harbor.
 	ProjectId pulumi.IntOutput `pulumi:"projectId"`
 	// The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
-	Public pulumi.StringPtrOutput `pulumi:"public"`
+	Public pulumi.BoolPtrOutput `pulumi:"public"`
 	// To enable project as Proxy Cache
 	RegistryId pulumi.IntOutput `pulumi:"registryId"`
 	// The storage quota of the project in GB's
@@ -90,7 +90,7 @@ type projectState struct {
 	// The id of the project with harbor.
 	ProjectId *int `pulumi:"projectId"`
 	// The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
-	Public *string `pulumi:"public"`
+	Public *bool `pulumi:"public"`
 	// To enable project as Proxy Cache
 	RegistryId *int `pulumi:"registryId"`
 	// The storage quota of the project in GB's
@@ -115,7 +115,7 @@ type ProjectState struct {
 	// The id of the project with harbor.
 	ProjectId pulumi.IntPtrInput
 	// The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
-	Public pulumi.StringPtrInput
+	Public pulumi.BoolPtrInput
 	// To enable project as Proxy Cache
 	RegistryId pulumi.IntPtrInput
 	// The storage quota of the project in GB's
@@ -142,7 +142,7 @@ type projectArgs struct {
 	// The name of the project that will be created in harbor.
 	Name *string `pulumi:"name"`
 	// The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
-	Public *string `pulumi:"public"`
+	Public *bool `pulumi:"public"`
 	// To enable project as Proxy Cache
 	RegistryId *int `pulumi:"registryId"`
 	// The storage quota of the project in GB's
@@ -166,7 +166,7 @@ type ProjectArgs struct {
 	// The name of the project that will be created in harbor.
 	Name pulumi.StringPtrInput
 	// The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
-	Public pulumi.StringPtrInput
+	Public pulumi.BoolPtrInput
 	// To enable project as Proxy Cache
 	RegistryId pulumi.IntPtrInput
 	// The storage quota of the project in GB's
@@ -298,8 +298,8 @@ func (o ProjectOutput) ProjectId() pulumi.IntOutput {
 }
 
 // The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
-func (o ProjectOutput) Public() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Public }).(pulumi.StringPtrOutput)
+func (o ProjectOutput) Public() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.Public }).(pulumi.BoolPtrOutput)
 }
 
 // To enable project as Proxy Cache

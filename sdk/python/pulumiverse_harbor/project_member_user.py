@@ -122,7 +122,7 @@ class ProjectMemberUser(pulumi.CustomResource):
 
         ## Import
 
-        Harbor project member user can be imported using the `project id` and `member id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200 <break>```<break><break>`
+        Harbor project member user can be imported using the `project id` and `member id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200 <break>```<break><break>  `<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -138,7 +138,7 @@ class ProjectMemberUser(pulumi.CustomResource):
 
         ## Import
 
-        Harbor project member user can be imported using the `project id` and `member id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200 <break>```<break><break>`
+        Harbor project member user can be imported using the `project id` and `member id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200 <break>```<break><break>  `<break><break>
 
         :param str resource_name: The name of the resource.
         :param ProjectMemberUserArgs args: The arguments to use to populate this resource's properties.

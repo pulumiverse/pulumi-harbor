@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Harbor project can be imported using the `project id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/project:Project main /projects/1 <break>```<break><break>`
+ * Harbor project can be imported using the `project id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/project:Project main /projects/1 <break>```<break><break>  `<break><break>
  */
 export class Project extends pulumi.CustomResource {
     /**
@@ -72,7 +72,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
      */
-    public readonly public!: pulumi.Output<string | undefined>;
+    public readonly public!: pulumi.Output<boolean | undefined>;
     /**
      * To enable project as Proxy Cache
      */
@@ -164,7 +164,7 @@ export interface ProjectState {
     /**
      * The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
      */
-    public?: pulumi.Input<string>;
+    public?: pulumi.Input<boolean>;
     /**
      * To enable project as Proxy Cache
      */
@@ -210,7 +210,7 @@ export interface ProjectArgs {
     /**
      * The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
      */
-    public?: pulumi.Input<string>;
+    public?: pulumi.Input<boolean>;
     /**
      * To enable project as Proxy Cache
      */

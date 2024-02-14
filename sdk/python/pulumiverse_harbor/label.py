@@ -154,7 +154,7 @@ class Label(pulumi.CustomResource):
 
         ## Import
 
-        Harbor label can be imported using the `label id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/label:Label main /labels/1 <break>```<break><break>`
+        Harbor label can be imported using the `label id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/label:Label main /labels/1 <break>```<break><break>  `<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -174,7 +174,7 @@ class Label(pulumi.CustomResource):
 
         ## Import
 
-        Harbor label can be imported using the `label id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/label:Label main /labels/1 <break>```<break><break>`
+        Harbor label can be imported using the `label id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/label:Label main /labels/1 <break>```<break><break>  `<break><break>
 
         :param str resource_name: The name of the resource.
         :param LabelArgs args: The arguments to use to populate this resource's properties.

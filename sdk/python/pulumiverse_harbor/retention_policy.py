@@ -137,7 +137,7 @@ class RetentionPolicy(pulumi.CustomResource):
 
         ## Import
 
-        Harbor retention policy can be imported using the `retention_policy id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10 <break>```<break><break>`
+        Harbor retention policy can be imported using the `retention_policy id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10 <break>```<break><break>  `<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -156,7 +156,7 @@ class RetentionPolicy(pulumi.CustomResource):
 
         ## Import
 
-        Harbor retention policy can be imported using the `retention_policy id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10 <break>```<break><break>`
+        Harbor retention policy can be imported using the `retention_policy id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10 <break>```<break><break>  `<break><break>
 
         :param str resource_name: The name of the resource.
         :param RetentionPolicyArgs args: The arguments to use to populate this resource's properties.

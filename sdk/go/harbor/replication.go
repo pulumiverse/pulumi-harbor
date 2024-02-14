@@ -16,7 +16,7 @@ import (
 //
 // ## Import
 //
-// Harbor project can be imported using the `replication id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/replication:Replication main /replication/policies/1 <break>```<break><break>`
+// Harbor project can be imported using the `replication id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/replication:Replication main /replication/policies/1 <break>```<break><break>  `<break><break>
 type Replication struct {
 	pulumi.CustomResourceState
 

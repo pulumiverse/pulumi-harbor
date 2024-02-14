@@ -15,7 +15,7 @@ namespace Pulumiverse.Harbor
     /// 
     /// ## Import
     /// 
-    /// The list can be imported using the `id` eg, `&lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import harbor:index/configSecurity:ConfigSecurity main "7" &lt;break&gt;```&lt;break&gt;&lt;break&gt;` &gt; Note that at this point of time Harbor doesn't has any api endpoint for deleting this list. Only updating the records.
+    /// The list can be imported using the `id` eg,&lt;break&gt;&lt;break&gt; ` &lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import harbor:index/configSecurity:ConfigSecurity main "7" &lt;break&gt;```&lt;break&gt;&lt;break&gt;  `&lt;break&gt;&lt;break&gt; &gt; Note that at this point of time Harbor doesn't has any api endpoint for deleting this list. Only updating the records.&lt;break&gt;&lt;break&gt;
     /// </summary>
     [HarborResourceType("harbor:index/configSecurity:ConfigSecurity")]
     public partial class ConfigSecurity : global::Pulumi.CustomResource

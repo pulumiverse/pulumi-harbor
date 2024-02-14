@@ -17,7 +17,7 @@ namespace Pulumiverse.Harbor
     /// 
     /// ## Import
     /// 
-    /// Harbor project can be imported using the `project id` eg, `&lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import harbor:index/project:Project main /projects/1 &lt;break&gt;```&lt;break&gt;&lt;break&gt;`
+    /// Harbor project can be imported using the `project id` eg,&lt;break&gt;&lt;break&gt; ` &lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import harbor:index/project:Project main /projects/1 &lt;break&gt;```&lt;break&gt;&lt;break&gt;  `&lt;break&gt;&lt;break&gt;
     /// </summary>
     [HarborResourceType("harbor:index/project:Project")]
     public partial class Project : global::Pulumi.CustomResource
@@ -68,7 +68,7 @@ namespace Pulumiverse.Harbor
         /// The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
         /// </summary>
         [Output("public")]
-        public Output<string?> Public { get; private set; } = null!;
+        public Output<bool?> Public { get; private set; } = null!;
 
         /// <summary>
         /// To enable project as Proxy Cache
@@ -181,7 +181,7 @@ namespace Pulumiverse.Harbor
         /// The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
         /// </summary>
         [Input("public")]
-        public Input<string>? Public { get; set; }
+        public Input<bool>? Public { get; set; }
 
         /// <summary>
         /// To enable project as Proxy Cache
@@ -261,7 +261,7 @@ namespace Pulumiverse.Harbor
         /// The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
         /// </summary>
         [Input("public")]
-        public Input<string>? Public { get; set; }
+        public Input<bool>? Public { get; set; }
 
         /// <summary>
         /// To enable project as Proxy Cache

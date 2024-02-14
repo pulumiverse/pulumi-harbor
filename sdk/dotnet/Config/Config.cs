@@ -39,6 +39,13 @@ namespace Pulumiverse.Harbor
             set => _apiVersion.Set(value);
         }
 
+        private static readonly __Value<string?> _bearerToken = new __Value<string?>(() => __config.Get("bearerToken"));
+        public static string? BearerToken
+        {
+            get => _bearerToken.Get();
+            set => _bearerToken.Set(value);
+        }
+
         private static readonly __Value<bool?> _insecure = new __Value<bool?>(() => __config.GetBoolean("insecure") ?? Utilities.GetEnvBoolean("HARBOR_IGNORE_CERT") ?? true);
         public static bool? Insecure
         {

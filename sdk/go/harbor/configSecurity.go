@@ -16,7 +16,7 @@ import (
 //
 // ## Import
 //
-// The list can be imported using the `id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/configSecurity:ConfigSecurity main "7" <break>```<break><break>` > Note that at this point of time Harbor doesn't has any api endpoint for deleting this list. Only updating the records.
+// The list can be imported using the `id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/configSecurity:ConfigSecurity main "7" <break>```<break><break>  `<break><break> > Note that at this point of time Harbor doesn't has any api endpoint for deleting this list. Only updating the records.<break><break>
 type ConfigSecurity struct {
 	pulumi.CustomResourceState
 

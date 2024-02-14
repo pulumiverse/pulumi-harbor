@@ -246,7 +246,6 @@ class RobotAccount(pulumi.CustomResource):
         - permission to create labels on system level
         - pull repository across all projects
         - push repository to project "my-project-name"
-        - read helm-chart and helm-chart-version in project "my-project-name"
 
         ### Project Level
 
@@ -259,7 +258,7 @@ class RobotAccount(pulumi.CustomResource):
 
         ## Import
 
-        Harbor robot account can be imported using the `robot account id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123 <break>```<break><break>`
+        Harbor robot account can be imported using the `robot account id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123 <break>```<break><break>  `<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -284,7 +283,6 @@ class RobotAccount(pulumi.CustomResource):
         - permission to create labels on system level
         - pull repository across all projects
         - push repository to project "my-project-name"
-        - read helm-chart and helm-chart-version in project "my-project-name"
 
         ### Project Level
 
@@ -297,7 +295,7 @@ class RobotAccount(pulumi.CustomResource):
 
         ## Import
 
-        Harbor robot account can be imported using the `robot account id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123 <break>```<break><break>`
+        Harbor robot account can be imported using the `robot account id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123 <break>```<break><break>  `<break><break>
 
         :param str resource_name: The name of the resource.
         :param RobotAccountArgs args: The arguments to use to populate this resource's properties.
