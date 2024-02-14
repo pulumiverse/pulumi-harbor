@@ -11,6 +11,8 @@ from .. import _utilities
 
 apiVersion: int
 
+bearerToken: Optional[str]
+
 insecure: bool
 
 password: Optional[str]

@@ -16,7 +16,7 @@ import (
 //
 // ## Import
 //
-// Harbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg, `<break><break>```sh<break> $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25 <break>```<break><break>`
+// Harbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25 <break>```<break><break>  `<break><break>
 type ImmutableTagRule struct {
 	pulumi.CustomResourceState
 

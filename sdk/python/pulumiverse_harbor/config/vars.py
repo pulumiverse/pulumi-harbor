@@ -20,6 +20,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_int('apiVersion') or 2
 
     @property
+    def bearer_token(self) -> Optional[str]:
+        return __config__.get('bearerToken')
+
+    @property
     def insecure(self) -> bool:
         return __config__.get_bool('insecure') or (_utilities.get_env_bool('HARBOR_IGNORE_CERT') or True)
 

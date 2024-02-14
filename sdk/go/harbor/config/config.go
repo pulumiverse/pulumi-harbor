@@ -20,6 +20,9 @@ func GetApiVersion(ctx *pulumi.Context) int {
 	value = 2
 	return value
 }
+func GetBearerToken(ctx *pulumi.Context) string {
+	return config.Get(ctx, "harbor:bearerToken")
+}
 func GetInsecure(ctx *pulumi.Context) bool {
 	v, err := config.TryBool(ctx, "harbor:insecure")
 	if err == nil {

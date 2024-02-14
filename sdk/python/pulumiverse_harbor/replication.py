@@ -375,7 +375,7 @@ class Replication(pulumi.CustomResource):
 
         ## Import
 
-        Harbor project can be imported using the `replication id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/replication:Replication main /replication/policies/1 <break>```<break><break>`
+        Harbor project can be imported using the `replication id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/replication:Replication main /replication/policies/1 <break>```<break><break>  `<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -391,7 +391,7 @@ class Replication(pulumi.CustomResource):
 
         ## Import
 
-        Harbor project can be imported using the `replication id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/replication:Replication main /replication/policies/1 <break>```<break><break>`
+        Harbor project can be imported using the `replication id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/replication:Replication main /replication/policies/1 <break>```<break><break>  `<break><break>
 
         :param str resource_name: The name of the resource.
         :param ReplicationArgs args: The arguments to use to populate this resource's properties.

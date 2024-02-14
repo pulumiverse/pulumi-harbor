@@ -235,7 +235,7 @@ class Registry(pulumi.CustomResource):
 
         ## Import
 
-        Harbor project can be imported using the `registry id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/registry:Registry main /registries/7 <break>```<break><break>`
+        Harbor project can be imported using the `registry id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/registry:Registry main /registries/7 <break>```<break><break>  `<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -251,7 +251,7 @@ class Registry(pulumi.CustomResource):
 
         ## Import
 
-        Harbor project can be imported using the `registry id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/registry:Registry main /registries/7 <break>```<break><break>`
+        Harbor project can be imported using the `registry id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/registry:Registry main /registries/7 <break>```<break><break>  `<break><break>
 
         :param str resource_name: The name of the resource.
         :param RegistryArgs args: The arguments to use to populate this resource's properties.

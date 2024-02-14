@@ -19,6 +19,9 @@ namespace Pulumiverse.Harbor
     [HarborResourceType("pulumi:providers:harbor")]
     public partial class Provider : global::Pulumi.ProviderResource
     {
+        [Output("bearerToken")]
+        public Output<string?> BearerToken { get; private set; } = null!;
+
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
@@ -63,6 +66,9 @@ namespace Pulumiverse.Harbor
     {
         [Input("apiVersion", json: true)]
         public Input<int>? ApiVersion { get; set; }
+
+        [Input("bearerToken")]
+        public Input<string>? BearerToken { get; set; }
 
         [Input("insecure", json: true)]
         public Input<bool>? Insecure { get; set; }

@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Harbor project can be imported using the `registry id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/registry:Registry main /registries/7 <break>```<break><break>`
+ * Harbor project can be imported using the `registry id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/registry:Registry main /registries/7 <break>```<break><break>  `<break><break>
  */
 export class Registry extends pulumi.CustomResource {
     /**

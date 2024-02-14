@@ -18,9 +18,10 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	Password pulumi.StringPtrOutput `pulumi:"password"`
-	Url      pulumi.StringPtrOutput `pulumi:"url"`
-	Username pulumi.StringPtrOutput `pulumi:"username"`
+	BearerToken pulumi.StringPtrOutput `pulumi:"bearerToken"`
+	Password    pulumi.StringPtrOutput `pulumi:"password"`
+	Url         pulumi.StringPtrOutput `pulumi:"url"`
+	Username    pulumi.StringPtrOutput `pulumi:"username"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -70,20 +71,22 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	ApiVersion *int    `pulumi:"apiVersion"`
-	Insecure   *bool   `pulumi:"insecure"`
-	Password   *string `pulumi:"password"`
-	Url        *string `pulumi:"url"`
-	Username   *string `pulumi:"username"`
+	ApiVersion  *int    `pulumi:"apiVersion"`
+	BearerToken *string `pulumi:"bearerToken"`
+	Insecure    *bool   `pulumi:"insecure"`
+	Password    *string `pulumi:"password"`
+	Url         *string `pulumi:"url"`
+	Username    *string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	ApiVersion pulumi.IntPtrInput
-	Insecure   pulumi.BoolPtrInput
-	Password   pulumi.StringPtrInput
-	Url        pulumi.StringPtrInput
-	Username   pulumi.StringPtrInput
+	ApiVersion  pulumi.IntPtrInput
+	BearerToken pulumi.StringPtrInput
+	Insecure    pulumi.BoolPtrInput
+	Password    pulumi.StringPtrInput
+	Url         pulumi.StringPtrInput
+	Username    pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -121,6 +124,10 @@ func (o ProviderOutput) ToProviderOutput() ProviderOutput {
 
 func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) ProviderOutput {
 	return o
+}
+
+func (o ProviderOutput) BearerToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.BearerToken }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) Password() pulumi.StringPtrOutput {

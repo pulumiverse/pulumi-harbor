@@ -15,7 +15,7 @@ namespace Pulumiverse.Harbor
     /// 
     /// ## Import
     /// 
-    /// Harbor retention policy can be imported using the `retention_policy id` eg, `&lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10 &lt;break&gt;```&lt;break&gt;&lt;break&gt;`
+    /// Harbor retention policy can be imported using the `retention_policy id` eg,&lt;break&gt;&lt;break&gt; ` &lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10 &lt;break&gt;```&lt;break&gt;&lt;break&gt;  `&lt;break&gt;&lt;break&gt;
     /// </summary>
     [HarborResourceType("harbor:index/retentionPolicy:RetentionPolicy")]
     public partial class RetentionPolicy : global::Pulumi.CustomResource

@@ -15,6 +15,7 @@ __all__ = ['ProviderArgs', 'Provider']
 class ProviderArgs:
     def __init__(__self__, *,
                  api_version: Optional[pulumi.Input[int]] = None,
+                 bearer_token: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
@@ -26,6 +27,8 @@ class ProviderArgs:
             api_version = 2
         if api_version is not None:
             pulumi.set(__self__, "api_version", api_version)
+        if bearer_token is not None:
+            pulumi.set(__self__, "bearer_token", bearer_token)
         if insecure is None:
             insecure = (_utilities.get_env_bool('HARBOR_IGNORE_CERT') or True)
         if insecure is not None:
@@ -51,6 +54,15 @@ class ProviderArgs:
     @api_version.setter
     def api_version(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "api_version", value)
+
+    @property
+    @pulumi.getter(name="bearerToken")
+    def bearer_token(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "bearer_token")
+
+    @bearer_token.setter
+    def bearer_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bearer_token", value)
 
     @property
     @pulumi.getter
@@ -95,6 +107,7 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[int]] = None,
+                 bearer_token: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
@@ -137,6 +150,7 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[int]] = None,
+                 bearer_token: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
@@ -153,6 +167,7 @@ class Provider(pulumi.ProviderResource):
             if api_version is None:
                 api_version = 2
             __props__.__dict__["api_version"] = pulumi.Output.from_input(api_version).apply(pulumi.runtime.to_json) if api_version is not None else None
+            __props__.__dict__["bearer_token"] = bearer_token
             if insecure is None:
                 insecure = (_utilities.get_env_bool('HARBOR_IGNORE_CERT') or True)
             __props__.__dict__["insecure"] = pulumi.Output.from_input(insecure).apply(pulumi.runtime.to_json) if insecure is not None else None
@@ -172,6 +187,11 @@ class Provider(pulumi.ProviderResource):
             resource_name,
             __props__,
             opts)
+
+    @property
+    @pulumi.getter(name="bearerToken")
+    def bearer_token(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "bearer_token")
 
     @property
     @pulumi.getter

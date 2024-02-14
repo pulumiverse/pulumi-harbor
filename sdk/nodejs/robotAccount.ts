@@ -20,7 +20,6 @@ import * as utilities from "./utilities";
  * - permission to create labels on system level
  * - pull repository across all projects
  * - push repository to project "my-project-name"
- * - read helm-chart and helm-chart-version in project "my-project-name"
  *
  * ### Project Level
  *
@@ -33,7 +32,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Harbor robot account can be imported using the `robot account id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123 <break>```<break><break>`
+ * Harbor robot account can be imported using the `robot account id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123 <break>```<break><break>  `<break><break>
  */
 export class RobotAccount extends pulumi.CustomResource {
     /**

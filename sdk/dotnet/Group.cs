@@ -15,7 +15,7 @@ namespace Pulumiverse.Harbor
     /// 
     /// ## Import
     /// 
-    /// An OIDC group can be imported using the `group id` eg, `&lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import harbor:index/group:Group storage-group /usergroups/19 &lt;break&gt;```&lt;break&gt;&lt;break&gt;`
+    /// An OIDC group can be imported using the `group id` eg,&lt;break&gt;&lt;break&gt; ` &lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import harbor:index/group:Group storage-group /usergroups/19 &lt;break&gt;```&lt;break&gt;&lt;break&gt;  `&lt;break&gt;&lt;break&gt;
     /// </summary>
     [HarborResourceType("harbor:index/group:Group")]
     public partial class Group : global::Pulumi.CustomResource

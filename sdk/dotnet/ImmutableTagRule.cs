@@ -15,7 +15,7 @@ namespace Pulumiverse.Harbor
     /// 
     /// ## Import
     /// 
-    /// Harbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg, `&lt;break&gt;&lt;break&gt;```sh&lt;break&gt; $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25 &lt;break&gt;```&lt;break&gt;&lt;break&gt;`
+    /// Harbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg,&lt;break&gt;&lt;break&gt; ` &lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25 &lt;break&gt;```&lt;break&gt;&lt;break&gt;  `&lt;break&gt;&lt;break&gt;
     /// </summary>
     [HarborResourceType("harbor:index/immutableTagRule:ImmutableTagRule")]
     public partial class ImmutableTagRule : global::Pulumi.CustomResource

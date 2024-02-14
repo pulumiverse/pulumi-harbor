@@ -20,7 +20,7 @@ class ProjectArgs:
                  enable_content_trust_cosign: Optional[pulumi.Input[bool]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 public: Optional[pulumi.Input[str]] = None,
+                 public: Optional[pulumi.Input[bool]] = None,
                  registry_id: Optional[pulumi.Input[int]] = None,
                  storage_quota: Optional[pulumi.Input[int]] = None,
                  vulnerability_scanning: Optional[pulumi.Input[bool]] = None):
@@ -32,7 +32,7 @@ class ProjectArgs:
         :param pulumi.Input[bool] enable_content_trust_cosign: Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
         :param pulumi.Input[str] name: The name of the project that will be created in harbor.
-        :param pulumi.Input[str] public: The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
+        :param pulumi.Input[bool] public: The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
         :param pulumi.Input[int] registry_id: To enable project as Proxy Cache
         :param pulumi.Input[int] storage_quota: The storage quota of the project in GB's
         :param pulumi.Input[bool] vulnerability_scanning: Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
@@ -132,14 +132,14 @@ class ProjectArgs:
 
     @property
     @pulumi.getter
-    def public(self) -> Optional[pulumi.Input[str]]:
+    def public(self) -> Optional[pulumi.Input[bool]]:
         """
         The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
         """
         return pulumi.get(self, "public")
 
     @public.setter
-    def public(self, value: Optional[pulumi.Input[str]]):
+    def public(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "public", value)
 
     @property
@@ -189,7 +189,7 @@ class _ProjectState:
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[int]] = None,
-                 public: Optional[pulumi.Input[str]] = None,
+                 public: Optional[pulumi.Input[bool]] = None,
                  registry_id: Optional[pulumi.Input[int]] = None,
                  storage_quota: Optional[pulumi.Input[int]] = None,
                  vulnerability_scanning: Optional[pulumi.Input[bool]] = None):
@@ -202,7 +202,7 @@ class _ProjectState:
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
         :param pulumi.Input[str] name: The name of the project that will be created in harbor.
         :param pulumi.Input[int] project_id: The id of the project with harbor.
-        :param pulumi.Input[str] public: The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
+        :param pulumi.Input[bool] public: The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
         :param pulumi.Input[int] registry_id: To enable project as Proxy Cache
         :param pulumi.Input[int] storage_quota: The storage quota of the project in GB's
         :param pulumi.Input[bool] vulnerability_scanning: Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
@@ -316,14 +316,14 @@ class _ProjectState:
 
     @property
     @pulumi.getter
-    def public(self) -> Optional[pulumi.Input[str]]:
+    def public(self) -> Optional[pulumi.Input[bool]]:
         """
         The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
         """
         return pulumi.get(self, "public")
 
     @public.setter
-    def public(self, value: Optional[pulumi.Input[str]]):
+    def public(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "public", value)
 
     @property
@@ -374,7 +374,7 @@ class Project(pulumi.CustomResource):
                  enable_content_trust_cosign: Optional[pulumi.Input[bool]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 public: Optional[pulumi.Input[str]] = None,
+                 public: Optional[pulumi.Input[bool]] = None,
                  registry_id: Optional[pulumi.Input[int]] = None,
                  storage_quota: Optional[pulumi.Input[int]] = None,
                  vulnerability_scanning: Optional[pulumi.Input[bool]] = None,
@@ -386,7 +386,7 @@ class Project(pulumi.CustomResource):
 
         ## Import
 
-        Harbor project can be imported using the `project id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/project:Project main /projects/1 <break>```<break><break>`
+        Harbor project can be imported using the `project id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/project:Project main /projects/1 <break>```<break><break>  `<break><break>
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -396,7 +396,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_content_trust_cosign: Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
         :param pulumi.Input[str] name: The name of the project that will be created in harbor.
-        :param pulumi.Input[str] public: The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
+        :param pulumi.Input[bool] public: The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
         :param pulumi.Input[int] registry_id: To enable project as Proxy Cache
         :param pulumi.Input[int] storage_quota: The storage quota of the project in GB's
         :param pulumi.Input[bool] vulnerability_scanning: Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
@@ -414,7 +414,7 @@ class Project(pulumi.CustomResource):
 
         ## Import
 
-        Harbor project can be imported using the `project id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/project:Project main /projects/1 <break>```<break><break>`
+        Harbor project can be imported using the `project id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/project:Project main /projects/1 <break>```<break><break>  `<break><break>
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.
@@ -437,7 +437,7 @@ class Project(pulumi.CustomResource):
                  enable_content_trust_cosign: Optional[pulumi.Input[bool]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 public: Optional[pulumi.Input[str]] = None,
+                 public: Optional[pulumi.Input[bool]] = None,
                  registry_id: Optional[pulumi.Input[int]] = None,
                  storage_quota: Optional[pulumi.Input[int]] = None,
                  vulnerability_scanning: Optional[pulumi.Input[bool]] = None,
@@ -478,7 +478,7 @@ class Project(pulumi.CustomResource):
             force_destroy: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[int]] = None,
-            public: Optional[pulumi.Input[str]] = None,
+            public: Optional[pulumi.Input[bool]] = None,
             registry_id: Optional[pulumi.Input[int]] = None,
             storage_quota: Optional[pulumi.Input[int]] = None,
             vulnerability_scanning: Optional[pulumi.Input[bool]] = None) -> 'Project':
@@ -496,7 +496,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
         :param pulumi.Input[str] name: The name of the project that will be created in harbor.
         :param pulumi.Input[int] project_id: The id of the project with harbor.
-        :param pulumi.Input[str] public: The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
+        :param pulumi.Input[bool] public: The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
         :param pulumi.Input[int] registry_id: To enable project as Proxy Cache
         :param pulumi.Input[int] storage_quota: The storage quota of the project in GB's
         :param pulumi.Input[bool] vulnerability_scanning: Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
@@ -576,7 +576,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def public(self) -> pulumi.Output[Optional[str]]:
+    def public(self) -> pulumi.Output[Optional[bool]]:
         """
         The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
         """

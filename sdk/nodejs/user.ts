@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * An internal user harbor user can be imported using the `user id` eg, `<break><break>```sh<break> $ pulumi import harbor:index/user:User main /users/19 <break>```<break><break>`
+ * An internal user harbor user can be imported using the `user id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/user:User main /users/19 <break>```<break><break>  `<break><break>
  */
 export class User extends pulumi.CustomResource {
     /**
