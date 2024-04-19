@@ -16,7 +16,9 @@ import (
 //
 // ## Import
 //
-// Harbor project member group can be imported using the `project id` and `member id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/projectMemberGroup:ProjectMemberGroup main /projects/10/members/200 <break>```<break><break>  `<break><break>
+// ```sh
+// $ pulumi import harbor:index/projectMemberGroup:ProjectMemberGroup main /projects/10/members/200
+// ```
 type ProjectMemberGroup struct {
 	pulumi.CustomResourceState
 
@@ -24,9 +26,12 @@ type ProjectMemberGroup struct {
 	GroupName   pulumi.StringPtrOutput `pulumi:"groupName"`
 	LdapGroupDn pulumi.StringPtrOutput `pulumi:"ldapGroupDn"`
 	MemberId    pulumi.IntOutput       `pulumi:"memberId"`
-	ProjectId   pulumi.StringOutput    `pulumi:"projectId"`
-	Role        pulumi.StringOutput    `pulumi:"role"`
-	Type        pulumi.StringOutput    `pulumi:"type"`
+	// The project id of the project that the entity will have access to.
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// The permissions that the entity will be granted.
+	Role pulumi.StringOutput `pulumi:"role"`
+	// The group type.  Can be set to `"ldap"`, `"internal"` or `"oidc"`.
+	Type pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewProjectMemberGroup registers a new resource with the given unique name, arguments, and options.
@@ -72,9 +77,12 @@ type projectMemberGroupState struct {
 	GroupName   *string `pulumi:"groupName"`
 	LdapGroupDn *string `pulumi:"ldapGroupDn"`
 	MemberId    *int    `pulumi:"memberId"`
-	ProjectId   *string `pulumi:"projectId"`
-	Role        *string `pulumi:"role"`
-	Type        *string `pulumi:"type"`
+	// The project id of the project that the entity will have access to.
+	ProjectId *string `pulumi:"projectId"`
+	// The permissions that the entity will be granted.
+	Role *string `pulumi:"role"`
+	// The group type.  Can be set to `"ldap"`, `"internal"` or `"oidc"`.
+	Type *string `pulumi:"type"`
 }
 
 type ProjectMemberGroupState struct {
@@ -82,9 +90,12 @@ type ProjectMemberGroupState struct {
 	GroupName   pulumi.StringPtrInput
 	LdapGroupDn pulumi.StringPtrInput
 	MemberId    pulumi.IntPtrInput
-	ProjectId   pulumi.StringPtrInput
-	Role        pulumi.StringPtrInput
-	Type        pulumi.StringPtrInput
+	// The project id of the project that the entity will have access to.
+	ProjectId pulumi.StringPtrInput
+	// The permissions that the entity will be granted.
+	Role pulumi.StringPtrInput
+	// The group type.  Can be set to `"ldap"`, `"internal"` or `"oidc"`.
+	Type pulumi.StringPtrInput
 }
 
 func (ProjectMemberGroupState) ElementType() reflect.Type {
@@ -95,9 +106,12 @@ type projectMemberGroupArgs struct {
 	GroupId     *int    `pulumi:"groupId"`
 	GroupName   *string `pulumi:"groupName"`
 	LdapGroupDn *string `pulumi:"ldapGroupDn"`
-	ProjectId   string  `pulumi:"projectId"`
-	Role        string  `pulumi:"role"`
-	Type        string  `pulumi:"type"`
+	// The project id of the project that the entity will have access to.
+	ProjectId string `pulumi:"projectId"`
+	// The permissions that the entity will be granted.
+	Role string `pulumi:"role"`
+	// The group type.  Can be set to `"ldap"`, `"internal"` or `"oidc"`.
+	Type string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a ProjectMemberGroup resource.
@@ -105,9 +119,12 @@ type ProjectMemberGroupArgs struct {
 	GroupId     pulumi.IntPtrInput
 	GroupName   pulumi.StringPtrInput
 	LdapGroupDn pulumi.StringPtrInput
-	ProjectId   pulumi.StringInput
-	Role        pulumi.StringInput
-	Type        pulumi.StringInput
+	// The project id of the project that the entity will have access to.
+	ProjectId pulumi.StringInput
+	// The permissions that the entity will be granted.
+	Role pulumi.StringInput
+	// The group type.  Can be set to `"ldap"`, `"internal"` or `"oidc"`.
+	Type pulumi.StringInput
 }
 
 func (ProjectMemberGroupArgs) ElementType() reflect.Type {
@@ -213,14 +230,17 @@ func (o ProjectMemberGroupOutput) MemberId() pulumi.IntOutput {
 	return o.ApplyT(func(v *ProjectMemberGroup) pulumi.IntOutput { return v.MemberId }).(pulumi.IntOutput)
 }
 
+// The project id of the project that the entity will have access to.
 func (o ProjectMemberGroupOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectMemberGroup) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
+// The permissions that the entity will be granted.
 func (o ProjectMemberGroupOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectMemberGroup) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
+// The group type.  Can be set to `"ldap"`, `"internal"` or `"oidc"`.
 func (o ProjectMemberGroupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectMemberGroup) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

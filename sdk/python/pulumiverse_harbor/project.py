@@ -27,15 +27,15 @@ class ProjectArgs:
         """
         The set of arguments for constructing a Project resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cve_allowlists: Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
-        :param pulumi.Input[str] deployment_security: Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
-        :param pulumi.Input[bool] enable_content_trust: Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
-        :param pulumi.Input[bool] enable_content_trust_cosign: Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+        :param pulumi.Input[str] deployment_security: Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
+        :param pulumi.Input[bool] enable_content_trust: Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
+        :param pulumi.Input[bool] enable_content_trust_cosign: Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `false`)
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
         :param pulumi.Input[str] name: The name of the project that will be created in harbor.
-        :param pulumi.Input[bool] public: The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
-        :param pulumi.Input[int] registry_id: To enable project as Proxy Cache
-        :param pulumi.Input[int] storage_quota: The storage quota of the project in GB's
-        :param pulumi.Input[bool] vulnerability_scanning: Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
+        :param pulumi.Input[bool] public: The project will be public accessibility.(Default: `false`)
+        :param pulumi.Input[int] registry_id: To enable project as Proxy Cache.
+        :param pulumi.Input[int] storage_quota: The storage quota of the project in GB's.
+        :param pulumi.Input[bool] vulnerability_scanning: Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
         """
         if cve_allowlists is not None:
             pulumi.set(__self__, "cve_allowlists", cve_allowlists)
@@ -74,7 +74,7 @@ class ProjectArgs:
     @pulumi.getter(name="deploymentSecurity")
     def deployment_security(self) -> Optional[pulumi.Input[str]]:
         """
-        Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
+        Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
         """
         return pulumi.get(self, "deployment_security")
 
@@ -86,7 +86,7 @@ class ProjectArgs:
     @pulumi.getter(name="enableContentTrust")
     def enable_content_trust(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
+        Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
         """
         return pulumi.get(self, "enable_content_trust")
 
@@ -98,7 +98,7 @@ class ProjectArgs:
     @pulumi.getter(name="enableContentTrustCosign")
     def enable_content_trust_cosign(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+        Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `false`)
         """
         return pulumi.get(self, "enable_content_trust_cosign")
 
@@ -134,7 +134,7 @@ class ProjectArgs:
     @pulumi.getter
     def public(self) -> Optional[pulumi.Input[bool]]:
         """
-        The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
+        The project will be public accessibility.(Default: `false`)
         """
         return pulumi.get(self, "public")
 
@@ -146,7 +146,7 @@ class ProjectArgs:
     @pulumi.getter(name="registryId")
     def registry_id(self) -> Optional[pulumi.Input[int]]:
         """
-        To enable project as Proxy Cache
+        To enable project as Proxy Cache.
         """
         return pulumi.get(self, "registry_id")
 
@@ -158,7 +158,7 @@ class ProjectArgs:
     @pulumi.getter(name="storageQuota")
     def storage_quota(self) -> Optional[pulumi.Input[int]]:
         """
-        The storage quota of the project in GB's
+        The storage quota of the project in GB's.
         """
         return pulumi.get(self, "storage_quota")
 
@@ -170,7 +170,7 @@ class ProjectArgs:
     @pulumi.getter(name="vulnerabilityScanning")
     def vulnerability_scanning(self) -> Optional[pulumi.Input[bool]]:
         """
-        Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
+        Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
         """
         return pulumi.get(self, "vulnerability_scanning")
 
@@ -196,16 +196,16 @@ class _ProjectState:
         """
         Input properties used for looking up and filtering Project resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cve_allowlists: Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
-        :param pulumi.Input[str] deployment_security: Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
-        :param pulumi.Input[bool] enable_content_trust: Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
-        :param pulumi.Input[bool] enable_content_trust_cosign: Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+        :param pulumi.Input[str] deployment_security: Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
+        :param pulumi.Input[bool] enable_content_trust: Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
+        :param pulumi.Input[bool] enable_content_trust_cosign: Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `false`)
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
         :param pulumi.Input[str] name: The name of the project that will be created in harbor.
-        :param pulumi.Input[int] project_id: The id of the project with harbor.
-        :param pulumi.Input[bool] public: The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
-        :param pulumi.Input[int] registry_id: To enable project as Proxy Cache
-        :param pulumi.Input[int] storage_quota: The storage quota of the project in GB's
-        :param pulumi.Input[bool] vulnerability_scanning: Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
+        :param pulumi.Input[int] project_id: The project id of this resource.
+        :param pulumi.Input[bool] public: The project will be public accessibility.(Default: `false`)
+        :param pulumi.Input[int] registry_id: To enable project as Proxy Cache.
+        :param pulumi.Input[int] storage_quota: The storage quota of the project in GB's.
+        :param pulumi.Input[bool] vulnerability_scanning: Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
         """
         if cve_allowlists is not None:
             pulumi.set(__self__, "cve_allowlists", cve_allowlists)
@@ -246,7 +246,7 @@ class _ProjectState:
     @pulumi.getter(name="deploymentSecurity")
     def deployment_security(self) -> Optional[pulumi.Input[str]]:
         """
-        Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
+        Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
         """
         return pulumi.get(self, "deployment_security")
 
@@ -258,7 +258,7 @@ class _ProjectState:
     @pulumi.getter(name="enableContentTrust")
     def enable_content_trust(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
+        Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
         """
         return pulumi.get(self, "enable_content_trust")
 
@@ -270,7 +270,7 @@ class _ProjectState:
     @pulumi.getter(name="enableContentTrustCosign")
     def enable_content_trust_cosign(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+        Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `false`)
         """
         return pulumi.get(self, "enable_content_trust_cosign")
 
@@ -306,7 +306,7 @@ class _ProjectState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The id of the project with harbor.
+        The project id of this resource.
         """
         return pulumi.get(self, "project_id")
 
@@ -318,7 +318,7 @@ class _ProjectState:
     @pulumi.getter
     def public(self) -> Optional[pulumi.Input[bool]]:
         """
-        The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
+        The project will be public accessibility.(Default: `false`)
         """
         return pulumi.get(self, "public")
 
@@ -330,7 +330,7 @@ class _ProjectState:
     @pulumi.getter(name="registryId")
     def registry_id(self) -> Optional[pulumi.Input[int]]:
         """
-        To enable project as Proxy Cache
+        To enable project as Proxy Cache.
         """
         return pulumi.get(self, "registry_id")
 
@@ -342,7 +342,7 @@ class _ProjectState:
     @pulumi.getter(name="storageQuota")
     def storage_quota(self) -> Optional[pulumi.Input[int]]:
         """
-        The storage quota of the project in GB's
+        The storage quota of the project in GB's.
         """
         return pulumi.get(self, "storage_quota")
 
@@ -354,7 +354,7 @@ class _ProjectState:
     @pulumi.getter(name="vulnerabilityScanning")
     def vulnerability_scanning(self) -> Optional[pulumi.Input[bool]]:
         """
-        Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
+        Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
         """
         return pulumi.get(self, "vulnerability_scanning")
 
@@ -382,24 +382,28 @@ class Project(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ## Harbor project example as proxy cache
+        ### Hosted
+
+        ### Proxy
 
         ## Import
 
-        Harbor project can be imported using the `project id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/project:Project main /projects/1 <break>```<break><break>  `<break><break>
+        ```sh
+        $ pulumi import harbor:index/project:Project main /projects/1
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cve_allowlists: Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
-        :param pulumi.Input[str] deployment_security: Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
-        :param pulumi.Input[bool] enable_content_trust: Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
-        :param pulumi.Input[bool] enable_content_trust_cosign: Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+        :param pulumi.Input[str] deployment_security: Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
+        :param pulumi.Input[bool] enable_content_trust: Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
+        :param pulumi.Input[bool] enable_content_trust_cosign: Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `false`)
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
         :param pulumi.Input[str] name: The name of the project that will be created in harbor.
-        :param pulumi.Input[bool] public: The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
-        :param pulumi.Input[int] registry_id: To enable project as Proxy Cache
-        :param pulumi.Input[int] storage_quota: The storage quota of the project in GB's
-        :param pulumi.Input[bool] vulnerability_scanning: Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
+        :param pulumi.Input[bool] public: The project will be public accessibility.(Default: `false`)
+        :param pulumi.Input[int] registry_id: To enable project as Proxy Cache.
+        :param pulumi.Input[int] storage_quota: The storage quota of the project in GB's.
+        :param pulumi.Input[bool] vulnerability_scanning: Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
         """
         ...
     @overload
@@ -410,11 +414,15 @@ class Project(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ## Harbor project example as proxy cache
+        ### Hosted
+
+        ### Proxy
 
         ## Import
 
-        Harbor project can be imported using the `project id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/project:Project main /projects/1 <break>```<break><break>  `<break><break>
+        ```sh
+        $ pulumi import harbor:index/project:Project main /projects/1
+        ```
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.
@@ -490,16 +498,16 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cve_allowlists: Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
-        :param pulumi.Input[str] deployment_security: Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
-        :param pulumi.Input[bool] enable_content_trust: Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
-        :param pulumi.Input[bool] enable_content_trust_cosign: Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+        :param pulumi.Input[str] deployment_security: Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
+        :param pulumi.Input[bool] enable_content_trust: Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
+        :param pulumi.Input[bool] enable_content_trust_cosign: Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `false`)
         :param pulumi.Input[bool] force_destroy: A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
         :param pulumi.Input[str] name: The name of the project that will be created in harbor.
-        :param pulumi.Input[int] project_id: The id of the project with harbor.
-        :param pulumi.Input[bool] public: The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
-        :param pulumi.Input[int] registry_id: To enable project as Proxy Cache
-        :param pulumi.Input[int] storage_quota: The storage quota of the project in GB's
-        :param pulumi.Input[bool] vulnerability_scanning: Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
+        :param pulumi.Input[int] project_id: The project id of this resource.
+        :param pulumi.Input[bool] public: The project will be public accessibility.(Default: `false`)
+        :param pulumi.Input[int] registry_id: To enable project as Proxy Cache.
+        :param pulumi.Input[int] storage_quota: The storage quota of the project in GB's.
+        :param pulumi.Input[bool] vulnerability_scanning: Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -530,7 +538,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="deploymentSecurity")
     def deployment_security(self) -> pulumi.Output[Optional[str]]:
         """
-        Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
+        Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
         """
         return pulumi.get(self, "deployment_security")
 
@@ -538,7 +546,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="enableContentTrust")
     def enable_content_trust(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
+        Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
         """
         return pulumi.get(self, "enable_content_trust")
 
@@ -546,7 +554,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="enableContentTrustCosign")
     def enable_content_trust_cosign(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+        Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `false`)
         """
         return pulumi.get(self, "enable_content_trust_cosign")
 
@@ -570,7 +578,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[int]:
         """
-        The id of the project with harbor.
+        The project id of this resource.
         """
         return pulumi.get(self, "project_id")
 
@@ -578,7 +586,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter
     def public(self) -> pulumi.Output[Optional[bool]]:
         """
-        The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
+        The project will be public accessibility.(Default: `false`)
         """
         return pulumi.get(self, "public")
 
@@ -586,7 +594,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="registryId")
     def registry_id(self) -> pulumi.Output[int]:
         """
-        To enable project as Proxy Cache
+        To enable project as Proxy Cache.
         """
         return pulumi.get(self, "registry_id")
 
@@ -594,7 +602,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="storageQuota")
     def storage_quota(self) -> pulumi.Output[Optional[int]]:
         """
-        The storage quota of the project in GB's
+        The storage quota of the project in GB's.
         """
         return pulumi.get(self, "storage_quota")
 
@@ -602,7 +610,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="vulnerabilityScanning")
     def vulnerability_scanning(self) -> pulumi.Output[Optional[bool]]:
         """
-        Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
+        Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
         """
         return pulumi.get(self, "vulnerability_scanning")
 

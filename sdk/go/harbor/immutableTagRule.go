@@ -16,18 +16,21 @@ import (
 //
 // ## Import
 //
-// Harbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25 <break>```<break><break>  `<break><break>
+// ```sh
+// $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25
+// ```
 type ImmutableTagRule struct {
 	pulumi.CustomResourceState
 
 	// Specify if the rule is disable or not. Defaults to `false`
-	Disabled  pulumi.BoolPtrOutput `pulumi:"disabled"`
-	ProjectId pulumi.StringOutput  `pulumi:"projectId"`
-	// For the repositories excuding.
+	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
+	// The project id of which you would like to apply this policy.
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// For the repositories excluding.
 	RepoExcluding pulumi.StringPtrOutput `pulumi:"repoExcluding"`
 	// For the repositories matching.
 	RepoMatching pulumi.StringPtrOutput `pulumi:"repoMatching"`
-	// For the tag excuding.
+	// For the tag excluding.
 	TagExcluding pulumi.StringPtrOutput `pulumi:"tagExcluding"`
 	// For the tag matching.
 	TagMatching pulumi.StringPtrOutput `pulumi:"tagMatching"`
@@ -67,13 +70,14 @@ func GetImmutableTagRule(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ImmutableTagRule resources.
 type immutableTagRuleState struct {
 	// Specify if the rule is disable or not. Defaults to `false`
-	Disabled  *bool   `pulumi:"disabled"`
+	Disabled *bool `pulumi:"disabled"`
+	// The project id of which you would like to apply this policy.
 	ProjectId *string `pulumi:"projectId"`
-	// For the repositories excuding.
+	// For the repositories excluding.
 	RepoExcluding *string `pulumi:"repoExcluding"`
 	// For the repositories matching.
 	RepoMatching *string `pulumi:"repoMatching"`
-	// For the tag excuding.
+	// For the tag excluding.
 	TagExcluding *string `pulumi:"tagExcluding"`
 	// For the tag matching.
 	TagMatching *string `pulumi:"tagMatching"`
@@ -81,13 +85,14 @@ type immutableTagRuleState struct {
 
 type ImmutableTagRuleState struct {
 	// Specify if the rule is disable or not. Defaults to `false`
-	Disabled  pulumi.BoolPtrInput
+	Disabled pulumi.BoolPtrInput
+	// The project id of which you would like to apply this policy.
 	ProjectId pulumi.StringPtrInput
-	// For the repositories excuding.
+	// For the repositories excluding.
 	RepoExcluding pulumi.StringPtrInput
 	// For the repositories matching.
 	RepoMatching pulumi.StringPtrInput
-	// For the tag excuding.
+	// For the tag excluding.
 	TagExcluding pulumi.StringPtrInput
 	// For the tag matching.
 	TagMatching pulumi.StringPtrInput
@@ -99,13 +104,14 @@ func (ImmutableTagRuleState) ElementType() reflect.Type {
 
 type immutableTagRuleArgs struct {
 	// Specify if the rule is disable or not. Defaults to `false`
-	Disabled  *bool  `pulumi:"disabled"`
+	Disabled *bool `pulumi:"disabled"`
+	// The project id of which you would like to apply this policy.
 	ProjectId string `pulumi:"projectId"`
-	// For the repositories excuding.
+	// For the repositories excluding.
 	RepoExcluding *string `pulumi:"repoExcluding"`
 	// For the repositories matching.
 	RepoMatching *string `pulumi:"repoMatching"`
-	// For the tag excuding.
+	// For the tag excluding.
 	TagExcluding *string `pulumi:"tagExcluding"`
 	// For the tag matching.
 	TagMatching *string `pulumi:"tagMatching"`
@@ -114,13 +120,14 @@ type immutableTagRuleArgs struct {
 // The set of arguments for constructing a ImmutableTagRule resource.
 type ImmutableTagRuleArgs struct {
 	// Specify if the rule is disable or not. Defaults to `false`
-	Disabled  pulumi.BoolPtrInput
+	Disabled pulumi.BoolPtrInput
+	// The project id of which you would like to apply this policy.
 	ProjectId pulumi.StringInput
-	// For the repositories excuding.
+	// For the repositories excluding.
 	RepoExcluding pulumi.StringPtrInput
 	// For the repositories matching.
 	RepoMatching pulumi.StringPtrInput
-	// For the tag excuding.
+	// For the tag excluding.
 	TagExcluding pulumi.StringPtrInput
 	// For the tag matching.
 	TagMatching pulumi.StringPtrInput
@@ -218,11 +225,12 @@ func (o ImmutableTagRuleOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ImmutableTagRule) pulumi.BoolPtrOutput { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
+// The project id of which you would like to apply this policy.
 func (o ImmutableTagRuleOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ImmutableTagRule) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// For the repositories excuding.
+// For the repositories excluding.
 func (o ImmutableTagRuleOutput) RepoExcluding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImmutableTagRule) pulumi.StringPtrOutput { return v.RepoExcluding }).(pulumi.StringPtrOutput)
 }
@@ -232,7 +240,7 @@ func (o ImmutableTagRuleOutput) RepoMatching() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImmutableTagRule) pulumi.StringPtrOutput { return v.RepoMatching }).(pulumi.StringPtrOutput)
 }
 
-// For the tag excuding.
+// For the tag excluding.
 func (o ImmutableTagRuleOutput) TagExcluding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImmutableTagRule) pulumi.StringPtrOutput { return v.TagExcluding }).(pulumi.StringPtrOutput)
 }

@@ -10,9 +10,19 @@ using Pulumi;
 
 namespace Pulumiverse.Harbor
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ### OIDC
+    /// 
+    /// ### LDAP
+    /// </summary>
     [HarborResourceType("harbor:index/configAuth:ConfigAuth")]
     public partial class ConfigAuth : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Harbor authentication mode. Can be `"oidc_auth"`, `"db_auth"` or `"ldap_auth"`. (Default: `"db_auth"`)
+        /// </summary>
         [Output("authMode")]
         public Output<string> AuthMode { get; private set; } = null!;
 
@@ -149,6 +159,9 @@ namespace Pulumiverse.Harbor
 
     public sealed class ConfigAuthArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Harbor authentication mode. Can be `"oidc_auth"`, `"db_auth"` or `"ldap_auth"`. (Default: `"db_auth"`)
+        /// </summary>
         [Input("authMode", required: true)]
         public Input<string> AuthMode { get; set; } = null!;
 
@@ -259,6 +272,9 @@ namespace Pulumiverse.Harbor
 
     public sealed class ConfigAuthState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Harbor authentication mode. Can be `"oidc_auth"`, `"db_auth"` or `"ldap_auth"`. (Default: `"db_auth"`)
+        /// </summary>
         [Input("authMode")]
         public Input<string>? AuthMode { get; set; }
 

@@ -19,6 +19,9 @@ export function getRegistry(args: GetRegistryArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getRegistry.
  */
 export interface GetRegistryArgs {
+    /**
+     * The name of the register.
+     */
     name: string;
 }
 
@@ -26,16 +29,37 @@ export interface GetRegistryArgs {
  * A collection of values returned by getRegistry.
  */
 export interface GetRegistryResult {
+    /**
+     * The description of the external container register.
+     */
     readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * If the certificate of the external container register can be verified.
+     */
     readonly insecure: boolean;
+    /**
+     * The name of the register.
+     */
     readonly name: string;
+    /**
+     * The id of the register within harbor.
+     */
     readonly registryId: number;
+    /**
+     * The health status of the external container register
+     */
     readonly status: string;
+    /**
+     * The type of the provider type.
+     */
     readonly type: string;
+    /**
+     * The url endpoint for the external container register
+     */
     readonly url: string;
 }
 /**
@@ -49,5 +73,8 @@ export function getRegistryOutput(args: GetRegistryOutputArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getRegistry.
  */
 export interface GetRegistryOutputArgs {
+    /**
+     * The name of the register.
+     */
     name: pulumi.Input<string>;
 }

@@ -6,10 +6,25 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
 export interface ReplicationFilter {
+    /**
+     * Matches or excludes the result. Can be one of the following. `matches`, `excludes`
+     */
     decoration?: pulumi.Input<string>;
+    /**
+     * Filter on the resource according to labels.
+     */
     labels?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Filter on the name of the resource.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Filter on the resource type. Can be one of the following types. `chart`, `artifact`
+     */
     resource?: pulumi.Input<string>;
+    /**
+     * Filter on the tag/version of the resource.
+     */
     tag?: pulumi.Input<string>;
 }
 
@@ -39,7 +54,7 @@ export interface RetentionPolicyRule {
      */
     nDaysSinceLastPush?: pulumi.Input<number>;
     /**
-     * For the repositories excuding.
+     * For the repositories excluding.
      */
     repoExcluding?: pulumi.Input<string>;
     /**
@@ -47,7 +62,7 @@ export interface RetentionPolicyRule {
      */
     repoMatching?: pulumi.Input<string>;
     /**
-     * For the tag excuding.
+     * For the tag excluding.
      */
     tagExcluding?: pulumi.Input<string>;
     /**
@@ -56,20 +71,33 @@ export interface RetentionPolicyRule {
     tagMatching?: pulumi.Input<string>;
     /**
      * with untagged artifacts. Defaults to `true`
-     *
-     * > Multiple tags or repositories must be provided as a comma-separated list wrapped into curly brackets `{ }`. Otherwise, the value is interpreted as a single value.
      */
     untaggedArtifacts?: pulumi.Input<boolean>;
 }
 
 export interface RobotAccountPermission {
     accesses: pulumi.Input<pulumi.Input<inputs.RobotAccountPermissionAccess>[]>;
+    /**
+     * Either `system` or `project`.
+     */
     kind: pulumi.Input<string>;
+    /**
+     * namespace is the name of your project. For kind `system` permissions, always use `/` as namespace. Use `*` to match all projects.
+     */
     namespace: pulumi.Input<string>;
 }
 
 export interface RobotAccountPermissionAccess {
+    /**
+     * Eg. `push`, `pull`, `read`, etc. Check [available actions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+     */
     action: pulumi.Input<string>;
+    /**
+     * Either `allow` or `deny`. Defaults to `allow`.
+     */
     effect?: pulumi.Input<string>;
+    /**
+     * Eg. `repository`, `labels`, etc. Check [available resources](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+     */
     resource: pulumi.Input<string>;
 }

@@ -33,12 +33,16 @@ type GetProjectsArgs struct {
 // A collection of values returned by getProjects.
 type GetProjectsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id                    string               `pulumi:"id"`
-	Name                  *string              `pulumi:"name"`
-	Projects              []GetProjectsProject `pulumi:"projects"`
-	Public                *bool                `pulumi:"public"`
-	Type                  *string              `pulumi:"type"`
-	VulnerabilityScanning *bool                `pulumi:"vulnerabilityScanning"`
+	Id string `pulumi:"id"`
+	// The name of the project.
+	Name     *string              `pulumi:"name"`
+	Projects []GetProjectsProject `pulumi:"projects"`
+	// If the project has public accessibility.
+	Public *bool `pulumi:"public"`
+	// The type of the project : Project or ProxyCache.
+	Type *string `pulumi:"type"`
+	// If the images will be scanned for vulnerabilities when push to harbor.
+	VulnerabilityScanning *bool `pulumi:"vulnerabilityScanning"`
 }
 
 func GetProjectsOutput(ctx *pulumi.Context, args GetProjectsOutputArgs, opts ...pulumi.InvokeOption) GetProjectsResultOutput {
@@ -86,6 +90,7 @@ func (o GetProjectsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the project.
 func (o GetProjectsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProjectsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -94,14 +99,17 @@ func (o GetProjectsResultOutput) Projects() GetProjectsProjectArrayOutput {
 	return o.ApplyT(func(v GetProjectsResult) []GetProjectsProject { return v.Projects }).(GetProjectsProjectArrayOutput)
 }
 
+// If the project has public accessibility.
 func (o GetProjectsResultOutput) Public() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetProjectsResult) *bool { return v.Public }).(pulumi.BoolPtrOutput)
 }
 
+// The type of the project : Project or ProxyCache.
 func (o GetProjectsResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProjectsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// If the images will be scanned for vulnerabilities when push to harbor.
 func (o GetProjectsResultOutput) VulnerabilityScanning() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetProjectsResult) *bool { return v.VulnerabilityScanning }).(pulumi.BoolPtrOutput)
 }

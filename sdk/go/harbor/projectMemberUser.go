@@ -16,14 +16,20 @@ import (
 //
 // ## Import
 //
-// Harbor project member user can be imported using the `project id` and `member id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200 <break>```<break><break>  `<break><break>
+// ```sh
+// $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200
+// ```
 type ProjectMemberUser struct {
 	pulumi.CustomResourceState
 
-	MemberId  pulumi.IntOutput    `pulumi:"memberId"`
+	// The member id of the member.
+	MemberId pulumi.IntOutput `pulumi:"memberId"`
+	// The project id of the project that the entity will have access to.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	Role      pulumi.StringOutput `pulumi:"role"`
-	UserName  pulumi.StringOutput `pulumi:"userName"`
+	// The permissions that the entity will be granted.
+	Role pulumi.StringOutput `pulumi:"role"`
+	// The name of the member entity.
+	UserName pulumi.StringOutput `pulumi:"userName"`
 }
 
 // NewProjectMemberUser registers a new resource with the given unique name, arguments, and options.
@@ -65,17 +71,25 @@ func GetProjectMemberUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectMemberUser resources.
 type projectMemberUserState struct {
-	MemberId  *int    `pulumi:"memberId"`
+	// The member id of the member.
+	MemberId *int `pulumi:"memberId"`
+	// The project id of the project that the entity will have access to.
 	ProjectId *string `pulumi:"projectId"`
-	Role      *string `pulumi:"role"`
-	UserName  *string `pulumi:"userName"`
+	// The permissions that the entity will be granted.
+	Role *string `pulumi:"role"`
+	// The name of the member entity.
+	UserName *string `pulumi:"userName"`
 }
 
 type ProjectMemberUserState struct {
-	MemberId  pulumi.IntPtrInput
+	// The member id of the member.
+	MemberId pulumi.IntPtrInput
+	// The project id of the project that the entity will have access to.
 	ProjectId pulumi.StringPtrInput
-	Role      pulumi.StringPtrInput
-	UserName  pulumi.StringPtrInput
+	// The permissions that the entity will be granted.
+	Role pulumi.StringPtrInput
+	// The name of the member entity.
+	UserName pulumi.StringPtrInput
 }
 
 func (ProjectMemberUserState) ElementType() reflect.Type {
@@ -83,16 +97,22 @@ func (ProjectMemberUserState) ElementType() reflect.Type {
 }
 
 type projectMemberUserArgs struct {
+	// The project id of the project that the entity will have access to.
 	ProjectId string `pulumi:"projectId"`
-	Role      string `pulumi:"role"`
-	UserName  string `pulumi:"userName"`
+	// The permissions that the entity will be granted.
+	Role string `pulumi:"role"`
+	// The name of the member entity.
+	UserName string `pulumi:"userName"`
 }
 
 // The set of arguments for constructing a ProjectMemberUser resource.
 type ProjectMemberUserArgs struct {
+	// The project id of the project that the entity will have access to.
 	ProjectId pulumi.StringInput
-	Role      pulumi.StringInput
-	UserName  pulumi.StringInput
+	// The permissions that the entity will be granted.
+	Role pulumi.StringInput
+	// The name of the member entity.
+	UserName pulumi.StringInput
 }
 
 func (ProjectMemberUserArgs) ElementType() reflect.Type {
@@ -182,18 +202,22 @@ func (o ProjectMemberUserOutput) ToProjectMemberUserOutputWithContext(ctx contex
 	return o
 }
 
+// The member id of the member.
 func (o ProjectMemberUserOutput) MemberId() pulumi.IntOutput {
 	return o.ApplyT(func(v *ProjectMemberUser) pulumi.IntOutput { return v.MemberId }).(pulumi.IntOutput)
 }
 
+// The project id of the project that the entity will have access to.
 func (o ProjectMemberUserOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectMemberUser) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
+// The permissions that the entity will be granted.
 func (o ProjectMemberUserOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectMemberUser) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
+// The name of the member entity.
 func (o ProjectMemberUserOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectMemberUser) pulumi.StringOutput { return v.UserName }).(pulumi.StringOutput)
 }

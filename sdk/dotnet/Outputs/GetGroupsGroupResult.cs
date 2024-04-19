@@ -18,12 +18,9 @@ namespace Pulumiverse.Harbor.Outputs
         /// The name of the group to filter by.
         /// </summary>
         public readonly string GroupName;
-        /// <summary>
-        /// The type of the group.
-        /// </summary>
         public readonly int GroupType;
         /// <summary>
-        /// The ID of the group.
+        /// The ID of this resource.
         /// </summary>
         public readonly int Id;
         /// <summary>

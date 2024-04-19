@@ -22,6 +22,9 @@ class ProjectMemberGroupArgs:
                  ldap_group_dn: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ProjectMemberGroup resource.
+        :param pulumi.Input[str] project_id: The project id of the project that the entity will have access to.
+        :param pulumi.Input[str] role: The permissions that the entity will be granted.
+        :param pulumi.Input[str] type: The group type.  Can be set to `"ldap"`, `"internal"` or `"oidc"`.
         """
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "role", role)
@@ -36,6 +39,9 @@ class ProjectMemberGroupArgs:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[str]:
+        """
+        The project id of the project that the entity will have access to.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -45,6 +51,9 @@ class ProjectMemberGroupArgs:
     @property
     @pulumi.getter
     def role(self) -> pulumi.Input[str]:
+        """
+        The permissions that the entity will be granted.
+        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -54,6 +63,9 @@ class ProjectMemberGroupArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
+        """
+        The group type.  Can be set to `"ldap"`, `"internal"` or `"oidc"`.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -100,6 +112,9 @@ class _ProjectMemberGroupState:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ProjectMemberGroup resources.
+        :param pulumi.Input[str] project_id: The project id of the project that the entity will have access to.
+        :param pulumi.Input[str] role: The permissions that the entity will be granted.
+        :param pulumi.Input[str] type: The group type.  Can be set to `"ldap"`, `"internal"` or `"oidc"`.
         """
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
@@ -155,6 +170,9 @@ class _ProjectMemberGroupState:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project id of the project that the entity will have access to.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -164,6 +182,9 @@ class _ProjectMemberGroupState:
     @property
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The permissions that the entity will be granted.
+        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -173,6 +194,9 @@ class _ProjectMemberGroupState:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The group type.  Can be set to `"ldap"`, `"internal"` or `"oidc"`.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -197,10 +221,15 @@ class ProjectMemberGroup(pulumi.CustomResource):
 
         ## Import
 
-        Harbor project member group can be imported using the `project id` and `member id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/projectMemberGroup:ProjectMemberGroup main /projects/10/members/200 <break>```<break><break>  `<break><break>
+        ```sh
+        $ pulumi import harbor:index/projectMemberGroup:ProjectMemberGroup main /projects/10/members/200
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] project_id: The project id of the project that the entity will have access to.
+        :param pulumi.Input[str] role: The permissions that the entity will be granted.
+        :param pulumi.Input[str] type: The group type.  Can be set to `"ldap"`, `"internal"` or `"oidc"`.
         """
         ...
     @overload
@@ -213,7 +242,9 @@ class ProjectMemberGroup(pulumi.CustomResource):
 
         ## Import
 
-        Harbor project member group can be imported using the `project id` and `member id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/projectMemberGroup:ProjectMemberGroup main /projects/10/members/200 <break>```<break><break>  `<break><break>
+        ```sh
+        $ pulumi import harbor:index/projectMemberGroup:ProjectMemberGroup main /projects/10/members/200
+        ```
 
         :param str resource_name: The name of the resource.
         :param ProjectMemberGroupArgs args: The arguments to use to populate this resource's properties.
@@ -282,6 +313,9 @@ class ProjectMemberGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] project_id: The project id of the project that the entity will have access to.
+        :param pulumi.Input[str] role: The permissions that the entity will be granted.
+        :param pulumi.Input[str] type: The group type.  Can be set to `"ldap"`, `"internal"` or `"oidc"`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -319,15 +353,24 @@ class ProjectMemberGroup(pulumi.CustomResource):
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
+        """
+        The project id of the project that the entity will have access to.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def role(self) -> pulumi.Output[str]:
+        """
+        The permissions that the entity will be granted.
+        """
         return pulumi.get(self, "role")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
+        """
+        The group type.  Can be set to `"ldap"`, `"internal"` or `"oidc"`.
+        """
         return pulumi.get(self, "type")
 

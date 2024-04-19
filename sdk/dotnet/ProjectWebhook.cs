@@ -17,31 +17,22 @@ namespace Pulumiverse.Harbor
     public partial class ProjectWebhook : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The address of the webhook
+        /// The address of the webhook.
         /// </summary>
         [Output("address")]
         public Output<string> Address { get; private set; } = null!;
 
-        /// <summary>
-        /// authentication header for you the webhook
-        /// </summary>
         [Output("authHeader")]
         public Output<string?> AuthHeader { get; private set; } = null!;
 
-        /// <summary>
-        /// _ (Optional, string) A description of the webhook
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// , To enable / disable the webhook. Default `true`
-        /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+        /// The type events you want to subscript to can be
         /// </summary>
         [Output("eventsTypes")]
         public Output<ImmutableArray<string>> EventsTypes { get; private set; } = null!;
@@ -53,20 +44,17 @@ namespace Pulumiverse.Harbor
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The notification type either `http` or `slack`
+        /// The notification type either `http` or `slack`.
         /// </summary>
         [Output("notifyType")]
         public Output<string> NotifyType { get; private set; } = null!;
 
         /// <summary>
-        /// The project id (**/projects/ID**) of the harbor that webhook related to.
+        /// The project id of the harbor that webhook related to.
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
 
-        /// <summary>
-        /// checks the for validate SSL certificate.
-        /// </summary>
         [Output("skipCertVerify")]
         public Output<bool?> SkipCertVerify { get; private set; } = null!;
 
@@ -118,26 +106,17 @@ namespace Pulumiverse.Harbor
     public sealed class ProjectWebhookArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The address of the webhook
+        /// The address of the webhook.
         /// </summary>
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
 
-        /// <summary>
-        /// authentication header for you the webhook
-        /// </summary>
         [Input("authHeader")]
         public Input<string>? AuthHeader { get; set; }
 
-        /// <summary>
-        /// _ (Optional, string) A description of the webhook
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// , To enable / disable the webhook. Default `true`
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
@@ -145,7 +124,7 @@ namespace Pulumiverse.Harbor
         private InputList<string>? _eventsTypes;
 
         /// <summary>
-        /// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+        /// The type events you want to subscript to can be
         /// </summary>
         public InputList<string> EventsTypes
         {
@@ -160,20 +139,17 @@ namespace Pulumiverse.Harbor
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The notification type either `http` or `slack`
+        /// The notification type either `http` or `slack`.
         /// </summary>
         [Input("notifyType", required: true)]
         public Input<string> NotifyType { get; set; } = null!;
 
         /// <summary>
-        /// The project id (**/projects/ID**) of the harbor that webhook related to.
+        /// The project id of the harbor that webhook related to.
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
-        /// <summary>
-        /// checks the for validate SSL certificate.
-        /// </summary>
         [Input("skipCertVerify")]
         public Input<bool>? SkipCertVerify { get; set; }
 
@@ -186,26 +162,17 @@ namespace Pulumiverse.Harbor
     public sealed class ProjectWebhookState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The address of the webhook
+        /// The address of the webhook.
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
 
-        /// <summary>
-        /// authentication header for you the webhook
-        /// </summary>
         [Input("authHeader")]
         public Input<string>? AuthHeader { get; set; }
 
-        /// <summary>
-        /// _ (Optional, string) A description of the webhook
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// , To enable / disable the webhook. Default `true`
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
@@ -213,7 +180,7 @@ namespace Pulumiverse.Harbor
         private InputList<string>? _eventsTypes;
 
         /// <summary>
-        /// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+        /// The type events you want to subscript to can be
         /// </summary>
         public InputList<string> EventsTypes
         {
@@ -228,20 +195,17 @@ namespace Pulumiverse.Harbor
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The notification type either `http` or `slack`
+        /// The notification type either `http` or `slack`.
         /// </summary>
         [Input("notifyType")]
         public Input<string>? NotifyType { get; set; }
 
         /// <summary>
-        /// The project id (**/projects/ID**) of the harbor that webhook related to.
+        /// The project id of the harbor that webhook related to.
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
-        /// <summary>
-        /// checks the for validate SSL certificate.
-        /// </summary>
         [Input("skipCertVerify")]
         public Input<bool>? SkipCertVerify { get; set; }
 

@@ -38,19 +38,16 @@ export interface GetGroupsArgs {
  */
 export interface GetGroupsResult {
     /**
-     * The name of the group.
+     * The name of the group to filter by.
      */
     readonly groupName?: string;
-    /**
-     * (Computed) A list of groups matching the previous arguments. Each `group` object provides the attributes documented below.
-     */
     readonly groups: outputs.GetGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * The LDAP group DN of the group.
+     * The LDAP group DN to filter by.
      */
     readonly ldapGroupDn?: string;
 }

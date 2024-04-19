@@ -12,21 +12,19 @@ import (
 	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
-// ## # Resource: RobotAccount
-//
-// Harbor supports different levels of robot accounts. Currently `system` and `project` level robot accounts are supported.
-//
 // ## Example Usage
 //
 // ### System Level
 // Introduced in harbor 2.2.0, system level robot accounts can have basically [all available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) in harbor and are not dependent on a single project.
+//
+// ### Global
 //
 // The above example, creates a system level robot account with permissions to
 // - permission to create labels on system level
 // - pull repository across all projects
 // - push repository to project "my-project-name"
 //
-// ### Project Level
+// ### Project
 //
 // Other than system level robot accounts, project level robot accounts can interact on project level only.
 // The [available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) are mostly the same as for system level robots.
@@ -37,19 +35,27 @@ import (
 //
 // ## Import
 //
-// Harbor robot account can be imported using the `robot account id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123 <break>```<break><break>  `<break><break>
+// ```sh
+// $ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123
+// ```
 type RobotAccount struct {
 	pulumi.CustomResourceState
 
-	Description pulumi.StringPtrOutput            `pulumi:"description"`
-	Disable     pulumi.BoolPtrOutput              `pulumi:"disable"`
-	Duration    pulumi.IntPtrOutput               `pulumi:"duration"`
-	FullName    pulumi.StringOutput               `pulumi:"fullName"`
-	Level       pulumi.StringOutput               `pulumi:"level"`
+	// The description of the robot account will be displayed in harbor.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Disables the robot account when set to `true`.
+	Disable pulumi.BoolPtrOutput `pulumi:"disable"`
+	// By default, the robot account will not expire. Set it to the amount of days until the account should expire.
+	Duration pulumi.IntPtrOutput `pulumi:"duration"`
+	FullName pulumi.StringOutput `pulumi:"fullName"`
+	// Level of the robot account, currently either `system` or `project`.
+	Level pulumi.StringOutput `pulumi:"level"`
+	// The name of the project that will be created in harbor.
 	Name        pulumi.StringOutput               `pulumi:"name"`
 	Permissions RobotAccountPermissionArrayOutput `pulumi:"permissions"`
 	RobotId     pulumi.StringOutput               `pulumi:"robotId"`
-	Secret      pulumi.StringOutput               `pulumi:"secret"`
+	// The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
+	Secret pulumi.StringOutput `pulumi:"secret"`
 }
 
 // NewRobotAccount registers a new resource with the given unique name, arguments, and options.
@@ -95,27 +101,39 @@ func GetRobotAccount(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RobotAccount resources.
 type robotAccountState struct {
-	Description *string                  `pulumi:"description"`
-	Disable     *bool                    `pulumi:"disable"`
-	Duration    *int                     `pulumi:"duration"`
-	FullName    *string                  `pulumi:"fullName"`
-	Level       *string                  `pulumi:"level"`
+	// The description of the robot account will be displayed in harbor.
+	Description *string `pulumi:"description"`
+	// Disables the robot account when set to `true`.
+	Disable *bool `pulumi:"disable"`
+	// By default, the robot account will not expire. Set it to the amount of days until the account should expire.
+	Duration *int    `pulumi:"duration"`
+	FullName *string `pulumi:"fullName"`
+	// Level of the robot account, currently either `system` or `project`.
+	Level *string `pulumi:"level"`
+	// The name of the project that will be created in harbor.
 	Name        *string                  `pulumi:"name"`
 	Permissions []RobotAccountPermission `pulumi:"permissions"`
 	RobotId     *string                  `pulumi:"robotId"`
-	Secret      *string                  `pulumi:"secret"`
+	// The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
+	Secret *string `pulumi:"secret"`
 }
 
 type RobotAccountState struct {
+	// The description of the robot account will be displayed in harbor.
 	Description pulumi.StringPtrInput
-	Disable     pulumi.BoolPtrInput
-	Duration    pulumi.IntPtrInput
-	FullName    pulumi.StringPtrInput
-	Level       pulumi.StringPtrInput
+	// Disables the robot account when set to `true`.
+	Disable pulumi.BoolPtrInput
+	// By default, the robot account will not expire. Set it to the amount of days until the account should expire.
+	Duration pulumi.IntPtrInput
+	FullName pulumi.StringPtrInput
+	// Level of the robot account, currently either `system` or `project`.
+	Level pulumi.StringPtrInput
+	// The name of the project that will be created in harbor.
 	Name        pulumi.StringPtrInput
 	Permissions RobotAccountPermissionArrayInput
 	RobotId     pulumi.StringPtrInput
-	Secret      pulumi.StringPtrInput
+	// The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
+	Secret pulumi.StringPtrInput
 }
 
 func (RobotAccountState) ElementType() reflect.Type {
@@ -123,24 +141,36 @@ func (RobotAccountState) ElementType() reflect.Type {
 }
 
 type robotAccountArgs struct {
-	Description *string                  `pulumi:"description"`
-	Disable     *bool                    `pulumi:"disable"`
-	Duration    *int                     `pulumi:"duration"`
-	Level       string                   `pulumi:"level"`
+	// The description of the robot account will be displayed in harbor.
+	Description *string `pulumi:"description"`
+	// Disables the robot account when set to `true`.
+	Disable *bool `pulumi:"disable"`
+	// By default, the robot account will not expire. Set it to the amount of days until the account should expire.
+	Duration *int `pulumi:"duration"`
+	// Level of the robot account, currently either `system` or `project`.
+	Level string `pulumi:"level"`
+	// The name of the project that will be created in harbor.
 	Name        *string                  `pulumi:"name"`
 	Permissions []RobotAccountPermission `pulumi:"permissions"`
-	Secret      *string                  `pulumi:"secret"`
+	// The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
+	Secret *string `pulumi:"secret"`
 }
 
 // The set of arguments for constructing a RobotAccount resource.
 type RobotAccountArgs struct {
+	// The description of the robot account will be displayed in harbor.
 	Description pulumi.StringPtrInput
-	Disable     pulumi.BoolPtrInput
-	Duration    pulumi.IntPtrInput
-	Level       pulumi.StringInput
+	// Disables the robot account when set to `true`.
+	Disable pulumi.BoolPtrInput
+	// By default, the robot account will not expire. Set it to the amount of days until the account should expire.
+	Duration pulumi.IntPtrInput
+	// Level of the robot account, currently either `system` or `project`.
+	Level pulumi.StringInput
+	// The name of the project that will be created in harbor.
 	Name        pulumi.StringPtrInput
 	Permissions RobotAccountPermissionArrayInput
-	Secret      pulumi.StringPtrInput
+	// The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
+	Secret pulumi.StringPtrInput
 }
 
 func (RobotAccountArgs) ElementType() reflect.Type {
@@ -230,14 +260,17 @@ func (o RobotAccountOutput) ToRobotAccountOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The description of the robot account will be displayed in harbor.
 func (o RobotAccountOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RobotAccount) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Disables the robot account when set to `true`.
 func (o RobotAccountOutput) Disable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RobotAccount) pulumi.BoolPtrOutput { return v.Disable }).(pulumi.BoolPtrOutput)
 }
 
+// By default, the robot account will not expire. Set it to the amount of days until the account should expire.
 func (o RobotAccountOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RobotAccount) pulumi.IntPtrOutput { return v.Duration }).(pulumi.IntPtrOutput)
 }
@@ -246,10 +279,12 @@ func (o RobotAccountOutput) FullName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RobotAccount) pulumi.StringOutput { return v.FullName }).(pulumi.StringOutput)
 }
 
+// Level of the robot account, currently either `system` or `project`.
 func (o RobotAccountOutput) Level() pulumi.StringOutput {
 	return o.ApplyT(func(v *RobotAccount) pulumi.StringOutput { return v.Level }).(pulumi.StringOutput)
 }
 
+// The name of the project that will be created in harbor.
 func (o RobotAccountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RobotAccount) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -262,6 +297,7 @@ func (o RobotAccountOutput) RobotId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RobotAccount) pulumi.StringOutput { return v.RobotId }).(pulumi.StringOutput)
 }
 
+// The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
 func (o RobotAccountOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v *RobotAccount) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
 }

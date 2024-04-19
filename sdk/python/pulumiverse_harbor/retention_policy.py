@@ -21,7 +21,6 @@ class RetentionPolicyArgs:
                  schedule: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RetentionPolicy resource.
-        :param pulumi.Input[Sequence[pulumi.Input['RetentionPolicyRuleArgs']]] rules: Al collection of rule blocks as documented below.
         :param pulumi.Input[str] scope: The project id of which you would like to apply this policy.
         :param pulumi.Input[str] schedule: The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
         """
@@ -33,9 +32,6 @@ class RetentionPolicyArgs:
     @property
     @pulumi.getter
     def rules(self) -> pulumi.Input[Sequence[pulumi.Input['RetentionPolicyRuleArgs']]]:
-        """
-        Al collection of rule blocks as documented below.
-        """
         return pulumi.get(self, "rules")
 
     @rules.setter
@@ -75,7 +71,6 @@ class _RetentionPolicyState:
                  scope: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RetentionPolicy resources.
-        :param pulumi.Input[Sequence[pulumi.Input['RetentionPolicyRuleArgs']]] rules: Al collection of rule blocks as documented below.
         :param pulumi.Input[str] schedule: The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
         :param pulumi.Input[str] scope: The project id of which you would like to apply this policy.
         """
@@ -89,9 +84,6 @@ class _RetentionPolicyState:
     @property
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RetentionPolicyRuleArgs']]]]:
-        """
-        Al collection of rule blocks as documented below.
-        """
         return pulumi.get(self, "rules")
 
     @rules.setter
@@ -137,11 +129,12 @@ class RetentionPolicy(pulumi.CustomResource):
 
         ## Import
 
-        Harbor retention policy can be imported using the `retention_policy id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10 <break>```<break><break>  `<break><break>
+        ```sh
+        $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RetentionPolicyRuleArgs']]]] rules: Al collection of rule blocks as documented below.
         :param pulumi.Input[str] schedule: The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
         :param pulumi.Input[str] scope: The project id of which you would like to apply this policy.
         """
@@ -156,7 +149,9 @@ class RetentionPolicy(pulumi.CustomResource):
 
         ## Import
 
-        Harbor retention policy can be imported using the `retention_policy id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10 <break>```<break><break>  `<break><break>
+        ```sh
+        $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10
+        ```
 
         :param str resource_name: The name of the resource.
         :param RetentionPolicyArgs args: The arguments to use to populate this resource's properties.
@@ -212,7 +207,6 @@ class RetentionPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RetentionPolicyRuleArgs']]]] rules: Al collection of rule blocks as documented below.
         :param pulumi.Input[str] schedule: The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
         :param pulumi.Input[str] scope: The project id of which you would like to apply this policy.
         """
@@ -228,9 +222,6 @@ class RetentionPolicy(pulumi.CustomResource):
     @property
     @pulumi.getter
     def rules(self) -> pulumi.Output[Sequence['outputs.RetentionPolicyRule']]:
-        """
-        Al collection of rule blocks as documented below.
-        """
         return pulumi.get(self, "rules")
 
     @property

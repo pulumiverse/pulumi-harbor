@@ -11,7 +11,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Harbor project can be imported using the `replication id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/replication:Replication main /replication/policies/1 <break>```<break><break>  `<break><break>
+ * ```sh
+ * $ pulumi import harbor:index/replication:Replication main /replication/policies/1
+ * ```
  */
 export class Replication extends pulumi.CustomResource {
     /**
@@ -42,18 +44,51 @@ export class Replication extends pulumi.CustomResource {
     }
 
     public readonly action!: pulumi.Output<string>;
+    /**
+     * Specify whether to delete the remote resources when locally deleted. (Default: `false`)
+     */
     public readonly deletion!: pulumi.Output<boolean | undefined>;
+    /**
+     * Description of the replication policy.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Specify the destination namespace. if empty, the resource will be put under the same namespace as the source.
+     */
     public readonly destNamespace!: pulumi.Output<string | undefined>;
+    /**
+     * Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `-1`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
+     */
     public readonly destNamespaceReplace!: pulumi.Output<number | undefined>;
+    /**
+     * Specify whether the replication is enabled. (Default: `true`)
+     */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * Specify whether to execute the replication rule if new or modified. (Default: `false`)
+     */
     public readonly executeOnChanged!: pulumi.Output<boolean | undefined>;
     public readonly filters!: pulumi.Output<outputs.ReplicationFilter[] | undefined>;
+    /**
+     * Filter on the name of the resource.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Specify whether to override the resources at the destination if a resources with the same name exist. (Default: `true`)
+     */
     public readonly override!: pulumi.Output<boolean | undefined>;
+    /**
+     * The registry ID of the Registry Endpoint.
+     */
     public readonly registryId!: pulumi.Output<number>;
     public /*out*/ readonly replicationPolicyId!: pulumi.Output<number>;
+    /**
+     * The scheduled time of when the container register will be push / pull. In cron base format. Hourly `"0 0 * * * *"`, Daily `"0 0 0 * * *"`, Monthly `"0 0 0 * * 0"`. Can be one of the following: `eventBased`, `manual`, `cron format` (Default: `manual`)
+     */
     public readonly schedule!: pulumi.Output<string | undefined>;
+    /**
+     * The Maximum network bandwidth in Kbps for each execution. Default is `-1` (unlimited).
+     */
     public readonly speed!: pulumi.Output<number | undefined>;
 
     /**
@@ -116,18 +151,51 @@ export class Replication extends pulumi.CustomResource {
  */
 export interface ReplicationState {
     action?: pulumi.Input<string>;
+    /**
+     * Specify whether to delete the remote resources when locally deleted. (Default: `false`)
+     */
     deletion?: pulumi.Input<boolean>;
+    /**
+     * Description of the replication policy.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Specify the destination namespace. if empty, the resource will be put under the same namespace as the source.
+     */
     destNamespace?: pulumi.Input<string>;
+    /**
+     * Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `-1`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
+     */
     destNamespaceReplace?: pulumi.Input<number>;
+    /**
+     * Specify whether the replication is enabled. (Default: `true`)
+     */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Specify whether to execute the replication rule if new or modified. (Default: `false`)
+     */
     executeOnChanged?: pulumi.Input<boolean>;
     filters?: pulumi.Input<pulumi.Input<inputs.ReplicationFilter>[]>;
+    /**
+     * Filter on the name of the resource.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Specify whether to override the resources at the destination if a resources with the same name exist. (Default: `true`)
+     */
     override?: pulumi.Input<boolean>;
+    /**
+     * The registry ID of the Registry Endpoint.
+     */
     registryId?: pulumi.Input<number>;
     replicationPolicyId?: pulumi.Input<number>;
+    /**
+     * The scheduled time of when the container register will be push / pull. In cron base format. Hourly `"0 0 * * * *"`, Daily `"0 0 0 * * *"`, Monthly `"0 0 0 * * 0"`. Can be one of the following: `eventBased`, `manual`, `cron format` (Default: `manual`)
+     */
     schedule?: pulumi.Input<string>;
+    /**
+     * The Maximum network bandwidth in Kbps for each execution. Default is `-1` (unlimited).
+     */
     speed?: pulumi.Input<number>;
 }
 
@@ -136,16 +204,49 @@ export interface ReplicationState {
  */
 export interface ReplicationArgs {
     action: pulumi.Input<string>;
+    /**
+     * Specify whether to delete the remote resources when locally deleted. (Default: `false`)
+     */
     deletion?: pulumi.Input<boolean>;
+    /**
+     * Description of the replication policy.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Specify the destination namespace. if empty, the resource will be put under the same namespace as the source.
+     */
     destNamespace?: pulumi.Input<string>;
+    /**
+     * Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `-1`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
+     */
     destNamespaceReplace?: pulumi.Input<number>;
+    /**
+     * Specify whether the replication is enabled. (Default: `true`)
+     */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Specify whether to execute the replication rule if new or modified. (Default: `false`)
+     */
     executeOnChanged?: pulumi.Input<boolean>;
     filters?: pulumi.Input<pulumi.Input<inputs.ReplicationFilter>[]>;
+    /**
+     * Filter on the name of the resource.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Specify whether to override the resources at the destination if a resources with the same name exist. (Default: `true`)
+     */
     override?: pulumi.Input<boolean>;
+    /**
+     * The registry ID of the Registry Endpoint.
+     */
     registryId: pulumi.Input<number>;
+    /**
+     * The scheduled time of when the container register will be push / pull. In cron base format. Hourly `"0 0 * * * *"`, Daily `"0 0 0 * * *"`, Monthly `"0 0 0 * * 0"`. Can be one of the following: `eventBased`, `manual`, `cron format` (Default: `manual`)
+     */
     schedule?: pulumi.Input<string>;
+    /**
+     * The Maximum network bandwidth in Kbps for each execution. Default is `-1` (unlimited).
+     */
     speed?: pulumi.Input<number>;
 }

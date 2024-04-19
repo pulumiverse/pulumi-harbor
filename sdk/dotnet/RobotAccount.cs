@@ -11,21 +11,19 @@ using Pulumi;
 namespace Pulumiverse.Harbor
 {
     /// <summary>
-    /// ## # Resource: harbor.RobotAccount
-    /// 
-    /// Harbor supports different levels of robot accounts. Currently `system` and `project` level robot accounts are supported.
-    /// 
     /// ## Example Usage
     /// 
     /// ### System Level
     /// Introduced in harbor 2.2.0, system level robot accounts can have basically [all available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) in harbor and are not dependent on a single project.
+    /// 
+    /// ### Global
     /// 
     /// The above example, creates a system level robot account with permissions to
     /// - permission to create labels on system level
     /// - pull repository across all projects
     /// - push repository to project "my-project-name"
     /// 
-    /// ### Project Level
+    /// ### Project
     /// 
     /// Other than system level robot accounts, project level robot accounts can interact on project level only.
     /// The [available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) are mostly the same as for system level robots.
@@ -36,26 +34,43 @@ namespace Pulumiverse.Harbor
     /// 
     /// ## Import
     /// 
-    /// Harbor robot account can be imported using the `robot account id` eg,&lt;break&gt;&lt;break&gt; ` &lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123 &lt;break&gt;```&lt;break&gt;&lt;break&gt;  `&lt;break&gt;&lt;break&gt;
+    /// ```sh
+    /// $ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123
+    /// ```
     /// </summary>
     [HarborResourceType("harbor:index/robotAccount:RobotAccount")]
     public partial class RobotAccount : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The description of the robot account will be displayed in harbor.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Disables the robot account when set to `true`.
+        /// </summary>
         [Output("disable")]
         public Output<bool?> Disable { get; private set; } = null!;
 
+        /// <summary>
+        /// By default, the robot account will not expire. Set it to the amount of days until the account should expire.
+        /// </summary>
         [Output("duration")]
         public Output<int?> Duration { get; private set; } = null!;
 
         [Output("fullName")]
         public Output<string> FullName { get; private set; } = null!;
 
+        /// <summary>
+        /// Level of the robot account, currently either `system` or `project`.
+        /// </summary>
         [Output("level")]
         public Output<string> Level { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the project that will be created in harbor.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -65,6 +80,9 @@ namespace Pulumiverse.Harbor
         [Output("robotId")]
         public Output<string> RobotId { get; private set; } = null!;
 
+        /// <summary>
+        /// The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
+        /// </summary>
         [Output("secret")]
         public Output<string> Secret { get; private set; } = null!;
 
@@ -119,18 +137,33 @@ namespace Pulumiverse.Harbor
 
     public sealed class RobotAccountArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of the robot account will be displayed in harbor.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Disables the robot account when set to `true`.
+        /// </summary>
         [Input("disable")]
         public Input<bool>? Disable { get; set; }
 
+        /// <summary>
+        /// By default, the robot account will not expire. Set it to the amount of days until the account should expire.
+        /// </summary>
         [Input("duration")]
         public Input<int>? Duration { get; set; }
 
+        /// <summary>
+        /// Level of the robot account, currently either `system` or `project`.
+        /// </summary>
         [Input("level", required: true)]
         public Input<string> Level { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the project that will be created in harbor.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -144,6 +177,10 @@ namespace Pulumiverse.Harbor
 
         [Input("secret")]
         private Input<string>? _secret;
+
+        /// <summary>
+        /// The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
+        /// </summary>
         public Input<string>? Secret
         {
             get => _secret;
@@ -162,21 +199,36 @@ namespace Pulumiverse.Harbor
 
     public sealed class RobotAccountState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of the robot account will be displayed in harbor.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Disables the robot account when set to `true`.
+        /// </summary>
         [Input("disable")]
         public Input<bool>? Disable { get; set; }
 
+        /// <summary>
+        /// By default, the robot account will not expire. Set it to the amount of days until the account should expire.
+        /// </summary>
         [Input("duration")]
         public Input<int>? Duration { get; set; }
 
         [Input("fullName")]
         public Input<string>? FullName { get; set; }
 
+        /// <summary>
+        /// Level of the robot account, currently either `system` or `project`.
+        /// </summary>
         [Input("level")]
         public Input<string>? Level { get; set; }
 
+        /// <summary>
+        /// The name of the project that will be created in harbor.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -193,6 +245,10 @@ namespace Pulumiverse.Harbor
 
         [Input("secret")]
         private Input<string>? _secret;
+
+        /// <summary>
+        /// The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
+        /// </summary>
         public Input<string>? Secret
         {
             get => _secret;

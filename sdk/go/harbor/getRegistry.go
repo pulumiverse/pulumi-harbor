@@ -24,20 +24,28 @@ func LookupRegistry(ctx *pulumi.Context, args *LookupRegistryArgs, opts ...pulum
 
 // A collection of arguments for invoking getRegistry.
 type LookupRegistryArgs struct {
+	// The name of the register.
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getRegistry.
 type LookupRegistryResult struct {
+	// The description of the external container register.
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string `pulumi:"id"`
-	Insecure   bool   `pulumi:"insecure"`
-	Name       string `pulumi:"name"`
-	RegistryId int    `pulumi:"registryId"`
-	Status     string `pulumi:"status"`
-	Type       string `pulumi:"type"`
-	Url        string `pulumi:"url"`
+	Id string `pulumi:"id"`
+	// If the certificate of the external container register can be verified.
+	Insecure bool `pulumi:"insecure"`
+	// The name of the register.
+	Name string `pulumi:"name"`
+	// The id of the register within harbor.
+	RegistryId int `pulumi:"registryId"`
+	// The health status of the external container register
+	Status string `pulumi:"status"`
+	// The type of the provider type.
+	Type string `pulumi:"type"`
+	// The url endpoint for the external container register
+	Url string `pulumi:"url"`
 }
 
 func LookupRegistryOutput(ctx *pulumi.Context, args LookupRegistryOutputArgs, opts ...pulumi.InvokeOption) LookupRegistryResultOutput {
@@ -55,6 +63,7 @@ func LookupRegistryOutput(ctx *pulumi.Context, args LookupRegistryOutputArgs, op
 
 // A collection of arguments for invoking getRegistry.
 type LookupRegistryOutputArgs struct {
+	// The name of the register.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -77,6 +86,7 @@ func (o LookupRegistryResultOutput) ToLookupRegistryResultOutputWithContext(ctx 
 	return o
 }
 
+// The description of the external container register.
 func (o LookupRegistryResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistryResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -86,26 +96,32 @@ func (o LookupRegistryResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistryResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// If the certificate of the external container register can be verified.
 func (o LookupRegistryResultOutput) Insecure() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupRegistryResult) bool { return v.Insecure }).(pulumi.BoolOutput)
 }
 
+// The name of the register.
 func (o LookupRegistryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistryResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The id of the register within harbor.
 func (o LookupRegistryResultOutput) RegistryId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupRegistryResult) int { return v.RegistryId }).(pulumi.IntOutput)
 }
 
+// The health status of the external container register
 func (o LookupRegistryResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistryResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// The type of the provider type.
 func (o LookupRegistryResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistryResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The url endpoint for the external container register
 func (o LookupRegistryResultOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistryResult) string { return v.Url }).(pulumi.StringOutput)
 }

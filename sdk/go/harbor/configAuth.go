@@ -12,9 +12,15 @@ import (
 	"github.com/pulumiverse/pulumi-harbor/sdk/v3/go/harbor/internal"
 )
 
+// ## Example Usage
+//
+// ### OIDC
+//
+// ### LDAP
 type ConfigAuth struct {
 	pulumi.CustomResourceState
 
+	// Harbor authentication mode. Can be `"oidcAuth"`, `"dbAuth"` or `"ldapAuth"`. (Default: `"dbAuth"`)
 	AuthMode            pulumi.StringOutput    `pulumi:"authMode"`
 	LdapBaseDn          pulumi.StringPtrOutput `pulumi:"ldapBaseDn"`
 	LdapFilter          pulumi.StringPtrOutput `pulumi:"ldapFilter"`
@@ -89,6 +95,7 @@ func GetConfigAuth(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ConfigAuth resources.
 type configAuthState struct {
+	// Harbor authentication mode. Can be `"oidcAuth"`, `"dbAuth"` or `"ldapAuth"`. (Default: `"dbAuth"`)
 	AuthMode            *string `pulumi:"authMode"`
 	LdapBaseDn          *string `pulumi:"ldapBaseDn"`
 	LdapFilter          *string `pulumi:"ldapFilter"`
@@ -120,6 +127,7 @@ type configAuthState struct {
 }
 
 type ConfigAuthState struct {
+	// Harbor authentication mode. Can be `"oidcAuth"`, `"dbAuth"` or `"ldapAuth"`. (Default: `"dbAuth"`)
 	AuthMode            pulumi.StringPtrInput
 	LdapBaseDn          pulumi.StringPtrInput
 	LdapFilter          pulumi.StringPtrInput
@@ -155,6 +163,7 @@ func (ConfigAuthState) ElementType() reflect.Type {
 }
 
 type configAuthArgs struct {
+	// Harbor authentication mode. Can be `"oidcAuth"`, `"dbAuth"` or `"ldapAuth"`. (Default: `"dbAuth"`)
 	AuthMode            string  `pulumi:"authMode"`
 	LdapBaseDn          *string `pulumi:"ldapBaseDn"`
 	LdapFilter          *string `pulumi:"ldapFilter"`
@@ -187,6 +196,7 @@ type configAuthArgs struct {
 
 // The set of arguments for constructing a ConfigAuth resource.
 type ConfigAuthArgs struct {
+	// Harbor authentication mode. Can be `"oidcAuth"`, `"dbAuth"` or `"ldapAuth"`. (Default: `"dbAuth"`)
 	AuthMode            pulumi.StringInput
 	LdapBaseDn          pulumi.StringPtrInput
 	LdapFilter          pulumi.StringPtrInput
@@ -304,6 +314,7 @@ func (o ConfigAuthOutput) ToConfigAuthOutputWithContext(ctx context.Context) Con
 	return o
 }
 
+// Harbor authentication mode. Can be `"oidcAuth"`, `"dbAuth"` or `"ldapAuth"`. (Default: `"dbAuth"`)
 func (o ConfigAuthOutput) AuthMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConfigAuth) pulumi.StringOutput { return v.AuthMode }).(pulumi.StringOutput)
 }

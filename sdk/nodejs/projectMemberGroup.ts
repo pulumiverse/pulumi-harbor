@@ -9,7 +9,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Harbor project member group can be imported using the `project id` and `member id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/projectMemberGroup:ProjectMemberGroup main /projects/10/members/200 <break>```<break><break>  `<break><break>
+ * ```sh
+ * $ pulumi import harbor:index/projectMemberGroup:ProjectMemberGroup main /projects/10/members/200
+ * ```
  */
 export class ProjectMemberGroup extends pulumi.CustomResource {
     /**
@@ -43,8 +45,17 @@ export class ProjectMemberGroup extends pulumi.CustomResource {
     public readonly groupName!: pulumi.Output<string | undefined>;
     public readonly ldapGroupDn!: pulumi.Output<string | undefined>;
     public /*out*/ readonly memberId!: pulumi.Output<number>;
+    /**
+     * The project id of the project that the entity will have access to.
+     */
     public readonly projectId!: pulumi.Output<string>;
+    /**
+     * The permissions that the entity will be granted.
+     */
     public readonly role!: pulumi.Output<string>;
+    /**
+     * The group type.  Can be set to `"ldap"`, `"internal"` or `"oidc"`.
+     */
     public readonly type!: pulumi.Output<string>;
 
     /**
@@ -99,8 +110,17 @@ export interface ProjectMemberGroupState {
     groupName?: pulumi.Input<string>;
     ldapGroupDn?: pulumi.Input<string>;
     memberId?: pulumi.Input<number>;
+    /**
+     * The project id of the project that the entity will have access to.
+     */
     projectId?: pulumi.Input<string>;
+    /**
+     * The permissions that the entity will be granted.
+     */
     role?: pulumi.Input<string>;
+    /**
+     * The group type.  Can be set to `"ldap"`, `"internal"` or `"oidc"`.
+     */
     type?: pulumi.Input<string>;
 }
 
@@ -111,7 +131,16 @@ export interface ProjectMemberGroupArgs {
     groupId?: pulumi.Input<number>;
     groupName?: pulumi.Input<string>;
     ldapGroupDn?: pulumi.Input<string>;
+    /**
+     * The project id of the project that the entity will have access to.
+     */
     projectId: pulumi.Input<string>;
+    /**
+     * The permissions that the entity will be granted.
+     */
     role: pulumi.Input<string>;
+    /**
+     * The group type.  Can be set to `"ldap"`, `"internal"` or `"oidc"`.
+     */
     type: pulumi.Input<string>;
 }

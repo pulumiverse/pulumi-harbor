@@ -4,6 +4,13 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ### OIDC
+ *
+ * ### LDAP
+ */
 export class ConfigAuth extends pulumi.CustomResource {
     /**
      * Get an existing ConfigAuth resource's state with the given name, ID, and optional extra
@@ -32,6 +39,9 @@ export class ConfigAuth extends pulumi.CustomResource {
         return obj['__pulumiType'] === ConfigAuth.__pulumiType;
     }
 
+    /**
+     * Harbor authentication mode. Can be `"oidcAuth"`, `"dbAuth"` or `"ldapAuth"`. (Default: `"dbAuth"`)
+     */
     public readonly authMode!: pulumi.Output<string>;
     public readonly ldapBaseDn!: pulumi.Output<string | undefined>;
     public readonly ldapFilter!: pulumi.Output<string | undefined>;
@@ -147,6 +157,9 @@ export class ConfigAuth extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ConfigAuth resources.
  */
 export interface ConfigAuthState {
+    /**
+     * Harbor authentication mode. Can be `"oidcAuth"`, `"dbAuth"` or `"ldapAuth"`. (Default: `"dbAuth"`)
+     */
     authMode?: pulumi.Input<string>;
     ldapBaseDn?: pulumi.Input<string>;
     ldapFilter?: pulumi.Input<string>;
@@ -181,6 +194,9 @@ export interface ConfigAuthState {
  * The set of arguments for constructing a ConfigAuth resource.
  */
 export interface ConfigAuthArgs {
+    /**
+     * Harbor authentication mode. Can be `"oidcAuth"`, `"dbAuth"` or `"ldapAuth"`. (Default: `"dbAuth"`)
+     */
     authMode: pulumi.Input<string>;
     ldapBaseDn?: pulumi.Input<string>;
     ldapFilter?: pulumi.Input<string>;

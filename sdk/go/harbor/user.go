@@ -16,16 +16,24 @@ import (
 //
 // ## Import
 //
-// An internal user harbor user can be imported using the `user id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/user:User main /users/19 <break>```<break><break>  `<break><break>
+// ```sh
+// $ pulumi import harbor:index/user:User main /users/19
+// ```
 type User struct {
 	pulumi.CustomResourceState
 
-	Admin    pulumi.BoolPtrOutput   `pulumi:"admin"`
-	Comment  pulumi.StringPtrOutput `pulumi:"comment"`
-	Email    pulumi.StringOutput    `pulumi:"email"`
-	FullName pulumi.StringOutput    `pulumi:"fullName"`
-	Password pulumi.StringOutput    `pulumi:"password"`
-	Username pulumi.StringOutput    `pulumi:"username"`
+	// If the user will have admin rights within Harbor (Default: `false`)
+	Admin pulumi.BoolPtrOutput `pulumi:"admin"`
+	// Any comments for that are need for the internal user.
+	Comment pulumi.StringPtrOutput `pulumi:"comment"`
+	// The email address of the internal user.
+	Email pulumi.StringOutput `pulumi:"email"`
+	// The Full Name of the internal user.
+	FullName pulumi.StringOutput `pulumi:"fullName"`
+	// The password for the internal user.
+	Password pulumi.StringOutput `pulumi:"password"`
+	// The username of the internal user.
+	Username pulumi.StringOutput `pulumi:"username"`
 }
 
 // NewUser registers a new resource with the given unique name, arguments, and options.
@@ -77,20 +85,32 @@ func GetUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering User resources.
 type userState struct {
-	Admin    *bool   `pulumi:"admin"`
-	Comment  *string `pulumi:"comment"`
-	Email    *string `pulumi:"email"`
+	// If the user will have admin rights within Harbor (Default: `false`)
+	Admin *bool `pulumi:"admin"`
+	// Any comments for that are need for the internal user.
+	Comment *string `pulumi:"comment"`
+	// The email address of the internal user.
+	Email *string `pulumi:"email"`
+	// The Full Name of the internal user.
 	FullName *string `pulumi:"fullName"`
+	// The password for the internal user.
 	Password *string `pulumi:"password"`
+	// The username of the internal user.
 	Username *string `pulumi:"username"`
 }
 
 type UserState struct {
-	Admin    pulumi.BoolPtrInput
-	Comment  pulumi.StringPtrInput
-	Email    pulumi.StringPtrInput
+	// If the user will have admin rights within Harbor (Default: `false`)
+	Admin pulumi.BoolPtrInput
+	// Any comments for that are need for the internal user.
+	Comment pulumi.StringPtrInput
+	// The email address of the internal user.
+	Email pulumi.StringPtrInput
+	// The Full Name of the internal user.
 	FullName pulumi.StringPtrInput
+	// The password for the internal user.
 	Password pulumi.StringPtrInput
+	// The username of the internal user.
 	Username pulumi.StringPtrInput
 }
 
@@ -99,21 +119,33 @@ func (UserState) ElementType() reflect.Type {
 }
 
 type userArgs struct {
-	Admin    *bool   `pulumi:"admin"`
-	Comment  *string `pulumi:"comment"`
-	Email    string  `pulumi:"email"`
-	FullName string  `pulumi:"fullName"`
-	Password string  `pulumi:"password"`
-	Username string  `pulumi:"username"`
+	// If the user will have admin rights within Harbor (Default: `false`)
+	Admin *bool `pulumi:"admin"`
+	// Any comments for that are need for the internal user.
+	Comment *string `pulumi:"comment"`
+	// The email address of the internal user.
+	Email string `pulumi:"email"`
+	// The Full Name of the internal user.
+	FullName string `pulumi:"fullName"`
+	// The password for the internal user.
+	Password string `pulumi:"password"`
+	// The username of the internal user.
+	Username string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a User resource.
 type UserArgs struct {
-	Admin    pulumi.BoolPtrInput
-	Comment  pulumi.StringPtrInput
-	Email    pulumi.StringInput
+	// If the user will have admin rights within Harbor (Default: `false`)
+	Admin pulumi.BoolPtrInput
+	// Any comments for that are need for the internal user.
+	Comment pulumi.StringPtrInput
+	// The email address of the internal user.
+	Email pulumi.StringInput
+	// The Full Name of the internal user.
 	FullName pulumi.StringInput
+	// The password for the internal user.
 	Password pulumi.StringInput
+	// The username of the internal user.
 	Username pulumi.StringInput
 }
 
@@ -204,26 +236,32 @@ func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
 }
 
+// If the user will have admin rights within Harbor (Default: `false`)
 func (o UserOutput) Admin() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.Admin }).(pulumi.BoolPtrOutput)
 }
 
+// Any comments for that are need for the internal user.
 func (o UserOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// The email address of the internal user.
 func (o UserOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }
 
+// The Full Name of the internal user.
 func (o UserOutput) FullName() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.FullName }).(pulumi.StringOutput)
 }
 
+// The password for the internal user.
 func (o UserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
+// The username of the internal user.
 func (o UserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }

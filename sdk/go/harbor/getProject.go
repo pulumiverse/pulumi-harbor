@@ -24,18 +24,24 @@ func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getProject.
 type LookupProjectArgs struct {
+	// The name of the project.
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getProject.
 type LookupProjectResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id                    string `pulumi:"id"`
-	Name                  string `pulumi:"name"`
-	ProjectId             int    `pulumi:"projectId"`
-	Public                bool   `pulumi:"public"`
-	Type                  string `pulumi:"type"`
-	VulnerabilityScanning bool   `pulumi:"vulnerabilityScanning"`
+	Id string `pulumi:"id"`
+	// The name of the project.
+	Name string `pulumi:"name"`
+	// The id of the project within harbor.
+	ProjectId int `pulumi:"projectId"`
+	// If the project has public accessibility.
+	Public bool `pulumi:"public"`
+	// The type of the project : Project or ProxyCache.
+	Type string `pulumi:"type"`
+	// If the images is scanned for vulnerabilities when push to harbor.
+	VulnerabilityScanning bool `pulumi:"vulnerabilityScanning"`
 }
 
 func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts ...pulumi.InvokeOption) LookupProjectResultOutput {
@@ -53,6 +59,7 @@ func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts
 
 // A collection of arguments for invoking getProject.
 type LookupProjectOutputArgs struct {
+	// The name of the project.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -80,22 +87,27 @@ func (o LookupProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The name of the project.
 func (o LookupProjectResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The id of the project within harbor.
 func (o LookupProjectResultOutput) ProjectId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupProjectResult) int { return v.ProjectId }).(pulumi.IntOutput)
 }
 
+// If the project has public accessibility.
 func (o LookupProjectResultOutput) Public() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.Public }).(pulumi.BoolOutput)
 }
 
+// The type of the project : Project or ProxyCache.
 func (o LookupProjectResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// If the images is scanned for vulnerabilities when push to harbor.
 func (o LookupProjectResultOutput) VulnerabilityScanning() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectResult) bool { return v.VulnerabilityScanning }).(pulumi.BoolOutput)
 }

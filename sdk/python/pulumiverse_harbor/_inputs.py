@@ -24,6 +24,13 @@ class ReplicationFilterArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[str]] = None,
                  tag: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] decoration: Matches or excludes the result. Can be one of the following. `matches`, `excludes`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] labels: Filter on the resource according to labels.
+        :param pulumi.Input[str] name: Filter on the name of the resource.
+        :param pulumi.Input[str] resource: Filter on the resource type. Can be one of the following types. `chart`, `artifact`
+        :param pulumi.Input[str] tag: Filter on the tag/version of the resource.
+        """
         if decoration is not None:
             pulumi.set(__self__, "decoration", decoration)
         if labels is not None:
@@ -38,6 +45,9 @@ class ReplicationFilterArgs:
     @property
     @pulumi.getter
     def decoration(self) -> Optional[pulumi.Input[str]]:
+        """
+        Matches or excludes the result. Can be one of the following. `matches`, `excludes`
+        """
         return pulumi.get(self, "decoration")
 
     @decoration.setter
@@ -47,6 +57,9 @@ class ReplicationFilterArgs:
     @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Filter on the resource according to labels.
+        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -56,6 +69,9 @@ class ReplicationFilterArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Filter on the name of the resource.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -65,6 +81,9 @@ class ReplicationFilterArgs:
     @property
     @pulumi.getter
     def resource(self) -> Optional[pulumi.Input[str]]:
+        """
+        Filter on the resource type. Can be one of the following types. `chart`, `artifact`
+        """
         return pulumi.get(self, "resource")
 
     @resource.setter
@@ -74,6 +93,9 @@ class ReplicationFilterArgs:
     @property
     @pulumi.getter
     def tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Filter on the tag/version of the resource.
+        """
         return pulumi.get(self, "tag")
 
     @tag.setter
@@ -102,13 +124,11 @@ class RetentionPolicyRuleArgs:
         :param pulumi.Input[int] most_recently_pushed: retain the most recently pushed n artifacts.
         :param pulumi.Input[int] n_days_since_last_pull: retains the artifacts pulled within the lasts n days.
         :param pulumi.Input[int] n_days_since_last_push: retains the artifacts pushed within the lasts n days.
-        :param pulumi.Input[str] repo_excluding: For the repositories excuding.
+        :param pulumi.Input[str] repo_excluding: For the repositories excluding.
         :param pulumi.Input[str] repo_matching: For the repositories matching.
-        :param pulumi.Input[str] tag_excluding: For the tag excuding.
+        :param pulumi.Input[str] tag_excluding: For the tag excluding.
         :param pulumi.Input[str] tag_matching: For the tag matching.
         :param pulumi.Input[bool] untagged_artifacts: with untagged artifacts. Defaults to `true`
-               
-               > Multiple tags or repositories must be provided as a comma-separated list wrapped into curly brackets `{ }`. Otherwise, the value is interpreted as a single value.
         """
         if always_retain is not None:
             pulumi.set(__self__, "always_retain", always_retain)
@@ -209,7 +229,7 @@ class RetentionPolicyRuleArgs:
     @pulumi.getter(name="repoExcluding")
     def repo_excluding(self) -> Optional[pulumi.Input[str]]:
         """
-        For the repositories excuding.
+        For the repositories excluding.
         """
         return pulumi.get(self, "repo_excluding")
 
@@ -233,7 +253,7 @@ class RetentionPolicyRuleArgs:
     @pulumi.getter(name="tagExcluding")
     def tag_excluding(self) -> Optional[pulumi.Input[str]]:
         """
-        For the tag excuding.
+        For the tag excluding.
         """
         return pulumi.get(self, "tag_excluding")
 
@@ -258,8 +278,6 @@ class RetentionPolicyRuleArgs:
     def untagged_artifacts(self) -> Optional[pulumi.Input[bool]]:
         """
         with untagged artifacts. Defaults to `true`
-
-        > Multiple tags or repositories must be provided as a comma-separated list wrapped into curly brackets `{ }`. Otherwise, the value is interpreted as a single value.
         """
         return pulumi.get(self, "untagged_artifacts")
 
@@ -274,6 +292,10 @@ class RobotAccountPermissionArgs:
                  accesses: pulumi.Input[Sequence[pulumi.Input['RobotAccountPermissionAccessArgs']]],
                  kind: pulumi.Input[str],
                  namespace: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] kind: Either `system` or `project`.
+        :param pulumi.Input[str] namespace: namespace is the name of your project. For kind `system` permissions, always use `/` as namespace. Use `*` to match all projects.
+        """
         pulumi.set(__self__, "accesses", accesses)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "namespace", namespace)
@@ -290,6 +312,9 @@ class RobotAccountPermissionArgs:
     @property
     @pulumi.getter
     def kind(self) -> pulumi.Input[str]:
+        """
+        Either `system` or `project`.
+        """
         return pulumi.get(self, "kind")
 
     @kind.setter
@@ -299,6 +324,9 @@ class RobotAccountPermissionArgs:
     @property
     @pulumi.getter
     def namespace(self) -> pulumi.Input[str]:
+        """
+        namespace is the name of your project. For kind `system` permissions, always use `/` as namespace. Use `*` to match all projects.
+        """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
@@ -312,6 +340,11 @@ class RobotAccountPermissionAccessArgs:
                  action: pulumi.Input[str],
                  resource: pulumi.Input[str],
                  effect: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] action: Eg. `push`, `pull`, `read`, etc. Check [available actions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+        :param pulumi.Input[str] resource: Eg. `repository`, `labels`, etc. Check [available resources](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+        :param pulumi.Input[str] effect: Either `allow` or `deny`. Defaults to `allow`.
+        """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "resource", resource)
         if effect is not None:
@@ -320,6 +353,9 @@ class RobotAccountPermissionAccessArgs:
     @property
     @pulumi.getter
     def action(self) -> pulumi.Input[str]:
+        """
+        Eg. `push`, `pull`, `read`, etc. Check [available actions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -329,6 +365,9 @@ class RobotAccountPermissionAccessArgs:
     @property
     @pulumi.getter
     def resource(self) -> pulumi.Input[str]:
+        """
+        Eg. `repository`, `labels`, etc. Check [available resources](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+        """
         return pulumi.get(self, "resource")
 
     @resource.setter
@@ -338,6 +377,9 @@ class RobotAccountPermissionAccessArgs:
     @property
     @pulumi.getter
     def effect(self) -> Optional[pulumi.Input[str]]:
+        """
+        Either `allow` or `deny`. Defaults to `allow`.
+        """
         return pulumi.get(self, "effect")
 
     @effect.setter

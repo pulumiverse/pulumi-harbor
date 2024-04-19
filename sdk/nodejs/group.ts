@@ -9,7 +9,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * An OIDC group can be imported using the `group id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/group:Group storage-group /usergroups/19 <break>```<break><break>  `<break><break>
+ * ```sh
+ * $ pulumi import harbor:index/group:Group storage-group /usergroups/19
+ * ```
  */
 export class Group extends pulumi.CustomResource {
     /**
@@ -39,8 +41,17 @@ export class Group extends pulumi.CustomResource {
         return obj['__pulumiType'] === Group.__pulumiType;
     }
 
+    /**
+     * The name of the group.
+     */
     public readonly groupName!: pulumi.Output<string>;
+    /**
+     * 3. Note: group type 3 is OIDC group.
+     */
     public readonly groupType!: pulumi.Output<number>;
+    /**
+     * The distinguished name of the group within AD/LDAP.
+     */
     public readonly ldapGroupDn!: pulumi.Output<string | undefined>;
 
     /**
@@ -80,8 +91,17 @@ export class Group extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Group resources.
  */
 export interface GroupState {
+    /**
+     * The name of the group.
+     */
     groupName?: pulumi.Input<string>;
+    /**
+     * 3. Note: group type 3 is OIDC group.
+     */
     groupType?: pulumi.Input<number>;
+    /**
+     * The distinguished name of the group within AD/LDAP.
+     */
     ldapGroupDn?: pulumi.Input<string>;
 }
 
@@ -89,7 +109,16 @@ export interface GroupState {
  * The set of arguments for constructing a Group resource.
  */
 export interface GroupArgs {
+    /**
+     * The name of the group.
+     */
     groupName: pulumi.Input<string>;
+    /**
+     * 3. Note: group type 3 is OIDC group.
+     */
     groupType: pulumi.Input<number>;
+    /**
+     * The distinguished name of the group within AD/LDAP.
+     */
     ldapGroupDn?: pulumi.Input<string>;
 }

@@ -15,12 +15,18 @@ import (
 type ConfigSystem struct {
 	pulumi.CustomResourceState
 
+	// Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
 	ProjectCreationRestriction pulumi.StringPtrOutput `pulumi:"projectCreationRestriction"`
-	ReadOnly                   pulumi.BoolPtrOutput   `pulumi:"readOnly"`
-	RobotNamePrefix            pulumi.StringPtrOutput `pulumi:"robotNamePrefix"`
-	RobotTokenExpiration       pulumi.IntPtrOutput    `pulumi:"robotTokenExpiration"`
-	ScannerSkipUpdatePulltime  pulumi.BoolPtrOutput   `pulumi:"scannerSkipUpdatePulltime"`
-	StoragePerProject          pulumi.IntPtrOutput    `pulumi:"storagePerProject"`
+	// Whether or not the system is in read only mode.
+	ReadOnly pulumi.BoolPtrOutput `pulumi:"readOnly"`
+	// Robot account prefix.
+	RobotNamePrefix pulumi.StringPtrOutput `pulumi:"robotNamePrefix"`
+	// The amount of time in days a robot account will expire.
+	RobotTokenExpiration pulumi.IntPtrOutput `pulumi:"robotTokenExpiration"`
+	// Whether or not to skip update pull time for scanner.
+	ScannerSkipUpdatePulltime pulumi.BoolPtrOutput `pulumi:"scannerSkipUpdatePulltime"`
+	// Default quota space per project in GIB. Default is -1 (unlimited).
+	StoragePerProject pulumi.IntPtrOutput `pulumi:"storagePerProject"`
 }
 
 // NewConfigSystem registers a new resource with the given unique name, arguments, and options.
@@ -53,21 +59,33 @@ func GetConfigSystem(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ConfigSystem resources.
 type configSystemState struct {
+	// Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
 	ProjectCreationRestriction *string `pulumi:"projectCreationRestriction"`
-	ReadOnly                   *bool   `pulumi:"readOnly"`
-	RobotNamePrefix            *string `pulumi:"robotNamePrefix"`
-	RobotTokenExpiration       *int    `pulumi:"robotTokenExpiration"`
-	ScannerSkipUpdatePulltime  *bool   `pulumi:"scannerSkipUpdatePulltime"`
-	StoragePerProject          *int    `pulumi:"storagePerProject"`
+	// Whether or not the system is in read only mode.
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Robot account prefix.
+	RobotNamePrefix *string `pulumi:"robotNamePrefix"`
+	// The amount of time in days a robot account will expire.
+	RobotTokenExpiration *int `pulumi:"robotTokenExpiration"`
+	// Whether or not to skip update pull time for scanner.
+	ScannerSkipUpdatePulltime *bool `pulumi:"scannerSkipUpdatePulltime"`
+	// Default quota space per project in GIB. Default is -1 (unlimited).
+	StoragePerProject *int `pulumi:"storagePerProject"`
 }
 
 type ConfigSystemState struct {
+	// Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
 	ProjectCreationRestriction pulumi.StringPtrInput
-	ReadOnly                   pulumi.BoolPtrInput
-	RobotNamePrefix            pulumi.StringPtrInput
-	RobotTokenExpiration       pulumi.IntPtrInput
-	ScannerSkipUpdatePulltime  pulumi.BoolPtrInput
-	StoragePerProject          pulumi.IntPtrInput
+	// Whether or not the system is in read only mode.
+	ReadOnly pulumi.BoolPtrInput
+	// Robot account prefix.
+	RobotNamePrefix pulumi.StringPtrInput
+	// The amount of time in days a robot account will expire.
+	RobotTokenExpiration pulumi.IntPtrInput
+	// Whether or not to skip update pull time for scanner.
+	ScannerSkipUpdatePulltime pulumi.BoolPtrInput
+	// Default quota space per project in GIB. Default is -1 (unlimited).
+	StoragePerProject pulumi.IntPtrInput
 }
 
 func (ConfigSystemState) ElementType() reflect.Type {
@@ -75,22 +93,34 @@ func (ConfigSystemState) ElementType() reflect.Type {
 }
 
 type configSystemArgs struct {
+	// Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
 	ProjectCreationRestriction *string `pulumi:"projectCreationRestriction"`
-	ReadOnly                   *bool   `pulumi:"readOnly"`
-	RobotNamePrefix            *string `pulumi:"robotNamePrefix"`
-	RobotTokenExpiration       *int    `pulumi:"robotTokenExpiration"`
-	ScannerSkipUpdatePulltime  *bool   `pulumi:"scannerSkipUpdatePulltime"`
-	StoragePerProject          *int    `pulumi:"storagePerProject"`
+	// Whether or not the system is in read only mode.
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Robot account prefix.
+	RobotNamePrefix *string `pulumi:"robotNamePrefix"`
+	// The amount of time in days a robot account will expire.
+	RobotTokenExpiration *int `pulumi:"robotTokenExpiration"`
+	// Whether or not to skip update pull time for scanner.
+	ScannerSkipUpdatePulltime *bool `pulumi:"scannerSkipUpdatePulltime"`
+	// Default quota space per project in GIB. Default is -1 (unlimited).
+	StoragePerProject *int `pulumi:"storagePerProject"`
 }
 
 // The set of arguments for constructing a ConfigSystem resource.
 type ConfigSystemArgs struct {
+	// Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
 	ProjectCreationRestriction pulumi.StringPtrInput
-	ReadOnly                   pulumi.BoolPtrInput
-	RobotNamePrefix            pulumi.StringPtrInput
-	RobotTokenExpiration       pulumi.IntPtrInput
-	ScannerSkipUpdatePulltime  pulumi.BoolPtrInput
-	StoragePerProject          pulumi.IntPtrInput
+	// Whether or not the system is in read only mode.
+	ReadOnly pulumi.BoolPtrInput
+	// Robot account prefix.
+	RobotNamePrefix pulumi.StringPtrInput
+	// The amount of time in days a robot account will expire.
+	RobotTokenExpiration pulumi.IntPtrInput
+	// Whether or not to skip update pull time for scanner.
+	ScannerSkipUpdatePulltime pulumi.BoolPtrInput
+	// Default quota space per project in GIB. Default is -1 (unlimited).
+	StoragePerProject pulumi.IntPtrInput
 }
 
 func (ConfigSystemArgs) ElementType() reflect.Type {
@@ -180,26 +210,32 @@ func (o ConfigSystemOutput) ToConfigSystemOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
 func (o ConfigSystemOutput) ProjectCreationRestriction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigSystem) pulumi.StringPtrOutput { return v.ProjectCreationRestriction }).(pulumi.StringPtrOutput)
 }
 
+// Whether or not the system is in read only mode.
 func (o ConfigSystemOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConfigSystem) pulumi.BoolPtrOutput { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
 
+// Robot account prefix.
 func (o ConfigSystemOutput) RobotNamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigSystem) pulumi.StringPtrOutput { return v.RobotNamePrefix }).(pulumi.StringPtrOutput)
 }
 
+// The amount of time in days a robot account will expire.
 func (o ConfigSystemOutput) RobotTokenExpiration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConfigSystem) pulumi.IntPtrOutput { return v.RobotTokenExpiration }).(pulumi.IntPtrOutput)
 }
 
+// Whether or not to skip update pull time for scanner.
 func (o ConfigSystemOutput) ScannerSkipUpdatePulltime() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConfigSystem) pulumi.BoolPtrOutput { return v.ScannerSkipUpdatePulltime }).(pulumi.BoolPtrOutput)
 }
 
+// Default quota space per project in GIB. Default is -1 (unlimited).
 func (o ConfigSystemOutput) StoragePerProject() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConfigSystem) pulumi.IntPtrOutput { return v.StoragePerProject }).(pulumi.IntPtrOutput)
 }

@@ -15,7 +15,9 @@ namespace Pulumiverse.Harbor
     /// 
     /// ## Import
     /// 
-    /// Harbor project member group can be imported using the `project id` and `member id` eg,&lt;break&gt;&lt;break&gt; ` &lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import harbor:index/projectMemberGroup:ProjectMemberGroup main /projects/10/members/200 &lt;break&gt;```&lt;break&gt;&lt;break&gt;  `&lt;break&gt;&lt;break&gt;
+    /// ```sh
+    /// $ pulumi import harbor:index/projectMemberGroup:ProjectMemberGroup main /projects/10/members/200
+    /// ```
     /// </summary>
     [HarborResourceType("harbor:index/projectMemberGroup:ProjectMemberGroup")]
     public partial class ProjectMemberGroup : global::Pulumi.CustomResource
@@ -32,12 +34,21 @@ namespace Pulumiverse.Harbor
         [Output("memberId")]
         public Output<int> MemberId { get; private set; } = null!;
 
+        /// <summary>
+        /// The project id of the project that the entity will have access to.
+        /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
 
+        /// <summary>
+        /// The permissions that the entity will be granted.
+        /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
 
+        /// <summary>
+        /// The group type.  Can be set to `"ldap"`, `"internal"` or `"oidc"`.
+        /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
@@ -97,12 +108,21 @@ namespace Pulumiverse.Harbor
         [Input("ldapGroupDn")]
         public Input<string>? LdapGroupDn { get; set; }
 
+        /// <summary>
+        /// The project id of the project that the entity will have access to.
+        /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
+        /// <summary>
+        /// The permissions that the entity will be granted.
+        /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
+        /// <summary>
+        /// The group type.  Can be set to `"ldap"`, `"internal"` or `"oidc"`.
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
@@ -126,12 +146,21 @@ namespace Pulumiverse.Harbor
         [Input("memberId")]
         public Input<int>? MemberId { get; set; }
 
+        /// <summary>
+        /// The project id of the project that the entity will have access to.
+        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
+        /// <summary>
+        /// The permissions that the entity will be granted.
+        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
+        /// <summary>
+        /// The group type.  Can be set to `"ldap"`, `"internal"` or `"oidc"`.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

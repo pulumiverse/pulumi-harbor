@@ -16,11 +16,23 @@ namespace Pulumiverse.Harbor
     [HarborResourceType("harbor:index/garbageCollection:GarbageCollection")]
     public partial class GarbageCollection : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Allow garbage collection on untagged artifacts.
+        /// </summary>
         [Output("deleteUntagged")]
         public Output<bool?> DeleteUntagged { get; private set; } = null!;
 
+        /// <summary>
+        /// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        /// </summary>
         [Output("schedule")]
         public Output<string> Schedule { get; private set; } = null!;
+
+        /// <summary>
+        /// Number of workers to run the garbage collection, value must be between 1 and 5.
+        /// </summary>
+        [Output("workers")]
+        public Output<int?> Workers { get; private set; } = null!;
 
 
         /// <summary>
@@ -69,11 +81,23 @@ namespace Pulumiverse.Harbor
 
     public sealed class GarbageCollectionArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Allow garbage collection on untagged artifacts.
+        /// </summary>
         [Input("deleteUntagged")]
         public Input<bool>? DeleteUntagged { get; set; }
 
+        /// <summary>
+        /// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        /// </summary>
         [Input("schedule", required: true)]
         public Input<string> Schedule { get; set; } = null!;
+
+        /// <summary>
+        /// Number of workers to run the garbage collection, value must be between 1 and 5.
+        /// </summary>
+        [Input("workers")]
+        public Input<int>? Workers { get; set; }
 
         public GarbageCollectionArgs()
         {
@@ -83,11 +107,23 @@ namespace Pulumiverse.Harbor
 
     public sealed class GarbageCollectionState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Allow garbage collection on untagged artifacts.
+        /// </summary>
         [Input("deleteUntagged")]
         public Input<bool>? DeleteUntagged { get; set; }
 
+        /// <summary>
+        /// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
+
+        /// <summary>
+        /// Number of workers to run the garbage collection, value must be between 1 and 5.
+        /// </summary>
+        [Input("workers")]
+        public Input<int>? Workers { get; set; }
 
         public GarbageCollectionState()
         {

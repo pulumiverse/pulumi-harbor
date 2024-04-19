@@ -15,26 +15,46 @@ namespace Pulumiverse.Harbor
     /// 
     /// ## Import
     /// 
-    /// An internal user harbor user can be imported using the `user id` eg,&lt;break&gt;&lt;break&gt; ` &lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import harbor:index/user:User main /users/19 &lt;break&gt;```&lt;break&gt;&lt;break&gt;  `&lt;break&gt;&lt;break&gt;
+    /// ```sh
+    /// $ pulumi import harbor:index/user:User main /users/19
+    /// ```
     /// </summary>
     [HarborResourceType("harbor:index/user:User")]
     public partial class User : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// If the user will have admin rights within Harbor (Default: `false`)
+        /// </summary>
         [Output("admin")]
         public Output<bool?> Admin { get; private set; } = null!;
 
+        /// <summary>
+        /// Any comments for that are need for the internal user.
+        /// </summary>
         [Output("comment")]
         public Output<string?> Comment { get; private set; } = null!;
 
+        /// <summary>
+        /// The email address of the internal user.
+        /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
 
+        /// <summary>
+        /// The Full Name of the internal user.
+        /// </summary>
         [Output("fullName")]
         public Output<string> FullName { get; private set; } = null!;
 
+        /// <summary>
+        /// The password for the internal user.
+        /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
 
+        /// <summary>
+        /// The username of the internal user.
+        /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
 
@@ -89,20 +109,36 @@ namespace Pulumiverse.Harbor
 
     public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// If the user will have admin rights within Harbor (Default: `false`)
+        /// </summary>
         [Input("admin")]
         public Input<bool>? Admin { get; set; }
 
+        /// <summary>
+        /// Any comments for that are need for the internal user.
+        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        /// <summary>
+        /// The email address of the internal user.
+        /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
 
+        /// <summary>
+        /// The Full Name of the internal user.
+        /// </summary>
         [Input("fullName", required: true)]
         public Input<string> FullName { get; set; } = null!;
 
         [Input("password", required: true)]
         private Input<string>? _password;
+
+        /// <summary>
+        /// The password for the internal user.
+        /// </summary>
         public Input<string>? Password
         {
             get => _password;
@@ -113,6 +149,9 @@ namespace Pulumiverse.Harbor
             }
         }
 
+        /// <summary>
+        /// The username of the internal user.
+        /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
 
@@ -124,20 +163,36 @@ namespace Pulumiverse.Harbor
 
     public sealed class UserState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// If the user will have admin rights within Harbor (Default: `false`)
+        /// </summary>
         [Input("admin")]
         public Input<bool>? Admin { get; set; }
 
+        /// <summary>
+        /// Any comments for that are need for the internal user.
+        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        /// <summary>
+        /// The email address of the internal user.
+        /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
+        /// <summary>
+        /// The Full Name of the internal user.
+        /// </summary>
         [Input("fullName")]
         public Input<string>? FullName { get; set; }
 
         [Input("password")]
         private Input<string>? _password;
+
+        /// <summary>
+        /// The password for the internal user.
+        /// </summary>
         public Input<string>? Password
         {
             get => _password;
@@ -148,6 +203,9 @@ namespace Pulumiverse.Harbor
             }
         }
 
+        /// <summary>
+        /// The username of the internal user.
+        /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 

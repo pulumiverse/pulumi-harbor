@@ -25,6 +25,12 @@ class RobotAccountArgs:
                  secret: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RobotAccount resource.
+        :param pulumi.Input[str] level: Level of the robot account, currently either `system` or `project`.
+        :param pulumi.Input[str] description: The description of the robot account will be displayed in harbor.
+        :param pulumi.Input[bool] disable: Disables the robot account when set to `true`.
+        :param pulumi.Input[int] duration: By default, the robot account will not expire. Set it to the amount of days until the account should expire.
+        :param pulumi.Input[str] name: The name of the project that will be created in harbor.
+        :param pulumi.Input[str] secret: The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
         """
         pulumi.set(__self__, "level", level)
         pulumi.set(__self__, "permissions", permissions)
@@ -42,6 +48,9 @@ class RobotAccountArgs:
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input[str]:
+        """
+        Level of the robot account, currently either `system` or `project`.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -60,6 +69,9 @@ class RobotAccountArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the robot account will be displayed in harbor.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -69,6 +81,9 @@ class RobotAccountArgs:
     @property
     @pulumi.getter
     def disable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disables the robot account when set to `true`.
+        """
         return pulumi.get(self, "disable")
 
     @disable.setter
@@ -78,6 +93,9 @@ class RobotAccountArgs:
     @property
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        By default, the robot account will not expire. Set it to the amount of days until the account should expire.
+        """
         return pulumi.get(self, "duration")
 
     @duration.setter
@@ -87,6 +105,9 @@ class RobotAccountArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the project that will be created in harbor.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -96,6 +117,9 @@ class RobotAccountArgs:
     @property
     @pulumi.getter
     def secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
+        """
         return pulumi.get(self, "secret")
 
     @secret.setter
@@ -117,6 +141,12 @@ class _RobotAccountState:
                  secret: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RobotAccount resources.
+        :param pulumi.Input[str] description: The description of the robot account will be displayed in harbor.
+        :param pulumi.Input[bool] disable: Disables the robot account when set to `true`.
+        :param pulumi.Input[int] duration: By default, the robot account will not expire. Set it to the amount of days until the account should expire.
+        :param pulumi.Input[str] level: Level of the robot account, currently either `system` or `project`.
+        :param pulumi.Input[str] name: The name of the project that will be created in harbor.
+        :param pulumi.Input[str] secret: The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -140,6 +170,9 @@ class _RobotAccountState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the robot account will be displayed in harbor.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -149,6 +182,9 @@ class _RobotAccountState:
     @property
     @pulumi.getter
     def disable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disables the robot account when set to `true`.
+        """
         return pulumi.get(self, "disable")
 
     @disable.setter
@@ -158,6 +194,9 @@ class _RobotAccountState:
     @property
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        By default, the robot account will not expire. Set it to the amount of days until the account should expire.
+        """
         return pulumi.get(self, "duration")
 
     @duration.setter
@@ -176,6 +215,9 @@ class _RobotAccountState:
     @property
     @pulumi.getter
     def level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Level of the robot account, currently either `system` or `project`.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -185,6 +227,9 @@ class _RobotAccountState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the project that will be created in harbor.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -212,6 +257,9 @@ class _RobotAccountState:
     @property
     @pulumi.getter
     def secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
+        """
         return pulumi.get(self, "secret")
 
     @secret.setter
@@ -233,21 +281,19 @@ class RobotAccount(pulumi.CustomResource):
                  secret: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## # Resource: RobotAccount
-
-        Harbor supports different levels of robot accounts. Currently `system` and `project` level robot accounts are supported.
-
         ## Example Usage
 
         ### System Level
         Introduced in harbor 2.2.0, system level robot accounts can have basically [all available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) in harbor and are not dependent on a single project.
+
+        ### Global
 
         The above example, creates a system level robot account with permissions to
         - permission to create labels on system level
         - pull repository across all projects
         - push repository to project "my-project-name"
 
-        ### Project Level
+        ### Project
 
         Other than system level robot accounts, project level robot accounts can interact on project level only.
         The [available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) are mostly the same as for system level robots.
@@ -258,10 +304,18 @@ class RobotAccount(pulumi.CustomResource):
 
         ## Import
 
-        Harbor robot account can be imported using the `robot account id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123 <break>```<break><break>  `<break><break>
+        ```sh
+        $ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description of the robot account will be displayed in harbor.
+        :param pulumi.Input[bool] disable: Disables the robot account when set to `true`.
+        :param pulumi.Input[int] duration: By default, the robot account will not expire. Set it to the amount of days until the account should expire.
+        :param pulumi.Input[str] level: Level of the robot account, currently either `system` or `project`.
+        :param pulumi.Input[str] name: The name of the project that will be created in harbor.
+        :param pulumi.Input[str] secret: The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
         """
         ...
     @overload
@@ -270,21 +324,19 @@ class RobotAccount(pulumi.CustomResource):
                  args: RobotAccountArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## # Resource: RobotAccount
-
-        Harbor supports different levels of robot accounts. Currently `system` and `project` level robot accounts are supported.
-
         ## Example Usage
 
         ### System Level
         Introduced in harbor 2.2.0, system level robot accounts can have basically [all available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) in harbor and are not dependent on a single project.
+
+        ### Global
 
         The above example, creates a system level robot account with permissions to
         - permission to create labels on system level
         - pull repository across all projects
         - push repository to project "my-project-name"
 
-        ### Project Level
+        ### Project
 
         Other than system level robot accounts, project level robot accounts can interact on project level only.
         The [available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) are mostly the same as for system level robots.
@@ -295,7 +347,9 @@ class RobotAccount(pulumi.CustomResource):
 
         ## Import
 
-        Harbor robot account can be imported using the `robot account id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123 <break>```<break><break>  `<break><break>
+        ```sh
+        $ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123
+        ```
 
         :param str resource_name: The name of the resource.
         :param RobotAccountArgs args: The arguments to use to populate this resource's properties.
@@ -369,6 +423,12 @@ class RobotAccount(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description of the robot account will be displayed in harbor.
+        :param pulumi.Input[bool] disable: Disables the robot account when set to `true`.
+        :param pulumi.Input[int] duration: By default, the robot account will not expire. Set it to the amount of days until the account should expire.
+        :param pulumi.Input[str] level: Level of the robot account, currently either `system` or `project`.
+        :param pulumi.Input[str] name: The name of the project that will be created in harbor.
+        :param pulumi.Input[str] secret: The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -388,16 +448,25 @@ class RobotAccount(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        The description of the robot account will be displayed in harbor.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def disable(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Disables the robot account when set to `true`.
+        """
         return pulumi.get(self, "disable")
 
     @property
     @pulumi.getter
     def duration(self) -> pulumi.Output[Optional[int]]:
+        """
+        By default, the robot account will not expire. Set it to the amount of days until the account should expire.
+        """
         return pulumi.get(self, "duration")
 
     @property
@@ -408,11 +477,17 @@ class RobotAccount(pulumi.CustomResource):
     @property
     @pulumi.getter
     def level(self) -> pulumi.Output[str]:
+        """
+        Level of the robot account, currently either `system` or `project`.
+        """
         return pulumi.get(self, "level")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the project that will be created in harbor.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -428,5 +503,8 @@ class RobotAccount(pulumi.CustomResource):
     @property
     @pulumi.getter
     def secret(self) -> pulumi.Output[str]:
+        """
+        The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
+        """
         return pulumi.get(self, "secret")
 

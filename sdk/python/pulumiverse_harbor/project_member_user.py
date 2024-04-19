@@ -19,6 +19,9 @@ class ProjectMemberUserArgs:
                  user_name: pulumi.Input[str]):
         """
         The set of arguments for constructing a ProjectMemberUser resource.
+        :param pulumi.Input[str] project_id: The project id of the project that the entity will have access to.
+        :param pulumi.Input[str] role: The permissions that the entity will be granted.
+        :param pulumi.Input[str] user_name: The name of the member entity.
         """
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "role", role)
@@ -27,6 +30,9 @@ class ProjectMemberUserArgs:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[str]:
+        """
+        The project id of the project that the entity will have access to.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -36,6 +42,9 @@ class ProjectMemberUserArgs:
     @property
     @pulumi.getter
     def role(self) -> pulumi.Input[str]:
+        """
+        The permissions that the entity will be granted.
+        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -45,6 +54,9 @@ class ProjectMemberUserArgs:
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Input[str]:
+        """
+        The name of the member entity.
+        """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
@@ -61,6 +73,10 @@ class _ProjectMemberUserState:
                  user_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ProjectMemberUser resources.
+        :param pulumi.Input[int] member_id: The member id of the member.
+        :param pulumi.Input[str] project_id: The project id of the project that the entity will have access to.
+        :param pulumi.Input[str] role: The permissions that the entity will be granted.
+        :param pulumi.Input[str] user_name: The name of the member entity.
         """
         if member_id is not None:
             pulumi.set(__self__, "member_id", member_id)
@@ -74,6 +90,9 @@ class _ProjectMemberUserState:
     @property
     @pulumi.getter(name="memberId")
     def member_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The member id of the member.
+        """
         return pulumi.get(self, "member_id")
 
     @member_id.setter
@@ -83,6 +102,9 @@ class _ProjectMemberUserState:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project id of the project that the entity will have access to.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -92,6 +114,9 @@ class _ProjectMemberUserState:
     @property
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The permissions that the entity will be granted.
+        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -101,6 +126,9 @@ class _ProjectMemberUserState:
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the member entity.
+        """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
@@ -122,10 +150,15 @@ class ProjectMemberUser(pulumi.CustomResource):
 
         ## Import
 
-        Harbor project member user can be imported using the `project id` and `member id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200 <break>```<break><break>  `<break><break>
+        ```sh
+        $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] project_id: The project id of the project that the entity will have access to.
+        :param pulumi.Input[str] role: The permissions that the entity will be granted.
+        :param pulumi.Input[str] user_name: The name of the member entity.
         """
         ...
     @overload
@@ -138,7 +171,9 @@ class ProjectMemberUser(pulumi.CustomResource):
 
         ## Import
 
-        Harbor project member user can be imported using the `project id` and `member id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200 <break>```<break><break>  `<break><break>
+        ```sh
+        $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200
+        ```
 
         :param str resource_name: The name of the resource.
         :param ProjectMemberUserArgs args: The arguments to use to populate this resource's properties.
@@ -198,6 +233,10 @@ class ProjectMemberUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] member_id: The member id of the member.
+        :param pulumi.Input[str] project_id: The project id of the project that the entity will have access to.
+        :param pulumi.Input[str] role: The permissions that the entity will be granted.
+        :param pulumi.Input[str] user_name: The name of the member entity.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -212,20 +251,32 @@ class ProjectMemberUser(pulumi.CustomResource):
     @property
     @pulumi.getter(name="memberId")
     def member_id(self) -> pulumi.Output[int]:
+        """
+        The member id of the member.
+        """
         return pulumi.get(self, "member_id")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
+        """
+        The project id of the project that the entity will have access to.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def role(self) -> pulumi.Output[str]:
+        """
+        The permissions that the entity will be granted.
+        """
         return pulumi.get(self, "role")
 
     @property
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Output[str]:
+        """
+        The name of the member entity.
+        """
         return pulumi.get(self, "user_name")
 

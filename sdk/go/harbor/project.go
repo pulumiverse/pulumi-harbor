@@ -13,35 +13,39 @@ import (
 
 // ## Example Usage
 //
-// ## Harbor project example as proxy cache
+// ### Hosted
+//
+// ### Proxy
 //
 // ## Import
 //
-// Harbor project can be imported using the `project id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/project:Project main /projects/1 <break>```<break><break>  `<break><break>
+// ```sh
+// $ pulumi import harbor:index/project:Project main /projects/1
+// ```
 type Project struct {
 	pulumi.CustomResourceState
 
 	// Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
 	CveAllowlists pulumi.StringArrayOutput `pulumi:"cveAllowlists"`
-	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
+	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
 	DeploymentSecurity pulumi.StringPtrOutput `pulumi:"deploymentSecurity"`
-	// Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
+	// Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
 	EnableContentTrust pulumi.BoolPtrOutput `pulumi:"enableContentTrust"`
-	// Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+	// Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `false`)
 	EnableContentTrustCosign pulumi.BoolPtrOutput `pulumi:"enableContentTrustCosign"`
 	// A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// The name of the project that will be created in harbor.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The id of the project with harbor.
+	// The project id of this resource.
 	ProjectId pulumi.IntOutput `pulumi:"projectId"`
-	// The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
+	// The project will be public accessibility.(Default: `false`)
 	Public pulumi.BoolPtrOutput `pulumi:"public"`
-	// To enable project as Proxy Cache
+	// To enable project as Proxy Cache.
 	RegistryId pulumi.IntOutput `pulumi:"registryId"`
-	// The storage quota of the project in GB's
+	// The storage quota of the project in GB's.
 	StorageQuota pulumi.IntPtrOutput `pulumi:"storageQuota"`
-	// Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
+	// Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
 	VulnerabilityScanning pulumi.BoolPtrOutput `pulumi:"vulnerabilityScanning"`
 }
 
@@ -77,50 +81,50 @@ func GetProject(ctx *pulumi.Context,
 type projectState struct {
 	// Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
 	CveAllowlists []string `pulumi:"cveAllowlists"`
-	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
+	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
 	DeploymentSecurity *string `pulumi:"deploymentSecurity"`
-	// Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
+	// Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
 	EnableContentTrust *bool `pulumi:"enableContentTrust"`
-	// Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+	// Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `false`)
 	EnableContentTrustCosign *bool `pulumi:"enableContentTrustCosign"`
 	// A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The name of the project that will be created in harbor.
 	Name *string `pulumi:"name"`
-	// The id of the project with harbor.
+	// The project id of this resource.
 	ProjectId *int `pulumi:"projectId"`
-	// The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
+	// The project will be public accessibility.(Default: `false`)
 	Public *bool `pulumi:"public"`
-	// To enable project as Proxy Cache
+	// To enable project as Proxy Cache.
 	RegistryId *int `pulumi:"registryId"`
-	// The storage quota of the project in GB's
+	// The storage quota of the project in GB's.
 	StorageQuota *int `pulumi:"storageQuota"`
-	// Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
+	// Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
 	VulnerabilityScanning *bool `pulumi:"vulnerabilityScanning"`
 }
 
 type ProjectState struct {
 	// Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
 	CveAllowlists pulumi.StringArrayInput
-	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
+	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
 	DeploymentSecurity pulumi.StringPtrInput
-	// Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
+	// Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
 	EnableContentTrust pulumi.BoolPtrInput
-	// Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+	// Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `false`)
 	EnableContentTrustCosign pulumi.BoolPtrInput
 	// A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
 	ForceDestroy pulumi.BoolPtrInput
 	// The name of the project that will be created in harbor.
 	Name pulumi.StringPtrInput
-	// The id of the project with harbor.
+	// The project id of this resource.
 	ProjectId pulumi.IntPtrInput
-	// The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
+	// The project will be public accessibility.(Default: `false`)
 	Public pulumi.BoolPtrInput
-	// To enable project as Proxy Cache
+	// To enable project as Proxy Cache.
 	RegistryId pulumi.IntPtrInput
-	// The storage quota of the project in GB's
+	// The storage quota of the project in GB's.
 	StorageQuota pulumi.IntPtrInput
-	// Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
+	// Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
 	VulnerabilityScanning pulumi.BoolPtrInput
 }
 
@@ -131,23 +135,23 @@ func (ProjectState) ElementType() reflect.Type {
 type projectArgs struct {
 	// Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
 	CveAllowlists []string `pulumi:"cveAllowlists"`
-	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
+	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
 	DeploymentSecurity *string `pulumi:"deploymentSecurity"`
-	// Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
+	// Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
 	EnableContentTrust *bool `pulumi:"enableContentTrust"`
-	// Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+	// Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `false`)
 	EnableContentTrustCosign *bool `pulumi:"enableContentTrustCosign"`
 	// A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The name of the project that will be created in harbor.
 	Name *string `pulumi:"name"`
-	// The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
+	// The project will be public accessibility.(Default: `false`)
 	Public *bool `pulumi:"public"`
-	// To enable project as Proxy Cache
+	// To enable project as Proxy Cache.
 	RegistryId *int `pulumi:"registryId"`
-	// The storage quota of the project in GB's
+	// The storage quota of the project in GB's.
 	StorageQuota *int `pulumi:"storageQuota"`
-	// Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
+	// Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
 	VulnerabilityScanning *bool `pulumi:"vulnerabilityScanning"`
 }
 
@@ -155,23 +159,23 @@ type projectArgs struct {
 type ProjectArgs struct {
 	// Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
 	CveAllowlists pulumi.StringArrayInput
-	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
+	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
 	DeploymentSecurity pulumi.StringPtrInput
-	// Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
+	// Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
 	EnableContentTrust pulumi.BoolPtrInput
-	// Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+	// Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `false`)
 	EnableContentTrustCosign pulumi.BoolPtrInput
 	// A boolean that indicates all repositories should be deleted from the project so that the project can be destroyed without error. These repositories are *not* recoverable.
 	ForceDestroy pulumi.BoolPtrInput
 	// The name of the project that will be created in harbor.
 	Name pulumi.StringPtrInput
-	// The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
+	// The project will be public accessibility.(Default: `false`)
 	Public pulumi.BoolPtrInput
-	// To enable project as Proxy Cache
+	// To enable project as Proxy Cache.
 	RegistryId pulumi.IntPtrInput
-	// The storage quota of the project in GB's
+	// The storage quota of the project in GB's.
 	StorageQuota pulumi.IntPtrInput
-	// Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
+	// Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
 	VulnerabilityScanning pulumi.BoolPtrInput
 }
 
@@ -267,17 +271,17 @@ func (o ProjectOutput) CveAllowlists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringArrayOutput { return v.CveAllowlists }).(pulumi.StringArrayOutput)
 }
 
-// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
+// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
 func (o ProjectOutput) DeploymentSecurity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.DeploymentSecurity }).(pulumi.StringPtrOutput)
 }
 
-// Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
+// Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
 func (o ProjectOutput) EnableContentTrust() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.EnableContentTrust }).(pulumi.BoolPtrOutput)
 }
 
-// Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+// Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `false`)
 func (o ProjectOutput) EnableContentTrustCosign() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.EnableContentTrustCosign }).(pulumi.BoolPtrOutput)
 }
@@ -292,27 +296,27 @@ func (o ProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The id of the project with harbor.
+// The project id of this resource.
 func (o ProjectOutput) ProjectId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Project) pulumi.IntOutput { return v.ProjectId }).(pulumi.IntOutput)
 }
 
-// The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
+// The project will be public accessibility.(Default: `false`)
 func (o ProjectOutput) Public() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.Public }).(pulumi.BoolPtrOutput)
 }
 
-// To enable project as Proxy Cache
+// To enable project as Proxy Cache.
 func (o ProjectOutput) RegistryId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Project) pulumi.IntOutput { return v.RegistryId }).(pulumi.IntOutput)
 }
 
-// The storage quota of the project in GB's
+// The storage quota of the project in GB's.
 func (o ProjectOutput) StorageQuota() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.IntPtrOutput { return v.StorageQuota }).(pulumi.IntPtrOutput)
 }
 
-// Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
+// Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
 func (o ProjectOutput) VulnerabilityScanning() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.VulnerabilityScanning }).(pulumi.BoolPtrOutput)
 }

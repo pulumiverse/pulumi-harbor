@@ -15,7 +15,9 @@ namespace Pulumiverse.Harbor
     /// 
     /// ## Import
     /// 
-    /// Harbor project can be imported using the `replication id` eg,&lt;break&gt;&lt;break&gt; ` &lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import harbor:index/replication:Replication main /replication/policies/1 &lt;break&gt;```&lt;break&gt;&lt;break&gt;  `&lt;break&gt;&lt;break&gt;
+    /// ```sh
+    /// $ pulumi import harbor:index/replication:Replication main /replication/policies/1
+    /// ```
     /// </summary>
     [HarborResourceType("harbor:index/replication:Replication")]
     public partial class Replication : global::Pulumi.CustomResource
@@ -23,42 +25,75 @@ namespace Pulumiverse.Harbor
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
 
+        /// <summary>
+        /// Specify whether to delete the remote resources when locally deleted. (Default: `false`)
+        /// </summary>
         [Output("deletion")]
         public Output<bool?> Deletion { get; private set; } = null!;
 
+        /// <summary>
+        /// Description of the replication policy.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Specify the destination namespace. if empty, the resource will be put under the same namespace as the source.
+        /// </summary>
         [Output("destNamespace")]
         public Output<string?> DestNamespace { get; private set; } = null!;
 
+        /// <summary>
+        /// Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `-1`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
+        /// </summary>
         [Output("destNamespaceReplace")]
         public Output<int?> DestNamespaceReplace { get; private set; } = null!;
 
+        /// <summary>
+        /// Specify whether the replication is enabled. (Default: `true`)
+        /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
+        /// <summary>
+        /// Specify whether to execute the replication rule if new or modified. (Default: `false`)
+        /// </summary>
         [Output("executeOnChanged")]
         public Output<bool?> ExecuteOnChanged { get; private set; } = null!;
 
         [Output("filters")]
         public Output<ImmutableArray<Outputs.ReplicationFilter>> Filters { get; private set; } = null!;
 
+        /// <summary>
+        /// Filter on the name of the resource.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Specify whether to override the resources at the destination if a resources with the same name exist. (Default: `true`)
+        /// </summary>
         [Output("override")]
         public Output<bool?> Override { get; private set; } = null!;
 
+        /// <summary>
+        /// The registry ID of the Registry Endpoint.
+        /// </summary>
         [Output("registryId")]
         public Output<int> RegistryId { get; private set; } = null!;
 
         [Output("replicationPolicyId")]
         public Output<int> ReplicationPolicyId { get; private set; } = null!;
 
+        /// <summary>
+        /// The scheduled time of when the container register will be push / pull. In cron base format. Hourly `"0 0 * * * *"`, Daily `"0 0 0 * * *"`, Monthly `"0 0 0 * * 0"`. Can be one of the following: `event_based`, `manual`, `cron format` (Default: `manual`)
+        /// </summary>
         [Output("schedule")]
         public Output<string?> Schedule { get; private set; } = null!;
 
+        /// <summary>
+        /// The Maximum network bandwidth in Kbps for each execution. Default is `-1` (unlimited).
+        /// </summary>
         [Output("speed")]
         public Output<int?> Speed { get; private set; } = null!;
 
@@ -112,21 +147,39 @@ namespace Pulumiverse.Harbor
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
 
+        /// <summary>
+        /// Specify whether to delete the remote resources when locally deleted. (Default: `false`)
+        /// </summary>
         [Input("deletion")]
         public Input<bool>? Deletion { get; set; }
 
+        /// <summary>
+        /// Description of the replication policy.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Specify the destination namespace. if empty, the resource will be put under the same namespace as the source.
+        /// </summary>
         [Input("destNamespace")]
         public Input<string>? DestNamespace { get; set; }
 
+        /// <summary>
+        /// Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `-1`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
+        /// </summary>
         [Input("destNamespaceReplace")]
         public Input<int>? DestNamespaceReplace { get; set; }
 
+        /// <summary>
+        /// Specify whether the replication is enabled. (Default: `true`)
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Specify whether to execute the replication rule if new or modified. (Default: `false`)
+        /// </summary>
         [Input("executeOnChanged")]
         public Input<bool>? ExecuteOnChanged { get; set; }
 
@@ -138,18 +191,33 @@ namespace Pulumiverse.Harbor
             set => _filters = value;
         }
 
+        /// <summary>
+        /// Filter on the name of the resource.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Specify whether to override the resources at the destination if a resources with the same name exist. (Default: `true`)
+        /// </summary>
         [Input("override")]
         public Input<bool>? Override { get; set; }
 
+        /// <summary>
+        /// The registry ID of the Registry Endpoint.
+        /// </summary>
         [Input("registryId", required: true)]
         public Input<int> RegistryId { get; set; } = null!;
 
+        /// <summary>
+        /// The scheduled time of when the container register will be push / pull. In cron base format. Hourly `"0 0 * * * *"`, Daily `"0 0 0 * * *"`, Monthly `"0 0 0 * * 0"`. Can be one of the following: `event_based`, `manual`, `cron format` (Default: `manual`)
+        /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
 
+        /// <summary>
+        /// The Maximum network bandwidth in Kbps for each execution. Default is `-1` (unlimited).
+        /// </summary>
         [Input("speed")]
         public Input<int>? Speed { get; set; }
 
@@ -164,21 +232,39 @@ namespace Pulumiverse.Harbor
         [Input("action")]
         public Input<string>? Action { get; set; }
 
+        /// <summary>
+        /// Specify whether to delete the remote resources when locally deleted. (Default: `false`)
+        /// </summary>
         [Input("deletion")]
         public Input<bool>? Deletion { get; set; }
 
+        /// <summary>
+        /// Description of the replication policy.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Specify the destination namespace. if empty, the resource will be put under the same namespace as the source.
+        /// </summary>
         [Input("destNamespace")]
         public Input<string>? DestNamespace { get; set; }
 
+        /// <summary>
+        /// Specify the destination namespace flattening policy. Integers from `-1` to `3` are valid values in the harbor API. A value of `-1` will 'Flatten All Levels', `0` means 'No Flattening', `1` 'Flatten 1 Level', `2` 'Flatten 2 Levels', `3` 'Flatten 3 Levels' (Default: `-1`, see [Replication Rules](https://goharbor.io/docs/latest/administration/configuring-replication/create-replication-rules/) for more details)
+        /// </summary>
         [Input("destNamespaceReplace")]
         public Input<int>? DestNamespaceReplace { get; set; }
 
+        /// <summary>
+        /// Specify whether the replication is enabled. (Default: `true`)
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Specify whether to execute the replication rule if new or modified. (Default: `false`)
+        /// </summary>
         [Input("executeOnChanged")]
         public Input<bool>? ExecuteOnChanged { get; set; }
 
@@ -190,21 +276,36 @@ namespace Pulumiverse.Harbor
             set => _filters = value;
         }
 
+        /// <summary>
+        /// Filter on the name of the resource.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Specify whether to override the resources at the destination if a resources with the same name exist. (Default: `true`)
+        /// </summary>
         [Input("override")]
         public Input<bool>? Override { get; set; }
 
+        /// <summary>
+        /// The registry ID of the Registry Endpoint.
+        /// </summary>
         [Input("registryId")]
         public Input<int>? RegistryId { get; set; }
 
         [Input("replicationPolicyId")]
         public Input<int>? ReplicationPolicyId { get; set; }
 
+        /// <summary>
+        /// The scheduled time of when the container register will be push / pull. In cron base format. Hourly `"0 0 * * * *"`, Daily `"0 0 0 * * *"`, Monthly `"0 0 0 * * 0"`. Can be one of the following: `event_based`, `manual`, `cron format` (Default: `manual`)
+        /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
 
+        /// <summary>
+        /// The Maximum network bandwidth in Kbps for each execution. Default is `-1` (unlimited).
+        /// </summary>
         [Input("speed")]
         public Input<int>? Speed { get; set; }
 

@@ -19,6 +19,9 @@ export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getProject.
  */
 export interface GetProjectArgs {
+    /**
+     * The name of the project.
+     */
     name: string;
 }
 
@@ -30,10 +33,25 @@ export interface GetProjectResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The name of the project.
+     */
     readonly name: string;
+    /**
+     * The id of the project within harbor.
+     */
     readonly projectId: number;
+    /**
+     * If the project has public accessibility.
+     */
     readonly public: boolean;
+    /**
+     * The type of the project : Project or ProxyCache.
+     */
     readonly type: string;
+    /**
+     * If the images is scanned for vulnerabilities when push to harbor.
+     */
     readonly vulnerabilityScanning: boolean;
 }
 /**
@@ -47,5 +65,8 @@ export function getProjectOutput(args: GetProjectOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getProject.
  */
 export interface GetProjectOutputArgs {
+    /**
+     * The name of the project.
+     */
     name: pulumi.Input<string>;
 }

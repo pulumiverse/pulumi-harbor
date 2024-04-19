@@ -7,21 +7,19 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * ## # Resource: harbor.RobotAccount
- *
- * Harbor supports different levels of robot accounts. Currently `system` and `project` level robot accounts are supported.
- *
  * ## Example Usage
  *
  * ### System Level
  * Introduced in harbor 2.2.0, system level robot accounts can have basically [all available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) in harbor and are not dependent on a single project.
+ *
+ * ### Global
  *
  * The above example, creates a system level robot account with permissions to
  * - permission to create labels on system level
  * - pull repository across all projects
  * - push repository to project "my-project-name"
  *
- * ### Project Level
+ * ### Project
  *
  * Other than system level robot accounts, project level robot accounts can interact on project level only.
  * The [available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) are mostly the same as for system level robots.
@@ -32,7 +30,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Harbor robot account can be imported using the `robot account id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123 <break>```<break><break>  `<break><break>
+ * ```sh
+ * $ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123
+ * ```
  */
 export class RobotAccount extends pulumi.CustomResource {
     /**
@@ -62,14 +62,32 @@ export class RobotAccount extends pulumi.CustomResource {
         return obj['__pulumiType'] === RobotAccount.__pulumiType;
     }
 
+    /**
+     * The description of the robot account will be displayed in harbor.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Disables the robot account when set to `true`.
+     */
     public readonly disable!: pulumi.Output<boolean | undefined>;
+    /**
+     * By default, the robot account will not expire. Set it to the amount of days until the account should expire.
+     */
     public readonly duration!: pulumi.Output<number | undefined>;
     public /*out*/ readonly fullName!: pulumi.Output<string>;
+    /**
+     * Level of the robot account, currently either `system` or `project`.
+     */
     public readonly level!: pulumi.Output<string>;
+    /**
+     * The name of the project that will be created in harbor.
+     */
     public readonly name!: pulumi.Output<string>;
     public readonly permissions!: pulumi.Output<outputs.RobotAccountPermission[]>;
     public /*out*/ readonly robotId!: pulumi.Output<string>;
+    /**
+     * The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
+     */
     public readonly secret!: pulumi.Output<string>;
 
     /**
@@ -123,14 +141,32 @@ export class RobotAccount extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RobotAccount resources.
  */
 export interface RobotAccountState {
+    /**
+     * The description of the robot account will be displayed in harbor.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Disables the robot account when set to `true`.
+     */
     disable?: pulumi.Input<boolean>;
+    /**
+     * By default, the robot account will not expire. Set it to the amount of days until the account should expire.
+     */
     duration?: pulumi.Input<number>;
     fullName?: pulumi.Input<string>;
+    /**
+     * Level of the robot account, currently either `system` or `project`.
+     */
     level?: pulumi.Input<string>;
+    /**
+     * The name of the project that will be created in harbor.
+     */
     name?: pulumi.Input<string>;
     permissions?: pulumi.Input<pulumi.Input<inputs.RobotAccountPermission>[]>;
     robotId?: pulumi.Input<string>;
+    /**
+     * The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
+     */
     secret?: pulumi.Input<string>;
 }
 
@@ -138,11 +174,29 @@ export interface RobotAccountState {
  * The set of arguments for constructing a RobotAccount resource.
  */
 export interface RobotAccountArgs {
+    /**
+     * The description of the robot account will be displayed in harbor.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Disables the robot account when set to `true`.
+     */
     disable?: pulumi.Input<boolean>;
+    /**
+     * By default, the robot account will not expire. Set it to the amount of days until the account should expire.
+     */
     duration?: pulumi.Input<number>;
+    /**
+     * Level of the robot account, currently either `system` or `project`.
+     */
     level: pulumi.Input<string>;
+    /**
+     * The name of the project that will be created in harbor.
+     */
     name?: pulumi.Input<string>;
     permissions: pulumi.Input<pulumi.Input<inputs.RobotAccountPermission>[]>;
+    /**
+     * The secret of the robot account used for authentication. Defaults to random generated string from Harbor.
+     */
     secret?: pulumi.Input<string>;
 }

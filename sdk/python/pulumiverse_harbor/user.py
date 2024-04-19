@@ -22,6 +22,12 @@ class UserArgs:
                  comment: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a User resource.
+        :param pulumi.Input[str] email: The email address of the internal user.
+        :param pulumi.Input[str] full_name: The Full Name of the internal user.
+        :param pulumi.Input[str] password: The password for the internal user.
+        :param pulumi.Input[str] username: The username of the internal user.
+        :param pulumi.Input[bool] admin: If the user will have admin rights within Harbor (Default: `false`)
+        :param pulumi.Input[str] comment: Any comments for that are need for the internal user.
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "full_name", full_name)
@@ -35,6 +41,9 @@ class UserArgs:
     @property
     @pulumi.getter
     def email(self) -> pulumi.Input[str]:
+        """
+        The email address of the internal user.
+        """
         return pulumi.get(self, "email")
 
     @email.setter
@@ -44,6 +53,9 @@ class UserArgs:
     @property
     @pulumi.getter(name="fullName")
     def full_name(self) -> pulumi.Input[str]:
+        """
+        The Full Name of the internal user.
+        """
         return pulumi.get(self, "full_name")
 
     @full_name.setter
@@ -53,6 +65,9 @@ class UserArgs:
     @property
     @pulumi.getter
     def password(self) -> pulumi.Input[str]:
+        """
+        The password for the internal user.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -62,6 +77,9 @@ class UserArgs:
     @property
     @pulumi.getter
     def username(self) -> pulumi.Input[str]:
+        """
+        The username of the internal user.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -71,6 +89,9 @@ class UserArgs:
     @property
     @pulumi.getter
     def admin(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the user will have admin rights within Harbor (Default: `false`)
+        """
         return pulumi.get(self, "admin")
 
     @admin.setter
@@ -80,6 +101,9 @@ class UserArgs:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Any comments for that are need for the internal user.
+        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -98,6 +122,12 @@ class _UserState:
                  username: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering User resources.
+        :param pulumi.Input[bool] admin: If the user will have admin rights within Harbor (Default: `false`)
+        :param pulumi.Input[str] comment: Any comments for that are need for the internal user.
+        :param pulumi.Input[str] email: The email address of the internal user.
+        :param pulumi.Input[str] full_name: The Full Name of the internal user.
+        :param pulumi.Input[str] password: The password for the internal user.
+        :param pulumi.Input[str] username: The username of the internal user.
         """
         if admin is not None:
             pulumi.set(__self__, "admin", admin)
@@ -115,6 +145,9 @@ class _UserState:
     @property
     @pulumi.getter
     def admin(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the user will have admin rights within Harbor (Default: `false`)
+        """
         return pulumi.get(self, "admin")
 
     @admin.setter
@@ -124,6 +157,9 @@ class _UserState:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Any comments for that are need for the internal user.
+        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -133,6 +169,9 @@ class _UserState:
     @property
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email address of the internal user.
+        """
         return pulumi.get(self, "email")
 
     @email.setter
@@ -142,6 +181,9 @@ class _UserState:
     @property
     @pulumi.getter(name="fullName")
     def full_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Full Name of the internal user.
+        """
         return pulumi.get(self, "full_name")
 
     @full_name.setter
@@ -151,6 +193,9 @@ class _UserState:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password for the internal user.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -160,6 +205,9 @@ class _UserState:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username of the internal user.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -184,10 +232,18 @@ class User(pulumi.CustomResource):
 
         ## Import
 
-        An internal user harbor user can be imported using the `user id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/user:User main /users/19 <break>```<break><break>  `<break><break>
+        ```sh
+        $ pulumi import harbor:index/user:User main /users/19
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] admin: If the user will have admin rights within Harbor (Default: `false`)
+        :param pulumi.Input[str] comment: Any comments for that are need for the internal user.
+        :param pulumi.Input[str] email: The email address of the internal user.
+        :param pulumi.Input[str] full_name: The Full Name of the internal user.
+        :param pulumi.Input[str] password: The password for the internal user.
+        :param pulumi.Input[str] username: The username of the internal user.
         """
         ...
     @overload
@@ -200,7 +256,9 @@ class User(pulumi.CustomResource):
 
         ## Import
 
-        An internal user harbor user can be imported using the `user id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/user:User main /users/19 <break>```<break><break>  `<break><break>
+        ```sh
+        $ pulumi import harbor:index/user:User main /users/19
+        ```
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.
@@ -271,6 +329,12 @@ class User(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] admin: If the user will have admin rights within Harbor (Default: `false`)
+        :param pulumi.Input[str] comment: Any comments for that are need for the internal user.
+        :param pulumi.Input[str] email: The email address of the internal user.
+        :param pulumi.Input[str] full_name: The Full Name of the internal user.
+        :param pulumi.Input[str] password: The password for the internal user.
+        :param pulumi.Input[str] username: The username of the internal user.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -287,30 +351,48 @@ class User(pulumi.CustomResource):
     @property
     @pulumi.getter
     def admin(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If the user will have admin rights within Harbor (Default: `false`)
+        """
         return pulumi.get(self, "admin")
 
     @property
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[str]]:
+        """
+        Any comments for that are need for the internal user.
+        """
         return pulumi.get(self, "comment")
 
     @property
     @pulumi.getter
     def email(self) -> pulumi.Output[str]:
+        """
+        The email address of the internal user.
+        """
         return pulumi.get(self, "email")
 
     @property
     @pulumi.getter(name="fullName")
     def full_name(self) -> pulumi.Output[str]:
+        """
+        The Full Name of the internal user.
+        """
         return pulumi.get(self, "full_name")
 
     @property
     @pulumi.getter
     def password(self) -> pulumi.Output[str]:
+        """
+        The password for the internal user.
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
     def username(self) -> pulumi.Output[str]:
+        """
+        The username of the internal user.
+        """
         return pulumi.get(self, "username")
 

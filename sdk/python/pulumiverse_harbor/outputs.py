@@ -27,6 +27,13 @@ class ReplicationFilter(dict):
                  name: Optional[str] = None,
                  resource: Optional[str] = None,
                  tag: Optional[str] = None):
+        """
+        :param str decoration: Matches or excludes the result. Can be one of the following. `matches`, `excludes`
+        :param Sequence[str] labels: Filter on the resource according to labels.
+        :param str name: Filter on the name of the resource.
+        :param str resource: Filter on the resource type. Can be one of the following types. `chart`, `artifact`
+        :param str tag: Filter on the tag/version of the resource.
+        """
         if decoration is not None:
             pulumi.set(__self__, "decoration", decoration)
         if labels is not None:
@@ -41,26 +48,41 @@ class ReplicationFilter(dict):
     @property
     @pulumi.getter
     def decoration(self) -> Optional[str]:
+        """
+        Matches or excludes the result. Can be one of the following. `matches`, `excludes`
+        """
         return pulumi.get(self, "decoration")
 
     @property
     @pulumi.getter
     def labels(self) -> Optional[Sequence[str]]:
+        """
+        Filter on the resource according to labels.
+        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        Filter on the name of the resource.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def resource(self) -> Optional[str]:
+        """
+        Filter on the resource type. Can be one of the following types. `chart`, `artifact`
+        """
         return pulumi.get(self, "resource")
 
     @property
     @pulumi.getter
     def tag(self) -> Optional[str]:
+        """
+        Filter on the tag/version of the resource.
+        """
         return pulumi.get(self, "tag")
 
 
@@ -120,13 +142,11 @@ class RetentionPolicyRule(dict):
         :param int most_recently_pushed: retain the most recently pushed n artifacts.
         :param int n_days_since_last_pull: retains the artifacts pulled within the lasts n days.
         :param int n_days_since_last_push: retains the artifacts pushed within the lasts n days.
-        :param str repo_excluding: For the repositories excuding.
+        :param str repo_excluding: For the repositories excluding.
         :param str repo_matching: For the repositories matching.
-        :param str tag_excluding: For the tag excuding.
+        :param str tag_excluding: For the tag excluding.
         :param str tag_matching: For the tag matching.
         :param bool untagged_artifacts: with untagged artifacts. Defaults to `true`
-               
-               > Multiple tags or repositories must be provided as a comma-separated list wrapped into curly brackets `{ }`. Otherwise, the value is interpreted as a single value.
         """
         if always_retain is not None:
             pulumi.set(__self__, "always_retain", always_retain)
@@ -203,7 +223,7 @@ class RetentionPolicyRule(dict):
     @pulumi.getter(name="repoExcluding")
     def repo_excluding(self) -> Optional[str]:
         """
-        For the repositories excuding.
+        For the repositories excluding.
         """
         return pulumi.get(self, "repo_excluding")
 
@@ -219,7 +239,7 @@ class RetentionPolicyRule(dict):
     @pulumi.getter(name="tagExcluding")
     def tag_excluding(self) -> Optional[str]:
         """
-        For the tag excuding.
+        For the tag excluding.
         """
         return pulumi.get(self, "tag_excluding")
 
@@ -236,8 +256,6 @@ class RetentionPolicyRule(dict):
     def untagged_artifacts(self) -> Optional[bool]:
         """
         with untagged artifacts. Defaults to `true`
-
-        > Multiple tags or repositories must be provided as a comma-separated list wrapped into curly brackets `{ }`. Otherwise, the value is interpreted as a single value.
         """
         return pulumi.get(self, "untagged_artifacts")
 
@@ -248,6 +266,10 @@ class RobotAccountPermission(dict):
                  accesses: Sequence['outputs.RobotAccountPermissionAccess'],
                  kind: str,
                  namespace: str):
+        """
+        :param str kind: Either `system` or `project`.
+        :param str namespace: namespace is the name of your project. For kind `system` permissions, always use `/` as namespace. Use `*` to match all projects.
+        """
         pulumi.set(__self__, "accesses", accesses)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "namespace", namespace)
@@ -260,11 +282,17 @@ class RobotAccountPermission(dict):
     @property
     @pulumi.getter
     def kind(self) -> str:
+        """
+        Either `system` or `project`.
+        """
         return pulumi.get(self, "kind")
 
     @property
     @pulumi.getter
     def namespace(self) -> str:
+        """
+        namespace is the name of your project. For kind `system` permissions, always use `/` as namespace. Use `*` to match all projects.
+        """
         return pulumi.get(self, "namespace")
 
 
@@ -274,6 +302,11 @@ class RobotAccountPermissionAccess(dict):
                  action: str,
                  resource: str,
                  effect: Optional[str] = None):
+        """
+        :param str action: Eg. `push`, `pull`, `read`, etc. Check [available actions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+        :param str resource: Eg. `repository`, `labels`, etc. Check [available resources](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+        :param str effect: Either `allow` or `deny`. Defaults to `allow`.
+        """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "resource", resource)
         if effect is not None:
@@ -282,16 +315,25 @@ class RobotAccountPermissionAccess(dict):
     @property
     @pulumi.getter
     def action(self) -> str:
+        """
+        Eg. `push`, `pull`, `read`, etc. Check [available actions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter
     def resource(self) -> str:
+        """
+        Eg. `repository`, `labels`, etc. Check [available resources](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+        """
         return pulumi.get(self, "resource")
 
     @property
     @pulumi.getter
     def effect(self) -> Optional[str]:
+        """
+        Either `allow` or `deny`. Defaults to `allow`.
+        """
         return pulumi.get(self, "effect")
 
 
@@ -304,8 +346,7 @@ class GetGroupsGroupResult(dict):
                  ldap_group_dn: str):
         """
         :param str group_name: The name of the group to filter by.
-        :param int group_type: The type of the group.
-        :param int id: The ID of the group.
+        :param int id: The ID of this resource.
         :param str ldap_group_dn: The LDAP group DN to filter by.
         """
         pulumi.set(__self__, "group_name", group_name)
@@ -324,16 +365,13 @@ class GetGroupsGroupResult(dict):
     @property
     @pulumi.getter(name="groupType")
     def group_type(self) -> int:
-        """
-        The type of the group.
-        """
         return pulumi.get(self, "group_type")
 
     @property
     @pulumi.getter
     def id(self) -> int:
         """
-        The ID of the group.
+        The ID of this resource.
         """
         return pulumi.get(self, "id")
 

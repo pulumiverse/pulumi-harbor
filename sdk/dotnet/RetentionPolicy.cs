@@ -15,14 +15,13 @@ namespace Pulumiverse.Harbor
     /// 
     /// ## Import
     /// 
-    /// Harbor retention policy can be imported using the `retention_policy id` eg,&lt;break&gt;&lt;break&gt; ` &lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10 &lt;break&gt;```&lt;break&gt;&lt;break&gt;  `&lt;break&gt;&lt;break&gt;
+    /// ```sh
+    /// $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10
+    /// ```
     /// </summary>
     [HarborResourceType("harbor:index/retentionPolicy:RetentionPolicy")]
     public partial class RetentionPolicy : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Al collection of rule blocks as documented below.
-        /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.RetentionPolicyRule>> Rules { get; private set; } = null!;
 
@@ -87,10 +86,6 @@ namespace Pulumiverse.Harbor
     {
         [Input("rules", required: true)]
         private InputList<Inputs.RetentionPolicyRuleArgs>? _rules;
-
-        /// <summary>
-        /// Al collection of rule blocks as documented below.
-        /// </summary>
         public InputList<Inputs.RetentionPolicyRuleArgs> Rules
         {
             get => _rules ?? (_rules = new InputList<Inputs.RetentionPolicyRuleArgs>());
@@ -119,10 +114,6 @@ namespace Pulumiverse.Harbor
     {
         [Input("rules")]
         private InputList<Inputs.RetentionPolicyRuleGetArgs>? _rules;
-
-        /// <summary>
-        /// Al collection of rule blocks as documented below.
-        /// </summary>
         public InputList<Inputs.RetentionPolicyRuleGetArgs> Rules
         {
             get => _rules ?? (_rules = new InputList<Inputs.RetentionPolicyRuleGetArgs>());

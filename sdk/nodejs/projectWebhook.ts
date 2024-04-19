@@ -36,23 +36,14 @@ export class ProjectWebhook extends pulumi.CustomResource {
     }
 
     /**
-     * The address of the webhook
+     * The address of the webhook.
      */
     public readonly address!: pulumi.Output<string>;
-    /**
-     * authentication header for you the webhook
-     */
     public readonly authHeader!: pulumi.Output<string | undefined>;
-    /**
-     * _ (Optional, string) A description of the webhook
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * , To enable / disable the webhook. Default `true`
-     */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+     * The type events you want to subscript to can be
      */
     public readonly eventsTypes!: pulumi.Output<string[]>;
     /**
@@ -60,16 +51,13 @@ export class ProjectWebhook extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The notification type either `http` or `slack`
+     * The notification type either `http` or `slack`.
      */
     public readonly notifyType!: pulumi.Output<string>;
     /**
-     * The project id (**&#47;projects/ID**) of the harbor that webhook related to.
+     * The project id of the harbor that webhook related to.
      */
     public readonly projectId!: pulumi.Output<string>;
-    /**
-     * checks the for validate SSL certificate.
-     */
     public readonly skipCertVerify!: pulumi.Output<boolean | undefined>;
 
     /**
@@ -128,23 +116,14 @@ export class ProjectWebhook extends pulumi.CustomResource {
  */
 export interface ProjectWebhookState {
     /**
-     * The address of the webhook
+     * The address of the webhook.
      */
     address?: pulumi.Input<string>;
-    /**
-     * authentication header for you the webhook
-     */
     authHeader?: pulumi.Input<string>;
-    /**
-     * _ (Optional, string) A description of the webhook
-     */
     description?: pulumi.Input<string>;
-    /**
-     * , To enable / disable the webhook. Default `true`
-     */
     enabled?: pulumi.Input<boolean>;
     /**
-     * ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+     * The type events you want to subscript to can be
      */
     eventsTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -152,16 +131,13 @@ export interface ProjectWebhookState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The notification type either `http` or `slack`
+     * The notification type either `http` or `slack`.
      */
     notifyType?: pulumi.Input<string>;
     /**
-     * The project id (**&#47;projects/ID**) of the harbor that webhook related to.
+     * The project id of the harbor that webhook related to.
      */
     projectId?: pulumi.Input<string>;
-    /**
-     * checks the for validate SSL certificate.
-     */
     skipCertVerify?: pulumi.Input<boolean>;
 }
 
@@ -170,23 +146,14 @@ export interface ProjectWebhookState {
  */
 export interface ProjectWebhookArgs {
     /**
-     * The address of the webhook
+     * The address of the webhook.
      */
     address: pulumi.Input<string>;
-    /**
-     * authentication header for you the webhook
-     */
     authHeader?: pulumi.Input<string>;
-    /**
-     * _ (Optional, string) A description of the webhook
-     */
     description?: pulumi.Input<string>;
-    /**
-     * , To enable / disable the webhook. Default `true`
-     */
     enabled?: pulumi.Input<boolean>;
     /**
-     * ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+     * The type events you want to subscript to can be
      */
     eventsTypes: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -194,15 +161,12 @@ export interface ProjectWebhookArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The notification type either `http` or `slack`
+     * The notification type either `http` or `slack`.
      */
     notifyType: pulumi.Input<string>;
     /**
-     * The project id (**&#47;projects/ID**) of the harbor that webhook related to.
+     * The project id of the harbor that webhook related to.
      */
     projectId: pulumi.Input<string>;
-    /**
-     * checks the for validate SSL certificate.
-     */
     skipCertVerify?: pulumi.Input<boolean>;
 }

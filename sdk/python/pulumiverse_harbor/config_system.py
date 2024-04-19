@@ -22,6 +22,12 @@ class ConfigSystemArgs:
                  storage_per_project: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a ConfigSystem resource.
+        :param pulumi.Input[str] project_creation_restriction: Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
+        :param pulumi.Input[bool] read_only: Whether or not the system is in read only mode.
+        :param pulumi.Input[str] robot_name_prefix: Robot account prefix.
+        :param pulumi.Input[int] robot_token_expiration: The amount of time in days a robot account will expire.
+        :param pulumi.Input[bool] scanner_skip_update_pulltime: Whether or not to skip update pull time for scanner.
+        :param pulumi.Input[int] storage_per_project: Default quota space per project in GIB. Default is -1 (unlimited).
         """
         if project_creation_restriction is not None:
             pulumi.set(__self__, "project_creation_restriction", project_creation_restriction)
@@ -39,6 +45,9 @@ class ConfigSystemArgs:
     @property
     @pulumi.getter(name="projectCreationRestriction")
     def project_creation_restriction(self) -> Optional[pulumi.Input[str]]:
+        """
+        Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
+        """
         return pulumi.get(self, "project_creation_restriction")
 
     @project_creation_restriction.setter
@@ -48,6 +57,9 @@ class ConfigSystemArgs:
     @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the system is in read only mode.
+        """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
@@ -57,6 +69,9 @@ class ConfigSystemArgs:
     @property
     @pulumi.getter(name="robotNamePrefix")
     def robot_name_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Robot account prefix.
+        """
         return pulumi.get(self, "robot_name_prefix")
 
     @robot_name_prefix.setter
@@ -66,6 +81,9 @@ class ConfigSystemArgs:
     @property
     @pulumi.getter(name="robotTokenExpiration")
     def robot_token_expiration(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of time in days a robot account will expire.
+        """
         return pulumi.get(self, "robot_token_expiration")
 
     @robot_token_expiration.setter
@@ -75,6 +93,9 @@ class ConfigSystemArgs:
     @property
     @pulumi.getter(name="scannerSkipUpdatePulltime")
     def scanner_skip_update_pulltime(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to skip update pull time for scanner.
+        """
         return pulumi.get(self, "scanner_skip_update_pulltime")
 
     @scanner_skip_update_pulltime.setter
@@ -84,6 +105,9 @@ class ConfigSystemArgs:
     @property
     @pulumi.getter(name="storagePerProject")
     def storage_per_project(self) -> Optional[pulumi.Input[int]]:
+        """
+        Default quota space per project in GIB. Default is -1 (unlimited).
+        """
         return pulumi.get(self, "storage_per_project")
 
     @storage_per_project.setter
@@ -102,6 +126,12 @@ class _ConfigSystemState:
                  storage_per_project: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering ConfigSystem resources.
+        :param pulumi.Input[str] project_creation_restriction: Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
+        :param pulumi.Input[bool] read_only: Whether or not the system is in read only mode.
+        :param pulumi.Input[str] robot_name_prefix: Robot account prefix.
+        :param pulumi.Input[int] robot_token_expiration: The amount of time in days a robot account will expire.
+        :param pulumi.Input[bool] scanner_skip_update_pulltime: Whether or not to skip update pull time for scanner.
+        :param pulumi.Input[int] storage_per_project: Default quota space per project in GIB. Default is -1 (unlimited).
         """
         if project_creation_restriction is not None:
             pulumi.set(__self__, "project_creation_restriction", project_creation_restriction)
@@ -119,6 +149,9 @@ class _ConfigSystemState:
     @property
     @pulumi.getter(name="projectCreationRestriction")
     def project_creation_restriction(self) -> Optional[pulumi.Input[str]]:
+        """
+        Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
+        """
         return pulumi.get(self, "project_creation_restriction")
 
     @project_creation_restriction.setter
@@ -128,6 +161,9 @@ class _ConfigSystemState:
     @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the system is in read only mode.
+        """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
@@ -137,6 +173,9 @@ class _ConfigSystemState:
     @property
     @pulumi.getter(name="robotNamePrefix")
     def robot_name_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Robot account prefix.
+        """
         return pulumi.get(self, "robot_name_prefix")
 
     @robot_name_prefix.setter
@@ -146,6 +185,9 @@ class _ConfigSystemState:
     @property
     @pulumi.getter(name="robotTokenExpiration")
     def robot_token_expiration(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of time in days a robot account will expire.
+        """
         return pulumi.get(self, "robot_token_expiration")
 
     @robot_token_expiration.setter
@@ -155,6 +197,9 @@ class _ConfigSystemState:
     @property
     @pulumi.getter(name="scannerSkipUpdatePulltime")
     def scanner_skip_update_pulltime(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to skip update pull time for scanner.
+        """
         return pulumi.get(self, "scanner_skip_update_pulltime")
 
     @scanner_skip_update_pulltime.setter
@@ -164,6 +209,9 @@ class _ConfigSystemState:
     @property
     @pulumi.getter(name="storagePerProject")
     def storage_per_project(self) -> Optional[pulumi.Input[int]]:
+        """
+        Default quota space per project in GIB. Default is -1 (unlimited).
+        """
         return pulumi.get(self, "storage_per_project")
 
     @storage_per_project.setter
@@ -188,6 +236,12 @@ class ConfigSystem(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] project_creation_restriction: Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
+        :param pulumi.Input[bool] read_only: Whether or not the system is in read only mode.
+        :param pulumi.Input[str] robot_name_prefix: Robot account prefix.
+        :param pulumi.Input[int] robot_token_expiration: The amount of time in days a robot account will expire.
+        :param pulumi.Input[bool] scanner_skip_update_pulltime: Whether or not to skip update pull time for scanner.
+        :param pulumi.Input[int] storage_per_project: Default quota space per project in GIB. Default is -1 (unlimited).
         """
         ...
     @overload
@@ -257,6 +311,12 @@ class ConfigSystem(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] project_creation_restriction: Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
+        :param pulumi.Input[bool] read_only: Whether or not the system is in read only mode.
+        :param pulumi.Input[str] robot_name_prefix: Robot account prefix.
+        :param pulumi.Input[int] robot_token_expiration: The amount of time in days a robot account will expire.
+        :param pulumi.Input[bool] scanner_skip_update_pulltime: Whether or not to skip update pull time for scanner.
+        :param pulumi.Input[int] storage_per_project: Default quota space per project in GIB. Default is -1 (unlimited).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -273,30 +333,48 @@ class ConfigSystem(pulumi.CustomResource):
     @property
     @pulumi.getter(name="projectCreationRestriction")
     def project_creation_restriction(self) -> pulumi.Output[Optional[str]]:
+        """
+        Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
+        """
         return pulumi.get(self, "project_creation_restriction")
 
     @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether or not the system is in read only mode.
+        """
         return pulumi.get(self, "read_only")
 
     @property
     @pulumi.getter(name="robotNamePrefix")
     def robot_name_prefix(self) -> pulumi.Output[Optional[str]]:
+        """
+        Robot account prefix.
+        """
         return pulumi.get(self, "robot_name_prefix")
 
     @property
     @pulumi.getter(name="robotTokenExpiration")
     def robot_token_expiration(self) -> pulumi.Output[Optional[int]]:
+        """
+        The amount of time in days a robot account will expire.
+        """
         return pulumi.get(self, "robot_token_expiration")
 
     @property
     @pulumi.getter(name="scannerSkipUpdatePulltime")
     def scanner_skip_update_pulltime(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether or not to skip update pull time for scanner.
+        """
         return pulumi.get(self, "scanner_skip_update_pulltime")
 
     @property
     @pulumi.getter(name="storagePerProject")
     def storage_per_project(self) -> pulumi.Output[Optional[int]]:
+        """
+        Default quota space per project in GIB. Default is -1 (unlimited).
+        """
         return pulumi.get(self, "storage_per_project")
 

@@ -17,7 +17,7 @@ namespace Pulumiverse.Harbor
     public partial class InterrogationServices : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Sets the default interrogation service **Clair**
+        /// Sets the default interrogation service `"Clair"`
         /// </summary>
         [Output("defaultScanner")]
         public Output<string?> DefaultScanner { get; private set; } = null!;
@@ -76,7 +76,7 @@ namespace Pulumiverse.Harbor
     public sealed class InterrogationServicesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Sets the default interrogation service **Clair**
+        /// Sets the default interrogation service `"Clair"`
         /// </summary>
         [Input("defaultScanner")]
         public Input<string>? DefaultScanner { get; set; }
@@ -96,7 +96,7 @@ namespace Pulumiverse.Harbor
     public sealed class InterrogationServicesState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Sets the default interrogation service **Clair**
+        /// Sets the default interrogation service `"Clair"`
         /// </summary>
         [Input("defaultScanner")]
         public Input<string>? DefaultScanner { get; set; }

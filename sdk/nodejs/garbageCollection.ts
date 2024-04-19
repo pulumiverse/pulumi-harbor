@@ -35,8 +35,18 @@ export class GarbageCollection extends pulumi.CustomResource {
         return obj['__pulumiType'] === GarbageCollection.__pulumiType;
     }
 
+    /**
+     * Allow garbage collection on untagged artifacts.
+     */
     public readonly deleteUntagged!: pulumi.Output<boolean | undefined>;
+    /**
+     * Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+     */
     public readonly schedule!: pulumi.Output<string>;
+    /**
+     * Number of workers to run the garbage collection, value must be between 1 and 5.
+     */
+    public readonly workers!: pulumi.Output<number | undefined>;
 
     /**
      * Create a GarbageCollection resource with the given unique name, arguments, and options.
@@ -53,6 +63,7 @@ export class GarbageCollection extends pulumi.CustomResource {
             const state = argsOrState as GarbageCollectionState | undefined;
             resourceInputs["deleteUntagged"] = state ? state.deleteUntagged : undefined;
             resourceInputs["schedule"] = state ? state.schedule : undefined;
+            resourceInputs["workers"] = state ? state.workers : undefined;
         } else {
             const args = argsOrState as GarbageCollectionArgs | undefined;
             if ((!args || args.schedule === undefined) && !opts.urn) {
@@ -60,6 +71,7 @@ export class GarbageCollection extends pulumi.CustomResource {
             }
             resourceInputs["deleteUntagged"] = args ? args.deleteUntagged : undefined;
             resourceInputs["schedule"] = args ? args.schedule : undefined;
+            resourceInputs["workers"] = args ? args.workers : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GarbageCollection.__pulumiType, name, resourceInputs, opts);
@@ -70,14 +82,34 @@ export class GarbageCollection extends pulumi.CustomResource {
  * Input properties used for looking up and filtering GarbageCollection resources.
  */
 export interface GarbageCollectionState {
+    /**
+     * Allow garbage collection on untagged artifacts.
+     */
     deleteUntagged?: pulumi.Input<boolean>;
+    /**
+     * Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+     */
     schedule?: pulumi.Input<string>;
+    /**
+     * Number of workers to run the garbage collection, value must be between 1 and 5.
+     */
+    workers?: pulumi.Input<number>;
 }
 
 /**
  * The set of arguments for constructing a GarbageCollection resource.
  */
 export interface GarbageCollectionArgs {
+    /**
+     * Allow garbage collection on untagged artifacts.
+     */
     deleteUntagged?: pulumi.Input<boolean>;
+    /**
+     * Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+     */
     schedule: pulumi.Input<string>;
+    /**
+     * Number of workers to run the garbage collection, value must be between 1 and 5.
+     */
+    workers?: pulumi.Input<number>;
 }

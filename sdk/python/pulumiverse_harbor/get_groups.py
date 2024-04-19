@@ -40,16 +40,13 @@ class GetGroupsResult:
     @pulumi.getter(name="groupName")
     def group_name(self) -> Optional[str]:
         """
-        The name of the group.
+        The name of the group to filter by.
         """
         return pulumi.get(self, "group_name")
 
     @property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.GetGroupsGroupResult']:
-        """
-        (Computed) A list of groups matching the previous arguments. Each `group` object provides the attributes documented below.
-        """
         return pulumi.get(self, "groups")
 
     @property
@@ -64,7 +61,7 @@ class GetGroupsResult:
     @pulumi.getter(name="ldapGroupDn")
     def ldap_group_dn(self) -> Optional[str]:
         """
-        The LDAP group DN of the group.
+        The LDAP group DN to filter by.
         """
         return pulumi.get(self, "ldap_group_dn")
 

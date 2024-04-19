@@ -9,7 +9,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Harbor project member user can be imported using the `project id` and `member id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200 <break>```<break><break>  `<break><break>
+ * ```sh
+ * $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200
+ * ```
  */
 export class ProjectMemberUser extends pulumi.CustomResource {
     /**
@@ -39,9 +41,21 @@ export class ProjectMemberUser extends pulumi.CustomResource {
         return obj['__pulumiType'] === ProjectMemberUser.__pulumiType;
     }
 
+    /**
+     * The member id of the member.
+     */
     public /*out*/ readonly memberId!: pulumi.Output<number>;
+    /**
+     * The project id of the project that the entity will have access to.
+     */
     public readonly projectId!: pulumi.Output<string>;
+    /**
+     * The permissions that the entity will be granted.
+     */
     public readonly role!: pulumi.Output<string>;
+    /**
+     * The name of the member entity.
+     */
     public readonly userName!: pulumi.Output<string>;
 
     /**
@@ -86,9 +100,21 @@ export class ProjectMemberUser extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ProjectMemberUser resources.
  */
 export interface ProjectMemberUserState {
+    /**
+     * The member id of the member.
+     */
     memberId?: pulumi.Input<number>;
+    /**
+     * The project id of the project that the entity will have access to.
+     */
     projectId?: pulumi.Input<string>;
+    /**
+     * The permissions that the entity will be granted.
+     */
     role?: pulumi.Input<string>;
+    /**
+     * The name of the member entity.
+     */
     userName?: pulumi.Input<string>;
 }
 
@@ -96,7 +122,16 @@ export interface ProjectMemberUserState {
  * The set of arguments for constructing a ProjectMemberUser resource.
  */
 export interface ProjectMemberUserArgs {
+    /**
+     * The project id of the project that the entity will have access to.
+     */
     projectId: pulumi.Input<string>;
+    /**
+     * The permissions that the entity will be granted.
+     */
     role: pulumi.Input<string>;
+    /**
+     * The name of the member entity.
+     */
     userName: pulumi.Input<string>;
 }

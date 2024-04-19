@@ -50,7 +50,7 @@ namespace Pulumiverse.Harbor.Inputs
         public Input<int>? NDaysSinceLastPush { get; set; }
 
         /// <summary>
-        /// For the repositories excuding.
+        /// For the repositories excluding.
         /// </summary>
         [Input("repoExcluding")]
         public Input<string>? RepoExcluding { get; set; }
@@ -62,7 +62,7 @@ namespace Pulumiverse.Harbor.Inputs
         public Input<string>? RepoMatching { get; set; }
 
         /// <summary>
-        /// For the tag excuding.
+        /// For the tag excluding.
         /// </summary>
         [Input("tagExcluding")]
         public Input<string>? TagExcluding { get; set; }
@@ -75,8 +75,6 @@ namespace Pulumiverse.Harbor.Inputs
 
         /// <summary>
         /// with untagged artifacts. Defaults to `true`
-        /// 
-        /// &gt; Multiple tags or repositories must be provided as a comma-separated list wrapped into curly brackets `{ }`. Otherwise, the value is interpreted as a single value.
         /// </summary>
         [Input("untaggedArtifacts")]
         public Input<bool>? UntaggedArtifacts { get; set; }

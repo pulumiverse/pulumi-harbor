@@ -16,21 +16,39 @@ namespace Pulumiverse.Harbor
     [HarborResourceType("harbor:index/configSystem:ConfigSystem")]
     public partial class ConfigSystem : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
+        /// </summary>
         [Output("projectCreationRestriction")]
         public Output<string?> ProjectCreationRestriction { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether or not the system is in read only mode.
+        /// </summary>
         [Output("readOnly")]
         public Output<bool?> ReadOnly { get; private set; } = null!;
 
+        /// <summary>
+        /// Robot account prefix.
+        /// </summary>
         [Output("robotNamePrefix")]
         public Output<string?> RobotNamePrefix { get; private set; } = null!;
 
+        /// <summary>
+        /// The amount of time in days a robot account will expire.
+        /// </summary>
         [Output("robotTokenExpiration")]
         public Output<int?> RobotTokenExpiration { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether or not to skip update pull time for scanner.
+        /// </summary>
         [Output("scannerSkipUpdatePulltime")]
         public Output<bool?> ScannerSkipUpdatePulltime { get; private set; } = null!;
 
+        /// <summary>
+        /// Default quota space per project in GIB. Default is -1 (unlimited).
+        /// </summary>
         [Output("storagePerProject")]
         public Output<int?> StoragePerProject { get; private set; } = null!;
 
@@ -81,21 +99,39 @@ namespace Pulumiverse.Harbor
 
     public sealed class ConfigSystemArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
+        /// </summary>
         [Input("projectCreationRestriction")]
         public Input<string>? ProjectCreationRestriction { get; set; }
 
+        /// <summary>
+        /// Whether or not the system is in read only mode.
+        /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
+        /// <summary>
+        /// Robot account prefix.
+        /// </summary>
         [Input("robotNamePrefix")]
         public Input<string>? RobotNamePrefix { get; set; }
 
+        /// <summary>
+        /// The amount of time in days a robot account will expire.
+        /// </summary>
         [Input("robotTokenExpiration")]
         public Input<int>? RobotTokenExpiration { get; set; }
 
+        /// <summary>
+        /// Whether or not to skip update pull time for scanner.
+        /// </summary>
         [Input("scannerSkipUpdatePulltime")]
         public Input<bool>? ScannerSkipUpdatePulltime { get; set; }
 
+        /// <summary>
+        /// Default quota space per project in GIB. Default is -1 (unlimited).
+        /// </summary>
         [Input("storagePerProject")]
         public Input<int>? StoragePerProject { get; set; }
 
@@ -107,21 +143,39 @@ namespace Pulumiverse.Harbor
 
     public sealed class ConfigSystemState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
+        /// </summary>
         [Input("projectCreationRestriction")]
         public Input<string>? ProjectCreationRestriction { get; set; }
 
+        /// <summary>
+        /// Whether or not the system is in read only mode.
+        /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
+        /// <summary>
+        /// Robot account prefix.
+        /// </summary>
         [Input("robotNamePrefix")]
         public Input<string>? RobotNamePrefix { get; set; }
 
+        /// <summary>
+        /// The amount of time in days a robot account will expire.
+        /// </summary>
         [Input("robotTokenExpiration")]
         public Input<int>? RobotTokenExpiration { get; set; }
 
+        /// <summary>
+        /// Whether or not to skip update pull time for scanner.
+        /// </summary>
         [Input("scannerSkipUpdatePulltime")]
         public Input<bool>? ScannerSkipUpdatePulltime { get; set; }
 
+        /// <summary>
+        /// Default quota space per project in GIB. Default is -1 (unlimited).
+        /// </summary>
         [Input("storagePerProject")]
         public Input<int>? StoragePerProject { get; set; }
 

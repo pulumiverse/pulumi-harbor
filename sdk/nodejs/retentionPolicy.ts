@@ -11,7 +11,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Harbor retention policy can be imported using the `retention_policy id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10 <break>```<break><break>  `<break><break>
+ * ```sh
+ * $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10
+ * ```
  */
 export class RetentionPolicy extends pulumi.CustomResource {
     /**
@@ -41,9 +43,6 @@ export class RetentionPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === RetentionPolicy.__pulumiType;
     }
 
-    /**
-     * Al collection of rule blocks as documented below.
-     */
     public readonly rules!: pulumi.Output<outputs.RetentionPolicyRule[]>;
     /**
      * The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
@@ -91,9 +90,6 @@ export class RetentionPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RetentionPolicy resources.
  */
 export interface RetentionPolicyState {
-    /**
-     * Al collection of rule blocks as documented below.
-     */
     rules?: pulumi.Input<pulumi.Input<inputs.RetentionPolicyRule>[]>;
     /**
      * The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
@@ -109,9 +105,6 @@ export interface RetentionPolicyState {
  * The set of arguments for constructing a RetentionPolicy resource.
  */
 export interface RetentionPolicyArgs {
-    /**
-     * Al collection of rule blocks as documented below.
-     */
     rules: pulumi.Input<pulumi.Input<inputs.RetentionPolicyRule>[]>;
     /**
      * The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.

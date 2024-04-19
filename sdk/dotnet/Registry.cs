@@ -15,7 +15,9 @@ namespace Pulumiverse.Harbor
     /// 
     /// ## Import
     /// 
-    /// Harbor project can be imported using the `registry id` eg,&lt;break&gt;&lt;break&gt; ` &lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import harbor:index/registry:Registry main /registries/7 &lt;break&gt;```&lt;break&gt;&lt;break&gt;  `&lt;break&gt;&lt;break&gt;
+    /// ```sh
+    /// $ pulumi import harbor:index/registry:Registry main /registries/7
+    /// ```
     /// </summary>
     [HarborResourceType("harbor:index/registry:Registry")]
     public partial class Registry : global::Pulumi.CustomResource
@@ -29,15 +31,24 @@ namespace Pulumiverse.Harbor
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// The url endpoint for the external container register ie `"https://hub.docker.com"`
+        /// </summary>
         [Output("endpointUrl")]
         public Output<string> EndpointUrl { get; private set; } = null!;
 
         [Output("insecure")]
         public Output<bool?> Insecure { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the register.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the provider.
+        /// </summary>
         [Output("providerName")]
         public Output<string> ProviderName { get; private set; } = null!;
 
@@ -116,15 +127,24 @@ namespace Pulumiverse.Harbor
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The url endpoint for the external container register ie `"https://hub.docker.com"`
+        /// </summary>
         [Input("endpointUrl", required: true)]
         public Input<string> EndpointUrl { get; set; } = null!;
 
         [Input("insecure")]
         public Input<bool>? Insecure { get; set; }
 
+        /// <summary>
+        /// The name of the register.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The name of the provider.
+        /// </summary>
         [Input("providerName", required: true)]
         public Input<string> ProviderName { get; set; } = null!;
 
@@ -154,15 +174,24 @@ namespace Pulumiverse.Harbor
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The url endpoint for the external container register ie `"https://hub.docker.com"`
+        /// </summary>
         [Input("endpointUrl")]
         public Input<string>? EndpointUrl { get; set; }
 
         [Input("insecure")]
         public Input<bool>? Insecure { get; set; }
 
+        /// <summary>
+        /// The name of the register.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The name of the provider.
+        /// </summary>
         [Input("providerName")]
         public Input<string>? ProviderName { get; set; }
 

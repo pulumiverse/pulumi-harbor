@@ -19,6 +19,9 @@ class GroupArgs:
                  ldap_group_dn: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Group resource.
+        :param pulumi.Input[str] group_name: The name of the group.
+        :param pulumi.Input[int] group_type: 3. Note: group type 3 is OIDC group.
+        :param pulumi.Input[str] ldap_group_dn: The distinguished name of the group within AD/LDAP.
         """
         pulumi.set(__self__, "group_name", group_name)
         pulumi.set(__self__, "group_type", group_type)
@@ -28,6 +31,9 @@ class GroupArgs:
     @property
     @pulumi.getter(name="groupName")
     def group_name(self) -> pulumi.Input[str]:
+        """
+        The name of the group.
+        """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
@@ -37,6 +43,9 @@ class GroupArgs:
     @property
     @pulumi.getter(name="groupType")
     def group_type(self) -> pulumi.Input[int]:
+        """
+        3. Note: group type 3 is OIDC group.
+        """
         return pulumi.get(self, "group_type")
 
     @group_type.setter
@@ -46,6 +55,9 @@ class GroupArgs:
     @property
     @pulumi.getter(name="ldapGroupDn")
     def ldap_group_dn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The distinguished name of the group within AD/LDAP.
+        """
         return pulumi.get(self, "ldap_group_dn")
 
     @ldap_group_dn.setter
@@ -61,6 +73,9 @@ class _GroupState:
                  ldap_group_dn: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
+        :param pulumi.Input[str] group_name: The name of the group.
+        :param pulumi.Input[int] group_type: 3. Note: group type 3 is OIDC group.
+        :param pulumi.Input[str] ldap_group_dn: The distinguished name of the group within AD/LDAP.
         """
         if group_name is not None:
             pulumi.set(__self__, "group_name", group_name)
@@ -72,6 +87,9 @@ class _GroupState:
     @property
     @pulumi.getter(name="groupName")
     def group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the group.
+        """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
@@ -81,6 +99,9 @@ class _GroupState:
     @property
     @pulumi.getter(name="groupType")
     def group_type(self) -> Optional[pulumi.Input[int]]:
+        """
+        3. Note: group type 3 is OIDC group.
+        """
         return pulumi.get(self, "group_type")
 
     @group_type.setter
@@ -90,6 +111,9 @@ class _GroupState:
     @property
     @pulumi.getter(name="ldapGroupDn")
     def ldap_group_dn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The distinguished name of the group within AD/LDAP.
+        """
         return pulumi.get(self, "ldap_group_dn")
 
     @ldap_group_dn.setter
@@ -111,10 +135,15 @@ class Group(pulumi.CustomResource):
 
         ## Import
 
-        An OIDC group can be imported using the `group id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/group:Group storage-group /usergroups/19 <break>```<break><break>  `<break><break>
+        ```sh
+        $ pulumi import harbor:index/group:Group storage-group /usergroups/19
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] group_name: The name of the group.
+        :param pulumi.Input[int] group_type: 3. Note: group type 3 is OIDC group.
+        :param pulumi.Input[str] ldap_group_dn: The distinguished name of the group within AD/LDAP.
         """
         ...
     @overload
@@ -127,7 +156,9 @@ class Group(pulumi.CustomResource):
 
         ## Import
 
-        An OIDC group can be imported using the `group id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/group:Group storage-group /usergroups/19 <break>```<break><break>  `<break><break>
+        ```sh
+        $ pulumi import harbor:index/group:Group storage-group /usergroups/19
+        ```
 
         :param str resource_name: The name of the resource.
         :param GroupArgs args: The arguments to use to populate this resource's properties.
@@ -183,6 +214,9 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] group_name: The name of the group.
+        :param pulumi.Input[int] group_type: 3. Note: group type 3 is OIDC group.
+        :param pulumi.Input[str] ldap_group_dn: The distinguished name of the group within AD/LDAP.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -196,15 +230,24 @@ class Group(pulumi.CustomResource):
     @property
     @pulumi.getter(name="groupName")
     def group_name(self) -> pulumi.Output[str]:
+        """
+        The name of the group.
+        """
         return pulumi.get(self, "group_name")
 
     @property
     @pulumi.getter(name="groupType")
     def group_type(self) -> pulumi.Output[int]:
+        """
+        3. Note: group type 3 is OIDC group.
+        """
         return pulumi.get(self, "group_type")
 
     @property
     @pulumi.getter(name="ldapGroupDn")
     def ldap_group_dn(self) -> pulumi.Output[Optional[str]]:
+        """
+        The distinguished name of the group within AD/LDAP.
+        """
         return pulumi.get(self, "ldap_group_dn")
 

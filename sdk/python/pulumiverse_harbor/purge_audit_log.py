@@ -19,6 +19,9 @@ class PurgeAuditLogArgs:
                  schedule: pulumi.Input[str]):
         """
         The set of arguments for constructing a PurgeAuditLog resource.
+        :param pulumi.Input[int] audit_retention_hour: To configure how long audit logs should be kept. For example, if you set this to 24 Harbor will only purge audit logs that are 24 or more hours old.
+        :param pulumi.Input[str] include_operations: Valid values are `create` `delete` `pull`, thoses values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge.
+        :param pulumi.Input[str] schedule: Sets the schedule how often the Garbage Collection will run.  Can be to `"Hourly"`, `"Daily"`, `"Weekly"` or can be a custom cron string ie, `"5 4 * * *"`
         """
         pulumi.set(__self__, "audit_retention_hour", audit_retention_hour)
         pulumi.set(__self__, "include_operations", include_operations)
@@ -27,6 +30,9 @@ class PurgeAuditLogArgs:
     @property
     @pulumi.getter(name="auditRetentionHour")
     def audit_retention_hour(self) -> pulumi.Input[int]:
+        """
+        To configure how long audit logs should be kept. For example, if you set this to 24 Harbor will only purge audit logs that are 24 or more hours old.
+        """
         return pulumi.get(self, "audit_retention_hour")
 
     @audit_retention_hour.setter
@@ -36,6 +42,9 @@ class PurgeAuditLogArgs:
     @property
     @pulumi.getter(name="includeOperations")
     def include_operations(self) -> pulumi.Input[str]:
+        """
+        Valid values are `create` `delete` `pull`, thoses values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge.
+        """
         return pulumi.get(self, "include_operations")
 
     @include_operations.setter
@@ -45,6 +54,9 @@ class PurgeAuditLogArgs:
     @property
     @pulumi.getter
     def schedule(self) -> pulumi.Input[str]:
+        """
+        Sets the schedule how often the Garbage Collection will run.  Can be to `"Hourly"`, `"Daily"`, `"Weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
@@ -60,6 +72,9 @@ class _PurgeAuditLogState:
                  schedule: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PurgeAuditLog resources.
+        :param pulumi.Input[int] audit_retention_hour: To configure how long audit logs should be kept. For example, if you set this to 24 Harbor will only purge audit logs that are 24 or more hours old.
+        :param pulumi.Input[str] include_operations: Valid values are `create` `delete` `pull`, thoses values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge.
+        :param pulumi.Input[str] schedule: Sets the schedule how often the Garbage Collection will run.  Can be to `"Hourly"`, `"Daily"`, `"Weekly"` or can be a custom cron string ie, `"5 4 * * *"`
         """
         if audit_retention_hour is not None:
             pulumi.set(__self__, "audit_retention_hour", audit_retention_hour)
@@ -71,6 +86,9 @@ class _PurgeAuditLogState:
     @property
     @pulumi.getter(name="auditRetentionHour")
     def audit_retention_hour(self) -> Optional[pulumi.Input[int]]:
+        """
+        To configure how long audit logs should be kept. For example, if you set this to 24 Harbor will only purge audit logs that are 24 or more hours old.
+        """
         return pulumi.get(self, "audit_retention_hour")
 
     @audit_retention_hour.setter
@@ -80,6 +98,9 @@ class _PurgeAuditLogState:
     @property
     @pulumi.getter(name="includeOperations")
     def include_operations(self) -> Optional[pulumi.Input[str]]:
+        """
+        Valid values are `create` `delete` `pull`, thoses values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge.
+        """
         return pulumi.get(self, "include_operations")
 
     @include_operations.setter
@@ -89,6 +110,9 @@ class _PurgeAuditLogState:
     @property
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input[str]]:
+        """
+        Sets the schedule how often the Garbage Collection will run.  Can be to `"Hourly"`, `"Daily"`, `"Weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
@@ -106,9 +130,13 @@ class PurgeAuditLog(pulumi.CustomResource):
                  schedule: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a PurgeAuditLog resource with the given unique name, props, and options.
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] audit_retention_hour: To configure how long audit logs should be kept. For example, if you set this to 24 Harbor will only purge audit logs that are 24 or more hours old.
+        :param pulumi.Input[str] include_operations: Valid values are `create` `delete` `pull`, thoses values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge.
+        :param pulumi.Input[str] schedule: Sets the schedule how often the Garbage Collection will run.  Can be to `"Hourly"`, `"Daily"`, `"Weekly"` or can be a custom cron string ie, `"5 4 * * *"`
         """
         ...
     @overload
@@ -117,7 +145,8 @@ class PurgeAuditLog(pulumi.CustomResource):
                  args: PurgeAuditLogArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a PurgeAuditLog resource with the given unique name, props, and options.
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param PurgeAuditLogArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -174,6 +203,9 @@ class PurgeAuditLog(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] audit_retention_hour: To configure how long audit logs should be kept. For example, if you set this to 24 Harbor will only purge audit logs that are 24 or more hours old.
+        :param pulumi.Input[str] include_operations: Valid values are `create` `delete` `pull`, thoses values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge.
+        :param pulumi.Input[str] schedule: Sets the schedule how often the Garbage Collection will run.  Can be to `"Hourly"`, `"Daily"`, `"Weekly"` or can be a custom cron string ie, `"5 4 * * *"`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -187,15 +219,24 @@ class PurgeAuditLog(pulumi.CustomResource):
     @property
     @pulumi.getter(name="auditRetentionHour")
     def audit_retention_hour(self) -> pulumi.Output[int]:
+        """
+        To configure how long audit logs should be kept. For example, if you set this to 24 Harbor will only purge audit logs that are 24 or more hours old.
+        """
         return pulumi.get(self, "audit_retention_hour")
 
     @property
     @pulumi.getter(name="includeOperations")
     def include_operations(self) -> pulumi.Output[str]:
+        """
+        Valid values are `create` `delete` `pull`, thoses values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge.
+        """
         return pulumi.get(self, "include_operations")
 
     @property
     @pulumi.getter
     def schedule(self) -> pulumi.Output[str]:
+        """
+        Sets the schedule how often the Garbage Collection will run.  Can be to `"Hourly"`, `"Daily"`, `"Weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        """
         return pulumi.get(self, "schedule")
 

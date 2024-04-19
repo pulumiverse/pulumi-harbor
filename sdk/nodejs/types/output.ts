@@ -10,12 +10,9 @@ export interface GetGroupsGroup {
      * The name of the group to filter by.
      */
     groupName: string;
-    /**
-     * The type of the group.
-     */
     groupType: number;
     /**
-     * The ID of the group.
+     * The ID of this resource.
      */
     id: number;
     /**
@@ -33,10 +30,25 @@ export interface GetProjectsProject {
 }
 
 export interface ReplicationFilter {
+    /**
+     * Matches or excludes the result. Can be one of the following. `matches`, `excludes`
+     */
     decoration?: string;
+    /**
+     * Filter on the resource according to labels.
+     */
     labels?: string[];
+    /**
+     * Filter on the name of the resource.
+     */
     name?: string;
+    /**
+     * Filter on the resource type. Can be one of the following types. `chart`, `artifact`
+     */
     resource?: string;
+    /**
+     * Filter on the tag/version of the resource.
+     */
     tag?: string;
 }
 
@@ -66,7 +78,7 @@ export interface RetentionPolicyRule {
      */
     nDaysSinceLastPush?: number;
     /**
-     * For the repositories excuding.
+     * For the repositories excluding.
      */
     repoExcluding?: string;
     /**
@@ -74,7 +86,7 @@ export interface RetentionPolicyRule {
      */
     repoMatching?: string;
     /**
-     * For the tag excuding.
+     * For the tag excluding.
      */
     tagExcluding?: string;
     /**
@@ -83,21 +95,34 @@ export interface RetentionPolicyRule {
     tagMatching?: string;
     /**
      * with untagged artifacts. Defaults to `true`
-     *
-     * > Multiple tags or repositories must be provided as a comma-separated list wrapped into curly brackets `{ }`. Otherwise, the value is interpreted as a single value.
      */
     untaggedArtifacts?: boolean;
 }
 
 export interface RobotAccountPermission {
     accesses: outputs.RobotAccountPermissionAccess[];
+    /**
+     * Either `system` or `project`.
+     */
     kind: string;
+    /**
+     * namespace is the name of your project. For kind `system` permissions, always use `/` as namespace. Use `*` to match all projects.
+     */
     namespace: string;
 }
 
 export interface RobotAccountPermissionAccess {
+    /**
+     * Eg. `push`, `pull`, `read`, etc. Check [available actions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+     */
     action: string;
+    /**
+     * Either `allow` or `deny`. Defaults to `allow`.
+     */
     effect?: string;
+    /**
+     * Eg. `repository`, `labels`, etc. Check [available resources](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+     */
     resource: string;
 }
 

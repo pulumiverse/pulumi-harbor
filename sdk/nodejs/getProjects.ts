@@ -39,10 +39,22 @@ export interface GetProjectsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The name of the project.
+     */
     readonly name?: string;
     readonly projects: outputs.GetProjectsProject[];
+    /**
+     * If the project has public accessibility.
+     */
     readonly public?: boolean;
+    /**
+     * The type of the project : Project or ProxyCache.
+     */
     readonly type?: string;
+    /**
+     * If the images will be scanned for vulnerabilities when push to harbor.
+     */
     readonly vulnerabilityScanning?: boolean;
 }
 /**
