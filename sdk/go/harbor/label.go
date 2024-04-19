@@ -13,21 +13,27 @@ import (
 
 // ## Example Usage
 //
-// * Create a global label within harbor
+// ### Global
 //
-// * Creates a label for project
+// ### Project
 //
 // ## Import
 //
-// Harbor label can be imported using the `label id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/label:Label main /labels/1 <break>```<break><break>  `<break><break>
+// ```sh
+// $ pulumi import harbor:index/label:Label main /labels/1
+// ```
 type Label struct {
 	pulumi.CustomResourceState
 
-	Color       pulumi.StringPtrOutput `pulumi:"color"`
+	// The color of the label within harbor (Default: #FFFFF)
+	Color pulumi.StringPtrOutput `pulumi:"color"`
+	// The Description of the label within harbor
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	Name        pulumi.StringOutput    `pulumi:"name"`
-	ProjectId   pulumi.StringPtrOutput `pulumi:"projectId"`
-	Scope       pulumi.StringOutput    `pulumi:"scope"`
+	// The of name of the label within harbor.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The id of the project with harbor.
+	ProjectId pulumi.StringPtrOutput `pulumi:"projectId"`
+	Scope     pulumi.StringOutput    `pulumi:"scope"`
 }
 
 // NewLabel registers a new resource with the given unique name, arguments, and options.
@@ -60,19 +66,27 @@ func GetLabel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Label resources.
 type labelState struct {
-	Color       *string `pulumi:"color"`
+	// The color of the label within harbor (Default: #FFFFF)
+	Color *string `pulumi:"color"`
+	// The Description of the label within harbor
 	Description *string `pulumi:"description"`
-	Name        *string `pulumi:"name"`
-	ProjectId   *string `pulumi:"projectId"`
-	Scope       *string `pulumi:"scope"`
+	// The of name of the label within harbor.
+	Name *string `pulumi:"name"`
+	// The id of the project with harbor.
+	ProjectId *string `pulumi:"projectId"`
+	Scope     *string `pulumi:"scope"`
 }
 
 type LabelState struct {
-	Color       pulumi.StringPtrInput
+	// The color of the label within harbor (Default: #FFFFF)
+	Color pulumi.StringPtrInput
+	// The Description of the label within harbor
 	Description pulumi.StringPtrInput
-	Name        pulumi.StringPtrInput
-	ProjectId   pulumi.StringPtrInput
-	Scope       pulumi.StringPtrInput
+	// The of name of the label within harbor.
+	Name pulumi.StringPtrInput
+	// The id of the project with harbor.
+	ProjectId pulumi.StringPtrInput
+	Scope     pulumi.StringPtrInput
 }
 
 func (LabelState) ElementType() reflect.Type {
@@ -80,18 +94,26 @@ func (LabelState) ElementType() reflect.Type {
 }
 
 type labelArgs struct {
-	Color       *string `pulumi:"color"`
+	// The color of the label within harbor (Default: #FFFFF)
+	Color *string `pulumi:"color"`
+	// The Description of the label within harbor
 	Description *string `pulumi:"description"`
-	Name        *string `pulumi:"name"`
-	ProjectId   *string `pulumi:"projectId"`
+	// The of name of the label within harbor.
+	Name *string `pulumi:"name"`
+	// The id of the project with harbor.
+	ProjectId *string `pulumi:"projectId"`
 }
 
 // The set of arguments for constructing a Label resource.
 type LabelArgs struct {
-	Color       pulumi.StringPtrInput
+	// The color of the label within harbor (Default: #FFFFF)
+	Color pulumi.StringPtrInput
+	// The Description of the label within harbor
 	Description pulumi.StringPtrInput
-	Name        pulumi.StringPtrInput
-	ProjectId   pulumi.StringPtrInput
+	// The of name of the label within harbor.
+	Name pulumi.StringPtrInput
+	// The id of the project with harbor.
+	ProjectId pulumi.StringPtrInput
 }
 
 func (LabelArgs) ElementType() reflect.Type {
@@ -181,18 +203,22 @@ func (o LabelOutput) ToLabelOutputWithContext(ctx context.Context) LabelOutput {
 	return o
 }
 
+// The color of the label within harbor (Default: #FFFFF)
 func (o LabelOutput) Color() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Label) pulumi.StringPtrOutput { return v.Color }).(pulumi.StringPtrOutput)
 }
 
+// The Description of the label within harbor
 func (o LabelOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Label) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The of name of the label within harbor.
 func (o LabelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Label) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The id of the project with harbor.
 func (o LabelOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Label) pulumi.StringPtrOutput { return v.ProjectId }).(pulumi.StringPtrOutput)
 }

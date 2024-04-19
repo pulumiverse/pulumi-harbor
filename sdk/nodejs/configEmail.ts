@@ -35,12 +35,33 @@ export class ConfigEmail extends pulumi.CustomResource {
         return obj['__pulumiType'] === ConfigEmail.__pulumiType;
     }
 
+    /**
+     * The email from address ie, `dont_reply@acme.com`
+     */
     public readonly emailFrom!: pulumi.Output<string>;
+    /**
+     * The FQDN of the email server
+     */
     public readonly emailHost!: pulumi.Output<string>;
+    /**
+     * Disables validation of email server certificate `Default: false`
+     */
     public readonly emailInsecure!: pulumi.Output<boolean | undefined>;
+    /**
+     * The password for the email server
+     */
     public readonly emailPassword!: pulumi.Output<string | undefined>;
+    /**
+     * The smtp port for the email server `Default: 25`
+     */
     public readonly emailPort!: pulumi.Output<number | undefined>;
+    /**
+     * Enable SSL for email server connection
+     */
     public readonly emailSsl!: pulumi.Output<boolean | undefined>;
+    /**
+     * The username for the email server
+     */
     public readonly emailUsername!: pulumi.Output<string | undefined>;
 
     /**
@@ -90,12 +111,33 @@ export class ConfigEmail extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ConfigEmail resources.
  */
 export interface ConfigEmailState {
+    /**
+     * The email from address ie, `dont_reply@acme.com`
+     */
     emailFrom?: pulumi.Input<string>;
+    /**
+     * The FQDN of the email server
+     */
     emailHost?: pulumi.Input<string>;
+    /**
+     * Disables validation of email server certificate `Default: false`
+     */
     emailInsecure?: pulumi.Input<boolean>;
+    /**
+     * The password for the email server
+     */
     emailPassword?: pulumi.Input<string>;
+    /**
+     * The smtp port for the email server `Default: 25`
+     */
     emailPort?: pulumi.Input<number>;
+    /**
+     * Enable SSL for email server connection
+     */
     emailSsl?: pulumi.Input<boolean>;
+    /**
+     * The username for the email server
+     */
     emailUsername?: pulumi.Input<string>;
 }
 
@@ -103,11 +145,32 @@ export interface ConfigEmailState {
  * The set of arguments for constructing a ConfigEmail resource.
  */
 export interface ConfigEmailArgs {
+    /**
+     * The email from address ie, `dont_reply@acme.com`
+     */
     emailFrom: pulumi.Input<string>;
+    /**
+     * The FQDN of the email server
+     */
     emailHost: pulumi.Input<string>;
+    /**
+     * Disables validation of email server certificate `Default: false`
+     */
     emailInsecure?: pulumi.Input<boolean>;
+    /**
+     * The password for the email server
+     */
     emailPassword?: pulumi.Input<string>;
+    /**
+     * The smtp port for the email server `Default: 25`
+     */
     emailPort?: pulumi.Input<number>;
+    /**
+     * Enable SSL for email server connection
+     */
     emailSsl?: pulumi.Input<boolean>;
+    /**
+     * The username for the email server
+     */
     emailUsername?: pulumi.Input<string>;
 }

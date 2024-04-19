@@ -13,26 +13,40 @@ namespace Pulumiverse.Harbor
     /// <summary>
     /// ## Example Usage
     /// 
-    /// * Create a global label within harbor
+    /// ### Global
     /// 
-    /// * Creates a label for project
+    /// ### Project
     /// 
     /// ## Import
     /// 
-    /// Harbor label can be imported using the `label id` eg,&lt;break&gt;&lt;break&gt; ` &lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import harbor:index/label:Label main /labels/1 &lt;break&gt;```&lt;break&gt;&lt;break&gt;  `&lt;break&gt;&lt;break&gt;
+    /// ```sh
+    /// $ pulumi import harbor:index/label:Label main /labels/1
+    /// ```
     /// </summary>
     [HarborResourceType("harbor:index/label:Label")]
     public partial class Label : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The color of the label within harbor (Default: #FFFFF)
+        /// </summary>
         [Output("color")]
         public Output<string?> Color { get; private set; } = null!;
 
+        /// <summary>
+        /// The Description of the label within harbor
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// The of name of the label within harbor.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The id of the project with harbor.
+        /// </summary>
         [Output("projectId")]
         public Output<string?> ProjectId { get; private set; } = null!;
 
@@ -86,15 +100,27 @@ namespace Pulumiverse.Harbor
 
     public sealed class LabelArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The color of the label within harbor (Default: #FFFFF)
+        /// </summary>
         [Input("color")]
         public Input<string>? Color { get; set; }
 
+        /// <summary>
+        /// The Description of the label within harbor
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The of name of the label within harbor.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The id of the project with harbor.
+        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
@@ -106,15 +132,27 @@ namespace Pulumiverse.Harbor
 
     public sealed class LabelState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The color of the label within harbor (Default: #FFFFF)
+        /// </summary>
         [Input("color")]
         public Input<string>? Color { get; set; }
 
+        /// <summary>
+        /// The Description of the label within harbor
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The of name of the label within harbor.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The id of the project with harbor.
+        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 

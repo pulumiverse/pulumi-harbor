@@ -19,7 +19,7 @@ class InterrogationServicesArgs:
         """
         The set of arguments for constructing a InterrogationServices resource.
         :param pulumi.Input[str] vulnerability_scan_policy: The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
-        :param pulumi.Input[str] default_scanner: Sets the default interrogation service **Clair**
+        :param pulumi.Input[str] default_scanner: Sets the default interrogation service `"Clair"`
         """
         pulumi.set(__self__, "vulnerability_scan_policy", vulnerability_scan_policy)
         if default_scanner is not None:
@@ -41,7 +41,7 @@ class InterrogationServicesArgs:
     @pulumi.getter(name="defaultScanner")
     def default_scanner(self) -> Optional[pulumi.Input[str]]:
         """
-        Sets the default interrogation service **Clair**
+        Sets the default interrogation service `"Clair"`
         """
         return pulumi.get(self, "default_scanner")
 
@@ -57,7 +57,7 @@ class _InterrogationServicesState:
                  vulnerability_scan_policy: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering InterrogationServices resources.
-        :param pulumi.Input[str] default_scanner: Sets the default interrogation service **Clair**
+        :param pulumi.Input[str] default_scanner: Sets the default interrogation service `"Clair"`
         :param pulumi.Input[str] vulnerability_scan_policy: The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
         """
         if default_scanner is not None:
@@ -69,7 +69,7 @@ class _InterrogationServicesState:
     @pulumi.getter(name="defaultScanner")
     def default_scanner(self) -> Optional[pulumi.Input[str]]:
         """
-        Sets the default interrogation service **Clair**
+        Sets the default interrogation service `"Clair"`
         """
         return pulumi.get(self, "default_scanner")
 
@@ -103,7 +103,7 @@ class InterrogationServices(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] default_scanner: Sets the default interrogation service **Clair**
+        :param pulumi.Input[str] default_scanner: Sets the default interrogation service `"Clair"`
         :param pulumi.Input[str] vulnerability_scan_policy: The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
         """
         ...
@@ -164,7 +164,7 @@ class InterrogationServices(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] default_scanner: Sets the default interrogation service **Clair**
+        :param pulumi.Input[str] default_scanner: Sets the default interrogation service `"Clair"`
         :param pulumi.Input[str] vulnerability_scan_policy: The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -179,7 +179,7 @@ class InterrogationServices(pulumi.CustomResource):
     @pulumi.getter(name="defaultScanner")
     def default_scanner(self) -> pulumi.Output[Optional[str]]:
         """
-        Sets the default interrogation service **Clair**
+        Sets the default interrogation service `"Clair"`
         """
         return pulumi.get(self, "default_scanner")
 

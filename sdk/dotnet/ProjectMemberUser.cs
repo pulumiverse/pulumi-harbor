@@ -15,20 +15,34 @@ namespace Pulumiverse.Harbor
     /// 
     /// ## Import
     /// 
-    /// Harbor project member user can be imported using the `project id` and `member id` eg,&lt;break&gt;&lt;break&gt; ` &lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200 &lt;break&gt;```&lt;break&gt;&lt;break&gt;  `&lt;break&gt;&lt;break&gt;
+    /// ```sh
+    /// $ pulumi import harbor:index/projectMemberUser:ProjectMemberUser main /projects/10/members/200
+    /// ```
     /// </summary>
     [HarborResourceType("harbor:index/projectMemberUser:ProjectMemberUser")]
     public partial class ProjectMemberUser : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The member id of the member.
+        /// </summary>
         [Output("memberId")]
         public Output<int> MemberId { get; private set; } = null!;
 
+        /// <summary>
+        /// The project id of the project that the entity will have access to.
+        /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
 
+        /// <summary>
+        /// The permissions that the entity will be granted.
+        /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the member entity.
+        /// </summary>
         [Output("userName")]
         public Output<string> UserName { get; private set; } = null!;
 
@@ -79,12 +93,21 @@ namespace Pulumiverse.Harbor
 
     public sealed class ProjectMemberUserArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The project id of the project that the entity will have access to.
+        /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
+        /// <summary>
+        /// The permissions that the entity will be granted.
+        /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the member entity.
+        /// </summary>
         [Input("userName", required: true)]
         public Input<string> UserName { get; set; } = null!;
 
@@ -96,15 +119,27 @@ namespace Pulumiverse.Harbor
 
     public sealed class ProjectMemberUserState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The member id of the member.
+        /// </summary>
         [Input("memberId")]
         public Input<int>? MemberId { get; set; }
 
+        /// <summary>
+        /// The project id of the project that the entity will have access to.
+        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
+        /// <summary>
+        /// The permissions that the entity will be granted.
+        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
+        /// <summary>
+        /// The name of the member entity.
+        /// </summary>
         [Input("userName")]
         public Input<string>? UserName { get; set; }
 

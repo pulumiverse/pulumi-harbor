@@ -16,6 +16,7 @@ import (
 type Tasks struct {
 	pulumi.CustomResourceState
 
+	// The frequency of the vulnerability scanning is done. Can be to **"hourly"**, **"daily"** or **"weekly"**
 	VulnerabilityScanPolicy pulumi.StringOutput `pulumi:"vulnerabilityScanPolicy"`
 }
 
@@ -52,10 +53,12 @@ func GetTasks(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Tasks resources.
 type tasksState struct {
+	// The frequency of the vulnerability scanning is done. Can be to **"hourly"**, **"daily"** or **"weekly"**
 	VulnerabilityScanPolicy *string `pulumi:"vulnerabilityScanPolicy"`
 }
 
 type TasksState struct {
+	// The frequency of the vulnerability scanning is done. Can be to **"hourly"**, **"daily"** or **"weekly"**
 	VulnerabilityScanPolicy pulumi.StringPtrInput
 }
 
@@ -64,11 +67,13 @@ func (TasksState) ElementType() reflect.Type {
 }
 
 type tasksArgs struct {
+	// The frequency of the vulnerability scanning is done. Can be to **"hourly"**, **"daily"** or **"weekly"**
 	VulnerabilityScanPolicy string `pulumi:"vulnerabilityScanPolicy"`
 }
 
 // The set of arguments for constructing a Tasks resource.
 type TasksArgs struct {
+	// The frequency of the vulnerability scanning is done. Can be to **"hourly"**, **"daily"** or **"weekly"**
 	VulnerabilityScanPolicy pulumi.StringInput
 }
 
@@ -159,6 +164,7 @@ func (o TasksOutput) ToTasksOutputWithContext(ctx context.Context) TasksOutput {
 	return o
 }
 
+// The frequency of the vulnerability scanning is done. Can be to **"hourly"**, **"daily"** or **"weekly"**
 func (o TasksOutput) VulnerabilityScanPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tasks) pulumi.StringOutput { return v.VulnerabilityScanPolicy }).(pulumi.StringOutput)
 }

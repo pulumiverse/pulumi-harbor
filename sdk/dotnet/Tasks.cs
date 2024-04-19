@@ -16,6 +16,9 @@ namespace Pulumiverse.Harbor
     [HarborResourceType("harbor:index/tasks:Tasks")]
     public partial class Tasks : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The frequency of the vulnerability scanning is done. Can be to **"hourly"**, **"daily"** or **"weekly"**
+        /// </summary>
         [Output("vulnerabilityScanPolicy")]
         public Output<string> VulnerabilityScanPolicy { get; private set; } = null!;
 
@@ -66,6 +69,9 @@ namespace Pulumiverse.Harbor
 
     public sealed class TasksArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The frequency of the vulnerability scanning is done. Can be to **"hourly"**, **"daily"** or **"weekly"**
+        /// </summary>
         [Input("vulnerabilityScanPolicy", required: true)]
         public Input<string> VulnerabilityScanPolicy { get; set; } = null!;
 
@@ -77,6 +83,9 @@ namespace Pulumiverse.Harbor
 
     public sealed class TasksState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The frequency of the vulnerability scanning is done. Can be to **"hourly"**, **"daily"** or **"weekly"**
+        /// </summary>
         [Input("vulnerabilityScanPolicy")]
         public Input<string>? VulnerabilityScanPolicy { get; set; }
 

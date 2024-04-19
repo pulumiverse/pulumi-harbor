@@ -39,7 +39,7 @@ namespace Pulumiverse.Harbor.Outputs
         /// </summary>
         public readonly int? NDaysSinceLastPush;
         /// <summary>
-        /// For the repositories excuding.
+        /// For the repositories excluding.
         /// </summary>
         public readonly string? RepoExcluding;
         /// <summary>
@@ -47,7 +47,7 @@ namespace Pulumiverse.Harbor.Outputs
         /// </summary>
         public readonly string? RepoMatching;
         /// <summary>
-        /// For the tag excuding.
+        /// For the tag excluding.
         /// </summary>
         public readonly string? TagExcluding;
         /// <summary>
@@ -56,8 +56,6 @@ namespace Pulumiverse.Harbor.Outputs
         public readonly string? TagMatching;
         /// <summary>
         /// with untagged artifacts. Defaults to `true`
-        /// 
-        /// &gt; Multiple tags or repositories must be provided as a comma-separated list wrapped into curly brackets `{ }`. Otherwise, the value is interpreted as a single value.
         /// </summary>
         public readonly bool? UntaggedArtifacts;
 

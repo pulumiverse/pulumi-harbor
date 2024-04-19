@@ -15,17 +15,26 @@ __all__ = ['GarbageCollectionArgs', 'GarbageCollection']
 class GarbageCollectionArgs:
     def __init__(__self__, *,
                  schedule: pulumi.Input[str],
-                 delete_untagged: Optional[pulumi.Input[bool]] = None):
+                 delete_untagged: Optional[pulumi.Input[bool]] = None,
+                 workers: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a GarbageCollection resource.
+        :param pulumi.Input[str] schedule: Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        :param pulumi.Input[bool] delete_untagged: Allow garbage collection on untagged artifacts.
+        :param pulumi.Input[int] workers: Number of workers to run the garbage collection, value must be between 1 and 5.
         """
         pulumi.set(__self__, "schedule", schedule)
         if delete_untagged is not None:
             pulumi.set(__self__, "delete_untagged", delete_untagged)
+        if workers is not None:
+            pulumi.set(__self__, "workers", workers)
 
     @property
     @pulumi.getter
     def schedule(self) -> pulumi.Input[str]:
+        """
+        Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
@@ -35,29 +44,53 @@ class GarbageCollectionArgs:
     @property
     @pulumi.getter(name="deleteUntagged")
     def delete_untagged(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow garbage collection on untagged artifacts.
+        """
         return pulumi.get(self, "delete_untagged")
 
     @delete_untagged.setter
     def delete_untagged(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "delete_untagged", value)
 
+    @property
+    @pulumi.getter
+    def workers(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of workers to run the garbage collection, value must be between 1 and 5.
+        """
+        return pulumi.get(self, "workers")
+
+    @workers.setter
+    def workers(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "workers", value)
+
 
 @pulumi.input_type
 class _GarbageCollectionState:
     def __init__(__self__, *,
                  delete_untagged: Optional[pulumi.Input[bool]] = None,
-                 schedule: Optional[pulumi.Input[str]] = None):
+                 schedule: Optional[pulumi.Input[str]] = None,
+                 workers: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering GarbageCollection resources.
+        :param pulumi.Input[bool] delete_untagged: Allow garbage collection on untagged artifacts.
+        :param pulumi.Input[str] schedule: Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        :param pulumi.Input[int] workers: Number of workers to run the garbage collection, value must be between 1 and 5.
         """
         if delete_untagged is not None:
             pulumi.set(__self__, "delete_untagged", delete_untagged)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
+        if workers is not None:
+            pulumi.set(__self__, "workers", workers)
 
     @property
     @pulumi.getter(name="deleteUntagged")
     def delete_untagged(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow garbage collection on untagged artifacts.
+        """
         return pulumi.get(self, "delete_untagged")
 
     @delete_untagged.setter
@@ -67,11 +100,26 @@ class _GarbageCollectionState:
     @property
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input[str]]:
+        """
+        Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
     def schedule(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "schedule", value)
+
+    @property
+    @pulumi.getter
+    def workers(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of workers to run the garbage collection, value must be between 1 and 5.
+        """
+        return pulumi.get(self, "workers")
+
+    @workers.setter
+    def workers(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "workers", value)
 
 
 class GarbageCollection(pulumi.CustomResource):
@@ -81,12 +129,16 @@ class GarbageCollection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delete_untagged: Optional[pulumi.Input[bool]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
+                 workers: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
         ## Example Usage
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] delete_untagged: Allow garbage collection on untagged artifacts.
+        :param pulumi.Input[str] schedule: Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        :param pulumi.Input[int] workers: Number of workers to run the garbage collection, value must be between 1 and 5.
         """
         ...
     @overload
@@ -114,6 +166,7 @@ class GarbageCollection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delete_untagged: Optional[pulumi.Input[bool]] = None,
                  schedule: Optional[pulumi.Input[str]] = None,
+                 workers: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -127,6 +180,7 @@ class GarbageCollection(pulumi.CustomResource):
             if schedule is None and not opts.urn:
                 raise TypeError("Missing required property 'schedule'")
             __props__.__dict__["schedule"] = schedule
+            __props__.__dict__["workers"] = workers
         super(GarbageCollection, __self__).__init__(
             'harbor:index/garbageCollection:GarbageCollection',
             resource_name,
@@ -138,7 +192,8 @@ class GarbageCollection(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             delete_untagged: Optional[pulumi.Input[bool]] = None,
-            schedule: Optional[pulumi.Input[str]] = None) -> 'GarbageCollection':
+            schedule: Optional[pulumi.Input[str]] = None,
+            workers: Optional[pulumi.Input[int]] = None) -> 'GarbageCollection':
         """
         Get an existing GarbageCollection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -146,6 +201,9 @@ class GarbageCollection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] delete_untagged: Allow garbage collection on untagged artifacts.
+        :param pulumi.Input[str] schedule: Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        :param pulumi.Input[int] workers: Number of workers to run the garbage collection, value must be between 1 and 5.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -153,15 +211,30 @@ class GarbageCollection(pulumi.CustomResource):
 
         __props__.__dict__["delete_untagged"] = delete_untagged
         __props__.__dict__["schedule"] = schedule
+        __props__.__dict__["workers"] = workers
         return GarbageCollection(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="deleteUntagged")
     def delete_untagged(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Allow garbage collection on untagged artifacts.
+        """
         return pulumi.get(self, "delete_untagged")
 
     @property
     @pulumi.getter
     def schedule(self) -> pulumi.Output[str]:
+        """
+        Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        """
         return pulumi.get(self, "schedule")
+
+    @property
+    @pulumi.getter
+    def workers(self) -> pulumi.Output[Optional[int]]:
+        """
+        Number of workers to run the garbage collection, value must be between 1 and 5.
+        """
+        return pulumi.get(self, "workers")
 

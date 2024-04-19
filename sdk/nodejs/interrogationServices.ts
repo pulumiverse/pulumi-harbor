@@ -36,7 +36,7 @@ export class InterrogationServices extends pulumi.CustomResource {
     }
 
     /**
-     * Sets the default interrogation service **Clair**
+     * Sets the default interrogation service `"Clair"`
      */
     public readonly defaultScanner!: pulumi.Output<string | undefined>;
     /**
@@ -77,7 +77,7 @@ export class InterrogationServices extends pulumi.CustomResource {
  */
 export interface InterrogationServicesState {
     /**
-     * Sets the default interrogation service **Clair**
+     * Sets the default interrogation service `"Clair"`
      */
     defaultScanner?: pulumi.Input<string>;
     /**
@@ -91,7 +91,7 @@ export interface InterrogationServicesState {
  */
 export interface InterrogationServicesArgs {
     /**
-     * Sets the default interrogation service **Clair**
+     * Sets the default interrogation service `"Clair"`
      */
     defaultScanner?: pulumi.Input<string>;
     /**

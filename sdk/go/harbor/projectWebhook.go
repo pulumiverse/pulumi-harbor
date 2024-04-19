@@ -16,23 +16,19 @@ import (
 type ProjectWebhook struct {
 	pulumi.CustomResourceState
 
-	// The address of the webhook
-	Address pulumi.StringOutput `pulumi:"address"`
-	// authentication header for you the webhook
-	AuthHeader pulumi.StringPtrOutput `pulumi:"authHeader"`
-	// _ (Optional, string) A description of the webhook
+	// The address of the webhook.
+	Address     pulumi.StringOutput    `pulumi:"address"`
+	AuthHeader  pulumi.StringPtrOutput `pulumi:"authHeader"`
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// , To enable / disable the webhook. Default `true`
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+	Enabled     pulumi.BoolPtrOutput   `pulumi:"enabled"`
+	// The type events you want to subscript to can be
 	EventsTypes pulumi.StringArrayOutput `pulumi:"eventsTypes"`
 	// The name of the webhook that will be created in harbor.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The notification type either `http` or `slack`
+	// The notification type either `http` or `slack`.
 	NotifyType pulumi.StringOutput `pulumi:"notifyType"`
-	// The project id (**/projects/ID**) of the harbor that webhook related to.
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// checks the for validate SSL certificate.
+	// The project id of the harbor that webhook related to.
+	ProjectId      pulumi.StringOutput  `pulumi:"projectId"`
 	SkipCertVerify pulumi.BoolPtrOutput `pulumi:"skipCertVerify"`
 }
 
@@ -78,44 +74,36 @@ func GetProjectWebhook(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectWebhook resources.
 type projectWebhookState struct {
-	// The address of the webhook
-	Address *string `pulumi:"address"`
-	// authentication header for you the webhook
-	AuthHeader *string `pulumi:"authHeader"`
-	// _ (Optional, string) A description of the webhook
+	// The address of the webhook.
+	Address     *string `pulumi:"address"`
+	AuthHeader  *string `pulumi:"authHeader"`
 	Description *string `pulumi:"description"`
-	// , To enable / disable the webhook. Default `true`
-	Enabled *bool `pulumi:"enabled"`
-	// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+	Enabled     *bool   `pulumi:"enabled"`
+	// The type events you want to subscript to can be
 	EventsTypes []string `pulumi:"eventsTypes"`
 	// The name of the webhook that will be created in harbor.
 	Name *string `pulumi:"name"`
-	// The notification type either `http` or `slack`
+	// The notification type either `http` or `slack`.
 	NotifyType *string `pulumi:"notifyType"`
-	// The project id (**/projects/ID**) of the harbor that webhook related to.
-	ProjectId *string `pulumi:"projectId"`
-	// checks the for validate SSL certificate.
-	SkipCertVerify *bool `pulumi:"skipCertVerify"`
+	// The project id of the harbor that webhook related to.
+	ProjectId      *string `pulumi:"projectId"`
+	SkipCertVerify *bool   `pulumi:"skipCertVerify"`
 }
 
 type ProjectWebhookState struct {
-	// The address of the webhook
-	Address pulumi.StringPtrInput
-	// authentication header for you the webhook
-	AuthHeader pulumi.StringPtrInput
-	// _ (Optional, string) A description of the webhook
+	// The address of the webhook.
+	Address     pulumi.StringPtrInput
+	AuthHeader  pulumi.StringPtrInput
 	Description pulumi.StringPtrInput
-	// , To enable / disable the webhook. Default `true`
-	Enabled pulumi.BoolPtrInput
-	// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+	Enabled     pulumi.BoolPtrInput
+	// The type events you want to subscript to can be
 	EventsTypes pulumi.StringArrayInput
 	// The name of the webhook that will be created in harbor.
 	Name pulumi.StringPtrInput
-	// The notification type either `http` or `slack`
+	// The notification type either `http` or `slack`.
 	NotifyType pulumi.StringPtrInput
-	// The project id (**/projects/ID**) of the harbor that webhook related to.
-	ProjectId pulumi.StringPtrInput
-	// checks the for validate SSL certificate.
+	// The project id of the harbor that webhook related to.
+	ProjectId      pulumi.StringPtrInput
 	SkipCertVerify pulumi.BoolPtrInput
 }
 
@@ -124,45 +112,37 @@ func (ProjectWebhookState) ElementType() reflect.Type {
 }
 
 type projectWebhookArgs struct {
-	// The address of the webhook
-	Address string `pulumi:"address"`
-	// authentication header for you the webhook
-	AuthHeader *string `pulumi:"authHeader"`
-	// _ (Optional, string) A description of the webhook
+	// The address of the webhook.
+	Address     string  `pulumi:"address"`
+	AuthHeader  *string `pulumi:"authHeader"`
 	Description *string `pulumi:"description"`
-	// , To enable / disable the webhook. Default `true`
-	Enabled *bool `pulumi:"enabled"`
-	// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+	Enabled     *bool   `pulumi:"enabled"`
+	// The type events you want to subscript to can be
 	EventsTypes []string `pulumi:"eventsTypes"`
 	// The name of the webhook that will be created in harbor.
 	Name *string `pulumi:"name"`
-	// The notification type either `http` or `slack`
+	// The notification type either `http` or `slack`.
 	NotifyType string `pulumi:"notifyType"`
-	// The project id (**/projects/ID**) of the harbor that webhook related to.
-	ProjectId string `pulumi:"projectId"`
-	// checks the for validate SSL certificate.
-	SkipCertVerify *bool `pulumi:"skipCertVerify"`
+	// The project id of the harbor that webhook related to.
+	ProjectId      string `pulumi:"projectId"`
+	SkipCertVerify *bool  `pulumi:"skipCertVerify"`
 }
 
 // The set of arguments for constructing a ProjectWebhook resource.
 type ProjectWebhookArgs struct {
-	// The address of the webhook
-	Address pulumi.StringInput
-	// authentication header for you the webhook
-	AuthHeader pulumi.StringPtrInput
-	// _ (Optional, string) A description of the webhook
+	// The address of the webhook.
+	Address     pulumi.StringInput
+	AuthHeader  pulumi.StringPtrInput
 	Description pulumi.StringPtrInput
-	// , To enable / disable the webhook. Default `true`
-	Enabled pulumi.BoolPtrInput
-	// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+	Enabled     pulumi.BoolPtrInput
+	// The type events you want to subscript to can be
 	EventsTypes pulumi.StringArrayInput
 	// The name of the webhook that will be created in harbor.
 	Name pulumi.StringPtrInput
-	// The notification type either `http` or `slack`
+	// The notification type either `http` or `slack`.
 	NotifyType pulumi.StringInput
-	// The project id (**/projects/ID**) of the harbor that webhook related to.
-	ProjectId pulumi.StringInput
-	// checks the for validate SSL certificate.
+	// The project id of the harbor that webhook related to.
+	ProjectId      pulumi.StringInput
 	SkipCertVerify pulumi.BoolPtrInput
 }
 
@@ -253,27 +233,24 @@ func (o ProjectWebhookOutput) ToProjectWebhookOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The address of the webhook
+// The address of the webhook.
 func (o ProjectWebhookOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectWebhook) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
 }
 
-// authentication header for you the webhook
 func (o ProjectWebhookOutput) AuthHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectWebhook) pulumi.StringPtrOutput { return v.AuthHeader }).(pulumi.StringPtrOutput)
 }
 
-// _ (Optional, string) A description of the webhook
 func (o ProjectWebhookOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProjectWebhook) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// , To enable / disable the webhook. Default `true`
 func (o ProjectWebhookOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectWebhook) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// ) The type events you want to subscript to can be `DELETE_ARTIFACT`, `PULL_ARTIFACT`, `PUSH_ARTIFACT`, `QUOTA_EXCEED`, `QUOTA_WARNING`, `REPLICATION`, `SCANNING_FAILED`, `SCANNING_COMPLETED`, `TAG_RETENTION`
+// The type events you want to subscript to can be
 func (o ProjectWebhookOutput) EventsTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ProjectWebhook) pulumi.StringArrayOutput { return v.EventsTypes }).(pulumi.StringArrayOutput)
 }
@@ -283,17 +260,16 @@ func (o ProjectWebhookOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectWebhook) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The notification type either `http` or `slack`
+// The notification type either `http` or `slack`.
 func (o ProjectWebhookOutput) NotifyType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectWebhook) pulumi.StringOutput { return v.NotifyType }).(pulumi.StringOutput)
 }
 
-// The project id (**/projects/ID**) of the harbor that webhook related to.
+// The project id of the harbor that webhook related to.
 func (o ProjectWebhookOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectWebhook) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// checks the for validate SSL certificate.
 func (o ProjectWebhookOutput) SkipCertVerify() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ProjectWebhook) pulumi.BoolPtrOutput { return v.SkipCertVerify }).(pulumi.BoolPtrOutput)
 }

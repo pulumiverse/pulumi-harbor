@@ -22,10 +22,11 @@ class ImmutableTagRuleArgs:
                  tag_matching: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ImmutableTagRule resource.
+        :param pulumi.Input[str] project_id: The project id of which you would like to apply this policy.
         :param pulumi.Input[bool] disabled: Specify if the rule is disable or not. Defaults to `false`
-        :param pulumi.Input[str] repo_excluding: For the repositories excuding.
+        :param pulumi.Input[str] repo_excluding: For the repositories excluding.
         :param pulumi.Input[str] repo_matching: For the repositories matching.
-        :param pulumi.Input[str] tag_excluding: For the tag excuding.
+        :param pulumi.Input[str] tag_excluding: For the tag excluding.
         :param pulumi.Input[str] tag_matching: For the tag matching.
         """
         pulumi.set(__self__, "project_id", project_id)
@@ -43,6 +44,9 @@ class ImmutableTagRuleArgs:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[str]:
+        """
+        The project id of which you would like to apply this policy.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -65,7 +69,7 @@ class ImmutableTagRuleArgs:
     @pulumi.getter(name="repoExcluding")
     def repo_excluding(self) -> Optional[pulumi.Input[str]]:
         """
-        For the repositories excuding.
+        For the repositories excluding.
         """
         return pulumi.get(self, "repo_excluding")
 
@@ -89,7 +93,7 @@ class ImmutableTagRuleArgs:
     @pulumi.getter(name="tagExcluding")
     def tag_excluding(self) -> Optional[pulumi.Input[str]]:
         """
-        For the tag excuding.
+        For the tag excluding.
         """
         return pulumi.get(self, "tag_excluding")
 
@@ -122,9 +126,10 @@ class _ImmutableTagRuleState:
         """
         Input properties used for looking up and filtering ImmutableTagRule resources.
         :param pulumi.Input[bool] disabled: Specify if the rule is disable or not. Defaults to `false`
-        :param pulumi.Input[str] repo_excluding: For the repositories excuding.
+        :param pulumi.Input[str] project_id: The project id of which you would like to apply this policy.
+        :param pulumi.Input[str] repo_excluding: For the repositories excluding.
         :param pulumi.Input[str] repo_matching: For the repositories matching.
-        :param pulumi.Input[str] tag_excluding: For the tag excuding.
+        :param pulumi.Input[str] tag_excluding: For the tag excluding.
         :param pulumi.Input[str] tag_matching: For the tag matching.
         """
         if disabled is not None:
@@ -155,6 +160,9 @@ class _ImmutableTagRuleState:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project id of which you would like to apply this policy.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -165,7 +173,7 @@ class _ImmutableTagRuleState:
     @pulumi.getter(name="repoExcluding")
     def repo_excluding(self) -> Optional[pulumi.Input[str]]:
         """
-        For the repositories excuding.
+        For the repositories excluding.
         """
         return pulumi.get(self, "repo_excluding")
 
@@ -189,7 +197,7 @@ class _ImmutableTagRuleState:
     @pulumi.getter(name="tagExcluding")
     def tag_excluding(self) -> Optional[pulumi.Input[str]]:
         """
-        For the tag excuding.
+        For the tag excluding.
         """
         return pulumi.get(self, "tag_excluding")
 
@@ -227,14 +235,17 @@ class ImmutableTagRule(pulumi.CustomResource):
 
         ## Import
 
-        Harbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25 <break>```<break><break>  `<break><break>
+        ```sh
+        $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disabled: Specify if the rule is disable or not. Defaults to `false`
-        :param pulumi.Input[str] repo_excluding: For the repositories excuding.
+        :param pulumi.Input[str] project_id: The project id of which you would like to apply this policy.
+        :param pulumi.Input[str] repo_excluding: For the repositories excluding.
         :param pulumi.Input[str] repo_matching: For the repositories matching.
-        :param pulumi.Input[str] tag_excluding: For the tag excuding.
+        :param pulumi.Input[str] tag_excluding: For the tag excluding.
         :param pulumi.Input[str] tag_matching: For the tag matching.
         """
         ...
@@ -248,7 +259,9 @@ class ImmutableTagRule(pulumi.CustomResource):
 
         ## Import
 
-        Harbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25 <break>```<break><break>  `<break><break>
+        ```sh
+        $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25
+        ```
 
         :param str resource_name: The name of the resource.
         :param ImmutableTagRuleArgs args: The arguments to use to populate this resource's properties.
@@ -312,9 +325,10 @@ class ImmutableTagRule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disabled: Specify if the rule is disable or not. Defaults to `false`
-        :param pulumi.Input[str] repo_excluding: For the repositories excuding.
+        :param pulumi.Input[str] project_id: The project id of which you would like to apply this policy.
+        :param pulumi.Input[str] repo_excluding: For the repositories excluding.
         :param pulumi.Input[str] repo_matching: For the repositories matching.
-        :param pulumi.Input[str] tag_excluding: For the tag excuding.
+        :param pulumi.Input[str] tag_excluding: For the tag excluding.
         :param pulumi.Input[str] tag_matching: For the tag matching.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -340,13 +354,16 @@ class ImmutableTagRule(pulumi.CustomResource):
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[str]:
+        """
+        The project id of which you would like to apply this policy.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="repoExcluding")
     def repo_excluding(self) -> pulumi.Output[Optional[str]]:
         """
-        For the repositories excuding.
+        For the repositories excluding.
         """
         return pulumi.get(self, "repo_excluding")
 
@@ -362,7 +379,7 @@ class ImmutableTagRule(pulumi.CustomResource):
     @pulumi.getter(name="tagExcluding")
     def tag_excluding(self) -> pulumi.Output[Optional[str]]:
         """
-        For the tag excuding.
+        For the tag excluding.
         """
         return pulumi.get(self, "tag_excluding")
 

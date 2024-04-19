@@ -13,23 +13,39 @@ namespace Pulumiverse.Harbor.Inputs
 
     public sealed class ReplicationFilterGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Matches or excludes the result. Can be one of the following. `matches`, `excludes`
+        /// </summary>
         [Input("decoration")]
         public Input<string>? Decoration { get; set; }
 
         [Input("labels")]
         private InputList<string>? _labels;
+
+        /// <summary>
+        /// Filter on the resource according to labels.
+        /// </summary>
         public InputList<string> Labels
         {
             get => _labels ?? (_labels = new InputList<string>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// Filter on the name of the resource.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Filter on the resource type. Can be one of the following types. `chart`, `artifact`
+        /// </summary>
         [Input("resource")]
         public Input<string>? Resource { get; set; }
 
+        /// <summary>
+        /// Filter on the tag/version of the resource.
+        /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }
 

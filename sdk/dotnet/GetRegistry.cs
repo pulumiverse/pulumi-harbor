@@ -15,7 +15,7 @@ namespace Pulumiverse.Harbor
         /// <summary>
         /// ## Example Usage
         /// 
-        /// ```hcl
+        /// ```terraform
         /// data "harbor_registry" "main" {
         ///   name          = "test_docker_harbor"
         /// }
@@ -31,7 +31,7 @@ namespace Pulumiverse.Harbor
         /// <summary>
         /// ## Example Usage
         /// 
-        /// ```hcl
+        /// ```terraform
         /// data "harbor_registry" "main" {
         ///   name          = "test_docker_harbor"
         /// }
@@ -48,6 +48,9 @@ namespace Pulumiverse.Harbor
 
     public sealed class GetRegistryArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the register.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -59,6 +62,9 @@ namespace Pulumiverse.Harbor
 
     public sealed class GetRegistryInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the register.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -72,16 +78,37 @@ namespace Pulumiverse.Harbor
     [OutputType]
     public sealed class GetRegistryResult
     {
+        /// <summary>
+        /// The description of the external container register.
+        /// </summary>
         public readonly string Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// If the certificate of the external container register can be verified.
+        /// </summary>
         public readonly bool Insecure;
+        /// <summary>
+        /// The name of the register.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The id of the register within harbor.
+        /// </summary>
         public readonly int RegistryId;
+        /// <summary>
+        /// The health status of the external container register
+        /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// The type of the provider type.
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The url endpoint for the external container register
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

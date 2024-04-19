@@ -35,11 +35,29 @@ export class ConfigSystem extends pulumi.CustomResource {
         return obj['__pulumiType'] === ConfigSystem.__pulumiType;
     }
 
+    /**
+     * Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
+     */
     public readonly projectCreationRestriction!: pulumi.Output<string | undefined>;
+    /**
+     * Whether or not the system is in read only mode.
+     */
     public readonly readOnly!: pulumi.Output<boolean | undefined>;
+    /**
+     * Robot account prefix.
+     */
     public readonly robotNamePrefix!: pulumi.Output<string | undefined>;
+    /**
+     * The amount of time in days a robot account will expire.
+     */
     public readonly robotTokenExpiration!: pulumi.Output<number | undefined>;
+    /**
+     * Whether or not to skip update pull time for scanner.
+     */
     public readonly scannerSkipUpdatePulltime!: pulumi.Output<boolean | undefined>;
+    /**
+     * Default quota space per project in GIB. Default is -1 (unlimited).
+     */
     public readonly storagePerProject!: pulumi.Output<number | undefined>;
 
     /**
@@ -79,11 +97,29 @@ export class ConfigSystem extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ConfigSystem resources.
  */
 export interface ConfigSystemState {
+    /**
+     * Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
+     */
     projectCreationRestriction?: pulumi.Input<string>;
+    /**
+     * Whether or not the system is in read only mode.
+     */
     readOnly?: pulumi.Input<boolean>;
+    /**
+     * Robot account prefix.
+     */
     robotNamePrefix?: pulumi.Input<string>;
+    /**
+     * The amount of time in days a robot account will expire.
+     */
     robotTokenExpiration?: pulumi.Input<number>;
+    /**
+     * Whether or not to skip update pull time for scanner.
+     */
     scannerSkipUpdatePulltime?: pulumi.Input<boolean>;
+    /**
+     * Default quota space per project in GIB. Default is -1 (unlimited).
+     */
     storagePerProject?: pulumi.Input<number>;
 }
 
@@ -91,10 +127,28 @@ export interface ConfigSystemState {
  * The set of arguments for constructing a ConfigSystem resource.
  */
 export interface ConfigSystemArgs {
+    /**
+     * Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
+     */
     projectCreationRestriction?: pulumi.Input<string>;
+    /**
+     * Whether or not the system is in read only mode.
+     */
     readOnly?: pulumi.Input<boolean>;
+    /**
+     * Robot account prefix.
+     */
     robotNamePrefix?: pulumi.Input<string>;
+    /**
+     * The amount of time in days a robot account will expire.
+     */
     robotTokenExpiration?: pulumi.Input<number>;
+    /**
+     * Whether or not to skip update pull time for scanner.
+     */
     scannerSkipUpdatePulltime?: pulumi.Input<boolean>;
+    /**
+     * Default quota space per project in GIB. Default is -1 (unlimited).
+     */
     storagePerProject?: pulumi.Input<number>;
 }

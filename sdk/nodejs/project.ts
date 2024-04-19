@@ -7,11 +7,15 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * ## Harbor project example as proxy cache
+ * ### Hosted
+ *
+ * ### Proxy
  *
  * ## Import
  *
- * Harbor project can be imported using the `project id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/project:Project main /projects/1 <break>```<break><break>  `<break><break>
+ * ```sh
+ * $ pulumi import harbor:index/project:Project main /projects/1
+ * ```
  */
 export class Project extends pulumi.CustomResource {
     /**
@@ -46,15 +50,15 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly cveAllowlists!: pulumi.Output<string[] | undefined>;
     /**
-     * Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
+     * Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
      */
     public readonly deploymentSecurity!: pulumi.Output<string | undefined>;
     /**
-     * Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
+     * Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
      */
     public readonly enableContentTrust!: pulumi.Output<boolean | undefined>;
     /**
-     * Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+     * Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `false`)
      */
     public readonly enableContentTrustCosign!: pulumi.Output<boolean | undefined>;
     /**
@@ -66,23 +70,23 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The id of the project with harbor.
+     * The project id of this resource.
      */
     public /*out*/ readonly projectId!: pulumi.Output<number>;
     /**
-     * The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
+     * The project will be public accessibility.(Default: `false`)
      */
     public readonly public!: pulumi.Output<boolean | undefined>;
     /**
-     * To enable project as Proxy Cache
+     * To enable project as Proxy Cache.
      */
     public readonly registryId!: pulumi.Output<number>;
     /**
-     * The storage quota of the project in GB's
+     * The storage quota of the project in GB's.
      */
     public readonly storageQuota!: pulumi.Output<number | undefined>;
     /**
-     * Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
+     * Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
      */
     public readonly vulnerabilityScanning!: pulumi.Output<boolean | undefined>;
 
@@ -138,15 +142,15 @@ export interface ProjectState {
      */
     cveAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
+     * Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
      */
     deploymentSecurity?: pulumi.Input<string>;
     /**
-     * Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
+     * Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
      */
     enableContentTrust?: pulumi.Input<boolean>;
     /**
-     * Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+     * Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `false`)
      */
     enableContentTrustCosign?: pulumi.Input<boolean>;
     /**
@@ -158,23 +162,23 @@ export interface ProjectState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The id of the project with harbor.
+     * The project id of this resource.
      */
     projectId?: pulumi.Input<number>;
     /**
-     * The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
+     * The project will be public accessibility.(Default: `false`)
      */
     public?: pulumi.Input<boolean>;
     /**
-     * To enable project as Proxy Cache
+     * To enable project as Proxy Cache.
      */
     registryId?: pulumi.Input<number>;
     /**
-     * The storage quota of the project in GB's
+     * The storage quota of the project in GB's.
      */
     storageQuota?: pulumi.Input<number>;
     /**
-     * Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
+     * Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
      */
     vulnerabilityScanning?: pulumi.Input<boolean>;
 }
@@ -188,15 +192,15 @@ export interface ProjectArgs {
      */
     cveAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `critical`, `high`, `medium`, `low`, `none`. (Default: `""` - empty)
+     * Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
      */
     deploymentSecurity?: pulumi.Input<string>;
     /**
-     * Enables Content Trust for project. When enabled it queries the embedded docker notary server. Can be set to `"true"` or `"false"` (Default: false)
+     * Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
      */
     enableContentTrust?: pulumi.Input<boolean>;
     /**
-     * Enables Content Trust Cosign for project. When enabled it queries Cosign. Can be set to `"true"` or `"false"` (Default: false)
+     * Enables Content Trust Cosign for project. When enabled it queries Cosign. (Default: `false`)
      */
     enableContentTrustCosign?: pulumi.Input<boolean>;
     /**
@@ -208,19 +212,19 @@ export interface ProjectArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The project will be public accessibility. Can be set to `"true"` or `"false"` (Default: false)
+     * The project will be public accessibility.(Default: `false`)
      */
     public?: pulumi.Input<boolean>;
     /**
-     * To enable project as Proxy Cache
+     * To enable project as Proxy Cache.
      */
     registryId?: pulumi.Input<number>;
     /**
-     * The storage quota of the project in GB's
+     * The storage quota of the project in GB's.
      */
     storageQuota?: pulumi.Input<number>;
     /**
-     * Images will be scanned for vulnerabilities when push to harbor. Can be set to `"true"` or `"false"` (Default: true)
+     * Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
      */
     vulnerabilityScanning?: pulumi.Input<boolean>;
 }

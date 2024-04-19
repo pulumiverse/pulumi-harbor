@@ -7,13 +7,15 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * * Create a global label within harbor
+ * ### Global
  *
- * * Creates a label for project
+ * ### Project
  *
  * ## Import
  *
- * Harbor label can be imported using the `label id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/label:Label main /labels/1 <break>```<break><break>  `<break><break>
+ * ```sh
+ * $ pulumi import harbor:index/label:Label main /labels/1
+ * ```
  */
 export class Label extends pulumi.CustomResource {
     /**
@@ -43,9 +45,21 @@ export class Label extends pulumi.CustomResource {
         return obj['__pulumiType'] === Label.__pulumiType;
     }
 
+    /**
+     * The color of the label within harbor (Default: #FFFFF)
+     */
     public readonly color!: pulumi.Output<string | undefined>;
+    /**
+     * The Description of the label within harbor
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The of name of the label within harbor.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The id of the project with harbor.
+     */
     public readonly projectId!: pulumi.Output<string | undefined>;
     public /*out*/ readonly scope!: pulumi.Output<string>;
 
@@ -84,9 +98,21 @@ export class Label extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Label resources.
  */
 export interface LabelState {
+    /**
+     * The color of the label within harbor (Default: #FFFFF)
+     */
     color?: pulumi.Input<string>;
+    /**
+     * The Description of the label within harbor
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The of name of the label within harbor.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The id of the project with harbor.
+     */
     projectId?: pulumi.Input<string>;
     scope?: pulumi.Input<string>;
 }
@@ -95,8 +121,20 @@ export interface LabelState {
  * The set of arguments for constructing a Label resource.
  */
 export interface LabelArgs {
+    /**
+     * The color of the label within harbor (Default: #FFFFF)
+     */
     color?: pulumi.Input<string>;
+    /**
+     * The Description of the label within harbor
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The of name of the label within harbor.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The id of the project with harbor.
+     */
     projectId?: pulumi.Input<string>;
 }

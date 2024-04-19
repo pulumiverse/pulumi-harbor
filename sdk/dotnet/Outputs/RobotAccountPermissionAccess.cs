@@ -14,8 +14,17 @@ namespace Pulumiverse.Harbor.Outputs
     [OutputType]
     public sealed class RobotAccountPermissionAccess
     {
+        /// <summary>
+        /// Eg. `push`, `pull`, `read`, etc. Check [available actions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+        /// </summary>
         public readonly string Action;
+        /// <summary>
+        /// Either `allow` or `deny`. Defaults to `allow`.
+        /// </summary>
         public readonly string? Effect;
+        /// <summary>
+        /// Eg. `repository`, `labels`, etc. Check [available resources](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+        /// </summary>
         public readonly string Resource;
 
         [OutputConstructor]

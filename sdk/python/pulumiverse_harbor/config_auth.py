@@ -44,6 +44,7 @@ class ConfigAuthArgs:
                  primary_auth_mode: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a ConfigAuth resource.
+        :param pulumi.Input[str] auth_mode: Harbor authentication mode. Can be `"oidc_auth"`, `"db_auth"` or `"ldap_auth"`. (Default: `"db_auth"`)
         """
         pulumi.set(__self__, "auth_mode", auth_mode)
         if ldap_base_dn is not None:
@@ -104,6 +105,9 @@ class ConfigAuthArgs:
     @property
     @pulumi.getter(name="authMode")
     def auth_mode(self) -> pulumi.Input[str]:
+        """
+        Harbor authentication mode. Can be `"oidc_auth"`, `"db_auth"` or `"ldap_auth"`. (Default: `"db_auth"`)
+        """
         return pulumi.get(self, "auth_mode")
 
     @auth_mode.setter
@@ -387,6 +391,7 @@ class _ConfigAuthState:
                  primary_auth_mode: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering ConfigAuth resources.
+        :param pulumi.Input[str] auth_mode: Harbor authentication mode. Can be `"oidc_auth"`, `"db_auth"` or `"ldap_auth"`. (Default: `"db_auth"`)
         """
         if auth_mode is not None:
             pulumi.set(__self__, "auth_mode", auth_mode)
@@ -448,6 +453,9 @@ class _ConfigAuthState:
     @property
     @pulumi.getter(name="authMode")
     def auth_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Harbor authentication mode. Can be `"oidc_auth"`, `"db_auth"` or `"ldap_auth"`. (Default: `"db_auth"`)
+        """
         return pulumi.get(self, "auth_mode")
 
     @auth_mode.setter
@@ -733,9 +741,15 @@ class ConfigAuth(pulumi.CustomResource):
                  primary_auth_mode: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Create a ConfigAuth resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ### OIDC
+
+        ### LDAP
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] auth_mode: Harbor authentication mode. Can be `"oidc_auth"`, `"db_auth"` or `"ldap_auth"`. (Default: `"db_auth"`)
         """
         ...
     @overload
@@ -744,7 +758,12 @@ class ConfigAuth(pulumi.CustomResource):
                  args: ConfigAuthArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ConfigAuth resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ### OIDC
+
+        ### LDAP
+
         :param str resource_name: The name of the resource.
         :param ConfigAuthArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -874,6 +893,7 @@ class ConfigAuth(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] auth_mode: Harbor authentication mode. Can be `"oidc_auth"`, `"db_auth"` or `"ldap_auth"`. (Default: `"db_auth"`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -912,6 +932,9 @@ class ConfigAuth(pulumi.CustomResource):
     @property
     @pulumi.getter(name="authMode")
     def auth_mode(self) -> pulumi.Output[str]:
+        """
+        Harbor authentication mode. Can be `"oidc_auth"`, `"db_auth"` or `"ldap_auth"`. (Default: `"db_auth"`)
+        """
         return pulumi.get(self, "auth_mode")
 
     @property

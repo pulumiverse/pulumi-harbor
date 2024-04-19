@@ -15,7 +15,7 @@ namespace Pulumiverse.Harbor
         /// <summary>
         /// ## Example Usage
         /// 
-        /// ```hcl
+        /// ```terraform
         /// data "harbor_project" "main" {
         ///     name    = "library" 
         /// }
@@ -31,7 +31,7 @@ namespace Pulumiverse.Harbor
         /// <summary>
         /// ## Example Usage
         /// 
-        /// ```hcl
+        /// ```terraform
         /// data "harbor_project" "main" {
         ///     name    = "library" 
         /// }
@@ -48,6 +48,9 @@ namespace Pulumiverse.Harbor
 
     public sealed class GetProjectArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the project.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -59,6 +62,9 @@ namespace Pulumiverse.Harbor
 
     public sealed class GetProjectInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the project.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -76,10 +82,25 @@ namespace Pulumiverse.Harbor
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The name of the project.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The id of the project within harbor.
+        /// </summary>
         public readonly int ProjectId;
+        /// <summary>
+        /// If the project has public accessibility.
+        /// </summary>
         public readonly bool Public;
+        /// <summary>
+        /// The type of the project : Project or ProxyCache.
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// If the images is scanned for vulnerabilities when push to harbor.
+        /// </summary>
         public readonly bool VulnerabilityScanning;
 
         [OutputConstructor]

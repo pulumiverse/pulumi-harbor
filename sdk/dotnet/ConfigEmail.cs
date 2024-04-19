@@ -16,24 +16,45 @@ namespace Pulumiverse.Harbor
     [HarborResourceType("harbor:index/configEmail:ConfigEmail")]
     public partial class ConfigEmail : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The email from address ie, `dont_reply@acme.com`
+        /// </summary>
         [Output("emailFrom")]
         public Output<string> EmailFrom { get; private set; } = null!;
 
+        /// <summary>
+        /// The FQDN of the email server
+        /// </summary>
         [Output("emailHost")]
         public Output<string> EmailHost { get; private set; } = null!;
 
+        /// <summary>
+        /// Disables validation of email server certificate `Default: false`
+        /// </summary>
         [Output("emailInsecure")]
         public Output<bool?> EmailInsecure { get; private set; } = null!;
 
+        /// <summary>
+        /// The password for the email server
+        /// </summary>
         [Output("emailPassword")]
         public Output<string?> EmailPassword { get; private set; } = null!;
 
+        /// <summary>
+        /// The smtp port for the email server `Default: 25`
+        /// </summary>
         [Output("emailPort")]
         public Output<int?> EmailPort { get; private set; } = null!;
 
+        /// <summary>
+        /// Enable SSL for email server connection
+        /// </summary>
         [Output("emailSsl")]
         public Output<bool?> EmailSsl { get; private set; } = null!;
 
+        /// <summary>
+        /// The username for the email server
+        /// </summary>
         [Output("emailUsername")]
         public Output<string?> EmailUsername { get; private set; } = null!;
 
@@ -88,17 +109,30 @@ namespace Pulumiverse.Harbor
 
     public sealed class ConfigEmailArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The email from address ie, `dont_reply@acme.com`
+        /// </summary>
         [Input("emailFrom", required: true)]
         public Input<string> EmailFrom { get; set; } = null!;
 
+        /// <summary>
+        /// The FQDN of the email server
+        /// </summary>
         [Input("emailHost", required: true)]
         public Input<string> EmailHost { get; set; } = null!;
 
+        /// <summary>
+        /// Disables validation of email server certificate `Default: false`
+        /// </summary>
         [Input("emailInsecure")]
         public Input<bool>? EmailInsecure { get; set; }
 
         [Input("emailPassword")]
         private Input<string>? _emailPassword;
+
+        /// <summary>
+        /// The password for the email server
+        /// </summary>
         public Input<string>? EmailPassword
         {
             get => _emailPassword;
@@ -109,12 +143,21 @@ namespace Pulumiverse.Harbor
             }
         }
 
+        /// <summary>
+        /// The smtp port for the email server `Default: 25`
+        /// </summary>
         [Input("emailPort")]
         public Input<int>? EmailPort { get; set; }
 
+        /// <summary>
+        /// Enable SSL for email server connection
+        /// </summary>
         [Input("emailSsl")]
         public Input<bool>? EmailSsl { get; set; }
 
+        /// <summary>
+        /// The username for the email server
+        /// </summary>
         [Input("emailUsername")]
         public Input<string>? EmailUsername { get; set; }
 
@@ -126,17 +169,30 @@ namespace Pulumiverse.Harbor
 
     public sealed class ConfigEmailState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The email from address ie, `dont_reply@acme.com`
+        /// </summary>
         [Input("emailFrom")]
         public Input<string>? EmailFrom { get; set; }
 
+        /// <summary>
+        /// The FQDN of the email server
+        /// </summary>
         [Input("emailHost")]
         public Input<string>? EmailHost { get; set; }
 
+        /// <summary>
+        /// Disables validation of email server certificate `Default: false`
+        /// </summary>
         [Input("emailInsecure")]
         public Input<bool>? EmailInsecure { get; set; }
 
         [Input("emailPassword")]
         private Input<string>? _emailPassword;
+
+        /// <summary>
+        /// The password for the email server
+        /// </summary>
         public Input<string>? EmailPassword
         {
             get => _emailPassword;
@@ -147,12 +203,21 @@ namespace Pulumiverse.Harbor
             }
         }
 
+        /// <summary>
+        /// The smtp port for the email server `Default: 25`
+        /// </summary>
         [Input("emailPort")]
         public Input<int>? EmailPort { get; set; }
 
+        /// <summary>
+        /// Enable SSL for email server connection
+        /// </summary>
         [Input("emailSsl")]
         public Input<bool>? EmailSsl { get; set; }
 
+        /// <summary>
+        /// The username for the email server
+        /// </summary>
         [Input("emailUsername")]
         public Input<string>? EmailUsername { get; set; }
 

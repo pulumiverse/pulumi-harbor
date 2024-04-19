@@ -50,6 +50,9 @@ class GetRegistryResult:
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of the external container register.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -63,31 +66,49 @@ class GetRegistryResult:
     @property
     @pulumi.getter
     def insecure(self) -> bool:
+        """
+        If the certificate of the external container register can be verified.
+        """
         return pulumi.get(self, "insecure")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the register.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="registryId")
     def registry_id(self) -> int:
+        """
+        The id of the register within harbor.
+        """
         return pulumi.get(self, "registry_id")
 
     @property
     @pulumi.getter
     def status(self) -> str:
+        """
+        The health status of the external container register
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The type of the provider type.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def url(self) -> str:
+        """
+        The url endpoint for the external container register
+        """
         return pulumi.get(self, "url")
 
 
@@ -111,6 +132,9 @@ def get_registry(name: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegistryResult:
     """
     ## Example Usage
+
+
+    :param str name: The name of the register.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -133,5 +157,8 @@ def get_registry_output(name: Optional[pulumi.Input[str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegistryResult]:
     """
     ## Example Usage
+
+
+    :param str name: The name of the register.
     """
     ...

@@ -53,6 +53,9 @@ class GetProjectsResult:
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        The name of the project.
+        """
         return pulumi.get(self, "name")
 
     @property
@@ -63,16 +66,25 @@ class GetProjectsResult:
     @property
     @pulumi.getter
     def public(self) -> Optional[bool]:
+        """
+        If the project has public accessibility.
+        """
         return pulumi.get(self, "public")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        The type of the project : Project or ProxyCache.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="vulnerabilityScanning")
     def vulnerability_scanning(self) -> Optional[bool]:
+        """
+        If the images will be scanned for vulnerabilities when push to harbor.
+        """
         return pulumi.get(self, "vulnerability_scanning")
 
 

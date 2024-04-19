@@ -52,26 +52,41 @@ class GetProjectResult:
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the project.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> int:
+        """
+        The id of the project within harbor.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def public(self) -> bool:
+        """
+        If the project has public accessibility.
+        """
         return pulumi.get(self, "public")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The type of the project : Project or ProxyCache.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="vulnerabilityScanning")
     def vulnerability_scanning(self) -> bool:
+        """
+        If the images is scanned for vulnerabilities when push to harbor.
+        """
         return pulumi.get(self, "vulnerability_scanning")
 
 
@@ -93,6 +108,9 @@ def get_project(name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
     ## Example Usage
+
+
+    :param str name: The name of the project.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -113,5 +131,8 @@ def get_project_output(name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
     """
     ## Example Usage
+
+
+    :param str name: The name of the project.
     """
     ...

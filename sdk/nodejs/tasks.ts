@@ -35,6 +35,9 @@ export class Tasks extends pulumi.CustomResource {
         return obj['__pulumiType'] === Tasks.__pulumiType;
     }
 
+    /**
+     * The frequency of the vulnerability scanning is done. Can be to **"hourly"**, **"daily"** or **"weekly"**
+     */
     public readonly vulnerabilityScanPolicy!: pulumi.Output<string>;
 
     /**
@@ -67,6 +70,9 @@ export class Tasks extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Tasks resources.
  */
 export interface TasksState {
+    /**
+     * The frequency of the vulnerability scanning is done. Can be to **"hourly"**, **"daily"** or **"weekly"**
+     */
     vulnerabilityScanPolicy?: pulumi.Input<string>;
 }
 
@@ -74,5 +80,8 @@ export interface TasksState {
  * The set of arguments for constructing a Tasks resource.
  */
 export interface TasksArgs {
+    /**
+     * The frequency of the vulnerability scanning is done. Can be to **"hourly"**, **"daily"** or **"weekly"**
+     */
     vulnerabilityScanPolicy: pulumi.Input<string>;
 }

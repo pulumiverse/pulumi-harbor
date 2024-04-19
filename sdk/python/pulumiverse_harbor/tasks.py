@@ -17,12 +17,16 @@ class TasksArgs:
                  vulnerability_scan_policy: pulumi.Input[str]):
         """
         The set of arguments for constructing a Tasks resource.
+        :param pulumi.Input[str] vulnerability_scan_policy: The frequency of the vulnerability scanning is done. Can be to **"hourly"**, **"daily"** or **"weekly"**
         """
         pulumi.set(__self__, "vulnerability_scan_policy", vulnerability_scan_policy)
 
     @property
     @pulumi.getter(name="vulnerabilityScanPolicy")
     def vulnerability_scan_policy(self) -> pulumi.Input[str]:
+        """
+        The frequency of the vulnerability scanning is done. Can be to **"hourly"**, **"daily"** or **"weekly"**
+        """
         return pulumi.get(self, "vulnerability_scan_policy")
 
     @vulnerability_scan_policy.setter
@@ -36,6 +40,7 @@ class _TasksState:
                  vulnerability_scan_policy: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Tasks resources.
+        :param pulumi.Input[str] vulnerability_scan_policy: The frequency of the vulnerability scanning is done. Can be to **"hourly"**, **"daily"** or **"weekly"**
         """
         if vulnerability_scan_policy is not None:
             pulumi.set(__self__, "vulnerability_scan_policy", vulnerability_scan_policy)
@@ -43,6 +48,9 @@ class _TasksState:
     @property
     @pulumi.getter(name="vulnerabilityScanPolicy")
     def vulnerability_scan_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The frequency of the vulnerability scanning is done. Can be to **"hourly"**, **"daily"** or **"weekly"**
+        """
         return pulumi.get(self, "vulnerability_scan_policy")
 
     @vulnerability_scan_policy.setter
@@ -62,6 +70,7 @@ class Tasks(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] vulnerability_scan_policy: The frequency of the vulnerability scanning is done. Can be to **"hourly"**, **"daily"** or **"weekly"**
         """
         ...
     @overload
@@ -118,6 +127,7 @@ class Tasks(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] vulnerability_scan_policy: The frequency of the vulnerability scanning is done. Can be to **"hourly"**, **"daily"** or **"weekly"**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -129,5 +139,8 @@ class Tasks(pulumi.CustomResource):
     @property
     @pulumi.getter(name="vulnerabilityScanPolicy")
     def vulnerability_scan_policy(self) -> pulumi.Output[str]:
+        """
+        The frequency of the vulnerability scanning is done. Can be to **"hourly"**, **"daily"** or **"weekly"**
+        """
         return pulumi.get(self, "vulnerability_scan_policy")
 

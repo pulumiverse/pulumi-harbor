@@ -15,7 +15,7 @@ namespace Pulumiverse.Harbor
         /// <summary>
         /// ## Example Usage
         /// 
-        /// ```hcl
+        /// ```terraform
         /// data "harbor_groups" "example" {
         ///   group_name = "example-group"
         /// }
@@ -31,7 +31,7 @@ namespace Pulumiverse.Harbor
         /// <summary>
         /// ## Example Usage
         /// 
-        /// ```hcl
+        /// ```terraform
         /// data "harbor_groups" "example" {
         ///   group_name = "example-group"
         /// }
@@ -91,19 +91,16 @@ namespace Pulumiverse.Harbor
     public sealed class GetGroupsResult
     {
         /// <summary>
-        /// The name of the group.
+        /// The name of the group to filter by.
         /// </summary>
         public readonly string? GroupName;
-        /// <summary>
-        /// (Computed) A list of groups matching the previous arguments. Each `group` object provides the attributes documented below.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetGroupsGroupResult> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The LDAP group DN of the group.
+        /// The LDAP group DN to filter by.
         /// </summary>
         public readonly string? LdapGroupDn;
 

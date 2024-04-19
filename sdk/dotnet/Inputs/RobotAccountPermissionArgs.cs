@@ -21,9 +21,15 @@ namespace Pulumiverse.Harbor.Inputs
             set => _accesses = value;
         }
 
+        /// <summary>
+        /// Either `system` or `project`.
+        /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
 
+        /// <summary>
+        /// namespace is the name of your project. For kind `system` permissions, always use `/` as namespace. Use `*` to match all projects.
+        /// </summary>
         [Input("namespace", required: true)]
         public Input<string> Namespace { get; set; } = null!;
 

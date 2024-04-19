@@ -16,7 +16,7 @@ import (
 type InterrogationServices struct {
 	pulumi.CustomResourceState
 
-	// Sets the default interrogation service **Clair**
+	// Sets the default interrogation service `"Clair"`
 	DefaultScanner pulumi.StringPtrOutput `pulumi:"defaultScanner"`
 	// The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
 	VulnerabilityScanPolicy pulumi.StringOutput `pulumi:"vulnerabilityScanPolicy"`
@@ -55,14 +55,14 @@ func GetInterrogationServices(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InterrogationServices resources.
 type interrogationServicesState struct {
-	// Sets the default interrogation service **Clair**
+	// Sets the default interrogation service `"Clair"`
 	DefaultScanner *string `pulumi:"defaultScanner"`
 	// The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
 	VulnerabilityScanPolicy *string `pulumi:"vulnerabilityScanPolicy"`
 }
 
 type InterrogationServicesState struct {
-	// Sets the default interrogation service **Clair**
+	// Sets the default interrogation service `"Clair"`
 	DefaultScanner pulumi.StringPtrInput
 	// The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
 	VulnerabilityScanPolicy pulumi.StringPtrInput
@@ -73,7 +73,7 @@ func (InterrogationServicesState) ElementType() reflect.Type {
 }
 
 type interrogationServicesArgs struct {
-	// Sets the default interrogation service **Clair**
+	// Sets the default interrogation service `"Clair"`
 	DefaultScanner *string `pulumi:"defaultScanner"`
 	// The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
 	VulnerabilityScanPolicy string `pulumi:"vulnerabilityScanPolicy"`
@@ -81,7 +81,7 @@ type interrogationServicesArgs struct {
 
 // The set of arguments for constructing a InterrogationServices resource.
 type InterrogationServicesArgs struct {
-	// Sets the default interrogation service **Clair**
+	// Sets the default interrogation service `"Clair"`
 	DefaultScanner pulumi.StringPtrInput
 	// The frequency of the vulnerability scanning is done. This can be `Daily`, `Weekly`, `Monthly` or can be a custom cron string.
 	VulnerabilityScanPolicy pulumi.StringInput
@@ -174,7 +174,7 @@ func (o InterrogationServicesOutput) ToInterrogationServicesOutputWithContext(ct
 	return o
 }
 
-// Sets the default interrogation service **Clair**
+// Sets the default interrogation service `"Clair"`
 func (o InterrogationServicesOutput) DefaultScanner() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InterrogationServices) pulumi.StringPtrOutput { return v.DefaultScanner }).(pulumi.StringPtrOutput)
 }

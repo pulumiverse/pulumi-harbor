@@ -14,11 +14,16 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ReplicationFilter struct {
-	Decoration *string  `pulumi:"decoration"`
-	Labels     []string `pulumi:"labels"`
-	Name       *string  `pulumi:"name"`
-	Resource   *string  `pulumi:"resource"`
-	Tag        *string  `pulumi:"tag"`
+	// Matches or excludes the result. Can be one of the following. `matches`, `excludes`
+	Decoration *string `pulumi:"decoration"`
+	// Filter on the resource according to labels.
+	Labels []string `pulumi:"labels"`
+	// Filter on the name of the resource.
+	Name *string `pulumi:"name"`
+	// Filter on the resource type. Can be one of the following types. `chart`, `artifact`
+	Resource *string `pulumi:"resource"`
+	// Filter on the tag/version of the resource.
+	Tag *string `pulumi:"tag"`
 }
 
 // ReplicationFilterInput is an input type that accepts ReplicationFilterArgs and ReplicationFilterOutput values.
@@ -33,11 +38,16 @@ type ReplicationFilterInput interface {
 }
 
 type ReplicationFilterArgs struct {
-	Decoration pulumi.StringPtrInput   `pulumi:"decoration"`
-	Labels     pulumi.StringArrayInput `pulumi:"labels"`
-	Name       pulumi.StringPtrInput   `pulumi:"name"`
-	Resource   pulumi.StringPtrInput   `pulumi:"resource"`
-	Tag        pulumi.StringPtrInput   `pulumi:"tag"`
+	// Matches or excludes the result. Can be one of the following. `matches`, `excludes`
+	Decoration pulumi.StringPtrInput `pulumi:"decoration"`
+	// Filter on the resource according to labels.
+	Labels pulumi.StringArrayInput `pulumi:"labels"`
+	// Filter on the name of the resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Filter on the resource type. Can be one of the following types. `chart`, `artifact`
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
+	// Filter on the tag/version of the resource.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
 }
 
 func (ReplicationFilterArgs) ElementType() reflect.Type {
@@ -91,22 +101,27 @@ func (o ReplicationFilterOutput) ToReplicationFilterOutputWithContext(ctx contex
 	return o
 }
 
+// Matches or excludes the result. Can be one of the following. `matches`, `excludes`
 func (o ReplicationFilterOutput) Decoration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReplicationFilter) *string { return v.Decoration }).(pulumi.StringPtrOutput)
 }
 
+// Filter on the resource according to labels.
 func (o ReplicationFilterOutput) Labels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ReplicationFilter) []string { return v.Labels }).(pulumi.StringArrayOutput)
 }
 
+// Filter on the name of the resource.
 func (o ReplicationFilterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReplicationFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Filter on the resource type. Can be one of the following types. `chart`, `artifact`
 func (o ReplicationFilterOutput) Resource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReplicationFilter) *string { return v.Resource }).(pulumi.StringPtrOutput)
 }
 
+// Filter on the tag/version of the resource.
 func (o ReplicationFilterOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReplicationFilter) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }
@@ -144,17 +159,15 @@ type RetentionPolicyRule struct {
 	NDaysSinceLastPull *int `pulumi:"nDaysSinceLastPull"`
 	// retains the artifacts pushed within the lasts n days.
 	NDaysSinceLastPush *int `pulumi:"nDaysSinceLastPush"`
-	// For the repositories excuding.
+	// For the repositories excluding.
 	RepoExcluding *string `pulumi:"repoExcluding"`
 	// For the repositories matching.
 	RepoMatching *string `pulumi:"repoMatching"`
-	// For the tag excuding.
+	// For the tag excluding.
 	TagExcluding *string `pulumi:"tagExcluding"`
 	// For the tag matching.
 	TagMatching *string `pulumi:"tagMatching"`
 	// with untagged artifacts. Defaults to `true`
-	//
-	// > Multiple tags or repositories must be provided as a comma-separated list wrapped into curly brackets `{ }`. Otherwise, the value is interpreted as a single value.
 	UntaggedArtifacts *bool `pulumi:"untaggedArtifacts"`
 }
 
@@ -182,17 +195,15 @@ type RetentionPolicyRuleArgs struct {
 	NDaysSinceLastPull pulumi.IntPtrInput `pulumi:"nDaysSinceLastPull"`
 	// retains the artifacts pushed within the lasts n days.
 	NDaysSinceLastPush pulumi.IntPtrInput `pulumi:"nDaysSinceLastPush"`
-	// For the repositories excuding.
+	// For the repositories excluding.
 	RepoExcluding pulumi.StringPtrInput `pulumi:"repoExcluding"`
 	// For the repositories matching.
 	RepoMatching pulumi.StringPtrInput `pulumi:"repoMatching"`
-	// For the tag excuding.
+	// For the tag excluding.
 	TagExcluding pulumi.StringPtrInput `pulumi:"tagExcluding"`
 	// For the tag matching.
 	TagMatching pulumi.StringPtrInput `pulumi:"tagMatching"`
 	// with untagged artifacts. Defaults to `true`
-	//
-	// > Multiple tags or repositories must be provided as a comma-separated list wrapped into curly brackets `{ }`. Otherwise, the value is interpreted as a single value.
 	UntaggedArtifacts pulumi.BoolPtrInput `pulumi:"untaggedArtifacts"`
 }
 
@@ -277,7 +288,7 @@ func (o RetentionPolicyRuleOutput) NDaysSinceLastPush() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RetentionPolicyRule) *int { return v.NDaysSinceLastPush }).(pulumi.IntPtrOutput)
 }
 
-// For the repositories excuding.
+// For the repositories excluding.
 func (o RetentionPolicyRuleOutput) RepoExcluding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RetentionPolicyRule) *string { return v.RepoExcluding }).(pulumi.StringPtrOutput)
 }
@@ -287,7 +298,7 @@ func (o RetentionPolicyRuleOutput) RepoMatching() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RetentionPolicyRule) *string { return v.RepoMatching }).(pulumi.StringPtrOutput)
 }
 
-// For the tag excuding.
+// For the tag excluding.
 func (o RetentionPolicyRuleOutput) TagExcluding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RetentionPolicyRule) *string { return v.TagExcluding }).(pulumi.StringPtrOutput)
 }
@@ -298,8 +309,6 @@ func (o RetentionPolicyRuleOutput) TagMatching() pulumi.StringPtrOutput {
 }
 
 // with untagged artifacts. Defaults to `true`
-//
-// > Multiple tags or repositories must be provided as a comma-separated list wrapped into curly brackets `{ }`. Otherwise, the value is interpreted as a single value.
 func (o RetentionPolicyRuleOutput) UntaggedArtifacts() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RetentionPolicyRule) *bool { return v.UntaggedArtifacts }).(pulumi.BoolPtrOutput)
 }
@@ -325,9 +334,11 @@ func (o RetentionPolicyRuleArrayOutput) Index(i pulumi.IntInput) RetentionPolicy
 }
 
 type RobotAccountPermission struct {
-	Accesses  []RobotAccountPermissionAccess `pulumi:"accesses"`
-	Kind      string                         `pulumi:"kind"`
-	Namespace string                         `pulumi:"namespace"`
+	Accesses []RobotAccountPermissionAccess `pulumi:"accesses"`
+	// Either `system` or `project`.
+	Kind string `pulumi:"kind"`
+	// namespace is the name of your project. For kind `system` permissions, always use `/` as namespace. Use `*` to match all projects.
+	Namespace string `pulumi:"namespace"`
 }
 
 // RobotAccountPermissionInput is an input type that accepts RobotAccountPermissionArgs and RobotAccountPermissionOutput values.
@@ -342,9 +353,11 @@ type RobotAccountPermissionInput interface {
 }
 
 type RobotAccountPermissionArgs struct {
-	Accesses  RobotAccountPermissionAccessArrayInput `pulumi:"accesses"`
-	Kind      pulumi.StringInput                     `pulumi:"kind"`
-	Namespace pulumi.StringInput                     `pulumi:"namespace"`
+	Accesses RobotAccountPermissionAccessArrayInput `pulumi:"accesses"`
+	// Either `system` or `project`.
+	Kind pulumi.StringInput `pulumi:"kind"`
+	// namespace is the name of your project. For kind `system` permissions, always use `/` as namespace. Use `*` to match all projects.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
 }
 
 func (RobotAccountPermissionArgs) ElementType() reflect.Type {
@@ -402,10 +415,12 @@ func (o RobotAccountPermissionOutput) Accesses() RobotAccountPermissionAccessArr
 	return o.ApplyT(func(v RobotAccountPermission) []RobotAccountPermissionAccess { return v.Accesses }).(RobotAccountPermissionAccessArrayOutput)
 }
 
+// Either `system` or `project`.
 func (o RobotAccountPermissionOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v RobotAccountPermission) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// namespace is the name of your project. For kind `system` permissions, always use `/` as namespace. Use `*` to match all projects.
 func (o RobotAccountPermissionOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v RobotAccountPermission) string { return v.Namespace }).(pulumi.StringOutput)
 }
@@ -431,9 +446,12 @@ func (o RobotAccountPermissionArrayOutput) Index(i pulumi.IntInput) RobotAccount
 }
 
 type RobotAccountPermissionAccess struct {
-	Action   string  `pulumi:"action"`
-	Effect   *string `pulumi:"effect"`
-	Resource string  `pulumi:"resource"`
+	// Eg. `push`, `pull`, `read`, etc. Check [available actions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+	Action string `pulumi:"action"`
+	// Either `allow` or `deny`. Defaults to `allow`.
+	Effect *string `pulumi:"effect"`
+	// Eg. `repository`, `labels`, etc. Check [available resources](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+	Resource string `pulumi:"resource"`
 }
 
 // RobotAccountPermissionAccessInput is an input type that accepts RobotAccountPermissionAccessArgs and RobotAccountPermissionAccessOutput values.
@@ -448,9 +466,12 @@ type RobotAccountPermissionAccessInput interface {
 }
 
 type RobotAccountPermissionAccessArgs struct {
-	Action   pulumi.StringInput    `pulumi:"action"`
-	Effect   pulumi.StringPtrInput `pulumi:"effect"`
-	Resource pulumi.StringInput    `pulumi:"resource"`
+	// Eg. `push`, `pull`, `read`, etc. Check [available actions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+	Action pulumi.StringInput `pulumi:"action"`
+	// Either `allow` or `deny`. Defaults to `allow`.
+	Effect pulumi.StringPtrInput `pulumi:"effect"`
+	// Eg. `repository`, `labels`, etc. Check [available resources](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+	Resource pulumi.StringInput `pulumi:"resource"`
 }
 
 func (RobotAccountPermissionAccessArgs) ElementType() reflect.Type {
@@ -504,14 +525,17 @@ func (o RobotAccountPermissionAccessOutput) ToRobotAccountPermissionAccessOutput
 	return o
 }
 
+// Eg. `push`, `pull`, `read`, etc. Check [available actions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
 func (o RobotAccountPermissionAccessOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v RobotAccountPermissionAccess) string { return v.Action }).(pulumi.StringOutput)
 }
 
+// Either `allow` or `deny`. Defaults to `allow`.
 func (o RobotAccountPermissionAccessOutput) Effect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RobotAccountPermissionAccess) *string { return v.Effect }).(pulumi.StringPtrOutput)
 }
 
+// Eg. `repository`, `labels`, etc. Check [available resources](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
 func (o RobotAccountPermissionAccessOutput) Resource() pulumi.StringOutput {
 	return o.ApplyT(func(v RobotAccountPermissionAccess) string { return v.Resource }).(pulumi.StringOutput)
 }
@@ -539,9 +563,8 @@ func (o RobotAccountPermissionAccessArrayOutput) Index(i pulumi.IntInput) RobotA
 type GetGroupsGroup struct {
 	// The name of the group to filter by.
 	GroupName string `pulumi:"groupName"`
-	// The type of the group.
-	GroupType int `pulumi:"groupType"`
-	// The ID of the group.
+	GroupType int    `pulumi:"groupType"`
+	// The ID of this resource.
 	Id int `pulumi:"id"`
 	// The LDAP group DN to filter by.
 	LdapGroupDn string `pulumi:"ldapGroupDn"`
@@ -561,9 +584,8 @@ type GetGroupsGroupInput interface {
 type GetGroupsGroupArgs struct {
 	// The name of the group to filter by.
 	GroupName pulumi.StringInput `pulumi:"groupName"`
-	// The type of the group.
-	GroupType pulumi.IntInput `pulumi:"groupType"`
-	// The ID of the group.
+	GroupType pulumi.IntInput    `pulumi:"groupType"`
+	// The ID of this resource.
 	Id pulumi.IntInput `pulumi:"id"`
 	// The LDAP group DN to filter by.
 	LdapGroupDn pulumi.StringInput `pulumi:"ldapGroupDn"`
@@ -625,12 +647,11 @@ func (o GetGroupsGroupOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.GroupName }).(pulumi.StringOutput)
 }
 
-// The type of the group.
 func (o GetGroupsGroupOutput) GroupType() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGroupsGroup) int { return v.GroupType }).(pulumi.IntOutput)
 }
 
-// The ID of the group.
+// The ID of this resource.
 func (o GetGroupsGroupOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGroupsGroup) int { return v.Id }).(pulumi.IntOutput)
 }

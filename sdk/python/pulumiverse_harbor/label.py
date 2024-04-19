@@ -20,6 +20,10 @@ class LabelArgs:
                  project_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Label resource.
+        :param pulumi.Input[str] color: The color of the label within harbor (Default: #FFFFF)
+        :param pulumi.Input[str] description: The Description of the label within harbor
+        :param pulumi.Input[str] name: The of name of the label within harbor.
+        :param pulumi.Input[str] project_id: The id of the project with harbor.
         """
         if color is not None:
             pulumi.set(__self__, "color", color)
@@ -33,6 +37,9 @@ class LabelArgs:
     @property
     @pulumi.getter
     def color(self) -> Optional[pulumi.Input[str]]:
+        """
+        The color of the label within harbor (Default: #FFFFF)
+        """
         return pulumi.get(self, "color")
 
     @color.setter
@@ -42,6 +49,9 @@ class LabelArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Description of the label within harbor
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -51,6 +61,9 @@ class LabelArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The of name of the label within harbor.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -60,6 +73,9 @@ class LabelArgs:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the project with harbor.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -77,6 +93,10 @@ class _LabelState:
                  scope: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Label resources.
+        :param pulumi.Input[str] color: The color of the label within harbor (Default: #FFFFF)
+        :param pulumi.Input[str] description: The Description of the label within harbor
+        :param pulumi.Input[str] name: The of name of the label within harbor.
+        :param pulumi.Input[str] project_id: The id of the project with harbor.
         """
         if color is not None:
             pulumi.set(__self__, "color", color)
@@ -92,6 +112,9 @@ class _LabelState:
     @property
     @pulumi.getter
     def color(self) -> Optional[pulumi.Input[str]]:
+        """
+        The color of the label within harbor (Default: #FFFFF)
+        """
         return pulumi.get(self, "color")
 
     @color.setter
@@ -101,6 +124,9 @@ class _LabelState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Description of the label within harbor
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -110,6 +136,9 @@ class _LabelState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The of name of the label within harbor.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -119,6 +148,9 @@ class _LabelState:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the project with harbor.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -148,16 +180,22 @@ class Label(pulumi.CustomResource):
         """
         ## Example Usage
 
-        * Create a global label within harbor
+        ### Global
 
-        * Creates a label for project
+        ### Project
 
         ## Import
 
-        Harbor label can be imported using the `label id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/label:Label main /labels/1 <break>```<break><break>  `<break><break>
+        ```sh
+        $ pulumi import harbor:index/label:Label main /labels/1
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] color: The color of the label within harbor (Default: #FFFFF)
+        :param pulumi.Input[str] description: The Description of the label within harbor
+        :param pulumi.Input[str] name: The of name of the label within harbor.
+        :param pulumi.Input[str] project_id: The id of the project with harbor.
         """
         ...
     @overload
@@ -168,13 +206,15 @@ class Label(pulumi.CustomResource):
         """
         ## Example Usage
 
-        * Create a global label within harbor
+        ### Global
 
-        * Creates a label for project
+        ### Project
 
         ## Import
 
-        Harbor label can be imported using the `label id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/label:Label main /labels/1 <break>```<break><break>  `<break><break>
+        ```sh
+        $ pulumi import harbor:index/label:Label main /labels/1
+        ```
 
         :param str resource_name: The name of the resource.
         :param LabelArgs args: The arguments to use to populate this resource's properties.
@@ -231,6 +271,10 @@ class Label(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] color: The color of the label within harbor (Default: #FFFFF)
+        :param pulumi.Input[str] description: The Description of the label within harbor
+        :param pulumi.Input[str] name: The of name of the label within harbor.
+        :param pulumi.Input[str] project_id: The id of the project with harbor.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -246,21 +290,33 @@ class Label(pulumi.CustomResource):
     @property
     @pulumi.getter
     def color(self) -> pulumi.Output[Optional[str]]:
+        """
+        The color of the label within harbor (Default: #FFFFF)
+        """
         return pulumi.get(self, "color")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        The Description of the label within harbor
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The of name of the label within harbor.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The id of the project with harbor.
+        """
         return pulumi.get(self, "project_id")
 
     @property

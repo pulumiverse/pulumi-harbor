@@ -32,13 +32,12 @@ type GetGroupsArgs struct {
 
 // A collection of values returned by getGroups.
 type GetGroupsResult struct {
-	// The name of the group.
-	GroupName *string `pulumi:"groupName"`
-	// (Computed) A list of groups matching the previous arguments. Each `group` object provides the attributes documented below.
-	Groups []GetGroupsGroup `pulumi:"groups"`
+	// The name of the group to filter by.
+	GroupName *string          `pulumi:"groupName"`
+	Groups    []GetGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The LDAP group DN of the group.
+	// The LDAP group DN to filter by.
 	LdapGroupDn *string `pulumi:"ldapGroupDn"`
 }
 
@@ -82,12 +81,11 @@ func (o GetGroupsResultOutput) ToGetGroupsResultOutputWithContext(ctx context.Co
 	return o
 }
 
-// The name of the group.
+// The name of the group to filter by.
 func (o GetGroupsResultOutput) GroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGroupsResult) *string { return v.GroupName }).(pulumi.StringPtrOutput)
 }
 
-// (Computed) A list of groups matching the previous arguments. Each `group` object provides the attributes documented below.
 func (o GetGroupsResultOutput) Groups() GetGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetGroupsResult) []GetGroupsGroup { return v.Groups }).(GetGroupsGroupArrayOutput)
 }
@@ -97,7 +95,7 @@ func (o GetGroupsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The LDAP group DN of the group.
+// The LDAP group DN to filter by.
 func (o GetGroupsResultOutput) LdapGroupDn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGroupsResult) *string { return v.LdapGroupDn }).(pulumi.StringPtrOutput)
 }

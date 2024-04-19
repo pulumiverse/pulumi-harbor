@@ -15,7 +15,9 @@ namespace Pulumiverse.Harbor
     /// 
     /// ## Import
     /// 
-    /// Harbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg,&lt;break&gt;&lt;break&gt; ` &lt;break&gt;&lt;break&gt; ```sh&lt;break&gt; $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25 &lt;break&gt;```&lt;break&gt;&lt;break&gt;  `&lt;break&gt;&lt;break&gt;
+    /// ```sh
+    /// $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25
+    /// ```
     /// </summary>
     [HarborResourceType("harbor:index/immutableTagRule:ImmutableTagRule")]
     public partial class ImmutableTagRule : global::Pulumi.CustomResource
@@ -26,11 +28,14 @@ namespace Pulumiverse.Harbor
         [Output("disabled")]
         public Output<bool?> Disabled { get; private set; } = null!;
 
+        /// <summary>
+        /// The project id of which you would like to apply this policy.
+        /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// For the repositories excuding.
+        /// For the repositories excluding.
         /// </summary>
         [Output("repoExcluding")]
         public Output<string?> RepoExcluding { get; private set; } = null!;
@@ -42,7 +47,7 @@ namespace Pulumiverse.Harbor
         public Output<string?> RepoMatching { get; private set; } = null!;
 
         /// <summary>
-        /// For the tag excuding.
+        /// For the tag excluding.
         /// </summary>
         [Output("tagExcluding")]
         public Output<string?> TagExcluding { get; private set; } = null!;
@@ -106,11 +111,14 @@ namespace Pulumiverse.Harbor
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
+        /// <summary>
+        /// The project id of which you would like to apply this policy.
+        /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// For the repositories excuding.
+        /// For the repositories excluding.
         /// </summary>
         [Input("repoExcluding")]
         public Input<string>? RepoExcluding { get; set; }
@@ -122,7 +130,7 @@ namespace Pulumiverse.Harbor
         public Input<string>? RepoMatching { get; set; }
 
         /// <summary>
-        /// For the tag excuding.
+        /// For the tag excluding.
         /// </summary>
         [Input("tagExcluding")]
         public Input<string>? TagExcluding { get; set; }
@@ -147,11 +155,14 @@ namespace Pulumiverse.Harbor
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
+        /// <summary>
+        /// The project id of which you would like to apply this policy.
+        /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// For the repositories excuding.
+        /// For the repositories excluding.
         /// </summary>
         [Input("repoExcluding")]
         public Input<string>? RepoExcluding { get; set; }
@@ -163,7 +174,7 @@ namespace Pulumiverse.Harbor
         public Input<string>? RepoMatching { get; set; }
 
         /// <summary>
-        /// For the tag excuding.
+        /// For the tag excluding.
         /// </summary>
         [Input("tagExcluding")]
         public Input<string>? TagExcluding { get; set; }

@@ -16,12 +16,19 @@ import (
 type ConfigEmail struct {
 	pulumi.CustomResourceState
 
-	EmailFrom     pulumi.StringOutput    `pulumi:"emailFrom"`
-	EmailHost     pulumi.StringOutput    `pulumi:"emailHost"`
-	EmailInsecure pulumi.BoolPtrOutput   `pulumi:"emailInsecure"`
+	// The email from address ie, `dont_reply@acme.com`
+	EmailFrom pulumi.StringOutput `pulumi:"emailFrom"`
+	// The FQDN of the email server
+	EmailHost pulumi.StringOutput `pulumi:"emailHost"`
+	// Disables validation of email server certificate `Default: false`
+	EmailInsecure pulumi.BoolPtrOutput `pulumi:"emailInsecure"`
+	// The password for the email server
 	EmailPassword pulumi.StringPtrOutput `pulumi:"emailPassword"`
-	EmailPort     pulumi.IntPtrOutput    `pulumi:"emailPort"`
-	EmailSsl      pulumi.BoolPtrOutput   `pulumi:"emailSsl"`
+	// The smtp port for the email server `Default: 25`
+	EmailPort pulumi.IntPtrOutput `pulumi:"emailPort"`
+	// Enable SSL for email server connection
+	EmailSsl pulumi.BoolPtrOutput `pulumi:"emailSsl"`
+	// The username for the email server
 	EmailUsername pulumi.StringPtrOutput `pulumi:"emailUsername"`
 }
 
@@ -68,22 +75,36 @@ func GetConfigEmail(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ConfigEmail resources.
 type configEmailState struct {
-	EmailFrom     *string `pulumi:"emailFrom"`
-	EmailHost     *string `pulumi:"emailHost"`
-	EmailInsecure *bool   `pulumi:"emailInsecure"`
+	// The email from address ie, `dont_reply@acme.com`
+	EmailFrom *string `pulumi:"emailFrom"`
+	// The FQDN of the email server
+	EmailHost *string `pulumi:"emailHost"`
+	// Disables validation of email server certificate `Default: false`
+	EmailInsecure *bool `pulumi:"emailInsecure"`
+	// The password for the email server
 	EmailPassword *string `pulumi:"emailPassword"`
-	EmailPort     *int    `pulumi:"emailPort"`
-	EmailSsl      *bool   `pulumi:"emailSsl"`
+	// The smtp port for the email server `Default: 25`
+	EmailPort *int `pulumi:"emailPort"`
+	// Enable SSL for email server connection
+	EmailSsl *bool `pulumi:"emailSsl"`
+	// The username for the email server
 	EmailUsername *string `pulumi:"emailUsername"`
 }
 
 type ConfigEmailState struct {
-	EmailFrom     pulumi.StringPtrInput
-	EmailHost     pulumi.StringPtrInput
+	// The email from address ie, `dont_reply@acme.com`
+	EmailFrom pulumi.StringPtrInput
+	// The FQDN of the email server
+	EmailHost pulumi.StringPtrInput
+	// Disables validation of email server certificate `Default: false`
 	EmailInsecure pulumi.BoolPtrInput
+	// The password for the email server
 	EmailPassword pulumi.StringPtrInput
-	EmailPort     pulumi.IntPtrInput
-	EmailSsl      pulumi.BoolPtrInput
+	// The smtp port for the email server `Default: 25`
+	EmailPort pulumi.IntPtrInput
+	// Enable SSL for email server connection
+	EmailSsl pulumi.BoolPtrInput
+	// The username for the email server
 	EmailUsername pulumi.StringPtrInput
 }
 
@@ -92,23 +113,37 @@ func (ConfigEmailState) ElementType() reflect.Type {
 }
 
 type configEmailArgs struct {
-	EmailFrom     string  `pulumi:"emailFrom"`
-	EmailHost     string  `pulumi:"emailHost"`
-	EmailInsecure *bool   `pulumi:"emailInsecure"`
+	// The email from address ie, `dont_reply@acme.com`
+	EmailFrom string `pulumi:"emailFrom"`
+	// The FQDN of the email server
+	EmailHost string `pulumi:"emailHost"`
+	// Disables validation of email server certificate `Default: false`
+	EmailInsecure *bool `pulumi:"emailInsecure"`
+	// The password for the email server
 	EmailPassword *string `pulumi:"emailPassword"`
-	EmailPort     *int    `pulumi:"emailPort"`
-	EmailSsl      *bool   `pulumi:"emailSsl"`
+	// The smtp port for the email server `Default: 25`
+	EmailPort *int `pulumi:"emailPort"`
+	// Enable SSL for email server connection
+	EmailSsl *bool `pulumi:"emailSsl"`
+	// The username for the email server
 	EmailUsername *string `pulumi:"emailUsername"`
 }
 
 // The set of arguments for constructing a ConfigEmail resource.
 type ConfigEmailArgs struct {
-	EmailFrom     pulumi.StringInput
-	EmailHost     pulumi.StringInput
+	// The email from address ie, `dont_reply@acme.com`
+	EmailFrom pulumi.StringInput
+	// The FQDN of the email server
+	EmailHost pulumi.StringInput
+	// Disables validation of email server certificate `Default: false`
 	EmailInsecure pulumi.BoolPtrInput
+	// The password for the email server
 	EmailPassword pulumi.StringPtrInput
-	EmailPort     pulumi.IntPtrInput
-	EmailSsl      pulumi.BoolPtrInput
+	// The smtp port for the email server `Default: 25`
+	EmailPort pulumi.IntPtrInput
+	// Enable SSL for email server connection
+	EmailSsl pulumi.BoolPtrInput
+	// The username for the email server
 	EmailUsername pulumi.StringPtrInput
 }
 
@@ -199,30 +234,37 @@ func (o ConfigEmailOutput) ToConfigEmailOutputWithContext(ctx context.Context) C
 	return o
 }
 
+// The email from address ie, `dont_reply@acme.com`
 func (o ConfigEmailOutput) EmailFrom() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConfigEmail) pulumi.StringOutput { return v.EmailFrom }).(pulumi.StringOutput)
 }
 
+// The FQDN of the email server
 func (o ConfigEmailOutput) EmailHost() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConfigEmail) pulumi.StringOutput { return v.EmailHost }).(pulumi.StringOutput)
 }
 
+// Disables validation of email server certificate `Default: false`
 func (o ConfigEmailOutput) EmailInsecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConfigEmail) pulumi.BoolPtrOutput { return v.EmailInsecure }).(pulumi.BoolPtrOutput)
 }
 
+// The password for the email server
 func (o ConfigEmailOutput) EmailPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigEmail) pulumi.StringPtrOutput { return v.EmailPassword }).(pulumi.StringPtrOutput)
 }
 
+// The smtp port for the email server `Default: 25`
 func (o ConfigEmailOutput) EmailPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConfigEmail) pulumi.IntPtrOutput { return v.EmailPort }).(pulumi.IntPtrOutput)
 }
 
+// Enable SSL for email server connection
 func (o ConfigEmailOutput) EmailSsl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConfigEmail) pulumi.BoolPtrOutput { return v.EmailSsl }).(pulumi.BoolPtrOutput)
 }
 
+// The username for the email server
 func (o ConfigEmailOutput) EmailUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigEmail) pulumi.StringPtrOutput { return v.EmailUsername }).(pulumi.StringPtrOutput)
 }

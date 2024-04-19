@@ -13,12 +13,21 @@ namespace Pulumiverse.Harbor.Inputs
 
     public sealed class RobotAccountPermissionAccessArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Eg. `push`, `pull`, `read`, etc. Check [available actions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+        /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
 
+        /// <summary>
+        /// Either `allow` or `deny`. Defaults to `allow`.
+        /// </summary>
         [Input("effect")]
         public Input<string>? Effect { get; set; }
 
+        /// <summary>
+        /// Eg. `repository`, `labels`, etc. Check [available resources](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+        /// </summary>
         [Input("resource", required: true)]
         public Input<string> Resource { get; set; } = null!;
 

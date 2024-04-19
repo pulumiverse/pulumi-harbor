@@ -9,7 +9,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Harbor immutable tag rule can be imported using the `project and immutabletagrule ids` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25 <break>```<break><break>  `<break><break>
+ * ```sh
+ * $ pulumi import harbor:index/immutableTagRule:ImmutableTagRule main /projects/4/immutabletagrules/25
+ * ```
  */
 export class ImmutableTagRule extends pulumi.CustomResource {
     /**
@@ -43,9 +45,12 @@ export class ImmutableTagRule extends pulumi.CustomResource {
      * Specify if the rule is disable or not. Defaults to `false`
      */
     public readonly disabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * The project id of which you would like to apply this policy.
+     */
     public readonly projectId!: pulumi.Output<string>;
     /**
-     * For the repositories excuding.
+     * For the repositories excluding.
      */
     public readonly repoExcluding!: pulumi.Output<string | undefined>;
     /**
@@ -53,7 +58,7 @@ export class ImmutableTagRule extends pulumi.CustomResource {
      */
     public readonly repoMatching!: pulumi.Output<string | undefined>;
     /**
-     * For the tag excuding.
+     * For the tag excluding.
      */
     public readonly tagExcluding!: pulumi.Output<string | undefined>;
     /**
@@ -105,9 +110,12 @@ export interface ImmutableTagRuleState {
      * Specify if the rule is disable or not. Defaults to `false`
      */
     disabled?: pulumi.Input<boolean>;
+    /**
+     * The project id of which you would like to apply this policy.
+     */
     projectId?: pulumi.Input<string>;
     /**
-     * For the repositories excuding.
+     * For the repositories excluding.
      */
     repoExcluding?: pulumi.Input<string>;
     /**
@@ -115,7 +123,7 @@ export interface ImmutableTagRuleState {
      */
     repoMatching?: pulumi.Input<string>;
     /**
-     * For the tag excuding.
+     * For the tag excluding.
      */
     tagExcluding?: pulumi.Input<string>;
     /**
@@ -132,9 +140,12 @@ export interface ImmutableTagRuleArgs {
      * Specify if the rule is disable or not. Defaults to `false`
      */
     disabled?: pulumi.Input<boolean>;
+    /**
+     * The project id of which you would like to apply this policy.
+     */
     projectId: pulumi.Input<string>;
     /**
-     * For the repositories excuding.
+     * For the repositories excluding.
      */
     repoExcluding?: pulumi.Input<string>;
     /**
@@ -142,7 +153,7 @@ export interface ImmutableTagRuleArgs {
      */
     repoMatching?: pulumi.Input<string>;
     /**
-     * For the tag excuding.
+     * For the tag excluding.
      */
     tagExcluding?: pulumi.Input<string>;
     /**

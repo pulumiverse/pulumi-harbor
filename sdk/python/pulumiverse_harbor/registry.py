@@ -23,6 +23,9 @@ class RegistryArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Registry resource.
+        :param pulumi.Input[str] endpoint_url: The url endpoint for the external container register ie `"https://hub.docker.com"`
+        :param pulumi.Input[str] provider_name: The name of the provider.
+        :param pulumi.Input[str] name: The name of the register.
         """
         pulumi.set(__self__, "endpoint_url", endpoint_url)
         pulumi.set(__self__, "provider_name", provider_name)
@@ -40,6 +43,9 @@ class RegistryArgs:
     @property
     @pulumi.getter(name="endpointUrl")
     def endpoint_url(self) -> pulumi.Input[str]:
+        """
+        The url endpoint for the external container register ie `"https://hub.docker.com"`
+        """
         return pulumi.get(self, "endpoint_url")
 
     @endpoint_url.setter
@@ -49,6 +55,9 @@ class RegistryArgs:
     @property
     @pulumi.getter(name="providerName")
     def provider_name(self) -> pulumi.Input[str]:
+        """
+        The name of the provider.
+        """
         return pulumi.get(self, "provider_name")
 
     @provider_name.setter
@@ -94,6 +103,9 @@ class RegistryArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the register.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -115,6 +127,9 @@ class _RegistryState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Registry resources.
+        :param pulumi.Input[str] endpoint_url: The url endpoint for the external container register ie `"https://hub.docker.com"`
+        :param pulumi.Input[str] name: The name of the register.
+        :param pulumi.Input[str] provider_name: The name of the provider.
         """
         if access_id is not None:
             pulumi.set(__self__, "access_id", access_id)
@@ -165,6 +180,9 @@ class _RegistryState:
     @property
     @pulumi.getter(name="endpointUrl")
     def endpoint_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The url endpoint for the external container register ie `"https://hub.docker.com"`
+        """
         return pulumi.get(self, "endpoint_url")
 
     @endpoint_url.setter
@@ -183,6 +201,9 @@ class _RegistryState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the register.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -192,6 +213,9 @@ class _RegistryState:
     @property
     @pulumi.getter(name="providerName")
     def provider_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the provider.
+        """
         return pulumi.get(self, "provider_name")
 
     @provider_name.setter
@@ -235,10 +259,15 @@ class Registry(pulumi.CustomResource):
 
         ## Import
 
-        Harbor project can be imported using the `registry id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/registry:Registry main /registries/7 <break>```<break><break>  `<break><break>
+        ```sh
+        $ pulumi import harbor:index/registry:Registry main /registries/7
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] endpoint_url: The url endpoint for the external container register ie `"https://hub.docker.com"`
+        :param pulumi.Input[str] name: The name of the register.
+        :param pulumi.Input[str] provider_name: The name of the provider.
         """
         ...
     @overload
@@ -251,7 +280,9 @@ class Registry(pulumi.CustomResource):
 
         ## Import
 
-        Harbor project can be imported using the `registry id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/registry:Registry main /registries/7 <break>```<break><break>  `<break><break>
+        ```sh
+        $ pulumi import harbor:index/registry:Registry main /registries/7
+        ```
 
         :param str resource_name: The name of the resource.
         :param RegistryArgs args: The arguments to use to populate this resource's properties.
@@ -325,6 +356,9 @@ class Registry(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] endpoint_url: The url endpoint for the external container register ie `"https://hub.docker.com"`
+        :param pulumi.Input[str] name: The name of the register.
+        :param pulumi.Input[str] provider_name: The name of the provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -359,6 +393,9 @@ class Registry(pulumi.CustomResource):
     @property
     @pulumi.getter(name="endpointUrl")
     def endpoint_url(self) -> pulumi.Output[str]:
+        """
+        The url endpoint for the external container register ie `"https://hub.docker.com"`
+        """
         return pulumi.get(self, "endpoint_url")
 
     @property
@@ -369,11 +406,17 @@ class Registry(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the register.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="providerName")
     def provider_name(self) -> pulumi.Output[str]:
+        """
+        The name of the provider.
+        """
         return pulumi.get(self, "provider_name")
 
     @property

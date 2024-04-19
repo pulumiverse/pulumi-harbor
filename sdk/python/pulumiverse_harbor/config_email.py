@@ -23,6 +23,13 @@ class ConfigEmailArgs:
                  email_username: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ConfigEmail resource.
+        :param pulumi.Input[str] email_from: The email from address ie, `dont_reply@acme.com`
+        :param pulumi.Input[str] email_host: The FQDN of the email server
+        :param pulumi.Input[bool] email_insecure: Disables validation of email server certificate `Default: false`
+        :param pulumi.Input[str] email_password: The password for the email server
+        :param pulumi.Input[int] email_port: The smtp port for the email server `Default: 25`
+        :param pulumi.Input[bool] email_ssl: Enable SSL for email server connection
+        :param pulumi.Input[str] email_username: The username for the email server
         """
         pulumi.set(__self__, "email_from", email_from)
         pulumi.set(__self__, "email_host", email_host)
@@ -40,6 +47,9 @@ class ConfigEmailArgs:
     @property
     @pulumi.getter(name="emailFrom")
     def email_from(self) -> pulumi.Input[str]:
+        """
+        The email from address ie, `dont_reply@acme.com`
+        """
         return pulumi.get(self, "email_from")
 
     @email_from.setter
@@ -49,6 +59,9 @@ class ConfigEmailArgs:
     @property
     @pulumi.getter(name="emailHost")
     def email_host(self) -> pulumi.Input[str]:
+        """
+        The FQDN of the email server
+        """
         return pulumi.get(self, "email_host")
 
     @email_host.setter
@@ -58,6 +71,9 @@ class ConfigEmailArgs:
     @property
     @pulumi.getter(name="emailInsecure")
     def email_insecure(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disables validation of email server certificate `Default: false`
+        """
         return pulumi.get(self, "email_insecure")
 
     @email_insecure.setter
@@ -67,6 +83,9 @@ class ConfigEmailArgs:
     @property
     @pulumi.getter(name="emailPassword")
     def email_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password for the email server
+        """
         return pulumi.get(self, "email_password")
 
     @email_password.setter
@@ -76,6 +95,9 @@ class ConfigEmailArgs:
     @property
     @pulumi.getter(name="emailPort")
     def email_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The smtp port for the email server `Default: 25`
+        """
         return pulumi.get(self, "email_port")
 
     @email_port.setter
@@ -85,6 +107,9 @@ class ConfigEmailArgs:
     @property
     @pulumi.getter(name="emailSsl")
     def email_ssl(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable SSL for email server connection
+        """
         return pulumi.get(self, "email_ssl")
 
     @email_ssl.setter
@@ -94,6 +119,9 @@ class ConfigEmailArgs:
     @property
     @pulumi.getter(name="emailUsername")
     def email_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username for the email server
+        """
         return pulumi.get(self, "email_username")
 
     @email_username.setter
@@ -113,6 +141,13 @@ class _ConfigEmailState:
                  email_username: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ConfigEmail resources.
+        :param pulumi.Input[str] email_from: The email from address ie, `dont_reply@acme.com`
+        :param pulumi.Input[str] email_host: The FQDN of the email server
+        :param pulumi.Input[bool] email_insecure: Disables validation of email server certificate `Default: false`
+        :param pulumi.Input[str] email_password: The password for the email server
+        :param pulumi.Input[int] email_port: The smtp port for the email server `Default: 25`
+        :param pulumi.Input[bool] email_ssl: Enable SSL for email server connection
+        :param pulumi.Input[str] email_username: The username for the email server
         """
         if email_from is not None:
             pulumi.set(__self__, "email_from", email_from)
@@ -132,6 +167,9 @@ class _ConfigEmailState:
     @property
     @pulumi.getter(name="emailFrom")
     def email_from(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email from address ie, `dont_reply@acme.com`
+        """
         return pulumi.get(self, "email_from")
 
     @email_from.setter
@@ -141,6 +179,9 @@ class _ConfigEmailState:
     @property
     @pulumi.getter(name="emailHost")
     def email_host(self) -> Optional[pulumi.Input[str]]:
+        """
+        The FQDN of the email server
+        """
         return pulumi.get(self, "email_host")
 
     @email_host.setter
@@ -150,6 +191,9 @@ class _ConfigEmailState:
     @property
     @pulumi.getter(name="emailInsecure")
     def email_insecure(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disables validation of email server certificate `Default: false`
+        """
         return pulumi.get(self, "email_insecure")
 
     @email_insecure.setter
@@ -159,6 +203,9 @@ class _ConfigEmailState:
     @property
     @pulumi.getter(name="emailPassword")
     def email_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password for the email server
+        """
         return pulumi.get(self, "email_password")
 
     @email_password.setter
@@ -168,6 +215,9 @@ class _ConfigEmailState:
     @property
     @pulumi.getter(name="emailPort")
     def email_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The smtp port for the email server `Default: 25`
+        """
         return pulumi.get(self, "email_port")
 
     @email_port.setter
@@ -177,6 +227,9 @@ class _ConfigEmailState:
     @property
     @pulumi.getter(name="emailSsl")
     def email_ssl(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable SSL for email server connection
+        """
         return pulumi.get(self, "email_ssl")
 
     @email_ssl.setter
@@ -186,6 +239,9 @@ class _ConfigEmailState:
     @property
     @pulumi.getter(name="emailUsername")
     def email_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username for the email server
+        """
         return pulumi.get(self, "email_username")
 
     @email_username.setter
@@ -211,6 +267,13 @@ class ConfigEmail(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] email_from: The email from address ie, `dont_reply@acme.com`
+        :param pulumi.Input[str] email_host: The FQDN of the email server
+        :param pulumi.Input[bool] email_insecure: Disables validation of email server certificate `Default: false`
+        :param pulumi.Input[str] email_password: The password for the email server
+        :param pulumi.Input[int] email_port: The smtp port for the email server `Default: 25`
+        :param pulumi.Input[bool] email_ssl: Enable SSL for email server connection
+        :param pulumi.Input[str] email_username: The username for the email server
         """
         ...
     @overload
@@ -289,6 +352,13 @@ class ConfigEmail(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] email_from: The email from address ie, `dont_reply@acme.com`
+        :param pulumi.Input[str] email_host: The FQDN of the email server
+        :param pulumi.Input[bool] email_insecure: Disables validation of email server certificate `Default: false`
+        :param pulumi.Input[str] email_password: The password for the email server
+        :param pulumi.Input[int] email_port: The smtp port for the email server `Default: 25`
+        :param pulumi.Input[bool] email_ssl: Enable SSL for email server connection
+        :param pulumi.Input[str] email_username: The username for the email server
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -306,35 +376,56 @@ class ConfigEmail(pulumi.CustomResource):
     @property
     @pulumi.getter(name="emailFrom")
     def email_from(self) -> pulumi.Output[str]:
+        """
+        The email from address ie, `dont_reply@acme.com`
+        """
         return pulumi.get(self, "email_from")
 
     @property
     @pulumi.getter(name="emailHost")
     def email_host(self) -> pulumi.Output[str]:
+        """
+        The FQDN of the email server
+        """
         return pulumi.get(self, "email_host")
 
     @property
     @pulumi.getter(name="emailInsecure")
     def email_insecure(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Disables validation of email server certificate `Default: false`
+        """
         return pulumi.get(self, "email_insecure")
 
     @property
     @pulumi.getter(name="emailPassword")
     def email_password(self) -> pulumi.Output[Optional[str]]:
+        """
+        The password for the email server
+        """
         return pulumi.get(self, "email_password")
 
     @property
     @pulumi.getter(name="emailPort")
     def email_port(self) -> pulumi.Output[Optional[int]]:
+        """
+        The smtp port for the email server `Default: 25`
+        """
         return pulumi.get(self, "email_port")
 
     @property
     @pulumi.getter(name="emailSsl")
     def email_ssl(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enable SSL for email server connection
+        """
         return pulumi.get(self, "email_ssl")
 
     @property
     @pulumi.getter(name="emailUsername")
     def email_username(self) -> pulumi.Output[Optional[str]]:
+        """
+        The username for the email server
+        """
         return pulumi.get(self, "email_username")
 

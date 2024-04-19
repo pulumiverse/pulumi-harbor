@@ -15,7 +15,7 @@ namespace Pulumiverse.Harbor
         /// <summary>
         /// ## Example Usage
         /// 
-        /// ```hcl
+        /// ```terraform
         /// data "harbor_projects" "proxycache" {
         ///     type = "ProxyCache"
         /// }
@@ -31,7 +31,7 @@ namespace Pulumiverse.Harbor
         /// <summary>
         /// ## Example Usage
         /// 
-        /// ```hcl
+        /// ```terraform
         /// data "harbor_projects" "proxycache" {
         ///     type = "ProxyCache"
         /// }
@@ -94,10 +94,22 @@ namespace Pulumiverse.Harbor
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The name of the project.
+        /// </summary>
         public readonly string? Name;
         public readonly ImmutableArray<Outputs.GetProjectsProjectResult> Projects;
+        /// <summary>
+        /// If the project has public accessibility.
+        /// </summary>
         public readonly bool? Public;
+        /// <summary>
+        /// The type of the project : Project or ProxyCache.
+        /// </summary>
         public readonly string? Type;
+        /// <summary>
+        /// If the images will be scanned for vulnerabilities when push to harbor.
+        /// </summary>
         public readonly bool? VulnerabilityScanning;
 
         [OutputConstructor]

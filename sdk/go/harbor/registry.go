@@ -16,19 +16,24 @@ import (
 //
 // ## Import
 //
-// Harbor project can be imported using the `registry id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/registry:Registry main /registries/7 <break>```<break><break>  `<break><break>
+// ```sh
+// $ pulumi import harbor:index/registry:Registry main /registries/7
+// ```
 type Registry struct {
 	pulumi.CustomResourceState
 
 	AccessId     pulumi.StringPtrOutput `pulumi:"accessId"`
 	AccessSecret pulumi.StringPtrOutput `pulumi:"accessSecret"`
 	Description  pulumi.StringPtrOutput `pulumi:"description"`
-	EndpointUrl  pulumi.StringOutput    `pulumi:"endpointUrl"`
-	Insecure     pulumi.BoolPtrOutput   `pulumi:"insecure"`
-	Name         pulumi.StringOutput    `pulumi:"name"`
-	ProviderName pulumi.StringOutput    `pulumi:"providerName"`
-	RegistryId   pulumi.IntOutput       `pulumi:"registryId"`
-	Status       pulumi.StringOutput    `pulumi:"status"`
+	// The url endpoint for the external container register ie `"https://hub.docker.com"`
+	EndpointUrl pulumi.StringOutput  `pulumi:"endpointUrl"`
+	Insecure    pulumi.BoolPtrOutput `pulumi:"insecure"`
+	// The name of the register.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The name of the provider.
+	ProviderName pulumi.StringOutput `pulumi:"providerName"`
+	RegistryId   pulumi.IntOutput    `pulumi:"registryId"`
+	Status       pulumi.StringOutput `pulumi:"status"`
 }
 
 // NewRegistry registers a new resource with the given unique name, arguments, and options.
@@ -77,9 +82,12 @@ type registryState struct {
 	AccessId     *string `pulumi:"accessId"`
 	AccessSecret *string `pulumi:"accessSecret"`
 	Description  *string `pulumi:"description"`
-	EndpointUrl  *string `pulumi:"endpointUrl"`
-	Insecure     *bool   `pulumi:"insecure"`
-	Name         *string `pulumi:"name"`
+	// The url endpoint for the external container register ie `"https://hub.docker.com"`
+	EndpointUrl *string `pulumi:"endpointUrl"`
+	Insecure    *bool   `pulumi:"insecure"`
+	// The name of the register.
+	Name *string `pulumi:"name"`
+	// The name of the provider.
 	ProviderName *string `pulumi:"providerName"`
 	RegistryId   *int    `pulumi:"registryId"`
 	Status       *string `pulumi:"status"`
@@ -89,9 +97,12 @@ type RegistryState struct {
 	AccessId     pulumi.StringPtrInput
 	AccessSecret pulumi.StringPtrInput
 	Description  pulumi.StringPtrInput
-	EndpointUrl  pulumi.StringPtrInput
-	Insecure     pulumi.BoolPtrInput
-	Name         pulumi.StringPtrInput
+	// The url endpoint for the external container register ie `"https://hub.docker.com"`
+	EndpointUrl pulumi.StringPtrInput
+	Insecure    pulumi.BoolPtrInput
+	// The name of the register.
+	Name pulumi.StringPtrInput
+	// The name of the provider.
 	ProviderName pulumi.StringPtrInput
 	RegistryId   pulumi.IntPtrInput
 	Status       pulumi.StringPtrInput
@@ -105,10 +116,13 @@ type registryArgs struct {
 	AccessId     *string `pulumi:"accessId"`
 	AccessSecret *string `pulumi:"accessSecret"`
 	Description  *string `pulumi:"description"`
-	EndpointUrl  string  `pulumi:"endpointUrl"`
-	Insecure     *bool   `pulumi:"insecure"`
-	Name         *string `pulumi:"name"`
-	ProviderName string  `pulumi:"providerName"`
+	// The url endpoint for the external container register ie `"https://hub.docker.com"`
+	EndpointUrl string `pulumi:"endpointUrl"`
+	Insecure    *bool  `pulumi:"insecure"`
+	// The name of the register.
+	Name *string `pulumi:"name"`
+	// The name of the provider.
+	ProviderName string `pulumi:"providerName"`
 }
 
 // The set of arguments for constructing a Registry resource.
@@ -116,9 +130,12 @@ type RegistryArgs struct {
 	AccessId     pulumi.StringPtrInput
 	AccessSecret pulumi.StringPtrInput
 	Description  pulumi.StringPtrInput
-	EndpointUrl  pulumi.StringInput
-	Insecure     pulumi.BoolPtrInput
-	Name         pulumi.StringPtrInput
+	// The url endpoint for the external container register ie `"https://hub.docker.com"`
+	EndpointUrl pulumi.StringInput
+	Insecure    pulumi.BoolPtrInput
+	// The name of the register.
+	Name pulumi.StringPtrInput
+	// The name of the provider.
 	ProviderName pulumi.StringInput
 }
 
@@ -221,6 +238,7 @@ func (o RegistryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Registry) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The url endpoint for the external container register ie `"https://hub.docker.com"`
 func (o RegistryOutput) EndpointUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Registry) pulumi.StringOutput { return v.EndpointUrl }).(pulumi.StringOutput)
 }
@@ -229,10 +247,12 @@ func (o RegistryOutput) Insecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Registry) pulumi.BoolPtrOutput { return v.Insecure }).(pulumi.BoolPtrOutput)
 }
 
+// The name of the register.
 func (o RegistryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Registry) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The name of the provider.
 func (o RegistryOutput) ProviderName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Registry) pulumi.StringOutput { return v.ProviderName }).(pulumi.StringOutput)
 }

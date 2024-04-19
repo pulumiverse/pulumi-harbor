@@ -9,7 +9,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Harbor project can be imported using the `registry id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/registry:Registry main /registries/7 <break>```<break><break>  `<break><break>
+ * ```sh
+ * $ pulumi import harbor:index/registry:Registry main /registries/7
+ * ```
  */
 export class Registry extends pulumi.CustomResource {
     /**
@@ -42,9 +44,18 @@ export class Registry extends pulumi.CustomResource {
     public readonly accessId!: pulumi.Output<string | undefined>;
     public readonly accessSecret!: pulumi.Output<string | undefined>;
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The url endpoint for the external container register ie `"https://hub.docker.com"`
+     */
     public readonly endpointUrl!: pulumi.Output<string>;
     public readonly insecure!: pulumi.Output<boolean | undefined>;
+    /**
+     * The name of the register.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The name of the provider.
+     */
     public readonly providerName!: pulumi.Output<string>;
     public /*out*/ readonly registryId!: pulumi.Output<number>;
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -103,9 +114,18 @@ export interface RegistryState {
     accessId?: pulumi.Input<string>;
     accessSecret?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
+    /**
+     * The url endpoint for the external container register ie `"https://hub.docker.com"`
+     */
     endpointUrl?: pulumi.Input<string>;
     insecure?: pulumi.Input<boolean>;
+    /**
+     * The name of the register.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The name of the provider.
+     */
     providerName?: pulumi.Input<string>;
     registryId?: pulumi.Input<number>;
     status?: pulumi.Input<string>;
@@ -118,8 +138,17 @@ export interface RegistryArgs {
     accessId?: pulumi.Input<string>;
     accessSecret?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
+    /**
+     * The url endpoint for the external container register ie `"https://hub.docker.com"`
+     */
     endpointUrl: pulumi.Input<string>;
     insecure?: pulumi.Input<boolean>;
+    /**
+     * The name of the register.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The name of the provider.
+     */
     providerName: pulumi.Input<string>;
 }

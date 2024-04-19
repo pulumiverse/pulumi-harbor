@@ -10,15 +10,27 @@ using Pulumi;
 
 namespace Pulumiverse.Harbor
 {
+    /// <summary>
+    /// ## Example Usage
+    /// </summary>
     [HarborResourceType("harbor:index/purgeAuditLog:PurgeAuditLog")]
     public partial class PurgeAuditLog : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// To configure how long audit logs should be kept. For example, if you set this to 24 Harbor will only purge audit logs that are 24 or more hours old.
+        /// </summary>
         [Output("auditRetentionHour")]
         public Output<int> AuditRetentionHour { get; private set; } = null!;
 
+        /// <summary>
+        /// Valid values are `create` `delete` `pull`, thoses values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge.
+        /// </summary>
         [Output("includeOperations")]
         public Output<string> IncludeOperations { get; private set; } = null!;
 
+        /// <summary>
+        /// Sets the schedule how often the Garbage Collection will run.  Can be to `"Hourly"`, `"Daily"`, `"Weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        /// </summary>
         [Output("schedule")]
         public Output<string> Schedule { get; private set; } = null!;
 
@@ -69,12 +81,21 @@ namespace Pulumiverse.Harbor
 
     public sealed class PurgeAuditLogArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// To configure how long audit logs should be kept. For example, if you set this to 24 Harbor will only purge audit logs that are 24 or more hours old.
+        /// </summary>
         [Input("auditRetentionHour", required: true)]
         public Input<int> AuditRetentionHour { get; set; } = null!;
 
+        /// <summary>
+        /// Valid values are `create` `delete` `pull`, thoses values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge.
+        /// </summary>
         [Input("includeOperations", required: true)]
         public Input<string> IncludeOperations { get; set; } = null!;
 
+        /// <summary>
+        /// Sets the schedule how often the Garbage Collection will run.  Can be to `"Hourly"`, `"Daily"`, `"Weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        /// </summary>
         [Input("schedule", required: true)]
         public Input<string> Schedule { get; set; } = null!;
 
@@ -86,12 +107,21 @@ namespace Pulumiverse.Harbor
 
     public sealed class PurgeAuditLogState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// To configure how long audit logs should be kept. For example, if you set this to 24 Harbor will only purge audit logs that are 24 or more hours old.
+        /// </summary>
         [Input("auditRetentionHour")]
         public Input<int>? AuditRetentionHour { get; set; }
 
+        /// <summary>
+        /// Valid values are `create` `delete` `pull`, thoses values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge.
+        /// </summary>
         [Input("includeOperations")]
         public Input<string>? IncludeOperations { get; set; }
 
+        /// <summary>
+        /// Sets the schedule how often the Garbage Collection will run.  Can be to `"Hourly"`, `"Daily"`, `"Weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }
 

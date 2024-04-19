@@ -16,11 +16,12 @@ import (
 //
 // ## Import
 //
-// Harbor retention policy can be imported using the `retention_policy id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10 <break>```<break><break>  `<break><break>
+// ```sh
+// $ pulumi import harbor:index/retentionPolicy:RetentionPolicy main /retentions/10
+// ```
 type RetentionPolicy struct {
 	pulumi.CustomResourceState
 
-	// Al collection of rule blocks as documented below.
 	Rules RetentionPolicyRuleArrayOutput `pulumi:"rules"`
 	// The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
 	Schedule pulumi.StringPtrOutput `pulumi:"schedule"`
@@ -64,7 +65,6 @@ func GetRetentionPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RetentionPolicy resources.
 type retentionPolicyState struct {
-	// Al collection of rule blocks as documented below.
 	Rules []RetentionPolicyRule `pulumi:"rules"`
 	// The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
 	Schedule *string `pulumi:"schedule"`
@@ -73,7 +73,6 @@ type retentionPolicyState struct {
 }
 
 type RetentionPolicyState struct {
-	// Al collection of rule blocks as documented below.
 	Rules RetentionPolicyRuleArrayInput
 	// The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
 	Schedule pulumi.StringPtrInput
@@ -86,7 +85,6 @@ func (RetentionPolicyState) ElementType() reflect.Type {
 }
 
 type retentionPolicyArgs struct {
-	// Al collection of rule blocks as documented below.
 	Rules []RetentionPolicyRule `pulumi:"rules"`
 	// The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
 	Schedule *string `pulumi:"schedule"`
@@ -96,7 +94,6 @@ type retentionPolicyArgs struct {
 
 // The set of arguments for constructing a RetentionPolicy resource.
 type RetentionPolicyArgs struct {
-	// Al collection of rule blocks as documented below.
 	Rules RetentionPolicyRuleArrayInput
 	// The schedule of when you would like the policy to run. This can be `Hourly`, `Daily`, `Weekly` or can be a custom cron string.
 	Schedule pulumi.StringPtrInput
@@ -191,7 +188,6 @@ func (o RetentionPolicyOutput) ToRetentionPolicyOutputWithContext(ctx context.Co
 	return o
 }
 
-// Al collection of rule blocks as documented below.
 func (o RetentionPolicyOutput) Rules() RetentionPolicyRuleArrayOutput {
 	return o.ApplyT(func(v *RetentionPolicy) RetentionPolicyRuleArrayOutput { return v.Rules }).(RetentionPolicyRuleArrayOutput)
 }

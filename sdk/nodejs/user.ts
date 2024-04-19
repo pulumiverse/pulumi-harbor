@@ -9,7 +9,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * An internal user harbor user can be imported using the `user id` eg,<break><break> ` <break><break> ```sh<break> $ pulumi import harbor:index/user:User main /users/19 <break>```<break><break>  `<break><break>
+ * ```sh
+ * $ pulumi import harbor:index/user:User main /users/19
+ * ```
  */
 export class User extends pulumi.CustomResource {
     /**
@@ -39,11 +41,29 @@ export class User extends pulumi.CustomResource {
         return obj['__pulumiType'] === User.__pulumiType;
     }
 
+    /**
+     * If the user will have admin rights within Harbor (Default: `false`)
+     */
     public readonly admin!: pulumi.Output<boolean | undefined>;
+    /**
+     * Any comments for that are need for the internal user.
+     */
     public readonly comment!: pulumi.Output<string | undefined>;
+    /**
+     * The email address of the internal user.
+     */
     public readonly email!: pulumi.Output<string>;
+    /**
+     * The Full Name of the internal user.
+     */
     public readonly fullName!: pulumi.Output<string>;
+    /**
+     * The password for the internal user.
+     */
     public readonly password!: pulumi.Output<string>;
+    /**
+     * The username of the internal user.
+     */
     public readonly username!: pulumi.Output<string>;
 
     /**
@@ -97,11 +117,29 @@ export class User extends pulumi.CustomResource {
  * Input properties used for looking up and filtering User resources.
  */
 export interface UserState {
+    /**
+     * If the user will have admin rights within Harbor (Default: `false`)
+     */
     admin?: pulumi.Input<boolean>;
+    /**
+     * Any comments for that are need for the internal user.
+     */
     comment?: pulumi.Input<string>;
+    /**
+     * The email address of the internal user.
+     */
     email?: pulumi.Input<string>;
+    /**
+     * The Full Name of the internal user.
+     */
     fullName?: pulumi.Input<string>;
+    /**
+     * The password for the internal user.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The username of the internal user.
+     */
     username?: pulumi.Input<string>;
 }
 
@@ -109,10 +147,28 @@ export interface UserState {
  * The set of arguments for constructing a User resource.
  */
 export interface UserArgs {
+    /**
+     * If the user will have admin rights within Harbor (Default: `false`)
+     */
     admin?: pulumi.Input<boolean>;
+    /**
+     * Any comments for that are need for the internal user.
+     */
     comment?: pulumi.Input<string>;
+    /**
+     * The email address of the internal user.
+     */
     email: pulumi.Input<string>;
+    /**
+     * The Full Name of the internal user.
+     */
     fullName: pulumi.Input<string>;
+    /**
+     * The password for the internal user.
+     */
     password: pulumi.Input<string>;
+    /**
+     * The username of the internal user.
+     */
     username: pulumi.Input<string>;
 }

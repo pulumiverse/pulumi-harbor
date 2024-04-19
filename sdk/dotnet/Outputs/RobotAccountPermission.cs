@@ -15,7 +15,13 @@ namespace Pulumiverse.Harbor.Outputs
     public sealed class RobotAccountPermission
     {
         public readonly ImmutableArray<Outputs.RobotAccountPermissionAccess> Accesses;
+        /// <summary>
+        /// Either `system` or `project`.
+        /// </summary>
         public readonly string Kind;
+        /// <summary>
+        /// namespace is the name of your project. For kind `system` permissions, always use `/` as namespace. Use `*` to match all projects.
+        /// </summary>
         public readonly string Namespace;
 
         [OutputConstructor]

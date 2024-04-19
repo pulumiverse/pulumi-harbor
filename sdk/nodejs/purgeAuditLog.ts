@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ */
 export class PurgeAuditLog extends pulumi.CustomResource {
     /**
      * Get an existing PurgeAuditLog resource's state with the given name, ID, and optional extra
@@ -32,8 +35,17 @@ export class PurgeAuditLog extends pulumi.CustomResource {
         return obj['__pulumiType'] === PurgeAuditLog.__pulumiType;
     }
 
+    /**
+     * To configure how long audit logs should be kept. For example, if you set this to 24 Harbor will only purge audit logs that are 24 or more hours old.
+     */
     public readonly auditRetentionHour!: pulumi.Output<number>;
+    /**
+     * Valid values are `create` `delete` `pull`, thoses values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge.
+     */
     public readonly includeOperations!: pulumi.Output<string>;
+    /**
+     * Sets the schedule how often the Garbage Collection will run.  Can be to `"Hourly"`, `"Daily"`, `"Weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+     */
     public readonly schedule!: pulumi.Output<string>;
 
     /**
@@ -76,8 +88,17 @@ export class PurgeAuditLog extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PurgeAuditLog resources.
  */
 export interface PurgeAuditLogState {
+    /**
+     * To configure how long audit logs should be kept. For example, if you set this to 24 Harbor will only purge audit logs that are 24 or more hours old.
+     */
     auditRetentionHour?: pulumi.Input<number>;
+    /**
+     * Valid values are `create` `delete` `pull`, thoses values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge.
+     */
     includeOperations?: pulumi.Input<string>;
+    /**
+     * Sets the schedule how often the Garbage Collection will run.  Can be to `"Hourly"`, `"Daily"`, `"Weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+     */
     schedule?: pulumi.Input<string>;
 }
 
@@ -85,7 +106,16 @@ export interface PurgeAuditLogState {
  * The set of arguments for constructing a PurgeAuditLog resource.
  */
 export interface PurgeAuditLogArgs {
+    /**
+     * To configure how long audit logs should be kept. For example, if you set this to 24 Harbor will only purge audit logs that are 24 or more hours old.
+     */
     auditRetentionHour: pulumi.Input<number>;
+    /**
+     * Valid values are `create` `delete` `pull`, thoses values can be comma separated. When Create, Delete, or Pull is set, Harbor will include audit logs for those operations in the purge.
+     */
     includeOperations: pulumi.Input<string>;
+    /**
+     * Sets the schedule how often the Garbage Collection will run.  Can be to `"Hourly"`, `"Daily"`, `"Weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+     */
     schedule: pulumi.Input<string>;
 }
