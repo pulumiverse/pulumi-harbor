@@ -24,10 +24,14 @@ func GetProjects(ctx *pulumi.Context, args *GetProjectsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getProjects.
 type GetProjectsArgs struct {
-	Name                  *string `pulumi:"name"`
-	Public                *bool   `pulumi:"public"`
-	Type                  *string `pulumi:"type"`
-	VulnerabilityScanning *bool   `pulumi:"vulnerabilityScanning"`
+	// The name of the project.
+	Name *string `pulumi:"name"`
+	// If the project has public accessibility.
+	Public *bool `pulumi:"public"`
+	// The type of the project : Project or ProxyCache.
+	Type *string `pulumi:"type"`
+	// If the images will be scanned for vulnerabilities when push to harbor.
+	VulnerabilityScanning *bool `pulumi:"vulnerabilityScanning"`
 }
 
 // A collection of values returned by getProjects.
@@ -60,10 +64,14 @@ func GetProjectsOutput(ctx *pulumi.Context, args GetProjectsOutputArgs, opts ...
 
 // A collection of arguments for invoking getProjects.
 type GetProjectsOutputArgs struct {
-	Name                  pulumi.StringPtrInput `pulumi:"name"`
-	Public                pulumi.BoolPtrInput   `pulumi:"public"`
-	Type                  pulumi.StringPtrInput `pulumi:"type"`
-	VulnerabilityScanning pulumi.BoolPtrInput   `pulumi:"vulnerabilityScanning"`
+	// The name of the project.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// If the project has public accessibility.
+	Public pulumi.BoolPtrInput `pulumi:"public"`
+	// The type of the project : Project or ProxyCache.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// If the images will be scanned for vulnerabilities when push to harbor.
+	VulnerabilityScanning pulumi.BoolPtrInput `pulumi:"vulnerabilityScanning"`
 }
 
 func (GetProjectsOutputArgs) ElementType() reflect.Type {

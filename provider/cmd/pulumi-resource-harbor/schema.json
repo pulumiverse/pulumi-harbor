@@ -1864,7 +1864,7 @@
             }
         },
         "harbor:index/replication:Replication": {
-            "description": "## Example Usage\n\n```terraform\nresource \"harbor_registry\" \"main\" {\n  provider_name = \"docker-hub\"\n  name          = \"test_docker_harbor\"\n  endpoint_url  = \"https://hub.docker.com\"\n\n}\n\nresource \"harbor_replication\" \"push\" {\n  name        = \"test_push\"\n  action      = \"push\"\n  registry_id = harbor_registry.main.registry_id\n}\n\nresource \"harbor_replication\" \"alpine\" {\n  name        = \"alpine\"\n  action      = \"pull\"\n  registry_id = harbor_registry.main.registry_id\n  schedule = \"0 0/15 * * * *\"\n  filters {\n    name = \"library/alpine\"\n  }\n  filters {\n    tag = \"3.*.*\"\n  }\n  filters {\n    resource = \"artifact\"\n  }\n  filters {\n    labels = [\"qa\"]\n  }\n}\n\nresource \"harbor_replication\" \"alpine\" {\n  name        = \"alpine\"\n  action      = \"pull\"\n  registry_id = harbor_registry.main.registry_id\n  schedule = \"event_based\"\n  filters {\n    name = \"library/alpine\"\n  }\n  filters {\n    tag = \"3.*.*\"\n  }\n}\n```\n\n## Import\n\n```sh\n$ pulumi import harbor:index/replication:Replication main /replication/policies/1\n```\n\n",
+            "description": "## Example Usage\n\n```terraform\nresource \"harbor_registry\" \"main\" {\n  provider_name = \"docker-hub\"\n  name          = \"test_docker_harbor\"\n  endpoint_url  = \"https://hub.docker.com\"\n\n}\n\nresource \"harbor_replication\" \"push\" {\n  name        = \"test_push\"\n  action      = \"push\"\n  registry_id = harbor_registry.main.registry_id\n}\n\nresource \"harbor_replication\" \"alpine\" {\n  name        = \"alpine\"\n  action      = \"pull\"\n  registry_id = harbor_registry.main.registry_id\n  schedule = \"0 0/15 * * * *\"\n  filters {\n    name = \"library/alpine\"\n  }\n  filters {\n    tag = \"3.*.*\"\n  }\n  filters {\n    resource = \"artifact\"\n  }\n  filters {\n    labels = [\"qa\"]\n  }\n}\n\nresource \"harbor_replication\" \"alpine\" {\n  name        = \"alpine\"\n  action      = \"push\"\n  registry_id = harbor_registry.main.registry_id\n  schedule = \"event_based\"\n  filters {\n    name = \"library/alpine\"\n  }\n  filters {\n    tag = \"3.*.*\"\n  }\n}\n```\n\n## Import\n\n```sh\n$ pulumi import harbor:index/replication:Replication main /replication/policies/1\n```\n\n",
             "properties": {
                 "action": {
                     "type": "string"
@@ -1901,7 +1901,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Filter on the name of the resource.\n"
+                    "description": "The name of the replication.\n"
                 },
                 "override": {
                     "type": "boolean",
@@ -1966,7 +1966,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Filter on the name of the resource.\n"
+                    "description": "The name of the replication.\n"
                 },
                 "override": {
                     "type": "boolean",
@@ -2028,7 +2028,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Filter on the name of the resource.\n"
+                        "description": "The name of the replication.\n"
                     },
                     "override": {
                         "type": "boolean",
@@ -2119,7 +2119,7 @@
             }
         },
         "harbor:index/robotAccount:RobotAccount": {
-            "description": "## Example Usage\n\n### System Level\nIntroduced in harbor 2.2.0, system level robot accounts can have basically [all available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) in harbor and are not dependent on a single project.\n\n### Global\n\n```terraform\nresource \"random_password\" \"password\" {\n  length  = 12\n  special = false\n}\n\nresource \"harbor_project\" \"main\" {\n    name = \"main\"\n}\n\nresource \"harbor_robot_account\" \"system\" {\n  name        = \"example-system\"\n  description = \"system level robot account\"\n  level       = \"system\"\n  secret      = resource.random_password.password.result\n  permissions {\n    access {\n      action   = \"create\"\n      resource = \"labels\"\n    }\n    kind      = \"system\"\n    namespace = \"/\"\n  }\n  permissions {\n    access {\n      action   = \"push\"\n      resource = \"repository\"\n    }\n    kind      = \"project\"\n    namespace = harbor_project.main.name\n  }\n  permissions {\n    access {\n      action   = \"pull\"\n      resource = \"repository\"\n    }\n    kind      = \"project\"\n    namespace = \"*\"\n  }\n}\n```\n\nThe above example, creates a system level robot account with permissions to\n- permission to create labels on system level\n- pull repository across all projects\n- push repository to project \"my-project-name\"\n\n### Project\n\nOther than system level robot accounts, project level robot accounts can interact on project level only.\nThe [available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) are mostly the same as for system level robots.\n\n```terraform\nresource \"harbor_project\" \"main\" {\n    name = \"main\"\n}\n\nresource \"harbor_robot_account\" \"project\" {\n  name        = \"example-project\"\n  description = \"project level robot account\"\n  level       = \"project\"\n  permissions {\n    access {\n      action   = \"pull\"\n      resource = \"repository\"\n    }\n    access {\n      action   = \"push\"\n      resource = \"repository\"\n    }\n    kind      = \"project\"\n    namespace = harbor_project.main.name\n  }\n}\n```\n\nThe above example creates a project level robot account with permissions to\n- pull repository on project \"main\"\n- push repository on project \"main\"\n\n## Import\n\n```sh\n$ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123\n```\n\n",
+            "description": "## Example Usage\n\n### System Level\nIntroduced in harbor 2.2.0, system level robot accounts can have basically [all available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) in harbor and are not dependent on a single project.\n\n### Global\n\n```terraform\nresource \"random_password\" \"password\" {\n  length  = 12\n  special = false\n}\n\nresource \"harbor_project\" \"main\" {\n    name = \"main\"\n}\n\nresource \"harbor_robot_account\" \"system\" {\n  name        = \"example-system\"\n  description = \"system level robot account\"\n  level       = \"system\"\n  secret      = resource.random_password.password.result\n  permissions {\n    access {\n      action   = \"create\"\n      resource = \"label\"\n    }\n    kind      = \"system\"\n    namespace = \"/\"\n  }\n  permissions {\n    access {\n      action   = \"push\"\n      resource = \"repository\"\n    }\n    kind      = \"project\"\n    namespace = harbor_project.main.name\n  }\n  permissions {\n    access {\n      action   = \"pull\"\n      resource = \"repository\"\n    }\n    kind      = \"project\"\n    namespace = \"*\"\n  }\n}\n```\n\nThe above example, creates a system level robot account with permissions to\n- permission to create labels on system level\n- pull repository across all projects\n- push repository to project \"my-project-name\"\n\n### Project\n\nOther than system level robot accounts, project level robot accounts can interact on project level only.\nThe [available permissions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go) are mostly the same as for system level robots.\n\n```terraform\nresource \"harbor_project\" \"main\" {\n    name = \"main\"\n}\n\nresource \"harbor_robot_account\" \"project\" {\n  name        = \"example-project\"\n  description = \"project level robot account\"\n  level       = \"project\"\n  permissions {\n    access {\n      action   = \"pull\"\n      resource = \"repository\"\n    }\n    access {\n      action   = \"push\"\n      resource = \"repository\"\n    }\n    kind      = \"project\"\n    namespace = harbor_project.main.name\n  }\n}\n```\n\nThe above example creates a project level robot account with permissions to\n- pull repository on project \"main\"\n- push repository on project \"main\"\n\n## Import\n\n```sh\n$ pulumi import harbor:index/robotAccount:RobotAccount system /robots/123\n```\n\n",
             "properties": {
                 "description": {
                     "type": "string",
@@ -2492,16 +2492,20 @@
                 "description": "A collection of arguments for invoking getProjects.\n",
                 "properties": {
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The name of the project.\n"
                     },
                     "public": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "If the project has public accessibility.\n"
                     },
                     "type": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The type of the project : Project or ProxyCache.\n"
                     },
                     "vulnerabilityScanning": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "If the images will be scanned for vulnerabilities when push to harbor.\n"
                     }
                 },
                 "type": "object"

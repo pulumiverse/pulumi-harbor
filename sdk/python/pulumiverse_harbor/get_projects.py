@@ -109,6 +109,12 @@ def get_projects(name: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectsResult:
     """
     ## Example Usage
+
+
+    :param str name: The name of the project.
+    :param bool public: If the project has public accessibility.
+    :param str type: The type of the project : Project or ProxyCache.
+    :param bool vulnerability_scanning: If the images will be scanned for vulnerabilities when push to harbor.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -135,5 +141,11 @@ def get_projects_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectsResult]:
     """
     ## Example Usage
+
+
+    :param str name: The name of the project.
+    :param bool public: If the project has public accessibility.
+    :param str type: The type of the project : Project or ProxyCache.
+    :param bool vulnerability_scanning: If the images will be scanned for vulnerabilities when push to harbor.
     """
     ...

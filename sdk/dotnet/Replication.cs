@@ -65,7 +65,7 @@ namespace Pulumiverse.Harbor
         public Output<ImmutableArray<Outputs.ReplicationFilter>> Filters { get; private set; } = null!;
 
         /// <summary>
-        /// Filter on the name of the resource.
+        /// The name of the replication.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -192,7 +192,7 @@ namespace Pulumiverse.Harbor
         }
 
         /// <summary>
-        /// Filter on the name of the resource.
+        /// The name of the replication.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -277,7 +277,7 @@ namespace Pulumiverse.Harbor
         }
 
         /// <summary>
-        /// Filter on the name of the resource.
+        /// The name of the replication.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
