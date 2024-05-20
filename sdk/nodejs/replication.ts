@@ -70,7 +70,7 @@ export class Replication extends pulumi.CustomResource {
     public readonly executeOnChanged!: pulumi.Output<boolean | undefined>;
     public readonly filters!: pulumi.Output<outputs.ReplicationFilter[] | undefined>;
     /**
-     * Filter on the name of the resource.
+     * The name of the replication.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -177,7 +177,7 @@ export interface ReplicationState {
     executeOnChanged?: pulumi.Input<boolean>;
     filters?: pulumi.Input<pulumi.Input<inputs.ReplicationFilter>[]>;
     /**
-     * Filter on the name of the resource.
+     * The name of the replication.
      */
     name?: pulumi.Input<string>;
     /**
@@ -230,7 +230,7 @@ export interface ReplicationArgs {
     executeOnChanged?: pulumi.Input<boolean>;
     filters?: pulumi.Input<pulumi.Input<inputs.ReplicationFilter>[]>;
     /**
-     * Filter on the name of the resource.
+     * The name of the replication.
      */
     name?: pulumi.Input<string>;
     /**

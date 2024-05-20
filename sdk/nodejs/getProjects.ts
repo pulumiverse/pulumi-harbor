@@ -25,9 +25,21 @@ export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getProjects.
  */
 export interface GetProjectsArgs {
+    /**
+     * The name of the project.
+     */
     name?: string;
+    /**
+     * If the project has public accessibility.
+     */
     public?: boolean;
+    /**
+     * The type of the project : Project or ProxyCache.
+     */
     type?: string;
+    /**
+     * If the images will be scanned for vulnerabilities when push to harbor.
+     */
     vulnerabilityScanning?: boolean;
 }
 
@@ -68,8 +80,20 @@ export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getProjects.
  */
 export interface GetProjectsOutputArgs {
+    /**
+     * The name of the project.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * If the project has public accessibility.
+     */
     public?: pulumi.Input<boolean>;
+    /**
+     * The type of the project : Project or ProxyCache.
+     */
     type?: pulumi.Input<string>;
+    /**
+     * If the images will be scanned for vulnerabilities when push to harbor.
+     */
     vulnerabilityScanning?: pulumi.Input<boolean>;
 }

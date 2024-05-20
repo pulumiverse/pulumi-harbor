@@ -36,7 +36,7 @@ type Replication struct {
 	// Specify whether to execute the replication rule if new or modified. (Default: `false`)
 	ExecuteOnChanged pulumi.BoolPtrOutput         `pulumi:"executeOnChanged"`
 	Filters          ReplicationFilterArrayOutput `pulumi:"filters"`
-	// Filter on the name of the resource.
+	// The name of the replication.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specify whether to override the resources at the destination if a resources with the same name exist. (Default: `true`)
 	Override pulumi.BoolPtrOutput `pulumi:"override"`
@@ -99,7 +99,7 @@ type replicationState struct {
 	// Specify whether to execute the replication rule if new or modified. (Default: `false`)
 	ExecuteOnChanged *bool               `pulumi:"executeOnChanged"`
 	Filters          []ReplicationFilter `pulumi:"filters"`
-	// Filter on the name of the resource.
+	// The name of the replication.
 	Name *string `pulumi:"name"`
 	// Specify whether to override the resources at the destination if a resources with the same name exist. (Default: `true`)
 	Override *bool `pulumi:"override"`
@@ -127,7 +127,7 @@ type ReplicationState struct {
 	// Specify whether to execute the replication rule if new or modified. (Default: `false`)
 	ExecuteOnChanged pulumi.BoolPtrInput
 	Filters          ReplicationFilterArrayInput
-	// Filter on the name of the resource.
+	// The name of the replication.
 	Name pulumi.StringPtrInput
 	// Specify whether to override the resources at the destination if a resources with the same name exist. (Default: `true`)
 	Override pulumi.BoolPtrInput
@@ -159,7 +159,7 @@ type replicationArgs struct {
 	// Specify whether to execute the replication rule if new or modified. (Default: `false`)
 	ExecuteOnChanged *bool               `pulumi:"executeOnChanged"`
 	Filters          []ReplicationFilter `pulumi:"filters"`
-	// Filter on the name of the resource.
+	// The name of the replication.
 	Name *string `pulumi:"name"`
 	// Specify whether to override the resources at the destination if a resources with the same name exist. (Default: `true`)
 	Override *bool `pulumi:"override"`
@@ -187,7 +187,7 @@ type ReplicationArgs struct {
 	// Specify whether to execute the replication rule if new or modified. (Default: `false`)
 	ExecuteOnChanged pulumi.BoolPtrInput
 	Filters          ReplicationFilterArrayInput
-	// Filter on the name of the resource.
+	// The name of the replication.
 	Name pulumi.StringPtrInput
 	// Specify whether to override the resources at the destination if a resources with the same name exist. (Default: `true`)
 	Override pulumi.BoolPtrInput
@@ -324,7 +324,7 @@ func (o ReplicationOutput) Filters() ReplicationFilterArrayOutput {
 	return o.ApplyT(func(v *Replication) ReplicationFilterArrayOutput { return v.Filters }).(ReplicationFilterArrayOutput)
 }
 
-// Filter on the name of the resource.
+// The name of the replication.
 func (o ReplicationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Replication) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

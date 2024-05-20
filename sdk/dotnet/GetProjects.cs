@@ -48,15 +48,27 @@ namespace Pulumiverse.Harbor
 
     public sealed class GetProjectsArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the project.
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
+        /// <summary>
+        /// If the project has public accessibility.
+        /// </summary>
         [Input("public")]
         public bool? Public { get; set; }
 
+        /// <summary>
+        /// The type of the project : Project or ProxyCache.
+        /// </summary>
         [Input("type")]
         public string? Type { get; set; }
 
+        /// <summary>
+        /// If the images will be scanned for vulnerabilities when push to harbor.
+        /// </summary>
         [Input("vulnerabilityScanning")]
         public bool? VulnerabilityScanning { get; set; }
 
@@ -68,15 +80,27 @@ namespace Pulumiverse.Harbor
 
     public sealed class GetProjectsInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the project.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// If the project has public accessibility.
+        /// </summary>
         [Input("public")]
         public Input<bool>? Public { get; set; }
 
+        /// <summary>
+        /// The type of the project : Project or ProxyCache.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// If the images will be scanned for vulnerabilities when push to harbor.
+        /// </summary>
         [Input("vulnerabilityScanning")]
         public Input<bool>? VulnerabilityScanning { get; set; }
 
