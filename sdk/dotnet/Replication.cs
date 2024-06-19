@@ -26,6 +26,12 @@ namespace Pulumiverse.Harbor
         public Output<string> Action { get; private set; } = null!;
 
         /// <summary>
+        /// Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)
+        /// </summary>
+        [Output("copyByChunk")]
+        public Output<bool?> CopyByChunk { get; private set; } = null!;
+
+        /// <summary>
         /// Specify whether to delete the remote resources when locally deleted. (Default: `false`)
         /// </summary>
         [Output("deletion")]
@@ -148,6 +154,12 @@ namespace Pulumiverse.Harbor
         public Input<string> Action { get; set; } = null!;
 
         /// <summary>
+        /// Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)
+        /// </summary>
+        [Input("copyByChunk")]
+        public Input<bool>? CopyByChunk { get; set; }
+
+        /// <summary>
         /// Specify whether to delete the remote resources when locally deleted. (Default: `false`)
         /// </summary>
         [Input("deletion")]
@@ -231,6 +243,12 @@ namespace Pulumiverse.Harbor
     {
         [Input("action")]
         public Input<string>? Action { get; set; }
+
+        /// <summary>
+        /// Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)
+        /// </summary>
+        [Input("copyByChunk")]
+        public Input<bool>? CopyByChunk { get; set; }
 
         /// <summary>
         /// Specify whether to delete the remote resources when locally deleted. (Default: `false`)

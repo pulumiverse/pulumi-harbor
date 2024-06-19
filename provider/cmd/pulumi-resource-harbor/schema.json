@@ -1869,6 +1869,10 @@
                 "action": {
                     "type": "string"
                 },
+                "copyByChunk": {
+                    "type": "boolean",
+                    "description": "Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)\n"
+                },
                 "deletion": {
                     "type": "boolean",
                     "description": "Specify whether to delete the remote resources when locally deleted. (Default: `false`)\n"
@@ -1934,6 +1938,10 @@
                     "type": "string",
                     "willReplaceOnChanges": true
                 },
+                "copyByChunk": {
+                    "type": "boolean",
+                    "description": "Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)\n"
+                },
                 "deletion": {
                     "type": "boolean",
                     "description": "Specify whether to delete the remote resources when locally deleted. (Default: `false`)\n"
@@ -1995,6 +2003,10 @@
                     "action": {
                         "type": "string",
                         "willReplaceOnChanges": true
+                    },
+                    "copyByChunk": {
+                        "type": "boolean",
+                        "description": "Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)\n"
                     },
                     "deletion": {
                         "type": "boolean",

@@ -45,6 +45,10 @@ export class Replication extends pulumi.CustomResource {
 
     public readonly action!: pulumi.Output<string>;
     /**
+     * Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)
+     */
+    public readonly copyByChunk!: pulumi.Output<boolean | undefined>;
+    /**
      * Specify whether to delete the remote resources when locally deleted. (Default: `false`)
      */
     public readonly deletion!: pulumi.Output<boolean | undefined>;
@@ -105,6 +109,7 @@ export class Replication extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ReplicationState | undefined;
             resourceInputs["action"] = state ? state.action : undefined;
+            resourceInputs["copyByChunk"] = state ? state.copyByChunk : undefined;
             resourceInputs["deletion"] = state ? state.deletion : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["destNamespace"] = state ? state.destNamespace : undefined;
@@ -127,6 +132,7 @@ export class Replication extends pulumi.CustomResource {
                 throw new Error("Missing required property 'registryId'");
             }
             resourceInputs["action"] = args ? args.action : undefined;
+            resourceInputs["copyByChunk"] = args ? args.copyByChunk : undefined;
             resourceInputs["deletion"] = args ? args.deletion : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["destNamespace"] = args ? args.destNamespace : undefined;
@@ -151,6 +157,10 @@ export class Replication extends pulumi.CustomResource {
  */
 export interface ReplicationState {
     action?: pulumi.Input<string>;
+    /**
+     * Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)
+     */
+    copyByChunk?: pulumi.Input<boolean>;
     /**
      * Specify whether to delete the remote resources when locally deleted. (Default: `false`)
      */
@@ -204,6 +214,10 @@ export interface ReplicationState {
  */
 export interface ReplicationArgs {
     action: pulumi.Input<string>;
+    /**
+     * Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)
+     */
+    copyByChunk?: pulumi.Input<boolean>;
     /**
      * Specify whether to delete the remote resources when locally deleted. (Default: `false`)
      */
