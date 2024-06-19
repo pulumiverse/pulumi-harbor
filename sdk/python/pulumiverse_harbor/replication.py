@@ -18,6 +18,7 @@ class ReplicationArgs:
     def __init__(__self__, *,
                  action: pulumi.Input[str],
                  registry_id: pulumi.Input[int],
+                 copy_by_chunk: Optional[pulumi.Input[bool]] = None,
                  deletion: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dest_namespace: Optional[pulumi.Input[str]] = None,
@@ -32,6 +33,7 @@ class ReplicationArgs:
         """
         The set of arguments for constructing a Replication resource.
         :param pulumi.Input[int] registry_id: The registry ID of the Registry Endpoint.
+        :param pulumi.Input[bool] copy_by_chunk: Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)
         :param pulumi.Input[bool] deletion: Specify whether to delete the remote resources when locally deleted. (Default: `false`)
         :param pulumi.Input[str] description: Description of the replication policy.
         :param pulumi.Input[str] dest_namespace: Specify the destination namespace. if empty, the resource will be put under the same namespace as the source.
@@ -45,6 +47,8 @@ class ReplicationArgs:
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "registry_id", registry_id)
+        if copy_by_chunk is not None:
+            pulumi.set(__self__, "copy_by_chunk", copy_by_chunk)
         if deletion is not None:
             pulumi.set(__self__, "deletion", deletion)
         if description is not None:
@@ -88,6 +92,18 @@ class ReplicationArgs:
     @registry_id.setter
     def registry_id(self, value: pulumi.Input[int]):
         pulumi.set(self, "registry_id", value)
+
+    @property
+    @pulumi.getter(name="copyByChunk")
+    def copy_by_chunk(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)
+        """
+        return pulumi.get(self, "copy_by_chunk")
+
+    @copy_by_chunk.setter
+    def copy_by_chunk(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "copy_by_chunk", value)
 
     @property
     @pulumi.getter
@@ -223,6 +239,7 @@ class ReplicationArgs:
 class _ReplicationState:
     def __init__(__self__, *,
                  action: Optional[pulumi.Input[str]] = None,
+                 copy_by_chunk: Optional[pulumi.Input[bool]] = None,
                  deletion: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dest_namespace: Optional[pulumi.Input[str]] = None,
@@ -238,6 +255,7 @@ class _ReplicationState:
                  speed: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Replication resources.
+        :param pulumi.Input[bool] copy_by_chunk: Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)
         :param pulumi.Input[bool] deletion: Specify whether to delete the remote resources when locally deleted. (Default: `false`)
         :param pulumi.Input[str] description: Description of the replication policy.
         :param pulumi.Input[str] dest_namespace: Specify the destination namespace. if empty, the resource will be put under the same namespace as the source.
@@ -252,6 +270,8 @@ class _ReplicationState:
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
+        if copy_by_chunk is not None:
+            pulumi.set(__self__, "copy_by_chunk", copy_by_chunk)
         if deletion is not None:
             pulumi.set(__self__, "deletion", deletion)
         if description is not None:
@@ -287,6 +307,18 @@ class _ReplicationState:
     @action.setter
     def action(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter(name="copyByChunk")
+    def copy_by_chunk(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)
+        """
+        return pulumi.get(self, "copy_by_chunk")
+
+    @copy_by_chunk.setter
+    def copy_by_chunk(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "copy_by_chunk", value)
 
     @property
     @pulumi.getter
@@ -445,6 +477,7 @@ class Replication(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
+                 copy_by_chunk: Optional[pulumi.Input[bool]] = None,
                  deletion: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dest_namespace: Optional[pulumi.Input[str]] = None,
@@ -469,6 +502,7 @@ class Replication(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] copy_by_chunk: Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)
         :param pulumi.Input[bool] deletion: Specify whether to delete the remote resources when locally deleted. (Default: `false`)
         :param pulumi.Input[str] description: Description of the replication policy.
         :param pulumi.Input[str] dest_namespace: Specify the destination namespace. if empty, the resource will be put under the same namespace as the source.
@@ -512,6 +546,7 @@ class Replication(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
+                 copy_by_chunk: Optional[pulumi.Input[bool]] = None,
                  deletion: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dest_namespace: Optional[pulumi.Input[str]] = None,
@@ -536,6 +571,7 @@ class Replication(pulumi.CustomResource):
             if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")
             __props__.__dict__["action"] = action
+            __props__.__dict__["copy_by_chunk"] = copy_by_chunk
             __props__.__dict__["deletion"] = deletion
             __props__.__dict__["description"] = description
             __props__.__dict__["dest_namespace"] = dest_namespace
@@ -562,6 +598,7 @@ class Replication(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             action: Optional[pulumi.Input[str]] = None,
+            copy_by_chunk: Optional[pulumi.Input[bool]] = None,
             deletion: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             dest_namespace: Optional[pulumi.Input[str]] = None,
@@ -582,6 +619,7 @@ class Replication(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] copy_by_chunk: Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)
         :param pulumi.Input[bool] deletion: Specify whether to delete the remote resources when locally deleted. (Default: `false`)
         :param pulumi.Input[str] description: Description of the replication policy.
         :param pulumi.Input[str] dest_namespace: Specify the destination namespace. if empty, the resource will be put under the same namespace as the source.
@@ -599,6 +637,7 @@ class Replication(pulumi.CustomResource):
         __props__ = _ReplicationState.__new__(_ReplicationState)
 
         __props__.__dict__["action"] = action
+        __props__.__dict__["copy_by_chunk"] = copy_by_chunk
         __props__.__dict__["deletion"] = deletion
         __props__.__dict__["description"] = description
         __props__.__dict__["dest_namespace"] = dest_namespace
@@ -618,6 +657,14 @@ class Replication(pulumi.CustomResource):
     @pulumi.getter
     def action(self) -> pulumi.Output[str]:
         return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter(name="copyByChunk")
+    def copy_by_chunk(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)
+        """
+        return pulumi.get(self, "copy_by_chunk")
 
     @property
     @pulumi.getter

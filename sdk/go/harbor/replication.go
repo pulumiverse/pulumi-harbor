@@ -23,6 +23,8 @@ type Replication struct {
 	pulumi.CustomResourceState
 
 	Action pulumi.StringOutput `pulumi:"action"`
+	// Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)
+	CopyByChunk pulumi.BoolPtrOutput `pulumi:"copyByChunk"`
 	// Specify whether to delete the remote resources when locally deleted. (Default: `false`)
 	Deletion pulumi.BoolPtrOutput `pulumi:"deletion"`
 	// Description of the replication policy.
@@ -86,6 +88,8 @@ func GetReplication(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Replication resources.
 type replicationState struct {
 	Action *string `pulumi:"action"`
+	// Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)
+	CopyByChunk *bool `pulumi:"copyByChunk"`
 	// Specify whether to delete the remote resources when locally deleted. (Default: `false`)
 	Deletion *bool `pulumi:"deletion"`
 	// Description of the replication policy.
@@ -114,6 +118,8 @@ type replicationState struct {
 
 type ReplicationState struct {
 	Action pulumi.StringPtrInput
+	// Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)
+	CopyByChunk pulumi.BoolPtrInput
 	// Specify whether to delete the remote resources when locally deleted. (Default: `false`)
 	Deletion pulumi.BoolPtrInput
 	// Description of the replication policy.
@@ -146,6 +152,8 @@ func (ReplicationState) ElementType() reflect.Type {
 
 type replicationArgs struct {
 	Action string `pulumi:"action"`
+	// Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)
+	CopyByChunk *bool `pulumi:"copyByChunk"`
 	// Specify whether to delete the remote resources when locally deleted. (Default: `false`)
 	Deletion *bool `pulumi:"deletion"`
 	// Description of the replication policy.
@@ -174,6 +182,8 @@ type replicationArgs struct {
 // The set of arguments for constructing a Replication resource.
 type ReplicationArgs struct {
 	Action pulumi.StringInput
+	// Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)
+	CopyByChunk pulumi.BoolPtrInput
 	// Specify whether to delete the remote resources when locally deleted. (Default: `false`)
 	Deletion pulumi.BoolPtrInput
 	// Description of the replication policy.
@@ -288,6 +298,11 @@ func (o ReplicationOutput) ToReplicationOutputWithContext(ctx context.Context) R
 
 func (o ReplicationOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *Replication) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
+}
+
+// Specify whether to enable the artifact blobs copied by chunks. (Default: `false`)
+func (o ReplicationOutput) CopyByChunk() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Replication) pulumi.BoolPtrOutput { return v.CopyByChunk }).(pulumi.BoolPtrOutput)
 }
 
 // Specify whether to delete the remote resources when locally deleted. (Default: `false`)
