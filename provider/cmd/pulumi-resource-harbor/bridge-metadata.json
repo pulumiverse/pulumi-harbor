@@ -33,6 +33,9 @@
             "harbor_label": {
                 "current": "harbor:index/label:Label"
             },
+            "harbor_preheat_instance": {
+                "current": "harbor:index/preheatInstance:PreheatInstance"
+            },
             "harbor_project": {
                 "current": "harbor:index/project:Project",
                 "fields": {
