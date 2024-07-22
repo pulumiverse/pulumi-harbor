@@ -18,6 +18,7 @@ from .group import *
 from .immutable_tag_rule import *
 from .interrogation_services import *
 from .label import *
+from .preheat_instance import *
 from .project import *
 from .project_member_group import *
 from .project_member_user import *
@@ -113,6 +114,14 @@ _utilities.register(
   "fqn": "pulumiverse_harbor",
   "classes": {
    "harbor:index/label:Label": "Label"
+  }
+ },
+ {
+  "pkg": "harbor",
+  "mod": "index/preheatInstance",
+  "fqn": "pulumiverse_harbor",
+  "classes": {
+   "harbor:index/preheatInstance:PreheatInstance": "PreheatInstance"
   }
  },
  {

@@ -1193,8 +1193,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The of name of the label within harbor.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The of name of the label within harbor.\n"
                 },
                 "projectId": {
                     "type": "string",
@@ -1214,8 +1213,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The of name of the label within harbor.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The of name of the label within harbor.\n"
                     },
                     "projectId": {
                         "type": "string",
@@ -1228,9 +1226,175 @@
                 "type": "object"
             }
         },
-        "harbor:index/project:Project": {
-            "description": "## Example Usage\n\n### Hosted\n\n```terraform\nresource \"harbor_project\" \"main\" {\n  name                        = \"main\"\n  public                      = false               # (Optional) Default value is false\n  vulnerability_scanning      = true                # (Optional) Default value is true. Automatically scan images on push\n  enable_content_trust        = true                # (Optional) Default value is false. Deny unsigned images from being pulled (notary)\n  enable_content_trust_cosign = false               # (Optional) Default value is false. Deny unsigned images from being pulled (cosign)\n}\n```\n\n### Proxy\n\n```terraform\nresource \"harbor_project\" \"main\" {\n  name        = \"acctest\"\n  registry_id = harbor_registry.docker.registry_id\n}\n\nresource \"harbor_registry\" \"docker\" {\n  provider_name = \"docker-hub\"\n  name          = \"test\"\n  endpoint_url  = \"https://hub.docker.com\"\n}\n```\n\n## Import\n\n```sh\n$ pulumi import harbor:index/project:Project main /projects/1\n```\n\n",
+        "harbor:index/preheatInstance:PreheatInstance": {
+            "description": "## Example Usage\n\n### Basic Usage\n\n```terraform\nresource \"harbor_preheat_instance\" \"example\" {\n  name     = \"example-preheat-instance\"\n  vendor   = \"dragonfly\"\n  endpoint = \"http://example.com\"\n}\n```\n\n### Usage with Authentication\n\n```terraform\nresource \"harbor_preheat_instance\" \"example\" {\n  name       = \"example-preheat-instance\"\n  vendor     = \"dragonfly\"\n  endpoint   = \"http://example.com\"\n  auth_mode  = \"BASIC\"\n  username   = \"example-user\"\n  password   = \"example-password\"\n}\n```\n\n## Import\n\nThe `harbor_preheat_instance` resource can be imported using the preheat instance ID.\n\n```sh\n$ pulumi import harbor:index/preheatInstance:PreheatInstance example /p2p/preheat/instances/example-preheat-instance\n```\n\n",
             "properties": {
+                "authMode": {
+                    "type": "string",
+                    "description": "The authentication mode for the preheat instance. Must be either \"NONE\", \"BASIC\", or \"OAUTH\". Defaults to \"NONE\".\n"
+                },
+                "default": {
+                    "type": "boolean",
+                    "description": "Whether the preheat instance is the default instance. Defaults to false.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the preheat instance. Defaults to an empty string.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the preheat instance is enabled. Defaults to true.\n"
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "The endpoint of the preheat instance.\n"
+                },
+                "insecure": {
+                    "type": "boolean",
+                    "description": "Whether to allow insecure connections to the preheat instance. Defaults to false.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the preheat instance.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password for the preheat instance. Required if `auth_mode` is \"BASIC\". Defaults to an empty string.\n",
+                    "secret": true
+                },
+                "token": {
+                    "type": "string",
+                    "description": "The token for the preheat instance. Required if `auth_mode` is \"OAUTH\". Defaults to an empty string.\n",
+                    "secret": true
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username for the preheat instance. Required if `auth_mode` is \"BASIC\". Defaults to an empty string.\n"
+                },
+                "vendor": {
+                    "type": "string",
+                    "description": "The vendor of the preheat instance. Must be either \"dragonfly\" or \"kraken\".\n"
+                }
+            },
+            "required": [
+                "endpoint",
+                "name",
+                "vendor"
+            ],
+            "inputProperties": {
+                "authMode": {
+                    "type": "string",
+                    "description": "The authentication mode for the preheat instance. Must be either \"NONE\", \"BASIC\", or \"OAUTH\". Defaults to \"NONE\".\n"
+                },
+                "default": {
+                    "type": "boolean",
+                    "description": "Whether the preheat instance is the default instance. Defaults to false.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the preheat instance. Defaults to an empty string.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the preheat instance is enabled. Defaults to true.\n"
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "The endpoint of the preheat instance.\n"
+                },
+                "insecure": {
+                    "type": "boolean",
+                    "description": "Whether to allow insecure connections to the preheat instance. Defaults to false.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the preheat instance.\n",
+                    "willReplaceOnChanges": true
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password for the preheat instance. Required if `auth_mode` is \"BASIC\". Defaults to an empty string.\n",
+                    "secret": true
+                },
+                "token": {
+                    "type": "string",
+                    "description": "The token for the preheat instance. Required if `auth_mode` is \"OAUTH\". Defaults to an empty string.\n",
+                    "secret": true
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username for the preheat instance. Required if `auth_mode` is \"BASIC\". Defaults to an empty string.\n"
+                },
+                "vendor": {
+                    "type": "string",
+                    "description": "The vendor of the preheat instance. Must be either \"dragonfly\" or \"kraken\".\n"
+                }
+            },
+            "requiredInputs": [
+                "endpoint",
+                "vendor"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PreheatInstance resources.\n",
+                "properties": {
+                    "authMode": {
+                        "type": "string",
+                        "description": "The authentication mode for the preheat instance. Must be either \"NONE\", \"BASIC\", or \"OAUTH\". Defaults to \"NONE\".\n"
+                    },
+                    "default": {
+                        "type": "boolean",
+                        "description": "Whether the preheat instance is the default instance. Defaults to false.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the preheat instance. Defaults to an empty string.\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Whether the preheat instance is enabled. Defaults to true.\n"
+                    },
+                    "endpoint": {
+                        "type": "string",
+                        "description": "The endpoint of the preheat instance.\n"
+                    },
+                    "insecure": {
+                        "type": "boolean",
+                        "description": "Whether to allow insecure connections to the preheat instance. Defaults to false.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the preheat instance.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "The password for the preheat instance. Required if `auth_mode` is \"BASIC\". Defaults to an empty string.\n",
+                        "secret": true
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "The token for the preheat instance. Required if `auth_mode` is \"OAUTH\". Defaults to an empty string.\n",
+                        "secret": true
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The username for the preheat instance. Required if `auth_mode` is \"BASIC\". Defaults to an empty string.\n"
+                    },
+                    "vendor": {
+                        "type": "string",
+                        "description": "The vendor of the preheat instance. Must be either \"dragonfly\" or \"kraken\".\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "harbor:index/project:Project": {
+            "description": "## Example Usage\n\n### Hosted\n\n```terraform\nresource \"harbor_project\" \"main\" {\n  name                        = \"main\"\n  public                      = false               # (Optional) Default value is false\n  vulnerability_scanning      = true                # (Optional) Default value is true. Automatically scan images on push\n  enable_content_trust        = true                # (Optional) Default value is false. Deny unsigned images from being pulled (notary)\n  enable_content_trust_cosign = false               # (Optional) Default value is false. Deny unsigned images from being pulled (cosign)\n  auto_sbom_generation        = true                # (Optional) Default value is false. Automatically generate SBOMs for images\n}\n```\n\n### Proxy\n\n```terraform\nresource \"harbor_project\" \"main\" {\n  name        = \"acctest\"\n  registry_id = harbor_registry.docker.registry_id\n}\n\nresource \"harbor_registry\" \"docker\" {\n  provider_name = \"docker-hub\"\n  name          = \"test\"\n  endpoint_url  = \"https://hub.docker.com\"\n}\n```\n\n## Import\n\n```sh\n$ pulumi import harbor:index/project:Project main /projects/1\n```\n\n",
+            "properties": {
+                "autoSbomGeneration": {
+                    "type": "boolean",
+                    "description": "Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above\n"
+                },
                 "cveAllowlists": {
                     "type": "array",
                     "items": {
@@ -1285,6 +1449,10 @@
                 "registryId"
             ],
             "inputProperties": {
+                "autoSbomGeneration": {
+                    "type": "boolean",
+                    "description": "Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above\n"
+                },
                 "cveAllowlists": {
                     "type": "array",
                     "items": {
@@ -1334,6 +1502,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Project resources.\n",
                 "properties": {
+                    "autoSbomGeneration": {
+                        "type": "boolean",
+                        "description": "Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above\n"
+                    },
                     "cveAllowlists": {
                         "type": "array",
                         "items": {

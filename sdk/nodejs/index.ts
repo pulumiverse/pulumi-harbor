@@ -70,6 +70,11 @@ export type Label = import("./label").Label;
 export const Label: typeof import("./label").Label = null as any;
 utilities.lazyLoad(exports, ["Label"], () => require("./label"));
 
+export { PreheatInstanceArgs, PreheatInstanceState } from "./preheatInstance";
+export type PreheatInstance = import("./preheatInstance").PreheatInstance;
+export const PreheatInstance: typeof import("./preheatInstance").PreheatInstance = null as any;
+utilities.lazyLoad(exports, ["PreheatInstance"], () => require("./preheatInstance"));
+
 export { ProjectArgs, ProjectState } from "./project";
 export type Project = import("./project").Project;
 export const Project: typeof import("./project").Project = null as any;
@@ -162,6 +167,8 @@ const _module = {
                 return new InterrogationServices(name, <any>undefined, { urn })
             case "harbor:index/label:Label":
                 return new Label(name, <any>undefined, { urn })
+            case "harbor:index/preheatInstance:PreheatInstance":
+                return new PreheatInstance(name, <any>undefined, { urn })
             case "harbor:index/project:Project":
                 return new Project(name, <any>undefined, { urn })
             case "harbor:index/projectMemberGroup:ProjectMemberGroup":
@@ -198,6 +205,7 @@ pulumi.runtime.registerResourceModule("harbor", "index/group", _module)
 pulumi.runtime.registerResourceModule("harbor", "index/immutableTagRule", _module)
 pulumi.runtime.registerResourceModule("harbor", "index/interrogationServices", _module)
 pulumi.runtime.registerResourceModule("harbor", "index/label", _module)
+pulumi.runtime.registerResourceModule("harbor", "index/preheatInstance", _module)
 pulumi.runtime.registerResourceModule("harbor", "index/project", _module)
 pulumi.runtime.registerResourceModule("harbor", "index/projectMemberGroup", _module)
 pulumi.runtime.registerResourceModule("harbor", "index/projectMemberUser", _module)
