@@ -46,6 +46,10 @@ export class Project extends pulumi.CustomResource {
     }
 
     /**
+     * Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above
+     */
+    public readonly autoSbomGeneration!: pulumi.Output<boolean | undefined>;
+    /**
      * Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
      */
     public readonly cveAllowlists!: pulumi.Output<string[] | undefined>;
@@ -103,6 +107,7 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
+            resourceInputs["autoSbomGeneration"] = state ? state.autoSbomGeneration : undefined;
             resourceInputs["cveAllowlists"] = state ? state.cveAllowlists : undefined;
             resourceInputs["deploymentSecurity"] = state ? state.deploymentSecurity : undefined;
             resourceInputs["enableContentTrust"] = state ? state.enableContentTrust : undefined;
@@ -116,6 +121,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["vulnerabilityScanning"] = state ? state.vulnerabilityScanning : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
+            resourceInputs["autoSbomGeneration"] = args ? args.autoSbomGeneration : undefined;
             resourceInputs["cveAllowlists"] = args ? args.cveAllowlists : undefined;
             resourceInputs["deploymentSecurity"] = args ? args.deploymentSecurity : undefined;
             resourceInputs["enableContentTrust"] = args ? args.enableContentTrust : undefined;
@@ -137,6 +143,10 @@ export class Project extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Project resources.
  */
 export interface ProjectState {
+    /**
+     * Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above
+     */
+    autoSbomGeneration?: pulumi.Input<boolean>;
     /**
      * Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
      */
@@ -187,6 +197,10 @@ export interface ProjectState {
  * The set of arguments for constructing a Project resource.
  */
 export interface ProjectArgs {
+    /**
+     * Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above
+     */
+    autoSbomGeneration?: pulumi.Input<boolean>;
     /**
      * Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
      */

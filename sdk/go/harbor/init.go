@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InterrogationServices{}
 	case "harbor:index/label:Label":
 		r = &Label{}
+	case "harbor:index/preheatInstance:PreheatInstance":
+		r = &PreheatInstance{}
 	case "harbor:index/project:Project":
 		r = &Project{}
 	case "harbor:index/projectMemberGroup:ProjectMemberGroup":
@@ -135,6 +137,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harbor",
 		"index/label",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"harbor",
+		"index/preheatInstance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

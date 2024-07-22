@@ -27,6 +27,12 @@ namespace Pulumiverse.Harbor
     public partial class Project : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above
+        /// </summary>
+        [Output("autoSbomGeneration")]
+        public Output<bool?> AutoSbomGeneration { get; private set; } = null!;
+
+        /// <summary>
         /// Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
         /// </summary>
         [Output("cveAllowlists")]
@@ -139,6 +145,12 @@ namespace Pulumiverse.Harbor
 
     public sealed class ProjectArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above
+        /// </summary>
+        [Input("autoSbomGeneration")]
+        public Input<bool>? AutoSbomGeneration { get; set; }
+
         [Input("cveAllowlists")]
         private InputList<string>? _cveAllowlists;
 
@@ -213,6 +225,12 @@ namespace Pulumiverse.Harbor
 
     public sealed class ProjectState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above
+        /// </summary>
+        [Input("autoSbomGeneration")]
+        public Input<bool>? AutoSbomGeneration { get; set; }
+
         [Input("cveAllowlists")]
         private InputList<string>? _cveAllowlists;
 

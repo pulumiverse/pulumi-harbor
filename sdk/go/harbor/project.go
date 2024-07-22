@@ -25,6 +25,8 @@ import (
 type Project struct {
 	pulumi.CustomResourceState
 
+	// Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above
+	AutoSbomGeneration pulumi.BoolPtrOutput `pulumi:"autoSbomGeneration"`
 	// Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
 	CveAllowlists pulumi.StringArrayOutput `pulumi:"cveAllowlists"`
 	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
@@ -79,6 +81,8 @@ func GetProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Project resources.
 type projectState struct {
+	// Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above
+	AutoSbomGeneration *bool `pulumi:"autoSbomGeneration"`
 	// Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
 	CveAllowlists []string `pulumi:"cveAllowlists"`
 	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
@@ -104,6 +108,8 @@ type projectState struct {
 }
 
 type ProjectState struct {
+	// Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above
+	AutoSbomGeneration pulumi.BoolPtrInput
 	// Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
 	CveAllowlists pulumi.StringArrayInput
 	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
@@ -133,6 +139,8 @@ func (ProjectState) ElementType() reflect.Type {
 }
 
 type projectArgs struct {
+	// Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above
+	AutoSbomGeneration *bool `pulumi:"autoSbomGeneration"`
 	// Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
 	CveAllowlists []string `pulumi:"cveAllowlists"`
 	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
@@ -157,6 +165,8 @@ type projectArgs struct {
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
+	// Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above
+	AutoSbomGeneration pulumi.BoolPtrInput
 	// Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
 	CveAllowlists pulumi.StringArrayInput
 	// Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
@@ -264,6 +274,11 @@ func (o ProjectOutput) ToProjectOutput() ProjectOutput {
 
 func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOutput {
 	return o
+}
+
+// Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above
+func (o ProjectOutput) AutoSbomGeneration() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.AutoSbomGeneration }).(pulumi.BoolPtrOutput)
 }
 
 // Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`

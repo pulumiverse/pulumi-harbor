@@ -14,6 +14,7 @@ __all__ = ['ProjectArgs', 'Project']
 @pulumi.input_type
 class ProjectArgs:
     def __init__(__self__, *,
+                 auto_sbom_generation: Optional[pulumi.Input[bool]] = None,
                  cve_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deployment_security: Optional[pulumi.Input[str]] = None,
                  enable_content_trust: Optional[pulumi.Input[bool]] = None,
@@ -26,6 +27,7 @@ class ProjectArgs:
                  vulnerability_scanning: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Project resource.
+        :param pulumi.Input[bool] auto_sbom_generation: Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cve_allowlists: Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
         :param pulumi.Input[str] deployment_security: Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
         :param pulumi.Input[bool] enable_content_trust: Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
@@ -37,6 +39,8 @@ class ProjectArgs:
         :param pulumi.Input[int] storage_quota: The storage quota of the project in GB's.
         :param pulumi.Input[bool] vulnerability_scanning: Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
         """
+        if auto_sbom_generation is not None:
+            pulumi.set(__self__, "auto_sbom_generation", auto_sbom_generation)
         if cve_allowlists is not None:
             pulumi.set(__self__, "cve_allowlists", cve_allowlists)
         if deployment_security is not None:
@@ -57,6 +61,18 @@ class ProjectArgs:
             pulumi.set(__self__, "storage_quota", storage_quota)
         if vulnerability_scanning is not None:
             pulumi.set(__self__, "vulnerability_scanning", vulnerability_scanning)
+
+    @property
+    @pulumi.getter(name="autoSbomGeneration")
+    def auto_sbom_generation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above
+        """
+        return pulumi.get(self, "auto_sbom_generation")
+
+    @auto_sbom_generation.setter
+    def auto_sbom_generation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_sbom_generation", value)
 
     @property
     @pulumi.getter(name="cveAllowlists")
@@ -182,6 +198,7 @@ class ProjectArgs:
 @pulumi.input_type
 class _ProjectState:
     def __init__(__self__, *,
+                 auto_sbom_generation: Optional[pulumi.Input[bool]] = None,
                  cve_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deployment_security: Optional[pulumi.Input[str]] = None,
                  enable_content_trust: Optional[pulumi.Input[bool]] = None,
@@ -195,6 +212,7 @@ class _ProjectState:
                  vulnerability_scanning: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Project resources.
+        :param pulumi.Input[bool] auto_sbom_generation: Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cve_allowlists: Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
         :param pulumi.Input[str] deployment_security: Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
         :param pulumi.Input[bool] enable_content_trust: Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
@@ -207,6 +225,8 @@ class _ProjectState:
         :param pulumi.Input[int] storage_quota: The storage quota of the project in GB's.
         :param pulumi.Input[bool] vulnerability_scanning: Images will be scanned for vulnerabilities when push to harbor. (Default: `true`)
         """
+        if auto_sbom_generation is not None:
+            pulumi.set(__self__, "auto_sbom_generation", auto_sbom_generation)
         if cve_allowlists is not None:
             pulumi.set(__self__, "cve_allowlists", cve_allowlists)
         if deployment_security is not None:
@@ -229,6 +249,18 @@ class _ProjectState:
             pulumi.set(__self__, "storage_quota", storage_quota)
         if vulnerability_scanning is not None:
             pulumi.set(__self__, "vulnerability_scanning", vulnerability_scanning)
+
+    @property
+    @pulumi.getter(name="autoSbomGeneration")
+    def auto_sbom_generation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above
+        """
+        return pulumi.get(self, "auto_sbom_generation")
+
+    @auto_sbom_generation.setter
+    def auto_sbom_generation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_sbom_generation", value)
 
     @property
     @pulumi.getter(name="cveAllowlists")
@@ -368,6 +400,7 @@ class Project(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_sbom_generation: Optional[pulumi.Input[bool]] = None,
                  cve_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deployment_security: Optional[pulumi.Input[str]] = None,
                  enable_content_trust: Optional[pulumi.Input[bool]] = None,
@@ -394,6 +427,7 @@ class Project(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] auto_sbom_generation: Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cve_allowlists: Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
         :param pulumi.Input[str] deployment_security: Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
         :param pulumi.Input[bool] enable_content_trust: Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
@@ -439,6 +473,7 @@ class Project(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_sbom_generation: Optional[pulumi.Input[bool]] = None,
                  cve_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deployment_security: Optional[pulumi.Input[str]] = None,
                  enable_content_trust: Optional[pulumi.Input[bool]] = None,
@@ -458,6 +493,7 @@ class Project(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProjectArgs.__new__(ProjectArgs)
 
+            __props__.__dict__["auto_sbom_generation"] = auto_sbom_generation
             __props__.__dict__["cve_allowlists"] = cve_allowlists
             __props__.__dict__["deployment_security"] = deployment_security
             __props__.__dict__["enable_content_trust"] = enable_content_trust
@@ -479,6 +515,7 @@ class Project(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_sbom_generation: Optional[pulumi.Input[bool]] = None,
             cve_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             deployment_security: Optional[pulumi.Input[str]] = None,
             enable_content_trust: Optional[pulumi.Input[bool]] = None,
@@ -497,6 +534,7 @@ class Project(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] auto_sbom_generation: Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cve_allowlists: Project allowlist allows vulnerabilities in this list to be ignored in this project when pushing and pulling images. Should be in the format or `["CVE-123", "CVE-145"]` or `["CVE-123"]`
         :param pulumi.Input[str] deployment_security: Prevent deployment of images with vulnerability severity equal or higher than the specified value. Images must be scanned before this takes effect. Possible values: `"critical"`, `"high"`, `"medium"`, `"low"`, `"none"`. (Default: `""` - empty)
         :param pulumi.Input[bool] enable_content_trust: Enables Content Trust for project. When enabled it queries the embedded docker notary server. (Default: `false`).
@@ -513,6 +551,7 @@ class Project(pulumi.CustomResource):
 
         __props__ = _ProjectState.__new__(_ProjectState)
 
+        __props__.__dict__["auto_sbom_generation"] = auto_sbom_generation
         __props__.__dict__["cve_allowlists"] = cve_allowlists
         __props__.__dict__["deployment_security"] = deployment_security
         __props__.__dict__["enable_content_trust"] = enable_content_trust
@@ -525,6 +564,14 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["storage_quota"] = storage_quota
         __props__.__dict__["vulnerability_scanning"] = vulnerability_scanning
         return Project(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="autoSbomGeneration")
+    def auto_sbom_generation(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Automatically generate SBOM for images pushed to this project. (Default: `false`) can only be used with Harbor version v2.11.0 and above
+        """
+        return pulumi.get(self, "auto_sbom_generation")
 
     @property
     @pulumi.getter(name="cveAllowlists")

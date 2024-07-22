@@ -29,6 +29,7 @@
         "index.ts",
         "interrogationServices.ts",
         "label.ts",
+        "preheatInstance.ts",
         "project.ts",
         "projectMemberGroup.ts",
         "projectMemberUser.ts",
