@@ -16,7 +16,12 @@
                 }
             },
             "harbor_config_system": {
-                "current": "harbor:index/configSystem:ConfigSystem"
+                "current": "harbor:index/configSystem:ConfigSystem",
+                "fields": {
+                    "banner_message": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "harbor_garbage_collection": {
                 "current": "harbor:index/garbageCollection:GarbageCollection"

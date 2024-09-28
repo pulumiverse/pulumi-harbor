@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -36,6 +38,11 @@ export class ConfigSystem extends pulumi.CustomResource {
     }
 
     /**
+     * The endpoint to forward audit logs to.
+     */
+    public readonly auditLogForwardEndpoint!: pulumi.Output<string | undefined>;
+    public readonly bannerMessage!: pulumi.Output<outputs.ConfigSystemBannerMessage | undefined>;
+    /**
      * Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
      */
     public readonly projectCreationRestriction!: pulumi.Output<string | undefined>;
@@ -56,6 +63,10 @@ export class ConfigSystem extends pulumi.CustomResource {
      */
     public readonly scannerSkipUpdatePulltime!: pulumi.Output<boolean | undefined>;
     /**
+     * Whether or not to skip audit log database.
+     */
+    public readonly skipAuditLogDatabase!: pulumi.Output<boolean | undefined>;
+    /**
      * Default quota space per project in GIB. Default is -1 (unlimited).
      */
     public readonly storagePerProject!: pulumi.Output<number | undefined>;
@@ -73,19 +84,25 @@ export class ConfigSystem extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConfigSystemState | undefined;
+            resourceInputs["auditLogForwardEndpoint"] = state ? state.auditLogForwardEndpoint : undefined;
+            resourceInputs["bannerMessage"] = state ? state.bannerMessage : undefined;
             resourceInputs["projectCreationRestriction"] = state ? state.projectCreationRestriction : undefined;
             resourceInputs["readOnly"] = state ? state.readOnly : undefined;
             resourceInputs["robotNamePrefix"] = state ? state.robotNamePrefix : undefined;
             resourceInputs["robotTokenExpiration"] = state ? state.robotTokenExpiration : undefined;
             resourceInputs["scannerSkipUpdatePulltime"] = state ? state.scannerSkipUpdatePulltime : undefined;
+            resourceInputs["skipAuditLogDatabase"] = state ? state.skipAuditLogDatabase : undefined;
             resourceInputs["storagePerProject"] = state ? state.storagePerProject : undefined;
         } else {
             const args = argsOrState as ConfigSystemArgs | undefined;
+            resourceInputs["auditLogForwardEndpoint"] = args ? args.auditLogForwardEndpoint : undefined;
+            resourceInputs["bannerMessage"] = args ? args.bannerMessage : undefined;
             resourceInputs["projectCreationRestriction"] = args ? args.projectCreationRestriction : undefined;
             resourceInputs["readOnly"] = args ? args.readOnly : undefined;
             resourceInputs["robotNamePrefix"] = args ? args.robotNamePrefix : undefined;
             resourceInputs["robotTokenExpiration"] = args ? args.robotTokenExpiration : undefined;
             resourceInputs["scannerSkipUpdatePulltime"] = args ? args.scannerSkipUpdatePulltime : undefined;
+            resourceInputs["skipAuditLogDatabase"] = args ? args.skipAuditLogDatabase : undefined;
             resourceInputs["storagePerProject"] = args ? args.storagePerProject : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -98,6 +115,11 @@ export class ConfigSystem extends pulumi.CustomResource {
  */
 export interface ConfigSystemState {
     /**
+     * The endpoint to forward audit logs to.
+     */
+    auditLogForwardEndpoint?: pulumi.Input<string>;
+    bannerMessage?: pulumi.Input<inputs.ConfigSystemBannerMessage>;
+    /**
      * Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
      */
     projectCreationRestriction?: pulumi.Input<string>;
@@ -117,6 +139,10 @@ export interface ConfigSystemState {
      * Whether or not to skip update pull time for scanner.
      */
     scannerSkipUpdatePulltime?: pulumi.Input<boolean>;
+    /**
+     * Whether or not to skip audit log database.
+     */
+    skipAuditLogDatabase?: pulumi.Input<boolean>;
     /**
      * Default quota space per project in GIB. Default is -1 (unlimited).
      */
@@ -128,6 +154,11 @@ export interface ConfigSystemState {
  */
 export interface ConfigSystemArgs {
     /**
+     * The endpoint to forward audit logs to.
+     */
+    auditLogForwardEndpoint?: pulumi.Input<string>;
+    bannerMessage?: pulumi.Input<inputs.ConfigSystemBannerMessage>;
+    /**
      * Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
      */
     projectCreationRestriction?: pulumi.Input<string>;
@@ -147,6 +178,10 @@ export interface ConfigSystemArgs {
      * Whether or not to skip update pull time for scanner.
      */
     scannerSkipUpdatePulltime?: pulumi.Input<boolean>;
+    /**
+     * Whether or not to skip audit log database.
+     */
+    skipAuditLogDatabase?: pulumi.Input<boolean>;
     /**
      * Default quota space per project in GIB. Default is -1 (unlimited).
      */

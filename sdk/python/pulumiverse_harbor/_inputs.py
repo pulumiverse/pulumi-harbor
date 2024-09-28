@@ -10,11 +10,98 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
+    'ConfigSystemBannerMessageArgs',
     'ReplicationFilterArgs',
     'RetentionPolicyRuleArgs',
     'RobotAccountPermissionArgs',
     'RobotAccountPermissionAccessArgs',
 ]
+
+@pulumi.input_type
+class ConfigSystemBannerMessageArgs:
+    def __init__(__self__, *,
+                 message: pulumi.Input[str],
+                 closable: Optional[pulumi.Input[bool]] = None,
+                 from_date: Optional[pulumi.Input[str]] = None,
+                 to_date: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] message: The message to display in the banner.
+        :param pulumi.Input[bool] closable: Whether or not the banner message is closable.
+        :param pulumi.Input[str] from_date: The date the banner message will start displaying. (Format: `MM/DD/YYYY`)
+        :param pulumi.Input[str] to_date: The date the banner message will stop displaying. (Format: `MM/DD/YYYY`)
+        :param pulumi.Input[str] type: The type of banner message. Can be `"info"`, `"warning"`, `"success"` or `"danger"`.
+        """
+        pulumi.set(__self__, "message", message)
+        if closable is not None:
+            pulumi.set(__self__, "closable", closable)
+        if from_date is not None:
+            pulumi.set(__self__, "from_date", from_date)
+        if to_date is not None:
+            pulumi.set(__self__, "to_date", to_date)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def message(self) -> pulumi.Input[str]:
+        """
+        The message to display in the banner.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: pulumi.Input[str]):
+        pulumi.set(self, "message", value)
+
+    @property
+    @pulumi.getter
+    def closable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the banner message is closable.
+        """
+        return pulumi.get(self, "closable")
+
+    @closable.setter
+    def closable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "closable", value)
+
+    @property
+    @pulumi.getter(name="fromDate")
+    def from_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date the banner message will start displaying. (Format: `MM/DD/YYYY`)
+        """
+        return pulumi.get(self, "from_date")
+
+    @from_date.setter
+    def from_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "from_date", value)
+
+    @property
+    @pulumi.getter(name="toDate")
+    def to_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date the banner message will stop displaying. (Format: `MM/DD/YYYY`)
+        """
+        return pulumi.get(self, "to_date")
+
+    @to_date.setter
+    def to_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "to_date", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of banner message. Can be `"info"`, `"warning"`, `"success"` or `"danger"`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
 
 @pulumi.input_type
 class ReplicationFilterArgs:

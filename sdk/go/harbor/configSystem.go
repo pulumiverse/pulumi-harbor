@@ -15,6 +15,9 @@ import (
 type ConfigSystem struct {
 	pulumi.CustomResourceState
 
+	// The endpoint to forward audit logs to.
+	AuditLogForwardEndpoint pulumi.StringPtrOutput             `pulumi:"auditLogForwardEndpoint"`
+	BannerMessage           ConfigSystemBannerMessagePtrOutput `pulumi:"bannerMessage"`
 	// Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
 	ProjectCreationRestriction pulumi.StringPtrOutput `pulumi:"projectCreationRestriction"`
 	// Whether or not the system is in read only mode.
@@ -25,6 +28,8 @@ type ConfigSystem struct {
 	RobotTokenExpiration pulumi.IntPtrOutput `pulumi:"robotTokenExpiration"`
 	// Whether or not to skip update pull time for scanner.
 	ScannerSkipUpdatePulltime pulumi.BoolPtrOutput `pulumi:"scannerSkipUpdatePulltime"`
+	// Whether or not to skip audit log database.
+	SkipAuditLogDatabase pulumi.BoolPtrOutput `pulumi:"skipAuditLogDatabase"`
 	// Default quota space per project in GIB. Default is -1 (unlimited).
 	StoragePerProject pulumi.IntPtrOutput `pulumi:"storagePerProject"`
 }
@@ -59,6 +64,9 @@ func GetConfigSystem(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ConfigSystem resources.
 type configSystemState struct {
+	// The endpoint to forward audit logs to.
+	AuditLogForwardEndpoint *string                    `pulumi:"auditLogForwardEndpoint"`
+	BannerMessage           *ConfigSystemBannerMessage `pulumi:"bannerMessage"`
 	// Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
 	ProjectCreationRestriction *string `pulumi:"projectCreationRestriction"`
 	// Whether or not the system is in read only mode.
@@ -69,11 +77,16 @@ type configSystemState struct {
 	RobotTokenExpiration *int `pulumi:"robotTokenExpiration"`
 	// Whether or not to skip update pull time for scanner.
 	ScannerSkipUpdatePulltime *bool `pulumi:"scannerSkipUpdatePulltime"`
+	// Whether or not to skip audit log database.
+	SkipAuditLogDatabase *bool `pulumi:"skipAuditLogDatabase"`
 	// Default quota space per project in GIB. Default is -1 (unlimited).
 	StoragePerProject *int `pulumi:"storagePerProject"`
 }
 
 type ConfigSystemState struct {
+	// The endpoint to forward audit logs to.
+	AuditLogForwardEndpoint pulumi.StringPtrInput
+	BannerMessage           ConfigSystemBannerMessagePtrInput
 	// Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
 	ProjectCreationRestriction pulumi.StringPtrInput
 	// Whether or not the system is in read only mode.
@@ -84,6 +97,8 @@ type ConfigSystemState struct {
 	RobotTokenExpiration pulumi.IntPtrInput
 	// Whether or not to skip update pull time for scanner.
 	ScannerSkipUpdatePulltime pulumi.BoolPtrInput
+	// Whether or not to skip audit log database.
+	SkipAuditLogDatabase pulumi.BoolPtrInput
 	// Default quota space per project in GIB. Default is -1 (unlimited).
 	StoragePerProject pulumi.IntPtrInput
 }
@@ -93,6 +108,9 @@ func (ConfigSystemState) ElementType() reflect.Type {
 }
 
 type configSystemArgs struct {
+	// The endpoint to forward audit logs to.
+	AuditLogForwardEndpoint *string                    `pulumi:"auditLogForwardEndpoint"`
+	BannerMessage           *ConfigSystemBannerMessage `pulumi:"bannerMessage"`
 	// Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
 	ProjectCreationRestriction *string `pulumi:"projectCreationRestriction"`
 	// Whether or not the system is in read only mode.
@@ -103,12 +121,17 @@ type configSystemArgs struct {
 	RobotTokenExpiration *int `pulumi:"robotTokenExpiration"`
 	// Whether or not to skip update pull time for scanner.
 	ScannerSkipUpdatePulltime *bool `pulumi:"scannerSkipUpdatePulltime"`
+	// Whether or not to skip audit log database.
+	SkipAuditLogDatabase *bool `pulumi:"skipAuditLogDatabase"`
 	// Default quota space per project in GIB. Default is -1 (unlimited).
 	StoragePerProject *int `pulumi:"storagePerProject"`
 }
 
 // The set of arguments for constructing a ConfigSystem resource.
 type ConfigSystemArgs struct {
+	// The endpoint to forward audit logs to.
+	AuditLogForwardEndpoint pulumi.StringPtrInput
+	BannerMessage           ConfigSystemBannerMessagePtrInput
 	// Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
 	ProjectCreationRestriction pulumi.StringPtrInput
 	// Whether or not the system is in read only mode.
@@ -119,6 +142,8 @@ type ConfigSystemArgs struct {
 	RobotTokenExpiration pulumi.IntPtrInput
 	// Whether or not to skip update pull time for scanner.
 	ScannerSkipUpdatePulltime pulumi.BoolPtrInput
+	// Whether or not to skip audit log database.
+	SkipAuditLogDatabase pulumi.BoolPtrInput
 	// Default quota space per project in GIB. Default is -1 (unlimited).
 	StoragePerProject pulumi.IntPtrInput
 }
@@ -210,6 +235,15 @@ func (o ConfigSystemOutput) ToConfigSystemOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The endpoint to forward audit logs to.
+func (o ConfigSystemOutput) AuditLogForwardEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigSystem) pulumi.StringPtrOutput { return v.AuditLogForwardEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ConfigSystemOutput) BannerMessage() ConfigSystemBannerMessagePtrOutput {
+	return o.ApplyT(func(v *ConfigSystem) ConfigSystemBannerMessagePtrOutput { return v.BannerMessage }).(ConfigSystemBannerMessagePtrOutput)
+}
+
 // Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
 func (o ConfigSystemOutput) ProjectCreationRestriction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigSystem) pulumi.StringPtrOutput { return v.ProjectCreationRestriction }).(pulumi.StringPtrOutput)
@@ -233,6 +267,11 @@ func (o ConfigSystemOutput) RobotTokenExpiration() pulumi.IntPtrOutput {
 // Whether or not to skip update pull time for scanner.
 func (o ConfigSystemOutput) ScannerSkipUpdatePulltime() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConfigSystem) pulumi.BoolPtrOutput { return v.ScannerSkipUpdatePulltime }).(pulumi.BoolPtrOutput)
+}
+
+// Whether or not to skip audit log database.
+func (o ConfigSystemOutput) SkipAuditLogDatabase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConfigSystem) pulumi.BoolPtrOutput { return v.SkipAuditLogDatabase }).(pulumi.BoolPtrOutput)
 }
 
 // Default quota space per project in GIB. Default is -1 (unlimited).

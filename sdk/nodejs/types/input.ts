@@ -5,6 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface ConfigSystemBannerMessage {
+    /**
+     * Whether or not the banner message is closable.
+     */
+    closable?: pulumi.Input<boolean>;
+    /**
+     * The date the banner message will start displaying. (Format: `MM/DD/YYYY`)
+     */
+    fromDate?: pulumi.Input<string>;
+    /**
+     * The message to display in the banner.
+     */
+    message: pulumi.Input<string>;
+    /**
+     * The date the banner message will stop displaying. (Format: `MM/DD/YYYY`)
+     */
+    toDate?: pulumi.Input<string>;
+    /**
+     * The type of banner message. Can be `"info"`, `"warning"`, `"success"` or `"danger"`.
+     */
+    type?: pulumi.Input<string>;
+}
+
 export interface ReplicationFilter {
     /**
      * Matches or excludes the result. Can be one of the following. `matches`, `excludes`
