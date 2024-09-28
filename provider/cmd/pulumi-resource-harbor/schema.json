@@ -108,6 +108,34 @@
         ]
     },
     "types": {
+        "harbor:index/ConfigSystemBannerMessage:ConfigSystemBannerMessage": {
+            "properties": {
+                "closable": {
+                    "type": "boolean",
+                    "description": "Whether or not the banner message is closable.\n"
+                },
+                "fromDate": {
+                    "type": "string",
+                    "description": "The date the banner message will start displaying. (Format: `MM/DD/YYYY`)\n"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "The message to display in the banner.\n"
+                },
+                "toDate": {
+                    "type": "string",
+                    "description": "The date the banner message will stop displaying. (Format: `MM/DD/YYYY`)\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of banner message. Can be `\"info\"`, `\"warning\"`, `\"success\"` or `\"danger\"`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "message"
+            ]
+        },
         "harbor:index/ReplicationFilter:ReplicationFilter": {
             "properties": {
                 "decoration": {
@@ -823,6 +851,13 @@
         "harbor:index/configSystem:ConfigSystem": {
             "description": "## Example Usage\n\n```terraform\nresource \"harbor_config_system\" \"main\" {\n  project_creation_restriction = \"adminonly\"\n  robot_token_expiration       = 30\n  robot_name_prefix            = \"harbor@\"\n  storage_per_project          = 100\n}\n```\n",
             "properties": {
+                "auditLogForwardEndpoint": {
+                    "type": "string",
+                    "description": "The endpoint to forward audit logs to.\n"
+                },
+                "bannerMessage": {
+                    "$ref": "#/types/harbor:index/ConfigSystemBannerMessage:ConfigSystemBannerMessage"
+                },
                 "projectCreationRestriction": {
                     "type": "string",
                     "description": "Who can create projects within Harbor. Can be `\"adminonly\"` or `\"everyone\"`\n"
@@ -842,6 +877,10 @@
                 "scannerSkipUpdatePulltime": {
                     "type": "boolean",
                     "description": "Whether or not to skip update pull time for scanner.\n"
+                },
+                "skipAuditLogDatabase": {
+                    "type": "boolean",
+                    "description": "Whether or not to skip audit log database.\n"
                 },
                 "storagePerProject": {
                     "type": "integer",
@@ -849,6 +888,13 @@
                 }
             },
             "inputProperties": {
+                "auditLogForwardEndpoint": {
+                    "type": "string",
+                    "description": "The endpoint to forward audit logs to.\n"
+                },
+                "bannerMessage": {
+                    "$ref": "#/types/harbor:index/ConfigSystemBannerMessage:ConfigSystemBannerMessage"
+                },
                 "projectCreationRestriction": {
                     "type": "string",
                     "description": "Who can create projects within Harbor. Can be `\"adminonly\"` or `\"everyone\"`\n"
@@ -868,6 +914,10 @@
                 "scannerSkipUpdatePulltime": {
                     "type": "boolean",
                     "description": "Whether or not to skip update pull time for scanner.\n"
+                },
+                "skipAuditLogDatabase": {
+                    "type": "boolean",
+                    "description": "Whether or not to skip audit log database.\n"
                 },
                 "storagePerProject": {
                     "type": "integer",
@@ -877,6 +927,13 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering ConfigSystem resources.\n",
                 "properties": {
+                    "auditLogForwardEndpoint": {
+                        "type": "string",
+                        "description": "The endpoint to forward audit logs to.\n"
+                    },
+                    "bannerMessage": {
+                        "$ref": "#/types/harbor:index/ConfigSystemBannerMessage:ConfigSystemBannerMessage"
+                    },
                     "projectCreationRestriction": {
                         "type": "string",
                         "description": "Who can create projects within Harbor. Can be `\"adminonly\"` or `\"everyone\"`\n"
@@ -896,6 +953,10 @@
                     "scannerSkipUpdatePulltime": {
                         "type": "boolean",
                         "description": "Whether or not to skip update pull time for scanner.\n"
+                    },
+                    "skipAuditLogDatabase": {
+                        "type": "boolean",
+                        "description": "Whether or not to skip audit log database.\n"
                     },
                     "storagePerProject": {
                         "type": "integer",
