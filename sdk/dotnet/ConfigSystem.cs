@@ -17,6 +17,15 @@ namespace Pulumiverse.Harbor
     public partial class ConfigSystem : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The endpoint to forward audit logs to.
+        /// </summary>
+        [Output("auditLogForwardEndpoint")]
+        public Output<string?> AuditLogForwardEndpoint { get; private set; } = null!;
+
+        [Output("bannerMessage")]
+        public Output<Outputs.ConfigSystemBannerMessage?> BannerMessage { get; private set; } = null!;
+
+        /// <summary>
         /// Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
         /// </summary>
         [Output("projectCreationRestriction")]
@@ -45,6 +54,12 @@ namespace Pulumiverse.Harbor
         /// </summary>
         [Output("scannerSkipUpdatePulltime")]
         public Output<bool?> ScannerSkipUpdatePulltime { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether or not to skip audit log database.
+        /// </summary>
+        [Output("skipAuditLogDatabase")]
+        public Output<bool?> SkipAuditLogDatabase { get; private set; } = null!;
 
         /// <summary>
         /// Default quota space per project in GIB. Default is -1 (unlimited).
@@ -100,6 +115,15 @@ namespace Pulumiverse.Harbor
     public sealed class ConfigSystemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The endpoint to forward audit logs to.
+        /// </summary>
+        [Input("auditLogForwardEndpoint")]
+        public Input<string>? AuditLogForwardEndpoint { get; set; }
+
+        [Input("bannerMessage")]
+        public Input<Inputs.ConfigSystemBannerMessageArgs>? BannerMessage { get; set; }
+
+        /// <summary>
         /// Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
         /// </summary>
         [Input("projectCreationRestriction")]
@@ -128,6 +152,12 @@ namespace Pulumiverse.Harbor
         /// </summary>
         [Input("scannerSkipUpdatePulltime")]
         public Input<bool>? ScannerSkipUpdatePulltime { get; set; }
+
+        /// <summary>
+        /// Whether or not to skip audit log database.
+        /// </summary>
+        [Input("skipAuditLogDatabase")]
+        public Input<bool>? SkipAuditLogDatabase { get; set; }
 
         /// <summary>
         /// Default quota space per project in GIB. Default is -1 (unlimited).
@@ -144,6 +174,15 @@ namespace Pulumiverse.Harbor
     public sealed class ConfigSystemState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The endpoint to forward audit logs to.
+        /// </summary>
+        [Input("auditLogForwardEndpoint")]
+        public Input<string>? AuditLogForwardEndpoint { get; set; }
+
+        [Input("bannerMessage")]
+        public Input<Inputs.ConfigSystemBannerMessageGetArgs>? BannerMessage { get; set; }
+
+        /// <summary>
         /// Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
         /// </summary>
         [Input("projectCreationRestriction")]
@@ -172,6 +211,12 @@ namespace Pulumiverse.Harbor
         /// </summary>
         [Input("scannerSkipUpdatePulltime")]
         public Input<bool>? ScannerSkipUpdatePulltime { get; set; }
+
+        /// <summary>
+        /// Whether or not to skip audit log database.
+        /// </summary>
+        [Input("skipAuditLogDatabase")]
+        public Input<bool>? SkipAuditLogDatabase { get; set; }
 
         /// <summary>
         /// Default quota space per project in GIB. Default is -1 (unlimited).

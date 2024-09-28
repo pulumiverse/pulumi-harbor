@@ -13,6 +13,219 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ConfigSystemBannerMessage struct {
+	// Whether or not the banner message is closable.
+	Closable *bool `pulumi:"closable"`
+	// The date the banner message will start displaying. (Format: `MM/DD/YYYY`)
+	FromDate *string `pulumi:"fromDate"`
+	// The message to display in the banner.
+	Message string `pulumi:"message"`
+	// The date the banner message will stop displaying. (Format: `MM/DD/YYYY`)
+	ToDate *string `pulumi:"toDate"`
+	// The type of banner message. Can be `"info"`, `"warning"`, `"success"` or `"danger"`.
+	Type *string `pulumi:"type"`
+}
+
+// ConfigSystemBannerMessageInput is an input type that accepts ConfigSystemBannerMessageArgs and ConfigSystemBannerMessageOutput values.
+// You can construct a concrete instance of `ConfigSystemBannerMessageInput` via:
+//
+//	ConfigSystemBannerMessageArgs{...}
+type ConfigSystemBannerMessageInput interface {
+	pulumi.Input
+
+	ToConfigSystemBannerMessageOutput() ConfigSystemBannerMessageOutput
+	ToConfigSystemBannerMessageOutputWithContext(context.Context) ConfigSystemBannerMessageOutput
+}
+
+type ConfigSystemBannerMessageArgs struct {
+	// Whether or not the banner message is closable.
+	Closable pulumi.BoolPtrInput `pulumi:"closable"`
+	// The date the banner message will start displaying. (Format: `MM/DD/YYYY`)
+	FromDate pulumi.StringPtrInput `pulumi:"fromDate"`
+	// The message to display in the banner.
+	Message pulumi.StringInput `pulumi:"message"`
+	// The date the banner message will stop displaying. (Format: `MM/DD/YYYY`)
+	ToDate pulumi.StringPtrInput `pulumi:"toDate"`
+	// The type of banner message. Can be `"info"`, `"warning"`, `"success"` or `"danger"`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ConfigSystemBannerMessageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigSystemBannerMessage)(nil)).Elem()
+}
+
+func (i ConfigSystemBannerMessageArgs) ToConfigSystemBannerMessageOutput() ConfigSystemBannerMessageOutput {
+	return i.ToConfigSystemBannerMessageOutputWithContext(context.Background())
+}
+
+func (i ConfigSystemBannerMessageArgs) ToConfigSystemBannerMessageOutputWithContext(ctx context.Context) ConfigSystemBannerMessageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigSystemBannerMessageOutput)
+}
+
+func (i ConfigSystemBannerMessageArgs) ToConfigSystemBannerMessagePtrOutput() ConfigSystemBannerMessagePtrOutput {
+	return i.ToConfigSystemBannerMessagePtrOutputWithContext(context.Background())
+}
+
+func (i ConfigSystemBannerMessageArgs) ToConfigSystemBannerMessagePtrOutputWithContext(ctx context.Context) ConfigSystemBannerMessagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigSystemBannerMessageOutput).ToConfigSystemBannerMessagePtrOutputWithContext(ctx)
+}
+
+// ConfigSystemBannerMessagePtrInput is an input type that accepts ConfigSystemBannerMessageArgs, ConfigSystemBannerMessagePtr and ConfigSystemBannerMessagePtrOutput values.
+// You can construct a concrete instance of `ConfigSystemBannerMessagePtrInput` via:
+//
+//	        ConfigSystemBannerMessageArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigSystemBannerMessagePtrInput interface {
+	pulumi.Input
+
+	ToConfigSystemBannerMessagePtrOutput() ConfigSystemBannerMessagePtrOutput
+	ToConfigSystemBannerMessagePtrOutputWithContext(context.Context) ConfigSystemBannerMessagePtrOutput
+}
+
+type configSystemBannerMessagePtrType ConfigSystemBannerMessageArgs
+
+func ConfigSystemBannerMessagePtr(v *ConfigSystemBannerMessageArgs) ConfigSystemBannerMessagePtrInput {
+	return (*configSystemBannerMessagePtrType)(v)
+}
+
+func (*configSystemBannerMessagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigSystemBannerMessage)(nil)).Elem()
+}
+
+func (i *configSystemBannerMessagePtrType) ToConfigSystemBannerMessagePtrOutput() ConfigSystemBannerMessagePtrOutput {
+	return i.ToConfigSystemBannerMessagePtrOutputWithContext(context.Background())
+}
+
+func (i *configSystemBannerMessagePtrType) ToConfigSystemBannerMessagePtrOutputWithContext(ctx context.Context) ConfigSystemBannerMessagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigSystemBannerMessagePtrOutput)
+}
+
+type ConfigSystemBannerMessageOutput struct{ *pulumi.OutputState }
+
+func (ConfigSystemBannerMessageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigSystemBannerMessage)(nil)).Elem()
+}
+
+func (o ConfigSystemBannerMessageOutput) ToConfigSystemBannerMessageOutput() ConfigSystemBannerMessageOutput {
+	return o
+}
+
+func (o ConfigSystemBannerMessageOutput) ToConfigSystemBannerMessageOutputWithContext(ctx context.Context) ConfigSystemBannerMessageOutput {
+	return o
+}
+
+func (o ConfigSystemBannerMessageOutput) ToConfigSystemBannerMessagePtrOutput() ConfigSystemBannerMessagePtrOutput {
+	return o.ToConfigSystemBannerMessagePtrOutputWithContext(context.Background())
+}
+
+func (o ConfigSystemBannerMessageOutput) ToConfigSystemBannerMessagePtrOutputWithContext(ctx context.Context) ConfigSystemBannerMessagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigSystemBannerMessage) *ConfigSystemBannerMessage {
+		return &v
+	}).(ConfigSystemBannerMessagePtrOutput)
+}
+
+// Whether or not the banner message is closable.
+func (o ConfigSystemBannerMessageOutput) Closable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigSystemBannerMessage) *bool { return v.Closable }).(pulumi.BoolPtrOutput)
+}
+
+// The date the banner message will start displaying. (Format: `MM/DD/YYYY`)
+func (o ConfigSystemBannerMessageOutput) FromDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigSystemBannerMessage) *string { return v.FromDate }).(pulumi.StringPtrOutput)
+}
+
+// The message to display in the banner.
+func (o ConfigSystemBannerMessageOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigSystemBannerMessage) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// The date the banner message will stop displaying. (Format: `MM/DD/YYYY`)
+func (o ConfigSystemBannerMessageOutput) ToDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigSystemBannerMessage) *string { return v.ToDate }).(pulumi.StringPtrOutput)
+}
+
+// The type of banner message. Can be `"info"`, `"warning"`, `"success"` or `"danger"`.
+func (o ConfigSystemBannerMessageOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigSystemBannerMessage) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ConfigSystemBannerMessagePtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigSystemBannerMessagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigSystemBannerMessage)(nil)).Elem()
+}
+
+func (o ConfigSystemBannerMessagePtrOutput) ToConfigSystemBannerMessagePtrOutput() ConfigSystemBannerMessagePtrOutput {
+	return o
+}
+
+func (o ConfigSystemBannerMessagePtrOutput) ToConfigSystemBannerMessagePtrOutputWithContext(ctx context.Context) ConfigSystemBannerMessagePtrOutput {
+	return o
+}
+
+func (o ConfigSystemBannerMessagePtrOutput) Elem() ConfigSystemBannerMessageOutput {
+	return o.ApplyT(func(v *ConfigSystemBannerMessage) ConfigSystemBannerMessage {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigSystemBannerMessage
+		return ret
+	}).(ConfigSystemBannerMessageOutput)
+}
+
+// Whether or not the banner message is closable.
+func (o ConfigSystemBannerMessagePtrOutput) Closable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConfigSystemBannerMessage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Closable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The date the banner message will start displaying. (Format: `MM/DD/YYYY`)
+func (o ConfigSystemBannerMessagePtrOutput) FromDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigSystemBannerMessage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FromDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The message to display in the banner.
+func (o ConfigSystemBannerMessagePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigSystemBannerMessage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// The date the banner message will stop displaying. (Format: `MM/DD/YYYY`)
+func (o ConfigSystemBannerMessagePtrOutput) ToDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigSystemBannerMessage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ToDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of banner message. Can be `"info"`, `"warning"`, `"success"` or `"danger"`.
+func (o ConfigSystemBannerMessagePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigSystemBannerMessage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type ReplicationFilter struct {
 	// Matches or excludes the result. Can be one of the following. `matches`, `excludes`
 	Decoration *string `pulumi:"decoration"`
@@ -800,6 +1013,8 @@ func (o GetProjectsProjectArrayOutput) Index(i pulumi.IntInput) GetProjectsProje
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigSystemBannerMessageInput)(nil)).Elem(), ConfigSystemBannerMessageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigSystemBannerMessagePtrInput)(nil)).Elem(), ConfigSystemBannerMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplicationFilterInput)(nil)).Elem(), ReplicationFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReplicationFilterArrayInput)(nil)).Elem(), ReplicationFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetentionPolicyRuleInput)(nil)).Elem(), RetentionPolicyRuleArgs{})
@@ -812,6 +1027,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupArrayInput)(nil)).Elem(), GetGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectInput)(nil)).Elem(), GetProjectsProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectArrayInput)(nil)).Elem(), GetProjectsProjectArray{})
+	pulumi.RegisterOutputType(ConfigSystemBannerMessageOutput{})
+	pulumi.RegisterOutputType(ConfigSystemBannerMessagePtrOutput{})
 	pulumi.RegisterOutputType(ReplicationFilterOutput{})
 	pulumi.RegisterOutputType(ReplicationFilterArrayOutput{})
 	pulumi.RegisterOutputType(RetentionPolicyRuleOutput{})

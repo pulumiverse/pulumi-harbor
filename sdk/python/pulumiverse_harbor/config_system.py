@@ -8,27 +8,38 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ConfigSystemArgs', 'ConfigSystem']
 
 @pulumi.input_type
 class ConfigSystemArgs:
     def __init__(__self__, *,
+                 audit_log_forward_endpoint: Optional[pulumi.Input[str]] = None,
+                 banner_message: Optional[pulumi.Input['ConfigSystemBannerMessageArgs']] = None,
                  project_creation_restriction: Optional[pulumi.Input[str]] = None,
                  read_only: Optional[pulumi.Input[bool]] = None,
                  robot_name_prefix: Optional[pulumi.Input[str]] = None,
                  robot_token_expiration: Optional[pulumi.Input[int]] = None,
                  scanner_skip_update_pulltime: Optional[pulumi.Input[bool]] = None,
+                 skip_audit_log_database: Optional[pulumi.Input[bool]] = None,
                  storage_per_project: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a ConfigSystem resource.
+        :param pulumi.Input[str] audit_log_forward_endpoint: The endpoint to forward audit logs to.
         :param pulumi.Input[str] project_creation_restriction: Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
         :param pulumi.Input[bool] read_only: Whether or not the system is in read only mode.
         :param pulumi.Input[str] robot_name_prefix: Robot account prefix.
         :param pulumi.Input[int] robot_token_expiration: The amount of time in days a robot account will expire.
         :param pulumi.Input[bool] scanner_skip_update_pulltime: Whether or not to skip update pull time for scanner.
+        :param pulumi.Input[bool] skip_audit_log_database: Whether or not to skip audit log database.
         :param pulumi.Input[int] storage_per_project: Default quota space per project in GIB. Default is -1 (unlimited).
         """
+        if audit_log_forward_endpoint is not None:
+            pulumi.set(__self__, "audit_log_forward_endpoint", audit_log_forward_endpoint)
+        if banner_message is not None:
+            pulumi.set(__self__, "banner_message", banner_message)
         if project_creation_restriction is not None:
             pulumi.set(__self__, "project_creation_restriction", project_creation_restriction)
         if read_only is not None:
@@ -39,8 +50,31 @@ class ConfigSystemArgs:
             pulumi.set(__self__, "robot_token_expiration", robot_token_expiration)
         if scanner_skip_update_pulltime is not None:
             pulumi.set(__self__, "scanner_skip_update_pulltime", scanner_skip_update_pulltime)
+        if skip_audit_log_database is not None:
+            pulumi.set(__self__, "skip_audit_log_database", skip_audit_log_database)
         if storage_per_project is not None:
             pulumi.set(__self__, "storage_per_project", storage_per_project)
+
+    @property
+    @pulumi.getter(name="auditLogForwardEndpoint")
+    def audit_log_forward_endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The endpoint to forward audit logs to.
+        """
+        return pulumi.get(self, "audit_log_forward_endpoint")
+
+    @audit_log_forward_endpoint.setter
+    def audit_log_forward_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "audit_log_forward_endpoint", value)
+
+    @property
+    @pulumi.getter(name="bannerMessage")
+    def banner_message(self) -> Optional[pulumi.Input['ConfigSystemBannerMessageArgs']]:
+        return pulumi.get(self, "banner_message")
+
+    @banner_message.setter
+    def banner_message(self, value: Optional[pulumi.Input['ConfigSystemBannerMessageArgs']]):
+        pulumi.set(self, "banner_message", value)
 
     @property
     @pulumi.getter(name="projectCreationRestriction")
@@ -101,6 +135,18 @@ class ConfigSystemArgs:
     @scanner_skip_update_pulltime.setter
     def scanner_skip_update_pulltime(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "scanner_skip_update_pulltime", value)
+
+    @property
+    @pulumi.getter(name="skipAuditLogDatabase")
+    def skip_audit_log_database(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to skip audit log database.
+        """
+        return pulumi.get(self, "skip_audit_log_database")
+
+    @skip_audit_log_database.setter
+    def skip_audit_log_database(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_audit_log_database", value)
 
     @property
     @pulumi.getter(name="storagePerProject")
@@ -118,21 +164,30 @@ class ConfigSystemArgs:
 @pulumi.input_type
 class _ConfigSystemState:
     def __init__(__self__, *,
+                 audit_log_forward_endpoint: Optional[pulumi.Input[str]] = None,
+                 banner_message: Optional[pulumi.Input['ConfigSystemBannerMessageArgs']] = None,
                  project_creation_restriction: Optional[pulumi.Input[str]] = None,
                  read_only: Optional[pulumi.Input[bool]] = None,
                  robot_name_prefix: Optional[pulumi.Input[str]] = None,
                  robot_token_expiration: Optional[pulumi.Input[int]] = None,
                  scanner_skip_update_pulltime: Optional[pulumi.Input[bool]] = None,
+                 skip_audit_log_database: Optional[pulumi.Input[bool]] = None,
                  storage_per_project: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering ConfigSystem resources.
+        :param pulumi.Input[str] audit_log_forward_endpoint: The endpoint to forward audit logs to.
         :param pulumi.Input[str] project_creation_restriction: Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
         :param pulumi.Input[bool] read_only: Whether or not the system is in read only mode.
         :param pulumi.Input[str] robot_name_prefix: Robot account prefix.
         :param pulumi.Input[int] robot_token_expiration: The amount of time in days a robot account will expire.
         :param pulumi.Input[bool] scanner_skip_update_pulltime: Whether or not to skip update pull time for scanner.
+        :param pulumi.Input[bool] skip_audit_log_database: Whether or not to skip audit log database.
         :param pulumi.Input[int] storage_per_project: Default quota space per project in GIB. Default is -1 (unlimited).
         """
+        if audit_log_forward_endpoint is not None:
+            pulumi.set(__self__, "audit_log_forward_endpoint", audit_log_forward_endpoint)
+        if banner_message is not None:
+            pulumi.set(__self__, "banner_message", banner_message)
         if project_creation_restriction is not None:
             pulumi.set(__self__, "project_creation_restriction", project_creation_restriction)
         if read_only is not None:
@@ -143,8 +198,31 @@ class _ConfigSystemState:
             pulumi.set(__self__, "robot_token_expiration", robot_token_expiration)
         if scanner_skip_update_pulltime is not None:
             pulumi.set(__self__, "scanner_skip_update_pulltime", scanner_skip_update_pulltime)
+        if skip_audit_log_database is not None:
+            pulumi.set(__self__, "skip_audit_log_database", skip_audit_log_database)
         if storage_per_project is not None:
             pulumi.set(__self__, "storage_per_project", storage_per_project)
+
+    @property
+    @pulumi.getter(name="auditLogForwardEndpoint")
+    def audit_log_forward_endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The endpoint to forward audit logs to.
+        """
+        return pulumi.get(self, "audit_log_forward_endpoint")
+
+    @audit_log_forward_endpoint.setter
+    def audit_log_forward_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "audit_log_forward_endpoint", value)
+
+    @property
+    @pulumi.getter(name="bannerMessage")
+    def banner_message(self) -> Optional[pulumi.Input['ConfigSystemBannerMessageArgs']]:
+        return pulumi.get(self, "banner_message")
+
+    @banner_message.setter
+    def banner_message(self, value: Optional[pulumi.Input['ConfigSystemBannerMessageArgs']]):
+        pulumi.set(self, "banner_message", value)
 
     @property
     @pulumi.getter(name="projectCreationRestriction")
@@ -205,6 +283,18 @@ class _ConfigSystemState:
     @scanner_skip_update_pulltime.setter
     def scanner_skip_update_pulltime(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "scanner_skip_update_pulltime", value)
+
+    @property
+    @pulumi.getter(name="skipAuditLogDatabase")
+    def skip_audit_log_database(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to skip audit log database.
+        """
+        return pulumi.get(self, "skip_audit_log_database")
+
+    @skip_audit_log_database.setter
+    def skip_audit_log_database(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_audit_log_database", value)
 
     @property
     @pulumi.getter(name="storagePerProject")
@@ -224,11 +314,14 @@ class ConfigSystem(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 audit_log_forward_endpoint: Optional[pulumi.Input[str]] = None,
+                 banner_message: Optional[pulumi.Input[Union['ConfigSystemBannerMessageArgs', 'ConfigSystemBannerMessageArgsDict']]] = None,
                  project_creation_restriction: Optional[pulumi.Input[str]] = None,
                  read_only: Optional[pulumi.Input[bool]] = None,
                  robot_name_prefix: Optional[pulumi.Input[str]] = None,
                  robot_token_expiration: Optional[pulumi.Input[int]] = None,
                  scanner_skip_update_pulltime: Optional[pulumi.Input[bool]] = None,
+                 skip_audit_log_database: Optional[pulumi.Input[bool]] = None,
                  storage_per_project: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -236,11 +329,13 @@ class ConfigSystem(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] audit_log_forward_endpoint: The endpoint to forward audit logs to.
         :param pulumi.Input[str] project_creation_restriction: Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
         :param pulumi.Input[bool] read_only: Whether or not the system is in read only mode.
         :param pulumi.Input[str] robot_name_prefix: Robot account prefix.
         :param pulumi.Input[int] robot_token_expiration: The amount of time in days a robot account will expire.
         :param pulumi.Input[bool] scanner_skip_update_pulltime: Whether or not to skip update pull time for scanner.
+        :param pulumi.Input[bool] skip_audit_log_database: Whether or not to skip audit log database.
         :param pulumi.Input[int] storage_per_project: Default quota space per project in GIB. Default is -1 (unlimited).
         """
         ...
@@ -267,11 +362,14 @@ class ConfigSystem(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 audit_log_forward_endpoint: Optional[pulumi.Input[str]] = None,
+                 banner_message: Optional[pulumi.Input[Union['ConfigSystemBannerMessageArgs', 'ConfigSystemBannerMessageArgsDict']]] = None,
                  project_creation_restriction: Optional[pulumi.Input[str]] = None,
                  read_only: Optional[pulumi.Input[bool]] = None,
                  robot_name_prefix: Optional[pulumi.Input[str]] = None,
                  robot_token_expiration: Optional[pulumi.Input[int]] = None,
                  scanner_skip_update_pulltime: Optional[pulumi.Input[bool]] = None,
+                 skip_audit_log_database: Optional[pulumi.Input[bool]] = None,
                  storage_per_project: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -282,11 +380,14 @@ class ConfigSystem(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConfigSystemArgs.__new__(ConfigSystemArgs)
 
+            __props__.__dict__["audit_log_forward_endpoint"] = audit_log_forward_endpoint
+            __props__.__dict__["banner_message"] = banner_message
             __props__.__dict__["project_creation_restriction"] = project_creation_restriction
             __props__.__dict__["read_only"] = read_only
             __props__.__dict__["robot_name_prefix"] = robot_name_prefix
             __props__.__dict__["robot_token_expiration"] = robot_token_expiration
             __props__.__dict__["scanner_skip_update_pulltime"] = scanner_skip_update_pulltime
+            __props__.__dict__["skip_audit_log_database"] = skip_audit_log_database
             __props__.__dict__["storage_per_project"] = storage_per_project
         super(ConfigSystem, __self__).__init__(
             'harbor:index/configSystem:ConfigSystem',
@@ -298,11 +399,14 @@ class ConfigSystem(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            audit_log_forward_endpoint: Optional[pulumi.Input[str]] = None,
+            banner_message: Optional[pulumi.Input[Union['ConfigSystemBannerMessageArgs', 'ConfigSystemBannerMessageArgsDict']]] = None,
             project_creation_restriction: Optional[pulumi.Input[str]] = None,
             read_only: Optional[pulumi.Input[bool]] = None,
             robot_name_prefix: Optional[pulumi.Input[str]] = None,
             robot_token_expiration: Optional[pulumi.Input[int]] = None,
             scanner_skip_update_pulltime: Optional[pulumi.Input[bool]] = None,
+            skip_audit_log_database: Optional[pulumi.Input[bool]] = None,
             storage_per_project: Optional[pulumi.Input[int]] = None) -> 'ConfigSystem':
         """
         Get an existing ConfigSystem resource's state with the given name, id, and optional extra
@@ -311,24 +415,42 @@ class ConfigSystem(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] audit_log_forward_endpoint: The endpoint to forward audit logs to.
         :param pulumi.Input[str] project_creation_restriction: Who can create projects within Harbor. Can be `"adminonly"` or `"everyone"`
         :param pulumi.Input[bool] read_only: Whether or not the system is in read only mode.
         :param pulumi.Input[str] robot_name_prefix: Robot account prefix.
         :param pulumi.Input[int] robot_token_expiration: The amount of time in days a robot account will expire.
         :param pulumi.Input[bool] scanner_skip_update_pulltime: Whether or not to skip update pull time for scanner.
+        :param pulumi.Input[bool] skip_audit_log_database: Whether or not to skip audit log database.
         :param pulumi.Input[int] storage_per_project: Default quota space per project in GIB. Default is -1 (unlimited).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ConfigSystemState.__new__(_ConfigSystemState)
 
+        __props__.__dict__["audit_log_forward_endpoint"] = audit_log_forward_endpoint
+        __props__.__dict__["banner_message"] = banner_message
         __props__.__dict__["project_creation_restriction"] = project_creation_restriction
         __props__.__dict__["read_only"] = read_only
         __props__.__dict__["robot_name_prefix"] = robot_name_prefix
         __props__.__dict__["robot_token_expiration"] = robot_token_expiration
         __props__.__dict__["scanner_skip_update_pulltime"] = scanner_skip_update_pulltime
+        __props__.__dict__["skip_audit_log_database"] = skip_audit_log_database
         __props__.__dict__["storage_per_project"] = storage_per_project
         return ConfigSystem(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="auditLogForwardEndpoint")
+    def audit_log_forward_endpoint(self) -> pulumi.Output[Optional[str]]:
+        """
+        The endpoint to forward audit logs to.
+        """
+        return pulumi.get(self, "audit_log_forward_endpoint")
+
+    @property
+    @pulumi.getter(name="bannerMessage")
+    def banner_message(self) -> pulumi.Output[Optional['outputs.ConfigSystemBannerMessage']]:
+        return pulumi.get(self, "banner_message")
 
     @property
     @pulumi.getter(name="projectCreationRestriction")
@@ -369,6 +491,14 @@ class ConfigSystem(pulumi.CustomResource):
         Whether or not to skip update pull time for scanner.
         """
         return pulumi.get(self, "scanner_skip_update_pulltime")
+
+    @property
+    @pulumi.getter(name="skipAuditLogDatabase")
+    def skip_audit_log_database(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether or not to skip audit log database.
+        """
+        return pulumi.get(self, "skip_audit_log_database")
 
     @property
     @pulumi.getter(name="storagePerProject")

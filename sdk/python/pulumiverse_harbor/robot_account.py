@@ -277,7 +277,7 @@ class RobotAccount(pulumi.CustomResource):
                  duration: Optional[pulumi.Input[int]] = None,
                  level: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RobotAccountPermissionArgs']]]]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RobotAccountPermissionArgs', 'RobotAccountPermissionArgsDict']]]]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -371,7 +371,7 @@ class RobotAccount(pulumi.CustomResource):
                  duration: Optional[pulumi.Input[int]] = None,
                  level: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RobotAccountPermissionArgs']]]]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RobotAccountPermissionArgs', 'RobotAccountPermissionArgsDict']]]]] = None,
                  secret: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -413,7 +413,7 @@ class RobotAccount(pulumi.CustomResource):
             full_name: Optional[pulumi.Input[str]] = None,
             level: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RobotAccountPermissionArgs']]]]] = None,
+            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RobotAccountPermissionArgs', 'RobotAccountPermissionArgsDict']]]]] = None,
             robot_id: Optional[pulumi.Input[str]] = None,
             secret: Optional[pulumi.Input[str]] = None) -> 'RobotAccount':
         """

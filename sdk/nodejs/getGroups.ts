@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  */
 export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harbor:index/getGroups:getGroups", {
         "groupName": args.groupName,
@@ -55,7 +54,12 @@ export interface GetGroupsResult {
  * ## Example Usage
  */
 export function getGroupsOutput(args?: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
-    return pulumi.output(args).apply((a: any) => getGroups(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harbor:index/getGroups:getGroups", {
+        "groupName": args.groupName,
+        "ldapGroupDn": args.ldapGroupDn,
+    }, opts);
 }
 
 /**

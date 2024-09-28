@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  */
 export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("harbor:index/getProjects:getProjects", {
         "name": args.name,
@@ -73,7 +72,14 @@ export interface GetProjectsResult {
  * ## Example Usage
  */
 export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectsResult> {
-    return pulumi.output(args).apply((a: any) => getProjects(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("harbor:index/getProjects:getProjects", {
+        "name": args.name,
+        "public": args.public,
+        "type": args.type,
+        "vulnerabilityScanning": args.vulnerabilityScanning,
+    }, opts);
 }
 
 /**

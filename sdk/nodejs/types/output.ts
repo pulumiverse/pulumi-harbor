@@ -5,6 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface ConfigSystemBannerMessage {
+    /**
+     * Whether or not the banner message is closable.
+     */
+    closable?: boolean;
+    /**
+     * The date the banner message will start displaying. (Format: `MM/DD/YYYY`)
+     */
+    fromDate?: string;
+    /**
+     * The message to display in the banner.
+     */
+    message: string;
+    /**
+     * The date the banner message will stop displaying. (Format: `MM/DD/YYYY`)
+     */
+    toDate?: string;
+    /**
+     * The type of banner message. Can be `"info"`, `"warning"`, `"success"` or `"danger"`.
+     */
+    type?: string;
+}
+
 export interface GetGroupsGroup {
     /**
      * The name of the group to filter by.
