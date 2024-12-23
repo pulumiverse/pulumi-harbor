@@ -23,8 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "harbor:index/configAuth:ConfigAuth":
 		r = &ConfigAuth{}
-	case "harbor:index/configEmail:ConfigEmail":
-		r = &ConfigEmail{}
 	case "harbor:index/configSecurity:ConfigSecurity":
 		r = &ConfigSecurity{}
 	case "harbor:index/configSystem:ConfigSystem":
@@ -97,11 +95,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"harbor",
 		"index/configAuth",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"harbor",
-		"index/configEmail",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -17,7 +17,11 @@ __all__ = [
     'RobotAccountPermission',
     'RobotAccountPermissionAccess',
     'GetGroupsGroupResult',
+    'GetProjectMemberGroupsProjectMemberGroupResult',
+    'GetProjectMemberUsersProjectMemberUserResult',
     'GetProjectsProjectResult',
+    'GetRobotAccountsRobotAccountResult',
+    'GetUsersUserResult',
 ]
 
 @pulumi.output_type
@@ -221,19 +225,6 @@ class RetentionPolicyRule(dict):
                  tag_excluding: Optional[str] = None,
                  tag_matching: Optional[str] = None,
                  untagged_artifacts: Optional[bool] = None):
-        """
-        :param bool always_retain: retain always.
-        :param bool disabled: Specify if the rule is disable or not. Defaults to `false`
-        :param int most_recently_pulled: retain the most recently pulled n artifacts.
-        :param int most_recently_pushed: retain the most recently pushed n artifacts.
-        :param int n_days_since_last_pull: retains the artifacts pulled within the lasts n days.
-        :param int n_days_since_last_push: retains the artifacts pushed within the lasts n days.
-        :param str repo_excluding: For the repositories excluding.
-        :param str repo_matching: For the repositories matching.
-        :param str tag_excluding: For the tag excluding.
-        :param str tag_matching: For the tag matching.
-        :param bool untagged_artifacts: with untagged artifacts. Defaults to `true`
-        """
         if always_retain is not None:
             pulumi.set(__self__, "always_retain", always_retain)
         if disabled is not None:
@@ -260,89 +251,56 @@ class RetentionPolicyRule(dict):
     @property
     @pulumi.getter(name="alwaysRetain")
     def always_retain(self) -> Optional[bool]:
-        """
-        retain always.
-        """
         return pulumi.get(self, "always_retain")
 
     @property
     @pulumi.getter
     def disabled(self) -> Optional[bool]:
-        """
-        Specify if the rule is disable or not. Defaults to `false`
-        """
         return pulumi.get(self, "disabled")
 
     @property
     @pulumi.getter(name="mostRecentlyPulled")
     def most_recently_pulled(self) -> Optional[int]:
-        """
-        retain the most recently pulled n artifacts.
-        """
         return pulumi.get(self, "most_recently_pulled")
 
     @property
     @pulumi.getter(name="mostRecentlyPushed")
     def most_recently_pushed(self) -> Optional[int]:
-        """
-        retain the most recently pushed n artifacts.
-        """
         return pulumi.get(self, "most_recently_pushed")
 
     @property
     @pulumi.getter(name="nDaysSinceLastPull")
     def n_days_since_last_pull(self) -> Optional[int]:
-        """
-        retains the artifacts pulled within the lasts n days.
-        """
         return pulumi.get(self, "n_days_since_last_pull")
 
     @property
     @pulumi.getter(name="nDaysSinceLastPush")
     def n_days_since_last_push(self) -> Optional[int]:
-        """
-        retains the artifacts pushed within the lasts n days.
-        """
         return pulumi.get(self, "n_days_since_last_push")
 
     @property
     @pulumi.getter(name="repoExcluding")
     def repo_excluding(self) -> Optional[str]:
-        """
-        For the repositories excluding.
-        """
         return pulumi.get(self, "repo_excluding")
 
     @property
     @pulumi.getter(name="repoMatching")
     def repo_matching(self) -> Optional[str]:
-        """
-        For the repositories matching.
-        """
         return pulumi.get(self, "repo_matching")
 
     @property
     @pulumi.getter(name="tagExcluding")
     def tag_excluding(self) -> Optional[str]:
-        """
-        For the tag excluding.
-        """
         return pulumi.get(self, "tag_excluding")
 
     @property
     @pulumi.getter(name="tagMatching")
     def tag_matching(self) -> Optional[str]:
-        """
-        For the tag matching.
-        """
         return pulumi.get(self, "tag_matching")
 
     @property
     @pulumi.getter(name="untaggedArtifacts")
     def untagged_artifacts(self) -> Optional[bool]:
-        """
-        with untagged artifacts. Defaults to `true`
-        """
         return pulumi.get(self, "untagged_artifacts")
 
 
@@ -471,6 +429,92 @@ class GetGroupsGroupResult(dict):
 
 
 @pulumi.output_type
+class GetProjectMemberGroupsProjectMemberGroupResult(dict):
+    def __init__(__self__, *,
+                 group_name: str,
+                 id: str,
+                 project_id: str,
+                 role: str):
+        """
+        :param str id: The ID of this resource.
+        :param str project_id: The id of the project within harbor.
+        """
+        pulumi.set(__self__, "group_name", group_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> str:
+        return pulumi.get(self, "group_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        The id of the project within harbor.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class GetProjectMemberUsersProjectMemberUserResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 project_id: str,
+                 role: str,
+                 user_name: str):
+        """
+        :param str id: The ID of this resource.
+        :param str project_id: The id of the project within harbor.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "user_name", user_name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        The id of the project within harbor.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        return pulumi.get(self, "role")
+
+    @property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> str:
+        return pulumi.get(self, "user_name")
+
+
+@pulumi.output_type
 class GetProjectsProjectResult(dict):
     def __init__(__self__, *,
                  name: str,
@@ -508,5 +552,127 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter(name="vulnerabilityScanning")
     def vulnerability_scanning(self) -> bool:
         return pulumi.get(self, "vulnerability_scanning")
+
+
+@pulumi.output_type
+class GetRobotAccountsRobotAccountResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 disable: bool,
+                 duration: int,
+                 id: str,
+                 level: str,
+                 name: str):
+        """
+        :param str id: The ID of this resource.
+        :param str level: Level of the robot account, currently either `system` or `project`. Default is `system`.
+        :param str name: The name of the robot account to filter by.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disable", disable)
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "level", level)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def disable(self) -> bool:
+        return pulumi.get(self, "disable")
+
+    @property
+    @pulumi.getter
+    def duration(self) -> int:
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def level(self) -> str:
+        """
+        Level of the robot account, currently either `system` or `project`. Default is `system`.
+        """
+        return pulumi.get(self, "level")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the robot account to filter by.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetUsersUserResult(dict):
+    def __init__(__self__, *,
+                 admin: bool,
+                 comment: str,
+                 email: str,
+                 full_name: str,
+                 id: str,
+                 username: str):
+        """
+        :param str email: The email of the user to filter by.
+        :param str id: The ID of this resource.
+        :param str username: The name of the user to filter by.
+        """
+        pulumi.set(__self__, "admin", admin)
+        pulumi.set(__self__, "comment", comment)
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "full_name", full_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def admin(self) -> bool:
+        return pulumi.get(self, "admin")
+
+    @property
+    @pulumi.getter
+    def comment(self) -> str:
+        return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        The email of the user to filter by.
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="fullName")
+    def full_name(self) -> str:
+        return pulumi.get(self, "full_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        The name of the user to filter by.
+        """
+        return pulumi.get(self, "username")
 
 

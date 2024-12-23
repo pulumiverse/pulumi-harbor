@@ -10,11 +10,6 @@ export type ConfigAuth = import("./configAuth").ConfigAuth;
 export const ConfigAuth: typeof import("./configAuth").ConfigAuth = null as any;
 utilities.lazyLoad(exports, ["ConfigAuth"], () => require("./configAuth"));
 
-export { ConfigEmailArgs, ConfigEmailState } from "./configEmail";
-export type ConfigEmail = import("./configEmail").ConfigEmail;
-export const ConfigEmail: typeof import("./configEmail").ConfigEmail = null as any;
-utilities.lazyLoad(exports, ["ConfigEmail"], () => require("./configEmail"));
-
 export { ConfigSecurityArgs, ConfigSecurityState } from "./configSecurity";
 export type ConfigSecurity = import("./configSecurity").ConfigSecurity;
 export const ConfigSecurity: typeof import("./configSecurity").ConfigSecurity = null as any;
@@ -40,6 +35,16 @@ export const getProject: typeof import("./getProject").getProject = null as any;
 export const getProjectOutput: typeof import("./getProject").getProjectOutput = null as any;
 utilities.lazyLoad(exports, ["getProject","getProjectOutput"], () => require("./getProject"));
 
+export { GetProjectMemberGroupsArgs, GetProjectMemberGroupsResult, GetProjectMemberGroupsOutputArgs } from "./getProjectMemberGroups";
+export const getProjectMemberGroups: typeof import("./getProjectMemberGroups").getProjectMemberGroups = null as any;
+export const getProjectMemberGroupsOutput: typeof import("./getProjectMemberGroups").getProjectMemberGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectMemberGroups","getProjectMemberGroupsOutput"], () => require("./getProjectMemberGroups"));
+
+export { GetProjectMemberUsersArgs, GetProjectMemberUsersResult, GetProjectMemberUsersOutputArgs } from "./getProjectMemberUsers";
+export const getProjectMemberUsers: typeof import("./getProjectMemberUsers").getProjectMemberUsers = null as any;
+export const getProjectMemberUsersOutput: typeof import("./getProjectMemberUsers").getProjectMemberUsersOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectMemberUsers","getProjectMemberUsersOutput"], () => require("./getProjectMemberUsers"));
+
 export { GetProjectsArgs, GetProjectsResult, GetProjectsOutputArgs } from "./getProjects";
 export const getProjects: typeof import("./getProjects").getProjects = null as any;
 export const getProjectsOutput: typeof import("./getProjects").getProjectsOutput = null as any;
@@ -49,6 +54,16 @@ export { GetRegistryArgs, GetRegistryResult, GetRegistryOutputArgs } from "./get
 export const getRegistry: typeof import("./getRegistry").getRegistry = null as any;
 export const getRegistryOutput: typeof import("./getRegistry").getRegistryOutput = null as any;
 utilities.lazyLoad(exports, ["getRegistry","getRegistryOutput"], () => require("./getRegistry"));
+
+export { GetRobotAccountsArgs, GetRobotAccountsResult, GetRobotAccountsOutputArgs } from "./getRobotAccounts";
+export const getRobotAccounts: typeof import("./getRobotAccounts").getRobotAccounts = null as any;
+export const getRobotAccountsOutput: typeof import("./getRobotAccounts").getRobotAccountsOutput = null as any;
+utilities.lazyLoad(exports, ["getRobotAccounts","getRobotAccountsOutput"], () => require("./getRobotAccounts"));
+
+export { GetUsersArgs, GetUsersResult, GetUsersOutputArgs } from "./getUsers";
+export const getUsers: typeof import("./getUsers").getUsers = null as any;
+export const getUsersOutput: typeof import("./getUsers").getUsersOutput = null as any;
+utilities.lazyLoad(exports, ["getUsers","getUsersOutput"], () => require("./getUsers"));
 
 export { GroupArgs, GroupState } from "./group";
 export type Group = import("./group").Group;
@@ -151,8 +166,6 @@ const _module = {
         switch (type) {
             case "harbor:index/configAuth:ConfigAuth":
                 return new ConfigAuth(name, <any>undefined, { urn })
-            case "harbor:index/configEmail:ConfigEmail":
-                return new ConfigEmail(name, <any>undefined, { urn })
             case "harbor:index/configSecurity:ConfigSecurity":
                 return new ConfigSecurity(name, <any>undefined, { urn })
             case "harbor:index/configSystem:ConfigSystem":
@@ -197,7 +210,6 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("harbor", "index/configAuth", _module)
-pulumi.runtime.registerResourceModule("harbor", "index/configEmail", _module)
 pulumi.runtime.registerResourceModule("harbor", "index/configSecurity", _module)
 pulumi.runtime.registerResourceModule("harbor", "index/configSystem", _module)
 pulumi.runtime.registerResourceModule("harbor", "index/garbageCollection", _module)

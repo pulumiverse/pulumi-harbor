@@ -360,28 +360,17 @@ func (o ReplicationFilterArrayOutput) Index(i pulumi.IntInput) ReplicationFilter
 }
 
 type RetentionPolicyRule struct {
-	// retain always.
-	AlwaysRetain *bool `pulumi:"alwaysRetain"`
-	// Specify if the rule is disable or not. Defaults to `false`
-	Disabled *bool `pulumi:"disabled"`
-	// retain the most recently pulled n artifacts.
-	MostRecentlyPulled *int `pulumi:"mostRecentlyPulled"`
-	// retain the most recently pushed n artifacts.
-	MostRecentlyPushed *int `pulumi:"mostRecentlyPushed"`
-	// retains the artifacts pulled within the lasts n days.
-	NDaysSinceLastPull *int `pulumi:"nDaysSinceLastPull"`
-	// retains the artifacts pushed within the lasts n days.
-	NDaysSinceLastPush *int `pulumi:"nDaysSinceLastPush"`
-	// For the repositories excluding.
-	RepoExcluding *string `pulumi:"repoExcluding"`
-	// For the repositories matching.
-	RepoMatching *string `pulumi:"repoMatching"`
-	// For the tag excluding.
-	TagExcluding *string `pulumi:"tagExcluding"`
-	// For the tag matching.
-	TagMatching *string `pulumi:"tagMatching"`
-	// with untagged artifacts. Defaults to `true`
-	UntaggedArtifacts *bool `pulumi:"untaggedArtifacts"`
+	AlwaysRetain       *bool   `pulumi:"alwaysRetain"`
+	Disabled           *bool   `pulumi:"disabled"`
+	MostRecentlyPulled *int    `pulumi:"mostRecentlyPulled"`
+	MostRecentlyPushed *int    `pulumi:"mostRecentlyPushed"`
+	NDaysSinceLastPull *int    `pulumi:"nDaysSinceLastPull"`
+	NDaysSinceLastPush *int    `pulumi:"nDaysSinceLastPush"`
+	RepoExcluding      *string `pulumi:"repoExcluding"`
+	RepoMatching       *string `pulumi:"repoMatching"`
+	TagExcluding       *string `pulumi:"tagExcluding"`
+	TagMatching        *string `pulumi:"tagMatching"`
+	UntaggedArtifacts  *bool   `pulumi:"untaggedArtifacts"`
 }
 
 // RetentionPolicyRuleInput is an input type that accepts RetentionPolicyRuleArgs and RetentionPolicyRuleOutput values.
@@ -396,28 +385,17 @@ type RetentionPolicyRuleInput interface {
 }
 
 type RetentionPolicyRuleArgs struct {
-	// retain always.
-	AlwaysRetain pulumi.BoolPtrInput `pulumi:"alwaysRetain"`
-	// Specify if the rule is disable or not. Defaults to `false`
-	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// retain the most recently pulled n artifacts.
-	MostRecentlyPulled pulumi.IntPtrInput `pulumi:"mostRecentlyPulled"`
-	// retain the most recently pushed n artifacts.
-	MostRecentlyPushed pulumi.IntPtrInput `pulumi:"mostRecentlyPushed"`
-	// retains the artifacts pulled within the lasts n days.
-	NDaysSinceLastPull pulumi.IntPtrInput `pulumi:"nDaysSinceLastPull"`
-	// retains the artifacts pushed within the lasts n days.
-	NDaysSinceLastPush pulumi.IntPtrInput `pulumi:"nDaysSinceLastPush"`
-	// For the repositories excluding.
-	RepoExcluding pulumi.StringPtrInput `pulumi:"repoExcluding"`
-	// For the repositories matching.
-	RepoMatching pulumi.StringPtrInput `pulumi:"repoMatching"`
-	// For the tag excluding.
-	TagExcluding pulumi.StringPtrInput `pulumi:"tagExcluding"`
-	// For the tag matching.
-	TagMatching pulumi.StringPtrInput `pulumi:"tagMatching"`
-	// with untagged artifacts. Defaults to `true`
-	UntaggedArtifacts pulumi.BoolPtrInput `pulumi:"untaggedArtifacts"`
+	AlwaysRetain       pulumi.BoolPtrInput   `pulumi:"alwaysRetain"`
+	Disabled           pulumi.BoolPtrInput   `pulumi:"disabled"`
+	MostRecentlyPulled pulumi.IntPtrInput    `pulumi:"mostRecentlyPulled"`
+	MostRecentlyPushed pulumi.IntPtrInput    `pulumi:"mostRecentlyPushed"`
+	NDaysSinceLastPull pulumi.IntPtrInput    `pulumi:"nDaysSinceLastPull"`
+	NDaysSinceLastPush pulumi.IntPtrInput    `pulumi:"nDaysSinceLastPush"`
+	RepoExcluding      pulumi.StringPtrInput `pulumi:"repoExcluding"`
+	RepoMatching       pulumi.StringPtrInput `pulumi:"repoMatching"`
+	TagExcluding       pulumi.StringPtrInput `pulumi:"tagExcluding"`
+	TagMatching        pulumi.StringPtrInput `pulumi:"tagMatching"`
+	UntaggedArtifacts  pulumi.BoolPtrInput   `pulumi:"untaggedArtifacts"`
 }
 
 func (RetentionPolicyRuleArgs) ElementType() reflect.Type {
@@ -471,57 +449,46 @@ func (o RetentionPolicyRuleOutput) ToRetentionPolicyRuleOutputWithContext(ctx co
 	return o
 }
 
-// retain always.
 func (o RetentionPolicyRuleOutput) AlwaysRetain() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RetentionPolicyRule) *bool { return v.AlwaysRetain }).(pulumi.BoolPtrOutput)
 }
 
-// Specify if the rule is disable or not. Defaults to `false`
 func (o RetentionPolicyRuleOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RetentionPolicyRule) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// retain the most recently pulled n artifacts.
 func (o RetentionPolicyRuleOutput) MostRecentlyPulled() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RetentionPolicyRule) *int { return v.MostRecentlyPulled }).(pulumi.IntPtrOutput)
 }
 
-// retain the most recently pushed n artifacts.
 func (o RetentionPolicyRuleOutput) MostRecentlyPushed() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RetentionPolicyRule) *int { return v.MostRecentlyPushed }).(pulumi.IntPtrOutput)
 }
 
-// retains the artifacts pulled within the lasts n days.
 func (o RetentionPolicyRuleOutput) NDaysSinceLastPull() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RetentionPolicyRule) *int { return v.NDaysSinceLastPull }).(pulumi.IntPtrOutput)
 }
 
-// retains the artifacts pushed within the lasts n days.
 func (o RetentionPolicyRuleOutput) NDaysSinceLastPush() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RetentionPolicyRule) *int { return v.NDaysSinceLastPush }).(pulumi.IntPtrOutput)
 }
 
-// For the repositories excluding.
 func (o RetentionPolicyRuleOutput) RepoExcluding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RetentionPolicyRule) *string { return v.RepoExcluding }).(pulumi.StringPtrOutput)
 }
 
-// For the repositories matching.
 func (o RetentionPolicyRuleOutput) RepoMatching() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RetentionPolicyRule) *string { return v.RepoMatching }).(pulumi.StringPtrOutput)
 }
 
-// For the tag excluding.
 func (o RetentionPolicyRuleOutput) TagExcluding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RetentionPolicyRule) *string { return v.TagExcluding }).(pulumi.StringPtrOutput)
 }
 
-// For the tag matching.
 func (o RetentionPolicyRuleOutput) TagMatching() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RetentionPolicyRule) *string { return v.TagMatching }).(pulumi.StringPtrOutput)
 }
 
-// with untagged artifacts. Defaults to `true`
 func (o RetentionPolicyRuleOutput) UntaggedArtifacts() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RetentionPolicyRule) *bool { return v.UntaggedArtifacts }).(pulumi.BoolPtrOutput)
 }
@@ -894,6 +861,242 @@ func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput
 	}).(GetGroupsGroupOutput)
 }
 
+type GetProjectMemberGroupsProjectMemberGroup struct {
+	GroupName string `pulumi:"groupName"`
+	// The ID of this resource.
+	Id string `pulumi:"id"`
+	// The id of the project within harbor.
+	ProjectId string `pulumi:"projectId"`
+	Role      string `pulumi:"role"`
+}
+
+// GetProjectMemberGroupsProjectMemberGroupInput is an input type that accepts GetProjectMemberGroupsProjectMemberGroupArgs and GetProjectMemberGroupsProjectMemberGroupOutput values.
+// You can construct a concrete instance of `GetProjectMemberGroupsProjectMemberGroupInput` via:
+//
+//	GetProjectMemberGroupsProjectMemberGroupArgs{...}
+type GetProjectMemberGroupsProjectMemberGroupInput interface {
+	pulumi.Input
+
+	ToGetProjectMemberGroupsProjectMemberGroupOutput() GetProjectMemberGroupsProjectMemberGroupOutput
+	ToGetProjectMemberGroupsProjectMemberGroupOutputWithContext(context.Context) GetProjectMemberGroupsProjectMemberGroupOutput
+}
+
+type GetProjectMemberGroupsProjectMemberGroupArgs struct {
+	GroupName pulumi.StringInput `pulumi:"groupName"`
+	// The ID of this resource.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The id of the project within harbor.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Role      pulumi.StringInput `pulumi:"role"`
+}
+
+func (GetProjectMemberGroupsProjectMemberGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectMemberGroupsProjectMemberGroup)(nil)).Elem()
+}
+
+func (i GetProjectMemberGroupsProjectMemberGroupArgs) ToGetProjectMemberGroupsProjectMemberGroupOutput() GetProjectMemberGroupsProjectMemberGroupOutput {
+	return i.ToGetProjectMemberGroupsProjectMemberGroupOutputWithContext(context.Background())
+}
+
+func (i GetProjectMemberGroupsProjectMemberGroupArgs) ToGetProjectMemberGroupsProjectMemberGroupOutputWithContext(ctx context.Context) GetProjectMemberGroupsProjectMemberGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectMemberGroupsProjectMemberGroupOutput)
+}
+
+// GetProjectMemberGroupsProjectMemberGroupArrayInput is an input type that accepts GetProjectMemberGroupsProjectMemberGroupArray and GetProjectMemberGroupsProjectMemberGroupArrayOutput values.
+// You can construct a concrete instance of `GetProjectMemberGroupsProjectMemberGroupArrayInput` via:
+//
+//	GetProjectMemberGroupsProjectMemberGroupArray{ GetProjectMemberGroupsProjectMemberGroupArgs{...} }
+type GetProjectMemberGroupsProjectMemberGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectMemberGroupsProjectMemberGroupArrayOutput() GetProjectMemberGroupsProjectMemberGroupArrayOutput
+	ToGetProjectMemberGroupsProjectMemberGroupArrayOutputWithContext(context.Context) GetProjectMemberGroupsProjectMemberGroupArrayOutput
+}
+
+type GetProjectMemberGroupsProjectMemberGroupArray []GetProjectMemberGroupsProjectMemberGroupInput
+
+func (GetProjectMemberGroupsProjectMemberGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectMemberGroupsProjectMemberGroup)(nil)).Elem()
+}
+
+func (i GetProjectMemberGroupsProjectMemberGroupArray) ToGetProjectMemberGroupsProjectMemberGroupArrayOutput() GetProjectMemberGroupsProjectMemberGroupArrayOutput {
+	return i.ToGetProjectMemberGroupsProjectMemberGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectMemberGroupsProjectMemberGroupArray) ToGetProjectMemberGroupsProjectMemberGroupArrayOutputWithContext(ctx context.Context) GetProjectMemberGroupsProjectMemberGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectMemberGroupsProjectMemberGroupArrayOutput)
+}
+
+type GetProjectMemberGroupsProjectMemberGroupOutput struct{ *pulumi.OutputState }
+
+func (GetProjectMemberGroupsProjectMemberGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectMemberGroupsProjectMemberGroup)(nil)).Elem()
+}
+
+func (o GetProjectMemberGroupsProjectMemberGroupOutput) ToGetProjectMemberGroupsProjectMemberGroupOutput() GetProjectMemberGroupsProjectMemberGroupOutput {
+	return o
+}
+
+func (o GetProjectMemberGroupsProjectMemberGroupOutput) ToGetProjectMemberGroupsProjectMemberGroupOutputWithContext(ctx context.Context) GetProjectMemberGroupsProjectMemberGroupOutput {
+	return o
+}
+
+func (o GetProjectMemberGroupsProjectMemberGroupOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMemberGroupsProjectMemberGroup) string { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// The ID of this resource.
+func (o GetProjectMemberGroupsProjectMemberGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMemberGroupsProjectMemberGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The id of the project within harbor.
+func (o GetProjectMemberGroupsProjectMemberGroupOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMemberGroupsProjectMemberGroup) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+func (o GetProjectMemberGroupsProjectMemberGroupOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMemberGroupsProjectMemberGroup) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type GetProjectMemberGroupsProjectMemberGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectMemberGroupsProjectMemberGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectMemberGroupsProjectMemberGroup)(nil)).Elem()
+}
+
+func (o GetProjectMemberGroupsProjectMemberGroupArrayOutput) ToGetProjectMemberGroupsProjectMemberGroupArrayOutput() GetProjectMemberGroupsProjectMemberGroupArrayOutput {
+	return o
+}
+
+func (o GetProjectMemberGroupsProjectMemberGroupArrayOutput) ToGetProjectMemberGroupsProjectMemberGroupArrayOutputWithContext(ctx context.Context) GetProjectMemberGroupsProjectMemberGroupArrayOutput {
+	return o
+}
+
+func (o GetProjectMemberGroupsProjectMemberGroupArrayOutput) Index(i pulumi.IntInput) GetProjectMemberGroupsProjectMemberGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectMemberGroupsProjectMemberGroup {
+		return vs[0].([]GetProjectMemberGroupsProjectMemberGroup)[vs[1].(int)]
+	}).(GetProjectMemberGroupsProjectMemberGroupOutput)
+}
+
+type GetProjectMemberUsersProjectMemberUser struct {
+	// The ID of this resource.
+	Id string `pulumi:"id"`
+	// The id of the project within harbor.
+	ProjectId string `pulumi:"projectId"`
+	Role      string `pulumi:"role"`
+	UserName  string `pulumi:"userName"`
+}
+
+// GetProjectMemberUsersProjectMemberUserInput is an input type that accepts GetProjectMemberUsersProjectMemberUserArgs and GetProjectMemberUsersProjectMemberUserOutput values.
+// You can construct a concrete instance of `GetProjectMemberUsersProjectMemberUserInput` via:
+//
+//	GetProjectMemberUsersProjectMemberUserArgs{...}
+type GetProjectMemberUsersProjectMemberUserInput interface {
+	pulumi.Input
+
+	ToGetProjectMemberUsersProjectMemberUserOutput() GetProjectMemberUsersProjectMemberUserOutput
+	ToGetProjectMemberUsersProjectMemberUserOutputWithContext(context.Context) GetProjectMemberUsersProjectMemberUserOutput
+}
+
+type GetProjectMemberUsersProjectMemberUserArgs struct {
+	// The ID of this resource.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The id of the project within harbor.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Role      pulumi.StringInput `pulumi:"role"`
+	UserName  pulumi.StringInput `pulumi:"userName"`
+}
+
+func (GetProjectMemberUsersProjectMemberUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectMemberUsersProjectMemberUser)(nil)).Elem()
+}
+
+func (i GetProjectMemberUsersProjectMemberUserArgs) ToGetProjectMemberUsersProjectMemberUserOutput() GetProjectMemberUsersProjectMemberUserOutput {
+	return i.ToGetProjectMemberUsersProjectMemberUserOutputWithContext(context.Background())
+}
+
+func (i GetProjectMemberUsersProjectMemberUserArgs) ToGetProjectMemberUsersProjectMemberUserOutputWithContext(ctx context.Context) GetProjectMemberUsersProjectMemberUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectMemberUsersProjectMemberUserOutput)
+}
+
+// GetProjectMemberUsersProjectMemberUserArrayInput is an input type that accepts GetProjectMemberUsersProjectMemberUserArray and GetProjectMemberUsersProjectMemberUserArrayOutput values.
+// You can construct a concrete instance of `GetProjectMemberUsersProjectMemberUserArrayInput` via:
+//
+//	GetProjectMemberUsersProjectMemberUserArray{ GetProjectMemberUsersProjectMemberUserArgs{...} }
+type GetProjectMemberUsersProjectMemberUserArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectMemberUsersProjectMemberUserArrayOutput() GetProjectMemberUsersProjectMemberUserArrayOutput
+	ToGetProjectMemberUsersProjectMemberUserArrayOutputWithContext(context.Context) GetProjectMemberUsersProjectMemberUserArrayOutput
+}
+
+type GetProjectMemberUsersProjectMemberUserArray []GetProjectMemberUsersProjectMemberUserInput
+
+func (GetProjectMemberUsersProjectMemberUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectMemberUsersProjectMemberUser)(nil)).Elem()
+}
+
+func (i GetProjectMemberUsersProjectMemberUserArray) ToGetProjectMemberUsersProjectMemberUserArrayOutput() GetProjectMemberUsersProjectMemberUserArrayOutput {
+	return i.ToGetProjectMemberUsersProjectMemberUserArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectMemberUsersProjectMemberUserArray) ToGetProjectMemberUsersProjectMemberUserArrayOutputWithContext(ctx context.Context) GetProjectMemberUsersProjectMemberUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectMemberUsersProjectMemberUserArrayOutput)
+}
+
+type GetProjectMemberUsersProjectMemberUserOutput struct{ *pulumi.OutputState }
+
+func (GetProjectMemberUsersProjectMemberUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectMemberUsersProjectMemberUser)(nil)).Elem()
+}
+
+func (o GetProjectMemberUsersProjectMemberUserOutput) ToGetProjectMemberUsersProjectMemberUserOutput() GetProjectMemberUsersProjectMemberUserOutput {
+	return o
+}
+
+func (o GetProjectMemberUsersProjectMemberUserOutput) ToGetProjectMemberUsersProjectMemberUserOutputWithContext(ctx context.Context) GetProjectMemberUsersProjectMemberUserOutput {
+	return o
+}
+
+// The ID of this resource.
+func (o GetProjectMemberUsersProjectMemberUserOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMemberUsersProjectMemberUser) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The id of the project within harbor.
+func (o GetProjectMemberUsersProjectMemberUserOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMemberUsersProjectMemberUser) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+func (o GetProjectMemberUsersProjectMemberUserOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMemberUsersProjectMemberUser) string { return v.Role }).(pulumi.StringOutput)
+}
+
+func (o GetProjectMemberUsersProjectMemberUserOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectMemberUsersProjectMemberUser) string { return v.UserName }).(pulumi.StringOutput)
+}
+
+type GetProjectMemberUsersProjectMemberUserArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectMemberUsersProjectMemberUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectMemberUsersProjectMemberUser)(nil)).Elem()
+}
+
+func (o GetProjectMemberUsersProjectMemberUserArrayOutput) ToGetProjectMemberUsersProjectMemberUserArrayOutput() GetProjectMemberUsersProjectMemberUserArrayOutput {
+	return o
+}
+
+func (o GetProjectMemberUsersProjectMemberUserArrayOutput) ToGetProjectMemberUsersProjectMemberUserArrayOutputWithContext(ctx context.Context) GetProjectMemberUsersProjectMemberUserArrayOutput {
+	return o
+}
+
+func (o GetProjectMemberUsersProjectMemberUserArrayOutput) Index(i pulumi.IntInput) GetProjectMemberUsersProjectMemberUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectMemberUsersProjectMemberUser {
+		return vs[0].([]GetProjectMemberUsersProjectMemberUser)[vs[1].(int)]
+	}).(GetProjectMemberUsersProjectMemberUserOutput)
+}
+
 type GetProjectsProject struct {
 	Name                  string `pulumi:"name"`
 	ProjectId             int    `pulumi:"projectId"`
@@ -1012,6 +1215,272 @@ func (o GetProjectsProjectArrayOutput) Index(i pulumi.IntInput) GetProjectsProje
 	}).(GetProjectsProjectOutput)
 }
 
+type GetRobotAccountsRobotAccount struct {
+	Description string `pulumi:"description"`
+	Disable     bool   `pulumi:"disable"`
+	Duration    int    `pulumi:"duration"`
+	// The ID of this resource.
+	Id string `pulumi:"id"`
+	// Level of the robot account, currently either `system` or `project`. Default is `system`.
+	Level string `pulumi:"level"`
+	// The name of the robot account to filter by.
+	Name string `pulumi:"name"`
+}
+
+// GetRobotAccountsRobotAccountInput is an input type that accepts GetRobotAccountsRobotAccountArgs and GetRobotAccountsRobotAccountOutput values.
+// You can construct a concrete instance of `GetRobotAccountsRobotAccountInput` via:
+//
+//	GetRobotAccountsRobotAccountArgs{...}
+type GetRobotAccountsRobotAccountInput interface {
+	pulumi.Input
+
+	ToGetRobotAccountsRobotAccountOutput() GetRobotAccountsRobotAccountOutput
+	ToGetRobotAccountsRobotAccountOutputWithContext(context.Context) GetRobotAccountsRobotAccountOutput
+}
+
+type GetRobotAccountsRobotAccountArgs struct {
+	Description pulumi.StringInput `pulumi:"description"`
+	Disable     pulumi.BoolInput   `pulumi:"disable"`
+	Duration    pulumi.IntInput    `pulumi:"duration"`
+	// The ID of this resource.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Level of the robot account, currently either `system` or `project`. Default is `system`.
+	Level pulumi.StringInput `pulumi:"level"`
+	// The name of the robot account to filter by.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetRobotAccountsRobotAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRobotAccountsRobotAccount)(nil)).Elem()
+}
+
+func (i GetRobotAccountsRobotAccountArgs) ToGetRobotAccountsRobotAccountOutput() GetRobotAccountsRobotAccountOutput {
+	return i.ToGetRobotAccountsRobotAccountOutputWithContext(context.Background())
+}
+
+func (i GetRobotAccountsRobotAccountArgs) ToGetRobotAccountsRobotAccountOutputWithContext(ctx context.Context) GetRobotAccountsRobotAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRobotAccountsRobotAccountOutput)
+}
+
+// GetRobotAccountsRobotAccountArrayInput is an input type that accepts GetRobotAccountsRobotAccountArray and GetRobotAccountsRobotAccountArrayOutput values.
+// You can construct a concrete instance of `GetRobotAccountsRobotAccountArrayInput` via:
+//
+//	GetRobotAccountsRobotAccountArray{ GetRobotAccountsRobotAccountArgs{...} }
+type GetRobotAccountsRobotAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetRobotAccountsRobotAccountArrayOutput() GetRobotAccountsRobotAccountArrayOutput
+	ToGetRobotAccountsRobotAccountArrayOutputWithContext(context.Context) GetRobotAccountsRobotAccountArrayOutput
+}
+
+type GetRobotAccountsRobotAccountArray []GetRobotAccountsRobotAccountInput
+
+func (GetRobotAccountsRobotAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRobotAccountsRobotAccount)(nil)).Elem()
+}
+
+func (i GetRobotAccountsRobotAccountArray) ToGetRobotAccountsRobotAccountArrayOutput() GetRobotAccountsRobotAccountArrayOutput {
+	return i.ToGetRobotAccountsRobotAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetRobotAccountsRobotAccountArray) ToGetRobotAccountsRobotAccountArrayOutputWithContext(ctx context.Context) GetRobotAccountsRobotAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRobotAccountsRobotAccountArrayOutput)
+}
+
+type GetRobotAccountsRobotAccountOutput struct{ *pulumi.OutputState }
+
+func (GetRobotAccountsRobotAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRobotAccountsRobotAccount)(nil)).Elem()
+}
+
+func (o GetRobotAccountsRobotAccountOutput) ToGetRobotAccountsRobotAccountOutput() GetRobotAccountsRobotAccountOutput {
+	return o
+}
+
+func (o GetRobotAccountsRobotAccountOutput) ToGetRobotAccountsRobotAccountOutputWithContext(ctx context.Context) GetRobotAccountsRobotAccountOutput {
+	return o
+}
+
+func (o GetRobotAccountsRobotAccountOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRobotAccountsRobotAccount) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetRobotAccountsRobotAccountOutput) Disable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRobotAccountsRobotAccount) bool { return v.Disable }).(pulumi.BoolOutput)
+}
+
+func (o GetRobotAccountsRobotAccountOutput) Duration() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRobotAccountsRobotAccount) int { return v.Duration }).(pulumi.IntOutput)
+}
+
+// The ID of this resource.
+func (o GetRobotAccountsRobotAccountOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRobotAccountsRobotAccount) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Level of the robot account, currently either `system` or `project`. Default is `system`.
+func (o GetRobotAccountsRobotAccountOutput) Level() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRobotAccountsRobotAccount) string { return v.Level }).(pulumi.StringOutput)
+}
+
+// The name of the robot account to filter by.
+func (o GetRobotAccountsRobotAccountOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRobotAccountsRobotAccount) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetRobotAccountsRobotAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRobotAccountsRobotAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRobotAccountsRobotAccount)(nil)).Elem()
+}
+
+func (o GetRobotAccountsRobotAccountArrayOutput) ToGetRobotAccountsRobotAccountArrayOutput() GetRobotAccountsRobotAccountArrayOutput {
+	return o
+}
+
+func (o GetRobotAccountsRobotAccountArrayOutput) ToGetRobotAccountsRobotAccountArrayOutputWithContext(ctx context.Context) GetRobotAccountsRobotAccountArrayOutput {
+	return o
+}
+
+func (o GetRobotAccountsRobotAccountArrayOutput) Index(i pulumi.IntInput) GetRobotAccountsRobotAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRobotAccountsRobotAccount {
+		return vs[0].([]GetRobotAccountsRobotAccount)[vs[1].(int)]
+	}).(GetRobotAccountsRobotAccountOutput)
+}
+
+type GetUsersUser struct {
+	Admin   bool   `pulumi:"admin"`
+	Comment string `pulumi:"comment"`
+	// The email of the user to filter by.
+	Email    string `pulumi:"email"`
+	FullName string `pulumi:"fullName"`
+	// The ID of this resource.
+	Id string `pulumi:"id"`
+	// The name of the user to filter by.
+	Username string `pulumi:"username"`
+}
+
+// GetUsersUserInput is an input type that accepts GetUsersUserArgs and GetUsersUserOutput values.
+// You can construct a concrete instance of `GetUsersUserInput` via:
+//
+//	GetUsersUserArgs{...}
+type GetUsersUserInput interface {
+	pulumi.Input
+
+	ToGetUsersUserOutput() GetUsersUserOutput
+	ToGetUsersUserOutputWithContext(context.Context) GetUsersUserOutput
+}
+
+type GetUsersUserArgs struct {
+	Admin   pulumi.BoolInput   `pulumi:"admin"`
+	Comment pulumi.StringInput `pulumi:"comment"`
+	// The email of the user to filter by.
+	Email    pulumi.StringInput `pulumi:"email"`
+	FullName pulumi.StringInput `pulumi:"fullName"`
+	// The ID of this resource.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the user to filter by.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (GetUsersUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersUser)(nil)).Elem()
+}
+
+func (i GetUsersUserArgs) ToGetUsersUserOutput() GetUsersUserOutput {
+	return i.ToGetUsersUserOutputWithContext(context.Background())
+}
+
+func (i GetUsersUserArgs) ToGetUsersUserOutputWithContext(ctx context.Context) GetUsersUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserOutput)
+}
+
+// GetUsersUserArrayInput is an input type that accepts GetUsersUserArray and GetUsersUserArrayOutput values.
+// You can construct a concrete instance of `GetUsersUserArrayInput` via:
+//
+//	GetUsersUserArray{ GetUsersUserArgs{...} }
+type GetUsersUserArrayInput interface {
+	pulumi.Input
+
+	ToGetUsersUserArrayOutput() GetUsersUserArrayOutput
+	ToGetUsersUserArrayOutputWithContext(context.Context) GetUsersUserArrayOutput
+}
+
+type GetUsersUserArray []GetUsersUserInput
+
+func (GetUsersUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersUser)(nil)).Elem()
+}
+
+func (i GetUsersUserArray) ToGetUsersUserArrayOutput() GetUsersUserArrayOutput {
+	return i.ToGetUsersUserArrayOutputWithContext(context.Background())
+}
+
+func (i GetUsersUserArray) ToGetUsersUserArrayOutputWithContext(ctx context.Context) GetUsersUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserArrayOutput)
+}
+
+type GetUsersUserOutput struct{ *pulumi.OutputState }
+
+func (GetUsersUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersUser)(nil)).Elem()
+}
+
+func (o GetUsersUserOutput) ToGetUsersUserOutput() GetUsersUserOutput {
+	return o
+}
+
+func (o GetUsersUserOutput) ToGetUsersUserOutputWithContext(ctx context.Context) GetUsersUserOutput {
+	return o
+}
+
+func (o GetUsersUserOutput) Admin() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetUsersUser) bool { return v.Admin }).(pulumi.BoolOutput)
+}
+
+func (o GetUsersUserOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Comment }).(pulumi.StringOutput)
+}
+
+// The email of the user to filter by.
+func (o GetUsersUserOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Email }).(pulumi.StringOutput)
+}
+
+func (o GetUsersUserOutput) FullName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.FullName }).(pulumi.StringOutput)
+}
+
+// The ID of this resource.
+func (o GetUsersUserOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the user to filter by.
+func (o GetUsersUserOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type GetUsersUserArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUsersUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersUser)(nil)).Elem()
+}
+
+func (o GetUsersUserArrayOutput) ToGetUsersUserArrayOutput() GetUsersUserArrayOutput {
+	return o
+}
+
+func (o GetUsersUserArrayOutput) ToGetUsersUserArrayOutputWithContext(ctx context.Context) GetUsersUserArrayOutput {
+	return o
+}
+
+func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUsersUser {
+		return vs[0].([]GetUsersUser)[vs[1].(int)]
+	}).(GetUsersUserOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigSystemBannerMessageInput)(nil)).Elem(), ConfigSystemBannerMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigSystemBannerMessagePtrInput)(nil)).Elem(), ConfigSystemBannerMessageArgs{})
@@ -1025,8 +1494,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RobotAccountPermissionAccessArrayInput)(nil)).Elem(), RobotAccountPermissionAccessArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupInput)(nil)).Elem(), GetGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupArrayInput)(nil)).Elem(), GetGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMemberGroupsProjectMemberGroupInput)(nil)).Elem(), GetProjectMemberGroupsProjectMemberGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMemberGroupsProjectMemberGroupArrayInput)(nil)).Elem(), GetProjectMemberGroupsProjectMemberGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMemberUsersProjectMemberUserInput)(nil)).Elem(), GetProjectMemberUsersProjectMemberUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectMemberUsersProjectMemberUserArrayInput)(nil)).Elem(), GetProjectMemberUsersProjectMemberUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectInput)(nil)).Elem(), GetProjectsProjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectArrayInput)(nil)).Elem(), GetProjectsProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRobotAccountsRobotAccountInput)(nil)).Elem(), GetRobotAccountsRobotAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRobotAccountsRobotAccountArrayInput)(nil)).Elem(), GetRobotAccountsRobotAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserInput)(nil)).Elem(), GetUsersUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserArrayInput)(nil)).Elem(), GetUsersUserArray{})
 	pulumi.RegisterOutputType(ConfigSystemBannerMessageOutput{})
 	pulumi.RegisterOutputType(ConfigSystemBannerMessagePtrOutput{})
 	pulumi.RegisterOutputType(ReplicationFilterOutput{})
@@ -1039,6 +1516,14 @@ func init() {
 	pulumi.RegisterOutputType(RobotAccountPermissionAccessArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectMemberGroupsProjectMemberGroupOutput{})
+	pulumi.RegisterOutputType(GetProjectMemberGroupsProjectMemberGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectMemberUsersProjectMemberUserOutput{})
+	pulumi.RegisterOutputType(GetProjectMemberUsersProjectMemberUserArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectsProjectOutput{})
 	pulumi.RegisterOutputType(GetProjectsProjectArrayOutput{})
+	pulumi.RegisterOutputType(GetRobotAccountsRobotAccountOutput{})
+	pulumi.RegisterOutputType(GetRobotAccountsRobotAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetUsersUserOutput{})
+	pulumi.RegisterOutputType(GetUsersUserArrayOutput{})
 }

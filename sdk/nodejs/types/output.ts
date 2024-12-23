@@ -44,12 +44,74 @@ export interface GetGroupsGroup {
     ldapGroupDn: string;
 }
 
+export interface GetProjectMemberGroupsProjectMemberGroup {
+    groupName: string;
+    /**
+     * The ID of this resource.
+     */
+    id: string;
+    /**
+     * The id of the project within harbor.
+     */
+    projectId: string;
+    role: string;
+}
+
+export interface GetProjectMemberUsersProjectMemberUser {
+    /**
+     * The ID of this resource.
+     */
+    id: string;
+    /**
+     * The id of the project within harbor.
+     */
+    projectId: string;
+    role: string;
+    userName: string;
+}
+
 export interface GetProjectsProject {
     name: string;
     projectId: number;
     public: boolean;
     type: string;
     vulnerabilityScanning: boolean;
+}
+
+export interface GetRobotAccountsRobotAccount {
+    description: string;
+    disable: boolean;
+    duration: number;
+    /**
+     * The ID of this resource.
+     */
+    id: string;
+    /**
+     * Level of the robot account, currently either `system` or `project`. Default is `system`.
+     */
+    level: string;
+    /**
+     * The name of the robot account to filter by.
+     */
+    name: string;
+}
+
+export interface GetUsersUser {
+    admin: boolean;
+    comment: string;
+    /**
+     * The email of the user to filter by.
+     */
+    email: string;
+    fullName: string;
+    /**
+     * The ID of this resource.
+     */
+    id: string;
+    /**
+     * The name of the user to filter by.
+     */
+    username: string;
 }
 
 export interface ReplicationFilter {
@@ -76,49 +138,16 @@ export interface ReplicationFilter {
 }
 
 export interface RetentionPolicyRule {
-    /**
-     * retain always.
-     */
     alwaysRetain?: boolean;
-    /**
-     * Specify if the rule is disable or not. Defaults to `false`
-     */
     disabled?: boolean;
-    /**
-     * retain the most recently pulled n artifacts.
-     */
     mostRecentlyPulled?: number;
-    /**
-     * retain the most recently pushed n artifacts.
-     */
     mostRecentlyPushed?: number;
-    /**
-     * retains the artifacts pulled within the lasts n days.
-     */
     nDaysSinceLastPull?: number;
-    /**
-     * retains the artifacts pushed within the lasts n days.
-     */
     nDaysSinceLastPush?: number;
-    /**
-     * For the repositories excluding.
-     */
     repoExcluding?: string;
-    /**
-     * For the repositories matching.
-     */
     repoMatching?: string;
-    /**
-     * For the tag excluding.
-     */
     tagExcluding?: string;
-    /**
-     * For the tag matching.
-     */
     tagMatching?: string;
-    /**
-     * with untagged artifacts. Defaults to `true`
-     */
     untaggedArtifacts?: boolean;
 }
 

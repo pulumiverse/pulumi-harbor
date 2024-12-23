@@ -167,48 +167,37 @@
         "harbor:index/RetentionPolicyRule:RetentionPolicyRule": {
             "properties": {
                 "alwaysRetain": {
-                    "type": "boolean",
-                    "description": "retain always.\n"
+                    "type": "boolean"
                 },
                 "disabled": {
-                    "type": "boolean",
-                    "description": "Specify if the rule is disable or not. Defaults to `false`\n"
+                    "type": "boolean"
                 },
                 "mostRecentlyPulled": {
-                    "type": "integer",
-                    "description": "retain the most recently pulled n artifacts.\n"
+                    "type": "integer"
                 },
                 "mostRecentlyPushed": {
-                    "type": "integer",
-                    "description": "retain the most recently pushed n artifacts.\n"
+                    "type": "integer"
                 },
                 "nDaysSinceLastPull": {
-                    "type": "integer",
-                    "description": "retains the artifacts pulled within the lasts n days.\n"
+                    "type": "integer"
                 },
                 "nDaysSinceLastPush": {
-                    "type": "integer",
-                    "description": "retains the artifacts pushed within the lasts n days.\n"
+                    "type": "integer"
                 },
                 "repoExcluding": {
-                    "type": "string",
-                    "description": "For the repositories excluding.\n"
+                    "type": "string"
                 },
                 "repoMatching": {
-                    "type": "string",
-                    "description": "For the repositories matching.\n"
+                    "type": "string"
                 },
                 "tagExcluding": {
-                    "type": "string",
-                    "description": "For the tag excluding.\n"
+                    "type": "string"
                 },
                 "tagMatching": {
-                    "type": "string",
-                    "description": "For the tag matching.\n"
+                    "type": "string"
                 },
                 "untaggedArtifacts": {
-                    "type": "boolean",
-                    "description": "with untagged artifacts. Defaults to `true`\n"
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -289,6 +278,66 @@
                 }
             }
         },
+        "harbor:index/getProjectMemberGroupsProjectMemberGroup:getProjectMemberGroupsProjectMemberGroup": {
+            "properties": {
+                "groupName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of this resource.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "The id of the project within harbor.\n"
+                },
+                "role": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "groupName",
+                "id",
+                "projectId",
+                "role"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harbor:index/getProjectMemberUsersProjectMemberUser:getProjectMemberUsersProjectMemberUser": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The ID of this resource.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "The id of the project within harbor.\n"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "userName": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "projectId",
+                "role",
+                "userName"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "harbor:index/getProjectsProject:getProjectsProject": {
             "properties": {
                 "name": {
@@ -314,6 +363,84 @@
                 "public",
                 "type",
                 "vulnerabilityScanning"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harbor:index/getRobotAccountsRobotAccount:getRobotAccountsRobotAccount": {
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "disable": {
+                    "type": "boolean"
+                },
+                "duration": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of this resource.\n"
+                },
+                "level": {
+                    "type": "string",
+                    "description": "Level of the robot account, currently either `system` or `project`. Default is `system`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the robot account to filter by.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "description",
+                "disable",
+                "duration",
+                "id",
+                "level",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "harbor:index/getUsersUser:getUsersUser": {
+            "properties": {
+                "admin": {
+                    "type": "boolean"
+                },
+                "comment": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "The email of the user to filter by.\n"
+                },
+                "fullName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of this resource.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The name of the user to filter by.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "admin",
+                "comment",
+                "email",
+                "fullName",
+                "id",
+                "username"
             ],
             "language": {
                 "nodejs": {
@@ -670,114 +797,6 @@
                 "type": "object"
             }
         },
-        "harbor:index/configEmail:ConfigEmail": {
-            "description": "## Example Usage\n\n```terraform\nresource \"harbor_config_email\" \"main\" {\n  email_host = \"server.acme.com\"\n  email_from = \"dont_reply@acme.com\"\n}\n```\n",
-            "properties": {
-                "emailFrom": {
-                    "type": "string",
-                    "description": "The email from address ie, `dont_reply@acme.com`\n"
-                },
-                "emailHost": {
-                    "type": "string",
-                    "description": "The FQDN of the email server\n"
-                },
-                "emailInsecure": {
-                    "type": "boolean",
-                    "description": "Disables validation of email server certificate `Default: false`\n"
-                },
-                "emailPassword": {
-                    "type": "string",
-                    "description": "The password for the email server\n",
-                    "secret": true
-                },
-                "emailPort": {
-                    "type": "integer",
-                    "description": "The smtp port for the email server `Default: 25`\n"
-                },
-                "emailSsl": {
-                    "type": "boolean",
-                    "description": "Enable SSL for email server connection\n"
-                },
-                "emailUsername": {
-                    "type": "string",
-                    "description": "The username for the email server\n"
-                }
-            },
-            "required": [
-                "emailFrom",
-                "emailHost"
-            ],
-            "inputProperties": {
-                "emailFrom": {
-                    "type": "string",
-                    "description": "The email from address ie, `dont_reply@acme.com`\n"
-                },
-                "emailHost": {
-                    "type": "string",
-                    "description": "The FQDN of the email server\n"
-                },
-                "emailInsecure": {
-                    "type": "boolean",
-                    "description": "Disables validation of email server certificate `Default: false`\n"
-                },
-                "emailPassword": {
-                    "type": "string",
-                    "description": "The password for the email server\n",
-                    "secret": true
-                },
-                "emailPort": {
-                    "type": "integer",
-                    "description": "The smtp port for the email server `Default: 25`\n"
-                },
-                "emailSsl": {
-                    "type": "boolean",
-                    "description": "Enable SSL for email server connection\n"
-                },
-                "emailUsername": {
-                    "type": "string",
-                    "description": "The username for the email server\n"
-                }
-            },
-            "requiredInputs": [
-                "emailFrom",
-                "emailHost"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering ConfigEmail resources.\n",
-                "properties": {
-                    "emailFrom": {
-                        "type": "string",
-                        "description": "The email from address ie, `dont_reply@acme.com`\n"
-                    },
-                    "emailHost": {
-                        "type": "string",
-                        "description": "The FQDN of the email server\n"
-                    },
-                    "emailInsecure": {
-                        "type": "boolean",
-                        "description": "Disables validation of email server certificate `Default: false`\n"
-                    },
-                    "emailPassword": {
-                        "type": "string",
-                        "description": "The password for the email server\n",
-                        "secret": true
-                    },
-                    "emailPort": {
-                        "type": "integer",
-                        "description": "The smtp port for the email server `Default: 25`\n"
-                    },
-                    "emailSsl": {
-                        "type": "boolean",
-                        "description": "Enable SSL for email server connection\n"
-                    },
-                    "emailUsername": {
-                        "type": "string",
-                        "description": "The username for the email server\n"
-                    }
-                },
-                "type": "object"
-            }
-        },
         "harbor:index/configSecurity:ConfigSecurity": {
             "description": "## Example Usage\n\n```terraform\nresource \"harbor_config_security\" \"main\" {\n  cve_allowlist = [\"CVE-456\", \"CVE-123\"]\n  expires_at = \"1701167767\"\n}\n```\n\n## Import\n\nimport using the id of the repo\n\n```sh\n$ pulumi import harbor:index/configSecurity:ConfigSecurity main \"7\"\n```\n\nNote that at this point of time Harbor doesn't has any api endpoint for deleting this list. Only updating the records.\n\n",
             "properties": {
@@ -975,7 +994,7 @@
                 },
                 "schedule": {
                     "type": "string",
-                    "description": "Sets the schedule how often the Garbage Collection will run.  Can be to `\"hourly\"`, `\"daily\"`, `\"weekly\"` or can be a custom cron string ie, `\"5 4 * * *\"`\n"
+                    "description": "Sets the schedule how often the Garbage Collection will run.  Can be to `\"hourly\"`, `\"daily\"`, `\"weekly\"` or can be a custom cron string ie, `\"0 5 4 * * *\"`\n"
                 },
                 "workers": {
                     "type": "integer",
@@ -992,7 +1011,7 @@
                 },
                 "schedule": {
                     "type": "string",
-                    "description": "Sets the schedule how often the Garbage Collection will run.  Can be to `\"hourly\"`, `\"daily\"`, `\"weekly\"` or can be a custom cron string ie, `\"5 4 * * *\"`\n"
+                    "description": "Sets the schedule how often the Garbage Collection will run.  Can be to `\"hourly\"`, `\"daily\"`, `\"weekly\"` or can be a custom cron string ie, `\"0 5 4 * * *\"`\n"
                 },
                 "workers": {
                     "type": "integer",
@@ -1011,7 +1030,7 @@
                     },
                     "schedule": {
                         "type": "string",
-                        "description": "Sets the schedule how often the Garbage Collection will run.  Can be to `\"hourly\"`, `\"daily\"`, `\"weekly\"` or can be a custom cron string ie, `\"5 4 * * *\"`\n"
+                        "description": "Sets the schedule how often the Garbage Collection will run.  Can be to `\"hourly\"`, `\"daily\"`, `\"weekly\"` or can be a custom cron string ie, `\"0 5 4 * * *\"`\n"
                     },
                     "workers": {
                         "type": "integer",
@@ -2731,6 +2750,88 @@
                 ]
             }
         },
+        "harbor:index/getProjectMemberGroups:getProjectMemberGroups": {
+            "description": "## Example Usage\n\n```terraform\ndata \"harbor_project_member_groups\" \"example\" {\n  project_id = \"1\"\n}\n\noutput \"project_member_group_ids\" {\n  value = [data.harbor_project_member_groups.example.project_member_groups.*.id]\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getProjectMemberGroups.\n",
+                "properties": {
+                    "projectId": {
+                        "type": "string",
+                        "description": "The id of the project within harbor.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getProjectMemberGroups.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "The id of the project within harbor.\n"
+                    },
+                    "projectMemberGroups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harbor:index/getProjectMemberGroupsProjectMemberGroup:getProjectMemberGroupsProjectMemberGroup"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "projectId",
+                    "projectMemberGroups",
+                    "id"
+                ]
+            }
+        },
+        "harbor:index/getProjectMemberUsers:getProjectMemberUsers": {
+            "description": "## Example Usage\n\n```terraform\ndata \"harbor_project_member_users\" \"example\" {\n  project_id = \"1\"\n}\n\noutput \"project_member_user_ids\" {\n  value = [data.harbor_project_member_users.example.project_member_users.*.id]\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getProjectMemberUsers.\n",
+                "properties": {
+                    "projectId": {
+                        "type": "string",
+                        "description": "The id of the project within harbor.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getProjectMemberUsers.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "The id of the project within harbor.\n"
+                    },
+                    "projectMemberUsers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harbor:index/getProjectMemberUsersProjectMemberUser:getProjectMemberUsersProjectMemberUser"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "projectId",
+                    "projectMemberUsers",
+                    "id"
+                ]
+            }
+        },
         "harbor:index/getProjects:getProjects": {
             "description": "## Example Usage\n\n```terraform\ndata \"harbor_projects\" \"proxycache\" {\n    type = \"ProxyCache\"\n}\n\noutput \"proxy_cache_projects\" {\n    value = data.harbor_projects.proxycache\n}\n```\n",
             "inputs": {
@@ -2852,6 +2953,104 @@
                     "status",
                     "type",
                     "url",
+                    "id"
+                ]
+            }
+        },
+        "harbor:index/getRobotAccounts:getRobotAccounts": {
+            "description": "## Example Usage\n\n```terraform\ndata \"harbor_robot_accounts\" \"example\" {\n  name = \"example-robot\"\n}\n\noutput \"robot_account_ids\" {\n  value = [data.harbor_robot_accounts.example.robot_accounts.*.id]\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRobotAccounts.\n",
+                "properties": {
+                    "level": {
+                        "type": "string",
+                        "description": "Level of the robot account, currently either `system` or `project`. Default is `system`.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the robot account to filter by.\n"
+                    },
+                    "projectId": {
+                        "type": "integer",
+                        "description": "The id of the project within harbor.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRobotAccounts.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "level": {
+                        "type": "string",
+                        "description": "Level of the robot account, currently either `system` or `project`. Default is `system`.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the robot account to filter by.\n"
+                    },
+                    "projectId": {
+                        "type": "integer",
+                        "description": "The id of the project within harbor.\n"
+                    },
+                    "robotAccounts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harbor:index/getRobotAccountsRobotAccount:getRobotAccountsRobotAccount"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "robotAccounts",
+                    "id"
+                ]
+            }
+        },
+        "harbor:index/getUsers:getUsers": {
+            "description": "## Example Usage\n\n```terraform\ndata \"harbor_users\" \"example\" {\n  username = \"example-user\"\n}\n\noutput \"users_ids\" {\n  value = [data.harbor_users.example.users.*.id]\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getUsers.\n",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "The email of the user to filter by.\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The name of the user to filter by.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getUsers.\n",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "The email of the user to filter by.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The name of the user to filter by.\n"
+                    },
+                    "users": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/harbor:index/getUsersUser:getUsersUser"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "users",
                     "id"
                 ]
             }

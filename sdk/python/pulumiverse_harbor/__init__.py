@@ -6,14 +6,17 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .config_auth import *
-from .config_email import *
 from .config_security import *
 from .config_system import *
 from .garbage_collection import *
 from .get_groups import *
 from .get_project import *
+from .get_project_member_groups import *
+from .get_project_member_users import *
 from .get_projects import *
 from .get_registry import *
+from .get_robot_accounts import *
+from .get_users import *
 from .group import *
 from .immutable_tag_rule import *
 from .interrogation_services import *
@@ -50,14 +53,6 @@ _utilities.register(
   "fqn": "pulumiverse_harbor",
   "classes": {
    "harbor:index/configAuth:ConfigAuth": "ConfigAuth"
-  }
- },
- {
-  "pkg": "harbor",
-  "mod": "index/configEmail",
-  "fqn": "pulumiverse_harbor",
-  "classes": {
-   "harbor:index/configEmail:ConfigEmail": "ConfigEmail"
   }
  },
  {

@@ -13,69 +13,36 @@ namespace Pulumiverse.Harbor.Inputs
 
     public sealed class RetentionPolicyRuleArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// retain always.
-        /// </summary>
         [Input("alwaysRetain")]
         public Input<bool>? AlwaysRetain { get; set; }
 
-        /// <summary>
-        /// Specify if the rule is disable or not. Defaults to `false`
-        /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
-        /// <summary>
-        /// retain the most recently pulled n artifacts.
-        /// </summary>
         [Input("mostRecentlyPulled")]
         public Input<int>? MostRecentlyPulled { get; set; }
 
-        /// <summary>
-        /// retain the most recently pushed n artifacts.
-        /// </summary>
         [Input("mostRecentlyPushed")]
         public Input<int>? MostRecentlyPushed { get; set; }
 
-        /// <summary>
-        /// retains the artifacts pulled within the lasts n days.
-        /// </summary>
         [Input("nDaysSinceLastPull")]
         public Input<int>? NDaysSinceLastPull { get; set; }
 
-        /// <summary>
-        /// retains the artifacts pushed within the lasts n days.
-        /// </summary>
         [Input("nDaysSinceLastPush")]
         public Input<int>? NDaysSinceLastPush { get; set; }
 
-        /// <summary>
-        /// For the repositories excluding.
-        /// </summary>
         [Input("repoExcluding")]
         public Input<string>? RepoExcluding { get; set; }
 
-        /// <summary>
-        /// For the repositories matching.
-        /// </summary>
         [Input("repoMatching")]
         public Input<string>? RepoMatching { get; set; }
 
-        /// <summary>
-        /// For the tag excluding.
-        /// </summary>
         [Input("tagExcluding")]
         public Input<string>? TagExcluding { get; set; }
 
-        /// <summary>
-        /// For the tag matching.
-        /// </summary>
         [Input("tagMatching")]
         public Input<string>? TagMatching { get; set; }
 
-        /// <summary>
-        /// with untagged artifacts. Defaults to `true`
-        /// </summary>
         [Input("untaggedArtifacts")]
         public Input<bool>? UntaggedArtifacts { get; set; }
 

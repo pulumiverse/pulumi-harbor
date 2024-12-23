@@ -23,7 +23,7 @@ namespace Pulumiverse.Harbor
         public Output<bool?> DeleteUntagged { get; private set; } = null!;
 
         /// <summary>
-        /// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        /// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
         /// </summary>
         [Output("schedule")]
         public Output<string> Schedule { get; private set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumiverse.Harbor
         public Input<bool>? DeleteUntagged { get; set; }
 
         /// <summary>
-        /// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        /// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
         /// </summary>
         [Input("schedule", required: true)]
         public Input<string> Schedule { get; set; } = null!;
@@ -114,7 +114,7 @@ namespace Pulumiverse.Harbor
         public Input<bool>? DeleteUntagged { get; set; }
 
         /// <summary>
-        /// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        /// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }

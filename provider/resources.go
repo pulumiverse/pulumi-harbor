@@ -22,11 +22,11 @@ import (
 
 	harbor "github.com/goharbor/terraform-provider-harbor/provider"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumiverse/pulumi-harbor/provider/v3/pkg/version"
-	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 )
 
 // all of the token components used below.
@@ -86,8 +86,8 @@ func Provider() tfbridge.ProviderInfo {
 		Repository: "https://github.com/pulumiverse/pulumi-harbor",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
-		GitHubOrg: "goharbor",
-		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
+		GitHubOrg:    "goharbor",
+		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 		Config: map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
@@ -126,49 +126,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		PreConfigureCallback: preConfigureCallback,
-		Resources: map[string]*tfbridge.ResourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi type. Two examples
-			// are below - the single line form is the common case. The multi-line form is
-			// needed only if you wish to override types or other default options.
-			//
-			// "aws_iam_role": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "IamRole")}
-			//
-			// "aws_acm_certificate": {
-			// 	Tok: tfbridge.MakeResource(mainPkg, mainMod, "Certificate"),
-			// 	Fields: map[string]*tfbridge.SchemaInfo{
-			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
-			// 	},
-			// },
-			"harbor_config_auth":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ConfigAuth")},
-			"harbor_config_email":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ConfigEmail")},
-			"harbor_config_system":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ConfigSystem")},
-			"harbor_garbage_collection":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GarbageCollection")},
-			"harbor_group":                  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Group")},
-			"harbor_immutable_tag_rule":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ImmutableTagRule")},
-			"harbor_interrogation_services": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "InterrogationServices")},
-			"harbor_label":                  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Label")},
-			"harbor_project":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Project")},
-			"harbor_project_member_group":   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ProjectMemberGroup")},
-			"harbor_project_member_user":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ProjectMemberUser")},
-			"harbor_project_webhook":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ProjectWebhook")},
-			"harbor_registry":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Registry")},
-			"harbor_replication":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Replication")},
-			"harbor_retention_policy":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RetentionPolicy")},
-			"harbor_robot_account":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RobotAccount")},
-			"harbor_tasks":                  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Tasks")},
-			"harbor_user":                   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "User")},
-			"harbor_config_security":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ConfigSecurity")},
-			"harbor_purge_audit_log":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "PurgeAuditLog")},
-		},
-		DataSources: map[string]*tfbridge.DataSourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi function. An example
-			// is below.
-			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAmi")},
-			"harbor_project":  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getProject")},
-			"harbor_registry": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRegistry")},
-			"harbor_projects": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getProjects")},
-			"harbor_groups":   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroups")},
-		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			PackageName: "@pulumiverse/harbor",
 			// List any npm dependencies and their versions
