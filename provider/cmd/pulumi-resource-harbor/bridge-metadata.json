@@ -4,9 +4,6 @@
             "harbor_config_auth": {
                 "current": "harbor:index/configAuth:ConfigAuth"
             },
-            "harbor_config_email": {
-                "current": "harbor:index/configEmail:ConfigEmail"
-            },
             "harbor_config_security": {
                 "current": "harbor:index/configSecurity:ConfigSecurity",
                 "fields": {
@@ -126,6 +123,22 @@
             "harbor_project": {
                 "current": "harbor:index/getProject:getProject"
             },
+            "harbor_project_member_groups": {
+                "current": "harbor:index/getProjectMemberGroups:getProjectMemberGroups",
+                "fields": {
+                    "project_member_groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harbor_project_member_users": {
+                "current": "harbor:index/getProjectMemberUsers:getProjectMemberUsers",
+                "fields": {
+                    "project_member_users": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "harbor_projects": {
                 "current": "harbor:index/getProjects:getProjects",
                 "fields": {
@@ -136,6 +149,22 @@
             },
             "harbor_registry": {
                 "current": "harbor:index/getRegistry:getRegistry"
+            },
+            "harbor_robot_accounts": {
+                "current": "harbor:index/getRobotAccounts:getRobotAccounts",
+                "fields": {
+                    "robot_accounts": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "harbor_users": {
+                "current": "harbor:index/getUsers:getUsers",
+                "fields": {
+                    "users": {
+                        "maxItemsOne": false
+                    }
+                }
             }
         }
     },

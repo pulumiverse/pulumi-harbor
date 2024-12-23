@@ -204,19 +204,6 @@ class RetentionPolicyRuleArgs:
                  tag_excluding: Optional[pulumi.Input[str]] = None,
                  tag_matching: Optional[pulumi.Input[str]] = None,
                  untagged_artifacts: Optional[pulumi.Input[bool]] = None):
-        """
-        :param pulumi.Input[bool] always_retain: retain always.
-        :param pulumi.Input[bool] disabled: Specify if the rule is disable or not. Defaults to `false`
-        :param pulumi.Input[int] most_recently_pulled: retain the most recently pulled n artifacts.
-        :param pulumi.Input[int] most_recently_pushed: retain the most recently pushed n artifacts.
-        :param pulumi.Input[int] n_days_since_last_pull: retains the artifacts pulled within the lasts n days.
-        :param pulumi.Input[int] n_days_since_last_push: retains the artifacts pushed within the lasts n days.
-        :param pulumi.Input[str] repo_excluding: For the repositories excluding.
-        :param pulumi.Input[str] repo_matching: For the repositories matching.
-        :param pulumi.Input[str] tag_excluding: For the tag excluding.
-        :param pulumi.Input[str] tag_matching: For the tag matching.
-        :param pulumi.Input[bool] untagged_artifacts: with untagged artifacts. Defaults to `true`
-        """
         if always_retain is not None:
             pulumi.set(__self__, "always_retain", always_retain)
         if disabled is not None:
@@ -243,9 +230,6 @@ class RetentionPolicyRuleArgs:
     @property
     @pulumi.getter(name="alwaysRetain")
     def always_retain(self) -> Optional[pulumi.Input[bool]]:
-        """
-        retain always.
-        """
         return pulumi.get(self, "always_retain")
 
     @always_retain.setter
@@ -255,9 +239,6 @@ class RetentionPolicyRuleArgs:
     @property
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Specify if the rule is disable or not. Defaults to `false`
-        """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
@@ -267,9 +248,6 @@ class RetentionPolicyRuleArgs:
     @property
     @pulumi.getter(name="mostRecentlyPulled")
     def most_recently_pulled(self) -> Optional[pulumi.Input[int]]:
-        """
-        retain the most recently pulled n artifacts.
-        """
         return pulumi.get(self, "most_recently_pulled")
 
     @most_recently_pulled.setter
@@ -279,9 +257,6 @@ class RetentionPolicyRuleArgs:
     @property
     @pulumi.getter(name="mostRecentlyPushed")
     def most_recently_pushed(self) -> Optional[pulumi.Input[int]]:
-        """
-        retain the most recently pushed n artifacts.
-        """
         return pulumi.get(self, "most_recently_pushed")
 
     @most_recently_pushed.setter
@@ -291,9 +266,6 @@ class RetentionPolicyRuleArgs:
     @property
     @pulumi.getter(name="nDaysSinceLastPull")
     def n_days_since_last_pull(self) -> Optional[pulumi.Input[int]]:
-        """
-        retains the artifacts pulled within the lasts n days.
-        """
         return pulumi.get(self, "n_days_since_last_pull")
 
     @n_days_since_last_pull.setter
@@ -303,9 +275,6 @@ class RetentionPolicyRuleArgs:
     @property
     @pulumi.getter(name="nDaysSinceLastPush")
     def n_days_since_last_push(self) -> Optional[pulumi.Input[int]]:
-        """
-        retains the artifacts pushed within the lasts n days.
-        """
         return pulumi.get(self, "n_days_since_last_push")
 
     @n_days_since_last_push.setter
@@ -315,9 +284,6 @@ class RetentionPolicyRuleArgs:
     @property
     @pulumi.getter(name="repoExcluding")
     def repo_excluding(self) -> Optional[pulumi.Input[str]]:
-        """
-        For the repositories excluding.
-        """
         return pulumi.get(self, "repo_excluding")
 
     @repo_excluding.setter
@@ -327,9 +293,6 @@ class RetentionPolicyRuleArgs:
     @property
     @pulumi.getter(name="repoMatching")
     def repo_matching(self) -> Optional[pulumi.Input[str]]:
-        """
-        For the repositories matching.
-        """
         return pulumi.get(self, "repo_matching")
 
     @repo_matching.setter
@@ -339,9 +302,6 @@ class RetentionPolicyRuleArgs:
     @property
     @pulumi.getter(name="tagExcluding")
     def tag_excluding(self) -> Optional[pulumi.Input[str]]:
-        """
-        For the tag excluding.
-        """
         return pulumi.get(self, "tag_excluding")
 
     @tag_excluding.setter
@@ -351,9 +311,6 @@ class RetentionPolicyRuleArgs:
     @property
     @pulumi.getter(name="tagMatching")
     def tag_matching(self) -> Optional[pulumi.Input[str]]:
-        """
-        For the tag matching.
-        """
         return pulumi.get(self, "tag_matching")
 
     @tag_matching.setter
@@ -363,9 +320,6 @@ class RetentionPolicyRuleArgs:
     @property
     @pulumi.getter(name="untaggedArtifacts")
     def untagged_artifacts(self) -> Optional[pulumi.Input[bool]]:
-        """
-        with untagged artifacts. Defaults to `true`
-        """
         return pulumi.get(self, "untagged_artifacts")
 
     @untagged_artifacts.setter

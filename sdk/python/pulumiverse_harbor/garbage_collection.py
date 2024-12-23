@@ -19,7 +19,7 @@ class GarbageCollectionArgs:
                  workers: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a GarbageCollection resource.
-        :param pulumi.Input[str] schedule: Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        :param pulumi.Input[str] schedule: Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
         :param pulumi.Input[bool] delete_untagged: Allow garbage collection on untagged artifacts.
         :param pulumi.Input[int] workers: Number of workers to run the garbage collection, value must be between 1 and 5.
         """
@@ -33,7 +33,7 @@ class GarbageCollectionArgs:
     @pulumi.getter
     def schedule(self) -> pulumi.Input[str]:
         """
-        Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
         """
         return pulumi.get(self, "schedule")
 
@@ -75,7 +75,7 @@ class _GarbageCollectionState:
         """
         Input properties used for looking up and filtering GarbageCollection resources.
         :param pulumi.Input[bool] delete_untagged: Allow garbage collection on untagged artifacts.
-        :param pulumi.Input[str] schedule: Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        :param pulumi.Input[str] schedule: Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
         :param pulumi.Input[int] workers: Number of workers to run the garbage collection, value must be between 1 and 5.
         """
         if delete_untagged is not None:
@@ -101,7 +101,7 @@ class _GarbageCollectionState:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
-        Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
         """
         return pulumi.get(self, "schedule")
 
@@ -137,7 +137,7 @@ class GarbageCollection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] delete_untagged: Allow garbage collection on untagged artifacts.
-        :param pulumi.Input[str] schedule: Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        :param pulumi.Input[str] schedule: Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
         :param pulumi.Input[int] workers: Number of workers to run the garbage collection, value must be between 1 and 5.
         """
         ...
@@ -202,7 +202,7 @@ class GarbageCollection(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] delete_untagged: Allow garbage collection on untagged artifacts.
-        :param pulumi.Input[str] schedule: Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        :param pulumi.Input[str] schedule: Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
         :param pulumi.Input[int] workers: Number of workers to run the garbage collection, value must be between 1 and 5.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -226,7 +226,7 @@ class GarbageCollection(pulumi.CustomResource):
     @pulumi.getter
     def schedule(self) -> pulumi.Output[str]:
         """
-        Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+        Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
         """
         return pulumi.get(self, "schedule")
 

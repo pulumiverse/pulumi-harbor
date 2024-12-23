@@ -52,49 +52,16 @@ export interface ReplicationFilter {
 }
 
 export interface RetentionPolicyRule {
-    /**
-     * retain always.
-     */
     alwaysRetain?: pulumi.Input<boolean>;
-    /**
-     * Specify if the rule is disable or not. Defaults to `false`
-     */
     disabled?: pulumi.Input<boolean>;
-    /**
-     * retain the most recently pulled n artifacts.
-     */
     mostRecentlyPulled?: pulumi.Input<number>;
-    /**
-     * retain the most recently pushed n artifacts.
-     */
     mostRecentlyPushed?: pulumi.Input<number>;
-    /**
-     * retains the artifacts pulled within the lasts n days.
-     */
     nDaysSinceLastPull?: pulumi.Input<number>;
-    /**
-     * retains the artifacts pushed within the lasts n days.
-     */
     nDaysSinceLastPush?: pulumi.Input<number>;
-    /**
-     * For the repositories excluding.
-     */
     repoExcluding?: pulumi.Input<string>;
-    /**
-     * For the repositories matching.
-     */
     repoMatching?: pulumi.Input<string>;
-    /**
-     * For the tag excluding.
-     */
     tagExcluding?: pulumi.Input<string>;
-    /**
-     * For the tag matching.
-     */
     tagMatching?: pulumi.Input<string>;
-    /**
-     * with untagged artifacts. Defaults to `true`
-     */
     untaggedArtifacts?: pulumi.Input<boolean>;
 }
 

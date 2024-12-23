@@ -18,7 +18,7 @@ type GarbageCollection struct {
 
 	// Allow garbage collection on untagged artifacts.
 	DeleteUntagged pulumi.BoolPtrOutput `pulumi:"deleteUntagged"`
-	// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+	// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
 	Schedule pulumi.StringOutput `pulumi:"schedule"`
 	// Number of workers to run the garbage collection, value must be between 1 and 5.
 	Workers pulumi.IntPtrOutput `pulumi:"workers"`
@@ -59,7 +59,7 @@ func GetGarbageCollection(ctx *pulumi.Context,
 type garbageCollectionState struct {
 	// Allow garbage collection on untagged artifacts.
 	DeleteUntagged *bool `pulumi:"deleteUntagged"`
-	// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+	// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
 	Schedule *string `pulumi:"schedule"`
 	// Number of workers to run the garbage collection, value must be between 1 and 5.
 	Workers *int `pulumi:"workers"`
@@ -68,7 +68,7 @@ type garbageCollectionState struct {
 type GarbageCollectionState struct {
 	// Allow garbage collection on untagged artifacts.
 	DeleteUntagged pulumi.BoolPtrInput
-	// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+	// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
 	Schedule pulumi.StringPtrInput
 	// Number of workers to run the garbage collection, value must be between 1 and 5.
 	Workers pulumi.IntPtrInput
@@ -81,7 +81,7 @@ func (GarbageCollectionState) ElementType() reflect.Type {
 type garbageCollectionArgs struct {
 	// Allow garbage collection on untagged artifacts.
 	DeleteUntagged *bool `pulumi:"deleteUntagged"`
-	// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+	// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
 	Schedule string `pulumi:"schedule"`
 	// Number of workers to run the garbage collection, value must be between 1 and 5.
 	Workers *int `pulumi:"workers"`
@@ -91,7 +91,7 @@ type garbageCollectionArgs struct {
 type GarbageCollectionArgs struct {
 	// Allow garbage collection on untagged artifacts.
 	DeleteUntagged pulumi.BoolPtrInput
-	// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+	// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
 	Schedule pulumi.StringInput
 	// Number of workers to run the garbage collection, value must be between 1 and 5.
 	Workers pulumi.IntPtrInput
@@ -189,7 +189,7 @@ func (o GarbageCollectionOutput) DeleteUntagged() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GarbageCollection) pulumi.BoolPtrOutput { return v.DeleteUntagged }).(pulumi.BoolPtrOutput)
 }
 
-// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+// Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
 func (o GarbageCollectionOutput) Schedule() pulumi.StringOutput {
 	return o.ApplyT(func(v *GarbageCollection) pulumi.StringOutput { return v.Schedule }).(pulumi.StringOutput)
 }

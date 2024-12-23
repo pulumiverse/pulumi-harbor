@@ -40,7 +40,7 @@ export class GarbageCollection extends pulumi.CustomResource {
      */
     public readonly deleteUntagged!: pulumi.Output<boolean | undefined>;
     /**
-     * Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+     * Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
      */
     public readonly schedule!: pulumi.Output<string>;
     /**
@@ -87,7 +87,7 @@ export interface GarbageCollectionState {
      */
     deleteUntagged?: pulumi.Input<boolean>;
     /**
-     * Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+     * Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
      */
     schedule?: pulumi.Input<string>;
     /**
@@ -105,7 +105,7 @@ export interface GarbageCollectionArgs {
      */
     deleteUntagged?: pulumi.Input<boolean>;
     /**
-     * Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"5 4 * * *"`
+     * Sets the schedule how often the Garbage Collection will run.  Can be to `"hourly"`, `"daily"`, `"weekly"` or can be a custom cron string ie, `"0 5 4 * * *"`
      */
     schedule: pulumi.Input<string>;
     /**
