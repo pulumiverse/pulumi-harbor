@@ -43,6 +43,22 @@ namespace Pulumiverse.Harbor
         /// </summary>
         public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("harbor:index/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```terraform
+        /// data "harbor_project" "main" {
+        ///     name    = "library" 
+        /// }
+        /// 
+        /// output "project_id" {
+        ///     value = data.harbor_project.main.id
+        /// }
+        /// ```
+        /// </summary>
+        public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("harbor:index/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -150,15 +155,24 @@ def get_registry(name: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'),
         type=pulumi.get(__ret__, 'type'),
         url=pulumi.get(__ret__, 'url'))
-
-
-@_utilities.lift_output_func(get_registry)
 def get_registry_output(name: Optional[pulumi.Input[str]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegistryResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegistryResult]:
     """
     ## Example Usage
 
 
     :param str name: The name of the register.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harbor:index/getRegistry:getRegistry', __args__, opts=opts, typ=GetRegistryResult)
+    return __ret__.apply(lambda __response__: GetRegistryResult(
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        insecure=pulumi.get(__response__, 'insecure'),
+        name=pulumi.get(__response__, 'name'),
+        registry_id=pulumi.get(__response__, 'registry_id'),
+        status=pulumi.get(__response__, 'status'),
+        type=pulumi.get(__response__, 'type'),
+        url=pulumi.get(__response__, 'url')))

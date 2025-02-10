@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -124,15 +129,22 @@ def get_project(name: Optional[str] = None,
         public=pulumi.get(__ret__, 'public'),
         type=pulumi.get(__ret__, 'type'),
         vulnerability_scanning=pulumi.get(__ret__, 'vulnerability_scanning'))
-
-
-@_utilities.lift_output_func(get_project)
 def get_project_output(name: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectResult]:
     """
     ## Example Usage
 
 
     :param str name: The name of the project.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harbor:index/getProject:getProject', __args__, opts=opts, typ=GetProjectResult)
+    return __ret__.apply(lambda __response__: GetProjectResult(
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        public=pulumi.get(__response__, 'public'),
+        type=pulumi.get(__response__, 'type'),
+        vulnerability_scanning=pulumi.get(__response__, 'vulnerability_scanning')))

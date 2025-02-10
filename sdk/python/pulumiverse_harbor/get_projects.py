@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -131,14 +136,11 @@ def get_projects(name: Optional[str] = None,
         public=pulumi.get(__ret__, 'public'),
         type=pulumi.get(__ret__, 'type'),
         vulnerability_scanning=pulumi.get(__ret__, 'vulnerability_scanning'))
-
-
-@_utilities.lift_output_func(get_projects)
 def get_projects_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                         public: Optional[pulumi.Input[Optional[bool]]] = None,
                         type: Optional[pulumi.Input[Optional[str]]] = None,
                         vulnerability_scanning: Optional[pulumi.Input[Optional[bool]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectsResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectsResult]:
     """
     ## Example Usage
 
@@ -148,4 +150,17 @@ def get_projects_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     :param str type: The type of the project : Project or ProxyCache.
     :param bool vulnerability_scanning: If the images will be scanned for vulnerabilities when push to harbor.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['public'] = public
+    __args__['type'] = type
+    __args__['vulnerabilityScanning'] = vulnerability_scanning
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harbor:index/getProjects:getProjects', __args__, opts=opts, typ=GetProjectsResult)
+    return __ret__.apply(lambda __response__: GetProjectsResult(
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        projects=pulumi.get(__response__, 'projects'),
+        public=pulumi.get(__response__, 'public'),
+        type=pulumi.get(__response__, 'type'),
+        vulnerability_scanning=pulumi.get(__response__, 'vulnerability_scanning')))

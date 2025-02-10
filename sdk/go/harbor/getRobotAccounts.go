@@ -46,21 +46,11 @@ type GetRobotAccountsResult struct {
 }
 
 func GetRobotAccountsOutput(ctx *pulumi.Context, args GetRobotAccountsOutputArgs, opts ...pulumi.InvokeOption) GetRobotAccountsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetRobotAccountsResultOutput, error) {
 			args := v.(GetRobotAccountsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetRobotAccountsResult
-			secret, err := ctx.InvokePackageRaw("harbor:index/getRobotAccounts:getRobotAccounts", args, &rv, "", opts...)
-			if err != nil {
-				return GetRobotAccountsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetRobotAccountsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetRobotAccountsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harbor:index/getRobotAccounts:getRobotAccounts", args, GetRobotAccountsResultOutput{}, options).(GetRobotAccountsResultOutput), nil
 		}).(GetRobotAccountsResultOutput)
 }
 

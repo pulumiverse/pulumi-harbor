@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -99,12 +104,9 @@ def get_groups(group_name: Optional[str] = None,
         groups=pulumi.get(__ret__, 'groups'),
         id=pulumi.get(__ret__, 'id'),
         ldap_group_dn=pulumi.get(__ret__, 'ldap_group_dn'))
-
-
-@_utilities.lift_output_func(get_groups)
 def get_groups_output(group_name: Optional[pulumi.Input[Optional[str]]] = None,
                       ldap_group_dn: Optional[pulumi.Input[Optional[str]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupsResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupsResult]:
     """
     ## Example Usage
 
@@ -112,4 +114,13 @@ def get_groups_output(group_name: Optional[pulumi.Input[Optional[str]]] = None,
     :param str group_name: The name of the group to filter by.
     :param str ldap_group_dn: The LDAP group DN to filter by.
     """
-    ...
+    __args__ = dict()
+    __args__['groupName'] = group_name
+    __args__['ldapGroupDn'] = ldap_group_dn
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harbor:index/getGroups:getGroups', __args__, opts=opts, typ=GetGroupsResult)
+    return __ret__.apply(lambda __response__: GetGroupsResult(
+        group_name=pulumi.get(__response__, 'group_name'),
+        groups=pulumi.get(__response__, 'groups'),
+        id=pulumi.get(__response__, 'id'),
+        ldap_group_dn=pulumi.get(__response__, 'ldap_group_dn')))

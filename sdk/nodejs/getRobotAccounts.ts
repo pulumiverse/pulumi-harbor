@@ -62,7 +62,7 @@ export interface GetRobotAccountsResult {
 /**
  * ## Example Usage
  */
-export function getRobotAccountsOutput(args?: GetRobotAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRobotAccountsResult> {
+export function getRobotAccountsOutput(args?: GetRobotAccountsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRobotAccountsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harbor:index/getRobotAccounts:getRobotAccounts", {

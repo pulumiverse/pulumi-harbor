@@ -45,6 +45,9 @@ func GetPassword(ctx *pulumi.Context) string {
 	}
 	return value
 }
+func GetRobotPrefix(ctx *pulumi.Context) string {
+	return config.Get(ctx, "harbor:robotPrefix")
+}
 func GetUrl(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "harbor:url")
 	if err == nil {

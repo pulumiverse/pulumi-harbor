@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -115,13 +120,10 @@ def get_robot_accounts(level: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         project_id=pulumi.get(__ret__, 'project_id'),
         robot_accounts=pulumi.get(__ret__, 'robot_accounts'))
-
-
-@_utilities.lift_output_func(get_robot_accounts)
 def get_robot_accounts_output(level: Optional[pulumi.Input[Optional[str]]] = None,
                               name: Optional[pulumi.Input[Optional[str]]] = None,
                               project_id: Optional[pulumi.Input[Optional[int]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRobotAccountsResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRobotAccountsResult]:
     """
     ## Example Usage
 
@@ -130,4 +132,15 @@ def get_robot_accounts_output(level: Optional[pulumi.Input[Optional[str]]] = Non
     :param str name: The name of the robot account to filter by.
     :param int project_id: The id of the project within harbor.
     """
-    ...
+    __args__ = dict()
+    __args__['level'] = level
+    __args__['name'] = name
+    __args__['projectId'] = project_id
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harbor:index/getRobotAccounts:getRobotAccounts', __args__, opts=opts, typ=GetRobotAccountsResult)
+    return __ret__.apply(lambda __response__: GetRobotAccountsResult(
+        id=pulumi.get(__response__, 'id'),
+        level=pulumi.get(__response__, 'level'),
+        name=pulumi.get(__response__, 'name'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        robot_accounts=pulumi.get(__response__, 'robot_accounts')))

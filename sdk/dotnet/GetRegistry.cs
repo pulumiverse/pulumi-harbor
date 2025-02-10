@@ -43,6 +43,22 @@ namespace Pulumiverse.Harbor
         /// </summary>
         public static Output<GetRegistryResult> Invoke(GetRegistryInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegistryResult>("harbor:index/getRegistry:getRegistry", args ?? new GetRegistryInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```terraform
+        /// data "harbor_registry" "main" {
+        ///   name          = "test_docker_harbor"
+        /// }
+        /// 
+        /// output "harbor_registry_id" {
+        ///   value   = data.harbor_registry.main.id
+        /// }
+        /// ```
+        /// </summary>
+        public static Output<GetRegistryResult> Invoke(GetRegistryInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegistryResult>("harbor:index/getRegistry:getRegistry", args ?? new GetRegistryInvokeArgs(), options.WithDefaults());
     }
 
 
