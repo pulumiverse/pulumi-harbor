@@ -86,6 +86,9 @@
                 },
                 "secret": true
             },
+            "robotPrefix": {
+                "type": "string"
+            },
             "url": {
                 "type": "string",
                 "defaultInfo": {
@@ -465,6 +468,9 @@
                 "type": "string",
                 "secret": true
             },
+            "robotPrefix": {
+                "type": "string"
+            },
             "url": {
                 "type": "string"
             },
@@ -497,6 +503,9 @@
                     ]
                 },
                 "secret": true
+            },
+            "robotPrefix": {
+                "type": "string"
             },
             "url": {
                 "type": "string",
