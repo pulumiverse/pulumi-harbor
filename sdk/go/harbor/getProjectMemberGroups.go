@@ -38,21 +38,11 @@ type GetProjectMemberGroupsResult struct {
 }
 
 func GetProjectMemberGroupsOutput(ctx *pulumi.Context, args GetProjectMemberGroupsOutputArgs, opts ...pulumi.InvokeOption) GetProjectMemberGroupsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetProjectMemberGroupsResultOutput, error) {
 			args := v.(GetProjectMemberGroupsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetProjectMemberGroupsResult
-			secret, err := ctx.InvokePackageRaw("harbor:index/getProjectMemberGroups:getProjectMemberGroups", args, &rv, "", opts...)
-			if err != nil {
-				return GetProjectMemberGroupsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetProjectMemberGroupsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetProjectMemberGroupsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("harbor:index/getProjectMemberGroups:getProjectMemberGroups", args, GetProjectMemberGroupsResultOutput{}, options).(GetProjectMemberGroupsResultOutput), nil
 		}).(GetProjectMemberGroupsResultOutput)
 }
 

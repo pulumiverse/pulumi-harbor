@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -18,6 +23,7 @@ class ProviderArgs:
                  bearer_token: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 robot_prefix: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
@@ -37,6 +43,8 @@ class ProviderArgs:
             password = _utilities.get_env('HARBOR_PASSWORD')
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if robot_prefix is not None:
+            pulumi.set(__self__, "robot_prefix", robot_prefix)
         if url is None:
             url = _utilities.get_env('HARBOR_URL')
         if url is not None:
@@ -83,6 +91,15 @@ class ProviderArgs:
         pulumi.set(self, "password", value)
 
     @property
+    @pulumi.getter(name="robotPrefix")
+    def robot_prefix(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "robot_prefix")
+
+    @robot_prefix.setter
+    def robot_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "robot_prefix", value)
+
+    @property
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "url")
@@ -110,6 +127,7 @@ class Provider(pulumi.ProviderResource):
                  bearer_token: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 robot_prefix: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -153,6 +171,7 @@ class Provider(pulumi.ProviderResource):
                  bearer_token: Optional[pulumi.Input[str]] = None,
                  insecure: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 robot_prefix: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -174,6 +193,7 @@ class Provider(pulumi.ProviderResource):
             if password is None:
                 password = _utilities.get_env('HARBOR_PASSWORD')
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
+            __props__.__dict__["robot_prefix"] = robot_prefix
             if url is None:
                 url = _utilities.get_env('HARBOR_URL')
             __props__.__dict__["url"] = url
@@ -197,6 +217,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="robotPrefix")
+    def robot_prefix(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "robot_prefix")
 
     @property
     @pulumi.getter

@@ -43,6 +43,22 @@ namespace Pulumiverse.Harbor
         /// </summary>
         public static Output<GetRobotAccountsResult> Invoke(GetRobotAccountsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRobotAccountsResult>("harbor:index/getRobotAccounts:getRobotAccounts", args ?? new GetRobotAccountsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```terraform
+        /// data "harbor_robot_accounts" "example" {
+        ///   name = "example-robot"
+        /// }
+        /// 
+        /// output "robot_account_ids" {
+        ///   value = [data.harbor_robot_accounts.example.robot_accounts.*.id]
+        /// }
+        /// ```
+        /// </summary>
+        public static Output<GetRobotAccountsResult> Invoke(GetRobotAccountsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRobotAccountsResult>("harbor:index/getRobotAccounts:getRobotAccounts", args ?? new GetRobotAccountsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -60,6 +60,13 @@ namespace Pulumiverse.Harbor
             set => _password.Set(value);
         }
 
+        private static readonly __Value<string?> _robotPrefix = new __Value<string?>(() => __config.Get("robotPrefix"));
+        public static string? RobotPrefix
+        {
+            get => _robotPrefix.Get();
+            set => _robotPrefix.Set(value);
+        }
+
         private static readonly __Value<string?> _url = new __Value<string?>(() => __config.Get("url") ?? Utilities.GetEnv("HARBOR_URL"));
         public static string? Url
         {

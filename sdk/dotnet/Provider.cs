@@ -25,6 +25,9 @@ namespace Pulumiverse.Harbor
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
+        [Output("robotPrefix")]
+        public Output<string?> RobotPrefix { get; private set; } = null!;
+
         [Output("url")]
         public Output<string?> Url { get; private set; } = null!;
 
@@ -84,6 +87,9 @@ namespace Pulumiverse.Harbor
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("robotPrefix")]
+        public Input<string>? RobotPrefix { get; set; }
 
         [Input("url")]
         public Input<string>? Url { get; set; }

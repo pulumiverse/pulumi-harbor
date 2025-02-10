@@ -4,18 +4,55 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
     'ConfigSystemBannerMessageArgs',
+    'ConfigSystemBannerMessageArgsDict',
     'ReplicationFilterArgs',
+    'ReplicationFilterArgsDict',
     'RetentionPolicyRuleArgs',
+    'RetentionPolicyRuleArgsDict',
     'RobotAccountPermissionArgs',
+    'RobotAccountPermissionArgsDict',
     'RobotAccountPermissionAccessArgs',
+    'RobotAccountPermissionAccessArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ConfigSystemBannerMessageArgsDict(TypedDict):
+        message: pulumi.Input[str]
+        """
+        The message to display in the banner.
+        """
+        closable: NotRequired[pulumi.Input[bool]]
+        """
+        Whether or not the banner message is closable.
+        """
+        from_date: NotRequired[pulumi.Input[str]]
+        """
+        The date the banner message will start displaying. (Format: `MM/DD/YYYY`)
+        """
+        to_date: NotRequired[pulumi.Input[str]]
+        """
+        The date the banner message will stop displaying. (Format: `MM/DD/YYYY`)
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type of banner message. Can be `"info"`, `"warning"`, `"success"` or `"danger"`.
+        """
+elif False:
+    ConfigSystemBannerMessageArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConfigSystemBannerMessageArgs:
@@ -103,6 +140,31 @@ class ConfigSystemBannerMessageArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class ReplicationFilterArgsDict(TypedDict):
+        decoration: NotRequired[pulumi.Input[str]]
+        """
+        Matches or excludes the result. Can be one of the following. `matches`, `excludes`
+        """
+        labels: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Filter on the resource according to labels.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Filter on the name of the resource.
+        """
+        resource: NotRequired[pulumi.Input[str]]
+        """
+        Filter on the resource type. Can be one of the following types. `chart`, `artifact`
+        """
+        tag: NotRequired[pulumi.Input[str]]
+        """
+        Filter on the tag/version of the resource.
+        """
+elif False:
+    ReplicationFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ReplicationFilterArgs:
     def __init__(__self__, *,
@@ -189,6 +251,22 @@ class ReplicationFilterArgs:
     def tag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tag", value)
 
+
+if not MYPY:
+    class RetentionPolicyRuleArgsDict(TypedDict):
+        always_retain: NotRequired[pulumi.Input[bool]]
+        disabled: NotRequired[pulumi.Input[bool]]
+        most_recently_pulled: NotRequired[pulumi.Input[int]]
+        most_recently_pushed: NotRequired[pulumi.Input[int]]
+        n_days_since_last_pull: NotRequired[pulumi.Input[int]]
+        n_days_since_last_push: NotRequired[pulumi.Input[int]]
+        repo_excluding: NotRequired[pulumi.Input[str]]
+        repo_matching: NotRequired[pulumi.Input[str]]
+        tag_excluding: NotRequired[pulumi.Input[str]]
+        tag_matching: NotRequired[pulumi.Input[str]]
+        untagged_artifacts: NotRequired[pulumi.Input[bool]]
+elif False:
+    RetentionPolicyRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RetentionPolicyRuleArgs:
@@ -327,6 +405,20 @@ class RetentionPolicyRuleArgs:
         pulumi.set(self, "untagged_artifacts", value)
 
 
+if not MYPY:
+    class RobotAccountPermissionArgsDict(TypedDict):
+        accesses: pulumi.Input[Sequence[pulumi.Input['RobotAccountPermissionAccessArgsDict']]]
+        kind: pulumi.Input[str]
+        """
+        Either `system` or `project`.
+        """
+        namespace: pulumi.Input[str]
+        """
+        namespace is the name of your project. For kind `system` permissions, always use `/` as namespace. Use `*` to match all projects.
+        """
+elif False:
+    RobotAccountPermissionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RobotAccountPermissionArgs:
     def __init__(__self__, *,
@@ -374,6 +466,23 @@ class RobotAccountPermissionArgs:
     def namespace(self, value: pulumi.Input[str]):
         pulumi.set(self, "namespace", value)
 
+
+if not MYPY:
+    class RobotAccountPermissionAccessArgsDict(TypedDict):
+        action: pulumi.Input[str]
+        """
+        Eg. `push`, `pull`, `read`, etc. Check [available actions](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+        """
+        resource: pulumi.Input[str]
+        """
+        Eg. `repository`, `labels`, etc. Check [available resources](https://github.com/goharbor/harbor/blob/-/src/common/rbac/const.go).
+        """
+        effect: NotRequired[pulumi.Input[str]]
+        """
+        Either `allow` or `deny`. Defaults to `allow`.
+        """
+elif False:
+    RobotAccountPermissionAccessArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RobotAccountPermissionAccessArgs:

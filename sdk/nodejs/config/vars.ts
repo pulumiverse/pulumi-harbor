@@ -39,6 +39,14 @@ Object.defineProperty(exports, "password", {
     enumerable: true,
 });
 
+export declare const robotPrefix: string | undefined;
+Object.defineProperty(exports, "robotPrefix", {
+    get() {
+        return __config.get("robotPrefix");
+    },
+    enumerable: true,
+});
+
 export declare const url: string | undefined;
 Object.defineProperty(exports, "url", {
     get() {

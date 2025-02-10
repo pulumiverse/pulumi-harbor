@@ -27,6 +27,7 @@ export class Provider extends pulumi.ProviderResource {
 
     public readonly bearerToken!: pulumi.Output<string | undefined>;
     public readonly password!: pulumi.Output<string | undefined>;
+    public readonly robotPrefix!: pulumi.Output<string | undefined>;
     public readonly url!: pulumi.Output<string | undefined>;
     public readonly username!: pulumi.Output<string | undefined>;
 
@@ -45,6 +46,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["bearerToken"] = args ? args.bearerToken : undefined;
             resourceInputs["insecure"] = pulumi.output((args ? args.insecure : undefined) ?? (utilities.getEnvBoolean("HARBOR_IGNORE_CERT") || true)).apply(JSON.stringify);
             resourceInputs["password"] = (args?.password ? pulumi.secret(args.password) : undefined) ?? utilities.getEnv("HARBOR_PASSWORD");
+            resourceInputs["robotPrefix"] = args ? args.robotPrefix : undefined;
             resourceInputs["url"] = (args ? args.url : undefined) ?? utilities.getEnv("HARBOR_URL");
             resourceInputs["username"] = (args ? args.username : undefined) ?? utilities.getEnv("HARBOR_USERNAME");
         }
@@ -63,6 +65,7 @@ export interface ProviderArgs {
     bearerToken?: pulumi.Input<string>;
     insecure?: pulumi.Input<boolean>;
     password?: pulumi.Input<string>;
+    robotPrefix?: pulumi.Input<string>;
     url?: pulumi.Input<string>;
     username?: pulumi.Input<string>;
 }

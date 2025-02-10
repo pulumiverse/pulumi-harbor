@@ -43,7 +43,7 @@ export interface GetProjectMemberGroupsResult {
 /**
  * ## Example Usage
  */
-export function getProjectMemberGroupsOutput(args: GetProjectMemberGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectMemberGroupsResult> {
+export function getProjectMemberGroupsOutput(args: GetProjectMemberGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectMemberGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("harbor:index/getProjectMemberGroups:getProjectMemberGroups", {
         "projectId": args.projectId,

@@ -20,6 +20,7 @@ type Provider struct {
 
 	BearerToken pulumi.StringPtrOutput `pulumi:"bearerToken"`
 	Password    pulumi.StringPtrOutput `pulumi:"password"`
+	RobotPrefix pulumi.StringPtrOutput `pulumi:"robotPrefix"`
 	Url         pulumi.StringPtrOutput `pulumi:"url"`
 	Username    pulumi.StringPtrOutput `pulumi:"username"`
 }
@@ -75,6 +76,7 @@ type providerArgs struct {
 	BearerToken *string `pulumi:"bearerToken"`
 	Insecure    *bool   `pulumi:"insecure"`
 	Password    *string `pulumi:"password"`
+	RobotPrefix *string `pulumi:"robotPrefix"`
 	Url         *string `pulumi:"url"`
 	Username    *string `pulumi:"username"`
 }
@@ -85,6 +87,7 @@ type ProviderArgs struct {
 	BearerToken pulumi.StringPtrInput
 	Insecure    pulumi.BoolPtrInput
 	Password    pulumi.StringPtrInput
+	RobotPrefix pulumi.StringPtrInput
 	Url         pulumi.StringPtrInput
 	Username    pulumi.StringPtrInput
 }
@@ -132,6 +135,10 @@ func (o ProviderOutput) BearerToken() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) RobotPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.RobotPrefix }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) Url() pulumi.StringPtrOutput {

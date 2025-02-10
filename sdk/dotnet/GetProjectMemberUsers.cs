@@ -43,6 +43,22 @@ namespace Pulumiverse.Harbor
         /// </summary>
         public static Output<GetProjectMemberUsersResult> Invoke(GetProjectMemberUsersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectMemberUsersResult>("harbor:index/getProjectMemberUsers:getProjectMemberUsers", args ?? new GetProjectMemberUsersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```terraform
+        /// data "harbor_project_member_users" "example" {
+        ///   project_id = "1"
+        /// }
+        /// 
+        /// output "project_member_user_ids" {
+        ///   value = [data.harbor_project_member_users.example.project_member_users.*.id]
+        /// }
+        /// ```
+        /// </summary>
+        public static Output<GetProjectMemberUsersResult> Invoke(GetProjectMemberUsersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectMemberUsersResult>("harbor:index/getProjectMemberUsers:getProjectMemberUsers", args ?? new GetProjectMemberUsersInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -83,15 +88,19 @@ def get_project_member_users(project_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         project_member_users=pulumi.get(__ret__, 'project_member_users'))
-
-
-@_utilities.lift_output_func(get_project_member_users)
 def get_project_member_users_output(project_id: Optional[pulumi.Input[str]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectMemberUsersResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectMemberUsersResult]:
     """
     ## Example Usage
 
 
     :param str project_id: The id of the project within harbor.
     """
-    ...
+    __args__ = dict()
+    __args__['projectId'] = project_id
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('harbor:index/getProjectMemberUsers:getProjectMemberUsers', __args__, opts=opts, typ=GetProjectMemberUsersResult)
+    return __ret__.apply(lambda __response__: GetProjectMemberUsersResult(
+        id=pulumi.get(__response__, 'id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        project_member_users=pulumi.get(__response__, 'project_member_users')))
