@@ -89,6 +89,9 @@
             "robotPrefix": {
                 "type": "string"
             },
+            "sessionId": {
+                "type": "string"
+            },
             "url": {
                 "type": "string",
                 "defaultInfo": {
@@ -471,6 +474,9 @@
             "robotPrefix": {
                 "type": "string"
             },
+            "sessionId": {
+                "type": "string"
+            },
             "url": {
                 "type": "string"
             },
@@ -507,6 +513,9 @@
             "robotPrefix": {
                 "type": "string"
             },
+            "sessionId": {
+                "type": "string"
+            },
             "url": {
                 "type": "string",
                 "defaultInfo": {
@@ -523,6 +532,9 @@
                     ]
                 }
             }
+        },
+        "methods": {
+            "terraformConfig": "pulumi:providers:harbor/terraformConfig"
         }
     },
     "resources": {
@@ -3062,6 +3074,35 @@
                     "users",
                     "id"
                 ]
+            }
+        },
+        "pulumi:providers:harbor/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:harbor"
+                    }
+                },
+                "type": "pulumi:providers:harbor/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
+                ],
+                "type": "object"
             }
         }
     }
